@@ -1,0 +1,1860 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About — Coodley | India's Full Stack Learning Portal</title>
+  <meta name="description" content="The real story behind Coodley — India's most honest full-stack developer learning platform. Our mission, philosophy, curriculum design, and the people building this for you." />
+  <meta name="keywords" content="Coodley about, Indian developer learning platform, free programming India, full stack learning India" />
+
+  <!-- OG Meta -->
+  <meta property="og:title" content="About Coodley — India's Full Stack Learning Portal" />
+  <meta property="og:description" content="No clickbait. No fake promises. Just the real story of why we built Coodley and what we stand for." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://coodley.in/about.html" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <!-- Lucide Icons -->
+    <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:      #07090f;
+      --bg2:     #0c0f1a;
+      --bg3:     #111827;
+      --bg4:     #1a2235;
+      --surface: rgba(255,255,255,0.04);
+      --border:  rgba(255,255,255,0.08);
+      --border2: rgba(255,255,255,0.13);
+      --border-glow: rgba(99,210,179,0.35);
+      --text:    #e8edf5;
+      --text2:   #8899b0;
+      --text3:   #4d5e72;
+      --accent:  #3de8b0;
+      --accent2: #00c98a;
+      --accent-dim: rgba(61,232,176,0.12);
+      --amber:   #f4a942;
+      --amber-bg:rgba(244,169,66,0.07);
+      --amber-border:rgba(244,169,66,0.22);
+      --blue:    #5ba4f5;
+      --blue-bg: rgba(91,164,245,0.08);
+      --purple:  #9d7cf5;
+      --red:     #f56565;
+      --font-head: 'Bricolage Grotesque', sans-serif;
+      --font-body: 'DM Sans', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      --radius:    12px;
+      --radius-sm: 8px;
+      --radius-lg: 20px;
+      --nav-h:     64px;
+    }
+
+    [data-theme="light"] {
+      --bg:      #f3f5f9;
+      --bg2:     #e8ecf4;
+      --bg3:     #dde3ef;
+      --bg4:     #cfd7e8;
+      --surface: rgba(0,0,0,0.03);
+      --border:  rgba(0,0,0,0.08);
+      --border2: rgba(0,0,0,0.12);
+      --border-glow: rgba(0,180,130,0.4);
+      --text:    #0c1220;
+      --text2:   #3d4f64;
+      --text3:   #7a8fa6;
+      --accent:  #00a876;
+      --accent2: #008f62;
+      --accent-dim: rgba(0,168,118,0.1);
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-body);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--bg4); border-radius: 4px; }
+
+    /* ── REVEAL ANIMATION ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity .6s ease, transform .6s ease;
+    }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes pulse {
+      0%,100%{ opacity:1; transform:scale(1) }
+      50%{ opacity:.4; transform:scale(.7) }
+    }
+
+    /* ─── NAVBAR ─── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      height: var(--nav-h);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 clamp(20px, 5%, 80px);
+      background: rgba(7,9,15,0.92);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border-bottom: 1px solid var(--border);
+    }
+    [data-theme="light"] nav { background: rgba(243,245,249,0.95); }
+
+    .nav-logo {
+      display: flex; align-items: center; gap: 10px;
+      text-decoration: none;
+      font-family: var(--font-head); font-weight: 800; font-size: 1.3rem;
+      color: var(--text); letter-spacing: -0.5px;
+    }
+    .logo-mark {
+      width: 34px; height: 34px; background: var(--accent);
+      border-radius: 9px; display: flex; align-items: center; justify-content: center;
+      color: #07090f; flex-shrink: 0;
+    }
+
+    .nav-links { display: flex; align-items: center; gap: 2px; list-style: none; }
+    .nav-links a {
+      text-decoration: none; color: var(--text2); font-size: 0.875rem;
+      padding: 6px 13px; border-radius: var(--radius-sm);
+      transition: color .2s, background .2s;
+      display: flex; align-items: center; gap: 6px;
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--text); background: var(--surface); }
+    .nav-links a.active { color: var(--accent); }
+    .nav-links .ai-link { color: var(--amber); background: var(--amber-bg); }
+    .nav-links .ai-link:hover { background: rgba(244,169,66,.13); }
+
+    .nav-right { display: flex; align-items: center; gap: 10px; }
+    .theme-toggle {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius-sm); padding: 7px 10px; cursor: pointer;
+      color: var(--text2); transition: all .2s; display: flex; align-items: center;
+    }
+    .theme-toggle:hover { color: var(--text); border-color: var(--border2); }
+    .btn-nav {
+      background: var(--accent); color: #07090f; border: none;
+      padding: 8px 18px; border-radius: var(--radius-sm);
+      font-family: var(--font-body); font-size: .85rem; font-weight: 500;
+      cursor: pointer; text-decoration: none;
+      display: inline-flex; align-items: center; gap: 6px;
+      transition: background .2s, transform .15s;
+    }
+    .btn-nav:hover { background: var(--accent2); transform: translateY(-1px); }
+    .nav-hamburger {
+      display: none; background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius-sm); padding: 7px 9px; cursor: pointer; color: var(--text);
+    }
+    @media (max-width: 820px) { .nav-links { display: none; } .nav-hamburger { display: flex; } }
+
+    /* ─── PAGE HERO ─── */
+    .page-hero {
+      padding: calc(var(--nav-h) + 72px) clamp(20px,5%,80px) 72px;
+      text-align: center; position: relative; overflow: hidden;
+    }
+    .hero-grid {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(61,232,176,.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(61,232,176,.025) 1px, transparent 1px);
+      background-size: 56px 56px;
+      mask-image: radial-gradient(ellipse 80% 80% at 50% 30%, black 20%, transparent 100%);
+      pointer-events: none;
+    }
+    .hero-orb {
+      position: absolute; width: 500px; height: 500px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(61,232,176,.065) 0%, transparent 65%);
+      top: -160px; left: 50%; transform: translateX(-50%);
+      filter: blur(40px); pointer-events: none;
+    }
+    .page-hero .badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--surface); border: 1px solid var(--border2);
+      border-radius: 40px; padding: 6px 16px;
+      font-size: .78rem; color: var(--text2); margin-bottom: 26px;
+      animation: fadeUp .7s ease both;
+    }
+    .badge .dot { width:6px; height:6px; border-radius:50%; background:var(--accent); animation: pulse 2.2s infinite; }
+    .page-hero h1 {
+      font-family: var(--font-head);
+      font-size: clamp(2.4rem, 5.5vw, 4rem);
+      font-weight: 800; letter-spacing: -2px; line-height: 1.07; margin-bottom: 20px;
+      animation: fadeUp .7s .1s ease both;
+    }
+    .page-hero h1 .hl { color: var(--accent); }
+    .page-hero .sub {
+      font-size: clamp(.95rem,2vw,1.1rem); color: var(--text2);
+      max-width: 560px; margin: 0 auto 40px;
+      font-weight: 300; line-height: 1.75;
+      animation: fadeUp .7s .2s ease both;
+    }
+    .hero-ctas {
+      display: flex; align-items: center; justify-content: center; gap: 14px; flex-wrap: wrap;
+      animation: fadeUp .7s .3s ease both;
+    }
+    .btn-primary {
+      background: var(--accent); color: #07090f; border: none;
+      padding: 13px 28px; border-radius: var(--radius-sm);
+      font-family: var(--font-body); font-size: .95rem; font-weight: 500;
+      cursor: pointer; text-decoration: none;
+      display: inline-flex; align-items: center; gap: 8px;
+      transition: background .2s, transform .15s, box-shadow .2s;
+    }
+    .btn-primary:hover { background: var(--accent2); transform: translateY(-2px); box-shadow: 0 10px 35px rgba(61,232,176,.3); }
+    .btn-ghost {
+      background: transparent; color: var(--text2); border: 1px solid var(--border2);
+      padding: 13px 24px; border-radius: var(--radius-sm);
+      font-family: var(--font-body); font-size: .95rem; cursor: pointer;
+      text-decoration: none; display: inline-flex; align-items: center; gap: 8px;
+      transition: all .2s;
+    }
+    .btn-ghost:hover { color: var(--text); border-color: var(--border-glow); background: var(--surface); }
+
+    /* ─── SECTIONS SHARED ─── */
+    section { padding: 88px clamp(20px,5%,80px); }
+    .container { max-width: 1200px; margin: 0 auto; }
+    .section-eyebrow {
+      font-family: var(--font-mono); font-size: .7rem; color: var(--accent);
+      text-transform: uppercase; letter-spacing: 2.5px; margin-bottom: 12px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .section-eyebrow::before { content:''; display:inline-block; width:20px; height:1px; background:currentColor; }
+    .section-eyebrow.amber { color: var(--amber); }
+    .section-eyebrow.purple { color: var(--purple); }
+    .section-eyebrow.blue { color: var(--blue); }
+    .section-title {
+      font-family: var(--font-head);
+      font-size: clamp(1.9rem, 3.5vw, 2.7rem);
+      font-weight: 700; letter-spacing: -1.2px; line-height: 1.12; margin-bottom: 14px;
+    }
+    .section-sub { color: var(--text2); font-size: 1rem; max-width: 540px; line-height: 1.75; font-weight: 300; }
+    .section-header { margin-bottom: 52px; }
+    .section-header.centered { text-align: center; }
+    .section-header.centered .section-sub { margin: 0 auto; }
+    .section-header.centered .section-eyebrow { justify-content: center; }
+    .section-header.centered .section-eyebrow::before { display: none; }
+
+    /* ─── STATS BAR ─── */
+    .stats-bar {
+      background: var(--bg2);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 32px clamp(20px,5%,80px);
+    }
+    .stats-grid {
+      max-width: 1200px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(4,1fr); gap: 0;
+    }
+    .stat-item {
+      text-align: center; padding: 16px 20px;
+      border-right: 1px solid var(--border);
+    }
+    .stat-item:last-child { border-right: none; }
+    .stat-num {
+      font-family: var(--font-head); font-size: 2.4rem;
+      font-weight: 800; color: var(--accent); letter-spacing: -1.5px;
+      display: block; line-height: 1;
+    }
+    .stat-label { font-size: .8rem; color: var(--text3); margin-top: 6px; display: block; }
+    @media(max-width:600px){
+      .stats-grid { grid-template-columns: repeat(2,1fr); }
+      .stat-item:nth-child(2) { border-right: none; }
+    }
+
+    /* ─── STORY SECTION ─── */
+    .story-section { background: var(--bg); }
+    .story-layout {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: start;
+    }
+    .story-text p {
+      color: var(--text2); line-height: 1.85; margin-bottom: 18px; font-size: .97rem;
+    }
+    .story-text p strong { color: var(--text); font-weight: 500; }
+    .story-text p .hl { color: var(--accent); font-weight: 500; }
+    .story-quote {
+      margin: 32px 0; padding: 22px 26px;
+      border-left: 3px solid var(--accent);
+      background: var(--surface); border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    }
+    .story-quote p {
+      font-family: var(--font-head); font-size: 1.05rem; font-weight: 600;
+      color: var(--text); line-height: 1.5; margin: 0 !important;
+    }
+    .story-quote span { display: block; margin-top: 8px; font-size: .78rem; color: var(--text3); font-family: var(--font-mono); }
+    .story-aside { display: flex; flex-direction: column; gap: 18px; }
+    .aside-card {
+      background: var(--bg2); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 22px 24px;
+      transition: border-color .2s;
+    }
+    .aside-card:hover { border-color: var(--border2); }
+    .aside-card-icon {
+      width: 38px; height: 38px; border-radius: var(--radius-sm);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 14px; flex-shrink: 0;
+    }
+    .aside-card-icon.teal { background: var(--accent-dim); color: var(--accent); }
+    .aside-card-icon.amber { background: var(--amber-bg); color: var(--amber); border: 1px solid var(--amber-border); }
+    .aside-card-icon.purple { background: rgba(157,124,245,.1); color: var(--purple); }
+    .aside-card h4 { font-family: var(--font-head); font-weight: 700; font-size: .95rem; margin-bottom: 6px; }
+    .aside-card p { font-size: .84rem; color: var(--text2); line-height: 1.6; }
+    @media(max-width:840px){ .story-layout { grid-template-columns: 1fr; gap: 40px; } }
+
+    /* ─── PILLARS ─── */
+    .pillars-section { background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .pillars-grid {
+      display: grid; grid-template-columns: repeat(3,1fr); gap: 24px;
+    }
+    .pillar-card {
+      background: var(--bg3); border: 1px solid var(--border);
+      border-radius: var(--radius-lg); padding: 32px 28px;
+      position: relative; overflow: hidden; transition: border-color .25s, transform .2s;
+    }
+    .pillar-card:hover { border-color: var(--border2); transform: translateY(-3px); }
+    .pillar-card.learn-card:hover { border-color: rgba(61,232,176,.4); }
+    .pillar-card.ai-card:hover { border-color: rgba(244,169,66,.4); }
+    .pillar-card.comm-card:hover { border-color: rgba(91,164,245,.4); }
+    .pillar-num {
+      font-family: var(--font-mono); font-size: 3.5rem; font-weight: 500;
+      position: absolute; top: 20px; right: 26px; opacity: .06; line-height: 1;
+      user-select: none;
+    }
+    .pillar-icon {
+      width: 48px; height: 48px; border-radius: var(--radius);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 20px;
+    }
+    .pillar-icon.teal { background: var(--accent-dim); color: var(--accent); border: 1px solid rgba(61,232,176,.2); }
+    .pillar-icon.amber { background: var(--amber-bg); color: var(--amber); border: 1px solid var(--amber-border); }
+    .pillar-icon.blue  { background: var(--blue-bg);  color: var(--blue);  border: 1px solid rgba(91,164,245,.2); }
+    .pillar-card h3 {
+      font-family: var(--font-head); font-size: 1.25rem; font-weight: 700;
+      margin-bottom: 10px; letter-spacing: -.4px;
+    }
+    .pillar-card p { font-size: .9rem; color: var(--text2); line-height: 1.7; margin-bottom: 20px; }
+    .pillar-links { display: flex; flex-direction: column; gap: 6px; }
+    .pillar-link {
+      font-size: .82rem; color: var(--text2); text-decoration: none;
+      display: flex; align-items: center; gap: 7px;
+      transition: color .2s;
+    }
+    .pillar-link:hover { color: var(--accent); }
+    .pillar-link.amber:hover { color: var(--amber); }
+    .pillar-link.blue:hover { color: var(--blue); }
+    @media(max-width:840px){ .pillars-grid { grid-template-columns: 1fr; } }
+
+    /* ─── WHAT WE PROMISE ─── */
+    .promise-section { background: var(--bg); }
+    .promise-grid {
+      display: grid; grid-template-columns: repeat(2,1fr); gap: 20px;
+    }
+    .promise-card {
+      background: var(--bg2); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 26px 28px;
+      display: flex; gap: 18px; align-items: flex-start;
+      transition: border-color .2s;
+    }
+    .promise-card:hover { border-color: var(--border2); }
+    .promise-icon {
+      width: 36px; height: 36px; border-radius: var(--radius-sm);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; margin-top: 2px;
+    }
+    .promise-icon.check { background: var(--accent-dim); color: var(--accent); }
+    .promise-icon.cross { background: rgba(245,101,101,.1); color: var(--red); border: 1px solid rgba(245,101,101,.2); }
+    .promise-card h4 { font-family: var(--font-head); font-weight: 700; font-size: .95rem; margin-bottom: 6px; }
+    .promise-card p { font-size: .84rem; color: var(--text2); line-height: 1.65; }
+    @media(max-width:640px){ .promise-grid { grid-template-columns: 1fr; } }
+
+    /* ─── WHO IS THIS FOR ─── */
+    .audience-section { background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .audience-grid {
+      display: grid; grid-template-columns: repeat(3,1fr); gap: 22px;
+    }
+    .audience-card {
+      background: var(--bg3); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 26px 22px; text-align: center;
+      transition: border-color .2s, transform .2s;
+    }
+    .audience-card:hover { border-color: var(--border2); transform: translateY(-2px); }
+    .aud-emoji { font-size: 2.2rem; margin-bottom: 14px; display: block; }
+    .audience-card h4 {
+      font-family: var(--font-head); font-weight: 700; font-size: 1rem;
+      margin-bottom: 8px;
+    }
+    .audience-card p { font-size: .84rem; color: var(--text2); line-height: 1.65; }
+    @media(max-width:640px){ .audience-grid { grid-template-columns: 1fr; } }
+
+    /* ─── CURRICULUM OVERVIEW ─── */
+    .curriculum-section { background: var(--bg); }
+    .curriculum-track {
+      background: var(--bg2); border: 1px solid var(--border);
+      border-radius: var(--radius); margin-bottom: 16px; overflow: hidden;
+      transition: border-color .2s;
+    }
+    .curriculum-track:hover { border-color: var(--border2); }
+    .track-header {
+      padding: 18px 24px; display: flex; align-items: center; gap: 14px;
+      cursor: pointer; user-select: none;
+    }
+    .track-icon {
+      width: 36px; height: 36px; border-radius: var(--radius-sm);
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .track-icon.teal  { background: var(--accent-dim); color: var(--accent); }
+    .track-icon.purple{ background: rgba(157,124,245,.1); color: var(--purple); }
+    .track-icon.red   { background: rgba(245,101,101,.1); color: var(--red); }
+    .track-icon.blue  { background: var(--blue-bg); color: var(--blue); }
+    .track-icon.amber { background: var(--amber-bg); color: var(--amber); }
+    .track-title { flex: 1; }
+    .track-title h4 { font-family: var(--font-head); font-weight: 700; font-size: .95rem; }
+    .track-title span { font-size: .78rem; color: var(--text3); }
+    .track-badge {
+      font-size: .7rem; font-family: var(--font-mono);
+      padding: 3px 10px; border-radius: 40px;
+      white-space: nowrap;
+    }
+    .track-badge.beginner { background: var(--accent-dim); color: var(--accent); border: 1px solid rgba(61,232,176,.2); }
+    .track-badge.intermediate { background: var(--blue-bg); color: var(--blue); border: 1px solid rgba(91,164,245,.2); }
+    .track-badge.critical { background: rgba(245,101,101,.1); color: var(--red); border: 1px solid rgba(245,101,101,.2); }
+    .track-badge.advanced { background: rgba(157,124,245,.1); color: var(--purple); border: 1px solid rgba(157,124,245,.2); }
+    .track-badge.warning { background: var(--amber-bg); color: var(--amber); border: 1px solid var(--amber-border); }
+    .track-arrow { color: var(--text3); flex-shrink: 0; transition: transform .2s; }
+    .curriculum-track.open .track-arrow { transform: rotate(180deg); }
+    .track-topics {
+      display: none; padding: 0 24px 20px;
+      border-top: 1px solid var(--border);
+    }
+    .curriculum-track.open .track-topics { display: block; }
+    .topic-pills { display: flex; flex-wrap: wrap; gap: 8px; padding-top: 16px; }
+    .topic-pill {
+      font-size: .78rem; font-family: var(--font-mono);
+      padding: 5px 13px; border-radius: 40px;
+      background: var(--surface); border: 1px solid var(--border);
+      color: var(--text2); text-decoration: none;
+      transition: all .2s;
+    }
+    .topic-pill:hover { border-color: var(--border2); color: var(--text); }
+    .track-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      margin-top: 16px; font-size: .84rem; color: var(--accent);
+      text-decoration: none; font-weight: 500;
+      transition: gap .2s;
+    }
+    .track-link:hover { gap: 10px; }
+
+    /* ─── DESIGN PHILOSOPHY ─── */
+    .design-section { background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .design-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+    .design-card {
+      background: var(--bg3); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 24px;
+      transition: border-color .2s;
+    }
+    .design-card:hover { border-color: var(--border2); }
+    .design-card .d-icon { width:32px; height:32px; border-radius:var(--radius-sm); display:flex; align-items:center; justify-content:center; margin-bottom:14px; }
+    .design-card .d-icon.teal { background:var(--accent-dim); color:var(--accent); }
+    .design-card .d-icon.amber{ background:var(--amber-bg); color:var(--amber); }
+    .design-card .d-icon.blue { background:var(--blue-bg); color:var(--blue); }
+    .design-card .d-icon.red { background:rgba(245,101,101,.1); color:var(--red); }
+    .design-card .d-icon.purple{ background:rgba(157,124,245,.1); color:var(--purple); }
+    .design-card .d-icon.green2{ background:rgba(39,201,63,.08); color:#27c93f; }
+    .design-card h4 { font-family: var(--font-head); font-weight: 700; font-size: .92rem; margin-bottom: 7px; }
+    .design-card p { font-size: .83rem; color: var(--text2); line-height: 1.65; }
+    @media(max-width:720px){ .design-grid { grid-template-columns: repeat(2,1fr); } }
+    @media(max-width:460px){ .design-grid { grid-template-columns: 1fr; } }
+
+    /* ─── AI AWARENESS SECTION ─── */
+    .ai-section {
+      background: var(--bg);
+      position: relative; overflow: hidden;
+    }
+    .ai-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+    .ai-quadrant {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 14px;
+    }
+    .quad-card {
+      border-radius: var(--radius); padding: 20px;
+      border: 1px solid var(--border);
+    }
+    .quad-card.can { background: var(--accent-dim); border-color: rgba(61,232,176,.2); }
+    .quad-card.cannot { background: rgba(245,101,101,.07); border-color: rgba(245,101,101,.2); }
+    .quad-card h5 {
+      font-family: var(--font-mono); font-size: .68rem;
+      text-transform: uppercase; letter-spacing: 1.5px;
+      margin-bottom: 12px;
+    }
+    .quad-card.can h5 { color: var(--accent); }
+    .quad-card.cannot h5 { color: var(--red); }
+    .quad-list { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+    .quad-list li { font-size: .82rem; color: var(--text2); display: flex; gap: 7px; align-items: flex-start; line-height: 1.45; }
+    .quad-list li::before { flex-shrink: 0; margin-top:2px; }
+    .quad-card.can .quad-list li::before { content: '✓'; color: var(--accent); font-size: .75rem; }
+    .quad-card.cannot .quad-list li::before { content: '✕'; color: var(--red); font-size: .75rem; }
+    .ai-cta-banner {
+      margin-top: 28px; background: var(--amber-bg); border: 1px solid var(--amber-border);
+      border-radius: var(--radius); padding: 18px 22px;
+      display: flex; align-items: center; gap: 14px;
+    }
+    .ai-cta-banner i { color: var(--amber); flex-shrink: 0; }
+    .ai-cta-banner p { font-size: .88rem; color: var(--text2); line-height: 1.6; }
+    .ai-cta-banner a { color: var(--amber); text-decoration: none; font-weight: 500; }
+    .ai-cta-banner a:hover { text-decoration: underline; }
+    @media(max-width:840px){ .ai-layout { grid-template-columns: 1fr; gap: 40px; } }
+
+    /* ─── COMMUNITY SECTION ─── */
+    .community-section { background: var(--bg2); border-top:1px solid var(--border); border-bottom:1px solid var(--border); }
+    .community-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+    .comm-card {
+      background: var(--bg3); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 28px 24px;
+      display: flex; flex-direction: column; gap: 14px;
+      text-decoration: none; color: inherit; transition: border-color .2s, transform .2s;
+    }
+    .comm-card:hover { border-color: var(--border2); transform: translateY(-3px); }
+    .comm-card-icon { width: 44px; height: 44px; border-radius: var(--radius); display: flex; align-items: center; justify-content: center; }
+    .comm-card-icon.github { background: rgba(255,255,255,.07); color: var(--text); border: 1px solid var(--border2); }
+    .comm-card-icon.discord { background: rgba(88,101,242,.12); color: #7289DA; border: 1px solid rgba(88,101,242,.2); }
+    .comm-card-icon.projects { background: var(--blue-bg); color: var(--blue); border: 1px solid rgba(91,164,245,.2); }
+    .comm-card h4 { font-family: var(--font-head); font-weight: 700; font-size: 1rem; }
+    .comm-card p { font-size: .84rem; color: var(--text2); line-height: 1.65; flex: 1; }
+    .comm-card .link-arrow {
+      font-size: .8rem; color: var(--text3); display: flex; align-items: center; gap: 5px;
+      transition: color .2s;
+    }
+    .comm-card:hover .link-arrow { color: var(--accent); }
+    @media(max-width:720px){ .community-grid { grid-template-columns: 1fr; } }
+
+    /* ─── VALUES ─── */
+    .values-section { background: var(--bg); }
+    .values-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 20px; }
+    .value-item {
+      display: flex; gap: 16px; align-items: flex-start;
+      background: var(--bg2); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 24px;
+      transition: border-color .2s;
+    }
+    .value-item:hover { border-color: var(--border2); }
+    .value-num {
+      font-family: var(--font-mono); font-size: .7rem; color: var(--accent);
+      background: var(--accent-dim); border: 1px solid rgba(61,232,176,.2);
+      border-radius: 50%; width: 28px; height: 28px; min-width: 28px;
+      display: flex; align-items: center; justify-content: center; margin-top: 2px;
+    }
+    .value-item h4 { font-family: var(--font-head); font-weight: 700; font-size: .95rem; margin-bottom: 6px; }
+    .value-item p { font-size: .84rem; color: var(--text2); line-height: 1.65; }
+    @media(max-width:640px){ .values-grid { grid-template-columns: 1fr; } }
+
+    /* ─── HONEST SECTION ─── */
+    .honest-section {
+      background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+    }
+    .honest-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+    .honest-terminal {
+      background: var(--bg); border: 1px solid var(--border);
+      border-radius: var(--radius-lg); overflow: hidden;
+    }
+    .terminal-bar {
+      display: flex; align-items: center; gap: 7px;
+      padding: 12px 16px; background: var(--bg3);
+      border-bottom: 1px solid var(--border);
+    }
+    .t-dot { width: 11px; height: 11px; border-radius: 50%; }
+    .t-dot.r{background:#ff5f56} .t-dot.y{background:#ffbd2e} .t-dot.g{background:#27c93f}
+    .terminal-title { font-size: .72rem; color: var(--text3); font-family: var(--font-mono); margin-left: 6px; }
+    .terminal-body { padding: 20px 24px; font-family: var(--font-mono); font-size: .81rem; line-height: 2.1; }
+    .t-line { display: flex; align-items: flex-start; gap: 10px; }
+    .t-prompt { color: var(--accent); user-select: none; flex-shrink: 0; }
+    .t-out { color: var(--text2); padding-left: 22px; }
+    .t-warn { color: var(--amber); padding-left: 22px; }
+    .t-err  { color: var(--red);  padding-left: 22px; }
+    .t-comment { color: var(--text3); }
+    .t-hl { color: var(--accent); }
+    .t-cursor { display:inline-block; width:8px; height:15px; background:var(--accent); vertical-align:middle; animation: blink 1s step-end infinite; }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+    .honest-points { display: flex; flex-direction: column; gap: 16px; }
+    .honest-point {
+      display: flex; gap: 14px; background: var(--bg3); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 18px 20px; align-items: flex-start;
+    }
+    .honest-point i { flex-shrink: 0; margin-top: 1px; }
+    .honest-point h5 { font-family: var(--font-head); font-weight: 600; font-size: .9rem; margin-bottom: 4px; }
+    .honest-point p { font-size: .82rem; color: var(--text2); line-height: 1.6; }
+    @media(max-width:760px){ .honest-layout { grid-template-columns: 1fr; gap: 32px; } }
+
+    /* ─── FAQ ─── */
+    .faq-section { background: var(--bg); }
+    .faq-list { display: flex; flex-direction: column; gap: 12px; max-width: 760px; margin: 0 auto; }
+    .faq-item {
+      background: var(--bg2); border: 1px solid var(--border);
+      border-radius: var(--radius); overflow: hidden; transition: border-color .2s;
+    }
+    .faq-item:hover { border-color: var(--border2); }
+    .faq-question {
+      padding: 18px 22px; cursor: pointer; user-select: none;
+      display: flex; align-items: center; justify-content: space-between; gap: 14px;
+      font-weight: 500; font-size: .92rem;
+    }
+    .faq-question i { flex-shrink: 0; color: var(--text3); transition: transform .2s; }
+    .faq-item.open .faq-question i { transform: rotate(45deg); color: var(--accent); }
+    .faq-answer {
+      display: none; padding: 0 22px 18px;
+      font-size: .88rem; color: var(--text2); line-height: 1.75;
+      border-top: 1px solid var(--border);
+    }
+    .faq-item.open .faq-answer { display: block; padding-top: 16px; }
+    .faq-answer a { color: var(--accent); text-decoration: none; }
+    .faq-answer a:hover { text-decoration: underline; }
+
+    /* ─── FINAL CTA ─── */
+    .final-cta {
+      background: var(--bg2); border-top: 1px solid var(--border);
+      padding: 88px clamp(20px,5%,80px); text-align: center;
+      position: relative; overflow: hidden;
+    }
+    .cta-orb {
+      position: absolute; width: 400px; height: 400px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(61,232,176,.06) 0%, transparent 70%);
+      top: 50%; left: 50%; transform: translate(-50%,-50%);
+      filter: blur(40px); pointer-events: none;
+    }
+    .final-cta h2 {
+      font-family: var(--font-head); font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 800; letter-spacing: -1.5px; margin-bottom: 14px;
+    }
+    .final-cta h2 .hl { color: var(--accent); }
+    .final-cta p { color: var(--text2); max-width: 480px; margin: 0 auto 36px; font-size: 1rem; line-height: 1.75; font-weight: 300; }
+    .final-btns { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
+
+    /* ─── FOOTER ─── */
+    footer { background: var(--bg2); border-top: 1px solid var(--border); }
+    .footer-inner { max-width: 1200px; margin: 0 auto; padding: 56px clamp(20px,5%,80px) 0; }
+    .footer-grid {
+      display: grid; grid-template-columns: 2fr repeat(4,1fr); gap: 40px;
+    }
+    .footer-brand p { font-size: .84rem; color: var(--text2); line-height: 1.7; margin-top: 12px; max-width: 240px; }
+    .footer-logo { display:flex; align-items:center; gap:8px; text-decoration:none; font-family:var(--font-head); font-weight:800; font-size:1.1rem; color:var(--text); letter-spacing:-.4px; }
+    .footer-social { display:flex; gap:8px; margin-top:18px; flex-wrap:wrap; }
+    .social-btn {
+      display: inline-flex; align-items: center; gap: 5px;
+      font-size: .78rem; color: var(--text2); text-decoration: none;
+      background: var(--surface); border: 1px solid var(--border);
+      padding: 6px 12px; border-radius: var(--radius-sm);
+      transition: all .2s;
+    }
+    .social-btn:hover { color: var(--text); border-color: var(--border2); background: var(--bg3); }
+    .footer-col h4 { font-family: var(--font-head); font-weight: 700; font-size: .88rem; margin-bottom: 14px; }
+    .footer-col a {
+      display: flex; align-items: center; gap: 7px;
+      font-size: .82rem; color: var(--text2); text-decoration: none;
+      padding: 4px 0; transition: color .2s;
+    }
+    .footer-col a:hover { color: var(--text); }
+    .footer-divider { border: none; border-top: 1px solid var(--border); margin: 40px 0 0; }
+    .footer-bottom {
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 14px;
+      padding: 18px clamp(20px,5%,80px) 24px; max-width: 1200px; margin: 0 auto;
+    }
+    .footer-bottom-left p { font-size: .78rem; color: var(--text3); }
+    .footer-bottom-left span { color: var(--red); }
+    .footer-legal { display: flex; gap: 18px; flex-wrap: wrap; }
+    .footer-legal a { font-size: .77rem; color: var(--text3); text-decoration: none; transition: color .2s; }
+    .footer-legal a:hover { color: var(--text2); }
+    @media(max-width:960px){ .footer-grid { grid-template-columns: 1fr 1fr; } }
+    @media(max-width:560px){ .footer-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+<!-- ─── NAVBAR ─── -->
+<nav>
+  <a href="/" class="nav-logo">
+    <div class="logo-mark">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><polyline points="17 17 22 12 17 7"/><polyline points="7 7 2 12 7 17"/></svg>
+    </div>
+    Coodley
+  </a>
+
+  <ul class="nav-links">
+    <li><a href="/learn/"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg> Learn</a></li>
+    <li><a href="/learn/roadmap.html"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg> Roadmap</a></li>
+    <li><a href="/community/"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg> Community</a></li>
+    <li><a href="/tools/"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg> Tools</a></li>
+    <li><a href="/ai-reality/" class="ai-link"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg> AI Reality</a></li>
+    <li><a href="/about.html" class="active"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg> About</a></li>
+  </ul>
+
+  <div class="nav-right">
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+      <svg id="themeIcon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+    <a href="/learn/" class="btn-nav">
+      Start Learning <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    </a>
+    <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </div>
+</nav>
+
+<!-- ─── PAGE HERO ─── -->
+<div class="page-hero">
+  <div class="hero-grid"></div>
+  <div class="hero-orb"></div>
+  <div class="badge">
+    <span class="dot"></span>
+    The real story behind Coodley
+  </div>
+  <h1>Built for the <span class="hl">Indian Developer</span><br>Who Was Left Behind</h1>
+  <p class="sub">No bootcamp fees. No fake roadmaps. No vague "learn to code" promises. Just a platform built with radical honesty — from scratch to job-ready, for free.</p>
+  <div class="hero-ctas">
+    <a href="/learn/" class="btn-primary">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg> Start Learning — It's Free
+    </a>
+    <a href="/learn/roadmap.html" class="btn-ghost">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg> See the Roadmap
+    </a>
+  </div>
+</div>
+
+<!-- ─── STATS BAR ─── -->
+<div class="stats-bar">
+  <div class="stats-grid">
+    <div class="stat-item">
+      <span class="stat-num">80+</span>
+      <span class="stat-label">Detailed Lessons</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">14</span>
+      <span class="stat-label">Learning Modules</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">₹0</span>
+      <span class="stat-label">Cost — Always</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">3</span>
+      <span class="stat-label">Language Tracks</span>
+    </div>
+  </div>
+</div>
+
+<!-- ─── OUR STORY ─── -->
+<section class="story-section">
+  <div class="container">
+    <div class="story-layout">
+      <div class="story-text reveal">
+        <div class="section-eyebrow">— Our Story</div>
+        <h2 class="section-title">Why We Built This</h2>
+
+        <p>The Indian internet is full of coding resources. YouTube channels with millions of subscribers. Udemy courses on deep discount. Bootcamps promising "₹10 LPA jobs guaranteed." And yet, thousands of students still don't know <strong>where to start</strong>, what to learn <strong>in what order</strong>, or why half of what they're learning doesn't matter for actual jobs.</p>
+
+        <p>We've seen 12th graders open three YouTube tabs, get overwhelmed, and close them all. We've seen engineering students learn React before they understand how the internet works. We've seen people buy five courses and finish none of them because <span class="hl">nobody told them the right sequence</span>.</p>
+
+        <div class="story-quote">
+          <p>"Ek 10th pass baccha bhi yahan se Full Stack Developer ban sakta hai. Step by step. Free. Real. No shortcuts."</p>
+          <span>— Core Promise, Coodley</span>
+        </div>
+
+        <p>Coodley was built to fix that. Not with hype. Not with certificates that mean nothing. Not with paywalls that punish people who can't afford them. With an <strong>honest, detailed, sequenced curriculum</strong> that tells you exactly what to learn, why, in what order — and doesn't waste your time.</p>
+
+        <p>We are <strong>India's most honest developer learning platform</strong>. That's a claim we take seriously. Every page title is exactly what's inside. Every lesson is written for real understanding — not just syntax copying. And we will never charge you for the core content.</p>
+      </div>
+
+      <div class="story-aside reveal">
+        <div class="aside-card">
+          <div class="aside-card-icon teal">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+          </div>
+          <h4>The Problem We Solve</h4>
+          <p>Most Indian students don't fail because they're not smart. They fail because they learn in the wrong order, from unstructured sources, without understanding the "why." We fix the sequence.</p>
+        </div>
+        <div class="aside-card">
+          <div class="aside-card-icon amber">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          </div>
+          <h4>Honest About AI</h4>
+          <p>We don't pretend AI isn't changing the industry. We have a dedicated section on what AI can and cannot do — and what skills you actually need to build in 2026 to stay relevant.</p>
+        </div>
+        <div class="aside-card">
+          <div class="aside-card-icon purple">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <h4>Community First</h4>
+          <p>Learning alone is hard. Our community is built around real support — no gatekeeping, no toxic comparisons, no "gatekeeping" seniors. Just people learning together.</p>
+        </div>
+        <div class="aside-card">
+          <div class="aside-card-icon teal">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+          </div>
+          <h4>Mobile + Desktop</h4>
+          <p>Many Indian learners study from phones. Every single page on Coodley is built mobile-first and works perfectly at any screen size. No pinch-to-zoom required.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── THREE PILLARS ─── -->
+<section class="pillars-section">
+  <div class="container">
+    <div class="section-header centered reveal">
+      <div class="section-eyebrow" style="justify-content:center">— Platform Structure</div>
+      <h2 class="section-title">Three Pillars of Coodley</h2>
+      <p class="section-sub">Everything on this platform fits into one of these three pillars. Clear structure, clear purpose.</p>
+    </div>
+
+    <div class="pillars-grid">
+      <!-- Pillar 1 -->
+      <div class="pillar-card learn-card reveal">
+        <div class="pillar-num">01</div>
+        <div class="pillar-icon teal">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+        </div>
+        <h3>Learn</h3>
+        <p>The full-stack curriculum — from CS basics to System Design — in the correct, industry-sequenced order. Free, detailed, no paywalls on core content.</p>
+        <div class="pillar-links">
+          <a href="/learn/" class="pillar-link"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg> All Modules</a>
+          <a href="/learn/roadmap.html" class="pillar-link"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg> Full Roadmap</a>
+          <a href="/learn/computer-science/" class="pillar-link"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg> CS Fundamentals</a>
+          <a href="/learn/dsa/" class="pillar-link"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96-.46 2.5 2.5 0 0 1-1.97-4.06A4 4 0 0 1 6 8.9a2.5 2.5 0 0 1 3.5-2.9"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96-.46 2.5 2.5 0 0 0 1.97-4.06A4 4 0 0 0 18 8.9a2.5 2.5 0 0 0-3.5-2.9"/></svg> DSA Track</a>
+          <a href="/learn/system-design/" class="pillar-link"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg> System Design</a>
+        </div>
+      </div>
+
+      <!-- Pillar 2 -->
+      <div class="pillar-card ai-card reveal">
+        <div class="pillar-num">02</div>
+        <div class="pillar-icon amber">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        </div>
+        <h3>Survive AI</h3>
+        <p>Honest, data-driven content on what AI can and cannot do in 2026. Specific action plans. No fear-mongering. No dismissal either.</p>
+        <div class="pillar-links">
+          <a href="/ai-reality/" class="pillar-link amber"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg> AI Reality Hub</a>
+          <a href="/ai-reality/what-ai-can-do.html" class="pillar-link amber"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><rect x="3" y="11" width="18" height="10" rx="2"/><circle cx="12" cy="5" r="2"/><path d="M12 7v4"/><line x1="8" y1="16" x2="8" y2="16"/><line x1="16" y1="16" x2="16" y2="16"/></svg> What AI Can Do</a>
+          <a href="/ai-reality/what-ai-cannot-do.html" class="pillar-link amber"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> What AI Cannot Do</a>
+          <a href="/ai-reality/how-to-survive.html" class="pillar-link amber"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg> Your Action Plan</a>
+          <a href="/ai-reality/future-skills.html" class="pillar-link amber"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg> Future Skills 2026</a>
+        </div>
+      </div>
+
+      <!-- Pillar 3 -->
+      <div class="pillar-card comm-card reveal">
+        <div class="pillar-num">03</div>
+        <div class="pillar-icon blue">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <h3>Community</h3>
+        <p>A safe, real, supportive Indian developer community. Show your projects. Get code reviews. Ask questions without fear of judgment.</p>
+        <div class="pillar-links">
+          <a href="/community/" class="pillar-link blue"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg> Community Hub</a>
+          <a href="/community/projects.html" class="pillar-link blue"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg> Project Showcase</a>
+          <a href="/community/rules.html" class="pillar-link blue"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> Community Rules</a>
+          <a href="/tools/" class="pillar-link blue"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg> Free Tools</a>
+          <a href="/tools/progress-tracker.html" class="pillar-link blue"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Progress Tracker</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── OUR PROMISES ─── -->
+<section class="promise-section">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-eyebrow">— What We Stand For</div>
+      <h2 class="section-title">What We Promise.<br>What We Don't.</h2>
+      <p class="section-sub">Most ed-tech platforms are vague about this. We're not.</p>
+    </div>
+
+    <div class="promise-grid">
+      <div class="promise-card reveal">
+        <div class="promise-icon check"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+        <div>
+          <h4>100% Free Core Content</h4>
+          <p>Every lesson, every roadmap, every guide — free. No "premium unlock" for the chapters that actually matter. We may add optional community features later, but the learning content stays free, always.</p>
+        </div>
+      </div>
+      <div class="promise-card reveal">
+        <div class="promise-icon cross"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg></div>
+        <div>
+          <h4>No Fake Job Guarantees</h4>
+          <p>We will never promise you a ₹10 LPA job in 6 months. That's dishonest. Learning takes time. Job markets vary. We give you the real skills and the honest picture — that's our job.</p>
+        </div>
+      </div>
+      <div class="promise-card reveal">
+        <div class="promise-icon check"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+        <div>
+          <h4>Correct Learning Sequence</h4>
+          <p>Our curriculum is built in the order the industry actually demands — not the order that's easiest to teach or most impressive to market. CS basics → Terminal → Language → Web or Software path → DSA → System Design.</p>
+        </div>
+      </div>
+      <div class="promise-card reveal">
+        <div class="promise-icon cross"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg></div>
+        <div>
+          <h4>No Fake Certificates</h4>
+          <p>We don't hand out "Full Stack Developer Certified" badges after a 3-hour course. Certificates are only meaningful from institutions that interviewers respect. We'll tell you which ones those are.</p>
+        </div>
+      </div>
+      <div class="promise-card reveal">
+        <div class="promise-icon check"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+        <div>
+          <h4>Mobile-First, Always</h4>
+          <p>Every page is built for Indian learners who study on phones. Readable fonts, responsive layouts, no horizontal scrolling. Whether you're on a flagship or a 4-year-old budget Android — it works.</p>
+        </div>
+      </div>
+      <div class="promise-card reveal">
+        <div class="promise-icon cross"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg></div>
+        <div>
+          <h4>No Ads. No Data Selling.</h4>
+          <p>We run no ads. We don't use Google Analytics (we use privacy-first Plausible). We don't sell or share your data. The only data we store locally is your progress — on your own device.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── WHO IS THIS FOR ─── -->
+<section class="audience-section">
+  <div class="container">
+    <div class="section-header centered reveal">
+      <div class="section-eyebrow" style="justify-content:center">— Who Is This For</div>
+      <h2 class="section-title">Coodley is Built For You, If...</h2>
+      <p class="section-sub">We don't try to be everything to everyone. Here's who this platform is specifically designed for.</p>
+    </div>
+
+    <div class="audience-grid">
+      <div class="audience-card reveal">
+        <span class="aud-emoji">🎓</span>
+        <h4>Students (10th–College)</h4>
+        <p>You're in school or college, heard about coding, but don't know where to start. This platform starts from absolute zero and explains everything — including why you're learning it.</p>
+      </div>
+      <div class="audience-card reveal">
+        <span class="aud-emoji">🔄</span>
+        <h4>Career Switchers</h4>
+        <p>You're in a non-tech job (sales, finance, arts) and want to move into software development. We have a structured path that doesn't assume any prior knowledge.</p>
+      </div>
+      <div class="audience-card reveal">
+        <span class="aud-emoji">📱</span>
+        <h4>Self-Taught Learners</h4>
+        <p>You've been learning from YouTube and random tutorials but feel your knowledge has gaps. We fill those gaps — in the right order, with the right context.</p>
+      </div>
+      <div class="audience-card reveal">
+        <span class="aud-emoji">💼</span>
+        <h4>Placement Preppers</h4>
+        <p>You're in 3rd or 4th year engineering and need to crack campus placements at product companies. The DSA + System Design tracks were built specifically for this.</p>
+      </div>
+      <div class="audience-card reveal">
+        <span class="aud-emoji">🌱</span>
+        <h4>Junior Developers</h4>
+        <p>You have a job but want to level up. Whether it's learning System Design, understanding DevOps, or picking up a second language — we have structured content for that too.</p>
+      </div>
+      <div class="audience-card reveal">
+        <span class="aud-emoji">🤖</span>
+        <h4>AI-Aware Professionals</h4>
+        <p>You're concerned about how AI is changing your field and want honest answers — not fear, not dismissal. Our AI Reality section is for you specifically.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CURRICULUM OVERVIEW ─── -->
+<section class="curriculum-section">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-eyebrow">— Full Curriculum</div>
+      <h2 class="section-title">Everything We Teach</h2>
+      <p class="section-sub">14 modules. 80+ lessons. Correct industry sequence. No filler content. Click any track to explore.</p>
+    </div>
+
+    <div class="reveal">
+      <!-- Track 1 -->
+      <div class="curriculum-track open">
+        <div class="track-header" onclick="toggleTrack(this)">
+          <div class="track-icon teal"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg></div>
+          <div class="track-title">
+            <h4>CS Fundamentals</h4>
+            <span>4 lessons · Start here, always</span>
+          </div>
+          <span class="track-badge beginner">Beginner</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="track-topics">
+          <div class="topic-pills">
+            <a href="/learn/computer-science/how-computers-work.html" class="topic-pill">How Computers Work</a>
+            <a href="/learn/computer-science/binary-and-data.html" class="topic-pill">Binary &amp; Data</a>
+            <a href="/learn/computer-science/operating-systems.html" class="topic-pill">Operating Systems</a>
+            <a href="/learn/computer-science/networking-basics.html" class="topic-pill">Networking &amp; Internet</a>
+          </div>
+          <a href="/learn/computer-science/" class="track-link">View CS Module <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+        </div>
+      </div>
+
+      <!-- Track 2 -->
+      <div class="curriculum-track">
+        <div class="track-header" onclick="toggleTrack(this)">
+          <div class="track-icon teal"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg></div>
+          <div class="track-title">
+            <h4>Terminal &amp; Git</h4>
+            <span>3 lessons · Learn before you code</span>
+          </div>
+          <span class="track-badge beginner">Beginner</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="track-topics">
+          <div class="topic-pills">
+            <a href="/learn/terminal-git/terminal-basics.html" class="topic-pill">Terminal Basics</a>
+            <a href="/learn/terminal-git/git-fundamentals.html" class="topic-pill">Git Fundamentals</a>
+            <a href="/learn/terminal-git/github-workflow.html" class="topic-pill">GitHub Workflow</a>
+          </div>
+          <a href="/learn/terminal-git/" class="track-link">View Terminal Module <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+        </div>
+      </div>
+
+      <!-- Track 3 -->
+      <div class="curriculum-track">
+        <div class="track-header" onclick="toggleTrack(this)">
+          <div class="track-icon" style="background:rgba(157,124,245,.1);color:var(--purple)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
+          <div class="track-title">
+            <h4>C++ Programming</h4>
+            <span>10 lessons · Best for DSA &amp; competitive programming</span>
+          </div>
+          <span class="track-badge advanced">Language Track</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="track-topics">
+          <div class="topic-pills">
+            <a href="/learn/cpp/cpp-basics.html" class="topic-pill">C++ Basics</a>
+            <a href="/learn/cpp/control-flow.html" class="topic-pill">Control Flow</a>
+            <a href="/learn/cpp/functions.html" class="topic-pill">Functions &amp; Recursion</a>
+            <a href="/learn/cpp/arrays-strings.html" class="topic-pill">Arrays &amp; Strings</a>
+            <a href="/learn/cpp/pointers-memory.html" class="topic-pill">Pointers &amp; Memory</a>
+            <a href="/learn/cpp/oop-cpp.html" class="topic-pill">OOP in C++</a>
+            <a href="/learn/cpp/stl-basics.html" class="topic-pill">STL Basics</a>
+            <a href="/learn/cpp/competitive-programming-intro.html" class="topic-pill">Competitive Programming</a>
+          </div>
+          <a href="/learn/cpp/" class="track-link">View C++ Module <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+        </div>
+      </div>
+
+      <!-- Track 4 -->
+      <div class="curriculum-track">
+        <div class="track-header" onclick="toggleTrack(this)">
+          <div class="track-icon" style="background:rgba(157,124,245,.1);color:var(--purple)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg></div>
+          <div class="track-title">
+            <h4>Java Programming</h4>
+            <span>8 lessons · Enterprise &amp; campus placements</span>
+          </div>
+          <span class="track-badge advanced">Language Track</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="track-topics">
+          <div class="topic-pills">
+            <a href="/learn/java/java-basics.html" class="topic-pill">Java Basics</a>
+            <a href="/learn/java/oop-java.html" class="topic-pill">OOP in Java</a>
+            <a href="/learn/java/collections-framework.html" class="topic-pill">Collections Framework</a>
+            <a href="/learn/java/exception-handling.html" class="topic-pill">Exception Handling</a>
+            <a href="/learn/java/java-8-features.html" class="topic-pill">Java 8+ Features</a>
+          </div>
+          <a href="/learn/java/" class="track-link">View Java Module <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+        </div>
+      </div>
+
+      <!-- Track 5 -->
+      <div class="curriculum-track">
+        <div class="track-header" onclick="toggleTrack(this)">
+          <div class="track-icon" style="background:rgba(157,124,245,.1);color:var(--purple)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><path d="M12 3l1.5 4.5L18 9l-4.5 1.5L12 15l-1.5-4.5L6 9l4.5-1.5z"/><path d="M5 3l.75 2.25L8 6l-2.25.75L5 9l-.75-2.25L2 6l2.25-.75z"/><path d="M19 13l.75 2.25L22 16l-2.25.75L19 19l-.75-2.25L16 16l2.25-.75z"/></svg></div>
+          <div class="track-title">
+            <h4>Python Programming</h4>
+            <span>8 lessons · Easiest first language, AI/ML ready</span>
+          </div>
+          <span class="track-badge advanced">Language Track</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="track-topics">
+          <div class="topic-pills">
+            <a href="/learn/python/python-basics.html" class="topic-pill">Python Basics</a>
+            <a href="/learn/python/data-structures-python.html" class="topic-pill">Data Structures</a>
+            <a href="/learn/python/functions-python.html" class="topic-pill">Functions</a>
+            <a href="/learn/python/oop-python.html" class="topic-pill">OOP in Python</a>
+            <a href="/learn/python/modules-pip.html" class="topic-pill">Modules &amp; Pip</a>
+            <a href="/learn/python/python-for-automation.html" class="topic-pill">Automation &amp; Scripting</a>
+          </div>
+          <a href="/learn/python/" class="track-link">View Python Module <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+        </div>
+      </div>
+
+      <!-- Track 6 -->
+      <div class="curriculum-track">
+        <div class="track-header" onclick="toggleTrack(this)">
+          <div class="track-icon red"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96-.46 2.5 2.5 0 0 1-1.97-4.06A4 4 0 0 1 6 8.9a2.5 2.5 0 0 1 3.5-2.9"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96-.46 2.5 2.5 0 0 0 1.97-4.06A4 4 0 0 0 18 8.9a2.5 2.5 0 0 0-3.5-2.9"/></svg></div>
+          <div class="track-title">
+            <h4>DSA — Data Structures &amp; Algorithms</h4>
+            <span>14 lessons · Interview-critical at every good company</span>
+          </div>
+          <span class="track-badge critical">Interview Critical</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="track-topics">
+          <div class="topic-pills">
+            <a href="/learn/dsa/big-o-notation.html" class="topic-pill">Big-O Notation</a>
+            <a href="/learn/dsa/arrays-and-strings.html" class="topic-pill">Arrays &amp; Strings</a>
+            <a href="/learn/dsa/linked-lists.html" class="topic-pill">Linked Lists</a>
+            <a href="/learn/dsa/stacks-queues.html" class="topic-pill">Stacks &amp; Queues</a>
+            <a href="/learn/dsa/trees-binary-trees.html" class="topic-pill">Trees &amp; Binary Trees</a>
+            <a href="/learn/dsa/graphs.html" class="topic-pill">Graphs</a>
+            <a href="/learn/dsa/recursion-backtracking.html" class="topic-pill">Recursion &amp; Backtracking</a>
+            <a href="/learn/dsa/dynamic-programming.html" class="topic-pill">Dynamic Programming</a>
+            <a href="/learn/dsa/leetcode-guide.html" class="topic-pill">LeetCode Strategy</a>
+          </div>
+          <a href="/learn/dsa/" class="track-link">View DSA Module <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+        </div>
+      </div>
+
+      <!-- Track 7 -->
+      <div class="curriculum-track">
+        <div class="track-header" onclick="toggleTrack(this)">
+          <div class="track-icon teal"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
+          <div class="track-title">
+            <h4>HTML &amp; CSS</h4>
+            <span>12 lessons · Web development foundation</span>
+          </div>
+          <span class="track-badge beginner">Web Track</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="track-topics">
+          <div class="topic-pills">
+            <a href="/learn/html-css/what-is-html.html" class="topic-pill">What is HTML</a>
+            <a href="/learn/html-css/semantic-html.html" class="topic-pill">Semantic HTML</a>
+            <a href="/learn/html-css/css-basics.html" class="topic-pill">CSS Basics</a>
+            <a href="/learn/html-css/flexbox.html" class="topic-pill">Flexbox</a>
+            <a href="/learn/html-css/grid.html" class="topic-pill">CSS Grid</a>
+            <a href="/learn/html-css/responsive-design.html" class="topic-pill">Responsive Design</a>
+            <a href="/learn/html-css/css-animations.html" class="topic-pill">CSS Animations</a>
+          </div>
+          <a href="/learn/html-css/" class="track-link">View HTML &amp; CSS Module <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+        </div>
+      </div>
+
+      <!-- Track 8 -->
+      <div class="curriculum-track">
+        <div class="track-header" onclick="toggleTrack(this)">
+          <div class="track-icon teal"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
+          <div class="track-title">
+            <h4>JavaScript</h4>
+            <span>8 lessons · The language of the web</span>
+          </div>
+          <span class="track-badge intermediate">Web Track</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="track-topics">
+          <div class="topic-pills">
+            <a href="/learn/javascript/variables-and-types.html" class="topic-pill">Variables &amp; Types</a>
+            <a href="/learn/javascript/dom-manipulation.html" class="topic-pill">DOM Manipulation</a>
+            <a href="/learn/javascript/async-js.html" class="topic-pill">Async JavaScript</a>
+            <a href="/learn/javascript/fetch-api.html" class="topic-pill">Fetch API</a>
+            <a href="/learn/javascript/es6-plus.html" class="topic-pill">ES6+ Features</a>
+          </div>
+          <a href="/learn/javascript/" class="track-link">View JavaScript Module <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+        </div>
+      </div>
+
+      <!-- Track 9 -->
+      <div class="curriculum-track">
+        <div class="track-header" onclick="toggleTrack(this)">
+          <div class="track-icon teal"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><circle cx="12" cy="12" r="1"/><path d="M20.2 20.2c2.04-2.03.02-7.36-4.5-11.9-4.54-4.52-9.87-6.54-11.9-4.5-2.04 2.03-.02 7.36 4.5 11.9 4.54 4.52 9.87 6.54 11.9 4.5z"/><path d="M15.7 15.7c4.52-4.54 6.54-9.87 4.5-11.9-2.03-2.04-7.36-.02-11.9 4.5-4.52 4.54-6.54 9.87-4.5 11.9 2.03 2.04 7.36.02 11.9-4.5z"/></svg></div>
+          <div class="track-title">
+            <h4>React + Vite</h4>
+            <span>8 lessons · The most in-demand frontend framework</span>
+          </div>
+          <span class="track-badge intermediate">Web Track</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="track-topics">
+          <div class="topic-pills">
+            <a href="/learn/react/what-is-react.html" class="topic-pill">What is React</a>
+            <a href="/learn/react/components-jsx.html" class="topic-pill">Components &amp; JSX</a>
+            <a href="/learn/react/props-state.html" class="topic-pill">Props &amp; State</a>
+            <a href="/learn/react/hooks.html" class="topic-pill">Hooks</a>
+            <a href="/learn/react/react-router.html" class="topic-pill">React Router</a>
+            <a href="/learn/react/vite-setup.html" class="topic-pill">Vite Setup</a>
+          </div>
+          <a href="/learn/react/" class="track-link">View React Module <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+        </div>
+      </div>
+
+      <!-- Track 10 -->
+      <div class="curriculum-track">
+        <div class="track-header" onclick="toggleTrack(this)">
+          <div class="track-icon blue"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"/><rect x="2" y="14" width="20" height="8" rx="2" ry="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg></div>
+          <div class="track-title">
+            <h4>Node.js + Express</h4>
+            <span>7 lessons · Backend development</span>
+          </div>
+          <span class="track-badge intermediate">Backend Track</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="track-topics">
+          <div class="topic-pills">
+            <a href="/learn/backend/how-servers-work.html" class="topic-pill">How Servers Work</a>
+            <a href="/learn/backend/nodejs-basics.html" class="topic-pill">Node.js Basics</a>
+            <a href="/learn/backend/express-framework.html" class="topic-pill">Express Framework</a>
+            <a href="/learn/backend/rest-apis.html" class="topic-pill">REST APIs</a>
+            <a href="/learn/backend/authentication.html" class="topic-pill">Authentication</a>
+          </div>
+          <a href="/learn/backend/" class="track-link">View Backend Module <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+        </div>
+      </div>
+
+      <!-- Track 11 -->
+      <div class="curriculum-track">
+        <div class="track-header" onclick="toggleTrack(this)">
+          <div class="track-icon blue"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg></div>
+          <div class="track-title">
+            <h4>Databases</h4>
+            <span>6 lessons · SQL + MongoDB</span>
+          </div>
+          <span class="track-badge intermediate">Backend Track</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="track-topics">
+          <div class="topic-pills">
+            <a href="/learn/databases/sql-mysql.html" class="topic-pill">SQL &amp; MySQL</a>
+            <a href="/learn/databases/mongodb.html" class="topic-pill">MongoDB</a>
+            <a href="/learn/databases/mongoose.html" class="topic-pill">Mongoose ODM</a>
+            <a href="/learn/databases/database-design.html" class="topic-pill">Database Design</a>
+            <a href="/learn/databases/nosql-vs-sql.html" class="topic-pill">NoSQL vs SQL</a>
+          </div>
+          <a href="/learn/databases/" class="track-link">View Databases Module <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+        </div>
+      </div>
+
+      <!-- Track 12 -->
+      <div class="curriculum-track">
+        <div class="track-header" onclick="toggleTrack(this)">
+          <div class="track-icon" style="background:rgba(91,164,245,.08);color:var(--blue)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg></div>
+          <div class="track-title">
+            <h4>System Design</h4>
+            <span>9 lessons · For senior-level interviews</span>
+          </div>
+          <span class="track-badge advanced">Senior Level</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="track-topics">
+          <div class="topic-pills">
+            <a href="/learn/system-design/scalability.html" class="topic-pill">Scalability</a>
+            <a href="/learn/system-design/load-balancing.html" class="topic-pill">Load Balancing</a>
+            <a href="/learn/system-design/caching-redis.html" class="topic-pill">Caching &amp; Redis</a>
+            <a href="/learn/system-design/databases-at-scale.html" class="topic-pill">Databases at Scale</a>
+            <a href="/learn/system-design/microservices-intro.html" class="topic-pill">Microservices</a>
+            <a href="/learn/system-design/case-studies.html" class="topic-pill">Case Studies</a>
+          </div>
+          <a href="/learn/system-design/" class="track-link">View System Design Module <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+        </div>
+      </div>
+
+      <!-- Track 13 -->
+      <div class="curriculum-track">
+        <div class="track-header" onclick="toggleTrack(this)">
+          <div class="track-icon amber"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><rect x="3" y="11" width="18" height="10" rx="2"/><circle cx="12" cy="5" r="2"/><path d="M12 7v4"/><line x1="8" y1="16" x2="8" y2="16"/><line x1="16" y1="16" x2="16" y2="16"/></svg></div>
+          <div class="track-title">
+            <h4>AI Tools for Developers</h4>
+            <span>3 lessons · Use AI as a superpower, not a crutch</span>
+          </div>
+          <span class="track-badge warning">2026 Essential</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="track-topics">
+          <div class="topic-pills">
+            <a href="/learn/ai-tools/prompt-engineering.html" class="topic-pill">Prompt Engineering</a>
+            <a href="/learn/ai-tools/github-copilot.html" class="topic-pill">GitHub Copilot</a>
+            <a href="/learn/ai-tools/ai-for-developers.html" class="topic-pill">AI for Developers</a>
+          </div>
+          <a href="/learn/ai-tools/" class="track-link">View AI Tools Module <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:32px; text-align:center;" class="reveal">
+      <a href="/learn/" class="btn-primary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg> See the Full Learning Hub
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── DESIGN PHILOSOPHY ─── -->
+<section class="design-section">
+  <div class="container">
+    <div class="section-header centered reveal">
+      <div class="section-eyebrow" style="justify-content:center">— Design Philosophy</div>
+      <h2 class="section-title">How We Build Every Page</h2>
+      <p class="section-sub">These aren't just internal rules. They directly affect your learning experience.</p>
+    </div>
+
+    <div class="design-grid">
+      <div class="design-card reveal">
+        <div class="d-icon teal"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+        <h4>No Clickbait Titles</h4>
+        <p>Every page title is exactly what's inside. "JavaScript Async" is about async JavaScript. "Pointers in C++" covers pointers and memory. Period.</p>
+      </div>
+      <div class="design-card reveal">
+        <div class="d-icon blue"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg></div>
+        <h4>Mobile + Desktop</h4>
+        <p>Built mobile-first. Tested on actual budget Android phones. If it doesn't work at 360px, we don't ship it.</p>
+      </div>
+      <div class="design-card reveal">
+        <div class="d-icon amber"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+        <h4>Hinglish Where It Helps</h4>
+        <p>We write in English with Hindi mixed in where it genuinely helps understanding — especially for technical concepts with tricky mental models.</p>
+      </div>
+      <div class="design-card reveal">
+        <div class="d-icon red"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+        <h4>Honest Time Estimates</h4>
+        <p>We tell you how long each topic actually takes to understand — not to "complete," which is meaningless. DSA takes months. React takes weeks. We say so.</p>
+      </div>
+      <div class="design-card reveal">
+        <div class="d-icon purple"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><line x1="6" y1="3" x2="6" y2="15"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M18 9a9 9 0 0 1-9 9"/></svg></div>
+        <h4>Clear Fork Points</h4>
+        <p>The roadmap has explicit fork points — Web Developer path vs Software Engineer path. We explain the trade-offs at every fork so you can choose with information.</p>
+      </div>
+      <div class="design-card reveal">
+        <div class="d-icon green2"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></div>
+        <h4>Dark + Light Mode</h4>
+        <p>Your preference, saved locally. Never resets. Designed carefully for both modes — not just inverted colors. Your eyes, your choice.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── AI AWARENESS ─── -->
+<section class="ai-section">
+  <div class="container">
+    <div class="ai-layout">
+      <div class="reveal">
+        <div class="section-eyebrow amber">— AI Reality 2026</div>
+        <h2 class="section-title">We're Honest About AI Too</h2>
+        <p class="section-sub" style="margin-bottom:24px">Most platforms ignore this. We don't. AI is changing what developers need to know — and we give you the real picture.</p>
+
+        <p style="color:var(--text2);font-size:.93rem;line-height:1.8;margin-bottom:16px">
+          AI can write boilerplate code. It can explain syntax. It can generate unit tests. That's real, and it's already here. Pretending otherwise would be dishonest.
+        </p>
+        <p style="color:var(--text2);font-size:.93rem;line-height:1.8;margin-bottom:24px">
+          But AI cannot architect a system from scratch. It cannot debug a complex distributed system failure. It cannot understand your specific business context. It cannot replace someone who deeply understands <strong style="color:var(--text)">how and why</strong> systems work.
+        </p>
+        <p style="color:var(--text2);font-size:.93rem;line-height:1.8;margin-bottom:24px">
+          That's why we still teach DSA. That's why System Design is on the roadmap. And that's why we have a dedicated section that tells you exactly what to focus on — based on data, not guessing.
+        </p>
+
+        <div class="ai-cta-banner">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          <p>Read our full AI Reality report: <a href="/ai-reality/">What AI can and cannot do in 2026 →</a> Includes specific action plans for Indian developers.</p>
+        </div>
+      </div>
+
+      <div class="reveal">
+        <div class="ai-quadrant">
+          <div class="quad-card can">
+            <h5>AI Can Do This</h5>
+            <ul class="quad-list">
+              <li>Write boilerplate code</li>
+              <li>Explain syntax & errors</li>
+              <li>Generate unit tests</li>
+              <li>Autocomplete repetitive tasks</li>
+              <li>Summarize documentation</li>
+              <li>Debug simple logic errors</li>
+            </ul>
+          </div>
+          <div class="quad-card cannot">
+            <h5>AI Cannot Do This</h5>
+            <ul class="quad-list">
+              <li>Architect complex systems</li>
+              <li>Debug distributed failures</li>
+              <li>Understand business context</li>
+              <li>Make product decisions</li>
+              <li>Lead engineering teams</li>
+              <li>Solve truly novel problems</li>
+            </ul>
+          </div>
+        </div>
+        <div style="margin-top:16px;padding:18px 20px;background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius)">
+          <p style="font-family:var(--font-mono);font-size:.72rem;color:var(--text3);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px">The verdict</p>
+          <p style="font-size:.88rem;color:var(--text2);line-height:1.7"><strong style="color:var(--text)">Developers who use AI well</strong> are already outcompeting those who don't. But AI-native developers who also understand fundamentals — DSA, architecture, systems thinking — are the ones no one can replace.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── COMMUNITY ─── -->
+<section class="community-section">
+  <div class="container">
+    <div class="section-header centered reveal">
+      <div class="section-eyebrow blue" style="justify-content:center">— Community</div>
+      <h2 class="section-title">You Don't Learn Alone Here</h2>
+      <p class="section-sub">A real community for Indian developers. Safe to ask, safe to fail, safe to grow.</p>
+    </div>
+
+    <div class="community-grid">
+      <a href="/community/" class="comm-card reveal">
+        <div class="comm-card-icon github"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg></div>
+        <h4>GitHub Community</h4>
+        <p>Open source, transparent. Every project on Coodley has a GitHub home. Watch our progress, contribute, report issues, and showcase your own projects.</p>
+        <span class="link-arrow">Join on GitHub <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></span>
+      </a>
+      <a href="/community/" class="comm-card reveal">
+        <div class="comm-card-icon discord"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+        <h4>Discord Server</h4>
+        <p>Real-time help, study groups, daily challenges, and a place to share your wins and struggles. No gatekeeping. No toxic seniors. Just learning.</p>
+        <span class="link-arrow">Join Discord <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></span>
+      </a>
+      <a href="/community/projects.html" class="comm-card reveal">
+        <div class="comm-card-icon projects"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg></div>
+        <h4>Project Showcase</h4>
+        <p>Built something? Show it. Get real feedback from the community. Discover what other Indian developers are building. Your portfolio starts here.</p>
+        <span class="link-arrow">See Projects <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+      </a>
+    </div>
+
+    <div style="margin-top:40px;display:flex;flex-wrap:wrap;gap:10px;justify-content:center;" class="reveal">
+      <span style="display:inline-flex;align-items:center;gap:7px;background:var(--bg3);border:1px solid var(--border);border-radius:40px;padding:8px 16px;font-size:.82rem;color:var(--text2)"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--accent)" style="display:inline-block;vertical-align:middle;color:var(--accent)"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> No harassment tolerated</span>
+      <span style="display:inline-flex;align-items:center;gap:7px;background:var(--bg3);border:1px solid var(--border);border-radius:40px;padding:8px 16px;font-size:.82rem;color:var(--text2)"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--red)" style="display:inline-block;vertical-align:middle;color:var(--red)"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg> Beginner questions welcome</span>
+      <span style="display:inline-flex;align-items:center;gap:7px;background:var(--bg3);border:1px solid var(--border);border-radius:40px;padding:8px 16px;font-size:.82rem;color:var(--text2)"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--amber)" style="display:inline-block;vertical-align:middle;color:var(--amber)"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg> Hindi &amp; English both fine</span>
+      <span style="display:inline-flex;align-items:center;gap:7px;background:var(--bg3);border:1px solid var(--border);border-radius:40px;padding:8px 16px;font-size:.82rem;color:var(--text2)"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--purple)" style="display:inline-block;vertical-align:middle;color:var(--purple)"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> Real project feedback</span>
+    </div>
+  </div>
+</section>
+
+<!-- ─── OUR VALUES ─── -->
+<section class="values-section">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-eyebrow">— Our Values</div>
+      <h2 class="section-title">What We Actually Believe In</h2>
+      <p class="section-sub">Not a mission statement written by a committee. These are the actual principles behind every decision we make.</p>
+    </div>
+
+    <div class="values-grid">
+      <div class="value-item reveal">
+        <div class="value-num">01</div>
+        <div>
+          <h4>Honesty Over Hype</h4>
+          <p>If something is hard, we say it's hard. If a technology is declining, we say so. If you need six months for DSA, we tell you six months — not "complete in 30 days."</p>
+        </div>
+      </div>
+      <div class="value-item reveal">
+        <div class="value-num">02</div>
+        <div>
+          <h4>Sequence Matters More Than Content</h4>
+          <p>The most common reason learners fail isn't lack of content — it's learning in the wrong order. We put enormous effort into the sequence. That's our core product.</p>
+        </div>
+      </div>
+      <div class="value-item reveal">
+        <div class="value-num">03</div>
+        <div>
+          <h4>Free Education Is a Right</h4>
+          <p>Quality education about publicly documented technologies should be free. We will never put a paywall on knowledge that was free to acquire. Our business model will never compromise this.</p>
+        </div>
+      </div>
+      <div class="value-item reveal">
+        <div class="value-num">04</div>
+        <div>
+          <h4>India-First Design</h4>
+          <p>Low bandwidth. Budget phones. Hindi-speaking households. Limited time due to college or work. Every design decision is made with these constraints as the baseline, not an afterthought.</p>
+        </div>
+      </div>
+      <div class="value-item reveal">
+        <div class="value-num">05</div>
+        <div>
+          <h4>Privacy Is Not Negotiable</h4>
+          <p>No Google Analytics. No tracking pixels. No ad networks. Your learning behavior is your own. We use privacy-first, anonymous analytics only to see which lessons need improvement.</p>
+        </div>
+      </div>
+      <div class="value-item reveal">
+        <div class="value-num">06</div>
+        <div>
+          <h4>Community Over Competition</h4>
+          <p>We don't compare you to other learners. We don't use leaderboards to create anxiety. We use progress tracking to show your growth against your own past — nobody else's.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── HONESTY SECTION ─── -->
+<section class="honest-section">
+  <div class="container">
+    <div class="honest-layout">
+      <div class="reveal">
+        <div class="section-eyebrow amber">— We'll Be Honest</div>
+        <h2 class="section-title">Things We Won't Promise You</h2>
+        <p class="section-sub" style="margin-bottom:32px">Because we'd rather you trust us for the right reasons.</p>
+
+        <div class="honest-points">
+          <div class="honest-point">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--red)" style="display:inline-block;vertical-align:middle;color:var(--red)"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+            <div>
+              <h5>We can't guarantee you a job</h5>
+              <p>No platform can. Job markets shift, companies hire differently, and your own consistency matters more than any curriculum. We can give you the best skills. The rest is up to you.</p>
+            </div>
+          </div>
+          <div class="honest-point">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--red)" style="display:inline-block;vertical-align:middle;color:var(--red)"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+            <div>
+              <h5>This won't be easy or fast</h5>
+              <p>Full-stack development takes 12–24 months of consistent effort to reach employability. DSA alone takes months. Anyone telling you otherwise is selling something.</p>
+            </div>
+          </div>
+          <div class="honest-point">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--red)" style="display:inline-block;vertical-align:middle;color:var(--red)"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+            <div>
+              <h5>Our content isn't always perfect</h5>
+              <p>We're human. We may have errors. If you find one, please email <a href="mailto:hello@coodley.in" style="color:var(--accent)">hello@coodley.in</a> and we'll fix it publicly and credit you.</p>
+            </div>
+          </div>
+          <div class="honest-point">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--accent)" style="display:inline-block;vertical-align:middle;color:var(--accent)"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <div>
+              <h5>But we'll always be honest about it</h5>
+              <p>That's the actual promise. When we don't know something, we'll say so. When the industry changes, we'll update our advice. Honesty first, always.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="reveal">
+        <div class="honest-terminal">
+          <div class="terminal-bar">
+            <div class="t-dot r"></div>
+            <div class="t-dot y"></div>
+            <div class="t-dot g"></div>
+            <span class="terminal-title">coodley-reality-check.sh</span>
+          </div>
+          <div class="terminal-body">
+            <div class="t-line">
+              <span class="t-prompt">$</span>
+              <span>./how-long-will-it-take.sh</span>
+            </div>
+            <div class="t-line">
+              <span class="t-out t-comment"># CS + Terminal + Language track</span>
+            </div>
+            <div class="t-line">
+              <span class="t-out">→ <span class="t-hl">1–2 months</span></span>
+            </div>
+            <div class="t-line">
+              <span class="t-out t-comment"># HTML/CSS + JavaScript + React</span>
+            </div>
+            <div class="t-line">
+              <span class="t-out">→ <span class="t-hl">2–4 months</span></span>
+            </div>
+            <div class="t-line">
+              <span class="t-out t-comment"># Backend + Databases + DevOps</span>
+            </div>
+            <div class="t-line">
+              <span class="t-out">→ <span class="t-hl">2–3 months</span></span>
+            </div>
+            <div class="t-line">
+              <span class="t-warn t-comment"># DSA (proper understanding)</span>
+            </div>
+            <div class="t-line">
+              <span class="t-warn">→ <span style="color:var(--amber)">3–6 months</span> <span style="color:var(--text3)">// most underestimate this</span></span>
+            </div>
+            <div class="t-line">
+              <span class="t-out t-comment"># System Design</span>
+            </div>
+            <div class="t-line">
+              <span class="t-out">→ <span class="t-hl">ongoing</span></span>
+            </div>
+            <div class="t-line">&nbsp;</div>
+            <div class="t-line">
+              <span class="t-prompt">$</span>
+              <span>./total-realistic-timeline.sh</span>
+            </div>
+            <div class="t-line">
+              <span class="t-hl">→ 12–24 months</span>
+            </div>
+            <div class="t-line">
+              <span class="t-out t-comment"># if consistent. real. no shortcuts.</span>
+            </div>
+            <div class="t-line">&nbsp;</div>
+            <div class="t-line">
+              <span class="t-prompt">$</span>
+              <span class="t-cursor"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FAQ ─── -->
+<section class="faq-section">
+  <div class="container">
+    <div class="section-header centered reveal">
+      <div class="section-eyebrow" style="justify-content:center">— FAQ</div>
+      <h2 class="section-title">Frequently Asked Questions</h2>
+      <p class="section-sub">Real questions. Real answers. No PR fluff.</p>
+    </div>
+
+    <div class="faq-list reveal">
+      <div class="faq-item open">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          Is Coodley really free? Koi hidden charge nahi hai?
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </div>
+        <div class="faq-answer">
+          Yes. All core content — every lesson, every roadmap, every guide — is free. Forever. We may add optional community features or tools in the future that have a cost, but the learning content will always be free. No bait-and-switch.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          I'm in 10th standard. Is this too early to start?
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </div>
+        <div class="faq-answer">
+          Not at all. CS Fundamentals and the Terminal module are specifically designed for absolute beginners with zero background. Starting in 10th or 11th gives you a massive head start. You don't need to learn everything — just start with <a href="/learn/computer-science/">CS Basics</a> and move at your own pace.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          Which language should I learn first — C++, Java, or Python?
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </div>
+        <div class="faq-answer">
+          It depends on your goal. <strong>Python</strong> if you want the easiest start or are interested in AI/ML. <strong>C++</strong> if you want to do DSA, competitive programming, or want deep control of memory. <strong>Java</strong> if you're targeting campus placements at Indian IT companies or enterprise software. We cover all three — check the <a href="/learn/roadmap.html">Full Roadmap</a> for the fork point explanation.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          Do I need a laptop, or can I learn from my phone?
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </div>
+        <div class="faq-answer">
+          All content is readable and fully functional on mobile. However, for actually writing and running code, you'll eventually need a computer. A basic laptop (even 8GB RAM, any decent processor) is enough. You can use online editors like Replit or CodeSandbox in the browser if you're stuck with a phone temporarily.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          Will Coodley give me a certificate I can add to my resume?
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </div>
+        <div class="faq-answer">
+          Honestly? Our certificates aren't something most interviewers will care about. What they care about is your <strong>GitHub projects</strong>, your <strong>DSA performance</strong>, and your ability to <strong>explain your decisions</strong>. We'll help you build all three. We'll also tell you which certifications are actually worth your time (AWS, GCP etc) and which ones aren't.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          Mujhe pehle se thoda coding aata hai. Kahan se start karoon?
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </div>
+        <div class="faq-answer">
+          Check the <a href="/learn/roadmap.html">Full Roadmap</a> and identify where your knowledge drops off. If you know HTML/CSS but not JavaScript well — start there. If you know JavaScript but haven't done React — start React. If you've never done DSA seriously, start there. The roadmap will help you find your gaps.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          How is Coodley different from W3Schools, freeCodeCamp, or GeeksforGeeks?
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </div>
+        <div class="faq-answer">
+          Those are great resources. The differences: Coodley gives you a <strong>complete, sequenced path</strong> in the correct order (most resources are reference docs, not curricula). We're <strong>India-specific</strong> in context, language, and career advice. We have a dedicated <strong>AI Reality section</strong>. And we're <strong>more opinionated</strong> — we tell you what to skip, not just what exists.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          How do I contact you or report an error?
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </div>
+        <div class="faq-answer">
+          Email us at <a href="mailto:hello@coodley.in">hello@coodley.in</a>. For legal or privacy matters: <a href="mailto:legal@coodley.in">legal@coodley.in</a>. For content errors, we credit everyone who reports a genuine mistake. We respond to every email — usually within 48 hours.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FINAL CTA ─── -->
+<div class="final-cta reveal">
+  <div class="cta-orb"></div>
+  <h2>Aaj se shuru kar.<br><span class="hl">Kal mat chhod.</span></h2>
+  <p>The roadmap is here. The content is free. The community is waiting. There's no better time than right now.</p>
+  <div class="final-btns">
+    <a href="/learn/" class="btn-primary">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg> Start from Zero
+    </a>
+    <a href="/learn/roadmap.html" class="btn-ghost">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg> View Full Roadmap
+    </a>
+    <a href="/community/" class="btn-ghost">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg> Join Community
+    </a>
+  </div>
+</div>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="/" class="footer-logo">
+          <div class="logo-mark" style="width:28px;height:28px;border-radius:7px;background:var(--accent);display:flex;align-items:center;justify-content:center;color:#07090f">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><polyline points="17 17 22 12 17 7"/><polyline points="7 7 2 12 7 17"/></svg>
+          </div>
+          Coodley
+        </a>
+        <p>India's most honest full-stack web &amp; software development learning platform. From scratch to production, completely free.</p>
+        <div class="footer-social">
+          <a href="#" class="social-btn"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg> GitHub</a>
+          <a href="#" class="social-btn"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg> Discord</a>
+          <a href="#" class="social-btn"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg> Twitter</a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Learn</h4>
+        <a href="/learn/"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg> All Modules</a>
+        <a href="/learn/roadmap.html"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg> Full Roadmap</a>
+        <a href="/learn/computer-science/"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg> CS Basics</a>
+        <a href="/learn/html-css/"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg> HTML &amp; CSS</a>
+        <a href="/learn/javascript/"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg> JavaScript</a>
+        <a href="/learn/react/"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><circle cx="12" cy="12" r="1"/><path d="M20.2 20.2c2.04-2.03.02-7.36-4.5-11.9-4.54-4.52-9.87-6.54-11.9-4.5-2.04 2.03-.02 7.36 4.5 11.9 4.54 4.52 9.87 6.54 11.9 4.5z"/><path d="M15.7 15.7c4.52-4.54 6.54-9.87 4.5-11.9-2.03-2.04-7.36-.02-11.9 4.5-4.52 4.54-6.54 9.87-4.5 11.9 2.03 2.04 7.36.02 11.9-4.5z"/></svg> React + Vite</a>
+        <a href="/learn/backend/"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"/><rect x="2" y="14" width="20" height="8" rx="2" ry="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg> Node.js + Express</a>
+      </div>
+
+      <div class="footer-col">
+        <h4>Languages &amp; DSA</h4>
+        <a href="/learn/cpp/"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg> C++ Programming</a>
+        <a href="/learn/java/"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg> Java Programming</a>
+        <a href="/learn/python/"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><path d="M12 3l1.5 4.5L18 9l-4.5 1.5L12 15l-1.5-4.5L6 9l4.5-1.5z"/><path d="M5 3l.75 2.25L8 6l-2.25.75L5 9l-.75-2.25L2 6l2.25-.75z"/><path d="M19 13l.75 2.25L22 16l-2.25.75L19 19l-.75-2.25L16 16l2.25-.75z"/></svg> Python Programming</a>
+        <a href="/learn/dsa/"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96-.46 2.5 2.5 0 0 1-1.97-4.06A4 4 0 0 1 6 8.9a2.5 2.5 0 0 1 3.5-2.9"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96-.46 2.5 2.5 0 0 0 1.97-4.06A4 4 0 0 0 18 8.9a2.5 2.5 0 0 0-3.5-2.9"/></svg> DSA Complete</a>
+        <a href="/learn/system-design/"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg> System Design</a>
+        <a href="/learn/databases/"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg> Databases</a>
+        <a href="/learn/devops/"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg> DevOps &amp; Cloud</a>
+      </div>
+
+      <div class="footer-col">
+        <h4>Platform</h4>
+        <a href="/community/"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg> Community</a>
+        <a href="/tools/"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg> Free Tools</a>
+        <a href="/ai-reality/"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg> AI Reality</a>
+        <a href="/community/projects.html"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg> Project Showcase</a>
+        <a href="/about.html"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg> About Us</a>
+        <a href="/tools/progress-tracker.html"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Progress Tracker</a>
+      </div>
+
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <a href="/legal/terms.html"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg> Terms of Service</a>
+        <a href="/legal/privacy.html"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> Privacy Policy</a>
+        <a href="/legal/cookie-policy.html"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><path d="M12 2a10 10 0 1 0 10 10 4 4 0 0 1-5-5 4 4 0 0 1-5-5"/><path d="M8.5 8.5v.01"/><path d="M16 15.5v.01"/><path d="M12 12v.01"/></svg> Cookie Policy</a>
+        <a href="/community/rules.html"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> Community Rules</a>
+        <a href="mailto:hello@coodley.in"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg> Contact Us</a>
+      </div>
+    </div>
+
+    <hr class="footer-divider" />
+  </div>
+
+  <div class="footer-bottom">
+    <div class="footer-bottom-left">
+      <p>Made with <span>♥</span> for Indian developers &nbsp;·&nbsp; © 2026 Coodley</p>
+      <p style="margin-top:3px;font-size:.72rem">No ads. No data selling. No fake promises. Just learning.</p>
+    </div>
+    <div class="footer-legal">
+      <a href="/legal/terms.html">Terms</a>
+      <a href="/legal/privacy.html">Privacy</a>
+      <a href="/community/rules.html">Guidelines</a>
+      <a href="/sitemap.xml">Sitemap</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // ── THEME TOGGLE ──
+  const toggleBtn = document.getElementById('themeToggle');
+  const themeIcon = document.getElementById('themeIcon');
+  const htmlEl    = document.documentElement;
+
+  const SUN_SVG  = `<circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>`;
+  const MOON_SVG = `<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>`;
+
+  function setTheme(theme) {
+    htmlEl.setAttribute('data-theme', theme);
+    themeIcon.innerHTML = theme === 'dark' ? SUN_SVG : MOON_SVG;
+    localStorage.setItem('coodley-theme', theme);
+  }
+  const saved = localStorage.getItem('coodley-theme') || 'dark';
+  setTheme(saved);
+  toggleBtn.addEventListener('click', () => {
+    setTheme(htmlEl.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+  });
+
+  // ── SCROLL REVEAL ──
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        revealObserver.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.06 });
+  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+  // ── MOBILE MENU ──
+  const hamburger = document.getElementById('hamburger');
+  let menuOpen = false;
+  hamburger.addEventListener('click', () => {
+    const links = document.querySelector('.nav-links');
+    menuOpen = !menuOpen;
+    if (menuOpen) {
+      links.style.cssText = `display:flex;flex-direction:column;gap:4px;position:fixed;top:64px;left:0;right:0;background:var(--bg2);padding:16px 20px 24px;border-bottom:1px solid var(--border);z-index:199;`;
+    } else {
+      links.style.cssText = '';
+    }
+  });
+  document.querySelectorAll('.nav-links a').forEach(a => {
+    a.addEventListener('click', () => {
+      menuOpen = false;
+      document.querySelector('.nav-links').style.cssText = '';
+    });
+  });
+
+  // ── CURRICULUM ACCORDION ──
+  function toggleTrack(header) {
+    const track = header.closest('.curriculum-track');
+    track.classList.toggle('open');
+  }
+
+  // ── FAQ ACCORDION ──
+  function toggleFaq(question) {
+    const item = question.closest('.faq-item');
+    // Close all others
+    document.querySelectorAll('.faq-item').forEach(i => {
+      if (i !== item) i.classList.remove('open');
+    });
+    item.classList.toggle('open');
+  }
+</script>
+</body>
+</html>
