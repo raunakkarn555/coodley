@@ -3,23 +3,61 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>About — Coodley | India's Full Stack Learning Portal</title>
-  <meta name="description" content="The real story behind Coodley — India's most honest full-stack developer learning platform. Our mission, philosophy, curriculum design, and the people building this for you." />
-  <meta name="keywords" content="Coodley about, Indian developer learning platform, free programming India, full stack learning India" />
+  <title>About Coodley — India's Free Full Stack Developer Learning Platform</title>
+  <meta name="description" content="Learn the real story behind Coodley — India's most honest free full-stack development platform. Our mission: take any student from CS basics to job-ready developer with zero cost and zero fake promises." />
+  <meta name="keywords" content="about Coodley, Indian developer learning platform, free programming course India, full stack learning India, Coodley mission, free coding India, learn web development India" />
+  <meta name="author" content="Coodley" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://raunakkarn555.github.io/coodley/about.html" />
 
-  <!-- OG Meta -->
-  <meta property="og:title" content="About Coodley — India's Full Stack Learning Portal" />
-  <meta property="og:description" content="No clickbait. No fake promises. Just the real story of why we built Coodley and what we stand for." />
+  <!-- Open Graph -->
+  <meta property="og:title" content="About Coodley — India's Free Full Stack Learning Platform" />
+  <meta property="og:description" content="No clickbait. No fake promises. The real story of why we built Coodley and what we stand for — free, sequenced, honest developer education for India." />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://coodley.in/about.html" />
+  <meta property="og:url" content="https://raunakkarn555.github.io/coodley/about.html" />
+  <meta property="og:image" content="https://raunakkarn555.github.io/coodley/assets/og-about.png" />
+  <meta property="og:site_name" content="Coodley" />
+  <meta property="og:locale" content="en_IN" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="About Coodley — India's Free Full Stack Learning Platform" />
+  <meta name="twitter:description" content="No clickbait. No fake promises. The honest story behind India's free developer education platform." />
+  <meta name="twitter:image" content="https://raunakkarn555.github.io/coodley/assets/og-about.png" />
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    "url": "https://raunakkarn555.github.io/coodley/about.html",
+    "name": "About Coodley",
+    "description": "The real story behind Coodley — India's most honest free full-stack developer learning platform.",
+    "mainEntity": {
+      "@type": "EducationalOrganization",
+      "name": "Coodley",
+      "url": "https://raunakkarn555.github.io/coodley/",
+      "description": "India's free full-stack developer learning platform.",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "email": "raunakkarn555@gmail.com",
+        "contactType": "Customer Support"
+      }
+    }
+  }
+  </script>
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 
-  <!-- Lucide Icons -->
-    <style>
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <!-- Phosphor Icons CDN -->
+  <script src="https://unpkg.com/@phosphor-icons/web@2.1.1/src/index.js"></script>
+
+  <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
@@ -100,7 +138,28 @@
       50%{ opacity:.4; transform:scale(.7) }
     }
 
-    /* ─── NAVBAR ─── */
+
+    /* ── LUCIDE ICON ANIMATIONS ── */
+    [data-lucide] { transition: transform .2s ease, color .2s ease; }
+    .nav-links a:hover [data-lucide] { transform: scale(1.2); }
+    .btn-nav [data-lucide], .btn-nav i { animation: none; }
+    .btn-donate-nav:hover { background: rgba(244,169,66,.18) !important; transform: translateY(-1px); box-shadow: 0 6px 20px rgba(244,169,66,.15); }
+    .btn-donate-nav [data-lucide], .btn-donate-nav i { animation: heartbeat 1.8s ease-in-out infinite; }
+    @keyframes heartbeat {
+      0%,100% { transform: scale(1); }
+      14% { transform: scale(1.25); }
+      28% { transform: scale(1); }
+      42% { transform: scale(1.15); }
+      56% { transform: scale(1); }
+    }
+    .social-btn:hover [data-lucide], .social-btn:hover i { transform: scale(1.15) rotate(-5deg); }
+    .join-card:hover [data-lucide], .join-card:hover i { transform: scale(1.12) translateY(-2px); }
+    .aside-card:hover [data-lucide], .aside-card:hover i { transform: scale(1.1); color: var(--accent); }
+    .pillar-card:hover .pillar-icon [data-lucide],
+    .pillar-card:hover .pillar-icon i { transform: rotate(5deg) scale(1.1); }
+    .comm-card:hover [data-lucide], .comm-card:hover i { transform: scale(1.1); }
+    .footer-col a:hover [data-lucide], .footer-col a:hover i { transform: translateX(3px); }
+        /* ─── NAVBAR ─── */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 200;
       height: var(--nav-h);
@@ -680,7 +739,7 @@
 
 <!-- ─── NAVBAR ─── -->
 <nav>
-  <a href="/" class="nav-logo">
+  <a href="https://raunakkarn555.github.io/coodley/" class="nav-logo">
     <div class="logo-mark">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><polyline points="17 17 22 12 17 7"/><polyline points="7 7 2 12 7 17"/></svg>
     </div>
@@ -688,19 +747,20 @@
   </a>
 
   <ul class="nav-links">
-    <li><a href="/learn/"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg> Learn</a></li>
-    <li><a href="/learn/roadmap.html"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg> Roadmap</a></li>
-    <li><a href="/community/"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg> Community</a></li>
-    <li><a href="/tools/"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg> Tools</a></li>
-    <li><a href="/ai-reality/" class="ai-link"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg> AI Reality</a></li>
-    <li><a href="/about.html" class="active"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg> About</a></li>
+    <li><a href="https://raunakkarn555.github.io/coodley/learn/"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg> Learn</a></li>
+    <li><a href="https://raunakkarn555.github.io/coodley/learn/roadmap.html"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg> Roadmap</a></li>
+    <li><a href="https://raunakkarn555.github.io/coodley/community/"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg> Community</a></li>
+    <li><a href="https://raunakkarn555.github.io/coodley/tools/"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg> Tools</a></li>
+    <li><a href="https://raunakkarn555.github.io/coodley/ai-reality/" class="ai-link"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg> AI Reality</a></li>
+    <li><a href="https://raunakkarn555.github.io/coodley/about.html" class="active"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg> About</a></li>
   </ul>
 
   <div class="nav-right">
     <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
       <svg id="themeIcon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
     </button>
-    <a href="/learn/" class="btn-nav">
+    <a href="https://raunakkarn555.github.io/coodley/donate.html" class="btn-donate-nav" style="background:linear-gradient(135deg,rgba(244,169,66,.15),rgba(244,169,66,.08));border:1px solid rgba(244,169,66,.3);color:var(--amber);padding:8px 16px;border-radius:var(--radius-sm);font-size:.82rem;font-weight:500;text-decoration:none;display:inline-flex;align-items:center;gap:6px;transition:all .2s;"><i data-lucide="heart" style="width:14px;height:14px"></i> Donate</a>
+    <a href="https://raunakkarn555.github.io/coodley/learn/" class="btn-nav">
       Start Learning <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
     </a>
     <button class="nav-hamburger" id="hamburger" aria-label="Menu">
@@ -720,10 +780,11 @@
   <h1>Built for the <span class="hl">Indian Developer</span><br>Who Was Left Behind</h1>
   <p class="sub">No bootcamp fees. No fake roadmaps. No vague "learn to code" promises. Just a platform built with radical honesty — from scratch to job-ready, for free.</p>
   <div class="hero-ctas">
-    <a href="/learn/" class="btn-primary">
+    <a href="https://raunakkarn555.github.io/coodley/learn/" class="btn-primary">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg> Start Learning — It's Free
     </a>
-    <a href="/learn/roadmap.html" class="btn-ghost">
+    <a href="https://raunakkarn555.github.io/coodley/donate.html" class="btn-ghost" style="border-color:rgba(244,169,66,.35);color:var(--amber)"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg> Support Coodley</a>
+    <a href="https://raunakkarn555.github.io/coodley/learn/roadmap.html" class="btn-ghost">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg> See the Roadmap
     </a>
   </div>
@@ -826,11 +887,11 @@
         <h3>Learn</h3>
         <p>The full-stack curriculum — from CS basics to System Design — in the correct, industry-sequenced order. Free, detailed, no paywalls on core content.</p>
         <div class="pillar-links">
-          <a href="/learn/" class="pillar-link"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg> All Modules</a>
-          <a href="/learn/roadmap.html" class="pillar-link"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg> Full Roadmap</a>
-          <a href="/learn/computer-science/" class="pillar-link"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg> CS Fundamentals</a>
-          <a href="/learn/dsa/" class="pillar-link"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96-.46 2.5 2.5 0 0 1-1.97-4.06A4 4 0 0 1 6 8.9a2.5 2.5 0 0 1 3.5-2.9"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96-.46 2.5 2.5 0 0 0 1.97-4.06A4 4 0 0 0 18 8.9a2.5 2.5 0 0 0-3.5-2.9"/></svg> DSA Track</a>
-          <a href="/learn/system-design/" class="pillar-link"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg> System Design</a>
+          <a href="https://raunakkarn555.github.io/coodley/learn/" class="pillar-link"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg> All Modules</a>
+          <a href="https://raunakkarn555.github.io/coodley/learn/roadmap.html" class="pillar-link"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg> Full Roadmap</a>
+          <a href="https://raunakkarn555.github.io/coodley/learn/computer-science/" class="pillar-link"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg> CS Fundamentals</a>
+          <a href="https://raunakkarn555.github.io/coodley/learn/dsa/" class="pillar-link"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96-.46 2.5 2.5 0 0 1-1.97-4.06A4 4 0 0 1 6 8.9a2.5 2.5 0 0 1 3.5-2.9"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96-.46 2.5 2.5 0 0 0 1.97-4.06A4 4 0 0 0 18 8.9a2.5 2.5 0 0 0-3.5-2.9"/></svg> DSA Track</a>
+          <a href="https://raunakkarn555.github.io/coodley/learn/system-design/" class="pillar-link"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg> System Design</a>
         </div>
       </div>
 
@@ -843,11 +904,11 @@
         <h3>Survive AI</h3>
         <p>Honest, data-driven content on what AI can and cannot do in 2026. Specific action plans. No fear-mongering. No dismissal either.</p>
         <div class="pillar-links">
-          <a href="/ai-reality/" class="pillar-link amber"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg> AI Reality Hub</a>
-          <a href="/ai-reality/what-ai-can-do.html" class="pillar-link amber"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><rect x="3" y="11" width="18" height="10" rx="2"/><circle cx="12" cy="5" r="2"/><path d="M12 7v4"/><line x1="8" y1="16" x2="8" y2="16"/><line x1="16" y1="16" x2="16" y2="16"/></svg> What AI Can Do</a>
-          <a href="/ai-reality/what-ai-cannot-do.html" class="pillar-link amber"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> What AI Cannot Do</a>
-          <a href="/ai-reality/how-to-survive.html" class="pillar-link amber"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg> Your Action Plan</a>
-          <a href="/ai-reality/future-skills.html" class="pillar-link amber"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg> Future Skills 2026</a>
+          <a href="https://raunakkarn555.github.io/coodley/ai-reality/" class="pillar-link amber"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg> AI Reality Hub</a>
+          <a href="https://raunakkarn555.github.io/coodley/ai-reality/what-ai-can-do.html" class="pillar-link amber"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><rect x="3" y="11" width="18" height="10" rx="2"/><circle cx="12" cy="5" r="2"/><path d="M12 7v4"/><line x1="8" y1="16" x2="8" y2="16"/><line x1="16" y1="16" x2="16" y2="16"/></svg> What AI Can Do</a>
+          <a href="https://raunakkarn555.github.io/coodley/ai-reality/what-ai-cannot-do.html" class="pillar-link amber"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> What AI Cannot Do</a>
+          <a href="https://raunakkarn555.github.io/coodley/ai-reality/how-to-survive.html" class="pillar-link amber"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg> Your Action Plan</a>
+          <a href="https://raunakkarn555.github.io/coodley/ai-reality/future-skills.html" class="pillar-link amber"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg> Future Skills 2026</a>
         </div>
       </div>
 
@@ -860,11 +921,11 @@
         <h3>Community</h3>
         <p>A safe, real, supportive Indian developer community. Show your projects. Get code reviews. Ask questions without fear of judgment.</p>
         <div class="pillar-links">
-          <a href="/community/" class="pillar-link blue"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg> Community Hub</a>
-          <a href="/community/projects.html" class="pillar-link blue"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg> Project Showcase</a>
-          <a href="/community/rules.html" class="pillar-link blue"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> Community Rules</a>
-          <a href="/tools/" class="pillar-link blue"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg> Free Tools</a>
-          <a href="/tools/progress-tracker.html" class="pillar-link blue"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Progress Tracker</a>
+          <a href="https://raunakkarn555.github.io/coodley/community/" class="pillar-link blue"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg> Community Hub</a>
+          <a href="https://raunakkarn555.github.io/coodley/community/projects.html" class="pillar-link blue"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg> Project Showcase</a>
+          <a href="https://raunakkarn555.github.io/coodley/community/rules.html" class="pillar-link blue"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> Community Rules</a>
+          <a href="https://raunakkarn555.github.io/coodley/tools/" class="pillar-link blue"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg> Free Tools</a>
+          <a href="https://raunakkarn555.github.io/coodley/tools/progress-tracker.html" class="pillar-link blue"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Progress Tracker</a>
         </div>
       </div>
     </div>
@@ -994,12 +1055,12 @@
         </div>
         <div class="track-topics">
           <div class="topic-pills">
-            <a href="/learn/computer-science/how-computers-work.html" class="topic-pill">How Computers Work</a>
-            <a href="/learn/computer-science/binary-and-data.html" class="topic-pill">Binary &amp; Data</a>
-            <a href="/learn/computer-science/operating-systems.html" class="topic-pill">Operating Systems</a>
-            <a href="/learn/computer-science/networking-basics.html" class="topic-pill">Networking &amp; Internet</a>
+            <a href="https://raunakkarn555.github.io/coodley/learn/computer-science/how-computers-work.html" class="topic-pill">How Computers Work</a>
+            <a href="https://raunakkarn555.github.io/coodley/learn/computer-science/binary-and-data.html" class="topic-pill">Binary &amp; Data</a>
+            <a href="https://raunakkarn555.github.io/coodley/learn/computer-science/operating-systems.html" class="topic-pill">Operating Systems</a>
+            <a href="https://raunakkarn555.github.io/coodley/learn/computer-science/networking-basics.html" class="topic-pill">Networking &amp; Internet</a>
           </div>
-          <a href="/learn/computer-science/" class="track-link">View CS Module <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+          <a href="https://raunakkarn555.github.io/coodley/learn/computer-science/" class="track-link">View CS Module <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
         </div>
       </div>
 
@@ -1016,11 +1077,11 @@
         </div>
         <div class="track-topics">
           <div class="topic-pills">
-            <a href="/learn/terminal-git/terminal-basics.html" class="topic-pill">Terminal Basics</a>
-            <a href="/learn/terminal-git/git-fundamentals.html" class="topic-pill">Git Fundamentals</a>
-            <a href="/learn/terminal-git/github-workflow.html" class="topic-pill">GitHub Workflow</a>
+            <a href="https://raunakkarn555.github.io/coodley/learn/terminal-git/terminal-basics.html" class="topic-pill">Terminal Basics</a>
+            <a href="https://raunakkarn555.github.io/coodley/learn/terminal-git/git-fundamentals.html" class="topic-pill">Git Fundamentals</a>
+            <a href="https://raunakkarn555.github.io/coodley/learn/terminal-git/github-workflow.html" class="topic-pill">GitHub Workflow</a>
           </div>
-          <a href="/learn/terminal-git/" class="track-link">View Terminal Module <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+          <a href="https://raunakkarn555.github.io/coodley/learn/terminal-git/" class="track-link">View Terminal Module <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
         </div>
       </div>
 
@@ -1037,16 +1098,16 @@
         </div>
         <div class="track-topics">
           <div class="topic-pills">
-            <a href="/learn/cpp/cpp-basics.html" class="topic-pill">C++ Basics</a>
-            <a href="/learn/cpp/control-flow.html" class="topic-pill">Control Flow</a>
-            <a href="/learn/cpp/functions.html" class="topic-pill">Functions &amp; Recursion</a>
-            <a href="/learn/cpp/arrays-strings.html" class="topic-pill">Arrays &amp; Strings</a>
-            <a href="/learn/cpp/pointers-memory.html" class="topic-pill">Pointers &amp; Memory</a>
-            <a href="/learn/cpp/oop-cpp.html" class="topic-pill">OOP in C++</a>
-            <a href="/learn/cpp/stl-basics.html" class="topic-pill">STL Basics</a>
-            <a href="/learn/cpp/competitive-programming-intro.html" class="topic-pill">Competitive Programming</a>
+            <a href="https://raunakkarn555.github.io/coodley/learn/cpp/cpp-basics.html" class="topic-pill">C++ Basics</a>
+            <a href="https://raunakkarn555.github.io/coodley/learn/cpp/control-flow.html" class="topic-pill">Control Flow</a>
+            <a href="https://raunakkarn555.github.io/coodley/learn/cpp/functions.html" class="topic-pill">Functions &amp; Recursion</a>
+            <a href="https://raunakkarn555.github.io/coodley/learn/cpp/arrays-strings.html" class="topic-pill">Arrays &amp; Strings</a>
+            <a href="https://raunakkarn555.github.io/coodley/learn/cpp/pointers-memory.html" class="topic-pill">Pointers &amp; Memory</a>
+            <a href="https://raunakkarn555.github.io/coodley/learn/cpp/oop-cpp.html" class="topic-pill">OOP in C++</a>
+            <a href="https://raunakkarn555.github.io/coodley/learn/cpp/stl-basics.html" class="topic-pill">STL Basics</a>
+            <a href="https://raunakkarn555.github.io/coodley/learn/cpp/competitive-programming-intro.html" class="topic-pill">Competitive Programming</a>
           </div>
-          <a href="/learn/cpp/" class="track-link">View C++ Module <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+          <a href="https://raunakkarn555.github.io/coodley/learn/cpp/" class="track-link">View C++ Module <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
         </div>
       </div>
 
@@ -1063,13 +1124,13 @@
         </div>
         <div class="track-topics">
           <div class="topic-pills">
-            <a href="/learn/java/java-basics.html" class="topic-pill">Java Basics</a>
-            <a href="/learn/java/oop-java.html" class="topic-pill">OOP in Java</a>
-            <a href="/learn/java/collections-framework.html" class="topic-pill">Collections Framework</a>
-            <a href="/learn/java/exception-handling.html" class="topic-pill">Exception Handling</a>
-            <a href="/learn/java/java-8-features.html" class="topic-pill">Java 8+ Features</a>
+            <a href="https://raunakkarn555.github.io/coodley/learn/java/java-basics.html" class="topic-pill">Java Basics</a>
+            <a href="https://raunakkarn555.github.io/coodley/learn/java/oop-java.html" class="topic-pill">OOP in Java</a>
+            <a href="https://raunakkarn555.github.io/coodley/learn/java/collections-framework.html" class="topic-pill">Collections Framework</a>
+            <a href="https://raunakkarn555.github.io/coodley/learn/java/exception-handling.html" class="topic-pill">Exception Handling</a>
+            <a href="https://raunakkarn555.github.io/coodley/learn/java/java-8-features.html" class="topic-pill">Java 8+ Features</a>
           </div>
-          <a href="/learn/java/" class="track-link">View Java Module <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+          <a href="https://raunakkarn555.github.io/coodley/learn/java/" class="track-link">View Java Module <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
         </div>
       </div>
 
@@ -1086,14 +1147,14 @@
         </div>
         <div class="track-topics">
           <div class="topic-pills">
-            <a href="/learn/python/python-basics.html" class="topic-pill">Python Basics</a>
-            <a href="/learn/python/data-structures-python.html" class="topic-pill">Data Structures</a>
-            <a href="/learn/python/functions-python.html" class="topic-pill">Functions</a>
-            <a href="/learn/python/oop-python.html" class="topic-pill">OOP in Python</a>
-            <a href="/learn/python/modules-pip.html" class="topic-pill">Modules &amp; Pip</a>
-            <a href="/learn/python/python-for-automation.html" class="topic-pill">Automation &amp; Scripting</a>
+            <a href="https://raunakkarn555.github.io/coodley/learn/python/python-basics.html" class="topic-pill">Python Basics</a>
+            <a href="https://raunakkarn555.github.io/coodley/learn/python/data-structures-python.html" class="topic-pill">Data Structures</a>
+            <a href="https://raunakkarn555.github.io/coodley/learn/python/functions-python.html" class="topic-pill">Functions</a>
+            <a href="https://raunakkarn555.github.io/coodley/learn/python/oop-python.html" class="topic-pill">OOP in Python</a>
+            <a href="https://raunakkarn555.github.io/coodley/learn/python/modules-pip.html" class="topic-pill">Modules &amp; Pip</a>
+            <a href="https://raunakkarn555.github.io/coodley/learn/python/python-for-automation.html" class="topic-pill">Automation &amp; Scripting</a>
           </div>
-          <a href="/learn/python/" class="track-link">View Python Module <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+          <a href="https://raunakkarn555.github.io/coodley/learn/python/" class="track-link">View Python Module <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
         </div>
       </div>
 
@@ -1110,17 +1171,17 @@
         </div>
         <div class="track-topics">
           <div class="topic-pills">
-            <a href="/learn/dsa/big-o-notation.html" class="topic-pill">Big-O Notation</a>
-            <a href="/learn/dsa/arrays-and-strings.html" class="topic-pill">Arrays &amp; Strings</a>
-            <a href="/learn/dsa/linked-lists.html" class="topic-pill">Linked Lists</a>
-            <a href="/learn/dsa/stacks-queues.html" class="topic-pill">Stacks &amp; Queues</a>
-            <a href="/learn/dsa/trees-binary-trees.html" class="topic-pill">Trees &amp; Binary Trees</a>
-            <a href="/learn/dsa/graphs.html" class="topic-pill">Graphs</a>
-            <a href="/learn/dsa/recursion-backtracking.html" class="topic-pill">Recursion &amp; Backtracking</a>
-            <a href="/learn/dsa/dynamic-programming.html" class="topic-pill">Dynamic Programming</a>
-            <a href="/learn/dsa/leetcode-guide.html" class="topic-pill">LeetCode Strategy</a>
+            <a href="https://raunakkarn555.github.io/coodley/learn/dsa/big-o-notation.html" class="topic-pill">Big-O Notation</a>
+            <a href="https://raunakkarn555.github.io/coodley/learn/dsa/arrays-and-strings.html" class="topic-pill">Arrays &amp; Strings</a>
+            <a href="https://raunakkarn555.github.io/coodley/learn/dsa/linked-lists.html" class="topic-pill">Linked Lists</a>
+            <a href="https://raunakkarn555.github.io/coodley/learn/dsa/stacks-queues.html" class="topic-pill">Stacks &amp; Queues</a>
+            <a href="https://raunakkarn555.github.io/coodley/learn/dsa/trees-binary-trees.html" class="topic-pill">Trees &amp; Binary Trees</a>
+            <a href="https://raunakkarn555.github.io/coodley/learn/dsa/graphs.html" class="topic-pill">Graphs</a>
+            <a href="https://raunakkarn555.github.io/coodley/learn/dsa/recursion-backtracking.html" class="topic-pill">Recursion &amp; Backtracking</a>
+            <a href="https://raunakkarn555.github.io/coodley/learn/dsa/dynamic-programming.html" class="topic-pill">Dynamic Programming</a>
+            <a href="https://raunakkarn555.github.io/coodley/learn/dsa/leetcode-guide.html" class="topic-pill">LeetCode Strategy</a>
           </div>
-          <a href="/learn/dsa/" class="track-link">View DSA Module <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+          <a href="https://raunakkarn555.github.io/coodley/learn/dsa/" class="track-link">View DSA Module <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
         </div>
       </div>
 
@@ -1137,15 +1198,15 @@
         </div>
         <div class="track-topics">
           <div class="topic-pills">
-            <a href="/learn/html-css/what-is-html.html" class="topic-pill">What is HTML</a>
-            <a href="/learn/html-css/semantic-html.html" class="topic-pill">Semantic HTML</a>
-            <a href="/learn/html-css/css-basics.html" class="topic-pill">CSS Basics</a>
-            <a href="/learn/html-css/flexbox.html" class="topic-pill">Flexbox</a>
-            <a href="/learn/html-css/grid.html" class="topic-pill">CSS Grid</a>
-            <a href="/learn/html-css/responsive-design.html" class="topic-pill">Responsive Design</a>
-            <a href="/learn/html-css/css-animations.html" class="topic-pill">CSS Animations</a>
+            <a href="https://raunakkarn555.github.io/coodley/learn/html-css/what-is-html.html" class="topic-pill">What is HTML</a>
+            <a href="https://raunakkarn555.github.io/coodley/learn/html-css/semantic-html.html" class="topic-pill">Semantic HTML</a>
+            <a href="https://raunakkarn555.github.io/coodley/learn/html-css/css-basics.html" class="topic-pill">CSS Basics</a>
+            <a href="https://raunakkarn555.github.io/coodley/learn/html-css/flexbox.html" class="topic-pill">Flexbox</a>
+            <a href="https://raunakkarn555.github.io/coodley/learn/html-css/grid.html" class="topic-pill">CSS Grid</a>
+            <a href="https://raunakkarn555.github.io/coodley/learn/html-css/responsive-design.html" class="topic-pill">Responsive Design</a>
+            <a href="https://raunakkarn555.github.io/coodley/learn/html-css/css-animations.html" class="topic-pill">CSS Animations</a>
           </div>
-          <a href="/learn/html-css/" class="track-link">View HTML &amp; CSS Module <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+          <a href="https://raunakkarn555.github.io/coodley/learn/html-css/" class="track-link">View HTML &amp; CSS Module <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
         </div>
       </div>
 
@@ -1162,13 +1223,13 @@
         </div>
         <div class="track-topics">
           <div class="topic-pills">
-            <a href="/learn/javascript/variables-and-types.html" class="topic-pill">Variables &amp; Types</a>
-            <a href="/learn/javascript/dom-manipulation.html" class="topic-pill">DOM Manipulation</a>
-            <a href="/learn/javascript/async-js.html" class="topic-pill">Async JavaScript</a>
-            <a href="/learn/javascript/fetch-api.html" class="topic-pill">Fetch API</a>
-            <a href="/learn/javascript/es6-plus.html" class="topic-pill">ES6+ Features</a>
+            <a href="https://raunakkarn555.github.io/coodley/learn/javascript/variables-and-types.html" class="topic-pill">Variables &amp; Types</a>
+            <a href="https://raunakkarn555.github.io/coodley/learn/javascript/dom-manipulation.html" class="topic-pill">DOM Manipulation</a>
+            <a href="https://raunakkarn555.github.io/coodley/learn/javascript/async-js.html" class="topic-pill">Async JavaScript</a>
+            <a href="https://raunakkarn555.github.io/coodley/learn/javascript/fetch-api.html" class="topic-pill">Fetch API</a>
+            <a href="https://raunakkarn555.github.io/coodley/learn/javascript/es6-plus.html" class="topic-pill">ES6+ Features</a>
           </div>
-          <a href="/learn/javascript/" class="track-link">View JavaScript Module <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+          <a href="https://raunakkarn555.github.io/coodley/learn/javascript/" class="track-link">View JavaScript Module <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
         </div>
       </div>
 
@@ -1185,14 +1246,14 @@
         </div>
         <div class="track-topics">
           <div class="topic-pills">
-            <a href="/learn/react/what-is-react.html" class="topic-pill">What is React</a>
-            <a href="/learn/react/components-jsx.html" class="topic-pill">Components &amp; JSX</a>
-            <a href="/learn/react/props-state.html" class="topic-pill">Props &amp; State</a>
-            <a href="/learn/react/hooks.html" class="topic-pill">Hooks</a>
-            <a href="/learn/react/react-router.html" class="topic-pill">React Router</a>
-            <a href="/learn/react/vite-setup.html" class="topic-pill">Vite Setup</a>
+            <a href="https://raunakkarn555.github.io/coodley/learn/react/what-is-react.html" class="topic-pill">What is React</a>
+            <a href="https://raunakkarn555.github.io/coodley/learn/react/components-jsx.html" class="topic-pill">Components &amp; JSX</a>
+            <a href="https://raunakkarn555.github.io/coodley/learn/react/props-state.html" class="topic-pill">Props &amp; State</a>
+            <a href="https://raunakkarn555.github.io/coodley/learn/react/hooks.html" class="topic-pill">Hooks</a>
+            <a href="https://raunakkarn555.github.io/coodley/learn/react/react-router.html" class="topic-pill">React Router</a>
+            <a href="https://raunakkarn555.github.io/coodley/learn/react/vite-setup.html" class="topic-pill">Vite Setup</a>
           </div>
-          <a href="/learn/react/" class="track-link">View React Module <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+          <a href="https://raunakkarn555.github.io/coodley/learn/react/" class="track-link">View React Module <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
         </div>
       </div>
 
@@ -1209,13 +1270,13 @@
         </div>
         <div class="track-topics">
           <div class="topic-pills">
-            <a href="/learn/backend/how-servers-work.html" class="topic-pill">How Servers Work</a>
-            <a href="/learn/backend/nodejs-basics.html" class="topic-pill">Node.js Basics</a>
-            <a href="/learn/backend/express-framework.html" class="topic-pill">Express Framework</a>
-            <a href="/learn/backend/rest-apis.html" class="topic-pill">REST APIs</a>
-            <a href="/learn/backend/authentication.html" class="topic-pill">Authentication</a>
+            <a href="https://raunakkarn555.github.io/coodley/learn/backend/how-servers-work.html" class="topic-pill">How Servers Work</a>
+            <a href="https://raunakkarn555.github.io/coodley/learn/backend/nodejs-basics.html" class="topic-pill">Node.js Basics</a>
+            <a href="https://raunakkarn555.github.io/coodley/learn/backend/express-framework.html" class="topic-pill">Express Framework</a>
+            <a href="https://raunakkarn555.github.io/coodley/learn/backend/rest-apis.html" class="topic-pill">REST APIs</a>
+            <a href="https://raunakkarn555.github.io/coodley/learn/backend/authentication.html" class="topic-pill">Authentication</a>
           </div>
-          <a href="/learn/backend/" class="track-link">View Backend Module <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+          <a href="https://raunakkarn555.github.io/coodley/learn/backend/" class="track-link">View Backend Module <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
         </div>
       </div>
 
@@ -1232,13 +1293,13 @@
         </div>
         <div class="track-topics">
           <div class="topic-pills">
-            <a href="/learn/databases/sql-mysql.html" class="topic-pill">SQL &amp; MySQL</a>
-            <a href="/learn/databases/mongodb.html" class="topic-pill">MongoDB</a>
-            <a href="/learn/databases/mongoose.html" class="topic-pill">Mongoose ODM</a>
-            <a href="/learn/databases/database-design.html" class="topic-pill">Database Design</a>
-            <a href="/learn/databases/nosql-vs-sql.html" class="topic-pill">NoSQL vs SQL</a>
+            <a href="https://raunakkarn555.github.io/coodley/learn/databases/sql-mysql.html" class="topic-pill">SQL &amp; MySQL</a>
+            <a href="https://raunakkarn555.github.io/coodley/learn/databases/mongodb.html" class="topic-pill">MongoDB</a>
+            <a href="https://raunakkarn555.github.io/coodley/learn/databases/mongoose.html" class="topic-pill">Mongoose ODM</a>
+            <a href="https://raunakkarn555.github.io/coodley/learn/databases/database-design.html" class="topic-pill">Database Design</a>
+            <a href="https://raunakkarn555.github.io/coodley/learn/databases/nosql-vs-sql.html" class="topic-pill">NoSQL vs SQL</a>
           </div>
-          <a href="/learn/databases/" class="track-link">View Databases Module <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+          <a href="https://raunakkarn555.github.io/coodley/learn/databases/" class="track-link">View Databases Module <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
         </div>
       </div>
 
@@ -1255,14 +1316,14 @@
         </div>
         <div class="track-topics">
           <div class="topic-pills">
-            <a href="/learn/system-design/scalability.html" class="topic-pill">Scalability</a>
-            <a href="/learn/system-design/load-balancing.html" class="topic-pill">Load Balancing</a>
-            <a href="/learn/system-design/caching-redis.html" class="topic-pill">Caching &amp; Redis</a>
-            <a href="/learn/system-design/databases-at-scale.html" class="topic-pill">Databases at Scale</a>
-            <a href="/learn/system-design/microservices-intro.html" class="topic-pill">Microservices</a>
-            <a href="/learn/system-design/case-studies.html" class="topic-pill">Case Studies</a>
+            <a href="https://raunakkarn555.github.io/coodley/learn/system-design/scalability.html" class="topic-pill">Scalability</a>
+            <a href="https://raunakkarn555.github.io/coodley/learn/system-design/load-balancing.html" class="topic-pill">Load Balancing</a>
+            <a href="https://raunakkarn555.github.io/coodley/learn/system-design/caching-redis.html" class="topic-pill">Caching &amp; Redis</a>
+            <a href="https://raunakkarn555.github.io/coodley/learn/system-design/databases-at-scale.html" class="topic-pill">Databases at Scale</a>
+            <a href="https://raunakkarn555.github.io/coodley/learn/system-design/microservices-intro.html" class="topic-pill">Microservices</a>
+            <a href="https://raunakkarn555.github.io/coodley/learn/system-design/case-studies.html" class="topic-pill">Case Studies</a>
           </div>
-          <a href="/learn/system-design/" class="track-link">View System Design Module <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+          <a href="https://raunakkarn555.github.io/coodley/learn/system-design/" class="track-link">View System Design Module <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
         </div>
       </div>
 
@@ -1279,17 +1340,17 @@
         </div>
         <div class="track-topics">
           <div class="topic-pills">
-            <a href="/learn/ai-tools/prompt-engineering.html" class="topic-pill">Prompt Engineering</a>
-            <a href="/learn/ai-tools/github-copilot.html" class="topic-pill">GitHub Copilot</a>
-            <a href="/learn/ai-tools/ai-for-developers.html" class="topic-pill">AI for Developers</a>
+            <a href="https://raunakkarn555.github.io/coodley/learn/ai-tools/prompt-engineering.html" class="topic-pill">Prompt Engineering</a>
+            <a href="https://raunakkarn555.github.io/coodley/learn/ai-tools/github-copilot.html" class="topic-pill">GitHub Copilot</a>
+            <a href="https://raunakkarn555.github.io/coodley/learn/ai-tools/ai-for-developers.html" class="topic-pill">AI for Developers</a>
           </div>
-          <a href="/learn/ai-tools/" class="track-link">View AI Tools Module <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+          <a href="https://raunakkarn555.github.io/coodley/learn/ai-tools/" class="track-link">View AI Tools Module <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
         </div>
       </div>
     </div>
 
     <div style="margin-top:32px; text-align:center;" class="reveal">
-      <a href="/learn/" class="btn-primary">
+      <a href="https://raunakkarn555.github.io/coodley/learn/" class="btn-primary">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg> See the Full Learning Hub
       </a>
     </div>
@@ -1361,7 +1422,7 @@
 
         <div class="ai-cta-banner">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-          <p>Read our full AI Reality report: <a href="/ai-reality/">What AI can and cannot do in 2026 →</a> Includes specific action plans for Indian developers.</p>
+          <p>Read our full AI Reality report: <a href="https://raunakkarn555.github.io/coodley/ai-reality/">What AI can and cannot do in 2026 →</a> Includes specific action plans for Indian developers.</p>
         </div>
       </div>
 
@@ -1409,19 +1470,19 @@
     </div>
 
     <div class="community-grid">
-      <a href="/community/" class="comm-card reveal">
+      <a href="https://raunakkarn555.github.io/coodley/community/" class="comm-card reveal">
         <div class="comm-card-icon github"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg></div>
         <h4>GitHub Community</h4>
         <p>Open source, transparent. Every project on Coodley has a GitHub home. Watch our progress, contribute, report issues, and showcase your own projects.</p>
         <span class="link-arrow">Join on GitHub <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></span>
       </a>
-      <a href="/community/" class="comm-card reveal">
+      <a href="https://raunakkarn555.github.io/coodley/community/" class="comm-card reveal">
         <div class="comm-card-icon discord"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
         <h4>Discord Server</h4>
         <p>Real-time help, study groups, daily challenges, and a place to share your wins and struggles. No gatekeeping. No toxic seniors. Just learning.</p>
         <span class="link-arrow">Join Discord <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></span>
       </a>
-      <a href="/community/projects.html" class="comm-card reveal">
+      <a href="https://raunakkarn555.github.io/coodley/community/projects.html" class="comm-card reveal">
         <div class="comm-card-icon projects"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg></div>
         <h4>Project Showcase</h4>
         <p>Built something? Show it. Get real feedback from the community. Discover what other Indian developers are building. Your portfolio starts here.</p>
@@ -1522,7 +1583,7 @@
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--red)" style="display:inline-block;vertical-align:middle;color:var(--red)"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
             <div>
               <h5>Our content isn't always perfect</h5>
-              <p>We're human. We may have errors. If you find one, please email <a href="mailto:hello@coodley.in" style="color:var(--accent)">hello@coodley.in</a> and we'll fix it publicly and credit you.</p>
+              <p>We're human. We may have errors. If you find one, please email <a href="mailto:raunakkarn555@gmail.com" style="color:var(--accent)">raunakkarn555@gmail.com</a> and we'll fix it publicly and credit you.</p>
             </div>
           </div>
           <div class="honest-point">
@@ -1627,7 +1688,7 @@
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
         </div>
         <div class="faq-answer">
-          Not at all. CS Fundamentals and the Terminal module are specifically designed for absolute beginners with zero background. Starting in 10th or 11th gives you a massive head start. You don't need to learn everything — just start with <a href="/learn/computer-science/">CS Basics</a> and move at your own pace.
+          Not at all. CS Fundamentals and the Terminal module are specifically designed for absolute beginners with zero background. Starting in 10th or 11th gives you a massive head start. You don't need to learn everything — just start with <a href="https://raunakkarn555.github.io/coodley/learn/computer-science/">CS Basics</a> and move at your own pace.
         </div>
       </div>
 
@@ -1637,7 +1698,7 @@
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
         </div>
         <div class="faq-answer">
-          It depends on your goal. <strong>Python</strong> if you want the easiest start or are interested in AI/ML. <strong>C++</strong> if you want to do DSA, competitive programming, or want deep control of memory. <strong>Java</strong> if you're targeting campus placements at Indian IT companies or enterprise software. We cover all three — check the <a href="/learn/roadmap.html">Full Roadmap</a> for the fork point explanation.
+          It depends on your goal. <strong>Python</strong> if you want the easiest start or are interested in AI/ML. <strong>C++</strong> if you want to do DSA, competitive programming, or want deep control of memory. <strong>Java</strong> if you're targeting campus placements at Indian IT companies or enterprise software. We cover all three — check the <a href="https://raunakkarn555.github.io/coodley/learn/roadmap.html">Full Roadmap</a> for the fork point explanation.
         </div>
       </div>
 
@@ -1667,7 +1728,7 @@
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
         </div>
         <div class="faq-answer">
-          Check the <a href="/learn/roadmap.html">Full Roadmap</a> and identify where your knowledge drops off. If you know HTML/CSS but not JavaScript well — start there. If you know JavaScript but haven't done React — start React. If you've never done DSA seriously, start there. The roadmap will help you find your gaps.
+          Check the <a href="https://raunakkarn555.github.io/coodley/learn/roadmap.html">Full Roadmap</a> and identify where your knowledge drops off. If you know HTML/CSS but not JavaScript well — start there. If you know JavaScript but haven't done React — start React. If you've never done DSA seriously, start there. The roadmap will help you find your gaps.
         </div>
       </div>
 
@@ -1687,7 +1748,7 @@
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
         </div>
         <div class="faq-answer">
-          Email us at <a href="mailto:hello@coodley.in">hello@coodley.in</a>. For legal or privacy matters: <a href="mailto:legal@coodley.in">legal@coodley.in</a>. For content errors, we credit everyone who reports a genuine mistake. We respond to every email — usually within 48 hours.
+          Email us at <a href="mailto:raunakkarn555@gmail.com">raunakkarn555@gmail.com</a>. For legal or privacy matters: <a href="mailto:legal@coodley.in">legal@coodley.in</a>. For content errors, we credit everyone who reports a genuine mistake. We respond to every email — usually within 48 hours.
         </div>
       </div>
     </div>
@@ -1700,13 +1761,14 @@
   <h2>Aaj se shuru kar.<br><span class="hl">Kal mat chhod.</span></h2>
   <p>The roadmap is here. The content is free. The community is waiting. There's no better time than right now.</p>
   <div class="final-btns">
-    <a href="/learn/" class="btn-primary">
+    <a href="https://raunakkarn555.github.io/coodley/learn/" class="btn-primary">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg> Start from Zero
     </a>
-    <a href="/learn/roadmap.html" class="btn-ghost">
+    <a href="https://raunakkarn555.github.io/coodley/donate.html" class="btn-ghost" style="border-color:rgba(244,169,66,.35);color:var(--amber)"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg> Support Coodley</a>
+    <a href="https://raunakkarn555.github.io/coodley/learn/roadmap.html" class="btn-ghost">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg> View Full Roadmap
     </a>
-    <a href="/community/" class="btn-ghost">
+    <a href="https://raunakkarn555.github.io/coodley/community/" class="btn-ghost">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg> Join Community
     </a>
   </div>
@@ -1717,7 +1779,7 @@
   <div class="footer-inner">
     <div class="footer-grid">
       <div class="footer-brand">
-        <a href="/" class="footer-logo">
+        <a href="https://raunakkarn555.github.io/coodley/" class="footer-logo">
           <div class="logo-mark" style="width:28px;height:28px;border-radius:7px;background:var(--accent);display:flex;align-items:center;justify-content:center;color:#07090f">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><polyline points="17 17 22 12 17 7"/><polyline points="7 7 2 12 7 17"/></svg>
           </div>
@@ -1733,43 +1795,44 @@
 
       <div class="footer-col">
         <h4>Learn</h4>
-        <a href="/learn/"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg> All Modules</a>
-        <a href="/learn/roadmap.html"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg> Full Roadmap</a>
-        <a href="/learn/computer-science/"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg> CS Basics</a>
-        <a href="/learn/html-css/"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg> HTML &amp; CSS</a>
-        <a href="/learn/javascript/"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg> JavaScript</a>
-        <a href="/learn/react/"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><circle cx="12" cy="12" r="1"/><path d="M20.2 20.2c2.04-2.03.02-7.36-4.5-11.9-4.54-4.52-9.87-6.54-11.9-4.5-2.04 2.03-.02 7.36 4.5 11.9 4.54 4.52 9.87 6.54 11.9 4.5z"/><path d="M15.7 15.7c4.52-4.54 6.54-9.87 4.5-11.9-2.03-2.04-7.36-.02-11.9 4.5-4.52 4.54-6.54 9.87-4.5 11.9 2.03 2.04 7.36.02 11.9-4.5z"/></svg> React + Vite</a>
-        <a href="/learn/backend/"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"/><rect x="2" y="14" width="20" height="8" rx="2" ry="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg> Node.js + Express</a>
+        <a href="https://raunakkarn555.github.io/coodley/learn/"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg> All Modules</a>
+        <a href="https://raunakkarn555.github.io/coodley/learn/roadmap.html"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg> Full Roadmap</a>
+        <a href="https://raunakkarn555.github.io/coodley/learn/computer-science/"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg> CS Basics</a>
+        <a href="https://raunakkarn555.github.io/coodley/learn/html-css/"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg> HTML &amp; CSS</a>
+        <a href="https://raunakkarn555.github.io/coodley/learn/javascript/"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg> JavaScript</a>
+        <a href="https://raunakkarn555.github.io/coodley/learn/react/"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><circle cx="12" cy="12" r="1"/><path d="M20.2 20.2c2.04-2.03.02-7.36-4.5-11.9-4.54-4.52-9.87-6.54-11.9-4.5-2.04 2.03-.02 7.36 4.5 11.9 4.54 4.52 9.87 6.54 11.9 4.5z"/><path d="M15.7 15.7c4.52-4.54 6.54-9.87 4.5-11.9-2.03-2.04-7.36-.02-11.9 4.5-4.52 4.54-6.54 9.87-4.5 11.9 2.03 2.04 7.36.02 11.9-4.5z"/></svg> React + Vite</a>
+        <a href="https://raunakkarn555.github.io/coodley/learn/backend/"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"/><rect x="2" y="14" width="20" height="8" rx="2" ry="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg> Node.js + Express</a>
       </div>
 
       <div class="footer-col">
         <h4>Languages &amp; DSA</h4>
-        <a href="/learn/cpp/"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg> C++ Programming</a>
-        <a href="/learn/java/"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg> Java Programming</a>
-        <a href="/learn/python/"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><path d="M12 3l1.5 4.5L18 9l-4.5 1.5L12 15l-1.5-4.5L6 9l4.5-1.5z"/><path d="M5 3l.75 2.25L8 6l-2.25.75L5 9l-.75-2.25L2 6l2.25-.75z"/><path d="M19 13l.75 2.25L22 16l-2.25.75L19 19l-.75-2.25L16 16l2.25-.75z"/></svg> Python Programming</a>
-        <a href="/learn/dsa/"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96-.46 2.5 2.5 0 0 1-1.97-4.06A4 4 0 0 1 6 8.9a2.5 2.5 0 0 1 3.5-2.9"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96-.46 2.5 2.5 0 0 0 1.97-4.06A4 4 0 0 0 18 8.9a2.5 2.5 0 0 0-3.5-2.9"/></svg> DSA Complete</a>
-        <a href="/learn/system-design/"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg> System Design</a>
-        <a href="/learn/databases/"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg> Databases</a>
-        <a href="/learn/devops/"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg> DevOps &amp; Cloud</a>
+        <a href="https://raunakkarn555.github.io/coodley/learn/cpp/"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg> C++ Programming</a>
+        <a href="https://raunakkarn555.github.io/coodley/learn/java/"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg> Java Programming</a>
+        <a href="https://raunakkarn555.github.io/coodley/learn/python/"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><path d="M12 3l1.5 4.5L18 9l-4.5 1.5L12 15l-1.5-4.5L6 9l4.5-1.5z"/><path d="M5 3l.75 2.25L8 6l-2.25.75L5 9l-.75-2.25L2 6l2.25-.75z"/><path d="M19 13l.75 2.25L22 16l-2.25.75L19 19l-.75-2.25L16 16l2.25-.75z"/></svg> Python Programming</a>
+        <a href="https://raunakkarn555.github.io/coodley/learn/dsa/"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96-.46 2.5 2.5 0 0 1-1.97-4.06A4 4 0 0 1 6 8.9a2.5 2.5 0 0 1 3.5-2.9"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96-.46 2.5 2.5 0 0 0 1.97-4.06A4 4 0 0 0 18 8.9a2.5 2.5 0 0 0-3.5-2.9"/></svg> DSA Complete</a>
+        <a href="https://raunakkarn555.github.io/coodley/learn/system-design/"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg> System Design</a>
+        <a href="https://raunakkarn555.github.io/coodley/learn/databases/"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg> Databases</a>
+        <a href="https://raunakkarn555.github.io/coodley/learn/devops/"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg> DevOps &amp; Cloud</a>
       </div>
 
       <div class="footer-col">
         <h4>Platform</h4>
-        <a href="/community/"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg> Community</a>
-        <a href="/tools/"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg> Free Tools</a>
-        <a href="/ai-reality/"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg> AI Reality</a>
-        <a href="/community/projects.html"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg> Project Showcase</a>
-        <a href="/about.html"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg> About Us</a>
-        <a href="/tools/progress-tracker.html"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Progress Tracker</a>
+        <a href="https://raunakkarn555.github.io/coodley/community/"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg> Community</a>
+        <a href="https://raunakkarn555.github.io/coodley/tools/"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg> Free Tools</a>
+        <a href="https://raunakkarn555.github.io/coodley/ai-reality/"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg> AI Reality</a>
+        <a href="https://raunakkarn555.github.io/coodley/community/projects.html"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg> Project Showcase</a>
+        <a href="https://raunakkarn555.github.io/coodley/about.html"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg> About Us</a>
+        <a href="https://raunakkarn555.github.io/coodley/donate.html"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg> ❤️ Donate</a>
+        <a href="https://raunakkarn555.github.io/coodley/tools/progress-tracker.html"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Progress Tracker</a>
       </div>
 
       <div class="footer-col">
         <h4>Legal</h4>
-        <a href="/legal/terms.html"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg> Terms of Service</a>
-        <a href="/legal/privacy.html"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> Privacy Policy</a>
-        <a href="/legal/cookie-policy.html"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><path d="M12 2a10 10 0 1 0 10 10 4 4 0 0 1-5-5 4 4 0 0 1-5-5"/><path d="M8.5 8.5v.01"/><path d="M16 15.5v.01"/><path d="M12 12v.01"/></svg> Cookie Policy</a>
-        <a href="/community/rules.html"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> Community Rules</a>
-        <a href="mailto:hello@coodley.in"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg> Contact Us</a>
+        <a href="https://raunakkarn555.github.io/coodley/legal/terms.html"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg> Terms of Service</a>
+        <a href="https://raunakkarn555.github.io/coodley/legal/privacy.html"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> Privacy Policy</a>
+        <a href="https://raunakkarn555.github.io/coodley/legal/cookie-policy.html"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><path d="M12 2a10 10 0 1 0 10 10 4 4 0 0 1-5-5 4 4 0 0 1-5-5"/><path d="M8.5 8.5v.01"/><path d="M16 15.5v.01"/><path d="M12 12v.01"/></svg> Cookie Policy</a>
+        <a href="https://raunakkarn555.github.io/coodley/community/rules.html"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> Community Rules</a>
+        <a href="mailto:raunakkarn555@gmail.com"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg> Contact Us</a>
       </div>
     </div>
 
@@ -1782,15 +1845,19 @@
       <p style="margin-top:3px;font-size:.72rem">No ads. No data selling. No fake promises. Just learning.</p>
     </div>
     <div class="footer-legal">
-      <a href="/legal/terms.html">Terms</a>
-      <a href="/legal/privacy.html">Privacy</a>
-      <a href="/community/rules.html">Guidelines</a>
-      <a href="/sitemap.xml">Sitemap</a>
+      <a href="https://raunakkarn555.github.io/coodley/legal/terms.html">Terms</a>
+      <a href="https://raunakkarn555.github.io/coodley/legal/privacy.html">Privacy</a>
+      <a href="https://raunakkarn555.github.io/coodley/community/rules.html">Guidelines</a>
+      <a href="https://raunakkarn555.github.io/coodley/donate.html">❤️ Donate</a>
+      <a href="https://raunakkarn555.github.io/coodley/sitemap.xml">Sitemap</a>
     </div>
   </div>
 </footer>
 
 <script>
+  // ── INIT LUCIDE ICONS ──
+  if (typeof lucide !== "undefined") lucide.createIcons();
+
   // ── THEME TOGGLE ──
   const toggleBtn = document.getElementById('themeToggle');
   const themeIcon = document.getElementById('themeIcon');

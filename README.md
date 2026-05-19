@@ -2,7 +2,11 @@
 ### India's Full Stack & Software Development Learning Portal
 > *From a 10th grader to a Job-Ready Developer — Everything. Here. Real.*
 
-**Version: 2.0 — Updated: 2026**
+**Version: 2.1 — Updated: 2026**
+
+🌐 **Live Site:** [https://raunakkarn555.github.io/coodley](https://raunakkarn555.github.io/coodley)
+📧 **Contact:** raunakkarn555@gmail.com
+❤️ **Donate:** [https://raunakkarn555.github.io/coodley/donate.html](https://raunakkarn555.github.io/coodley/donate.html)
 
 ---
 
@@ -46,7 +50,7 @@
 - **Mobile + Desktop** both work perfectly
 - **Hindi + English** mixed (Hinglish) where it helps understanding
 - **Professional icons** from Lucide CDN — consistent, clean, open source
-- **Copyright © 2026 Coodley**
+- **Copyright © 2026 Coodley | [https://raunakkarn555.github.io/coodley](https://raunakkarn555.github.io/coodley)**
 
 ---
 
@@ -57,6 +61,7 @@ coodley/
 │
 ├── index.html                      ← Homepage (Landing Page)
 ├── about.html                      ← About the Platform
+├── donate.html                     ← Support the Platform ❤️
 │
 ├── learn/
 │   ├── index.html                  ← Learning Hub (All Courses)
@@ -310,7 +315,7 @@ coodley/
 [FOOTER]
 - 5-column footer: Brand + Learn + Languages&DSA + Platform + Legal
 - Social links (GitHub, Discord, Twitter)
-- © 2026 Coodley
+- © 2026 Coodley | [https://raunakkarn555.github.io/coodley](https://raunakkarn555.github.io/coodley)
 ```
 
 ---
@@ -1140,8 +1145,8 @@ Key sections:
    - Content accuracy maintained but we're human
 6. Account Termination
    - Can remove community access for violations
-7. Contact: legal@coodley.in
-8. © 2026 Coodley
+7. Contact: raunakkarn555@gmail.com
+8. © 2026 Coodley | [https://raunakkarn555.github.io/coodley](https://raunakkarn555.github.io/coodley)
 ```
 
 ### `legal/privacy.html` — Privacy Policy
@@ -1157,8 +1162,8 @@ Key sections:
 3. Analytics: anonymous page views only (Plausible, not Google Analytics)
 4. Third-Party Links
 5. Data Deletion: email us anytime
-6. Contact: privacy@coodley.in
-7. © 2026 Coodley
+6. Contact: raunakkarn555@gmail.com
+7. © 2026 Coodley | [https://raunakkarn555.github.io/coodley](https://raunakkarn555.github.io/coodley)
 ```
 
 ---
@@ -1176,7 +1181,7 @@ community section, and detailed footer.
 Color scheme: dark navy bg, electric teal accent, amber for AI/warnings, 
 purple for language tracks (C++/Java/Python), red for DSA.
 Fonts: Bricolage Grotesque + DM Sans + JetBrains Mono via Google Fonts.
-Copyright: © 2026 Coodley."
+Copyright: © 2026 Coodley | [https://raunakkarn555.github.io/coodley](https://raunakkarn555.github.io/coodley)."
 ```
 
 ### Building a C++ Lesson
@@ -1271,6 +1276,7 @@ Difficulty: Advanced. Use blue accent theme."
 - [ ] Project showcase gallery
 - [ ] Custom domain (coodley.in)
 - [ ] Social media presence
+- [ ] Donate page (donate.html) for supporter contributions
 
 ---
 
@@ -1345,14 +1351,15 @@ lucide.createIcons();
 | System Design lesson | `learn/system-design/[topic].html` | "Write system design lesson on X with Indian company examples..." |
 | Homepage update | `index.html` | "Update homepage to add [feature], use Lucide CDN..." |
 | AI content | `ai-reality/*.html` | "Write honest AI reality content about [topic] for 2026..." |
-| Legal page | `legal/*.html` | "Write [terms/privacy] for an Indian ed-tech platform, © 2026 Coodley..." |
+| Legal page | `legal/*.html` | "Write [terms/privacy] for an Indian ed-tech platform, © 2026 Coodley | [https://raunakkarn555.github.io/coodley](https://raunakkarn555.github.io/coodley)..." |
 | CSS update | `assets/css/global.css` | "Add CSS variables for the DSA section (red theme)..." |
 | Footer update | `index.html` footer section | "Update footer to add [new section] links..." |
+| Donate page | `donate.html` | "Create a donation/support page for Coodley..." |
 
 ---
 
 *Guide Version: 2.0 — Updated: 2026*
-*Platform: Coodley | © 2026 Coodley*
+*Platform: Coodley | © 2026 Coodley | [https://raunakkarn555.github.io/coodley](https://raunakkarn555.github.io/coodley)*
 
 *This guide grows with the platform. After adding 5+ new pages, prompt Claude:*
 *"Update my Coodley platform development guide to reflect these new additions: [list them]"*
