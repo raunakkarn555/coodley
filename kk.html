@@ -1,0 +1,1751 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DBMS Exam Prep — Complete University Course Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #faf9f7;
+  --bg-2: #f4f2ee;
+  --bg-3: #eceae4;
+  --surface: #ffffff;
+  --surface-2: #f9f8f5;
+  --border: #e8e5de;
+  --border-2: #d9d5ca;
+  --text: #1a1814;
+  --text-2: #4a4640;
+  --text-3: #7a7570;
+  --accent: #2d6a4f;
+  --accent-2: #40916c;
+  --accent-light: #d8f3dc;
+  --accent-glow: rgba(45,106,79,0.12);
+  --gold: #b5813e;
+  --gold-light: #fef3cd;
+  --red: #c0392b;
+  --red-light: #fde8e8;
+  --blue: #2563eb;
+  --blue-light: #dbeafe;
+  --purple: #7c3aed;
+  --purple-light: #ede9fe;
+  --mono: 'JetBrains Mono', monospace;
+  --serif: 'Instrument Serif', serif;
+  --sans: 'DM Sans', sans-serif;
+  --radius: 12px;
+  --radius-lg: 20px;
+  --shadow: 0 1px 3px rgba(0,0,0,0.06), 0 4px 16px rgba(0,0,0,0.04);
+  --shadow-md: 0 4px 24px rgba(0,0,0,0.08), 0 1px 4px rgba(0,0,0,0.04);
+  --shadow-lg: 0 12px 48px rgba(0,0,0,0.1), 0 2px 8px rgba(0,0,0,0.05);
+  --sidebar-w: 260px;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden}
+
+/* ===== SCROLLBAR ===== */
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:var(--bg-2)}
+::-webkit-scrollbar-thumb{background:var(--border-2);border-radius:3px}
+
+/* ===== NAVBAR ===== */
+.navbar{position:sticky;top:0;z-index:100;background:rgba(250,249,247,0.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);height:60px;display:flex;align-items:center;padding:0 24px}
+.nav-inner{max-width:1400px;margin:0 auto;width:100%;display:flex;align-items:center;gap:16px}
+.nav-logo{font-family:var(--serif);font-size:1.2rem;color:var(--text);text-decoration:none;display:flex;align-items:center;gap:8px}
+.nav-logo-icon{width:28px;height:28px;background:var(--accent);border-radius:7px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:13px;font-weight:600;font-family:var(--sans)}
+.nav-tag{font-size:11px;background:var(--accent-light);color:var(--accent);padding:2px 8px;border-radius:20px;font-weight:500}
+.nav-spacer{flex:1}
+.nav-links{display:flex;align-items:center;gap:4px}
+.nav-links a{color:var(--text-2);text-decoration:none;font-size:13.5px;font-weight:500;padding:6px 12px;border-radius:8px;transition:all .2s}
+.nav-links a:hover{background:var(--bg-2);color:var(--text)}
+.nav-cta{background:var(--accent);color:#fff !important;padding:7px 16px !important;border-radius:8px !important;font-size:13px !important}
+.nav-cta:hover{background:var(--accent-2) !important;background-color:var(--accent-2) !important}
+
+/* ===== LAYOUT ===== */
+.page-layout{display:flex;max-width:1400px;margin:0 auto;padding:0 24px}
+
+/* ===== SIDEBAR ===== */
+.sidebar{width:var(--sidebar-w);flex-shrink:0;position:sticky;top:60px;height:calc(100vh - 60px);overflow-y:auto;padding:28px 16px 28px 0;border-right:1px solid var(--border)}
+.sidebar-label{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--text-3);padding:0 12px;margin-bottom:8px;margin-top:16px}
+.sidebar-label:first-child{margin-top:0}
+.sidebar-item{display:flex;align-items:center;gap:8px;padding:7px 12px;border-radius:8px;cursor:pointer;transition:all .2s;text-decoration:none;color:var(--text-2);font-size:13px;font-weight:450}
+.sidebar-item:hover{background:var(--bg-2);color:var(--text)}
+.sidebar-item.active{background:var(--accent-light);color:var(--accent);font-weight:500}
+.sidebar-item .dot{width:5px;height:5px;border-radius:50%;background:var(--border-2);flex-shrink:0;transition:.2s}
+.sidebar-item.active .dot{background:var(--accent)}
+.sidebar-num{font-size:10px;color:var(--text-3);margin-left:auto;font-family:var(--mono)}
+
+/* ===== MAIN CONTENT ===== */
+.main{flex:1;min-width:0;padding:48px 0 48px 40px}
+
+/* ===== PROGRESS BAR ===== */
+.progress-bar{position:fixed;top:60px;left:0;right:0;height:2px;background:var(--border);z-index:99}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent-2));width:0%;transition:width .1s}
+
+/* ===== HERO ===== */
+.hero{padding:64px 0 80px;border-bottom:1px solid var(--border);margin-bottom:64px}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:var(--accent-light);color:var(--accent);padding:5px 12px;border-radius:20px;font-size:12.5px;font-weight:500;margin-bottom:24px}
+.hero-eyebrow::before{content:'●';font-size:7px;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.hero-title{font-family:var(--serif);font-size:clamp(2rem,4vw,3.2rem);line-height:1.15;color:var(--text);margin-bottom:20px;font-weight:400}
+.hero-title em{font-style:italic;color:var(--accent)}
+.hero-sub{font-size:1rem;color:var(--text-2);line-height:1.7;margin-bottom:32px;max-width:480px}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:40px}
+.btn-primary{background:var(--accent);color:#fff;padding:11px 22px;border-radius:10px;font-size:14px;font-weight:500;text-decoration:none;border:none;cursor:pointer;transition:all .2s;display:inline-flex;align-items:center;gap:7px}
+.btn-primary:hover{background:var(--accent-2);transform:translateY(-1px);box-shadow:var(--shadow-md)}
+.btn-secondary{background:var(--surface);color:var(--text);padding:11px 22px;border-radius:10px;font-size:14px;font-weight:500;text-decoration:none;border:1px solid var(--border-2);cursor:pointer;transition:all .2s;display:inline-flex;align-items:center;gap:7px}
+.btn-secondary:hover{background:var(--bg-2);border-color:var(--accent);transform:translateY(-1px)}
+.hero-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.stat-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;transition:all .2s}
+.stat-card:hover{border-color:var(--accent);box-shadow:var(--shadow)}
+.stat-icon{font-size:18px;margin-bottom:6px}
+.stat-label{font-size:11.5px;font-weight:500;color:var(--text);margin-bottom:2px}
+.stat-sub{font-size:10.5px;color:var(--text-3)}
+
+/* ===== HERO VISUAL ===== */
+.hero-visual{position:relative;height:420px}
+.hero-db-card{position:absolute;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px;box-shadow:var(--shadow-md)}
+.hero-db-card.main-card{width:300px;top:20px;right:0;animation:floatA 6s ease-in-out infinite}
+.hero-db-card.sql-card{width:240px;bottom:40px;right:40px;animation:floatB 7s ease-in-out infinite 1s}
+.hero-db-card.er-card{width:180px;top:120px;left:10px;animation:floatC 5s ease-in-out infinite .5s}
+@keyframes floatA{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@keyframes floatB{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+@keyframes floatC{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+.card-header{display:flex;align-items:center;gap:8px;margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid var(--border)}
+.card-dots{display:flex;gap:4px}
+.card-dots span{width:8px;height:8px;border-radius:50%}
+.card-dots span:nth-child(1){background:#ff5f56}
+.card-dots span:nth-child(2){background:#ffbd2e}
+.card-dots span:nth-child(3){background:#27c93f}
+.card-title-sm{font-size:11px;font-weight:500;color:var(--text-3);font-family:var(--mono)}
+.db-table{width:100%;border-collapse:collapse;font-size:11px;font-family:var(--mono)}
+.db-table th{background:var(--bg-2);padding:5px 8px;text-align:left;font-weight:500;color:var(--text-3);font-size:10px;text-transform:uppercase;letter-spacing:.05em}
+.db-table td{padding:5px 8px;border-top:1px solid var(--border);color:var(--text-2)}
+.db-table tr:hover td{background:var(--bg-2)}
+.key-badge{background:var(--gold-light);color:var(--gold);padding:1px 5px;border-radius:3px;font-size:9px;font-weight:600}
+.sql-line{font-family:var(--mono);font-size:11.5px;line-height:1.8}
+.sql-kw{color:#2d6a4f;font-weight:600}
+.sql-str{color:#b5813e}
+.sql-fn{color:#7c3aed}
+.er-node{background:var(--accent-light);border:1.5px solid var(--accent);border-radius:8px;padding:6px 10px;font-size:11px;font-weight:500;color:var(--accent);text-align:center;margin-bottom:6px}
+.er-diamond{background:var(--gold-light);border:1.5px solid var(--gold);border-radius:6px;padding:5px 8px;font-size:10px;font-weight:500;color:var(--gold);text-align:center;margin-bottom:6px;transform:rotate(0deg)}
+.hero-blob{position:absolute;border-radius:50%;filter:blur(80px);z-index:-1;pointer-events:none}
+
+/* ===== SECTIONS ===== */
+.section{margin-bottom:80px;scroll-margin-top:80px}
+.section-header{margin-bottom:32px}
+.section-eyebrow{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--accent);margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.section-eyebrow::after{content:'';flex:1;height:1px;background:var(--border)}
+.section-title{font-family:var(--serif);font-size:clamp(1.6rem,3vw,2.2rem);line-height:1.2;color:var(--text);margin-bottom:12px}
+.section-desc{color:var(--text-2);font-size:0.95rem;max-width:600px;line-height:1.7}
+
+/* ===== SYLLABUS ===== */
+.syllabus-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
+.syllabus-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:20px;transition:all .25s;cursor:pointer}
+.syllabus-card:hover{border-color:var(--accent);box-shadow:var(--shadow);transform:translateY(-2px)}
+.syl-num{font-family:var(--mono);font-size:10px;color:var(--text-3);margin-bottom:8px}
+.syl-title{font-weight:600;font-size:14px;color:var(--text);margin-bottom:10px}
+.syl-topics{list-style:none;display:flex;flex-direction:column;gap:4px}
+.syl-topics li{font-size:12.5px;color:var(--text-2);padding:3px 0;border-bottom:1px solid var(--bg-3);display:flex;align-items:center;gap:6px}
+.syl-topics li::before{content:'›';color:var(--accent);font-size:14px;line-height:1}
+
+/* ===== ACCORDION ===== */
+.accordion{border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-bottom:12px}
+.acc-trigger{width:100%;padding:16px 20px;background:var(--surface);display:flex;align-items:center;gap:12px;cursor:pointer;border:none;text-align:left;transition:background .2s;font-family:var(--sans)}
+.acc-trigger:hover{background:var(--bg-2)}
+.acc-trigger.open{background:var(--bg-2)}
+.acc-icon{width:24px;height:24px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0}
+.acc-trigger-title{flex:1;font-weight:500;font-size:14.5px;color:var(--text)}
+.acc-trigger-sub{font-size:12px;color:var(--text-3)}
+.acc-arrow{font-size:12px;color:var(--text-3);transition:transform .3s;margin-left:8px}
+.acc-trigger.open .acc-arrow{transform:rotate(180deg)}
+.acc-body{background:var(--surface-2);border-top:1px solid var(--border);padding:0;max-height:0;overflow:hidden;transition:max-height .4s ease,padding .3s}
+.acc-body.open{padding:20px;max-height:3000px}
+
+/* ===== CONTENT BLOCKS ===== */
+.content-prose{color:var(--text-2);font-size:14.5px;line-height:1.8}
+.content-prose h4{font-family:var(--serif);font-size:1.1rem;color:var(--text);margin:20px 0 8px;font-weight:400}
+.content-prose p{margin-bottom:12px}
+.content-prose ul{padding-left:20px;margin-bottom:12px}
+.content-prose li{margin-bottom:6px}
+.content-prose strong{color:var(--text);font-weight:600}
+
+/* ===== BADGES ===== */
+.badge{display:inline-flex;align-items:center;gap:4px;padding:3px 9px;border-radius:20px;font-size:11px;font-weight:500}
+.badge-green{background:var(--accent-light);color:var(--accent)}
+.badge-gold{background:var(--gold-light);color:var(--gold)}
+.badge-red{background:var(--red-light);color:var(--red)}
+.badge-blue{background:var(--blue-light);color:var(--blue)}
+.badge-purple{background:var(--purple-light);color:var(--purple)}
+.important-banner{background:linear-gradient(135deg,var(--gold-light),#fff9ed);border:1px solid #e8c87a;border-radius:var(--radius);padding:12px 16px;margin:16px 0;display:flex;gap:10px;align-items:flex-start}
+.important-banner .icon{font-size:16px;flex-shrink:0;margin-top:1px}
+.important-banner p{font-size:13px;color:var(--text-2);margin:0}
+.important-banner strong{color:var(--text);font-weight:600}
+.exam-tip{background:linear-gradient(135deg,var(--accent-light),#f0faf4);border:1px solid #a8d5b5;border-radius:var(--radius);padding:14px 16px;margin:14px 0}
+.exam-tip-label{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);margin-bottom:6px}
+.exam-tip p{font-size:13.5px;color:var(--text-2);margin:0}
+
+/* ===== INFO GRID ===== */
+.info-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px;margin:16px 0}
+.info-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:16px;transition:.2s}
+.info-card:hover{border-color:var(--accent);transform:translateY(-1px)}
+.info-card-icon{font-size:22px;margin-bottom:8px}
+.info-card-title{font-weight:600;font-size:13.5px;color:var(--text);margin-bottom:4px}
+.info-card-desc{font-size:12.5px;color:var(--text-2);line-height:1.6}
+
+/* ===== COMPARISON TABLE ===== */
+.compare-table{width:100%;border-collapse:collapse;font-size:13.5px;border-radius:var(--radius);overflow:hidden;border:1px solid var(--border);margin:16px 0}
+.compare-table th{background:var(--bg-2);padding:10px 14px;text-align:left;font-weight:600;color:var(--text);font-size:13px;border-bottom:1px solid var(--border)}
+.compare-table td{padding:10px 14px;border-bottom:1px solid var(--bg-3);color:var(--text-2);vertical-align:top}
+.compare-table tr:last-child td{border-bottom:none}
+.compare-table tr:hover td{background:var(--bg-2)}
+.compare-table td:first-child{font-weight:500;color:var(--text)}
+
+/* ===== CODE BLOCKS ===== */
+.code-block{background:#1a1814;border-radius:var(--radius);overflow:hidden;margin:16px 0;border:1px solid #2a2822}
+.code-header{background:#232019;padding:10px 16px;display:flex;align-items:center;gap:8px;border-bottom:1px solid #2a2822}
+.code-dots{display:flex;gap:5px}
+.code-dots span{width:10px;height:10px;border-radius:50%}
+.code-dots span:nth-child(1){background:#ff5f56}
+.code-dots span:nth-child(2){background:#ffbd2e}
+.code-dots span:nth-child(3){background:#27c93f}
+.code-lang{font-size:11px;color:#6b7280;font-family:var(--mono);margin-left:auto}
+.code-body{padding:20px;font-family:var(--mono);font-size:13px;line-height:1.7;color:#e2d9c8;overflow-x:auto}
+.kw{color:#74c48d}.fn{color:#7dd3fc}.str{color:#fbbf24}.cm{color:#6b7280;font-style:italic}.num{color:#fb923c}.op{color:#94a3b8}.type{color:#c4b5fd}.tbl{color:#f0a0a0}
+
+/* ===== SQL OUTPUT TABLE ===== */
+.sql-output{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin:12px 0}
+.sql-output-header{background:var(--bg-2);padding:8px 14px;font-size:11px;color:var(--text-3);font-family:var(--mono);font-weight:500;border-bottom:1px solid var(--border)}
+.sql-output table{width:100%;border-collapse:collapse;font-size:12.5px;font-family:var(--mono)}
+.sql-output th{background:var(--bg-3);padding:7px 12px;text-align:left;font-weight:600;color:var(--text);font-size:12px;border-bottom:1px solid var(--border)}
+.sql-output td{padding:7px 12px;border-bottom:1px solid var(--bg-3);color:var(--text-2)}
+.sql-output tr:last-child td{border-bottom:none}
+.sql-output .rows-label{padding:6px 14px;font-size:11px;color:var(--text-3);background:var(--bg-2);border-top:1px solid var(--border)}
+
+/* ===== OPERATORS / ALGEBRA ===== */
+.operator-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px;margin:16px 0}
+.op-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:16px;text-align:center;transition:.2s}
+.op-card:hover{border-color:var(--accent);transform:translateY(-2px);box-shadow:var(--shadow)}
+.op-symbol{font-family:var(--mono);font-size:1.8rem;color:var(--accent);margin-bottom:6px;font-weight:700}
+.op-name{font-weight:600;font-size:13.5px;color:var(--text);margin-bottom:4px}
+.op-desc{font-size:12px;color:var(--text-2)}
+
+/* ===== NORMALIZATION STEPS ===== */
+.norm-step{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:20px;margin-bottom:14px;position:relative;padding-left:56px;transition:.2s}
+.norm-step:hover{border-color:var(--accent);box-shadow:var(--shadow)}
+.norm-step-num{position:absolute;left:16px;top:16px;width:28px;height:28px;background:var(--accent);color:#fff;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;font-family:var(--mono)}
+.norm-step-title{font-weight:600;font-size:14.5px;color:var(--text);margin-bottom:6px}
+.norm-step-desc{font-size:13.5px;color:var(--text-2);line-height:1.7}
+.norm-step-badge{margin-top:10px}
+
+/* ===== MCQ ===== */
+.mcq-grid{display:flex;flex-direction:column;gap:20px}
+.mcq-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px;transition:.2s}
+.mcq-card:hover{border-color:var(--border-2);box-shadow:var(--shadow)}
+.mcq-meta{display:flex;gap:8px;margin-bottom:14px;align-items:center}
+.mcq-q{font-weight:500;font-size:15px;color:var(--text);margin-bottom:16px;line-height:1.6}
+.mcq-options{display:flex;flex-direction:column;gap:8px;margin-bottom:16px}
+.mcq-opt{padding:10px 14px;border:1.5px solid var(--border);border-radius:8px;font-size:13.5px;color:var(--text-2);cursor:pointer;transition:.2s;display:flex;gap:10px;align-items:flex-start}
+.mcq-opt:hover{border-color:var(--accent);background:var(--accent-light);color:var(--accent)}
+.mcq-opt.correct{border-color:var(--accent);background:var(--accent-light);color:var(--accent)}
+.mcq-opt.wrong{border-color:var(--red);background:var(--red-light);color:var(--red)}
+.mcq-opt-letter{font-weight:700;font-size:12px;width:18px;flex-shrink:0;margin-top:1px}
+.mcq-reveal{background:var(--surface);border:none;padding:8px 14px;border-radius:8px;cursor:pointer;font-size:13px;font-weight:500;color:var(--accent);border:1.5px solid var(--accent);transition:.2s;font-family:var(--sans)}
+.mcq-reveal:hover{background:var(--accent);color:#fff}
+.mcq-explanation{background:var(--bg-2);border-radius:8px;padding:14px;font-size:13.5px;color:var(--text-2);margin-top:12px;display:none;border-left:3px solid var(--accent)}
+.mcq-explanation.show{display:block}
+
+/* ===== REVISION CARDS ===== */
+.rev-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px}
+.rev-card{border-radius:var(--radius-lg);padding:22px;border:1px solid var(--border);position:relative;overflow:hidden}
+.rev-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+.rev-card.green::before{background:linear-gradient(90deg,var(--accent),var(--accent-2))}
+.rev-card.gold::before{background:linear-gradient(90deg,var(--gold),#e8a850)}
+.rev-card.blue::before{background:linear-gradient(90deg,var(--blue),#60a5fa)}
+.rev-card.purple::before{background:linear-gradient(90deg,var(--purple),#a78bfa)}
+.rev-card.red::before{background:linear-gradient(90deg,var(--red),#f87171)}
+.rev-card-title{font-weight:700;font-size:14px;color:var(--text);margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.rev-item{font-size:13px;color:var(--text-2);padding:5px 0;border-bottom:1px solid var(--bg-3);display:flex;gap:8px}
+.rev-item:last-child{border-bottom:none}
+.rev-item strong{color:var(--text);font-weight:600;flex-shrink:0;min-width:80px}
+.rev-code{font-family:var(--mono);font-size:12px;background:var(--bg-2);padding:2px 5px;border-radius:4px;color:var(--text)}
+
+/* ===== EXAM STRATEGY ===== */
+.strategy-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
+.strategy-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:20px;transition:.2s}
+.strategy-card:hover{border-color:var(--accent);box-shadow:var(--shadow)}
+.strategy-card-num{font-family:var(--serif);font-size:2rem;color:var(--accent-light);font-weight:400;margin-bottom:4px}
+.strategy-card-title{font-weight:600;font-size:14.5px;color:var(--text);margin-bottom:8px}
+.strategy-card-desc{font-size:13px;color:var(--text-2);line-height:1.7}
+
+/* ===== UNIVERSITY QS ===== */
+.uq-list{display:flex;flex-direction:column;gap:12px}
+.uq-item{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:16px 20px;display:flex;gap:14px;align-items:flex-start;transition:.2s}
+.uq-item:hover{border-color:var(--accent);box-shadow:var(--shadow)}
+.uq-marks{background:var(--bg-2);border-radius:8px;padding:6px 10px;font-size:11px;font-weight:700;color:var(--text-3);text-align:center;flex-shrink:0;min-width:44px;font-family:var(--mono)}
+.uq-marks span{display:block;font-size:9px;font-weight:400;color:var(--text-3)}
+.uq-content{flex:1}
+.uq-q{font-weight:500;font-size:14px;color:var(--text);margin-bottom:6px;line-height:1.6}
+.uq-tags{display:flex;gap:6px;flex-wrap:wrap}
+
+/* ===== FOOTER ===== */
+footer{background:var(--bg-2);border-top:1px solid var(--border);padding:40px 24px;margin-top:80px}
+.footer-inner{max-width:1400px;margin:0 auto;display:flex;gap:32px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.footer-brand{font-family:var(--serif);font-size:1.1rem;color:var(--text-2)}
+.footer-links{display:flex;gap:16px;flex-wrap:wrap}
+.footer-links a{font-size:13px;color:var(--text-3);text-decoration:none;transition:.2s}
+.footer-links a:hover{color:var(--accent)}
+.footer-note{font-size:12px;color:var(--text-3)}
+
+/* ===== REVEAL ANIMATIONS ===== */
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
+.reveal.visible{opacity:1;transform:none}
+.reveal-delay-1{transition-delay:.1s}
+.reveal-delay-2{transition-delay:.2s}
+.reveal-delay-3{transition-delay:.3s}
+
+/* ===== TIMELINE ===== */
+.timeline{position:relative;padding-left:32px}
+.timeline::before{content:'';position:absolute;left:7px;top:0;bottom:0;width:2px;background:linear-gradient(180deg,var(--accent),transparent)}
+.tl-item{position:relative;padding-bottom:28px}
+.tl-item::before{content:'';position:absolute;left:-29px;top:4px;width:10px;height:10px;border-radius:50%;background:var(--accent);border:2px solid var(--bg);box-shadow:0 0 0 2px var(--accent)}
+.tl-title{font-weight:600;font-size:14px;color:var(--text);margin-bottom:6px}
+.tl-desc{font-size:13.5px;color:var(--text-2);line-height:1.7}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:1024px){.sidebar{display:none}.main{padding:40px 0}.page-layout{padding:0 20px}}
+@media(max-width:768px){.hero-grid{grid-template-columns:1fr}.hero-visual{display:none}.hero-stats{grid-template-columns:repeat(2,1fr)}.nav-links{display:none}.syllabus-grid{grid-template-columns:1fr}}
+@media(max-width:480px){.hero-stats{grid-template-columns:1fr}.hero-btns{flex-direction:column}.info-grid{grid-template-columns:1fr}.operator-grid{grid-template-columns:repeat(2,1fr)}.rev-grid{grid-template-columns:1fr}}
+
+/* ===== ANCHOR HIGHLIGHT ===== */
+.anchor-target{scroll-margin-top:80px}
+
+/* ===== INLINE CODE ===== */
+code{font-family:var(--mono);background:var(--bg-3);padding:2px 6px;border-radius:4px;font-size:0.88em;color:var(--accent)}
+
+/* ===== MNEMONIC BOX ===== */
+.mnemonic{background:linear-gradient(135deg,#1a1814,#232019);border-radius:var(--radius);padding:22px;margin:16px 0;border:1px solid #2a2822}
+.mnemonic-title{font-family:var(--mono);font-size:11px;color:#6b7280;margin-bottom:10px;text-transform:uppercase;letter-spacing:.08em}
+.mnemonic-letters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}
+.mnem-letter{background:#2d6a4f20;border:1.5px solid #2d6a4f;border-radius:8px;padding:10px 14px;font-family:var(--mono);font-size:1.2rem;color:#74c48d;font-weight:700;text-align:center}
+.mnem-word{font-size:11px;color:#9a8e80;margin-top:3px}
+.mnemonic-phrase{font-family:var(--serif);font-size:1rem;color:#c4b5a0;font-style:italic}
+
+/* ===== SCHEMA DISPLAY ===== */
+.schema-box{background:#f9f8f5;border:1px solid var(--border);border-radius:var(--radius);padding:16px;font-family:var(--mono);font-size:13px;color:var(--text-2);margin:12px 0;line-height:1.9;overflow-x:auto}
+.schema-box .tname{color:var(--accent);font-weight:700}
+.schema-box .pk{color:var(--gold);font-weight:600}
+.schema-box .fk{color:var(--blue);font-weight:600}
+</style>
+</head>
+<body>
+
+<!-- PROGRESS BAR -->
+<div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <div class="nav-logo-icon">DB</div>
+      DBMS Prep
+    </a>
+    <span class="nav-tag">University Exam</span>
+    <div class="nav-spacer"></div>
+    <div class="nav-links">
+      <a href="#syllabus">Syllabus</a>
+      <a href="#sql">SQL</a>
+      <a href="#mcq">MCQs</a>
+      <a href="#revision">Revision</a>
+      <a href="#revision" class="nav-cta">Last Night Revision →</a>
+    </div>
+  </div>
+</nav>
+
+<!-- PAGE LAYOUT -->
+<div class="page-layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-label">Getting Started</div>
+    <a href="#hero" class="sidebar-item active" data-sec="hero"><span class="dot"></span>Overview</a>
+    <a href="#syllabus" class="sidebar-item" data-sec="syllabus"><span class="dot"></span>Full Syllabus</a>
+
+    <div class="sidebar-label">Core Topics</div>
+    <a href="#architecture" class="sidebar-item" data-sec="architecture"><span class="dot"></span>DBMS Architecture <span class="sidebar-num">01</span></a>
+    <a href="#datamodels" class="sidebar-item" data-sec="datamodels"><span class="dot"></span>Data Models <span class="sidebar-num">02</span></a>
+    <a href="#relational" class="sidebar-item" data-sec="relational"><span class="dot"></span>Relational Algebra <span class="sidebar-num">03</span></a>
+    <a href="#normalization" class="sidebar-item" data-sec="normalization"><span class="dot"></span>Normalization <span class="sidebar-num">04</span></a>
+    <a href="#queryopt" class="sidebar-item" data-sec="queryopt"><span class="dot"></span>Query Optimization <span class="sidebar-num">05</span></a>
+    <a href="#storage" class="sidebar-item" data-sec="storage"><span class="dot"></span>Storage Strategies <span class="sidebar-num">06</span></a>
+    <a href="#transactions" class="sidebar-item" data-sec="transactions"><span class="dot"></span>Transactions <span class="sidebar-num">07</span></a>
+    <a href="#nosql" class="sidebar-item" data-sec="nosql"><span class="dot"></span>Recent Trends <span class="sidebar-num">08</span></a>
+
+    <div class="sidebar-label">Practice</div>
+    <a href="#sql" class="sidebar-item" data-sec="sql"><span class="dot"></span>SQL Masterclass</a>
+    <a href="#practical" class="sidebar-item" data-sec="practical"><span class="dot"></span>Practical Lab</a>
+    <a href="#mcq" class="sidebar-item" data-sec="mcq"><span class="dot"></span>MCQ Practice</a>
+    <a href="#uqs" class="sidebar-item" data-sec="uqs"><span class="dot"></span>University Questions</a>
+
+    <div class="sidebar-label">Exam Day</div>
+    <a href="#revision" class="sidebar-item" data-sec="revision"><span class="dot"></span>Last Night Revision</a>
+    <a href="#strategy" class="sidebar-item" data-sec="strategy"><span class="dot"></span>Exam Strategy</a>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main">
+
+    <!-- ====== HERO ====== -->
+    <section id="hero" class="hero anchor-target">
+      <div class="hero-grid">
+        <div>
+          <div class="hero-eyebrow reveal">Database Management Systems</div>
+          <h1 class="hero-title reveal reveal-delay-1">Complete DBMS<br><em>Exam Preparation</em><br>— From Zero to Pass</h1>
+          <p class="hero-sub reveal reveal-delay-2">Complete notes, SQL practice, normalization tricks, query optimization, indexing, transactions, MCQs and revision — all structured in one roadmap.</p>
+          <div class="hero-btns reveal reveal-delay-3">
+            <a href="#syllabus" class="btn-primary">▶ Start Learning</a>
+            <a href="#revision" class="btn-secondary">⬇ Quick Revision</a>
+          </div>
+          <div class="hero-stats reveal reveal-delay-3">
+            <div class="stat-card">
+              <div class="stat-icon">📚</div>
+              <div class="stat-label">Full Syllabus</div>
+              <div class="stat-sub">Covered</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon">❓</div>
+              <div class="stat-label">100+ MCQs</div>
+              <div class="stat-sub">With Explanations</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon">⚡</div>
+              <div class="stat-label">SQL Practice</div>
+              <div class="stat-sub">Included</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon">🎯</div>
+              <div class="stat-label">Exam Focused</div>
+              <div class="stat-sub">Revision Cards</div>
+            </div>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div style="position:absolute;width:300px;height:300px;background:radial-gradient(circle,rgba(45,106,79,.15),transparent 70%);top:0;left:50%;transform:translateX(-50%);pointer-events:none"></div>
+          <!-- Main DB Table Card -->
+          <div class="hero-db-card main-card">
+            <div class="card-header">
+              <div class="card-dots"><span></span><span></span><span></span></div>
+              <div class="card-title-sm">students.db — EMPLOYEES</div>
+            </div>
+            <table class="db-table">
+              <tr><th>EMP_ID</th><th>NAME</th><th>DEPT</th><th>SAL</th></tr>
+              <tr><td><span class="key-badge">PK</span> E001</td><td>Alice</td><td>CS</td><td>75000</td></tr>
+              <tr><td>E002</td><td>Bob</td><td>IT</td><td>68000</td></tr>
+              <tr><td>E003</td><td>Carol</td><td>CS</td><td>82000</td></tr>
+            </table>
+          </div>
+          <!-- SQL Card -->
+          <div class="hero-db-card sql-card">
+            <div class="card-header">
+              <div class="card-dots"><span></span><span></span><span></span></div>
+              <div class="card-title-sm">query.sql</div>
+            </div>
+            <div class="sql-line"><span class="sql-kw">SELECT</span> name, sal</div>
+            <div class="sql-line"><span class="sql-kw">FROM</span> employees</div>
+            <div class="sql-line"><span class="sql-kw">WHERE</span> dept = <span class="sql-str">'CS'</span></div>
+            <div class="sql-line"><span class="sql-kw">ORDER BY</span> sal <span class="sql-kw">DESC</span>;</div>
+          </div>
+          <!-- ER Card -->
+          <div class="hero-db-card er-card">
+            <div class="card-header">
+              <div class="card-dots"><span></span><span></span><span></span></div>
+              <div class="card-title-sm">ER Diagram</div>
+            </div>
+            <div class="er-node">STUDENT</div>
+            <div style="text-align:center;font-size:12px;color:#7a7570;margin:2px 0">enrolls ↕</div>
+            <div class="er-diamond">ENROLLS</div>
+            <div style="text-align:center;font-size:12px;color:#7a7570;margin:2px 0">↕</div>
+            <div class="er-node">COURSE</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== SYLLABUS ====== -->
+    <section id="syllabus" class="section anchor-target">
+      <div class="section-header reveal">
+        <div class="section-eyebrow">Official Syllabus</div>
+        <h2 class="section-title">Complete DBMS Course Syllabus</h2>
+        <p class="section-desc">Every topic from the official university syllabus — not a single word skipped. Click any card to jump to the detailed section.</p>
+      </div>
+      <div class="syllabus-grid">
+        <a href="#architecture" class="syllabus-card reveal" style="text-decoration:none;color:inherit">
+          <div class="syl-num">UNIT 01</div>
+          <div class="syl-title">🏗 Database System Architecture</div>
+          <ul class="syl-topics">
+            <li>Data Abstraction</li><li>Data Independence</li><li>Data Definition Languages</li><li>Data Manipulation Languages</li>
+          </ul>
+        </a>
+        <a href="#datamodels" class="syllabus-card reveal reveal-delay-1" style="text-decoration:none;color:inherit">
+          <div class="syl-num">UNIT 02</div>
+          <div class="syl-title">🗂 Data Models</div>
+          <ul class="syl-topics">
+            <li>Entity-relationship data models</li><li>Network data models</li><li>Relational data models</li><li>Object oriented data models</li><li>Integrity constraints</li><li>Data manipulation operations</li>
+          </ul>
+        </a>
+        <a href="#relational" class="syllabus-card reveal reveal-delay-2" style="text-decoration:none;color:inherit">
+          <div class="syl-num">UNIT 03</div>
+          <div class="syl-title">🔢 Relational Query Languages</div>
+          <ul class="syl-topics">
+            <li>Relational algebra</li><li>Tuple relational calculus</li><li>Domain relational calculus</li><li>SQL</li><li>QBE</li>
+          </ul>
+        </a>
+        <a href="#normalization" class="syllabus-card reveal" style="text-decoration:none;color:inherit">
+          <div class="syl-num">UNIT 04</div>
+          <div class="syl-title">📐 Relational Database Design</div>
+          <ul class="syl-topics">
+            <li>Domain dependency</li><li>Data dependency</li><li>Armstrong's axioms</li><li>Normal forms</li><li>Dependency preservation</li><li>Lossless design</li>
+          </ul>
+        </a>
+        <a href="#queryopt" class="syllabus-card reveal reveal-delay-1" style="text-decoration:none;color:inherit">
+          <div class="syl-num">UNIT 05</div>
+          <div class="syl-title">⚙️ Query Processing & Optimization</div>
+          <ul class="syl-topics">
+            <li>Evaluation of relational algebra expressions</li><li>Query equivalence</li><li>Join strategies</li><li>Query optimization algorithms</li>
+          </ul>
+        </a>
+        <a href="#storage" class="syllabus-card reveal reveal-delay-2" style="text-decoration:none;color:inherit">
+          <div class="syl-num">UNIT 06</div>
+          <div class="syl-title">💾 Storage Strategies</div>
+          <ul class="syl-topics">
+            <li>Indices</li><li>B-trees</li><li>Hashing</li>
+          </ul>
+        </a>
+        <a href="#transactions" class="syllabus-card reveal" style="text-decoration:none;color:inherit">
+          <div class="syl-num">UNIT 07</div>
+          <div class="syl-title">🔄 Transaction Processing</div>
+          <ul class="syl-topics">
+            <li>Recovery and concurrency control</li><li>Locking and timestamp based schedulers</li><li>Multi-version concurrency control schemes</li><li>Optimistic concurrency control schemes</li>
+          </ul>
+        </a>
+        <a href="#nosql" class="syllabus-card reveal reveal-delay-1" style="text-decoration:none;color:inherit">
+          <div class="syl-num">UNIT 08</div>
+          <div class="syl-title">🌐 Recent Trends</div>
+          <ul class="syl-topics">
+            <li>XML Data</li><li>XML Schema</li><li>JSON</li><li>NoSQL Systems</li>
+          </ul>
+        </a>
+        <a href="#practical" class="syllabus-card reveal reveal-delay-2" style="text-decoration:none;color:inherit">
+          <div class="syl-num">PRACTICAL</div>
+          <div class="syl-title">💻 Practical Component</div>
+          <ul class="syl-topics">
+            <li>Database schema design</li><li>Database creation</li><li>SQL programming</li><li>Report generation</li><li>ORACLE, SYBASE, DB2, SQL-Server, INFORMIX</li><li>Front end development tools</li><li>ODBC, CORBA calls</li><li>Internet based access to databases</li><li>Database administration</li>
+          </ul>
+        </a>
+      </div>
+    </section>
+
+    <!-- ====== ARCHITECTURE ====== -->
+    <section id="architecture" class="section anchor-target">
+      <div class="section-header reveal">
+        <div class="section-eyebrow">Unit 01</div>
+        <h2 class="section-title">DBMS Architecture</h2>
+        <p class="section-desc">The foundation. Understand how DBMS is structured and why it's better than file systems.</p>
+      </div>
+
+      <div class="important-banner reveal">
+        <div class="icon">⭐</div>
+        <p><strong>Most Important for Exam:</strong> Three-level architecture, data independence (physical vs logical), DDL vs DML — these appear in nearly every university exam.</p>
+      </div>
+
+      <div class="accordion reveal">
+        <button class="acc-trigger open" onclick="toggleAcc(this)">
+          <div class="acc-icon" style="background:#d8f3dc">🏛</div>
+          <span class="acc-trigger-title">What is DBMS? File System vs DBMS</span>
+          <span class="acc-trigger-sub">Fundamentals</span>
+          <span class="acc-arrow">▼</span>
+        </button>
+        <div class="acc-body open">
+          <div class="content-prose">
+            <p>A <strong>Database Management System (DBMS)</strong> is software that manages, stores, retrieves, and manipulates data in a structured way. Think of it as a highly intelligent librarian who not only stores books but can find any information instantly, ensure no two people check out the same book simultaneously, and recover from disasters.</p>
+            <h4>File System vs DBMS — The Classic Comparison</h4>
+            <table class="compare-table">
+              <tr><th>Parameter</th><th>File System</th><th>DBMS</th></tr>
+              <tr><td>Data Redundancy</td><td>High — same data repeated</td><td>Low — controlled via normalization</td></tr>
+              <tr><td>Data Inconsistency</td><td>Very common</td><td>Eliminated</td></tr>
+              <tr><td>Data Sharing</td><td>Difficult</td><td>Easy concurrent access</td></tr>
+              <tr><td>Security</td><td>OS-level only</td><td>Fine-grained access control</td></tr>
+              <tr><td>Backup & Recovery</td><td>Manual</td><td>Automatic with logs</td></tr>
+              <tr><td>Data Independence</td><td>None — app depends on file structure</td><td>Physical & Logical independence</td></tr>
+              <tr><td>Query Language</td><td>None</td><td>SQL</td></tr>
+            </table>
+            <div class="exam-tip">
+              <div class="exam-tip-label">💡 Memory Trick</div>
+              <p>DBMS Advantages = <strong>R-I-S-Q-D-A</strong> → Redundancy↓, Inconsistency↓, Sharing↑, Query Language, Data Independence, Access Control</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion reveal">
+        <button class="acc-trigger" onclick="toggleAcc(this)">
+          <div class="acc-icon" style="background:#dbeafe">🏗</div>
+          <span class="acc-trigger-title">Three-Level Architecture (ANSI/SPARC)</span>
+          <span class="acc-trigger-sub badge badge-red" style="background:var(--red-light);color:var(--red);padding:3px 8px;border-radius:4px;font-size:11px">🔥 High Frequency</span>
+          <span class="acc-arrow">▼</span>
+        </button>
+        <div class="acc-body">
+          <div class="content-prose">
+            <p>The three-schema architecture separates the user's view from the physical storage, enabling <strong>data independence</strong>.</p>
+            <div class="info-grid">
+              <div class="info-card">
+                <div class="info-card-icon">👁</div>
+                <div class="info-card-title">External Level (View)</div>
+                <div class="info-card-desc">What individual users see. Each user has their own customized view. E.g., HR sees employee data, Finance sees salary data only.</div>
+              </div>
+              <div class="info-card">
+                <div class="info-card-icon">🧩</div>
+                <div class="info-card-title">Conceptual Level (Logical)</div>
+                <div class="info-card-desc">Community view — describes what data is stored and relationships. Hides physical storage details. DBA works at this level.</div>
+              </div>
+              <div class="info-card">
+                <div class="info-card-icon">💿</div>
+                <div class="info-card-title">Internal Level (Physical)</div>
+                <div class="info-card-desc">Actual physical storage — how data is stored on disk, file organization, indexes, compression. Closest to hardware.</div>
+              </div>
+            </div>
+            <h4>Data Independence — The Big Idea</h4>
+            <p><strong>Physical Data Independence:</strong> Ability to change the physical schema without affecting the conceptual schema. Example: changing file organization from sequential to hash without rewriting applications.</p>
+            <p><strong>Logical Data Independence:</strong> Ability to change the conceptual schema without affecting external schemas. Example: adding a new column to a table without breaking existing views. <em>Harder to achieve than physical independence.</em></p>
+            <div class="exam-tip">
+              <div class="exam-tip-label">📝 Exam Trick</div>
+              <p>Physical independence is EASIER to achieve. Logical independence is HARDER. If asked which is more important — both are, but logical is more difficult to achieve.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion reveal">
+        <button class="acc-trigger" onclick="toggleAcc(this)">
+          <div class="acc-icon" style="background:#fef3cd">📝</div>
+          <span class="acc-trigger-title">DDL vs DML — Data Languages</span>
+          <span class="acc-trigger-sub">Schema & Data</span>
+          <span class="acc-arrow">▼</span>
+        </button>
+        <div class="acc-body">
+          <div class="content-prose">
+            <table class="compare-table">
+              <tr><th>Feature</th><th>DDL (Data Definition Language)</th><th>DML (Data Manipulation Language)</th></tr>
+              <tr><td>Purpose</td><td>Define/modify database structure</td><td>Manipulate actual data</td></tr>
+              <tr><td>Commands</td><td>CREATE, ALTER, DROP, TRUNCATE</td><td>INSERT, UPDATE, DELETE, SELECT</td></tr>
+              <tr><td>Works On</td><td>Schema (structure)</td><td>Data (instances)</td></tr>
+              <tr><td>Auto-commit</td><td>Yes — immediate and permanent</td><td>No — can be rolled back</td></tr>
+              <tr><td>Example</td><td><code>CREATE TABLE student (...);</code></td><td><code>INSERT INTO student VALUES (...);</code></td></tr>
+            </table>
+            <p>Also remember: <strong>DCL</strong> (GRANT, REVOKE), <strong>TCL</strong> (COMMIT, ROLLBACK, SAVEPOINT)</p>
+            <h4>Schema vs Instance</h4>
+            <p><strong>Schema</strong> = The overall design/structure of the database (like a blueprint). Rarely changes.</p>
+            <p><strong>Instance</strong> = The actual data stored at a particular moment (like the actual building). Changes constantly.</p>
+            <div class="exam-tip">
+              <div class="exam-tip-label">🎯 Analogy</div>
+              <p>Schema is like a class definition in OOP. Instance is like an object created from that class.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== DATA MODELS ====== -->
+    <section id="datamodels" class="section anchor-target">
+      <div class="section-header reveal">
+        <div class="section-eyebrow">Unit 02</div>
+        <h2 class="section-title">Data Models</h2>
+        <p class="section-desc">Different ways to conceptually organize and represent data. Master the differences for MCQs.</p>
+      </div>
+
+      <div class="accordion reveal">
+        <button class="acc-trigger open" onclick="toggleAcc(this)">
+          <div class="acc-icon" style="background:#d8f3dc">🗂</div>
+          <span class="acc-trigger-title">All Data Models — Compared</span>
+          <span class="acc-trigger-sub badge badge-red" style="background:var(--red-light);color:var(--red);padding:3px 8px;border-radius:4px;font-size:11px">🔥 MCQ Heavy</span>
+          <span class="acc-arrow">▼</span>
+        </button>
+        <div class="acc-body open">
+          <div class="content-prose">
+            <table class="compare-table">
+              <tr><th>Model</th><th>Structure</th><th>Pros</th><th>Cons</th><th>Example</th></tr>
+              <tr><td><strong>Hierarchical</strong></td><td>Tree (parent-child)</td><td>Fast access, simple</td><td>Redundancy, no many-to-many</td><td>IMS (IBM)</td></tr>
+              <tr><td><strong>Network</strong></td><td>Graph (sets)</td><td>Handles many-to-many</td><td>Complex navigation, rigid</td><td>IDMS</td></tr>
+              <tr><td><strong>Relational</strong></td><td>Tables (relations)</td><td>Simple, flexible, SQL</td><td>Performance vs NoSQL</td><td>MySQL, Oracle</td></tr>
+              <tr><td><strong>Object-Oriented</strong></td><td>Objects + Methods</td><td>Encapsulation, inheritance</td><td>Complex querying</td><td>ObjectDB</td></tr>
+              <tr><td><strong>ER Model</strong></td><td>Entities + Relationships</td><td>Intuitive design tool</td><td>Needs mapping to relational</td><td>Design stage only</td></tr>
+            </table>
+            <h4>ER Model — Deep Dive</h4>
+            <div class="info-grid">
+              <div class="info-card"><div class="info-card-icon">⬜</div><div class="info-card-title">Entity</div><div class="info-card-desc">A real-world object (Student, Employee). Represented by a <strong>rectangle</strong>.</div></div>
+              <div class="info-card"><div class="info-card-icon">⬬</div><div class="info-card-title">Attribute</div><div class="info-card-desc">Property of entity (Name, Age). Represented by an <strong>ellipse/oval</strong>.</div></div>
+              <div class="info-card"><div class="info-card-icon">◇</div><div class="info-card-title">Relationship</div><div class="info-card-desc">Association between entities (Student ENROLLS Course). Represented by a <strong>diamond</strong>.</div></div>
+              <div class="info-card"><div class="info-card-icon">⬜⬜</div><div class="info-card-title">Weak Entity</div><div class="info-card-desc">Cannot exist without a strong entity. Represented by a <strong>double rectangle</strong>. Has a partial key (underlined with dashes).</div></div>
+            </div>
+            <h4>Cardinality Types</h4>
+            <table class="compare-table">
+              <tr><th>Type</th><th>Meaning</th><th>Example</th></tr>
+              <tr><td>1:1 (One-to-One)</td><td>One entity maps to exactly one other</td><td>Person — Passport</td></tr>
+              <tr><td>1:N (One-to-Many)</td><td>One entity maps to many</td><td>Department — Employees</td></tr>
+              <tr><td>M:N (Many-to-Many)</td><td>Many maps to many</td><td>Students — Courses</td></tr>
+            </table>
+            <h4>Integrity Constraints</h4>
+            <p><strong>Domain constraint:</strong> Values must be from a defined domain (age must be integer &gt; 0).</p>
+            <p><strong>Entity integrity:</strong> Primary key cannot be NULL.</p>
+            <p><strong>Referential integrity:</strong> Foreign key must reference an existing primary key or be NULL.</p>
+            <p><strong>Key constraint:</strong> Each tuple must be uniquely identified.</p>
+            <div class="exam-tip">
+              <div class="exam-tip-label">💡 Exam Trick</div>
+              <p>Entity integrity → PK cannot be NULL. Referential integrity → FK must exist in referenced table. These two are the most asked.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== RELATIONAL ALGEBRA ====== -->
+    <section id="relational" class="section anchor-target">
+      <div class="section-header reveal">
+        <div class="section-eyebrow">Unit 03</div>
+        <h2 class="section-title">Relational Query Languages</h2>
+        <p class="section-desc">The mathematical foundation of SQL — master these operators to ace MCQs and theory questions.</p>
+      </div>
+
+      <div class="important-banner reveal">
+        <div class="icon">⭐</div>
+        <p><strong>Most Important:</strong> Relational Algebra operators, especially SELECT (σ), PROJECT (π), JOIN, and DIVISION are extremely high frequency in exams.</p>
+      </div>
+
+      <div class="accordion reveal">
+        <button class="acc-trigger open" onclick="toggleAcc(this)">
+          <div class="acc-icon" style="background:#ede9fe">∑</div>
+          <span class="acc-trigger-title">Relational Algebra — All Operators</span>
+          <span class="acc-trigger-sub badge badge-red" style="background:var(--red-light);color:var(--red);padding:3px 8px;border-radius:4px;font-size:11px">🔥 Very Important</span>
+          <span class="acc-arrow">▼</span>
+        </button>
+        <div class="acc-body open">
+          <div class="content-prose">
+            <div class="operator-grid">
+              <div class="op-card"><div class="op-symbol">σ</div><div class="op-name">Select</div><div class="op-desc">Filters rows based on a condition. Like WHERE clause. <code>σ<sub>condition</sub>(R)</code></div></div>
+              <div class="op-card"><div class="op-symbol">π</div><div class="op-name">Project</div><div class="op-desc">Selects specific columns. Eliminates duplicates. Like SELECT col. <code>π<sub>col1,col2</sub>(R)</code></div></div>
+              <div class="op-card"><div class="op-symbol">∪</div><div class="op-name">Union</div><div class="op-desc">Combines tuples from two relations (no duplicates). Relations must be union-compatible.</div></div>
+              <div class="op-card"><div class="op-symbol">−</div><div class="op-name">Difference</div><div class="op-desc">Tuples in R but not in S. <code>R − S</code></div></div>
+              <div class="op-card"><div class="op-symbol">×</div><div class="op-name">Cartesian Product</div><div class="op-desc">All possible combinations of tuples. <code>R × S</code>. Result: |R|×|S| tuples.</div></div>
+              <div class="op-card"><div class="op-symbol">ρ</div><div class="op-name">Rename</div><div class="op-desc">Renames a relation or attributes. <code>ρ<sub>newName</sub>(R)</code></div></div>
+              <div class="op-card"><div class="op-symbol">⋈</div><div class="op-name">Natural Join</div><div class="op-desc">Joins on common attributes, removes duplicate columns. Most common join type.</div></div>
+              <div class="op-card"><div class="op-symbol">⋈<sub>θ</sub></div><div class="op-name">Theta Join</div><div class="op-desc">Join with any condition (=, &gt;, &lt;). General case of join.</div></div>
+              <div class="op-card"><div class="op-symbol">⋈=</div><div class="op-name">Equi Join</div><div class="op-desc">Theta join where condition is only equality (=). Keeps both join columns.</div></div>
+              <div class="op-card"><div class="op-symbol">÷</div><div class="op-name">Division</div><div class="op-desc">Finds tuples in R that are related to ALL tuples in S. "For all" queries.</div></div>
+              <div class="op-card"><div class="op-symbol">∩</div><div class="op-name">Intersection</div><div class="op-desc">Common tuples in R and S. Not fundamental (derived from − and ∪).</div></div>
+            </div>
+            <h4>Example — Step by Step</h4>
+            <p>Given: EMPLOYEE(EID, NAME, DEPT, SALARY) — Find names of CS employees earning &gt; 50000:</p>
+            <div class="schema-box">π<span class="tname">NAME</span>( σ<span class="tname">DEPT='CS' AND SALARY>50000</span>( EMPLOYEE ) )</div>
+            <div class="exam-tip">
+              <div class="exam-tip-label">📝 Order Rule</div>
+              <p>Always apply σ (SELECT) before π (PROJECT) for efficiency. Apply most restrictive condition first. This is the basis of query optimization.</p>
+            </div>
+            <h4>Tuple Relational Calculus (TRC)</h4>
+            <p>Non-procedural language — specifies WHAT to retrieve, not HOW. Uses tuple variables: <code>{t | P(t)}</code> where t is a tuple variable and P is a predicate.</p>
+            <p>Example: Find students with GPA &gt; 3.5: <code>{t | t ∈ STUDENT ∧ t.GPA &gt; 3.5}</code></p>
+            <h4>Domain Relational Calculus (DRC)</h4>
+            <p>Uses domain variables (one per attribute). <code>{⟨x1,x2,...⟩ | P(x1,x2,...)}</code></p>
+            <h4>QBE (Query By Example)</h4>
+            <p>Graphical query language. User fills in example values in table skeleton. Internally converts to relational algebra. Found in Microsoft Access.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== NORMALIZATION ====== -->
+    <section id="normalization" class="section anchor-target">
+      <div class="section-header reveal">
+        <div class="section-eyebrow">Unit 04</div>
+        <h2 class="section-title">Relational Database Design & Normalization</h2>
+        <p class="section-desc">The most exam-heavy topic. Master functional dependencies and normal forms.</p>
+      </div>
+      <div class="important-banner reveal">
+        <div class="icon">🔥</div>
+        <p><strong>Guaranteed in Exam:</strong> Every university exam has normalization numericals. You MUST be able to identify 1NF, 2NF, 3NF, BCNF and decompose schemas.</p>
+      </div>
+
+      <div class="accordion reveal">
+        <button class="acc-trigger open" onclick="toggleAcc(this)">
+          <div class="acc-icon" style="background:#fef3cd">📐</div>
+          <span class="acc-trigger-title">Functional Dependencies & Armstrong's Axioms</span>
+          <span class="acc-trigger-sub badge badge-red" style="background:var(--red-light);color:var(--red);padding:3px 8px;border-radius:4px;font-size:11px">🔥 Very Important</span>
+          <span class="acc-arrow">▼</span>
+        </button>
+        <div class="acc-body open">
+          <div class="content-prose">
+            <p>A <strong>Functional Dependency (FD)</strong> X → Y means: knowing X uniquely determines Y. If two tuples have the same X value, they must have the same Y value.</p>
+            <h4>Types of Dependencies</h4>
+            <div class="info-grid">
+              <div class="info-card"><div class="info-card-title">Full Dependency</div><div class="info-card-desc">Y depends on the entire composite key, not just part of it. Required for 2NF.</div></div>
+              <div class="info-card"><div class="info-card-title">Partial Dependency</div><div class="info-card-desc">Y depends on only PART of a composite key. Violates 2NF. <em>Only possible with composite key.</em></div></div>
+              <div class="info-card"><div class="info-card-title">Transitive Dependency</div><div class="info-card-desc">X→Y→Z (Y is non-key). Z transitively depends on X. Violates 3NF.</div></div>
+              <div class="info-card"><div class="info-card-title">Trivial Dependency</div><div class="info-card-desc">A→B where B ⊆ A. Always holds. Not interesting for normalization.</div></div>
+            </div>
+            <h4>Armstrong's Axioms</h4>
+            <table class="compare-table">
+              <tr><th>Axiom</th><th>Rule</th><th>Meaning</th></tr>
+              <tr><td><strong>Reflexivity</strong></td><td>If Y ⊆ X, then X → Y</td><td>A set of attributes determines its own subsets</td></tr>
+              <tr><td><strong>Augmentation</strong></td><td>If X → Y, then XZ → YZ</td><td>Adding same attribute to both sides preserves FD</td></tr>
+              <tr><td><strong>Transitivity</strong></td><td>If X→Y and Y→Z, then X→Z</td><td>Chaining of FDs</td></tr>
+            </table>
+            <p><em>Derived rules:</em> Union (if X→Y and X→Z, then X→YZ), Decomposition, Pseudo-transitivity</p>
+            <div class="exam-tip">
+              <div class="exam-tip-label">💡 Memory Trick: Armstrong = RAT</div>
+              <p><strong>R</strong>eflexivity, <strong>A</strong>ugmentation, <strong>T</strong>ransitivity — Armstrong's three primary axioms are like a RAT that gnaws through all FDs!</p>
+            </div>
+            <h4>Closure of Attribute Set (X+)</h4>
+            <p>The closure X+ is the set of ALL attributes that can be determined from X using the given FDs.</p>
+            <p><strong>Algorithm:</strong> Start with result = X. For each FD A→B, if A ⊆ result, add B to result. Repeat until no change.</p>
+            <p><strong>Use:</strong> If X+ = all attributes → X is a <strong>superkey</strong>. If no proper subset of X has this property → X is a <strong>candidate key</strong>.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion reveal">
+        <button class="acc-trigger" onclick="toggleAcc(this)">
+          <div class="acc-icon" style="background:#d8f3dc">📊</div>
+          <span class="acc-trigger-title">Normal Forms — 1NF to BCNF</span>
+          <span class="acc-trigger-sub badge badge-red" style="background:var(--red-light);color:var(--red);padding:3px 8px;border-radius:4px;font-size:11px">🔥 Numerical Questions</span>
+          <span class="acc-arrow">▼</span>
+        </button>
+        <div class="acc-body">
+          <div class="content-prose">
+            <div class="norm-step">
+              <div class="norm-step-num">1NF</div>
+              <div class="norm-step-title">First Normal Form</div>
+              <div class="norm-step-desc">A relation is in 1NF if: (1) All attribute values are <strong>atomic</strong> (no multi-valued or composite attributes), (2) There are no repeating groups, (3) Each row is unique (has a primary key).</div>
+              <div class="norm-step-badge"><span class="badge badge-red">Violation: Multi-valued cell like {Math, Science} in one cell</span></div>
+            </div>
+            <div class="norm-step">
+              <div class="norm-step-num">2NF</div>
+              <div class="norm-step-title">Second Normal Form</div>
+              <div class="norm-step-desc">In 1NF + <strong>No partial dependencies</strong>. Every non-key attribute must depend on the ENTIRE composite primary key. <em>Only relevant when PK is composite.</em></div>
+              <div class="norm-step-badge"><span class="badge badge-red">Violation: (StudentID, CourseID) → StudentName (StudentName depends only on StudentID)</span></div>
+            </div>
+            <div class="norm-step">
+              <div class="norm-step-num">3NF</div>
+              <div class="norm-step-title">Third Normal Form</div>
+              <div class="norm-step-desc">In 2NF + <strong>No transitive dependencies</strong>. No non-key attribute should depend on another non-key attribute. For any FD X→Y: either X is a superkey OR Y is a prime attribute (part of some candidate key).</div>
+              <div class="norm-step-badge"><span class="badge badge-red">Violation: EmpID→DeptID→DeptName (DeptName transitively depends on EmpID via DeptID)</span></div>
+            </div>
+            <div class="norm-step">
+              <div class="norm-step-num">BCNF</div>
+              <div class="norm-step-title">Boyce-Codd Normal Form</div>
+              <div class="norm-step-desc">Stronger than 3NF. For every FD X→Y, X must be a <strong>superkey</strong>. A relation in BCNF is also in 3NF, but not vice versa.</div>
+              <div class="norm-step-badge"><span class="badge badge-gold">BCNF may not always preserve dependencies — trade-off with 3NF</span></div>
+            </div>
+            <h4>Quick Identification Cheat Sheet</h4>
+            <table class="compare-table">
+              <tr><th>Normal Form</th><th>Violation To Remove</th><th>Key Requirement</th></tr>
+              <tr><td>1NF</td><td>Atomic values only</td><td>No multi-valued attributes</td></tr>
+              <tr><td>2NF</td><td>Partial dependencies</td><td>Full dependency on PK</td></tr>
+              <tr><td>3NF</td><td>Transitive dependencies</td><td>No non-key→non-key</td></tr>
+              <tr><td>BCNF</td><td>LHS must be superkey for ALL FDs</td><td>Stronger than 3NF</td></tr>
+            </table>
+            <h4>Lossless Decomposition</h4>
+            <p>A decomposition R into R1 and R2 is lossless if: <code>R1 ∩ R2 → R1</code> or <code>R1 ∩ R2 → R2</code> (the common attribute is a key in at least one of the relations).</p>
+            <h4>Dependency Preservation</h4>
+            <p>All functional dependencies from the original relation should still be enforced after decomposition (either directly or derivable). BCNF may not always preserve dependencies — use 3NF when dependency preservation is required.</p>
+            <div class="exam-tip">
+              <div class="exam-tip-label">📝 Normalization Shortcut</div>
+              <p>Step 1: Find all candidate keys. Step 2: Check each FD. Step 3: Classify violation. Step 4: Decompose. The common mistake is forgetting to recheck after decomposition.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== SQL MASTERCLASS ====== -->
+    <section id="sql" class="section anchor-target">
+      <div class="section-header reveal">
+        <div class="section-eyebrow">SQL Masterclass</div>
+        <h2 class="section-title">SQL — Complete Reference</h2>
+        <p class="section-desc">The most practical and exam-scoring section. Master every command, clause, and pattern.</p>
+      </div>
+      <div class="important-banner reveal">
+        <div class="icon">🔥</div>
+        <p><strong>Guaranteed 20–30 marks:</strong> SQL questions appear in every exam. Know CREATE TABLE, SELECT with JOINs, aggregate functions, subqueries, and views cold.</p>
+      </div>
+
+      <div class="accordion reveal">
+        <button class="acc-trigger open" onclick="toggleAcc(this)">
+          <div class="acc-icon" style="background:#d8f3dc">🏗</div>
+          <span class="acc-trigger-title">DDL — Data Definition Language</span>
+          <span class="acc-trigger-sub">CREATE · ALTER · DROP · TRUNCATE</span>
+          <span class="acc-arrow">▼</span>
+        </button>
+        <div class="acc-body open">
+          <div class="code-block">
+            <div class="code-header"><div class="code-dots"><span></span><span></span><span></span></div><span class="code-lang">SQL — DDL</span></div>
+            <div class="code-body">
+<span class="cm">-- CREATE TABLE with all constraints</span>
+<span class="kw">CREATE TABLE</span> <span class="tbl">Student</span> (
+  StudentID   <span class="type">INT</span>           <span class="kw">PRIMARY KEY</span>,
+  Name        <span class="type">VARCHAR</span>(<span class="num">50</span>)  <span class="kw">NOT NULL</span>,
+  Email       <span class="type">VARCHAR</span>(<span class="num">100</span>) <span class="kw">UNIQUE</span>,
+  Age         <span class="type">INT</span>           <span class="kw">CHECK</span> (Age &gt; <span class="num">0</span> <span class="kw">AND</span> Age &lt; <span class="num">120</span>),
+  Gender      <span class="type">CHAR</span>(<span class="num">1</span>)       <span class="kw">DEFAULT</span> <span class="str">'M'</span>,
+  DeptID      <span class="type">INT</span>           <span class="kw">REFERENCES</span> <span class="tbl">Department</span>(DeptID)
+);
+
+<span class="cm">-- ALTER: Add, Modify, Drop columns</span>
+<span class="kw">ALTER TABLE</span> <span class="tbl">Student</span> <span class="kw">ADD</span> Phone <span class="type">VARCHAR</span>(<span class="num">15</span>);
+<span class="kw">ALTER TABLE</span> <span class="tbl">Student</span> <span class="kw">MODIFY</span> Name <span class="type">VARCHAR</span>(<span class="num">100</span>);
+<span class="kw">ALTER TABLE</span> <span class="tbl">Student</span> <span class="kw">DROP COLUMN</span> Phone;
+
+<span class="cm">-- DROP vs TRUNCATE vs DELETE</span>
+<span class="kw">DROP TABLE</span> <span class="tbl">Student</span>;       <span class="cm">-- Removes table + structure</span>
+<span class="kw">TRUNCATE TABLE</span> <span class="tbl">Student</span>; <span class="cm">-- Removes all data, keeps structure</span>
+<span class="kw">DELETE FROM</span> <span class="tbl">Student</span>;     <span class="cm">-- Removes data, can be rolled back</span>
+            </div>
+          </div>
+          <div class="exam-tip">
+            <div class="exam-tip-label">📝 DROP vs TRUNCATE vs DELETE</div>
+            <p><strong>DROP</strong> = Removes table entirely (DDL, no rollback). <strong>TRUNCATE</strong> = Removes all rows fast (DDL, no rollback, resets identity). <strong>DELETE</strong> = Removes rows conditionally (DML, can rollback). This is very commonly asked!</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion reveal">
+        <button class="acc-trigger" onclick="toggleAcc(this)">
+          <div class="acc-icon" style="background:#dbeafe">🔍</div>
+          <span class="acc-trigger-title">SELECT — DQL with All Clauses</span>
+          <span class="acc-trigger-sub">WHERE · GROUP BY · HAVING · ORDER BY</span>
+          <span class="acc-arrow">▼</span>
+        </button>
+        <div class="acc-body">
+          <div class="code-block">
+            <div class="code-header"><div class="code-dots"><span></span><span></span><span></span></div><span class="code-lang">SQL — SELECT</span></div>
+            <div class="code-body">
+<span class="cm">-- Full SELECT syntax order (must follow this order)</span>
+<span class="kw">SELECT</span>   column_list          <span class="cm">-- 5. What to show</span>
+<span class="kw">FROM</span>     table_name           <span class="cm">-- 1. From where</span>
+<span class="kw">WHERE</span>    condition            <span class="cm">-- 2. Filter rows (before grouping)</span>
+<span class="kw">GROUP BY</span> column_name         <span class="cm">-- 3. Group rows</span>
+<span class="kw">HAVING</span>   group_condition     <span class="cm">-- 4. Filter groups (after grouping)</span>
+<span class="kw">ORDER BY</span> column <span class="kw">ASC</span>/<span class="kw">DESC</span>    <span class="cm">-- 6. Sort results</span>
+<span class="kw">LIMIT</span>    n;                  <span class="cm">-- 7. Limit output</span>
+
+<span class="cm">-- Aggregate functions</span>
+<span class="kw">SELECT</span> <span class="fn">COUNT</span>(*), <span class="fn">SUM</span>(Salary), <span class="fn">AVG</span>(Salary),
+       <span class="fn">MIN</span>(Salary), <span class="fn">MAX</span>(Salary)
+<span class="kw">FROM</span> <span class="tbl">Employee</span>
+<span class="kw">WHERE</span> Dept = <span class="str">'CS'</span>
+<span class="kw">GROUP BY</span> DeptID
+<span class="kw">HAVING</span> <span class="fn">AVG</span>(Salary) &gt; <span class="num">50000</span>;
+            </div>
+          </div>
+          <div class="sql-output">
+            <div class="sql-output-header">⬡ Result — Departments with avg salary &gt; 50000</div>
+            <table><tr><th>DeptID</th><th>COUNT(*)</th><th>AVG(Salary)</th></tr><tr><td>CS</td><td>4</td><td>72500.00</td></tr><tr><td>IT</td><td>3</td><td>63000.00</td></tr></table>
+            <div class="rows-label">2 rows returned</div>
+          </div>
+          <div class="exam-tip">
+            <div class="exam-tip-label">📝 WHERE vs HAVING</div>
+            <p><strong>WHERE</strong> filters individual rows BEFORE grouping. <strong>HAVING</strong> filters groups AFTER GROUP BY. You CANNOT use aggregate functions in WHERE. <code>WHERE AVG(sal) > 5000</code> = WRONG. <code>HAVING AVG(sal) > 5000</code> = CORRECT.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion reveal">
+        <button class="acc-trigger" onclick="toggleAcc(this)">
+          <div class="acc-icon" style="background:#ede9fe">🔗</div>
+          <span class="acc-trigger-title">JOINs — All Types with Examples</span>
+          <span class="acc-trigger-sub">INNER · LEFT · RIGHT · FULL</span>
+          <span class="acc-arrow">▼</span>
+        </button>
+        <div class="acc-body">
+          <div class="content-prose">
+            <table class="compare-table">
+              <tr><th>Join Type</th><th>Returns</th><th>NULL Rows</th></tr>
+              <tr><td><strong>INNER JOIN</strong></td><td>Only matching rows from both tables</td><td>None</td></tr>
+              <tr><td><strong>LEFT JOIN</strong></td><td>All rows from left + matching from right</td><td>Right side NULLs when no match</td></tr>
+              <tr><td><strong>RIGHT JOIN</strong></td><td>All rows from right + matching from left</td><td>Left side NULLs when no match</td></tr>
+              <tr><td><strong>FULL OUTER JOIN</strong></td><td>All rows from both, NULLs when no match</td><td>Both sides can have NULLs</td></tr>
+              <tr><td><strong>CROSS JOIN</strong></td><td>Cartesian product of both tables</td><td>None</td></tr>
+              <tr><td><strong>SELF JOIN</strong></td><td>Table joined with itself</td><td>As per join type used</td></tr>
+            </table>
+          </div>
+          <div class="code-block">
+            <div class="code-header"><div class="code-dots"><span></span><span></span><span></span></div><span class="code-lang">SQL — JOINs</span></div>
+            <div class="code-body">
+<span class="cm">-- INNER JOIN: only matching records</span>
+<span class="kw">SELECT</span> s.Name, c.CourseName
+<span class="kw">FROM</span> <span class="tbl">Student</span> s
+<span class="kw">INNER JOIN</span> <span class="tbl">Enrollment</span> e <span class="kw">ON</span> s.StudentID = e.StudentID
+<span class="kw">INNER JOIN</span> <span class="tbl">Course</span> c <span class="kw">ON</span> e.CourseID = c.CourseID;
+
+<span class="cm">-- LEFT JOIN: all students, even without enrollment</span>
+<span class="kw">SELECT</span> s.Name, e.CourseID
+<span class="kw">FROM</span> <span class="tbl">Student</span> s
+<span class="kw">LEFT JOIN</span> <span class="tbl">Enrollment</span> e <span class="kw">ON</span> s.StudentID = e.StudentID;
+
+<span class="cm">-- SELF JOIN: find employee and their manager</span>
+<span class="kw">SELECT</span> e.Name <span class="kw">AS</span> Employee, m.Name <span class="kw">AS</span> Manager
+<span class="kw">FROM</span> <span class="tbl">Employee</span> e
+<span class="kw">JOIN</span> <span class="tbl">Employee</span> m <span class="kw">ON</span> e.ManagerID = m.EmpID;
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion reveal">
+        <button class="acc-trigger" onclick="toggleAcc(this)">
+          <div class="acc-icon" style="background:#fef3cd">🔄</div>
+          <span class="acc-trigger-title">Subqueries, Views & Indexes</span>
+          <span class="acc-trigger-sub">Nested Queries · CREATE VIEW · CREATE INDEX</span>
+          <span class="acc-arrow">▼</span>
+        </button>
+        <div class="acc-body">
+          <div class="code-block">
+            <div class="code-header"><div class="code-dots"><span></span><span></span><span></span></div><span class="code-lang">SQL — Advanced</span></div>
+            <div class="code-body">
+<span class="cm">-- Subquery: students with above-average salary</span>
+<span class="kw">SELECT</span> Name <span class="kw">FROM</span> <span class="tbl">Employee</span>
+<span class="kw">WHERE</span> Salary &gt; (<span class="kw">SELECT</span> <span class="fn">AVG</span>(Salary) <span class="kw">FROM</span> <span class="tbl">Employee</span>);
+
+<span class="cm">-- Correlated subquery</span>
+<span class="kw">SELECT</span> e1.Name <span class="kw">FROM</span> <span class="tbl">Employee</span> e1
+<span class="kw">WHERE</span> Salary &gt; (<span class="kw">SELECT</span> <span class="fn">AVG</span>(Salary) <span class="kw">FROM</span> <span class="tbl">Employee</span> e2
+                 <span class="kw">WHERE</span> e2.DeptID = e1.DeptID);
+
+<span class="cm">-- EXISTS: students enrolled in at least one course</span>
+<span class="kw">SELECT</span> Name <span class="kw">FROM</span> <span class="tbl">Student</span> s
+<span class="kw">WHERE EXISTS</span> (<span class="kw">SELECT</span> <span class="num">1</span> <span class="kw">FROM</span> <span class="tbl">Enrollment</span> e
+              <span class="kw">WHERE</span> e.StudentID = s.StudentID);
+
+<span class="cm">-- VIEW: virtual table</span>
+<span class="kw">CREATE VIEW</span> <span class="tbl">CS_Students</span> <span class="kw">AS</span>
+<span class="kw">SELECT</span> * <span class="kw">FROM</span> <span class="tbl">Student</span> <span class="kw">WHERE</span> DeptID = <span class="num">1</span>;
+
+<span class="cm">-- INDEX: speed up queries</span>
+<span class="kw">CREATE INDEX</span> idx_name <span class="kw">ON</span> <span class="tbl">Student</span>(Name);
+<span class="kw">CREATE UNIQUE INDEX</span> idx_email <span class="kw">ON</span> <span class="tbl">Student</span>(Email);
+            </div>
+          </div>
+          <div class="exam-tip">
+            <div class="exam-tip-label">💡 View vs Table</div>
+            <p>A VIEW is a stored query — it doesn't store data itself, just the SELECT statement. Views provide security (show only specific columns/rows) and simplify complex queries.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== QUERY OPTIMIZATION ====== -->
+    <section id="queryopt" class="section anchor-target">
+      <div class="section-header reveal">
+        <div class="section-eyebrow">Unit 05</div>
+        <h2 class="section-title">Query Processing & Optimization</h2>
+        <p class="section-desc">How DBMS translates and optimizes SQL queries for maximum performance.</p>
+      </div>
+
+      <div class="accordion reveal">
+        <button class="acc-trigger open" onclick="toggleAcc(this)">
+          <div class="acc-icon" style="background:#dbeafe">⚙️</div>
+          <span class="acc-trigger-title">Query Processing Pipeline</span>
+          <span class="acc-trigger-sub">Parsing → Optimization → Execution</span>
+          <span class="acc-arrow">▼</span>
+        </button>
+        <div class="acc-body open">
+          <div class="content-prose">
+            <div class="timeline">
+              <div class="tl-item"><div class="tl-title">1. Parsing & Translation</div><div class="tl-desc">SQL query is parsed for syntax errors, then translated into an equivalent relational algebra expression. Ambiguous names are resolved using the schema catalog.</div></div>
+              <div class="tl-item"><div class="tl-title">2. Query Optimization</div><div class="tl-desc">The optimizer generates multiple equivalent query execution plans and estimates their cost using statistics (cardinality, selectivity). Picks the cheapest plan.</div></div>
+              <div class="tl-item"><div class="tl-title">3. Query Evaluation</div><div class="tl-desc">The chosen execution plan is executed by the query execution engine. Results are returned to the user.</div></div>
+            </div>
+            <h4>Heuristic Optimization Rules</h4>
+            <ul>
+              <li><strong>Push σ (select) down:</strong> Apply selections as early as possible to reduce tuple count</li>
+              <li><strong>Push π (project) down:</strong> Keep only needed columns early to reduce tuple size</li>
+              <li><strong>Perform most restrictive σ first:</strong> Apply the condition that eliminates most tuples first</li>
+              <li><strong>Combine cascaded σ:</strong> Multiple selects on same relation → combine into one</li>
+              <li><strong>Reorder joins:</strong> Use smaller intermediate results to reduce computation</li>
+            </ul>
+            <h4>Join Algorithms</h4>
+            <table class="compare-table">
+              <tr><th>Algorithm</th><th>Best For</th><th>Complexity</th></tr>
+              <tr><td><strong>Nested Loop Join</strong></td><td>Small relations, any join condition</td><td>O(n × m) — expensive</td></tr>
+              <tr><td><strong>Sort-Merge Join</strong></td><td>Both relations sorted on join attribute</td><td>O(n log n + m log m)</td></tr>
+              <tr><td><strong>Hash Join</strong></td><td>Equi-joins, large unsorted relations</td><td>O(n + m) average</td></tr>
+              <tr><td><strong>Index Join</strong></td><td>One relation has index on join attribute</td><td>O(n × log m)</td></tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== STORAGE ====== -->
+    <section id="storage" class="section anchor-target">
+      <div class="section-header reveal">
+        <div class="section-eyebrow">Unit 06</div>
+        <h2 class="section-title">Storage Strategies</h2>
+        <p class="section-desc">Indexes, B-trees, and hashing — the mechanisms that make databases fast.</p>
+      </div>
+
+      <div class="accordion reveal">
+        <button class="acc-trigger open" onclick="toggleAcc(this)">
+          <div class="acc-icon" style="background:#fef3cd">📦</div>
+          <span class="acc-trigger-title">Indexing — Types & Differences</span>
+          <span class="acc-trigger-sub badge badge-red" style="background:var(--red-light);color:var(--red);padding:3px 8px;border-radius:4px;font-size:11px">🔥 MCQ Favourite</span>
+          <span class="acc-arrow">▼</span>
+        </button>
+        <div class="acc-body open">
+          <div class="content-prose">
+            <table class="compare-table">
+              <tr><th>Index Type</th><th>Description</th><th>When to Use</th></tr>
+              <tr><td><strong>Primary Index</strong></td><td>Built on ordered key field. One entry per block (sparse). Data file is ordered on this key.</td><td>On primary key of ordered file</td></tr>
+              <tr><td><strong>Secondary Index</strong></td><td>Built on non-ordering field. Dense — one entry per record.</td><td>For fields queried often but not the ordering key</td></tr>
+              <tr><td><strong>Clustering (Clustered)</strong></td><td>Data rows stored in same order as index. Only ONE per table possible.</td><td>Range queries, ORDER BY on same column</td></tr>
+              <tr><td><strong>Non-Clustering</strong></td><td>Index order differs from data order. Multiple per table.</td><td>Point queries on non-primary keys</td></tr>
+              <tr><td><strong>Dense Index</strong></td><td>One index entry for EVERY record in file.</td><td>Unordered files, secondary indexes</td></tr>
+              <tr><td><strong>Sparse Index</strong></td><td>Index entries for only SOME records (usually first in each block).</td><td>Ordered files, primary indexes</td></tr>
+            </table>
+            <div class="exam-tip">
+              <div class="exam-tip-label">💡 Memory Trick</div>
+              <p>Dense = entry for every record (like everyone has their own locker key). Sparse = entry for every block (like one master key per floor). Dense takes more space but faster for point queries.</p>
+            </div>
+            <h4>B+ Tree (Most Important Data Structure)</h4>
+            <p>B+ trees are the most commonly used index structure. All data pointers are in <strong>leaf nodes</strong> only. Internal nodes store only keys for routing. Leaf nodes are linked in a doubly-linked list for efficient range queries.</p>
+            <p><strong>Properties:</strong> Every node has between ⌈n/2⌉ and n children (n = order). Root has at least 2 children. All leaves at same level (balanced).</p>
+            <table class="compare-table">
+              <tr><th>Feature</th><th>B-Tree</th><th>B+ Tree</th></tr>
+              <tr><td>Data pointers</td><td>At all nodes</td><td>Only at leaf nodes</td></tr>
+              <tr><td>Leaf linking</td><td>No</td><td>Yes — linked list</td></tr>
+              <tr><td>Range queries</td><td>Slower</td><td>Faster (leaf scan)</td></tr>
+              <tr><td>Key duplication</td><td>No — key appears once</td><td>Yes — key may repeat at internal nodes</td></tr>
+            </table>
+            <h4>Hashing</h4>
+            <p>A hash function h(K) maps key K to a bucket number. <strong>Static hashing:</strong> Fixed number of buckets. <strong>Dynamic hashing (extendible/linear):</strong> Buckets grow as needed.</p>
+            <p><strong>Collision handling:</strong> Open addressing (linear probing, quadratic probing), Chaining (overflow buckets).</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== TRANSACTIONS ====== -->
+    <section id="transactions" class="section anchor-target">
+      <div class="section-header reveal">
+        <div class="section-eyebrow">Unit 07</div>
+        <h2 class="section-title">Transaction Processing</h2>
+        <p class="section-desc">ACID, concurrency control, locking, deadlocks — the heart of reliable database systems.</p>
+      </div>
+
+      <div class="important-banner reveal">
+        <div class="icon">🔥</div>
+        <p><strong>Very Important:</strong> ACID properties, serializability, 2PL, and deadlock handling appear in every exam. The ACID mnemonic alone can get you 5+ marks.</p>
+      </div>
+
+      <div class="accordion reveal">
+        <button class="acc-trigger open" onclick="toggleAcc(this)">
+          <div class="acc-icon" style="background:#d8f3dc">⚗️</div>
+          <span class="acc-trigger-title">ACID Properties</span>
+          <span class="acc-trigger-sub badge badge-red" style="background:var(--red-light);color:var(--red);padding:3px 8px;border-radius:4px;font-size:11px">🔥 Guaranteed in Exam</span>
+          <span class="acc-arrow">▼</span>
+        </button>
+        <div class="acc-body open">
+          <div class="mnemonic">
+            <div class="mnemonic-title">ACID Mnemonic</div>
+            <div class="mnemonic-letters">
+              <div class="mnem-letter">A<div class="mnem-word">Atomicity</div></div>
+              <div class="mnem-letter">C<div class="mnem-word">Consistency</div></div>
+              <div class="mnem-letter">I<div class="mnem-word">Isolation</div></div>
+              <div class="mnem-letter">D<div class="mnem-word">Durability</div></div>
+            </div>
+            <div class="mnemonic-phrase">"All Committed In Database" — helps remember all four properties</div>
+          </div>
+          <div class="content-prose">
+            <div class="info-grid">
+              <div class="info-card"><div class="info-card-icon">⚛️</div><div class="info-card-title">Atomicity</div><div class="info-card-desc"><strong>All or Nothing.</strong> A transaction either fully completes or fully fails. If it fails midway, all changes are rolled back. Ensured by UNDO logs / shadow paging.</div></div>
+              <div class="info-card"><div class="info-card-icon">✅</div><div class="info-card-title">Consistency</div><div class="info-card-desc"><strong>Valid state to valid state.</strong> A transaction takes the database from one consistent state to another. All integrity constraints must hold before and after.</div></div>
+              <div class="info-card"><div class="info-card-icon">🔒</div><div class="info-card-title">Isolation</div><div class="info-card-desc"><strong>Concurrent transactions don't interfere.</strong> Intermediate states of a transaction are invisible to other transactions. Ensured by locking / MVCC / timestamp ordering.</div></div>
+              <div class="info-card"><div class="info-card-icon">💾</div><div class="info-card-title">Durability</div><div class="info-card-desc"><strong>Committed changes survive failures.</strong> Once committed, changes persist even after system crashes. Ensured by REDO logs, checkpointing.</div></div>
+            </div>
+            <h4>Transaction States</h4>
+            <div class="timeline">
+              <div class="tl-item"><div class="tl-title">Active</div><div class="tl-desc">Transaction is executing its read/write operations. Initial state.</div></div>
+              <div class="tl-item"><div class="tl-title">Partially Committed</div><div class="tl-desc">Final operation executed, but changes not yet written to disk.</div></div>
+              <div class="tl-item"><div class="tl-title">Committed</div><div class="tl-desc">All operations successfully completed and changes durably written. COMMIT issued.</div></div>
+              <div class="tl-item"><div class="tl-title">Failed</div><div class="tl-desc">Normal execution cannot proceed (error or abort detected).</div></div>
+              <div class="tl-item"><div class="tl-title">Aborted</div><div class="tl-desc">Transaction rolled back to initial state. ROLLBACK executed.</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion reveal">
+        <button class="acc-trigger" onclick="toggleAcc(this)">
+          <div class="acc-icon" style="background:#ede9fe">🔒</div>
+          <span class="acc-trigger-title">Concurrency Control — Locking & Scheduling</span>
+          <span class="acc-trigger-sub">2PL · Deadlocks · Timestamps</span>
+          <span class="acc-arrow">▼</span>
+        </button>
+        <div class="acc-body">
+          <div class="content-prose">
+            <h4>Problems Without Concurrency Control</h4>
+            <table class="compare-table">
+              <tr><th>Problem</th><th>Description</th><th>Example</th></tr>
+              <tr><td><strong>Dirty Read</strong></td><td>Reading uncommitted data of another transaction</td><td>T2 reads T1's write before T1 commits</td></tr>
+              <tr><td><strong>Lost Update</strong></td><td>Two transactions overwrite each other's updates</td><td>Bank debit race condition</td></tr>
+              <tr><td><strong>Non-repeatable Read</strong></td><td>Same query returns different values within same transaction</td><td>Value changes between two SELECTs</td></tr>
+              <tr><td><strong>Phantom Read</strong></td><td>New rows appear/disappear between reads</td><td>COUNT changes between two SELECTs</td></tr>
+            </table>
+            <h4>Lock Types</h4>
+            <p><strong>Shared Lock (S / Read Lock):</strong> Multiple transactions can hold simultaneously. Used for reading. Notation: lock-S(X)</p>
+            <p><strong>Exclusive Lock (X / Write Lock):</strong> Only one transaction can hold. No other lock allowed. Used for writing. Notation: lock-X(X)</p>
+            <h4>Two-Phase Locking (2PL)</h4>
+            <p>Protocol ensuring serializability. Two phases:</p>
+            <p><strong>Growing phase:</strong> Acquire locks. Cannot release any lock.</p>
+            <p><strong>Shrinking phase:</strong> Release locks. Cannot acquire any new lock.</p>
+            <p>The point of transition is called the <strong>lock point</strong>. Transactions are serializable in order of their lock points.</p>
+            <p><strong>Strict 2PL:</strong> Hold all exclusive locks until COMMIT. Prevents cascading rollbacks.</p>
+            <div class="exam-tip">
+              <div class="exam-tip-label">💡 2PL Rule</div>
+              <p>2PL guarantees conflict serializability BUT can cause deadlocks. Strict 2PL additionally prevents cascading rollback. This distinction is frequently asked.</p>
+            </div>
+            <h4>Deadlock Handling</h4>
+            <p><strong>Prevention:</strong> Wound-Wait (older wounds/kills younger) or Wait-Die (older waits, younger aborts).</p>
+            <p><strong>Detection:</strong> Maintain wait-for graph. Deadlock exists if there's a cycle in the graph.</p>
+            <p><strong>Recovery:</strong> Select victim, rollback one or more transactions to break the cycle.</p>
+            <h4>Timestamp-Based Concurrency Control</h4>
+            <p>Each transaction gets a unique timestamp TS(T). For each data item X: TS-read(X) and TS-write(X) track the latest successful read/write timestamps. Thomas' Write Rule: if TS(T) &lt; TS-write(X), ignore the write (outdated write).</p>
+            <h4>MVCC (Multi-Version Concurrency Control)</h4>
+            <p>Maintains multiple versions of data items. Readers don't block writers; writers don't block readers. Each transaction sees a consistent snapshot. Used in PostgreSQL, Oracle, MySQL InnoDB.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion reveal">
+        <button class="acc-trigger" onclick="toggleAcc(this)">
+          <div class="acc-icon" style="background:#fde8e8">🔄</div>
+          <span class="acc-trigger-title">Recovery Techniques</span>
+          <span class="acc-trigger-sub">Log-based · Checkpointing · Shadow Paging</span>
+          <span class="acc-arrow">▼</span>
+        </button>
+        <div class="acc-body">
+          <div class="content-prose">
+            <p><strong>Log-based Recovery:</strong> Every operation is recorded in a log file (UNDO log / REDO log) before being applied to the database.</p>
+            <p><strong>UNDO (Deferred Update):</strong> Don't write changes to DB until commit. On failure, just discard. UNDO log stores old values.</p>
+            <p><strong>REDO (Immediate Update):</strong> Write changes immediately. On failure, redo committed transactions. REDO log stores new values.</p>
+            <p><strong>Checkpointing:</strong> Periodically write all modified buffers to disk and record a checkpoint in the log. On recovery, only process transactions after the last checkpoint — reduces recovery time significantly.</p>
+            <p><strong>Shadow Paging:</strong> Maintain a shadow copy of the database pages. Current pages are modified; shadow is untouched. On commit, shadow becomes the new current. On failure, current is discarded and shadow restored. Eliminates need for undo log but expensive for large DBs.</p>
+            <div class="exam-tip">
+              <div class="exam-tip-label">📝 Recovery Quick Summary</div>
+              <p>UNDO = revert uncommitted. REDO = replay committed. Checkpoint = reduce recovery scope. Shadow paging = simple but costly. Most real systems use ARIES (UNDO + REDO + checkpointing combined).</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== NoSQL / Recent Trends ====== -->
+    <section id="nosql" class="section anchor-target">
+      <div class="section-header reveal">
+        <div class="section-eyebrow">Unit 08</div>
+        <h2 class="section-title">Recent Trends — XML, JSON & NoSQL</h2>
+        <p class="section-desc">Modern data formats and non-relational databases reshaping the data landscape.</p>
+      </div>
+
+      <div class="accordion reveal">
+        <button class="acc-trigger open" onclick="toggleAcc(this)">
+          <div class="acc-icon" style="background:#fef3cd">🌐</div>
+          <span class="acc-trigger-title">XML vs JSON vs Relational</span>
+          <span class="acc-trigger-sub">Modern Data Formats</span>
+          <span class="acc-arrow">▼</span>
+        </button>
+        <div class="acc-body open">
+          <div class="content-prose">
+            <table class="compare-table">
+              <tr><th>Feature</th><th>XML</th><th>JSON</th><th>Relational</th></tr>
+              <tr><td>Structure</td><td>Hierarchical tags</td><td>Key-value / nested objects</td><td>Tables with rows & columns</td></tr>
+              <tr><td>Schema</td><td>DTD / XML Schema (XSD)</td><td>JSON Schema (optional)</td><td>Strict schema (DDL)</td></tr>
+              <tr><td>Readability</td><td>Verbose, human-readable</td><td>Concise, readable</td><td>Structured queries</td></tr>
+              <tr><td>Usage</td><td>Config files, SOAP APIs, document exchange</td><td>REST APIs, web apps, MongoDB</td><td>Business applications, OLTP</td></tr>
+              <tr><td>Query</td><td>XPath, XQuery</td><td>JSONPath, MongoDB query</td><td>SQL</td></tr>
+            </table>
+            <h4>NoSQL — Categories</h4>
+            <div class="info-grid">
+              <div class="info-card"><div class="info-card-icon">🗝️</div><div class="info-card-title">Key-Value Stores</div><div class="info-card-desc">Simplest NoSQL. Data stored as key-value pairs. Examples: Redis, DynamoDB. Fastest for simple lookups.</div></div>
+              <div class="info-card"><div class="info-card-icon">📄</div><div class="info-card-title">Document Databases</div><div class="info-card-desc">Store JSON-like documents. Flexible schema. Examples: MongoDB, CouchDB. Great for catalogs, content.</div></div>
+              <div class="info-card"><div class="info-card-icon">📊</div><div class="info-card-title">Column-Family Stores</div><div class="info-card-desc">Store data by column groups. Examples: Cassandra, HBase. Best for analytics, time-series.</div></div>
+              <div class="info-card"><div class="info-card-icon">🕸️</div><div class="info-card-title">Graph Databases</div><div class="info-card-desc">Nodes + Edges + Properties. Examples: Neo4j. Perfect for social networks, recommendation engines.</div></div>
+            </div>
+            <h4>SQL vs NoSQL — Key Differences</h4>
+            <table class="compare-table">
+              <tr><th>SQL</th><th>NoSQL</th></tr>
+              <tr><td>Fixed schema</td><td>Flexible / schemaless</td></tr>
+              <tr><td>ACID compliant</td><td>BASE (Basically Available, Soft state, Eventually consistent)</td></tr>
+              <tr><td>Vertical scaling</td><td>Horizontal scaling</td></tr>
+              <tr><td>Complex queries (JOINs)</td><td>Denormalized, simple queries</td></tr>
+              <tr><td>Mature, standardized</td><td>Newer, varied APIs</td></tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== PRACTICAL ====== -->
+    <section id="practical" class="section anchor-target">
+      <div class="section-header reveal">
+        <div class="section-eyebrow">Practical Component</div>
+        <h2 class="section-title">Practical Lab Guide</h2>
+        <p class="section-desc">Everything you need for practical exams and viva preparation.</p>
+      </div>
+
+      <div class="accordion reveal">
+        <button class="acc-trigger open" onclick="toggleAcc(this)">
+          <div class="acc-icon" style="background:#dbeafe">💻</div>
+          <span class="acc-trigger-title">Complete Database Creation Walkthrough</span>
+          <span class="acc-trigger-sub">Schema Design → Creation → Queries</span>
+          <span class="acc-arrow">▼</span>
+        </button>
+        <div class="acc-body open">
+          <div class="code-block">
+            <div class="code-header"><div class="code-dots"><span></span><span></span><span></span></div><span class="code-lang">SQL — Complete Schema</span></div>
+            <div class="code-body">
+<span class="cm">-- University Database System</span>
+<span class="kw">CREATE DATABASE</span> UniversityDB;
+<span class="kw">USE</span> UniversityDB;
+
+<span class="kw">CREATE TABLE</span> <span class="tbl">Department</span> (
+  DeptID   <span class="type">INT</span>          <span class="kw">PRIMARY KEY</span>,
+  DeptName <span class="type">VARCHAR</span>(<span class="num">50</span>) <span class="kw">NOT NULL UNIQUE</span>,
+  HodID    <span class="type">INT</span>
+);
+
+<span class="kw">CREATE TABLE</span> <span class="tbl">Student</span> (
+  SID     <span class="type">INT</span>          <span class="kw">PRIMARY KEY</span>,
+  Name    <span class="type">VARCHAR</span>(<span class="num">100</span>) <span class="kw">NOT NULL</span>,
+  Email   <span class="type">VARCHAR</span>(<span class="num">100</span>) <span class="kw">UNIQUE</span>,
+  DeptID  <span class="type">INT</span>          <span class="kw">REFERENCES</span> <span class="tbl">Department</span>(DeptID),
+  CGPA    <span class="type">DECIMAL</span>(<span class="num">3</span>,<span class="num">2</span>) <span class="kw">CHECK</span> (CGPA <span class="kw">BETWEEN</span> <span class="num">0</span> <span class="kw">AND</span> <span class="num">10</span>)
+);
+
+<span class="cm">-- Trigger: Auto-update timestamp</span>
+<span class="kw">CREATE TRIGGER</span> update_modified
+<span class="kw">BEFORE UPDATE ON</span> <span class="tbl">Student</span>
+<span class="kw">FOR EACH ROW</span>
+<span class="kw">SET</span> <span class="kw">NEW</span>.LastModified = <span class="fn">NOW</span>();
+
+<span class="cm">-- Stored Procedure: Get toppers by dept</span>
+<span class="kw">CREATE PROCEDURE</span> <span class="fn">GetToppers</span>(IN deptId <span class="type">INT</span>)
+<span class="kw">BEGIN</span>
+  <span class="kw">SELECT</span> Name, CGPA <span class="kw">FROM</span> <span class="tbl">Student</span>
+  <span class="kw">WHERE</span> DeptID = deptId
+  <span class="kw">ORDER BY</span> CGPA <span class="kw">DESC LIMIT</span> <span class="num">5</span>;
+<span class="kw">END</span>;
+            </div>
+          </div>
+          <div class="content-prose">
+            <h4>ODBC — Open Database Connectivity</h4>
+            <p>ODBC is a standard API for accessing DBMSs from programming languages. Provides a common interface regardless of the DBMS. Applications connect via ODBC driver → ODBC Driver Manager → Database.</p>
+            <h4>Database Administration Basics</h4>
+            <p><strong>GRANT/REVOKE:</strong> <code>GRANT SELECT ON Student TO alice;</code> — Give alice permission to read Student table. <code>REVOKE SELECT ON Student FROM alice;</code> — Remove permission.</p>
+            <p><strong>Popular RDBMS comparison:</strong> Oracle (enterprise), MySQL (web), PostgreSQL (advanced open-source), DB2 (IBM enterprise), SQL Server (Microsoft), INFORMIX (OLTP), SYBASE (analytics).</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== MCQ PRACTICE ====== -->
+    <section id="mcq" class="section anchor-target">
+      <div class="section-header reveal">
+        <div class="section-eyebrow">Practice Zone</div>
+        <h2 class="section-title">MCQ Practice</h2>
+        <p class="section-desc">Test your understanding. Click the answer to reveal explanation.</p>
+      </div>
+
+      <div class="mcq-grid" id="mcqGrid">
+
+        <div class="mcq-card reveal">
+          <div class="mcq-meta"><span class="badge badge-green">Fundamentals</span><span class="badge badge-blue">Easy</span></div>
+          <div class="mcq-q">Q1. Which level of data abstraction describes how data is actually stored on storage media?</div>
+          <div class="mcq-options">
+            <div class="mcq-opt" onclick="revealMCQ(this,'wrong','A is External/View level — what users see.')"><span class="mcq-opt-letter">A</span>External Level</div>
+            <div class="mcq-opt" onclick="revealMCQ(this,'wrong','B is Conceptual/Logical level — community view of what data exists.')"><span class="mcq-opt-letter">B</span>Conceptual Level</div>
+            <div class="mcq-opt" onclick="revealMCQ(this,'correct','✓ Internal Level (Physical Level) describes the actual physical storage — file organization, indexes, compression.')"><span class="mcq-opt-letter">C</span>Internal Level</div>
+            <div class="mcq-opt" onclick="revealMCQ(this,'wrong','D is not a standard level in the ANSI/SPARC three-schema architecture.')"><span class="mcq-opt-letter">D</span>Operational Level</div>
+          </div>
+          <div class="mcq-explanation" id="mcq-explanation-0"></div>
+        </div>
+
+        <div class="mcq-card reveal">
+          <div class="mcq-meta"><span class="badge badge-gold">Normalization</span><span class="badge badge-purple">Medium</span></div>
+          <div class="mcq-q">Q2. A relation R(A, B, C, D) with FDs: {AB→C, C→D}. Which normal form violation exists?</div>
+          <div class="mcq-options">
+            <div class="mcq-opt" onclick="revealMCQ(this,'wrong','1NF deals with atomicity of values, not functional dependencies.')"><span class="mcq-opt-letter">A</span>1NF violation</div>
+            <div class="mcq-opt" onclick="revealMCQ(this,'wrong','Partial dependency requires a composite key and non-key attribute depending on part of it only.')"><span class="mcq-opt-letter">B</span>2NF violation (Partial Dependency)</div>
+            <div class="mcq-opt" onclick="revealMCQ(this,'correct','✓ C→D is a transitive dependency: AB→C→D, where C is not a key. This violates 3NF.')"><span class="mcq-opt-letter">C</span>3NF violation (Transitive Dependency)</div>
+            <div class="mcq-opt" onclick="revealMCQ(this,'wrong','In BCNF, every FD\'s LHS must be a superkey. C→D with C not a superkey violates BCNF too, but the primary classification is 3NF violation.')"><span class="mcq-opt-letter">D</span>No violation — already in BCNF</div>
+          </div>
+          <div class="mcq-explanation" id="mcq-explanation-1"></div>
+        </div>
+
+        <div class="mcq-card reveal">
+          <div class="mcq-meta"><span class="badge badge-red">Transactions</span><span class="badge badge-purple">Medium</span></div>
+          <div class="mcq-q">Q3. Which concurrency problem occurs when a transaction reads data that has been modified by an uncommitted transaction?</div>
+          <div class="mcq-options">
+            <div class="mcq-opt" onclick="revealMCQ(this,'correct','✓ Dirty Read = reading uncommitted data. If that transaction rolls back, you read data that never officially existed.')"><span class="mcq-opt-letter">A</span>Dirty Read</div>
+            <div class="mcq-opt" onclick="revealMCQ(this,'wrong','Lost Update = two transactions overwrite each other. One update is lost.')"><span class="mcq-opt-letter">B</span>Lost Update</div>
+            <div class="mcq-opt" onclick="revealMCQ(this,'wrong','Non-repeatable Read = same query gives different results within the same transaction (due to COMMITTED changes by another T).')"><span class="mcq-opt-letter">C</span>Non-repeatable Read</div>
+            <div class="mcq-opt" onclick="revealMCQ(this,'wrong','Phantom Read = new rows appear between two queries within same transaction.')"><span class="mcq-opt-letter">D</span>Phantom Read</div>
+          </div>
+          <div class="mcq-explanation" id="mcq-explanation-2"></div>
+        </div>
+
+        <div class="mcq-card reveal">
+          <div class="mcq-meta"><span class="badge badge-blue">SQL</span><span class="badge badge-red">Tricky</span></div>
+          <div class="mcq-q">Q4. What is the difference between WHERE and HAVING clauses?</div>
+          <div class="mcq-options">
+            <div class="mcq-opt" onclick="revealMCQ(this,'wrong','Both can be used with aggregate functions is WRONG — WHERE cannot use aggregate functions.')"><span class="mcq-opt-letter">A</span>WHERE is for strings; HAVING is for numbers</div>
+            <div class="mcq-opt" onclick="revealMCQ(this,'correct','✓ WHERE filters individual rows BEFORE grouping. HAVING filters groups AFTER GROUP BY. You cannot use aggregate functions in WHERE.')"><span class="mcq-opt-letter">B</span>WHERE filters rows before grouping; HAVING filters groups after GROUP BY</div>
+            <div class="mcq-opt" onclick="revealMCQ(this,'wrong','HAVING does NOT replace WHERE. Both serve different purposes and can be used together.')"><span class="mcq-opt-letter">C</span>HAVING replaces WHERE when GROUP BY is present</div>
+            <div class="mcq-opt" onclick="revealMCQ(this,'wrong','They are NOT interchangeable. WHERE cannot use aggregate functions like COUNT(), SUM(), AVG().')"><span class="mcq-opt-letter">D</span>They are interchangeable — both do the same thing</div>
+          </div>
+          <div class="mcq-explanation" id="mcq-explanation-3"></div>
+        </div>
+
+        <div class="mcq-card reveal">
+          <div class="mcq-meta"><span class="badge badge-purple">Algebra</span><span class="badge badge-red">Tricky</span></div>
+          <div class="mcq-q">Q5. If relation R has 5 tuples and relation S has 4 tuples, what is the maximum number of tuples in R × S (Cartesian Product)?</div>
+          <div class="mcq-options">
+            <div class="mcq-opt" onclick="revealMCQ(this,'wrong','9 would be R + S (Union upper bound), not Cartesian Product.')"><span class="mcq-opt-letter">A</span>9</div>
+            <div class="mcq-opt" onclick="revealMCQ(this,'correct','✓ Cartesian Product = |R| × |S| = 5 × 4 = 20. Every tuple of R pairs with every tuple of S.')"><span class="mcq-opt-letter">B</span>20</div>
+            <div class="mcq-opt" onclick="revealMCQ(this,'wrong','5 would be the minimum for a natural join, not Cartesian product.')"><span class="mcq-opt-letter">C</span>5</div>
+            <div class="mcq-opt" onclick="revealMCQ(this,'wrong','1 is not possible unless both relations have 1 tuple each.')"><span class="mcq-opt-letter">D</span>1</div>
+          </div>
+          <div class="mcq-explanation" id="mcq-explanation-4"></div>
+        </div>
+
+        <div class="mcq-card reveal">
+          <div class="mcq-meta"><span class="badge badge-gold">Storage</span><span class="badge badge-blue">Medium</span></div>
+          <div class="mcq-q">Q6. Which statement about B+ Trees is CORRECT?</div>
+          <div class="mcq-options">
+            <div class="mcq-opt" onclick="revealMCQ(this,'wrong','In B+ Trees, data pointers are ONLY at leaf nodes, not at internal nodes.')"><span class="mcq-opt-letter">A</span>Data pointers are stored at all nodes including internal nodes</div>
+            <div class="mcq-opt" onclick="revealMCQ(this,'wrong','B+ Tree leaf nodes are NOT ordered randomly — they are linked in a sorted doubly linked list for range queries.')"><span class="mcq-opt-letter">B</span>Leaf nodes are stored in random order</div>
+            <div class="mcq-opt" onclick="revealMCQ(this,'correct','✓ B+ Tree leaf nodes are linked in a doubly linked list, enabling efficient sequential access and range queries without traversing the tree again.')"><span class="mcq-opt-letter">C</span>Leaf nodes are linked in a doubly linked list for sequential access</div>
+            <div class="mcq-opt" onclick="revealMCQ(this,'wrong','Keys CAN repeat in B+ Trees — the same key appears in both internal (for routing) and leaf nodes (for data access).')"><span class="mcq-opt-letter">D</span>Keys never repeat in a B+ Tree</div>
+          </div>
+          <div class="mcq-explanation" id="mcq-explanation-5"></div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ====== UNIVERSITY QUESTIONS ====== -->
+    <section id="uqs" class="section anchor-target">
+      <div class="section-header reveal">
+        <div class="section-eyebrow">Exam Preparation</div>
+        <h2 class="section-title">Important University Questions</h2>
+        <p class="section-desc">High-frequency questions from past papers with marks weightage and importance level.</p>
+      </div>
+
+      <div class="uq-list">
+        <div class="uq-item reveal">
+          <div class="uq-marks">10<span>marks</span></div>
+          <div class="uq-content">
+            <div class="uq-q">Explain the three-level ANSI/SPARC architecture of DBMS. What is the significance of data independence? Differentiate between physical and logical data independence.</div>
+            <div class="uq-tags"><span class="badge badge-red">🔥 Very High Frequency</span><span class="badge badge-green">Theory</span><span class="badge badge-gold">Architecture</span></div>
+          </div>
+        </div>
+        <div class="uq-item reveal">
+          <div class="uq-marks">10<span>marks</span></div>
+          <div class="uq-content">
+            <div class="uq-q">Define functional dependency. State and explain Armstrong's axioms. Find the closure of attribute set {A, B} given FDs: A→C, BC→D, C→B, AB→D.</div>
+            <div class="uq-tags"><span class="badge badge-red">🔥 Numerical</span><span class="badge badge-purple">Normalization</span></div>
+          </div>
+        </div>
+        <div class="uq-item reveal">
+          <div class="uq-marks">10<span>marks</span></div>
+          <div class="uq-content">
+            <div class="uq-q">Given relation R(A, B, C, D, E) with FDs: {AB→C, C→D, D→E}. Decompose it into 3NF using the synthesis algorithm. Verify lossless join and dependency preservation.</div>
+            <div class="uq-tags"><span class="badge badge-red">🔥 Most Asked</span><span class="badge badge-red">Numerical</span><span class="badge badge-purple">3NF</span></div>
+          </div>
+        </div>
+        <div class="uq-item reveal">
+          <div class="uq-marks">10<span>marks</span></div>
+          <div class="uq-content">
+            <div class="uq-q">What are ACID properties? Explain each property with an example. What happens if atomicity is violated in a banking transaction?</div>
+            <div class="uq-tags"><span class="badge badge-red">🔥 Guaranteed</span><span class="badge badge-green">Transactions</span></div>
+          </div>
+        </div>
+        <div class="uq-item reveal">
+          <div class="uq-marks">7<span>marks</span></div>
+          <div class="uq-content">
+            <div class="uq-q">Write SQL queries: (a) Create Employee table with constraints. (b) Find employees earning more than department average. (c) List departments with more than 5 employees using GROUP BY and HAVING.</div>
+            <div class="uq-tags"><span class="badge badge-red">🔥 Always Asked</span><span class="badge badge-blue">SQL</span><span class="badge badge-green">Practical</span></div>
+          </div>
+        </div>
+        <div class="uq-item reveal">
+          <div class="uq-marks">7<span>marks</span></div>
+          <div class="uq-content">
+            <div class="uq-q">Explain two-phase locking (2PL) protocol. How does it ensure conflict serializability? What are the limitations of 2PL? Explain strict 2PL.</div>
+            <div class="uq-tags"><span class="badge badge-gold">High Priority</span><span class="badge badge-red">Concurrency</span></div>
+          </div>
+        </div>
+        <div class="uq-item reveal">
+          <div class="uq-marks">5<span>marks</span></div>
+          <div class="uq-content">
+            <div class="uq-q">Write short notes on: (a) B+ Tree vs B Tree (b) Dense vs Sparse Index (c) Shadow Paging (d) Timestamp-based Concurrency Control</div>
+            <div class="uq-tags"><span class="badge badge-gold">Short Notes</span><span class="badge badge-blue">Multiple Topics</span></div>
+          </div>
+        </div>
+        <div class="uq-item reveal">
+          <div class="uq-marks">5<span>marks</span></div>
+          <div class="uq-content">
+            <div class="uq-q">Compare SQL databases with NoSQL databases. When would you choose MongoDB over MySQL? Explain CAP theorem.</div>
+            <div class="uq-tags"><span class="badge badge-green">Recent Trends</span><span class="badge badge-blue">NoSQL</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== LAST NIGHT REVISION ====== -->
+    <section id="revision" class="section anchor-target">
+      <div class="section-header reveal">
+        <div class="section-eyebrow">🌙 Exam Eve</div>
+        <h2 class="section-title">Last Night Revision</h2>
+        <p class="section-desc">The most important concepts distilled. Read these the night before your exam.</p>
+      </div>
+
+      <div class="rev-grid">
+        <div class="rev-card green reveal">
+          <div class="rev-card-title">⚗️ ACID Properties</div>
+          <div class="rev-item"><strong>Atomicity</strong>All or nothing — commit or rollback</div>
+          <div class="rev-item"><strong>Consistency</strong>Valid state → valid state always</div>
+          <div class="rev-item"><strong>Isolation</strong>Concurrent T's don't interfere</div>
+          <div class="rev-item"><strong>Durability</strong>Committed changes survive crashes</div>
+          <div class="rev-item"><strong>Mnemonic</strong><span class="rev-code">A-C-I-D = "All Committed In Database"</span></div>
+        </div>
+
+        <div class="rev-card gold reveal reveal-delay-1">
+          <div class="rev-card-title">📐 Normal Forms Quick</div>
+          <div class="rev-item"><strong>1NF</strong>Atomic values, no repeating groups</div>
+          <div class="rev-item"><strong>2NF</strong>1NF + No partial dependencies</div>
+          <div class="rev-item"><strong>3NF</strong>2NF + No transitive dependencies</div>
+          <div class="rev-item"><strong>BCNF</strong>Every FD LHS must be superkey</div>
+          <div class="rev-item"><strong>Trick</strong><span class="rev-code">1→Atomic 2→Full 3→No trans</span></div>
+        </div>
+
+        <div class="rev-card blue reveal reveal-delay-2">
+          <div class="rev-card-title">🔗 SQL JOINs</div>
+          <div class="rev-item"><strong>INNER</strong>Only matching rows both tables</div>
+          <div class="rev-item"><strong>LEFT</strong>All left + matching right (NULLs right)</div>
+          <div class="rev-item"><strong>RIGHT</strong>All right + matching left (NULLs left)</div>
+          <div class="rev-item"><strong>FULL</strong>All rows both, NULLs where no match</div>
+          <div class="rev-item"><strong>CROSS</strong>Cartesian product: |R|×|S| rows</div>
+        </div>
+
+        <div class="rev-card purple reveal">
+          <div class="rev-card-title">∑ RA Operators</div>
+          <div class="rev-item"><strong>σ (sigma)</strong>SELECT — filter rows by condition</div>
+          <div class="rev-item"><strong>π (pi)</strong>PROJECT — select specific columns</div>
+          <div class="rev-item"><strong>⋈ (join)</strong>Natural join on common attributes</div>
+          <div class="rev-item"><strong>÷ (divide)</strong>For all — related to all of S</div>
+          <div class="rev-item"><strong>Tip</strong><span class="rev-code">σ first, then π for efficiency</span></div>
+        </div>
+
+        <div class="rev-card red reveal reveal-delay-1">
+          <div class="rev-card-title">🔒 Concurrency</div>
+          <div class="rev-item"><strong>Dirty Read</strong>Read uncommitted data of other T</div>
+          <div class="rev-item"><strong>Lost Update</strong>Two T's overwrite each other</div>
+          <div class="rev-item"><strong>2PL</strong>Grow → Lock Point → Shrink</div>
+          <div class="rev-item"><strong>Deadlock</strong>Cycle in wait-for graph</div>
+          <div class="rev-item"><strong>MVCC</strong>Readers don't block writers</div>
+        </div>
+
+        <div class="rev-card green reveal reveal-delay-2">
+          <div class="rev-card-title">💾 Indexing</div>
+          <div class="rev-item"><strong>Dense</strong>Entry for every record</div>
+          <div class="rev-item"><strong>Sparse</strong>Entry for every block</div>
+          <div class="rev-item"><strong>B+ Tree</strong>Data only at leaves, linked list</div>
+          <div class="rev-item"><strong>Clustered</strong>Data order = index order (1 only)</div>
+          <div class="rev-item"><strong>Hashing</strong>h(key) → bucket, O(1) access</div>
+        </div>
+
+        <div class="rev-card gold reveal">
+          <div class="rev-card-title">🌐 SQL Clauses Order</div>
+          <div class="rev-item"><strong>Execution</strong><span class="rev-code">FROM→WHERE→GROUP→HAVING→SELECT→ORDER</span></div>
+          <div class="rev-item"><strong>WHERE</strong>Before GROUP BY, no aggregates</div>
+          <div class="rev-item"><strong>HAVING</strong>After GROUP BY, aggregates OK</div>
+          <div class="rev-item"><strong>GROUP BY</strong>Creates groups of rows</div>
+          <div class="rev-item"><strong>ORDER BY</strong>Sorts final result</div>
+        </div>
+
+        <div class="rev-card blue reveal reveal-delay-1">
+          <div class="rev-card-title">🏗 Architecture</div>
+          <div class="rev-item"><strong>External</strong>User views (what users see)</div>
+          <div class="rev-item"><strong>Conceptual</strong>Logical/community view (DBA)</div>
+          <div class="rev-item"><strong>Internal</strong>Physical storage details</div>
+          <div class="rev-item"><strong>Phys. Ind.</strong>Change storage → apps unaffected</div>
+          <div class="rev-item"><strong>Log. Ind.</strong>Change schema → views unaffected</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== EXAM STRATEGY ====== -->
+    <section id="strategy" class="section anchor-target">
+      <div class="section-header reveal">
+        <div class="section-eyebrow">Exam Day</div>
+        <h2 class="section-title">Exam Strategy</h2>
+        <p class="section-desc">Maximize your score even with limited preparation time.</p>
+      </div>
+
+      <div class="strategy-grid">
+        <div class="strategy-card reveal">
+          <div class="strategy-card-num">01</div>
+          <div class="strategy-card-title">🎯 Most Scoring Topics</div>
+          <div class="strategy-card-desc">Focus on: SQL (20-30%), Normalization (15-20%), ACID/Transactions (15%), ER Diagrams (10%), Relational Algebra (10%). These 5 areas cover 70%+ of marks in most universities.</div>
+        </div>
+        <div class="strategy-card reveal reveal-delay-1">
+          <div class="strategy-card-num">02</div>
+          <div class="strategy-card-title">⚡ 1-Day Revision Plan</div>
+          <div class="strategy-card-desc">Morning: ACID + Transactions (2hr). Afternoon: Normalization + FDs (2hr). Evening: SQL + Joins (2hr). Night: Relational Algebra + Quick Revision cards (1hr). Don't try to learn new topics — reinforce what you know.</div>
+        </div>
+        <div class="strategy-card reveal reveal-delay-2">
+          <div class="strategy-card-num">03</div>
+          <div class="strategy-card-title">📝 Theory Answer Strategy</div>
+          <div class="strategy-card-desc">Structure: Definition (2 lines) → Properties/Types (bullets) → Example → Diagram if applicable → Comparison table. Always include a diagram — even a rough one adds 2-3 marks.</div>
+        </div>
+        <div class="strategy-card reveal">
+          <div class="strategy-card-num">04</div>
+          <div class="strategy-card-title">💻 Solving Normalization</div>
+          <div class="strategy-card-desc">Step 1: Find all candidate keys (compute closures). Step 2: Check each FD against the normal form rules. Step 3: Identify violation type. Step 4: Decompose. Step 5: Verify lossless (R1∩R2→R1 or R2).</div>
+        </div>
+        <div class="strategy-card reveal reveal-delay-1">
+          <div class="strategy-card-num">05</div>
+          <div class="strategy-card-title">❓ MCQ Elimination</div>
+          <div class="strategy-card-desc">For MCQs: Eliminate obviously wrong answers first (usually 2 can be eliminated quickly). Between remaining 2 — look for absolute keywords: "always", "never", "all", "none" — these are often traps. Pick the most precise definition.</div>
+        </div>
+        <div class="strategy-card reveal reveal-delay-2">
+          <div class="strategy-card-num">06</div>
+          <div class="strategy-card-title">🕐 3-Hour Exam Plan</div>
+          <div class="strategy-card-desc">Hour 1: Attempt all MCQs + short questions you know well. Hour 2: Long questions — SQL queries + normalization numericals (most marks). Hour 3: Remaining theory + review answers. Never leave an MCQ blank.</div>
+        </div>
+      </div>
+
+      <div class="important-banner reveal" style="margin-top:32px">
+        <div class="icon">💚</div>
+        <p><strong>You've got this.</strong> DBMS is logical and follows patterns. The student who understands ACID, knows normalization steps, and can write basic SQL queries with JOINs can comfortably score 70%+. Use this guide, stay calm, and trust your preparation.</p>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">DBMS Exam Prep — University Edition</div>
+    <div class="footer-links">
+      <a href="#syllabus">Syllabus</a>
+      <a href="#sql">SQL Guide</a>
+      <a href="#mcq">MCQs</a>
+      <a href="#revision">Revision</a>
+      <a href="#strategy">Strategy</a>
+    </div>
+    <div class="footer-note">Built for university students. All the best for your exam ✌️</div>
+  </div>
+</footer>
+
+<script>
+// ===== PROGRESS BAR =====
+window.addEventListener('scroll', () => {
+  const scrollTop = window.scrollY;
+  const docHeight = document.body.scrollHeight - window.innerHeight;
+  const progress = (scrollTop / docHeight) * 100;
+  document.getElementById('progressFill').style.width = progress + '%';
+});
+
+// ===== REVEAL ON SCROLL =====
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => {
+  revealObserver.observe(el);
+});
+
+// ===== SIDEBAR ACTIVE =====
+const sections = document.querySelectorAll('.anchor-target');
+const sidebarItems = document.querySelectorAll('.sidebar-item[data-sec]');
+
+const sectionObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const id = entry.target.id;
+      sidebarItems.forEach(item => {
+        item.classList.toggle('active', item.dataset.sec === id);
+      });
+    }
+  });
+}, { rootMargin: '-50% 0px -50% 0px' });
+
+sections.forEach(s => sectionObserver.observe(s));
+
+// ===== ACCORDION =====
+function toggleAcc(trigger) {
+  const body = trigger.nextElementSibling;
+  const isOpen = trigger.classList.contains('open');
+  trigger.classList.toggle('open', !isOpen);
+  body.classList.toggle('open', !isOpen);
+}
+
+// ===== MCQ LOGIC =====
+let mcqAnswered = {};
+
+function revealMCQ(optEl, result, explanation) {
+  const card = optEl.closest('.mcq-card');
+  const cardIdx = [...document.querySelectorAll('.mcq-card')].indexOf(card);
+  if (mcqAnswered[cardIdx]) return;
+  mcqAnswered[cardIdx] = true;
+
+  const opts = card.querySelectorAll('.mcq-opt');
+  opts.forEach(o => o.style.pointerEvents = 'none');
+  optEl.classList.add(result);
+
+  const expEl = card.querySelector('.mcq-explanation');
+  if (expEl) {
+    expEl.innerHTML = explanation;
+    expEl.classList.add('show');
+  }
+}
+
+// ===== SMOOTH SIDEBAR CLICK =====
+document.querySelectorAll('.sidebar-item').forEach(item => {
+  item.addEventListener('click', (e) => {
+    e.preventDefault();
+    const sec = item.dataset.sec;
+    if (sec) {
+      const target = document.getElementById(sec);
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+
+// ===== INITIAL REVEAL =====
+window.addEventListener('load', () => {
+  document.querySelectorAll('.reveal').forEach(el => {
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight) el.classList.add('visible');
+  });
+});
+</script>
+</body>
+</html>
