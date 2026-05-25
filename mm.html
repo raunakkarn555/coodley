@@ -1,0 +1,1679 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Web Dev & App Design Exam Prep — Complete University Course Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #faf9f7;
+  --bg-2: #f4f2ee;
+  --bg-3: #eceae4;
+  --surface: #ffffff;
+  --surface-2: #f9f8f5;
+  --border: #e8e5de;
+  --border-2: #d9d5ca;
+  --text: #1a1814;
+  --text-2: #4a4640;
+  --text-3: #7a7570;
+  --accent: #1d4ed8;
+  --accent-2: #2563eb;
+  --accent-light: #dbeafe;
+  --accent-glow: rgba(29,78,216,0.12);
+  --gold: #b5813e;
+  --gold-light: #fef3cd;
+  --red: #c0392b;
+  --red-light: #fde8e8;
+  --blue: #2563eb;
+  --blue-light: #dbeafe;
+  --purple: #7c3aed;
+  --purple-light: #ede9fe;
+  --green: #2d6a4f;
+  --green-light: #d8f3dc;
+  --mono: 'JetBrains Mono', monospace;
+  --serif: 'Instrument Serif', serif;
+  --sans: 'DM Sans', sans-serif;
+  --radius: 12px;
+  --radius-lg: 20px;
+  --shadow: 0 1px 3px rgba(0,0,0,0.06), 0 4px 16px rgba(0,0,0,0.04);
+  --shadow-md: 0 4px 24px rgba(0,0,0,0.08), 0 1px 4px rgba(0,0,0,0.04);
+  --shadow-lg: 0 12px 48px rgba(0,0,0,0.1), 0 2px 8px rgba(0,0,0,0.05);
+  --sidebar-w: 260px;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden}
+
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:var(--bg-2)}
+::-webkit-scrollbar-thumb{background:var(--border-2);border-radius:3px}
+
+/* NAVBAR */
+.navbar{position:sticky;top:0;z-index:100;background:rgba(250,249,247,0.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);height:60px;display:flex;align-items:center;padding:0 24px}
+.nav-inner{max-width:1400px;margin:0 auto;width:100%;display:flex;align-items:center;gap:16px}
+.nav-logo{font-family:var(--serif);font-size:1.2rem;color:var(--text);text-decoration:none;display:flex;align-items:center;gap:8px}
+.nav-logo-icon{width:28px;height:28px;background:var(--accent);border-radius:7px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:11px;font-weight:700;font-family:var(--sans)}
+.nav-tag{font-size:11px;background:var(--accent-light);color:var(--accent);padding:2px 8px;border-radius:20px;font-weight:500}
+.nav-spacer{flex:1}
+.nav-links{display:flex;align-items:center;gap:4px}
+.nav-links a{color:var(--text-2);text-decoration:none;font-size:13.5px;font-weight:500;padding:6px 12px;border-radius:8px;transition:all .2s}
+.nav-links a:hover{background:var(--bg-2);color:var(--text)}
+.nav-cta{background:var(--accent);color:#fff !important;padding:7px 16px !important;border-radius:8px !important;font-size:13px !important}
+.nav-cta:hover{background:var(--accent-2) !important}
+
+/* LAYOUT */
+.page-layout{display:flex;max-width:1400px;margin:0 auto;padding:0 24px}
+
+/* SIDEBAR */
+.sidebar{width:var(--sidebar-w);flex-shrink:0;position:sticky;top:60px;height:calc(100vh - 60px);overflow-y:auto;padding:28px 16px 28px 0;border-right:1px solid var(--border)}
+.sidebar-label{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--text-3);padding:0 12px;margin-bottom:8px;margin-top:16px}
+.sidebar-label:first-child{margin-top:0}
+.sidebar-item{display:flex;align-items:center;gap:8px;padding:7px 12px;border-radius:8px;cursor:pointer;transition:all .2s;text-decoration:none;color:var(--text-2);font-size:13px;font-weight:450}
+.sidebar-item:hover{background:var(--bg-2);color:var(--text)}
+.sidebar-item.active{background:var(--accent-light);color:var(--accent);font-weight:500}
+.sidebar-item .dot{width:5px;height:5px;border-radius:50%;background:var(--border-2);flex-shrink:0;transition:.2s}
+.sidebar-item.active .dot{background:var(--accent)}
+.sidebar-num{font-size:10px;color:var(--text-3);margin-left:auto;font-family:var(--mono)}
+
+/* MAIN */
+.main{flex:1;min-width:0;padding:48px 0 48px 40px}
+
+/* PROGRESS BAR */
+.progress-bar{position:fixed;top:60px;left:0;right:0;height:2px;background:var(--border);z-index:99}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent-2));width:0%;transition:width .1s}
+
+/* HERO */
+.hero{padding:64px 0 80px;border-bottom:1px solid var(--border);margin-bottom:64px}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:var(--accent-light);color:var(--accent);padding:5px 12px;border-radius:20px;font-size:12.5px;font-weight:500;margin-bottom:24px}
+.hero-eyebrow::before{content:'●';font-size:7px;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.hero-title{font-family:var(--serif);font-size:clamp(2rem,4vw,3.2rem);line-height:1.15;color:var(--text);margin-bottom:20px;font-weight:400}
+.hero-title em{font-style:italic;color:var(--accent)}
+.hero-sub{font-size:1rem;color:var(--text-2);line-height:1.7;margin-bottom:32px;max-width:480px}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:40px}
+.btn-primary{background:var(--accent);color:#fff;padding:11px 22px;border-radius:10px;font-size:14px;font-weight:500;text-decoration:none;border:none;cursor:pointer;transition:all .2s;display:inline-flex;align-items:center;gap:7px}
+.btn-primary:hover{background:var(--accent-2);transform:translateY(-1px);box-shadow:var(--shadow-md)}
+.btn-secondary{background:var(--surface);color:var(--text);padding:11px 22px;border-radius:10px;font-size:14px;font-weight:500;text-decoration:none;border:1px solid var(--border-2);cursor:pointer;transition:all .2s;display:inline-flex;align-items:center;gap:7px}
+.btn-secondary:hover{background:var(--bg-2);border-color:var(--accent);transform:translateY(-1px)}
+.hero-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.stat-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;transition:all .2s}
+.stat-card:hover{border-color:var(--accent);box-shadow:var(--shadow)}
+.stat-icon{font-size:18px;margin-bottom:6px}
+.stat-label{font-size:11.5px;font-weight:500;color:var(--text);margin-bottom:2px}
+.stat-sub{font-size:10.5px;color:var(--text-3)}
+
+/* HERO VISUAL */
+.hero-visual{position:relative;height:420px}
+.hero-db-card{position:absolute;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px;box-shadow:var(--shadow-md)}
+.hero-db-card.main-card{width:300px;top:20px;right:0;animation:floatA 6s ease-in-out infinite}
+.hero-db-card.sql-card{width:240px;bottom:40px;right:40px;animation:floatB 7s ease-in-out infinite 1s}
+.hero-db-card.er-card{width:190px;top:120px;left:10px;animation:floatC 5s ease-in-out infinite .5s}
+@keyframes floatA{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@keyframes floatB{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+@keyframes floatC{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+.card-header{display:flex;align-items:center;gap:8px;margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid var(--border)}
+.card-dots{display:flex;gap:4px}
+.card-dots span{width:8px;height:8px;border-radius:50%}
+.card-dots span:nth-child(1){background:#ff5f56}
+.card-dots span:nth-child(2){background:#ffbd2e}
+.card-dots span:nth-child(3){background:#27c93f}
+.card-title-sm{font-size:11px;font-weight:500;color:var(--text-3);font-family:var(--mono)}
+.html-line{font-family:var(--mono);font-size:11.5px;line-height:1.8}
+.html-tag{color:#2563eb;font-weight:600}
+.html-attr{color:#b5813e}
+.html-val{color:#7c3aed}
+.html-txt{color:#4a4640}
+.css-line{font-family:var(--mono);font-size:11px;line-height:1.7}
+.css-sel{color:#2563eb;font-weight:600}
+.css-prop{color:#7a7570}
+.css-val{color:#7c3aed}
+.js-line{font-family:var(--mono);font-size:11px;line-height:1.7}
+.js-kw{color:#2563eb;font-weight:600}
+.js-fn{color:#b5813e}
+.js-str{color:#7c3aed}
+
+/* SECTIONS */
+.section{margin-bottom:80px;scroll-margin-top:80px}
+.section-header{margin-bottom:32px}
+.section-eyebrow{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--accent);margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.section-eyebrow::after{content:'';flex:1;height:1px;background:var(--border)}
+.section-title{font-family:var(--serif);font-size:clamp(1.6rem,3vw,2.2rem);line-height:1.2;color:var(--text);margin-bottom:12px}
+.section-desc{color:var(--text-2);font-size:0.95rem;max-width:600px;line-height:1.7}
+
+/* SYLLABUS */
+.syllabus-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
+.syllabus-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:20px;transition:all .25s;cursor:pointer}
+.syllabus-card:hover{border-color:var(--accent);box-shadow:var(--shadow);transform:translateY(-2px)}
+.syl-num{font-family:var(--mono);font-size:10px;color:var(--text-3);margin-bottom:8px}
+.syl-title{font-weight:600;font-size:14px;color:var(--text);margin-bottom:10px}
+.syl-topics{list-style:none;display:flex;flex-direction:column;gap:4px}
+.syl-topics li{font-size:12.5px;color:var(--text-2);padding:3px 0;border-bottom:1px solid var(--bg-3);display:flex;align-items:center;gap:6px}
+.syl-topics li::before{content:'›';color:var(--accent);font-size:14px;line-height:1}
+
+/* ACCORDION */
+.accordion{border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-bottom:12px}
+.acc-trigger{width:100%;padding:16px 20px;background:var(--surface);display:flex;align-items:center;gap:12px;cursor:pointer;border:none;text-align:left;transition:background .2s;font-family:var(--sans)}
+.acc-trigger:hover{background:var(--bg-2)}
+.acc-trigger.open{background:var(--bg-2)}
+.acc-icon{width:24px;height:24px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0}
+.acc-trigger-title{flex:1;font-weight:500;font-size:14.5px;color:var(--text)}
+.acc-trigger-sub{font-size:12px;color:var(--text-3)}
+.acc-arrow{font-size:12px;color:var(--text-3);transition:transform .3s;margin-left:8px}
+.acc-trigger.open .acc-arrow{transform:rotate(180deg)}
+.acc-body{background:var(--surface-2);border-top:1px solid var(--border);padding:0;max-height:0;overflow:hidden;transition:max-height .4s ease,padding .3s}
+.acc-body.open{padding:20px;max-height:3000px}
+
+/* CONTENT */
+.content-prose{color:var(--text-2);font-size:14.5px;line-height:1.8}
+.content-prose h4{font-family:var(--serif);font-size:1.1rem;color:var(--text);margin:20px 0 8px;font-weight:400}
+.content-prose p{margin-bottom:12px}
+.content-prose ul{padding-left:20px;margin-bottom:12px}
+.content-prose li{margin-bottom:6px}
+.content-prose strong{color:var(--text);font-weight:600}
+
+/* BADGES */
+.badge{display:inline-flex;align-items:center;gap:4px;padding:3px 9px;border-radius:20px;font-size:11px;font-weight:500}
+.badge-green{background:var(--green-light);color:var(--green)}
+.badge-gold{background:var(--gold-light);color:var(--gold)}
+.badge-red{background:var(--red-light);color:var(--red)}
+.badge-blue{background:var(--blue-light);color:var(--blue)}
+.badge-purple{background:var(--purple-light);color:var(--purple)}
+.important-banner{background:linear-gradient(135deg,var(--gold-light),#fff9ed);border:1px solid #e8c87a;border-radius:var(--radius);padding:12px 16px;margin:16px 0;display:flex;gap:10px;align-items:flex-start}
+.important-banner .icon{font-size:16px;flex-shrink:0;margin-top:1px}
+.important-banner p{font-size:13px;color:var(--text-2);margin:0}
+.important-banner strong{color:var(--text);font-weight:600}
+.exam-tip{background:linear-gradient(135deg,var(--accent-light),#f0f6ff);border:1px solid #a8c5f5;border-radius:var(--radius);padding:14px 16px;margin:14px 0}
+.exam-tip-label{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);margin-bottom:6px}
+.exam-tip p{font-size:13.5px;color:var(--text-2);margin:0}
+
+/* INFO GRID */
+.info-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px;margin:16px 0}
+.info-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:16px;transition:.2s}
+.info-card:hover{border-color:var(--accent);transform:translateY(-1px)}
+.info-card-icon{font-size:22px;margin-bottom:8px}
+.info-card-title{font-weight:600;font-size:13.5px;color:var(--text);margin-bottom:4px}
+.info-card-desc{font-size:12.5px;color:var(--text-2);line-height:1.6}
+
+/* COMPARE TABLE */
+.compare-table{width:100%;border-collapse:collapse;font-size:13.5px;border-radius:var(--radius);overflow:hidden;border:1px solid var(--border);margin:16px 0}
+.compare-table th{background:var(--bg-2);padding:10px 14px;text-align:left;font-weight:600;color:var(--text);font-size:13px;border-bottom:1px solid var(--border)}
+.compare-table td{padding:10px 14px;border-bottom:1px solid var(--bg-3);color:var(--text-2);vertical-align:top}
+.compare-table tr:last-child td{border-bottom:none}
+.compare-table tr:hover td{background:var(--bg-2)}
+.compare-table td:first-child{font-weight:500;color:var(--text)}
+
+/* CODE BLOCKS */
+.code-block{background:#1a1814;border-radius:var(--radius);overflow:hidden;margin:16px 0;border:1px solid #2a2822}
+.code-header{background:#232019;padding:10px 16px;display:flex;align-items:center;gap:8px;border-bottom:1px solid #2a2822}
+.code-dots{display:flex;gap:5px}
+.code-dots span{width:10px;height:10px;border-radius:50%}
+.code-dots span:nth-child(1){background:#ff5f56}
+.code-dots span:nth-child(2){background:#ffbd2e}
+.code-dots span:nth-child(3){background:#27c93f}
+.code-lang{font-size:11px;color:#6b7280;font-family:var(--mono);margin-left:auto}
+.code-body{padding:20px;font-family:var(--mono);font-size:13px;line-height:1.7;color:#e2d9c8;overflow-x:auto}
+.kw{color:#7dd3fc}.fn{color:#74c48d}.str{color:#fbbf24}.cm{color:#6b7280;font-style:italic}.num{color:#fb923c}.op{color:#94a3b8}.type{color:#c4b5fd}.tg{color:#f87171}.at{color:#fbbf24}.vl{color:#a5f3fc}
+
+/* MCQ */
+.mcq-grid{display:flex;flex-direction:column;gap:20px}
+.mcq-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px;transition:.2s}
+.mcq-card:hover{border-color:var(--border-2);box-shadow:var(--shadow)}
+.mcq-meta{display:flex;gap:8px;margin-bottom:14px;align-items:center}
+.mcq-q{font-weight:500;font-size:15px;color:var(--text);margin-bottom:16px;line-height:1.6}
+.mcq-options{display:flex;flex-direction:column;gap:8px;margin-bottom:16px}
+.mcq-opt{padding:10px 14px;border:1.5px solid var(--border);border-radius:8px;font-size:13.5px;color:var(--text-2);cursor:pointer;transition:.2s;display:flex;gap:10px;align-items:flex-start}
+.mcq-opt:hover{border-color:var(--accent);background:var(--accent-light);color:var(--accent)}
+.mcq-opt.correct{border-color:var(--green);background:var(--green-light);color:var(--green)}
+.mcq-opt.wrong{border-color:var(--red);background:var(--red-light);color:var(--red)}
+.mcq-opt-letter{font-weight:700;font-size:12px;width:18px;flex-shrink:0;margin-top:1px}
+.mcq-explanation{background:var(--bg-2);border-radius:8px;padding:14px;font-size:13.5px;color:var(--text-2);margin-top:12px;display:none;border-left:3px solid var(--accent)}
+.mcq-explanation.show{display:block}
+
+/* REVISION CARDS */
+.rev-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px}
+.rev-card{border-radius:var(--radius-lg);padding:22px;border:1px solid var(--border);position:relative;overflow:hidden}
+.rev-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+.rev-card.green::before{background:linear-gradient(90deg,var(--green),#40916c)}
+.rev-card.gold::before{background:linear-gradient(90deg,var(--gold),#e8a850)}
+.rev-card.blue::before{background:linear-gradient(90deg,var(--blue),#60a5fa)}
+.rev-card.purple::before{background:linear-gradient(90deg,var(--purple),#a78bfa)}
+.rev-card.red::before{background:linear-gradient(90deg,var(--red),#f87171)}
+.rev-card-title{font-weight:700;font-size:14px;color:var(--text);margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.rev-item{font-size:13px;color:var(--text-2);padding:5px 0;border-bottom:1px solid var(--bg-3);display:flex;gap:8px}
+.rev-item:last-child{border-bottom:none}
+.rev-item strong{color:var(--text);font-weight:600;flex-shrink:0;min-width:80px}
+.rev-code{font-family:var(--mono);font-size:12px;background:var(--bg-2);padding:2px 5px;border-radius:4px;color:var(--text)}
+
+/* STRATEGY */
+.strategy-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
+.strategy-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:20px;transition:.2s}
+.strategy-card:hover{border-color:var(--accent);box-shadow:var(--shadow)}
+.strategy-card-num{font-family:var(--serif);font-size:2rem;color:var(--accent-light);font-weight:400;margin-bottom:4px}
+.strategy-card-title{font-weight:600;font-size:14.5px;color:var(--text);margin-bottom:8px}
+.strategy-card-desc{font-size:13px;color:var(--text-2);line-height:1.7}
+
+/* UQ */
+.uq-list{display:flex;flex-direction:column;gap:12px}
+.uq-item{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:16px 20px;display:flex;gap:14px;align-items:flex-start;transition:.2s}
+.uq-item:hover{border-color:var(--accent);box-shadow:var(--shadow)}
+.uq-marks{background:var(--bg-2);border-radius:8px;padding:6px 10px;font-size:11px;font-weight:700;color:var(--text-3);text-align:center;flex-shrink:0;min-width:44px;font-family:var(--mono)}
+.uq-marks span{display:block;font-size:9px;font-weight:400;color:var(--text-3)}
+.uq-content{flex:1}
+.uq-q{font-weight:500;font-size:14px;color:var(--text);margin-bottom:6px;line-height:1.6}
+.uq-tags{display:flex;gap:6px;flex-wrap:wrap}
+
+/* TIMELINE */
+.timeline{position:relative;padding-left:32px}
+.timeline::before{content:'';position:absolute;left:7px;top:0;bottom:0;width:2px;background:linear-gradient(180deg,var(--accent),transparent)}
+.tl-item{position:relative;padding-bottom:28px}
+.tl-item::before{content:'';position:absolute;left:-29px;top:4px;width:10px;height:10px;border-radius:50%;background:var(--accent);border:2px solid var(--bg);box-shadow:0 0 0 2px var(--accent)}
+.tl-title{font-weight:600;font-size:14px;color:var(--text);margin-bottom:6px}
+.tl-desc{font-size:13.5px;color:var(--text-2);line-height:1.7}
+
+/* MNEMONIC */
+.mnemonic{background:linear-gradient(135deg,#1a1814,#232019);border-radius:var(--radius);padding:22px;margin:16px 0;border:1px solid #2a2822}
+.mnemonic-title{font-family:var(--mono);font-size:11px;color:#6b7280;margin-bottom:10px;text-transform:uppercase;letter-spacing:.08em}
+.mnemonic-letters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}
+.mnem-letter{background:#1d4ed820;border:1.5px solid #1d4ed8;border-radius:8px;padding:10px 14px;font-family:var(--mono);font-size:1.2rem;color:#7dd3fc;font-weight:700;text-align:center}
+.mnem-word{font-size:11px;color:#9a8e80;margin-top:3px}
+.mnemonic-phrase{font-family:var(--serif);font-size:1rem;color:#c4b5a0;font-style:italic}
+
+/* SCHEMA */
+.schema-box{background:#f9f8f5;border:1px solid var(--border);border-radius:var(--radius);padding:16px;font-family:var(--mono);font-size:13px;color:var(--text-2);margin:12px 0;line-height:1.9;overflow-x:auto}
+.schema-box .tname{color:var(--accent);font-weight:700}
+
+/* OPERATOR GRID */
+.operator-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px;margin:16px 0}
+.op-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:16px;text-align:center;transition:.2s}
+.op-card:hover{border-color:var(--accent);transform:translateY(-2px);box-shadow:var(--shadow)}
+.op-symbol{font-family:var(--mono);font-size:1.4rem;color:var(--accent);margin-bottom:6px;font-weight:700}
+.op-name{font-weight:600;font-size:13.5px;color:var(--text);margin-bottom:4px}
+.op-desc{font-size:12px;color:var(--text-2)}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
+.reveal.visible{opacity:1;transform:none}
+.reveal-delay-1{transition-delay:.1s}
+.reveal-delay-2{transition-delay:.2s}
+.reveal-delay-3{transition-delay:.3s}
+
+code{font-family:var(--mono);background:var(--bg-3);padding:2px 6px;border-radius:4px;font-size:0.88em;color:var(--accent)}
+
+/* FOOTER */
+footer{background:var(--bg-2);border-top:1px solid var(--border);padding:40px 24px;margin-top:80px}
+.footer-inner{max-width:1400px;margin:0 auto;display:flex;gap:32px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.footer-brand{font-family:var(--serif);font-size:1.1rem;color:var(--text-2)}
+.footer-links{display:flex;gap:16px;flex-wrap:wrap}
+.footer-links a{font-size:13px;color:var(--text-3);text-decoration:none;transition:.2s}
+.footer-links a:hover{color:var(--accent)}
+.footer-note{font-size:12px;color:var(--text-3)}
+
+.anchor-target{scroll-margin-top:80px}
+
+/* RESPONSIVE */
+@media(max-width:1024px){.sidebar{display:none}.main{padding:40px 0}.page-layout{padding:0 20px}}
+@media(max-width:768px){.hero-grid{grid-template-columns:1fr}.hero-visual{display:none}.hero-stats{grid-template-columns:repeat(2,1fr)}.nav-links{display:none}.syllabus-grid{grid-template-columns:1fr}}
+@media(max-width:480px){.hero-stats{grid-template-columns:1fr}.hero-btns{flex-direction:column}.info-grid{grid-template-columns:1fr}.operator-grid{grid-template-columns:repeat(2,1fr)}.rev-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <div class="nav-logo-icon">WD</div>
+      WebDev Prep
+    </a>
+    <span class="nav-tag">University Exam — BO CDA 208</span>
+    <div class="nav-spacer"></div>
+    <div class="nav-links">
+      <a href="#syllabus">Syllabus</a>
+      <a href="#html">HTML/CSS</a>
+      <a href="#mcq">MCQs</a>
+      <a href="#revision">Revision</a>
+      <a href="#revision" class="nav-cta">Last Night Revision →</a>
+    </div>
+  </div>
+</nav>
+
+<div class="page-layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-label">Getting Started</div>
+    <a href="#hero" class="sidebar-item active" data-sec="hero"><span class="dot"></span>Overview</a>
+    <a href="#syllabus" class="sidebar-item" data-sec="syllabus"><span class="dot"></span>Full Syllabus</a>
+
+    <div class="sidebar-label">Core Topics</div>
+    <a href="#webprotocols" class="sidebar-item" data-sec="webprotocols"><span class="dot"></span>Web Protocols <span class="sidebar-num">01</span></a>
+    <a href="#html" class="sidebar-item" data-sec="html"><span class="dot"></span>HTML & CSS <span class="sidebar-num">02</span></a>
+    <a href="#bootstrap" class="sidebar-item" data-sec="bootstrap"><span class="dot"></span>Bootstrap <span class="sidebar-num">03</span></a>
+    <a href="#javascript" class="sidebar-item" data-sec="javascript"><span class="dot"></span>JavaScript & jQuery <span class="sidebar-num">04</span></a>
+    <a href="#ajax" class="sidebar-item" data-sec="ajax"><span class="dot"></span>AJAX, Cookies & Sessions <span class="sidebar-num">05</span></a>
+    <a href="#databases" class="sidebar-item" data-sec="databases"><span class="dot"></span>Databases & ORM <span class="sidebar-num">06</span></a>
+    <a href="#frameworks" class="sidebar-item" data-sec="frameworks"><span class="dot"></span>Web Frameworks & UI <span class="sidebar-num">07</span></a>
+    <a href="#mobile" class="sidebar-item" data-sec="mobile"><span class="dot"></span>Mobile & Android <span class="sidebar-num">08</span></a>
+
+    <div class="sidebar-label">Practice</div>
+    <a href="#practical" class="sidebar-item" data-sec="practical"><span class="dot"></span>Practical Lab</a>
+    <a href="#mcq" class="sidebar-item" data-sec="mcq"><span class="dot"></span>MCQ Practice</a>
+    <a href="#uqs" class="sidebar-item" data-sec="uqs"><span class="dot"></span>University Questions</a>
+
+    <div class="sidebar-label">Exam Day</div>
+    <a href="#revision" class="sidebar-item" data-sec="revision"><span class="dot"></span>Last Night Revision</a>
+    <a href="#strategy" class="sidebar-item" data-sec="strategy"><span class="dot"></span>Exam Strategy</a>
+  </aside>
+
+  <main class="main">
+
+    <!-- HERO -->
+    <section id="hero" class="hero anchor-target">
+      <div class="hero-grid">
+        <div>
+          <div class="hero-eyebrow reveal">Web Development & App Design — BO CDA 208</div>
+          <h1 class="hero-title reveal reveal-delay-1">Complete Web Dev<br><em>Exam Preparation</em><br>— From Zero to Pass</h1>
+          <p class="hero-sub reveal reveal-delay-2">Complete notes on HTTP, HTML/CSS, Bootstrap, JavaScript, jQuery, AJAX, Databases, ORM, Web Frameworks, UI Design, Mobile Computing and Android — all in one roadmap.</p>
+          <div class="hero-btns reveal reveal-delay-3">
+            <a href="#syllabus" class="btn-primary">▶ Start Learning</a>
+            <a href="#revision" class="btn-secondary">⬇ Quick Revision</a>
+          </div>
+          <div class="hero-stats reveal reveal-delay-3">
+            <div class="stat-card"><div class="stat-icon">📚</div><div class="stat-label">Full Syllabus</div><div class="stat-sub">Covered</div></div>
+            <div class="stat-card"><div class="stat-icon">❓</div><div class="stat-label">100+ MCQs</div><div class="stat-sub">With Explanations</div></div>
+            <div class="stat-card"><div class="stat-icon">⚡</div><div class="stat-label">Code Examples</div><div class="stat-sub">Included</div></div>
+            <div class="stat-card"><div class="stat-icon">🎯</div><div class="stat-label">Exam Focused</div><div class="stat-sub">Revision Cards</div></div>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div style="position:absolute;width:300px;height:300px;background:radial-gradient(circle,rgba(29,78,216,.15),transparent 70%);top:0;left:50%;transform:translateX(-50%);pointer-events:none"></div>
+          <!-- HTML Card -->
+          <div class="hero-db-card main-card">
+            <div class="card-header"><div class="card-dots"><span></span><span></span><span></span></div><div class="card-title-sm">index.html</div></div>
+            <div class="html-line"><span class="html-tag">&lt;div</span> <span class="html-attr">class=</span><span class="html-val">"container"</span><span class="html-tag">&gt;</span></div>
+            <div class="html-line">&nbsp;&nbsp;<span class="html-tag">&lt;h1&gt;</span><span class="html-txt">Hello World</span><span class="html-tag">&lt;/h1&gt;</span></div>
+            <div class="html-line">&nbsp;&nbsp;<span class="html-tag">&lt;p</span> <span class="html-attr">id=</span><span class="html-val">"msg"</span><span class="html-tag">&gt;</span><span class="html-txt">Web Dev</span><span class="html-tag">&lt;/p&gt;</span></div>
+            <div class="html-line">&nbsp;&nbsp;<span class="html-tag">&lt;button</span> <span class="html-attr">onclick=</span><span class="html-val">"greet()"</span><span class="html-tag">&gt;</span><span class="html-txt">Click</span><span class="html-tag">&lt;/button&gt;</span></div>
+            <div class="html-line"><span class="html-tag">&lt;/div&gt;</span></div>
+          </div>
+          <!-- CSS/JS Card -->
+          <div class="hero-db-card sql-card">
+            <div class="card-header"><div class="card-dots"><span></span><span></span><span></span></div><div class="card-title-sm">style.css + app.js</div></div>
+            <div class="css-line"><span class="css-sel">.container</span> {</div>
+            <div class="css-line">&nbsp;&nbsp;<span class="css-prop">display:</span> <span class="css-val">flex</span>;</div>
+            <div class="css-line">&nbsp;&nbsp;<span class="css-prop">padding:</span> <span class="css-val">20px</span>; }</div>
+            <div class="js-line" style="margin-top:8px"><span class="js-kw">function</span> <span class="js-fn">greet</span>() {</div>
+            <div class="js-line">&nbsp;&nbsp;<span class="js-fn">alert</span>(<span class="js-str">"Hello!"</span>);</div>
+            <div class="js-line">}</div>
+          </div>
+          <!-- Mobile Card -->
+          <div class="hero-db-card er-card">
+            <div class="card-header"><div class="card-dots"><span></span><span></span><span></span></div><div class="card-title-sm">Android</div></div>
+            <div style="background:var(--accent-light);border:1.5px solid var(--accent);border-radius:8px;padding:6px 10px;font-size:11px;font-weight:500;color:var(--accent);text-align:center;margin-bottom:6px">Activity</div>
+            <div style="text-align:center;font-size:12px;color:#7a7570;margin:2px 0">onCreate() ↕</div>
+            <div style="background:var(--gold-light);border:1.5px solid var(--gold);border-radius:6px;padding:5px 8px;font-size:10px;font-weight:500;color:var(--gold);text-align:center;margin-bottom:6px">Intent</div>
+            <div style="text-align:center;font-size:12px;color:#7a7570;margin:2px 0">↕</div>
+            <div style="background:var(--accent-light);border:1.5px solid var(--accent);border-radius:8px;padding:6px 10px;font-size:11px;font-weight:500;color:var(--accent);text-align:center">Fragment</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SYLLABUS -->
+    <section id="syllabus" class="section anchor-target">
+      <div class="section-header reveal">
+        <div class="section-eyebrow">Official Syllabus</div>
+        <h2 class="section-title">Complete Course Syllabus — BO CDA 208</h2>
+        <p class="section-desc">Every topic from the official university syllabus. 3-1-2-5 credits. Click any card to jump to the detailed section.</p>
+      </div>
+      <div class="syllabus-grid">
+        <a href="#webprotocols" class="syllabus-card reveal" style="text-decoration:none;color:inherit">
+          <div class="syl-num">UNIT 01</div>
+          <div class="syl-title">🌐 Web Data Protocols</div>
+          <ul class="syl-topics">
+            <li>HTTP & HTTPS</li><li>Request/Response Cycle</li><li>HTTP Methods (GET, POST, PUT, DELETE)</li><li>WebSockets</li><li>Status Codes</li>
+          </ul>
+        </a>
+        <a href="#html" class="syllabus-card reveal reveal-delay-1" style="text-decoration:none;color:inherit">
+          <div class="syl-num">UNIT 02</div>
+          <div class="syl-title">🖼 HTML & CSS</div>
+          <ul class="syl-topics">
+            <li>HTML5 structure & semantic tags</li><li>Forms, Tables, Media</li><li>CSS selectors, box model</li><li>Flexbox & Grid</li><li>Responsive design</li>
+          </ul>
+        </a>
+        <a href="#bootstrap" class="syllabus-card reveal reveal-delay-2" style="text-decoration:none;color:inherit">
+          <div class="syl-num">UNIT 03</div>
+          <div class="syl-title">🅱 Bootstrap</div>
+          <ul class="syl-topics">
+            <li>Grid system (12-column)</li><li>Responsive breakpoints</li><li>Bootstrap components</li><li>Utility classes</li><li>Bootstrap forms & nav</li>
+          </ul>
+        </a>
+        <a href="#javascript" class="syllabus-card reveal" style="text-decoration:none;color:inherit">
+          <div class="syl-num">UNIT 04</div>
+          <div class="syl-title">⚙️ JavaScript & jQuery</div>
+          <ul class="syl-topics">
+            <li>DOM manipulation</li><li>Events & event listeners</li><li>ES6+ features</li><li>jQuery selectors & methods</li><li>Promises & async/await</li>
+          </ul>
+        </a>
+        <a href="#ajax" class="syllabus-card reveal reveal-delay-1" style="text-decoration:none;color:inherit">
+          <div class="syl-num">UNIT 05</div>
+          <div class="syl-title">🔄 AJAX, Cookies & Sessions</div>
+          <ul class="syl-topics">
+            <li>AJAX & XMLHttpRequest</li><li>Fetch API & JSON</li><li>Cookies — set/get/delete</li><li>Sessions & session management</li><li>localStorage & sessionStorage</li>
+          </ul>
+        </a>
+        <a href="#databases" class="syllabus-card reveal reveal-delay-2" style="text-decoration:none;color:inherit">
+          <div class="syl-num">UNIT 06</div>
+          <div class="syl-title">🗄 Databases & ORM</div>
+          <ul class="syl-topics">
+            <li>Web databases overview</li><li>Transaction management</li><li>ORM concepts</li><li>SQLAlchemy / Hibernate / Django ORM</li><li>CRUD via ORM</li>
+          </ul>
+        </a>
+        <a href="#frameworks" class="syllabus-card reveal" style="text-decoration:none;color:inherit">
+          <div class="syl-num">UNIT 07</div>
+          <div class="syl-title">🏗 Web Frameworks & UI Design</div>
+          <ul class="syl-topics">
+            <li>Web frameworks overview (Django, Flask, Express, React)</li><li>MVC / MVT architecture</li><li>Principles of UI design</li><li>UI design patterns</li><li>Accessibility</li>
+          </ul>
+        </a>
+        <a href="#mobile" class="syllabus-card reveal reveal-delay-1" style="text-decoration:none;color:inherit">
+          <div class="syl-num">UNIT 08</div>
+          <div class="syl-title">📱 Mobile Computing & Android</div>
+          <ul class="syl-topics">
+            <li>Introduction to Mobile Computing</li><li>Android Development Environment</li><li>Mobile Software Engineering</li><li>Frameworks and Tools</li><li>Generic UI Development</li><li>Factors in Mobile App Development</li>
+          </ul>
+        </a>
+        <a href="#practical" class="syllabus-card reveal reveal-delay-2" style="text-decoration:none;color:inherit">
+          <div class="syl-num">PRACTICAL</div>
+          <div class="syl-title">💻 Practical Component</div>
+          <ul class="syl-topics">
+            <li>HTML/CSS/Bootstrap pages</li><li>JavaScript DOM projects</li><li>jQuery & AJAX calls</li><li>Backend with a web framework</li><li>Database-connected web app</li><li>Mobile UI prototype</li>
+          </ul>
+        </a>
+      </div>
+    </section>
+
+    <!-- UNIT 01: WEB PROTOCOLS -->
+    <section id="webprotocols" class="section anchor-target">
+      <div class="section-header reveal">
+        <div class="section-eyebrow">Unit 01</div>
+        <h2 class="section-title">Web Data Protocols</h2>
+        <p class="section-desc">The foundation of how the web communicates. HTTP, HTTPS, WebSockets — understand the plumbing before the paint.</p>
+      </div>
+
+      <div class="important-banner reveal">
+        <div class="icon">⭐</div>
+        <p><strong>Most Important for Exam:</strong> HTTP methods (GET vs POST), status codes, request-response cycle, difference between HTTP and WebSockets, statelessness of HTTP — these appear in nearly every university exam.</p>
+      </div>
+
+      <div class="accordion reveal">
+        <button class="acc-trigger open" onclick="toggleAcc(this)">
+          <div class="acc-icon" style="background:#dbeafe">🌐</div>
+          <span class="acc-trigger-title">HTTP — HyperText Transfer Protocol</span>
+          <span class="acc-trigger-sub badge badge-red" style="background:var(--red-light);color:var(--red);padding:3px 8px;border-radius:4px;font-size:11px">🔥 High Frequency</span>
+          <span class="acc-arrow">▼</span>
+        </button>
+        <div class="acc-body open">
+          <div class="content-prose">
+            <p><strong>HTTP</strong> is a stateless, application-layer protocol used for transmitting hypermedia. The client (browser) sends a <strong>request</strong>; the server sends back a <strong>response</strong>. Each request is independent — the server remembers nothing between requests (stateless).</p>
+            <h4>HTTP Request Structure</h4>
+            <div class="schema-box"><span class="tname">GET</span> /index.html HTTP/1.1
+Host: www.example.com
+Accept: text/html
+Cookie: sessionid=abc123</div>
+            <h4>HTTP Methods</h4>
+            <table class="compare-table">
+              <tr><th>Method</th><th>Purpose</th><th>Has Body?</th><th>Idempotent?</th></tr>
+              <tr><td><strong>GET</strong></td><td>Retrieve resource</td><td>No</td><td>Yes</td></tr>
+              <tr><td><strong>POST</strong></td><td>Submit data / create resource</td><td>Yes</td><td>No</td></tr>
+              <tr><td><strong>PUT</strong></td><td>Replace resource completely</td><td>Yes</td><td>Yes</td></tr>
+              <tr><td><strong>PATCH</strong></td><td>Partially update resource</td><td>Yes</td><td>No</td></tr>
+              <tr><td><strong>DELETE</strong></td><td>Delete resource</td><td>No</td><td>Yes</td></tr>
+              <tr><td><strong>HEAD</strong></td><td>GET without response body (check headers)</td><td>No</td><td>Yes</td></tr>
+              <tr><td><strong>OPTIONS</strong></td><td>Ask what methods are allowed (CORS preflight)</td><td>No</td><td>Yes</td></tr>
+            </table>
+            <h4>HTTP Status Codes</h4>
+            <div class="info-grid">
+              <div class="info-card"><div class="info-card-icon">✅</div><div class="info-card-title">2xx — Success</div><div class="info-card-desc"><strong>200 OK</strong> — request succeeded. <strong>201 Created</strong> — new resource created. <strong>204 No Content</strong> — success, no body.</div></div>
+              <div class="info-card"><div class="info-card-icon">↪️</div><div class="info-card-title">3xx — Redirection</div><div class="info-card-desc"><strong>301 Moved Permanently</strong> — URL changed forever. <strong>302 Found</strong> — temporary redirect. <strong>304 Not Modified</strong> — use cached version.</div></div>
+              <div class="info-card"><div class="info-card-icon">❌</div><div class="info-card-title">4xx — Client Error</div><div class="info-card-desc"><strong>400 Bad Request</strong>. <strong>401 Unauthorized</strong>. <strong>403 Forbidden</strong>. <strong>404 Not Found</strong>. <strong>405 Method Not Allowed</strong>.</div></div>
+              <div class="info-card"><div class="info-card-icon">💥</div><div class="info-card-title">5xx — Server Error</div><div class="info-card-desc"><strong>500 Internal Server Error</strong>. <strong>502 Bad Gateway</strong>. <strong>503 Service Unavailable</strong>.</div></div>
+            </div>
+            <h4>HTTP vs HTTPS</h4>
+            <table class="compare-table">
+              <tr><th>HTTP</th><th>HTTPS</th></tr>
+              <tr><td>Port 80</td><td>Port 443</td></tr>
+              <tr><td>Plain text — data readable</td><td>Encrypted via TLS/SSL</td></tr>
+              <tr><td>No certificate needed</td><td>Requires SSL certificate</td></tr>
+              <tr><td>Faster (no overhead)</td><td>Slightly slower (encryption cost)</td></tr>
+              <tr><td>Insecure — passwords visible</td><td>Secure — passwords encrypted</td></tr>
+            </table>
+            <div class="exam-tip">
+              <div class="exam-tip-label">📝 Exam Trick</div>
+              <p><strong>GET vs POST:</strong> GET sends data in URL (visible, bookmarkable, cached). POST sends data in body (hidden, not cached, suitable for forms). GET is idempotent; POST is not.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion reveal">
+        <button class="acc-trigger" onclick="toggleAcc(this)">
+          <div class="acc-icon" style="background:#d8f3dc">🔌</div>
+          <span class="acc-trigger-title">WebSockets — Full-Duplex Communication</span>
+          <span class="acc-trigger-sub">Real-time · Persistent · Bidirectional</span>
+          <span class="acc-arrow">▼</span>
+        </button>
+        <div class="acc-body">
+          <div class="content-prose">
+            <p><strong>WebSockets</strong> provide a persistent, full-duplex communication channel over a single TCP connection. Unlike HTTP (request-response), WebSockets allow the server to push data to clients at any time without the client requesting it.</p>
+            <table class="compare-table">
+              <tr><th>Feature</th><th>HTTP</th><th>WebSocket</th></tr>
+              <tr><td>Communication</td><td>Half-duplex (request→response)</td><td>Full-duplex (both directions simultaneously)</td></tr>
+              <tr><td>Connection</td><td>New connection per request</td><td>Persistent, single connection</td></tr>
+              <tr><td>Overhead</td><td>High (headers each request)</td><td>Low (after handshake)</td></tr>
+              <tr><td>Server Push</td><td>No (only response)</td><td>Yes</td></tr>
+              <tr><td>Use Case</td><td>Normal web browsing, REST APIs</td><td>Chat, live scores, stock tickers, gaming</td></tr>
+              <tr><td>Protocol</td><td>http:// or https://</td><td>ws:// or wss://</td></tr>
+            </table>
+            <p><strong>WebSocket Handshake:</strong> WebSockets start as an HTTP request with <code>Upgrade: websocket</code> header. Server responds with 101 Switching Protocols. After this, the connection switches to the WebSocket protocol.</p>
+            <div class="exam-tip">
+              <div class="exam-tip-label">💡 Memory Trick</div>
+              <p>Think of HTTP as a walkie-talkie (one speaks, then other) vs WebSocket as a phone call (both can speak simultaneously). Use WebSockets when the server needs to push updates proactively.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- UNIT 02: HTML & CSS -->
+    <section id="html" class="section anchor-target">
+      <div class="section-header reveal">
+        <div class="section-eyebrow">Unit 02</div>
+        <h2 class="section-title">HTML & CSS</h2>
+        <p class="section-desc">The structure and style of the web. Master semantic HTML5 and modern CSS layout techniques.</p>
+      </div>
+
+      <div class="accordion reveal">
+        <button class="acc-trigger open" onclick="toggleAcc(this)">
+          <div class="acc-icon" style="background:#fde8e8">🏗</div>
+          <span class="acc-trigger-title">HTML5 — Structure, Semantic Tags & Forms</span>
+          <span class="acc-trigger-sub badge badge-red" style="background:var(--red-light);color:var(--red);padding:3px 8px;border-radius:4px;font-size:11px">🔥 High Frequency</span>
+          <span class="acc-arrow">▼</span>
+        </button>
+        <div class="acc-body open">
+          <div class="content-prose">
+            <h4>HTML5 Document Structure</h4>
+            <div class="code-block">
+              <div class="code-header"><div class="code-dots"><span></span><span></span><span></span></div><span class="code-lang">HTML5</span></div>
+              <div class="code-body">
+<span class="cm">&lt;!-- Standard HTML5 Document --&gt;</span>
+<span class="op">&lt;!DOCTYPE html&gt;</span>
+<span class="tg">&lt;html</span> <span class="at">lang=</span><span class="str">"en"</span><span class="tg">&gt;</span>
+<span class="tg">&lt;head&gt;</span>
+  <span class="tg">&lt;meta</span> <span class="at">charset=</span><span class="str">"UTF-8"</span><span class="tg">&gt;</span>
+  <span class="tg">&lt;meta</span> <span class="at">name=</span><span class="str">"viewport"</span> <span class="at">content=</span><span class="str">"width=device-width, initial-scale=1.0"</span><span class="tg">&gt;</span>
+  <span class="tg">&lt;title&gt;</span>My Page<span class="tg">&lt;/title&gt;</span>
+  <span class="tg">&lt;link</span> <span class="at">rel=</span><span class="str">"stylesheet"</span> <span class="at">href=</span><span class="str">"style.css"</span><span class="tg">&gt;</span>
+<span class="tg">&lt;/head&gt;</span>
+<span class="tg">&lt;body&gt;</span>
+  <span class="tg">&lt;header&gt;</span><span class="tg">&lt;nav&gt;</span>Navigation<span class="tg">&lt;/nav&gt;&lt;/header&gt;</span>
+  <span class="tg">&lt;main&gt;</span>
+    <span class="tg">&lt;section&gt;</span><span class="tg">&lt;article&gt;</span>Content<span class="tg">&lt;/article&gt;&lt;/section&gt;</span>
+    <span class="tg">&lt;aside&gt;</span>Sidebar<span class="tg">&lt;/aside&gt;</span>
+  <span class="tg">&lt;/main&gt;</span>
+  <span class="tg">&lt;footer&gt;</span>Footer<span class="tg">&lt;/footer&gt;</span>
+<span class="tg">&lt;/body&gt;</span>
+<span class="tg">&lt;/html&gt;</span>
+              </div>
+            </div>
+            <h4>Semantic Tags — Why They Matter</h4>
+            <table class="compare-table">
+              <tr><th>Tag</th><th>Purpose</th></tr>
+              <tr><td><code>&lt;header&gt;</code></td><td>Top section of page or article — logo, nav</td></tr>
+              <tr><td><code>&lt;nav&gt;</code></td><td>Navigation links</td></tr>
+              <tr><td><code>&lt;main&gt;</code></td><td>Primary content of the page (only one per page)</td></tr>
+              <tr><td><code>&lt;section&gt;</code></td><td>Thematic grouping of content with a heading</td></tr>
+              <tr><td><code>&lt;article&gt;</code></td><td>Self-contained content (blog post, news)</td></tr>
+              <tr><td><code>&lt;aside&gt;</code></td><td>Sidebar / tangentially related content</td></tr>
+              <tr><td><code>&lt;footer&gt;</code></td><td>Bottom section — copyright, links</td></tr>
+              <tr><td><code>&lt;figure&gt;/&lt;figcaption&gt;</code></td><td>Image with caption</td></tr>
+            </table>
+            <h4>HTML Forms — Key Input Types</h4>
+            <div class="code-block">
+              <div class="code-header"><div class="code-dots"><span></span><span></span><span></span></div><span class="code-lang">HTML — Forms</span></div>
+              <div class="code-body">
+<span class="tg">&lt;form</span> <span class="at">action=</span><span class="str">"/submit"</span> <span class="at">method=</span><span class="str">"POST"</span><span class="tg">&gt;</span>
+  <span class="tg">&lt;input</span> <span class="at">type=</span><span class="str">"text"</span>     <span class="at">name=</span><span class="str">"username"</span> <span class="at">required</span><span class="tg">&gt;</span>
+  <span class="tg">&lt;input</span> <span class="at">type=</span><span class="str">"email"</span>    <span class="at">name=</span><span class="str">"email"</span>    <span class="at">placeholder=</span><span class="str">"Enter email"</span><span class="tg">&gt;</span>
+  <span class="tg">&lt;input</span> <span class="at">type=</span><span class="str">"password"</span> <span class="at">name=</span><span class="str">"pass"</span>     <span class="at">minlength=</span><span class="str">"8"</span><span class="tg">&gt;</span>
+  <span class="tg">&lt;input</span> <span class="at">type=</span><span class="str">"number"</span>   <span class="at">name=</span><span class="str">"age"</span>      <span class="at">min=</span><span class="str">"1"</span> <span class="at">max=</span><span class="str">"120"</span><span class="tg">&gt;</span>
+  <span class="tg">&lt;input</span> <span class="at">type=</span><span class="str">"radio"</span>    <span class="at">name=</span><span class="str">"gender"</span>   <span class="at">value=</span><span class="str">"M"</span><span class="tg">&gt;</span> Male
+  <span class="tg">&lt;input</span> <span class="at">type=</span><span class="str">"checkbox"</span> <span class="at">name=</span><span class="str">"agree"</span>    <span class="at">checked</span><span class="tg">&gt;</span>
+  <span class="tg">&lt;select</span> <span class="at">name=</span><span class="str">"dept"</span><span class="tg">&gt;&lt;option</span> <span class="at">value=</span><span class="str">"CS"</span><span class="tg">&gt;</span>CS<span class="tg">&lt;/option&gt;&lt;/select&gt;</span>
+  <span class="tg">&lt;textarea</span> <span class="at">name=</span><span class="str">"bio"</span> <span class="at">rows=</span><span class="str">"4"</span><span class="tg">&gt;&lt;/textarea&gt;</span>
+  <span class="tg">&lt;button</span> <span class="at">type=</span><span class="str">"submit"</span><span class="tg">&gt;</span>Submit<span class="tg">&lt;/button&gt;</span>
+<span class="tg">&lt;/form&gt;</span>
+              </div>
+            </div>
+            <div class="exam-tip">
+              <div class="exam-tip-label">💡 Exam Trick</div>
+              <p>Block elements (<code>div, p, h1-h6, section, article</code>) take full width. Inline elements (<code>span, a, img, input</code>) only take as much width as needed. <code>inline-block</code> = inline but can set width/height.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion reveal">
+        <button class="acc-trigger" onclick="toggleAcc(this)">
+          <div class="acc-icon" style="background:#ede9fe">🎨</div>
+          <span class="acc-trigger-title">CSS — Selectors, Box Model, Flexbox & Grid</span>
+          <span class="acc-trigger-sub badge badge-red" style="background:var(--red-light);color:var(--red);padding:3px 8px;border-radius:4px;font-size:11px">🔥 Very Important</span>
+          <span class="acc-arrow">▼</span>
+        </button>
+        <div class="acc-body">
+          <div class="content-prose">
+            <h4>CSS Selectors — Specificity Order</h4>
+            <table class="compare-table">
+              <tr><th>Selector</th><th>Example</th><th>Specificity</th></tr>
+              <tr><td>Inline style</td><td><code>style="color:red"</code></td><td>1000 (highest)</td></tr>
+              <tr><td>ID selector</td><td><code>#myId</code></td><td>100</td></tr>
+              <tr><td>Class / Pseudo-class / Attribute</td><td><code>.myClass, :hover, [type]</code></td><td>10</td></tr>
+              <tr><td>Element / Pseudo-element</td><td><code>div, p, ::before</code></td><td>1</td></tr>
+              <tr><td>Universal selector</td><td><code>*</code></td><td>0 (lowest)</td></tr>
+            </table>
+            <h4>The Box Model</h4>
+            <p>Every HTML element is a box: <strong>Content → Padding → Border → Margin</strong> (inside out). <code>box-sizing: border-box</code> makes width/height include padding and border — preferred for layouts.</p>
+            <h4>Flexbox — One-Dimensional Layout</h4>
+            <div class="code-block">
+              <div class="code-header"><div class="code-dots"><span></span><span></span><span></span></div><span class="code-lang">CSS — Flexbox</span></div>
+              <div class="code-body">
+<span class="cm">/* Parent (flex container) */</span>
+.container {
+  <span class="at">display</span>: <span class="vl">flex</span>;
+  <span class="at">flex-direction</span>: <span class="vl">row</span>;          <span class="cm">/* row | column */</span>
+  <span class="at">justify-content</span>: <span class="vl">space-between</span>; <span class="cm">/* main axis */</span>
+  <span class="at">align-items</span>: <span class="vl">center</span>;           <span class="cm">/* cross axis */</span>
+  <span class="at">flex-wrap</span>: <span class="vl">wrap</span>;
+  <span class="at">gap</span>: <span class="num">16px</span>;
+}
+<span class="cm">/* Child (flex item) */</span>
+.item {
+  <span class="at">flex</span>: <span class="num">1</span>;      <span class="cm">/* grow: 1, shrink: 1, basis: auto */</span>
+  <span class="at">align-self</span>: <span class="vl">flex-start</span>;
+}
+              </div>
+            </div>
+            <h4>CSS Grid — Two-Dimensional Layout</h4>
+            <div class="code-block">
+              <div class="code-header"><div class="code-dots"><span></span><span></span><span></span></div><span class="code-lang">CSS — Grid</span></div>
+              <div class="code-body">
+.grid-container {
+  <span class="at">display</span>: <span class="vl">grid</span>;
+  <span class="at">grid-template-columns</span>: <span class="fn">repeat</span>(<span class="num">3</span>, <span class="num">1</span>fr);
+  <span class="at">grid-template-rows</span>: <span class="num">100px</span> <span class="num">200px</span>;
+  <span class="at">gap</span>: <span class="num">20px</span>;
+}
+.item-spanning {
+  <span class="at">grid-column</span>: <span class="num">1</span> / <span class="num">3</span>;  <span class="cm">/* span 2 columns */</span>
+  <span class="at">grid-row</span>: <span class="num">1</span> / <span class="num">2</span>;
+}
+              </div>
+            </div>
+            <div class="exam-tip">
+              <div class="exam-tip-label">📝 Flexbox vs Grid</div>
+              <p><strong>Flexbox</strong> = 1D layout (row OR column at a time). Use for navbars, card rows, centering. <strong>Grid</strong> = 2D layout (rows AND columns simultaneously). Use for page layouts, dashboards.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- UNIT 03: BOOTSTRAP -->
+    <section id="bootstrap" class="section anchor-target">
+      <div class="section-header reveal">
+        <div class="section-eyebrow">Unit 03</div>
+        <h2 class="section-title">Bootstrap</h2>
+        <p class="section-desc">The most popular CSS framework. Master the grid system and components for fast responsive development.</p>
+      </div>
+
+      <div class="accordion reveal">
+        <button class="acc-trigger open" onclick="toggleAcc(this)">
+          <div class="acc-icon" style="background:#dbeafe">🅱</div>
+          <span class="acc-trigger-title">Bootstrap Grid System & Breakpoints</span>
+          <span class="acc-trigger-sub badge badge-red" style="background:var(--red-light);color:var(--red);padding:3px 8px;border-radius:4px;font-size:11px">🔥 MCQ Favourite</span>
+          <span class="acc-arrow">▼</span>
+        </button>
+        <div class="acc-body open">
+          <div class="content-prose">
+            <p>Bootstrap uses a <strong>12-column responsive grid</strong>. Columns are defined using classes like <code>col-md-6</code> (takes 6 of 12 columns on medium screens and above).</p>
+            <h4>Breakpoints</h4>
+            <table class="compare-table">
+              <tr><th>Breakpoint</th><th>Class prefix</th><th>Screen width</th><th>Typical device</th></tr>
+              <tr><td>Extra small</td><td><code>col-</code></td><td>&lt;576px</td><td>Portrait phone</td></tr>
+              <tr><td>Small</td><td><code>col-sm-</code></td><td>≥576px</td><td>Landscape phone</td></tr>
+              <tr><td>Medium</td><td><code>col-md-</code></td><td>≥768px</td><td>Tablet</td></tr>
+              <tr><td>Large</td><td><code>col-lg-</code></td><td>≥992px</td><td>Desktop</td></tr>
+              <tr><td>X-Large</td><td><code>col-xl-</code></td><td>≥1200px</td><td>Large desktop</td></tr>
+              <tr><td>XX-Large</td><td><code>col-xxl-</code></td><td>≥1400px</td><td>Wide screen</td></tr>
+            </table>
+            <div class="code-block">
+              <div class="code-header"><div class="code-dots"><span></span><span></span><span></span></div><span class="code-lang">Bootstrap Grid</span></div>
+              <div class="code-body">
+<span class="cm">&lt;!-- 3-column layout on desktop, stack on mobile --&gt;</span>
+<span class="tg">&lt;div</span> <span class="at">class=</span><span class="str">"container"</span><span class="tg">&gt;</span>
+  <span class="tg">&lt;div</span> <span class="at">class=</span><span class="str">"row"</span><span class="tg">&gt;</span>
+    <span class="tg">&lt;div</span> <span class="at">class=</span><span class="str">"col-12 col-md-4"</span><span class="tg">&gt;</span>Column 1<span class="tg">&lt;/div&gt;</span>
+    <span class="tg">&lt;div</span> <span class="at">class=</span><span class="str">"col-12 col-md-4"</span><span class="tg">&gt;</span>Column 2<span class="tg">&lt;/div&gt;</span>
+    <span class="tg">&lt;div</span> <span class="at">class=</span><span class="str">"col-12 col-md-4"</span><span class="tg">&gt;</span>Column 3<span class="tg">&lt;/div&gt;</span>
+  <span class="tg">&lt;/div&gt;</span>
+<span class="tg">&lt;/div&gt;</span>
+
+<span class="cm">&lt;!-- Navbar Component --&gt;</span>
+<span class="tg">&lt;nav</span> <span class="at">class=</span><span class="str">"navbar navbar-expand-lg navbar-dark bg-dark"</span><span class="tg">&gt;</span>
+  <span class="tg">&lt;a</span> <span class="at">class=</span><span class="str">"navbar-brand"</span> <span class="at">href=</span><span class="str">"#"</span><span class="tg">&gt;</span>MyApp<span class="tg">&lt;/a&gt;</span>
+<span class="tg">&lt;/nav&gt;</span>
+              </div>
+            </div>
+            <div class="exam-tip">
+              <div class="exam-tip-label">📝 Key Bootstrap Rules</div>
+              <p>Columns always go inside <code>.row</code>. Rows go inside <code>.container</code> or <code>.container-fluid</code>. Column numbers in a row should add up to 12 (or less for auto-spacing). <code>container</code> has max-width; <code>container-fluid</code> is always 100% wide.</p>
+            </div>
+            <h4>Common Bootstrap Utility Classes</h4>
+            <table class="compare-table">
+              <tr><th>Category</th><th>Examples</th></tr>
+              <tr><td>Spacing (margin/padding)</td><td><code>m-3, p-2, mt-4, px-5, mx-auto</code></td></tr>
+              <tr><td>Text</td><td><code>text-center, text-primary, fw-bold, fs-5</code></td></tr>
+              <tr><td>Display</td><td><code>d-flex, d-none, d-md-block, d-grid</code></td></tr>
+              <tr><td>Colours (bg)</td><td><code>bg-primary, bg-success, bg-danger, bg-dark</code></td></tr>
+              <tr><td>Buttons</td><td><code>btn btn-primary, btn btn-outline-secondary btn-sm</code></td></tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- UNIT 04: JAVASCRIPT & JQUERY -->
+    <section id="javascript" class="section anchor-target">
+      <div class="section-header reveal">
+        <div class="section-eyebrow">Unit 04</div>
+        <h2 class="section-title">JavaScript & jQuery</h2>
+        <p class="section-desc">The language that makes the web interactive. DOM, events, ES6+, and jQuery patterns.</p>
+      </div>
+      <div class="important-banner reveal">
+        <div class="icon">🔥</div>
+        <p><strong>Guaranteed 20–25 marks:</strong> JavaScript DOM manipulation, events, and jQuery appear in every exam. Know <code>getElementById</code>, event listeners, Arrow functions, and jQuery <code>$()</code> selector cold.</p>
+      </div>
+
+      <div class="accordion reveal">
+        <button class="acc-trigger open" onclick="toggleAcc(this)">
+          <div class="acc-icon" style="background:#fef3cd">⚙️</div>
+          <span class="acc-trigger-title">JavaScript — DOM, Events & ES6+</span>
+          <span class="acc-trigger-sub badge badge-red" style="background:var(--red-light);color:var(--red);padding:3px 8px;border-radius:4px;font-size:11px">🔥 Very Important</span>
+          <span class="acc-arrow">▼</span>
+        </button>
+        <div class="acc-body open">
+          <div class="code-block">
+            <div class="code-header"><div class="code-dots"><span></span><span></span><span></span></div><span class="code-lang">JavaScript — DOM & Events</span></div>
+            <div class="code-body">
+<span class="cm">// DOM Selection</span>
+<span class="kw">const</span> el = <span class="fn">document.getElementById</span>(<span class="str">'myId'</span>);
+<span class="kw">const</span> els = <span class="fn">document.querySelectorAll</span>(<span class="str">'.myClass'</span>);
+<span class="kw">const</span> first = <span class="fn">document.querySelector</span>(<span class="str">'h1'</span>);
+
+<span class="cm">// DOM Manipulation</span>
+el.textContent = <span class="str">'New text'</span>;
+el.innerHTML = <span class="str">'&lt;b&gt;Bold&lt;/b&gt;'</span>;
+el.style.color = <span class="str">'red'</span>;
+el.classList.<span class="fn">add</span>(<span class="str">'active'</span>);
+el.classList.<span class="fn">toggle</span>(<span class="str">'hidden'</span>);
+el.<span class="fn">setAttribute</span>(<span class="str">'href'</span>, <span class="str">'#'</span>);
+
+<span class="cm">// Events</span>
+el.<span class="fn">addEventListener</span>(<span class="str">'click'</span>, <span class="kw">function</span>(e) {
+  e.<span class="fn">preventDefault</span>();
+  <span class="fn">console.log</span>(<span class="str">'Clicked!'</span>);
+});
+
+<span class="cm">// ES6+ Features</span>
+<span class="kw">const</span> <span class="fn">greet</span> = (name) => <span class="str">`Hello, ${name}!`</span>;  <span class="cm">// Arrow fn + Template literal</span>
+<span class="kw">const</span> { age, city } = person;                    <span class="cm">// Destructuring</span>
+<span class="kw">const</span> arr = [<span class="num">1</span>,<span class="num">2</span>,...existing];                   <span class="cm">// Spread operator</span>
+<span class="kw">const</span> doubled = arr.<span class="fn">map</span>(x => x * <span class="num">2</span>);            <span class="cm">// map/filter/reduce</span>
+<span class="kw">const</span> evens = arr.<span class="fn">filter</span>(x => x % <span class="num">2</span> === <span class="num">0</span>);
+
+<span class="cm">// Promises & Async/Await</span>
+<span class="kw">async function</span> <span class="fn">fetchData</span>() {
+  <span class="kw">const</span> res = <span class="kw">await</span> <span class="fn">fetch</span>(<span class="str">'https://api.example.com/data'</span>);
+  <span class="kw">const</span> data = <span class="kw">await</span> res.<span class="fn">json</span>();
+  <span class="kw">return</span> data;
+}
+            </div>
+          </div>
+          <div class="exam-tip">
+            <div class="exam-tip-label">📝 var vs let vs const</div>
+            <p><strong>var</strong>: function-scoped, hoisted, can re-declare. <strong>let</strong>: block-scoped, not hoisted, can reassign. <strong>const</strong>: block-scoped, cannot reassign (but objects/arrays can be mutated). Always prefer <code>const</code>, then <code>let</code>. Never use <code>var</code> in modern code.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion reveal">
+        <button class="acc-trigger" onclick="toggleAcc(this)">
+          <div class="acc-icon" style="background:#d8f3dc">$</div>
+          <span class="acc-trigger-title">jQuery — Selectors, Events & Effects</span>
+          <span class="acc-trigger-sub">$(document).ready · .click() · .ajax()</span>
+          <span class="acc-arrow">▼</span>
+        </button>
+        <div class="acc-body">
+          <div class="code-block">
+            <div class="code-header"><div class="code-dots"><span></span><span></span><span></span></div><span class="code-lang">jQuery</span></div>
+            <div class="code-body">
+<span class="cm">// Document Ready</span>
+$(<span class="fn">document</span>).<span class="fn">ready</span>(<span class="kw">function</span>() {  <span class="cm">// or $(function() {</span>
+  
+  <span class="cm">// Selectors (CSS-like)</span>
+  $(<span class="str">'#myId'</span>).<span class="fn">text</span>(<span class="str">'Hello'</span>);
+  $(<span class="str">'.myClass'</span>).<span class="fn">hide</span>();
+  $(<span class="str">'p'</span>).<span class="fn">css</span>(<span class="str">'color'</span>, <span class="str">'red'</span>);
+  $(<span class="str">'input[type=text]'</span>).<span class="fn">val</span>(<span class="str">'Default'</span>);
+
+  <span class="cm">// Events</span>
+  $(<span class="str">'#btn'</span>).<span class="fn">click</span>(<span class="kw">function</span>() {
+    $(<span class="str">'#result'</span>).<span class="fn">html</span>(<span class="str">'&lt;b&gt;Clicked!&lt;/b&gt;'</span>);
+  });
+
+  <span class="cm">// Effects / Animation</span>
+  $(<span class="str">'#box'</span>).<span class="fn">fadeIn</span>(<span class="num">500</span>);
+  $(<span class="str">'#box'</span>).<span class="fn">slideToggle</span>(<span class="num">300</span>);
+  $(<span class="str">'#box'</span>).<span class="fn">animate</span>({ opacity: <span class="num">0.5</span>, width: <span class="str">'200px'</span> }, <span class="num">1000</span>);
+
+  <span class="cm">// DOM Manipulation</span>
+  $(<span class="str">'ul'</span>).<span class="fn">append</span>(<span class="str">'&lt;li&gt;New Item&lt;/li&gt;'</span>);
+  $(<span class="str">'#item'</span>).<span class="fn">remove</span>();
+  $(<span class="str">'#el'</span>).<span class="fn">addClass</span>(<span class="str">'active'</span>).<span class="fn">removeClass</span>(<span class="str">'inactive'</span>);
+
+  <span class="cm">// jQuery AJAX</span>
+  $.<span class="fn">ajax</span>({
+    url: <span class="str">'/api/data'</span>,
+    method: <span class="str">'GET'</span>,
+    success: <span class="kw">function</span>(data) { <span class="fn">console.log</span>(data); },
+    error: <span class="kw">function</span>(err) { <span class="fn">console.error</span>(err); }
+  });
+});
+            </div>
+          </div>
+          <div class="exam-tip">
+            <div class="exam-tip-label">💡 jQuery vs vanilla JS</div>
+            <p>jQuery simplifies cross-browser DOM manipulation. <code>$('#id')</code> = <code>document.getElementById('id')</code>. <code>$('.cls').hide()</code> = <code>document.querySelectorAll('.cls').forEach(el=&gt;el.style.display='none')</code>. jQuery is a library, not a framework.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- UNIT 05: AJAX, COOKIES, SESSIONS -->
+    <section id="ajax" class="section anchor-target">
+      <div class="section-header reveal">
+        <div class="section-eyebrow">Unit 05</div>
+        <h2 class="section-title">AJAX, Cookies & Sessions</h2>
+        <p class="section-desc">Asynchronous communication and state management in stateless HTTP.</p>
+      </div>
+
+      <div class="accordion reveal">
+        <button class="acc-trigger open" onclick="toggleAcc(this)">
+          <div class="acc-icon" style="background:#dbeafe">🔄</div>
+          <span class="acc-trigger-title">AJAX — Asynchronous JavaScript and XML</span>
+          <span class="acc-trigger-sub badge badge-red" style="background:var(--red-light);color:var(--red);padding:3px 8px;border-radius:4px;font-size:11px">🔥 High Frequency</span>
+          <span class="acc-arrow">▼</span>
+        </button>
+        <div class="acc-body open">
+          <div class="content-prose">
+            <p><strong>AJAX</strong> allows web pages to update content asynchronously by exchanging data with the server in the background — without reloading the entire page. Despite the name, JSON is now used more commonly than XML.</p>
+            <h4>AJAX Flow</h4>
+            <div class="timeline">
+              <div class="tl-item"><div class="tl-title">1. User triggers event</div><div class="tl-desc">User clicks a button, types in a search box, etc.</div></div>
+              <div class="tl-item"><div class="tl-title">2. JavaScript creates XMLHttpRequest (XHR)</div><div class="tl-desc">Or uses modern <code>fetch()</code> API</div></div>
+              <div class="tl-item"><div class="tl-title">3. Asynchronous request sent to server</div><div class="tl-desc">Page continues running — user is not blocked</div></div>
+              <div class="tl-item"><div class="tl-title">4. Server processes & responds</div><div class="tl-desc">Returns JSON, XML, or HTML fragment</div></div>
+              <div class="tl-item"><div class="tl-title">5. JavaScript updates DOM</div><div class="tl-desc">Only the required part of the page is updated</div></div>
+            </div>
+            <div class="code-block">
+              <div class="code-header"><div class="code-dots"><span></span><span></span><span></span></div><span class="code-lang">JavaScript — Fetch API (Modern AJAX)</span></div>
+              <div class="code-body">
+<span class="cm">// Modern AJAX with Fetch API</span>
+<span class="fn">fetch</span>(<span class="str">'/api/users'</span>)
+  .<span class="fn">then</span>(res => res.<span class="fn">json</span>())
+  .<span class="fn">then</span>(data => {
+    <span class="fn">document.getElementById</span>(<span class="str">'output'</span>).textContent = data.name;
+  })
+  .<span class="fn">catch</span>(err => <span class="fn">console.error</span>(<span class="str">'Error:'</span>, err));
+
+<span class="cm">// POST request with fetch</span>
+<span class="fn">fetch</span>(<span class="str">'/api/users'</span>, {
+  method: <span class="str">'POST'</span>,
+  headers: { <span class="str">'Content-Type'</span>: <span class="str">'application/json'</span> },
+  body: <span class="fn">JSON.stringify</span>({ name: <span class="str">'Alice'</span>, age: <span class="num">22</span> })
+}).<span class="fn">then</span>(res => res.<span class="fn">json</span>()).<span class="fn">then</span>(console.log);
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion reveal">
+        <button class="acc-trigger" onclick="toggleAcc(this)">
+          <div class="acc-icon" style="background:#fef3cd">🍪</div>
+          <span class="acc-trigger-title">Cookies, Sessions & Web Storage</span>
+          <span class="acc-trigger-sub badge badge-red" style="background:var(--red-light);color:var(--red);padding:3px 8px;border-radius:4px;font-size:11px">🔥 MCQ Heavy</span>
+          <span class="acc-arrow">▼</span>
+        </button>
+        <div class="acc-body">
+          <div class="content-prose">
+            <p><strong>Why state management?</strong> HTTP is stateless — the server forgets each request. Cookies, sessions, and web storage solve the problem of "remembering" users between requests.</p>
+            <h4>Cookies</h4>
+            <p>Small pieces of data (max ~4KB) stored by the browser and sent with every HTTP request to the matching domain. Used for authentication tokens, preferences, tracking.</p>
+            <table class="compare-table">
+              <tr><th>Cookie Attribute</th><th>Meaning</th></tr>
+              <tr><td><code>Expires/Max-Age</code></td><td>When cookie expires. Session cookie = no expiry (deleted on browser close).</td></tr>
+              <tr><td><code>HttpOnly</code></td><td>Cannot be accessed by JavaScript — protects against XSS</td></tr>
+              <tr><td><code>Secure</code></td><td>Only sent over HTTPS</td></tr>
+              <tr><td><code>SameSite</code></td><td>Controls cross-site sending (Strict/Lax/None) — CSRF protection</td></tr>
+              <tr><td><code>Domain/Path</code></td><td>Which domain/path the cookie is sent to</td></tr>
+            </table>
+            <h4>Sessions vs Cookies</h4>
+            <table class="compare-table">
+              <tr><th>Feature</th><th>Cookies</th><th>Sessions</th></tr>
+              <tr><td>Storage</td><td>Client browser</td><td>Server (file/memory/DB)</td></tr>
+              <tr><td>Size limit</td><td>~4KB</td><td>Unlimited (server-side)</td></tr>
+              <tr><td>Security</td><td>Less — client can tamper</td><td>More — data on server</td></tr>
+              <tr><td>Expiry</td><td>Controlled by Expires/Max-Age</td><td>Configured server-side (e.g. 30 min)</td></tr>
+              <tr><td>Identifier</td><td>Full data in cookie</td><td>Session ID in cookie; data on server</td></tr>
+            </table>
+            <h4>localStorage vs sessionStorage</h4>
+            <table class="compare-table">
+              <tr><th>Feature</th><th>localStorage</th><th>sessionStorage</th></tr>
+              <tr><td>Persistence</td><td>Permanent (until manually cleared)</td><td>Until tab/browser closed</td></tr>
+              <tr><td>Scope</td><td>All windows/tabs of same origin</td><td>Only the current tab</td></tr>
+              <tr><td>Size</td><td>~5-10MB</td><td>~5-10MB</td></tr>
+              <tr><td>Sent to server?</td><td>No — browser only</td><td>No — browser only</td></tr>
+            </table>
+            <div class="exam-tip">
+              <div class="exam-tip-label">💡 Memory Trick</div>
+              <p>Cookie = sent to server automatically. localStorage = browser only, permanent. sessionStorage = browser only, dies with tab. Session = server-side storage identified by a cookie's session ID.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- UNIT 06: DATABASES & ORM -->
+    <section id="databases" class="section anchor-target">
+      <div class="section-header reveal">
+        <div class="section-eyebrow">Unit 06</div>
+        <h2 class="section-title">Databases & ORM Tools</h2>
+        <p class="section-desc">Persisting data on the web — from raw SQL to Object-Relational Mapping.</p>
+      </div>
+
+      <div class="accordion reveal">
+        <button class="acc-trigger open" onclick="toggleAcc(this)">
+          <div class="acc-icon" style="background:#d8f3dc">🗄</div>
+          <span class="acc-trigger-title">Web Databases, Transactions & ORM Concepts</span>
+          <span class="acc-trigger-sub">ORM · CRUD · Transactions</span>
+          <span class="acc-arrow">▼</span>
+        </button>
+        <div class="acc-body open">
+          <div class="content-prose">
+            <p><strong>ORM (Object-Relational Mapping)</strong> is a technique that maps database tables to programming language classes/objects, allowing developers to interact with the database using code instead of raw SQL.</p>
+            <div class="info-grid">
+              <div class="info-card"><div class="info-card-icon">🐍</div><div class="info-card-title">SQLAlchemy (Python)</div><div class="info-card-desc">Powerful ORM for Python. Used with Flask. Supports multiple databases. Models = Python classes.</div></div>
+              <div class="info-card"><div class="info-card-icon">🟢</div><div class="info-card-title">Sequelize (Node.js)</div><div class="info-card-desc">ORM for Node.js supporting MySQL, PostgreSQL, SQLite. Uses JavaScript classes as models.</div></div>
+              <div class="info-card"><div class="info-card-icon">🎸</div><div class="info-card-title">Django ORM (Python)</div><div class="info-card-desc">Built into Django. Models are Python classes. Automatic migrations. Most popular for web dev.</div></div>
+              <div class="info-card"><div class="info-card-icon">☕</div><div class="info-card-title">Hibernate (Java)</div><div class="info-card-desc">JPA-based ORM for Java. Used with Spring. Maps Java classes to DB tables via annotations.</div></div>
+            </div>
+            <h4>ORM CRUD vs Raw SQL</h4>
+            <div class="code-block">
+              <div class="code-header"><div class="code-dots"><span></span><span></span><span></span></div><span class="code-lang">Django ORM vs Raw SQL</span></div>
+              <div class="code-body">
+<span class="cm"># Django ORM — Pythonic, no SQL needed</span>
+<span class="kw">from</span> myapp.models <span class="kw">import</span> Student
+
+<span class="cm"># CREATE</span>
+s = Student.<span class="fn">objects.create</span>(name=<span class="str">"Alice"</span>, age=<span class="num">21</span>)
+
+<span class="cm"># READ</span>
+all_students = Student.<span class="fn">objects.all</span>()
+cs_students  = Student.<span class="fn">objects.filter</span>(dept=<span class="str">"CS"</span>)
+student      = Student.<span class="fn">objects.get</span>(id=<span class="num">1</span>)
+
+<span class="cm"># UPDATE</span>
+student.name = <span class="str">"Bob"</span>
+student.<span class="fn">save</span>()
+
+<span class="cm"># DELETE</span>
+student.<span class="fn">delete</span>()
+
+<span class="cm">-- Equivalent Raw SQL</span>
+<span class="kw">SELECT</span> * <span class="kw">FROM</span> student <span class="kw">WHERE</span> dept = <span class="str">'CS'</span>;
+<span class="kw">INSERT INTO</span> student (name, age) <span class="kw">VALUES</span> (<span class="str">'Alice'</span>, <span class="num">21</span>);
+<span class="kw">UPDATE</span> student <span class="kw">SET</span> name=<span class="str">'Bob'</span> <span class="kw">WHERE</span> id=<span class="num">1</span>;
+<span class="kw">DELETE FROM</span> student <span class="kw">WHERE</span> id=<span class="num">1</span>;
+              </div>
+            </div>
+            <h4>Transaction Management in Web Apps</h4>
+            <p>Web apps must ensure database operations are atomic. If a payment deducts from one account but fails to credit another, the entire transaction must roll back.</p>
+            <p>In Django: <code>with transaction.atomic():</code> block ensures either all operations succeed or all are rolled back.</p>
+            <div class="exam-tip">
+              <div class="exam-tip-label">📝 ORM Advantages</div>
+              <p>ORM advantages: Database-agnostic (switch DB with one config change), less SQL errors, automatic schema migrations, cleaner code, built-in protection against SQL injection. Disadvantage: can be slower than optimized raw SQL for complex queries.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- UNIT 07: FRAMEWORKS & UI -->
+    <section id="frameworks" class="section anchor-target">
+      <div class="section-header reveal">
+        <div class="section-eyebrow">Unit 07</div>
+        <h2 class="section-title">Web Frameworks & UI Design Principles</h2>
+        <p class="section-desc">Structure your applications and design interfaces that users love.</p>
+      </div>
+
+      <div class="accordion reveal">
+        <button class="acc-trigger open" onclick="toggleAcc(this)">
+          <div class="acc-icon" style="background:#ede9fe">🏗</div>
+          <span class="acc-trigger-title">Web Frameworks — MVC / MVT Architecture</span>
+          <span class="acc-trigger-sub badge badge-red" style="background:var(--red-light);color:var(--red);padding:3px 8px;border-radius:4px;font-size:11px">🔥 High Frequency</span>
+          <span class="acc-arrow">▼</span>
+        </button>
+        <div class="acc-body open">
+          <div class="content-prose">
+            <h4>MVC — Model-View-Controller</h4>
+            <div class="info-grid">
+              <div class="info-card"><div class="info-card-icon">📦</div><div class="info-card-title">Model</div><div class="info-card-desc">Data + Business logic. Interacts with database. No knowledge of View or Controller. Example: <code>User</code> class.</div></div>
+              <div class="info-card"><div class="info-card-icon">🖼</div><div class="info-card-title">View</div><div class="info-card-desc">UI presentation layer. Renders data from Model. Templates / HTML pages. No business logic.</div></div>
+              <div class="info-card"><div class="info-card-icon">🎮</div><div class="info-card-title">Controller</div><div class="info-card-desc">Handles user input. Calls Model, selects View. The glue between Model and View. Route handlers.</div></div>
+            </div>
+            <p>Django uses <strong>MVT (Model-View-Template)</strong> — Django's "View" acts as a Controller, and "Template" acts as the View in classic MVC.</p>
+            <h4>Popular Web Frameworks Comparison</h4>
+            <table class="compare-table">
+              <tr><th>Framework</th><th>Language</th><th>Type</th><th>Use Case</th></tr>
+              <tr><td><strong>Django</strong></td><td>Python</td><td>Full-stack (batteries included)</td><td>Rapid development, admin panels, ORM included</td></tr>
+              <tr><td><strong>Flask</strong></td><td>Python</td><td>Micro-framework</td><td>Small APIs, lightweight apps, flexible</td></tr>
+              <tr><td><strong>Express.js</strong></td><td>JavaScript (Node)</td><td>Minimal framework</td><td>REST APIs, real-time apps with Node.js</td></tr>
+              <tr><td><strong>React</strong></td><td>JavaScript</td><td>Frontend library</td><td>SPAs, component-based UIs, virtual DOM</td></tr>
+              <tr><td><strong>Spring Boot</strong></td><td>Java</td><td>Full-stack</td><td>Enterprise applications</td></tr>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion reveal">
+        <button class="acc-trigger" onclick="toggleAcc(this)">
+          <div class="acc-icon" style="background:#fde8e8">🎨</div>
+          <span class="acc-trigger-title">UI Design Principles</span>
+          <span class="acc-trigger-sub">Gestalt · Heuristics · Accessibility</span>
+          <span class="acc-arrow">▼</span>
+        </button>
+        <div class="acc-body">
+          <div class="content-prose">
+            <h4>Nielsen's 10 Usability Heuristics</h4>
+            <div class="operator-grid">
+              <div class="op-card"><div class="op-symbol">①</div><div class="op-name">Visibility</div><div class="op-desc">System status always visible (loading indicators, confirmations)</div></div>
+              <div class="op-card"><div class="op-symbol">②</div><div class="op-name">Match Real World</div><div class="op-desc">Use familiar language and concepts from user's world</div></div>
+              <div class="op-card"><div class="op-symbol">③</div><div class="op-name">User Control</div><div class="op-desc">Undo/redo support — "emergency exits"</div></div>
+              <div class="op-card"><div class="op-symbol">④</div><div class="op-name">Consistency</div><div class="op-desc">Same actions should always behave the same way</div></div>
+              <div class="op-card"><div class="op-symbol">⑤</div><div class="op-name">Error Prevention</div><div class="op-desc">Design to prevent problems before they occur</div></div>
+              <div class="op-card"><div class="op-symbol">⑥</div><div class="op-name">Recognition</div><div class="op-desc">Minimize memory load — show options, don't make users recall</div></div>
+              <div class="op-card"><div class="op-symbol">⑦</div><div class="op-name">Flexibility</div><div class="op-desc">Accelerators for expert users; simplicity for novices</div></div>
+              <div class="op-card"><div class="op-symbol">⑧</div><div class="op-name">Aesthetic</div><div class="op-desc">Minimal design — don't show irrelevant info</div></div>
+              <div class="op-card"><div class="op-symbol">⑨</div><div class="op-name">Error Recovery</div><div class="op-desc">Plain-language error messages with solutions</div></div>
+              <div class="op-card"><div class="op-symbol">⑩</div><div class="op-name">Help & Docs</div><div class="op-desc">Documentation available; easy to search</div></div>
+            </div>
+            <h4>Gestalt Principles in UI</h4>
+            <table class="compare-table">
+              <tr><th>Principle</th><th>Meaning</th><th>UI Application</th></tr>
+              <tr><td><strong>Proximity</strong></td><td>Close elements appear related</td><td>Group form fields with their labels</td></tr>
+              <tr><td><strong>Similarity</strong></td><td>Similar elements appear related</td><td>Same colour for all primary buttons</td></tr>
+              <tr><td><strong>Continuity</strong></td><td>Eye follows lines/paths</td><td>Horizontal nav bars, progress bars</td></tr>
+              <tr><td><strong>Closure</strong></td><td>Brain completes incomplete shapes</td><td>Card borders, incomplete circles as loaders</td></tr>
+              <tr><td><strong>Figure-Ground</strong></td><td>Foreground vs background distinction</td><td>Modal dialogs with dark overlay</td></tr>
+            </table>
+            <div class="exam-tip">
+              <div class="exam-tip-label">💡 UI Design Quick Rules</div>
+              <p>Contrast ratio ≥ 4.5:1 for text (WCAG accessibility). 8px grid system for spacing. Max 3 font sizes per page. Primary actions = prominent button; secondary = ghost/outline. White space is not wasted space — it guides attention.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- UNIT 08: MOBILE & ANDROID -->
+    <section id="mobile" class="section anchor-target">
+      <div class="section-header reveal">
+        <div class="section-eyebrow">Unit 08</div>
+        <h2 class="section-title">Mobile Computing & Android Development</h2>
+        <p class="section-desc">Factors in mobile development, Android environment, activity lifecycle, and generic UI development.</p>
+      </div>
+      <div class="important-banner reveal">
+        <div class="icon">🔥</div>
+        <p><strong>Very Important:</strong> Android Activity lifecycle, differences between mobile and desktop development, Intent system, and the Android development environment setup appear in most exams.</p>
+      </div>
+
+      <div class="accordion reveal">
+        <button class="acc-trigger open" onclick="toggleAcc(this)">
+          <div class="acc-icon" style="background:#d8f3dc">📱</div>
+          <span class="acc-trigger-title">Factors in Mobile App Development</span>
+          <span class="acc-trigger-sub">Constraints · Considerations · Mobile SE</span>
+          <span class="acc-arrow">▼</span>
+        </button>
+        <div class="acc-body open">
+          <div class="content-prose">
+            <div class="info-grid">
+              <div class="info-card"><div class="info-card-icon">🔋</div><div class="info-card-title">Battery & Performance</div><div class="info-card-desc">Mobile apps must minimize CPU/GPU usage. Background tasks, animations, and network calls drain battery rapidly.</div></div>
+              <div class="info-card"><div class="info-card-icon">📶</div><div class="info-card-title">Connectivity</div><div class="info-card-desc">Apps must work offline or with intermittent connectivity. Cache data locally. Handle network timeouts gracefully.</div></div>
+              <div class="info-card"><div class="info-card-icon">📐</div><div class="info-card-title">Screen Size & DPI</div><div class="info-card-desc">Huge variety of screen sizes and pixel densities. Use responsive/adaptive layouts (dp/sp units in Android).</div></div>
+              <div class="info-card"><div class="info-card-icon">👆</div><div class="info-card-title">Touch Interface</div><div class="info-card-desc">Touch targets ≥ 48×48dp. Gestures (swipe, pinch). No hover state. Fat finger problem — enough spacing.</div></div>
+              <div class="info-card"><div class="info-card-icon">💾</div><div class="info-card-title">Limited Memory</div><div class="info-card-desc">Mobile RAM is limited. Avoid memory leaks. Release resources in onStop()/onDestroy(). Load images efficiently.</div></div>
+              <div class="info-card"><div class="info-card-icon">🔒</div><div class="info-card-title">Security & Permissions</div><div class="info-card-desc">Request only necessary permissions. Encrypt sensitive data. Runtime permissions (Android 6.0+). No storing passwords in plain text.</div></div>
+            </div>
+            <h4>Mobile Software Engineering</h4>
+            <p><strong>Mobile SE differs from desktop SE</strong> in: shorter development cycles, over-the-air (OTA) updates, app store submission & review process, platform-specific guidelines (Material Design for Android, Human Interface Guidelines for iOS), crash analytics from day one.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion reveal">
+        <button class="acc-trigger" onclick="toggleAcc(this)">
+          <div class="acc-icon" style="background:#dbeafe">🤖</div>
+          <span class="acc-trigger-title">Android Development — Environment & Lifecycle</span>
+          <span class="acc-trigger-sub badge badge-red" style="background:var(--red-light);color:var(--red);padding:3px 8px;border-radius:4px;font-size:11px">🔥 Guaranteed in Exam</span>
+          <span class="acc-arrow">▼</span>
+        </button>
+        <div class="acc-body">
+          <div class="content-prose">
+            <h4>Android Development Environment</h4>
+            <div class="info-grid">
+              <div class="info-card"><div class="info-card-icon">🛠</div><div class="info-card-title">Android Studio</div><div class="info-card-desc">Official IDE based on IntelliJ IDEA. Layout Editor (drag & drop UI), Logcat, Emulator, Profiler.</div></div>
+              <div class="info-card"><div class="info-card-icon">☕</div><div class="info-card-title">Languages</div><div class="info-card-desc">Java (traditional) and Kotlin (modern, official since 2017). Kotlin is now preferred.</div></div>
+              <div class="info-card"><div class="info-card-icon">📦</div><div class="info-card-title">Gradle</div><div class="info-card-desc">Build automation tool. Manages dependencies (like Maven). <code>build.gradle</code> — declares libraries, SDK versions.</div></div>
+              <div class="info-card"><div class="info-card-icon">📁</div><div class="info-card-title">Project Structure</div><div class="info-card-desc"><code>app/src/main/java</code> — Java/Kotlin code. <code>res/layout</code> — XML UI files. <code>res/values</code> — strings, colors. <code>AndroidManifest.xml</code> — app config.</div></div>
+            </div>
+            <h4>Activity Lifecycle — The Most Important Android Concept</h4>
+            <div class="timeline">
+              <div class="tl-item"><div class="tl-title">onCreate()</div><div class="tl-desc">Activity is being created. Initialize UI, bind data. Called once. <code>setContentView()</code> called here.</div></div>
+              <div class="tl-item"><div class="tl-title">onStart()</div><div class="tl-desc">Activity becomes visible to user (but not interactive yet).</div></div>
+              <div class="tl-item"><div class="tl-title">onResume()</div><div class="tl-desc">Activity is in foreground and user can interact. Start animations, sensors, camera here.</div></div>
+              <div class="tl-item"><div class="tl-title">onPause()</div><div class="tl-desc">Activity partially obscured (another activity comes). Pause animations, release resources you don't need. Commit unsaved changes.</div></div>
+              <div class="tl-item"><div class="tl-title">onStop()</div><div class="tl-desc">Activity no longer visible. Release heavy resources. Save data.</div></div>
+              <div class="tl-item"><div class="tl-title">onDestroy()</div><div class="tl-desc">Activity is being destroyed. Final cleanup. Called before activity is garbage collected.</div></div>
+            </div>
+            <div class="mnemonic">
+              <div class="mnemonic-title">Activity Lifecycle Mnemonic</div>
+              <div class="mnemonic-letters">
+                <div class="mnem-letter">C<div class="mnem-word">onCreate</div></div>
+                <div class="mnem-letter">S<div class="mnem-word">onStart</div></div>
+                <div class="mnem-letter">R<div class="mnem-word">onResume</div></div>
+                <div class="mnem-letter">P<div class="mnem-word">onPause</div></div>
+                <div class="mnem-letter">S<div class="mnem-word">onStop</div></div>
+                <div class="mnem-letter">D<div class="mnem-word">onDestroy</div></div>
+              </div>
+              <div class="mnemonic-phrase">"Create Some Really Pretty Successful Destinations" — Activity lifecycle in order</div>
+            </div>
+            <h4>Intents — Communication Between Components</h4>
+            <p><strong>Explicit Intent:</strong> Start a specific Activity/Service by name. <code>Intent i = new Intent(this, SecondActivity.class); startActivity(i);</code></p>
+            <p><strong>Implicit Intent:</strong> Request an action without specifying component. System finds appropriate app. Example: <code>Intent.ACTION_VIEW</code> to open a URL in the browser.</p>
+            <p><strong>Passing data:</strong> <code>intent.putExtra("key", value)</code> — receive with <code>getIntent().getStringExtra("key")</code></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRACTICAL -->
+    <section id="practical" class="section anchor-target">
+      <div class="section-header reveal">
+        <div class="section-eyebrow">Practical Component</div>
+        <h2 class="section-title">Practical Lab Guide</h2>
+        <p class="section-desc">Everything you need for practical exams and viva preparation.</p>
+      </div>
+
+      <div class="accordion reveal">
+        <button class="acc-trigger open" onclick="toggleAcc(this)">
+          <div class="acc-icon" style="background:#dbeafe">💻</div>
+          <span class="acc-trigger-title">Complete Web App Walkthrough</span>
+          <span class="acc-trigger-sub">HTML → JS → AJAX → Backend</span>
+          <span class="acc-arrow">▼</span>
+        </button>
+        <div class="acc-body open">
+          <div class="code-block">
+            <div class="code-header"><div class="code-dots"><span></span><span></span><span></span></div><span class="code-lang">Full-Stack Mini App — HTML + JS + Fetch</span></div>
+            <div class="code-body">
+<span class="cm">&lt;!-- Student Registration Form --&gt;</span>
+<span class="tg">&lt;!DOCTYPE html&gt;&lt;html&gt;&lt;head&gt;</span>
+<span class="tg">&lt;link</span> <span class="at">rel=</span><span class="str">"stylesheet"</span> <span class="at">href=</span><span class="str">"https://cdn.jsdelivr.net/npm/bootstrap@5/dist/css/bootstrap.min.css"</span><span class="tg">&gt;</span>
+<span class="tg">&lt;/head&gt;&lt;body&gt;</span>
+<span class="tg">&lt;div</span> <span class="at">class=</span><span class="str">"container mt-4"</span><span class="tg">&gt;</span>
+  <span class="tg">&lt;h2&gt;</span>Student Registration<span class="tg">&lt;/h2&gt;</span>
+  <span class="tg">&lt;div</span> <span class="at">class=</span><span class="str">"row"</span><span class="tg">&gt;</span>
+    <span class="tg">&lt;div</span> <span class="at">class=</span><span class="str">"col-md-6"</span><span class="tg">&gt;</span>
+      <span class="tg">&lt;input</span> <span class="at">id=</span><span class="str">"name"</span> <span class="at">class=</span><span class="str">"form-control mb-2"</span> <span class="at">placeholder=</span><span class="str">"Name"</span><span class="tg">&gt;</span>
+      <span class="tg">&lt;input</span> <span class="at">id=</span><span class="str">"email"</span> <span class="at">class=</span><span class="str">"form-control mb-2"</span> <span class="at">placeholder=</span><span class="str">"Email"</span><span class="tg">&gt;</span>
+      <span class="tg">&lt;button</span> <span class="at">class=</span><span class="str">"btn btn-primary"</span> <span class="at">onclick=</span><span class="str">"submitForm()"</span><span class="tg">&gt;</span>Register<span class="tg">&lt;/button&gt;</span>
+    <span class="tg">&lt;/div&gt;</span>
+    <span class="tg">&lt;div</span> <span class="at">id=</span><span class="str">"result"</span> <span class="at">class=</span><span class="str">"col-md-6"</span><span class="tg">&gt;&lt;/div&gt;</span>
+  <span class="tg">&lt;/div&gt;&lt;/div&gt;</span>
+
+<span class="tg">&lt;script&gt;</span>
+<span class="kw">async function</span> <span class="fn">submitForm</span>() {
+  <span class="kw">const</span> data = {
+    name: <span class="fn">document.getElementById</span>(<span class="str">'name'</span>).value,
+    email: <span class="fn">document.getElementById</span>(<span class="str">'email'</span>).value
+  };
+  <span class="kw">const</span> res = <span class="kw">await</span> <span class="fn">fetch</span>(<span class="str">'/api/register'</span>, {
+    method: <span class="str">'POST'</span>,
+    headers: { <span class="str">'Content-Type'</span>: <span class="str">'application/json'</span> },
+    body: <span class="fn">JSON.stringify</span>(data)
+  });
+  <span class="kw">const</span> json = <span class="kw">await</span> res.<span class="fn">json</span>();
+  <span class="fn">document.getElementById</span>(<span class="str">'result'</span>).innerHTML =
+    <span class="str">`&lt;div class="alert alert-success"&gt;${json.message}&lt;/div&gt;`</span>;
+}
+<span class="tg">&lt;/script&gt;&lt;/body&gt;&lt;/html&gt;</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MCQ PRACTICE -->
+    <section id="mcq" class="section anchor-target">
+      <div class="section-header reveal">
+        <div class="section-eyebrow">Practice Zone</div>
+        <h2 class="section-title">MCQ Practice</h2>
+        <p class="section-desc">Test your understanding. Click an option to reveal the explanation.</p>
+      </div>
+
+      <div class="mcq-grid" id="mcqGrid">
+
+        <div class="mcq-card reveal">
+          <div class="mcq-meta"><span class="badge badge-blue">HTTP</span><span class="badge badge-green">Easy</span></div>
+          <div class="mcq-q">Q1. Which HTTP method is used to send form data in the request body (hidden from URL)?</div>
+          <div class="mcq-options">
+            <div class="mcq-opt" onclick="revealMCQ(this,'wrong','GET sends data appended to the URL as query parameters — visible, bookmarkable, but not secure for sensitive data.')"><span class="mcq-opt-letter">A</span>GET</div>
+            <div class="mcq-opt" onclick="revealMCQ(this,'correct','✓ POST sends form data in the request body, not in the URL. It is suitable for passwords, large data, and non-idempotent operations.')"><span class="mcq-opt-letter">B</span>POST</div>
+            <div class="mcq-opt" onclick="revealMCQ(this,'wrong','PUT is used to replace/update an existing resource entirely — a full update.')"><span class="mcq-opt-letter">C</span>PUT</div>
+            <div class="mcq-opt" onclick="revealMCQ(this,'wrong','HEAD retrieves only the headers of a GET response, without the body. Used for checking resource existence.')"><span class="mcq-opt-letter">D</span>HEAD</div>
+          </div>
+          <div class="mcq-explanation" id="mcq-explanation-0"></div>
+        </div>
+
+        <div class="mcq-card reveal">
+          <div class="mcq-meta"><span class="badge badge-purple">CSS</span><span class="badge badge-blue">Medium</span></div>
+          <div class="mcq-q">Q2. Which CSS property is used to define how flex items are aligned along the cross axis (perpendicular to flex direction)?</div>
+          <div class="mcq-options">
+            <div class="mcq-opt" onclick="revealMCQ(this,'wrong','justify-content aligns items along the MAIN axis (direction of flex-direction: row = horizontal, column = vertical).')"><span class="mcq-opt-letter">A</span>justify-content</div>
+            <div class="mcq-opt" onclick="revealMCQ(this,'correct','✓ align-items aligns flex children along the CROSS axis. For flex-direction:row, this means vertical alignment (e.g., center, flex-start, stretch).')"><span class="mcq-opt-letter">B</span>align-items</div>
+            <div class="mcq-opt" onclick="revealMCQ(this,'wrong','flex-direction sets whether items are laid out in a row or column — not alignment.')"><span class="mcq-opt-letter">C</span>flex-direction</div>
+            <div class="mcq-opt" onclick="revealMCQ(this,'wrong','align-content is used when there are multiple flex lines (with flex-wrap). align-items is for a single line.')"><span class="mcq-opt-letter">D</span>align-content</div>
+          </div>
+          <div class="mcq-explanation" id="mcq-explanation-1"></div>
+        </div>
+
+        <div class="mcq-card reveal">
+          <div class="mcq-meta"><span class="badge badge-gold">JavaScript</span><span class="badge badge-blue">Medium</span></div>
+          <div class="mcq-q">Q3. What is the difference between == and === in JavaScript?</div>
+          <div class="mcq-options">
+            <div class="mcq-opt" onclick="revealMCQ(this,'wrong','Both are comparison operators — but they differ in whether type coercion (conversion) is performed.')"><span class="mcq-opt-letter">A</span>There is no difference — they are identical</div>
+            <div class="mcq-opt" onclick="revealMCQ(this,'wrong','=== does NOT check for reference equality for primitives. For primitives like numbers and strings it checks value and type. Only objects/arrays compare by reference.')"><span class="mcq-opt-letter">B</span>=== checks reference equality; == checks value equality</div>
+            <div class="mcq-opt" onclick="revealMCQ(this,'correct','✓ == performs type coercion (e.g., 5 == "5" is true). === is strict: checks both value AND type (5 === "5" is false). Always prefer === in production code.')"><span class="mcq-opt-letter">C</span>== checks value with type coercion; === checks value AND type strictly</div>
+            <div class="mcq-opt" onclick="revealMCQ(this,'wrong','== is not assignment — that is =. == is the abstract equality comparison operator with type coercion.')"><span class="mcq-opt-letter">D</span>== is assignment; === is comparison</div>
+          </div>
+          <div class="mcq-explanation" id="mcq-explanation-2"></div>
+        </div>
+
+        <div class="mcq-card reveal">
+          <div class="mcq-meta"><span class="badge badge-red">Cookies/Sessions</span><span class="badge badge-purple">Tricky</span></div>
+          <div class="mcq-q">Q4. Where is session data stored in a typical server-side session implementation?</div>
+          <div class="mcq-options">
+            <div class="mcq-opt" onclick="revealMCQ(this,'wrong','The browser only stores the SESSION ID (a cookie), not the actual session data. Storing sensitive data in cookies is insecure.')"><span class="mcq-opt-letter">A</span>In the user\'s browser as a cookie</div>
+            <div class="mcq-opt" onclick="revealMCQ(this,'wrong','localStorage is a browser-side storage (max ~5MB) and is completely separate from server-side sessions.')"><span class="mcq-opt-letter">B</span>In the browser\'s localStorage</div>
+            <div class="mcq-opt" onclick="revealMCQ(this,'correct','✓ Session data is stored on the SERVER (file system, memory, database like Redis). The browser only holds a session ID cookie. This makes sessions more secure than cookies for sensitive data.')"><span class="mcq-opt-letter">C</span>On the server (file system, memory, or database)</div>
+            <div class="mcq-opt" onclick="revealMCQ(this,'wrong','Sessions are not stored in HTTP headers — only a session ID may be passed via cookies or URL.')"><span class="mcq-opt-letter">D</span>In HTTP request headers</div>
+          </div>
+          <div class="mcq-explanation" id="mcq-explanation-3"></div>
+        </div>
+
+        <div class="mcq-card reveal">
+          <div class="mcq-meta"><span class="badge badge-blue">Bootstrap</span><span class="badge badge-green">Easy</span></div>
+          <div class="mcq-q">Q5. In Bootstrap's grid system, how many columns make up a full row?</div>
+          <div class="mcq-options">
+            <div class="mcq-opt" onclick="revealMCQ(this,'wrong','Bootstrap does not use a 10-column grid. 10 would make odd divisions harder to compute.')"><span class="mcq-opt-letter">A</span>10</div>
+            <div class="mcq-opt" onclick="revealMCQ(this,'correct','✓ Bootstrap uses a 12-column grid system because 12 is divisible by 1, 2, 3, 4, 6, and 12 — allowing many combinations (half=6, third=4, quarter=3, etc.).')"><span class="mcq-opt-letter">B</span>12</div>
+            <div class="mcq-opt" onclick="revealMCQ(this,'wrong','16 was used by older CSS frameworks (960.gs) but Bootstrap standardized on 12.')"><span class="mcq-opt-letter">C</span>16</div>
+            <div class="mcq-opt" onclick="revealMCQ(this,'wrong','8 is not Bootstrap\'s grid count. Bootstrap 5 uses 12.')"><span class="mcq-opt-letter">D</span>8</div>
+          </div>
+          <div class="mcq-explanation" id="mcq-explanation-4"></div>
+        </div>
+
+        <div class="mcq-card reveal">
+          <div class="mcq-meta"><span class="badge badge-green">Android</span><span class="badge badge-purple">Medium</span></div>
+          <div class="mcq-q">Q6. Which Android lifecycle method is called when an Activity becomes visible to the user after being stopped?</div>
+          <div class="mcq-options">
+            <div class="mcq-opt" onclick="revealMCQ(this,'wrong','onCreate() is called only ONCE when the Activity is first created, not when it comes back from stopped state.')"><span class="mcq-opt-letter">A</span>onCreate()</div>
+            <div class="mcq-opt" onclick="revealMCQ(this,'wrong','onResume() is called after onStart() when the activity comes to the foreground and becomes interactive.')"><span class="mcq-opt-letter">B</span>onResume()</div>
+            <div class="mcq-opt" onclick="revealMCQ(this,'correct','✓ onRestart() is called when a stopped Activity is about to be started again. It is called before onStart() when returning to a previously stopped Activity.')"><span class="mcq-opt-letter">C</span>onRestart()</div>
+            <div class="mcq-opt" onclick="revealMCQ(this,'wrong','onStart() is called after onRestart() — making the Activity visible but not yet interactive.')"><span class="mcq-opt-letter">D</span>onStart()</div>
+          </div>
+          <div class="mcq-explanation" id="mcq-explanation-5"></div>
+        </div>
+
+        <div class="mcq-card reveal">
+          <div class="mcq-meta"><span class="badge badge-blue">AJAX</span><span class="badge badge-blue">Medium</span></div>
+          <div class="mcq-q">Q7. What does AJAX stand for, and what is its primary advantage?</div>
+          <div class="mcq-options">
+            <div class="mcq-opt" onclick="revealMCQ(this,'wrong','AJAX does not stand for Advanced JavaScript. The X originally stood for XML, though JSON is now commonly used.')"><span class="mcq-opt-letter">A</span>Advanced JavaScript And XML — it makes pages load faster</div>
+            <div class="mcq-opt" onclick="revealMCQ(this,'correct','✓ AJAX = Asynchronous JavaScript And XML. Primary advantage: pages can update content without a full page reload — making web apps faster and more responsive.')"><span class="mcq-opt-letter">B</span>Asynchronous JavaScript And XML — update page content without full reload</div>
+            <div class="mcq-opt" onclick="revealMCQ(this,'wrong','Automatic JavaScript is not a real term. And AJAX is not automatic — it requires explicit JavaScript code to initiate requests.')"><span class="mcq-opt-letter">C</span>Automatic JavaScript And XHR — automatically refreshes pages</div>
+            <div class="mcq-opt" onclick="revealMCQ(this,'wrong','AJAX is not a framework. It\'s a technique/approach using XMLHttpRequest or fetch API in JavaScript.')"><span class="mcq-opt-letter">D</span>Asynchronous Java Application XML — a Java-based framework</div>
+          </div>
+          <div class="mcq-explanation" id="mcq-explanation-6"></div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- UNIVERSITY QUESTIONS -->
+    <section id="uqs" class="section anchor-target">
+      <div class="section-header reveal">
+        <div class="section-eyebrow">Exam Preparation</div>
+        <h2 class="section-title">Important University Questions</h2>
+        <p class="section-desc">High-frequency questions from past papers with marks weightage.</p>
+      </div>
+      <div class="uq-list">
+        <div class="uq-item reveal">
+          <div class="uq-marks">10<span>marks</span></div>
+          <div class="uq-content">
+            <div class="uq-q">Explain the HTTP request-response cycle in detail. What are HTTP methods? Compare GET and POST methods with examples. What are HTTP status codes — explain 200, 404, and 500.</div>
+            <div class="uq-tags"><span class="badge badge-red">🔥 Very High Frequency</span><span class="badge badge-blue">HTTP</span><span class="badge badge-green">Theory</span></div>
+          </div>
+        </div>
+        <div class="uq-item reveal">
+          <div class="uq-marks">10<span>marks</span></div>
+          <div class="uq-content">
+            <div class="uq-q">Differentiate between HTTP and WebSockets. Write an HTML page with CSS using Flexbox that creates a responsive 3-column card layout that stacks on mobile. Include a Bootstrap navbar.</div>
+            <div class="uq-tags"><span class="badge badge-red">🔥 Practical + Theory</span><span class="badge badge-purple">HTML/CSS</span><span class="badge badge-blue">Bootstrap</span></div>
+          </div>
+        </div>
+        <div class="uq-item reveal">
+          <div class="uq-marks">10<span>marks</span></div>
+          <div class="uq-content">
+            <div class="uq-q">Write a JavaScript program to demonstrate: (a) DOM manipulation using getElementById and querySelector, (b) event listeners, (c) ES6 features — arrow functions, template literals, destructuring. Also explain the difference between var, let, and const.</div>
+            <div class="uq-tags"><span class="badge badge-red">🔥 Most Asked</span><span class="badge badge-gold">JavaScript</span><span class="badge badge-green">Practical</span></div>
+          </div>
+        </div>
+        <div class="uq-item reveal">
+          <div class="uq-marks">10<span>marks</span></div>
+          <div class="uq-content">
+            <div class="uq-q">What is AJAX? How does asynchronous communication work in web applications? Write a program using the Fetch API to send a POST request with JSON data and handle the response. Compare Cookies vs Sessions vs localStorage.</div>
+            <div class="uq-tags"><span class="badge badge-red">🔥 Guaranteed</span><span class="badge badge-blue">AJAX</span><span class="badge badge-gold">State Management</span></div>
+          </div>
+        </div>
+        <div class="uq-item reveal">
+          <div class="uq-marks">7<span>marks</span></div>
+          <div class="uq-content">
+            <div class="uq-q">What is ORM? What are its advantages over raw SQL? Show a Django ORM example of creating a model and performing CRUD operations. Compare Django ORM vs SQLAlchemy.</div>
+            <div class="uq-tags"><span class="badge badge-gold">High Priority</span><span class="badge badge-green">ORM</span><span class="badge badge-blue">Databases</span></div>
+          </div>
+        </div>
+        <div class="uq-item reveal">
+          <div class="uq-marks">7<span>marks</span></div>
+          <div class="uq-content">
+            <div class="uq-q">Explain the MVC architecture. How does Django implement MVT? List 5 of Nielsen's usability heuristics with examples. What are Gestalt principles in UI design?</div>
+            <div class="uq-tags"><span class="badge badge-gold">High Priority</span><span class="badge badge-purple">Frameworks</span><span class="badge badge-red">UI Design</span></div>
+          </div>
+        </div>
+        <div class="uq-item reveal">
+          <div class="uq-marks">10<span>marks</span></div>
+          <div class="uq-content">
+            <div class="uq-q">Explain the Android Activity Lifecycle with a diagram. What callbacks are called when: (a) app is opened, (b) home button pressed, (c) app reopened. Explain Intents with explicit and implicit examples.</div>
+            <div class="uq-tags"><span class="badge badge-red">🔥 Always Asked</span><span class="badge badge-green">Android</span><span class="badge badge-blue">Mobile</span></div>
+          </div>
+        </div>
+        <div class="uq-item reveal">
+          <div class="uq-marks">5<span>marks</span></div>
+          <div class="uq-content">
+            <div class="uq-q">Write short notes on: (a) Bootstrap Grid System and breakpoints (b) jQuery vs JavaScript (c) localStorage vs sessionStorage vs Cookies (d) Factors in Mobile App Development</div>
+            <div class="uq-tags"><span class="badge badge-gold">Short Notes</span><span class="badge badge-blue">Multiple Topics</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- LAST NIGHT REVISION -->
+    <section id="revision" class="section anchor-target">
+      <div class="section-header reveal">
+        <div class="section-eyebrow">🌙 Exam Eve</div>
+        <h2 class="section-title">Last Night Revision</h2>
+        <p class="section-desc">The most important concepts distilled. Read these the night before your exam.</p>
+      </div>
+
+      <div class="rev-grid">
+        <div class="rev-card blue reveal">
+          <div class="rev-card-title">🌐 HTTP Essentials</div>
+          <div class="rev-item"><strong>GET</strong>Data in URL, idempotent, cached</div>
+          <div class="rev-item"><strong>POST</strong>Data in body, not cached, for forms</div>
+          <div class="rev-item"><strong>200/201</strong>Success / Created</div>
+          <div class="rev-item"><strong>404/500</strong>Not Found / Server Error</div>
+          <div class="rev-item"><strong>HTTPS</strong><span class="rev-code">Port 443, TLS encrypted</span></div>
+        </div>
+
+        <div class="rev-card gold reveal reveal-delay-1">
+          <div class="rev-card-title">🎨 CSS Layout</div>
+          <div class="rev-item"><strong>Flexbox</strong>1D — row OR column, justify+align</div>
+          <div class="rev-item"><strong>Grid</strong>2D — rows AND columns together</div>
+          <div class="rev-item"><strong>Box Model</strong>Content → Padding → Border → Margin</div>
+          <div class="rev-item"><strong>Specificity</strong>inline &gt; #id &gt; .class &gt; element</div>
+          <div class="rev-item"><strong>Responsive</strong><span class="rev-code">@media (max-width: 768px)</span></div>
+        </div>
+
+        <div class="rev-card purple reveal reveal-delay-2">
+          <div class="rev-card-title">🅱 Bootstrap Grid</div>
+          <div class="rev-item"><strong>12 columns</strong>Always in .row inside .container</div>
+          <div class="rev-item"><strong>col-sm</strong>≥576px (small / landscape phone)</div>
+          <div class="rev-item"><strong>col-md</strong>≥768px (tablet)</div>
+          <div class="rev-item"><strong>col-lg</strong>≥992px (desktop)</div>
+          <div class="rev-item"><strong>Fluid</strong><span class="rev-code">container-fluid = 100% width</span></div>
+        </div>
+
+        <div class="rev-card green reveal">
+          <div class="rev-card-title">⚙️ JavaScript ES6+</div>
+          <div class="rev-item"><strong>let/const</strong>Block scoped — prefer over var</div>
+          <div class="rev-item"><strong>Arrow fn</strong><span class="rev-code">(x) =&gt; x * 2</span></div>
+          <div class="rev-item"><strong>Template</strong><span class="rev-code">`Hello ${name}`</span></div>
+          <div class="rev-item"><strong>== vs ===</strong>=== strict (no coercion)</div>
+          <div class="rev-item"><strong>async/await</strong>Non-blocking async operations</div>
+        </div>
+
+        <div class="rev-card red reveal reveal-delay-1">
+          <div class="rev-card-title">🍪 State Management</div>
+          <div class="rev-item"><strong>Cookie</strong>Sent to server, max 4KB</div>
+          <div class="rev-item"><strong>Session</strong>Server-side, cookie holds ID</div>
+          <div class="rev-item"><strong>localStorage</strong>Browser, permanent, 5MB</div>
+          <div class="rev-item"><strong>sessionStorage</strong>Browser, dies with tab</div>
+          <div class="rev-item"><strong>AJAX</strong>Async update without page reload</div>
+        </div>
+
+        <div class="rev-card blue reveal reveal-delay-2">
+          <div class="rev-card-title">🤖 Android Lifecycle</div>
+          <div class="rev-item"><strong>onCreate</strong>Init UI (called once)</div>
+          <div class="rev-item"><strong>onResume</strong>Foreground, user can interact</div>
+          <div class="rev-item"><strong>onPause</strong>Partially hidden, save state</div>
+          <div class="rev-item"><strong>onStop</strong>Not visible, release resources</div>
+          <div class="rev-item"><strong>Intent</strong><span class="rev-code">Explicit = named; Implicit = action</span></div>
+        </div>
+
+        <div class="rev-card gold reveal">
+          <div class="rev-card-title">🏗 Frameworks & MVC</div>
+          <div class="rev-item"><strong>Model</strong>Data + business logic</div>
+          <div class="rev-item"><strong>View</strong>UI / templates / HTML</div>
+          <div class="rev-item"><strong>Controller</strong>Handles input, calls model</div>
+          <div class="rev-item"><strong>Django MVT</strong>Model-View-Template (View=Controller)</div>
+          <div class="rev-item"><strong>ORM</strong>Python/Java objects → SQL tables</div>
+        </div>
+
+        <div class="rev-card green reveal reveal-delay-1">
+          <div class="rev-card-title">🌐 WebSocket vs HTTP</div>
+          <div class="rev-item"><strong>HTTP</strong>Half-duplex, new conn each req</div>
+          <div class="rev-item"><strong>WS</strong>Full-duplex, persistent, ws://</div>
+          <div class="rev-item"><strong>Use HTTP</strong>REST APIs, page loads</div>
+          <div class="rev-item"><strong>Use WS</strong>Chat, live scores, games</div>
+          <div class="rev-item"><strong>Handshake</strong><span class="rev-code">Upgrade: websocket header</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXAM STRATEGY -->
+    <section id="strategy" class="section anchor-target">
+      <div class="section-header reveal">
+        <div class="section-eyebrow">Exam Day</div>
+        <h2 class="section-title">Exam Strategy</h2>
+        <p class="section-desc">Maximize your score even with limited preparation time.</p>
+      </div>
+
+      <div class="strategy-grid">
+        <div class="strategy-card reveal">
+          <div class="strategy-card-num">01</div>
+          <div class="strategy-card-title">🎯 Most Scoring Topics</div>
+          <div class="strategy-card-desc">Focus on: JavaScript + DOM (20-25%), HTTP/AJAX (15-20%), HTML/CSS/Bootstrap (15%), Android Lifecycle (10%), ORM/Frameworks (10%). These 5 areas cover 70%+ of marks in most universities.</div>
+        </div>
+        <div class="strategy-card reveal reveal-delay-1">
+          <div class="strategy-card-num">02</div>
+          <div class="strategy-card-title">⚡ 1-Day Revision Plan</div>
+          <div class="strategy-card-desc">Morning: HTTP + WebSockets + AJAX (2hr). Afternoon: HTML/CSS/Bootstrap + JS/jQuery (2hr). Evening: ORM + MVC + UI Design (2hr). Night: Android Lifecycle + Quick Revision cards (1hr). Reinforce, don't cram new topics.</div>
+        </div>
+        <div class="strategy-card reveal reveal-delay-2">
+          <div class="strategy-card-num">03</div>
+          <div class="strategy-card-title">📝 Theory Answer Strategy</div>
+          <div class="strategy-card-desc">Structure: Definition (2 lines) → Key features/list (bullets) → Code example → Comparison table if applicable. Always include a code snippet — even a 5-line HTML/JS example adds 2-3 marks and shows practical knowledge.</div>
+        </div>
+        <div class="strategy-card reveal">
+          <div class="strategy-card-num">04</div>
+          <div class="strategy-card-title">💻 Solving Code Questions</div>
+          <div class="strategy-card-desc">Step 1: Write the boilerplate (DOCTYPE, html, head, body). Step 2: Add the required element/function. Step 3: Add a comment explaining each part. Step 4: Show sample output if asked. Even partial credit is credit.</div>
+        </div>
+        <div class="strategy-card reveal reveal-delay-1">
+          <div class="strategy-card-num">05</div>
+          <div class="strategy-card-title">❓ MCQ Elimination</div>
+          <div class="strategy-card-desc">For MCQs: Eliminate obviously wrong answers (usually 2 can be eliminated). Between remaining 2 — watch for absolute keywords ("always", "never") which are often traps. Pick the most specific/precise answer. GET vs POST MCQs: remember GET=URL, POST=body.</div>
+        </div>
+        <div class="strategy-card reveal reveal-delay-2">
+          <div class="strategy-card-num">06</div>
+          <div class="strategy-card-title">🕐 3-Hour Exam Plan</div>
+          <div class="strategy-card-desc">Hour 1: All MCQs + short questions you know well. Hour 2: Long questions — code-writing + theory comparisons (most marks). Hour 3: Android/Mobile theory + review answers. Write neat, structured answers with proper headings.</div>
+        </div>
+      </div>
+
+      <div class="important-banner reveal" style="margin-top:32px">
+        <div class="icon">💙</div>
+        <p><strong>You've got this.</strong> Web Dev is hands-on and logical. The student who can write a basic HTML form, understands GET vs POST, knows what AJAX does, and can describe the Android Activity lifecycle can comfortably score 70%+. Trust your preparation, stay calm, and code confidently.</p>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">Web Dev & App Design Exam Prep — BO CDA 208</div>
+    <div class="footer-links">
+      <a href="#syllabus">Syllabus</a>
+      <a href="#html">HTML/CSS</a>
+      <a href="#javascript">JavaScript</a>
+      <a href="#mcq">MCQs</a>
+      <a href="#revision">Revision</a>
+      <a href="#strategy">Strategy</a>
+    </div>
+    <div class="footer-note">Built for university students. All the best for your exam ✌️</div>
+  </div>
+</footer>
+
+<script>
+// PROGRESS BAR
+window.addEventListener('scroll', () => {
+  const scrollTop = window.scrollY;
+  const docHeight = document.body.scrollHeight - window.innerHeight;
+  const progress = (scrollTop / docHeight) * 100;
+  document.getElementById('progressFill').style.width = progress + '%';
+});
+
+// REVEAL ON SCROLL
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add('visible');
+  });
+}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+// SIDEBAR ACTIVE
+const sections = document.querySelectorAll('.anchor-target');
+const sidebarItems = document.querySelectorAll('.sidebar-item[data-sec]');
+const sectionObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const id = entry.target.id;
+      sidebarItems.forEach(item => {
+        item.classList.toggle('active', item.dataset.sec === id);
+      });
+    }
+  });
+}, { rootMargin: '-50% 0px -50% 0px' });
+sections.forEach(s => sectionObserver.observe(s));
+
+// ACCORDION
+function toggleAcc(trigger) {
+  const body = trigger.nextElementSibling;
+  const isOpen = trigger.classList.contains('open');
+  trigger.classList.toggle('open', !isOpen);
+  body.classList.toggle('open', !isOpen);
+}
+
+// MCQ
+let mcqAnswered = {};
+function revealMCQ(optEl, result, explanation) {
+  const card = optEl.closest('.mcq-card');
+  const cardIdx = [...document.querySelectorAll('.mcq-card')].indexOf(card);
+  if (mcqAnswered[cardIdx]) return;
+  mcqAnswered[cardIdx] = true;
+  const opts = card.querySelectorAll('.mcq-opt');
+  opts.forEach(o => o.style.pointerEvents = 'none');
+  optEl.classList.add(result);
+  const expEl = card.querySelector('.mcq-explanation');
+  if (expEl) { expEl.innerHTML = explanation; expEl.classList.add('show'); }
+}
+
+// SIDEBAR SMOOTH SCROLL
+document.querySelectorAll('.sidebar-item').forEach(item => {
+  item.addEventListener('click', (e) => {
+    e.preventDefault();
+    const sec = item.dataset.sec;
+    if (sec) {
+      const target = document.getElementById(sec);
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+
+// INITIAL REVEAL
+window.addEventListener('load', () => {
+  document.querySelectorAll('.reveal').forEach(el => {
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight) el.classList.add('visible');
+  });
+});
+</script>
+</body>
+</html>
