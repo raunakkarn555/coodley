@@ -1,0 +1,1746 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CO Exam Prep — Complete University Course Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #faf9f7;
+  --bg-2: #f4f2ee;
+  --bg-3: #eceae4;
+  --surface: #ffffff;
+  --surface-2: #f9f8f5;
+  --border: #e8e5de;
+  --border-2: #d9d5ca;
+  --text: #1a1814;
+  --text-2: #4a4640;
+  --text-3: #7a7570;
+  --accent: #1d4e89;
+  --accent-2: #2563eb;
+  --accent-light: #dbeafe;
+  --accent-glow: rgba(29,78,137,0.12);
+  --gold: #b5813e;
+  --gold-light: #fef3cd;
+  --red: #c0392b;
+  --red-light: #fde8e8;
+  --blue: #2563eb;
+  --blue-light: #dbeafe;
+  --purple: #7c3aed;
+  --purple-light: #ede9fe;
+  --mono: 'JetBrains Mono', monospace;
+  --serif: 'Instrument Serif', serif;
+  --sans: 'DM Sans', sans-serif;
+  --radius: 12px;
+  --radius-lg: 20px;
+  --shadow: 0 1px 3px rgba(0,0,0,0.06), 0 4px 16px rgba(0,0,0,0.04);
+  --shadow-md: 0 4px 24px rgba(0,0,0,0.08), 0 1px 4px rgba(0,0,0,0.04);
+  --shadow-lg: 0 12px 48px rgba(0,0,0,0.1), 0 2px 8px rgba(0,0,0,0.05);
+  --sidebar-w: 260px;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden}
+
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:var(--bg-2)}
+::-webkit-scrollbar-thumb{background:var(--border-2);border-radius:3px}
+
+/* NAVBAR */
+.navbar{position:sticky;top:0;z-index:100;background:rgba(250,249,247,0.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);height:60px;display:flex;align-items:center;padding:0 24px}
+.nav-inner{max-width:1400px;margin:0 auto;width:100%;display:flex;align-items:center;gap:16px}
+.nav-logo{font-family:var(--serif);font-size:1.2rem;color:var(--text);text-decoration:none;display:flex;align-items:center;gap:8px}
+.nav-logo-icon{width:28px;height:28px;background:var(--accent);border-radius:7px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:11px;font-weight:600;font-family:var(--sans)}
+.nav-tag{font-size:11px;background:var(--accent-light);color:var(--accent);padding:2px 8px;border-radius:20px;font-weight:500}
+.nav-spacer{flex:1}
+.nav-links{display:flex;align-items:center;gap:4px}
+.nav-links a{color:var(--text-2);text-decoration:none;font-size:13.5px;font-weight:500;padding:6px 12px;border-radius:8px;transition:all .2s}
+.nav-links a:hover{background:var(--bg-2);color:var(--text)}
+.nav-cta{background:var(--accent);color:#fff !important;padding:7px 16px !important;border-radius:8px !important;font-size:13px !important}
+.nav-cta:hover{background:var(--accent-2) !important}
+
+/* LAYOUT */
+.page-layout{display:flex;max-width:1400px;margin:0 auto;padding:0 24px}
+
+/* SIDEBAR */
+.sidebar{width:var(--sidebar-w);flex-shrink:0;position:sticky;top:60px;height:calc(100vh - 60px);overflow-y:auto;padding:28px 16px 28px 0;border-right:1px solid var(--border)}
+.sidebar-label{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--text-3);padding:0 12px;margin-bottom:8px;margin-top:16px}
+.sidebar-label:first-child{margin-top:0}
+.sidebar-item{display:flex;align-items:center;gap:8px;padding:7px 12px;border-radius:8px;cursor:pointer;transition:all .2s;text-decoration:none;color:var(--text-2);font-size:13px;font-weight:450}
+.sidebar-item:hover{background:var(--bg-2);color:var(--text)}
+.sidebar-item.active{background:var(--accent-light);color:var(--accent);font-weight:500}
+.sidebar-item .dot{width:5px;height:5px;border-radius:50%;background:var(--border-2);flex-shrink:0;transition:.2s}
+.sidebar-item.active .dot{background:var(--accent)}
+.sidebar-num{font-size:10px;color:var(--text-3);margin-left:auto;font-family:var(--mono)}
+
+/* MAIN */
+.main{flex:1;min-width:0;padding:48px 0 48px 40px}
+
+/* PROGRESS BAR */
+.progress-bar{position:fixed;top:60px;left:0;right:0;height:2px;background:var(--border);z-index:99}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent-2));width:0%;transition:width .1s}
+
+/* HERO */
+.hero{padding:64px 0 80px;border-bottom:1px solid var(--border);margin-bottom:64px}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:var(--accent-light);color:var(--accent);padding:5px 12px;border-radius:20px;font-size:12.5px;font-weight:500;margin-bottom:24px}
+.hero-eyebrow::before{content:'●';font-size:7px;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.hero-title{font-family:var(--serif);font-size:clamp(2rem,4vw,3.2rem);line-height:1.15;color:var(--text);margin-bottom:20px;font-weight:400}
+.hero-title em{font-style:italic;color:var(--accent)}
+.hero-sub{font-size:1rem;color:var(--text-2);line-height:1.7;margin-bottom:32px;max-width:480px}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:40px}
+.btn-primary{background:var(--accent);color:#fff;padding:11px 22px;border-radius:10px;font-size:14px;font-weight:500;text-decoration:none;border:none;cursor:pointer;transition:all .2s;display:inline-flex;align-items:center;gap:7px}
+.btn-primary:hover{background:var(--accent-2);transform:translateY(-1px);box-shadow:var(--shadow-md)}
+.btn-secondary{background:var(--surface);color:var(--text);padding:11px 22px;border-radius:10px;font-size:14px;font-weight:500;text-decoration:none;border:1px solid var(--border-2);cursor:pointer;transition:all .2s;display:inline-flex;align-items:center;gap:7px}
+.btn-secondary:hover{background:var(--bg-2);border-color:var(--accent);transform:translateY(-1px)}
+.hero-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.stat-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;transition:all .2s}
+.stat-card:hover{border-color:var(--accent);box-shadow:var(--shadow)}
+.stat-icon{font-size:18px;margin-bottom:6px}
+.stat-label{font-size:11.5px;font-weight:500;color:var(--text);margin-bottom:2px}
+.stat-sub{font-size:10.5px;color:var(--text-3)}
+
+/* HERO VISUAL */
+.hero-visual{position:relative;height:420px}
+.hero-db-card{position:absolute;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px;box-shadow:var(--shadow-md)}
+.hero-db-card.main-card{width:300px;top:20px;right:0;animation:floatA 6s ease-in-out infinite}
+.hero-db-card.sql-card{width:240px;bottom:40px;right:40px;animation:floatB 7s ease-in-out infinite 1s}
+.hero-db-card.er-card{width:180px;top:120px;left:10px;animation:floatC 5s ease-in-out infinite .5s}
+@keyframes floatA{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@keyframes floatB{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+@keyframes floatC{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+.card-header{display:flex;align-items:center;gap:8px;margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid var(--border)}
+.card-dots{display:flex;gap:4px}
+.card-dots span{width:8px;height:8px;border-radius:50%}
+.card-dots span:nth-child(1){background:#ff5f56}
+.card-dots span:nth-child(2){background:#ffbd2e}
+.card-dots span:nth-child(3){background:#27c93f}
+.card-title-sm{font-size:11px;font-weight:500;color:var(--text-3);font-family:var(--mono)}
+.reg-table{width:100%;border-collapse:collapse;font-size:11px;font-family:var(--mono)}
+.reg-table th{background:var(--bg-2);padding:5px 8px;text-align:left;font-weight:500;color:var(--text-3);font-size:10px;text-transform:uppercase;letter-spacing:.05em}
+.reg-table td{padding:5px 8px;border-top:1px solid var(--border);color:var(--text-2)}
+.reg-table tr:hover td{background:var(--bg-2)}
+.key-badge{background:var(--accent-light);color:var(--accent);padding:1px 5px;border-radius:3px;font-size:9px;font-weight:600}
+.asm-line{font-family:var(--mono);font-size:11.5px;line-height:1.9}
+.asm-kw{color:#1d4e89;font-weight:600}
+.asm-reg{color:#b5813e}
+.asm-cm{color:#7a7570;font-style:italic}
+.asm-num{color:#7c3aed}
+.pipe-stage{background:var(--accent-light);border:1.5px solid var(--accent);border-radius:8px;padding:5px 8px;font-size:10px;font-weight:600;color:var(--accent);text-align:center;margin-bottom:5px}
+
+/* SECTIONS */
+.section{margin-bottom:80px;scroll-margin-top:80px}
+.section-header{margin-bottom:32px}
+.section-eyebrow{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--accent);margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.section-eyebrow::after{content:'';flex:1;height:1px;background:var(--border)}
+.section-title{font-family:var(--serif);font-size:clamp(1.6rem,3vw,2.2rem);line-height:1.2;color:var(--text);margin-bottom:12px}
+.section-desc{color:var(--text-2);font-size:0.95rem;max-width:600px;line-height:1.7}
+
+/* SYLLABUS */
+.syllabus-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
+.syllabus-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:20px;transition:all .25s;cursor:pointer}
+.syllabus-card:hover{border-color:var(--accent);box-shadow:var(--shadow);transform:translateY(-2px)}
+.syl-num{font-family:var(--mono);font-size:10px;color:var(--text-3);margin-bottom:8px}
+.syl-title{font-weight:600;font-size:14px;color:var(--text);margin-bottom:10px}
+.syl-topics{list-style:none;display:flex;flex-direction:column;gap:4px}
+.syl-topics li{font-size:12.5px;color:var(--text-2);padding:3px 0;border-bottom:1px solid var(--bg-3);display:flex;align-items:center;gap:6px}
+.syl-topics li::before{content:'›';color:var(--accent);font-size:14px;line-height:1}
+
+/* ACCORDION */
+.accordion{border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-bottom:12px}
+.acc-trigger{width:100%;padding:16px 20px;background:var(--surface);display:flex;align-items:center;gap:12px;cursor:pointer;border:none;text-align:left;transition:background .2s;font-family:var(--sans)}
+.acc-trigger:hover{background:var(--bg-2)}
+.acc-trigger.open{background:var(--bg-2)}
+.acc-icon{width:24px;height:24px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0}
+.acc-trigger-title{flex:1;font-weight:500;font-size:14.5px;color:var(--text)}
+.acc-trigger-sub{font-size:12px;color:var(--text-3)}
+.acc-arrow{font-size:12px;color:var(--text-3);transition:transform .3s;margin-left:8px}
+.acc-trigger.open .acc-arrow{transform:rotate(180deg)}
+.acc-body{background:var(--surface-2);border-top:1px solid var(--border);padding:0;max-height:0;overflow:hidden;transition:max-height .4s ease,padding .3s}
+.acc-body.open{padding:20px;max-height:3000px}
+
+/* CONTENT */
+.content-prose{color:var(--text-2);font-size:14.5px;line-height:1.8}
+.content-prose h4{font-family:var(--serif);font-size:1.1rem;color:var(--text);margin:20px 0 8px;font-weight:400}
+.content-prose p{margin-bottom:12px}
+.content-prose ul{padding-left:20px;margin-bottom:12px}
+.content-prose li{margin-bottom:6px}
+.content-prose strong{color:var(--text);font-weight:600}
+
+/* BADGES */
+.badge{display:inline-flex;align-items:center;gap:4px;padding:3px 9px;border-radius:20px;font-size:11px;font-weight:500}
+.badge-green{background:var(--accent-light);color:var(--accent)}
+.badge-gold{background:var(--gold-light);color:var(--gold)}
+.badge-red{background:var(--red-light);color:var(--red)}
+.badge-blue{background:var(--blue-light);color:var(--blue)}
+.badge-purple{background:var(--purple-light);color:var(--purple)}
+.important-banner{background:linear-gradient(135deg,var(--gold-light),#fff9ed);border:1px solid #e8c87a;border-radius:var(--radius);padding:12px 16px;margin:16px 0;display:flex;gap:10px;align-items:flex-start}
+.important-banner .icon{font-size:16px;flex-shrink:0;margin-top:1px}
+.important-banner p{font-size:13px;color:var(--text-2);margin:0}
+.important-banner strong{color:var(--text);font-weight:600}
+.exam-tip{background:linear-gradient(135deg,var(--accent-light),#f0f6ff);border:1px solid #a8c5e8;border-radius:var(--radius);padding:14px 16px;margin:14px 0}
+.exam-tip-label{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);margin-bottom:6px}
+.exam-tip p{font-size:13.5px;color:var(--text-2);margin:0}
+
+/* INFO GRID */
+.info-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px;margin:16px 0}
+.info-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:16px;transition:.2s}
+.info-card:hover{border-color:var(--accent);transform:translateY(-1px)}
+.info-card-icon{font-size:22px;margin-bottom:8px}
+.info-card-title{font-weight:600;font-size:13.5px;color:var(--text);margin-bottom:4px}
+.info-card-desc{font-size:12.5px;color:var(--text-2);line-height:1.6}
+
+/* COMPARE TABLE */
+.compare-table{width:100%;border-collapse:collapse;font-size:13.5px;border-radius:var(--radius);overflow:hidden;border:1px solid var(--border);margin:16px 0}
+.compare-table th{background:var(--bg-2);padding:10px 14px;text-align:left;font-weight:600;color:var(--text);font-size:13px;border-bottom:1px solid var(--border)}
+.compare-table td{padding:10px 14px;border-bottom:1px solid var(--bg-3);color:var(--text-2);vertical-align:top}
+.compare-table tr:last-child td{border-bottom:none}
+.compare-table tr:hover td{background:var(--bg-2)}
+.compare-table td:first-child{font-weight:500;color:var(--text)}
+
+/* CODE BLOCKS */
+.code-block{background:#1a1814;border-radius:var(--radius);overflow:hidden;margin:16px 0;border:1px solid #2a2822}
+.code-header{background:#232019;padding:10px 16px;display:flex;align-items:center;gap:8px;border-bottom:1px solid #2a2822}
+.code-dots{display:flex;gap:5px}
+.code-dots span{width:10px;height:10px;border-radius:50%}
+.code-dots span:nth-child(1){background:#ff5f56}
+.code-dots span:nth-child(2){background:#ffbd2e}
+.code-dots span:nth-child(3){background:#27c93f}
+.code-lang{font-size:11px;color:#6b7280;font-family:var(--mono);margin-left:auto}
+.code-body{padding:20px;font-family:var(--mono);font-size:13px;line-height:1.7;color:#e2d9c8;overflow-x:auto}
+.kw{color:#7dd3fc}.fn{color:#74c48d}.str{color:#fbbf24}.cm{color:#6b7280;font-style:italic}.num{color:#fb923c}.op{color:#94a3b8}.type{color:#c4b5fd}.reg{color:#fbbf24}.lbl{color:#f0a0a0}
+
+/* NORM STEP (reused for pipeline steps etc) */
+.norm-step{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:20px;margin-bottom:14px;position:relative;padding-left:56px;transition:.2s}
+.norm-step:hover{border-color:var(--accent);box-shadow:var(--shadow)}
+.norm-step-num{position:absolute;left:16px;top:16px;width:28px;height:28px;background:var(--accent);color:#fff;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;font-family:var(--mono)}
+.norm-step-title{font-weight:600;font-size:14.5px;color:var(--text);margin-bottom:6px}
+.norm-step-desc{font-size:13.5px;color:var(--text-2);line-height:1.7}
+.norm-step-badge{margin-top:10px}
+
+/* MCQ */
+.mcq-grid{display:flex;flex-direction:column;gap:20px}
+.mcq-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px;transition:.2s}
+.mcq-card:hover{border-color:var(--border-2);box-shadow:var(--shadow)}
+.mcq-meta{display:flex;gap:8px;margin-bottom:14px;align-items:center}
+.mcq-q{font-weight:500;font-size:15px;color:var(--text);margin-bottom:16px;line-height:1.6}
+.mcq-options{display:flex;flex-direction:column;gap:8px;margin-bottom:16px}
+.mcq-opt{padding:10px 14px;border:1.5px solid var(--border);border-radius:8px;font-size:13.5px;color:var(--text-2);cursor:pointer;transition:.2s;display:flex;gap:10px;align-items:flex-start}
+.mcq-opt:hover{border-color:var(--accent);background:var(--accent-light);color:var(--accent)}
+.mcq-opt.correct{border-color:var(--accent);background:var(--accent-light);color:var(--accent)}
+.mcq-opt.wrong{border-color:var(--red);background:var(--red-light);color:var(--red)}
+.mcq-opt-letter{font-weight:700;font-size:12px;width:18px;flex-shrink:0;margin-top:1px}
+.mcq-explanation{background:var(--bg-2);border-radius:8px;padding:14px;font-size:13.5px;color:var(--text-2);margin-top:12px;display:none;border-left:3px solid var(--accent)}
+.mcq-explanation.show{display:block}
+
+/* REVISION CARDS */
+.rev-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px}
+.rev-card{border-radius:var(--radius-lg);padding:22px;border:1px solid var(--border);position:relative;overflow:hidden}
+.rev-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+.rev-card.green::before{background:linear-gradient(90deg,var(--accent),var(--accent-2))}
+.rev-card.gold::before{background:linear-gradient(90deg,var(--gold),#e8a850)}
+.rev-card.blue::before{background:linear-gradient(90deg,var(--blue),#60a5fa)}
+.rev-card.purple::before{background:linear-gradient(90deg,var(--purple),#a78bfa)}
+.rev-card.red::before{background:linear-gradient(90deg,var(--red),#f87171)}
+.rev-card-title{font-weight:700;font-size:14px;color:var(--text);margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.rev-item{font-size:13px;color:var(--text-2);padding:5px 0;border-bottom:1px solid var(--bg-3);display:flex;gap:8px}
+.rev-item:last-child{border-bottom:none}
+.rev-item strong{color:var(--text);font-weight:600;flex-shrink:0;min-width:80px}
+.rev-code{font-family:var(--mono);font-size:12px;background:var(--bg-2);padding:2px 5px;border-radius:4px;color:var(--text)}
+
+/* STRATEGY */
+.strategy-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
+.strategy-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:20px;transition:.2s}
+.strategy-card:hover{border-color:var(--accent);box-shadow:var(--shadow)}
+.strategy-card-num{font-family:var(--serif);font-size:2rem;color:var(--accent-light);font-weight:400;margin-bottom:4px}
+.strategy-card-title{font-weight:600;font-size:14.5px;color:var(--text);margin-bottom:8px}
+.strategy-card-desc{font-size:13px;color:var(--text-2);line-height:1.7}
+
+/* UQ */
+.uq-list{display:flex;flex-direction:column;gap:12px}
+.uq-item{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:16px 20px;display:flex;gap:14px;align-items:flex-start;transition:.2s}
+.uq-item:hover{border-color:var(--accent);box-shadow:var(--shadow)}
+.uq-marks{background:var(--bg-2);border-radius:8px;padding:6px 10px;font-size:11px;font-weight:700;color:var(--text-3);text-align:center;flex-shrink:0;min-width:44px;font-family:var(--mono)}
+.uq-marks span{display:block;font-size:9px;font-weight:400;color:var(--text-3)}
+.uq-content{flex:1}
+.uq-q{font-weight:500;font-size:14px;color:var(--text);margin-bottom:6px;line-height:1.6}
+.uq-tags{display:flex;gap:6px;flex-wrap:wrap}
+
+/* OPERATOR GRID */
+.operator-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px;margin:16px 0}
+.op-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:16px;text-align:center;transition:.2s}
+.op-card:hover{border-color:var(--accent);transform:translateY(-2px);box-shadow:var(--shadow)}
+.op-symbol{font-family:var(--mono);font-size:1.6rem;color:var(--accent);margin-bottom:6px;font-weight:700}
+.op-name{font-weight:600;font-size:13.5px;color:var(--text);margin-bottom:4px}
+.op-desc{font-size:12px;color:var(--text-2)}
+
+/* MNEMONIC */
+.mnemonic{background:linear-gradient(135deg,#1a1814,#232019);border-radius:var(--radius);padding:22px;margin:16px 0;border:1px solid #2a2822}
+.mnemonic-title{font-family:var(--mono);font-size:11px;color:#6b7280;margin-bottom:10px;text-transform:uppercase;letter-spacing:.08em}
+.mnemonic-letters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}
+.mnem-letter{background:#1d4e8920;border:1.5px solid #1d4e89;border-radius:8px;padding:10px 14px;font-family:var(--mono);font-size:1.2rem;color:#7dd3fc;font-weight:700;text-align:center}
+.mnem-word{font-size:11px;color:#9a8e80;margin-top:3px}
+.mnemonic-phrase{font-family:var(--serif);font-size:1rem;color:#c4b5a0;font-style:italic}
+
+/* SCHEMA BOX */
+.schema-box{background:#f9f8f5;border:1px solid var(--border);border-radius:var(--radius);padding:16px;font-family:var(--mono);font-size:13px;color:var(--text-2);margin:12px 0;line-height:1.9;overflow-x:auto}
+.schema-box .tname{color:var(--accent);font-weight:700}
+.schema-box .pk{color:var(--gold);font-weight:600}
+
+/* TIMELINE */
+.timeline{position:relative;padding-left:32px}
+.timeline::before{content:'';position:absolute;left:7px;top:0;bottom:0;width:2px;background:linear-gradient(180deg,var(--accent),transparent)}
+.tl-item{position:relative;padding-bottom:28px}
+.tl-item::before{content:'';position:absolute;left:-29px;top:4px;width:10px;height:10px;border-radius:50%;background:var(--accent);border:2px solid var(--bg);box-shadow:0 0 0 2px var(--accent)}
+.tl-title{font-weight:600;font-size:14px;color:var(--text);margin-bottom:6px}
+.tl-desc{font-size:13.5px;color:var(--text-2);line-height:1.7}
+
+/* FOOTER */
+footer{background:var(--bg-2);border-top:1px solid var(--border);padding:40px 24px;margin-top:80px}
+.footer-inner{max-width:1400px;margin:0 auto;display:flex;gap:32px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.footer-brand{font-family:var(--serif);font-size:1.1rem;color:var(--text-2)}
+.footer-links{display:flex;gap:16px;flex-wrap:wrap}
+.footer-links a{font-size:13px;color:var(--text-3);text-decoration:none;transition:.2s}
+.footer-links a:hover{color:var(--accent)}
+.footer-note{font-size:12px;color:var(--text-3)}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
+.reveal.visible{opacity:1;transform:none}
+.reveal-delay-1{transition-delay:.1s}
+.reveal-delay-2{transition-delay:.2s}
+.reveal-delay-3{transition-delay:.3s}
+
+.anchor-target{scroll-margin-top:80px}
+code{font-family:var(--mono);background:var(--bg-3);padding:2px 6px;border-radius:4px;font-size:0.88em;color:var(--accent)}
+
+/* PIPELINE DIAGRAM */
+.pipeline-diagram{display:flex;gap:4px;align-items:center;margin:16px 0;flex-wrap:wrap}
+.pipe-box{background:var(--accent-light);border:2px solid var(--accent);border-radius:8px;padding:8px 14px;font-size:12px;font-weight:700;color:var(--accent);text-align:center;min-width:60px}
+.pipe-arrow{color:var(--accent);font-size:18px;font-weight:700}
+.pipe-stall{background:var(--red-light);border:2px solid var(--red);border-radius:8px;padding:8px 14px;font-size:12px;font-weight:700;color:var(--red);text-align:center;min-width:60px}
+
+/* RESPONSIVE */
+@media(max-width:1024px){.sidebar{display:none}.main{padding:40px 0}.page-layout{padding:0 20px}}
+@media(max-width:768px){.hero-grid{grid-template-columns:1fr}.hero-visual{display:none}.hero-stats{grid-template-columns:repeat(2,1fr)}.nav-links{display:none}.syllabus-grid{grid-template-columns:1fr}}
+@media(max-width:480px){.hero-stats{grid-template-columns:1fr}.hero-btns{flex-direction:column}.info-grid{grid-template-columns:1fr}.operator-grid{grid-template-columns:repeat(2,1fr)}.rev-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<!-- PROGRESS BAR -->
+<div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <div class="nav-logo-icon">CO</div>
+      CO Prep
+    </a>
+    <span class="nav-tag">University Exam</span>
+    <div class="nav-spacer"></div>
+    <div class="nav-links">
+      <a href="#syllabus">Syllabus</a>
+      <a href="#assembly">Assembly</a>
+      <a href="#mcq">MCQs</a>
+      <a href="#revision">Revision</a>
+      <a href="#revision" class="nav-cta">Last Night Revision →</a>
+    </div>
+  </div>
+</nav>
+
+<!-- PAGE LAYOUT -->
+<div class="page-layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-label">Getting Started</div>
+    <a href="#hero" class="sidebar-item active" data-sec="hero"><span class="dot"></span>Overview</a>
+    <a href="#syllabus" class="sidebar-item" data-sec="syllabus"><span class="dot"></span>Full Syllabus</a>
+
+    <div class="sidebar-label">Core Topics</div>
+    <a href="#basics" class="sidebar-item" data-sec="basics"><span class="dot"></span>Basic Organization <span class="sidebar-num">01</span></a>
+    <a href="#cpu" class="sidebar-item" data-sec="cpu"><span class="dot"></span>CPU & Instruction Set <span class="sidebar-num">02</span></a>
+    <a href="#datarepresentation" class="sidebar-item" data-sec="datarepresentation"><span class="dot"></span>Data Representation <span class="sidebar-num">03</span></a>
+    <a href="#arithmetic" class="sidebar-item" data-sec="arithmetic"><span class="dot"></span>Computer Arithmetic <span class="sidebar-num">04</span></a>
+    <a href="#pipelining" class="sidebar-item" data-sec="pipelining"><span class="dot"></span>Pipelining <span class="sidebar-num">05</span></a>
+    <a href="#memory" class="sidebar-item" data-sec="memory"><span class="dot"></span>Memory Organization <span class="sidebar-num">06</span></a>
+    <a href="#io" class="sidebar-item" data-sec="io"><span class="dot"></span>I/O & Interrupts <span class="sidebar-num">07</span></a>
+    <a href="#casestudy" class="sidebar-item" data-sec="casestudy"><span class="dot"></span>Case Studies <span class="sidebar-num">08</span></a>
+
+    <div class="sidebar-label">Practice</div>
+    <a href="#assembly" class="sidebar-item" data-sec="assembly"><span class="dot"></span>Assembly Programming</a>
+    <a href="#practical" class="sidebar-item" data-sec="practical"><span class="dot"></span>Practical Lab</a>
+    <a href="#mcq" class="sidebar-item" data-sec="mcq"><span class="dot"></span>MCQ Practice</a>
+    <a href="#uqs" class="sidebar-item" data-sec="uqs"><span class="dot"></span>University Questions</a>
+
+    <div class="sidebar-label">Exam Day</div>
+    <a href="#revision" class="sidebar-item" data-sec="revision"><span class="dot"></span>Last Night Revision</a>
+    <a href="#strategy" class="sidebar-item" data-sec="strategy"><span class="dot"></span>Exam Strategy</a>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main">
+
+    <!-- HERO -->
+    <section id="hero" class="hero anchor-target">
+      <div class="hero-grid">
+        <div>
+          <div class="hero-eyebrow reveal">Computer Organization — BO CDA 204</div>
+          <h1 class="hero-title reveal reveal-delay-1">Complete CO<br><em>Exam Preparation</em><br>— From Zero to Pass</h1>
+          <p class="hero-sub reveal reveal-delay-2">Complete notes on CPU design, instruction sets, data representation, arithmetic, pipelining, memory hierarchy, I/O, interrupts, assembly programming — all in one roadmap.</p>
+          <div class="hero-btns reveal reveal-delay-3">
+            <a href="#syllabus" class="btn-primary">▶ Start Learning</a>
+            <a href="#revision" class="btn-secondary">⬇ Quick Revision</a>
+          </div>
+          <div class="hero-stats reveal reveal-delay-3">
+            <div class="stat-card">
+              <div class="stat-icon">📚</div>
+              <div class="stat-label">Full Syllabus</div>
+              <div class="stat-sub">Covered</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon">❓</div>
+              <div class="stat-label">100+ MCQs</div>
+              <div class="stat-sub">With Explanations</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon">⚡</div>
+              <div class="stat-label">Assembly Lab</div>
+              <div class="stat-sub">MIPS/x86/ARM</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon">🎯</div>
+              <div class="stat-label">Exam Focused</div>
+              <div class="stat-sub">Revision Cards</div>
+            </div>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div style="position:absolute;width:300px;height:300px;background:radial-gradient(circle,rgba(29,78,137,.15),transparent 70%);top:0;left:50%;transform:translateX(-50%);pointer-events:none"></div>
+          <!-- CPU Registers Card -->
+          <div class="hero-db-card main-card">
+            <div class="card-header">
+              <div class="card-dots"><span></span><span></span><span></span></div>
+              <div class="card-title-sm">cpu.registers — x86</div>
+            </div>
+            <table class="reg-table">
+              <tr><th>Register</th><th>Size</th><th>Purpose</th></tr>
+              <tr><td><span class="key-badge">PC</span></td><td>32-bit</td><td>Program Counter</td></tr>
+              <tr><td>IR</td><td>32-bit</td><td>Instruction Reg</td></tr>
+              <tr><td>MAR</td><td>32-bit</td><td>Mem Address Reg</td></tr>
+              <tr><td>MDR</td><td>32-bit</td><td>Mem Data Reg</td></tr>
+            </table>
+          </div>
+          <!-- Assembly Card -->
+          <div class="hero-db-card sql-card">
+            <div class="card-header">
+              <div class="card-dots"><span></span><span></span><span></span></div>
+              <div class="card-title-sm">program.asm</div>
+            </div>
+            <div class="asm-line"><span class="asm-kw">MOV</span> <span class="asm-reg">AX</span>, <span class="asm-num">0005h</span></div>
+            <div class="asm-line"><span class="asm-kw">ADD</span> <span class="asm-reg">AX</span>, <span class="asm-reg">BX</span></div>
+            <div class="asm-line"><span class="asm-kw">CMP</span> <span class="asm-reg">AX</span>, <span class="asm-num">000Ah</span></div>
+            <div class="asm-line"><span class="asm-kw">JG</span> <span class="asm-reg">DONE</span></div>
+          </div>
+          <!-- Pipeline Card -->
+          <div class="hero-db-card er-card">
+            <div class="card-header">
+              <div class="card-dots"><span></span><span></span><span></span></div>
+              <div class="card-title-sm">Pipeline Stages</div>
+            </div>
+            <div class="pipe-stage">IF</div>
+            <div style="text-align:center;font-size:12px;color:#7a7570;margin:1px 0">↓</div>
+            <div class="pipe-stage">ID</div>
+            <div style="text-align:center;font-size:12px;color:#7a7570;margin:1px 0">↓</div>
+            <div class="pipe-stage">EX</div>
+            <div style="text-align:center;font-size:12px;color:#7a7570;margin:1px 0">↓</div>
+            <div class="pipe-stage">WB</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SYLLABUS -->
+    <section id="syllabus" class="section anchor-target">
+      <div class="section-header reveal">
+        <div class="section-eyebrow">Official Syllabus</div>
+        <h2 class="section-title">Complete CO Course Syllabus</h2>
+        <p class="section-desc">Every topic from the official university syllabus — not a single word skipped. Click any card to jump to the detailed section.</p>
+      </div>
+      <div class="syllabus-grid">
+        <a href="#basics" class="syllabus-card reveal" style="text-decoration:none;color:inherit">
+          <div class="syl-num">UNIT 01</div>
+          <div class="syl-title">🏗 Basic Computer Organization</div>
+          <ul class="syl-topics">
+            <li>Basic computer organization and design</li><li>Operational concepts</li><li>Instruction codes</li><li>Computer Registers</li><li>Computer Instructions</li>
+          </ul>
+        </a>
+        <a href="#cpu" class="syllabus-card reveal reveal-delay-1" style="text-decoration:none;color:inherit">
+          <div class="syl-num">UNIT 02</div>
+          <div class="syl-title">⚙️ CPU & Instruction Set</div>
+          <ul class="syl-topics">
+            <li>CPU — registers</li><li>Instruction execution cycle</li><li>RTL interpretation of instructions</li><li>Addressing modes</li><li>Instruction set</li><li>Case study: instruction sets of common CPUs</li>
+          </ul>
+        </a>
+        <a href="#datarepresentation" class="syllabus-card reveal reveal-delay-2" style="text-decoration:none;color:inherit">
+          <div class="syl-num">UNIT 03</div>
+          <div class="syl-title">🔢 Data Representation</div>
+          <ul class="syl-topics">
+            <li>Signed number representation</li><li>Fixed point representations</li><li>Floating point representations</li><li>Character representation</li>
+          </ul>
+        </a>
+        <a href="#arithmetic" class="syllabus-card reveal" style="text-decoration:none;color:inherit">
+          <div class="syl-num">UNIT 04</div>
+          <div class="syl-title">➕ Computer Arithmetic</div>
+          <ul class="syl-topics">
+            <li>Integer addition and subtraction</li><li>Ripple carry adder</li><li>Case study: design of a simple hypothetical CPU</li>
+          </ul>
+        </a>
+        <a href="#pipelining" class="syllabus-card reveal reveal-delay-1" style="text-decoration:none;color:inherit">
+          <div class="syl-num">UNIT 05</div>
+          <div class="syl-title">🔄 Pipelining</div>
+          <ul class="syl-topics">
+            <li>Basic concepts of pipelining</li><li>Throughput and speedup</li><li>Pipeline hazards</li>
+          </ul>
+        </a>
+        <a href="#memory" class="syllabus-card reveal reveal-delay-2" style="text-decoration:none;color:inherit">
+          <div class="syl-num">UNIT 06</div>
+          <div class="syl-title">💾 Memory Organization</div>
+          <ul class="syl-topics">
+            <li>Memory interleaving</li><li>Concept of hierarchical memory organization</li><li>Cache memory</li><li>Cache size vs block size</li><li>Mapping functions</li><li>Replacement algorithms</li><li>Write policy</li>
+          </ul>
+        </a>
+        <a href="#io" class="syllabus-card reveal" style="text-decoration:none;color:inherit">
+          <div class="syl-num">UNIT 07</div>
+          <div class="syl-title">🔌 I/O & Interrupts</div>
+          <ul class="syl-topics">
+            <li>Peripheral devices and their characteristics</li><li>Input-output subsystems</li><li>I/O transfers — program controlled, interrupt driven and DMA</li><li>Privileged and non-privileged instructions</li><li>Software interrupts and exceptions</li><li>Programs and processes — role of interrupts in process state transitions</li>
+          </ul>
+        </a>
+        <a href="#casestudy" class="syllabus-card reveal reveal-delay-1" style="text-decoration:none;color:inherit">
+          <div class="syl-num">UNIT 08</div>
+          <div class="syl-title">🔬 Case Studies</div>
+          <ul class="syl-topics">
+            <li>Assembly language programming for some processor</li><li>Instruction sets of common CPUs</li><li>Design of a simple hypothetical CPU</li>
+          </ul>
+        </a>
+        <a href="#practical" class="syllabus-card reveal reveal-delay-2" style="text-decoration:none;color:inherit">
+          <div class="syl-num">PRACTICAL</div>
+          <div class="syl-title">💻 Practical Component</div>
+          <ul class="syl-topics">
+            <li>Familiarization with assembly language programming</li><li>Assembly language programming using MIPS/X86/ARM instruction set</li><li>Design and Simulation of Data Path and Control</li><li>Development kits and Microprocessors/PCs</li><li>Design/simulation tools</li><li>Lab conducted on a 3-hour slot weekly</li>
+          </ul>
+        </a>
+      </div>
+    </section>
+
+    <!-- UNIT 01: BASIC ORGANIZATION -->
+    <section id="basics" class="section anchor-target">
+      <div class="section-header reveal">
+        <div class="section-eyebrow">Unit 01</div>
+        <h2 class="section-title">Basic Computer Organization & Design</h2>
+        <p class="section-desc">The foundation of how a digital computer is structured, how it stores and processes instructions, and the role of each hardware component.</p>
+      </div>
+
+      <div class="important-banner reveal">
+        <div class="icon">⭐</div>
+        <p><strong>Most Important for Exam:</strong> Operational concepts, Von Neumann architecture, register types, instruction codes — these appear in almost every CO university exam.</p>
+      </div>
+
+      <div class="accordion reveal">
+        <button class="acc-trigger open" onclick="toggleAcc(this)">
+          <div class="acc-icon" style="background:#dbeafe">🖥</div>
+          <span class="acc-trigger-title">Von Neumann Architecture & Operational Concepts</span>
+          <span class="acc-trigger-sub">Fundamentals</span>
+          <span class="acc-arrow">▼</span>
+        </button>
+        <div class="acc-body open">
+          <div class="content-prose">
+            <p>A <strong>computer system</strong> is an electronic device that accepts input, processes it, stores data and produces output. The most widely used model is the <strong>Von Neumann architecture</strong> — a stored-program computer where instructions and data share the same memory.</p>
+            <h4>Von Neumann vs Harvard Architecture</h4>
+            <table class="compare-table">
+              <tr><th>Feature</th><th>Von Neumann</th><th>Harvard</th></tr>
+              <tr><td>Memory</td><td>Single shared memory for data and instructions</td><td>Separate instruction and data memory</td></tr>
+              <tr><td>Bus</td><td>Single shared bus</td><td>Separate buses for data and instruction</td></tr>
+              <tr><td>Speed</td><td>Slower (bottleneck)</td><td>Faster (parallel fetch)</td></tr>
+              <tr><td>Example</td><td>Most general-purpose computers</td><td>DSPs, PICs, some microcontrollers</td></tr>
+              <tr><td>Simplicity</td><td>Simpler design</td><td>More complex</td></tr>
+            </table>
+            <h4>Operational Concepts — The Fetch-Decode-Execute Cycle</h4>
+            <p>Every CPU continuously repeats a fundamental loop:</p>
+            <div class="timeline">
+              <div class="tl-item"><div class="tl-title">1. Fetch</div><div class="tl-desc">CPU reads the instruction from the memory address held in the Program Counter (PC). The instruction is loaded into the Instruction Register (IR). PC is incremented to point to the next instruction.</div></div>
+              <div class="tl-item"><div class="tl-title">2. Decode</div><div class="tl-desc">The control unit decodes the instruction in IR. It identifies the opcode (operation) and operands. Determines which functional units are needed.</div></div>
+              <div class="tl-item"><div class="tl-title">3. Execute</div><div class="tl-desc">The ALU or other units perform the actual operation — arithmetic, logical, data transfer, or branching. Results are stored back to registers or memory.</div></div>
+            </div>
+            <h4>Instruction Code Format</h4>
+            <p>An instruction code is a group of bits that instructs the computer to perform a specific operation. A typical instruction format:</p>
+            <div class="schema-box">| <span class="tname">OPCODE</span> (bits 15-12) | <span class="pk">I (bit 11)</span> | <span class="tname">ADDRESS</span> (bits 10-0) |</div>
+            <p><strong>Opcode:</strong> Specifies the operation (ADD, LOAD, STORE, etc.)<br>
+            <strong>I (Indirect bit):</strong> 0 = direct addressing, 1 = indirect addressing<br>
+            <strong>Address:</strong> Memory address of the operand</p>
+            <div class="exam-tip">
+              <div class="exam-tip-label">💡 Memory Trick</div>
+              <p>Fetch-Decode-Execute = <strong>F-D-E = "First Do Everything"</strong>. The PC always points to the NEXT instruction — it's incremented during the Fetch stage.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion reveal">
+        <button class="acc-trigger" onclick="toggleAcc(this)">
+          <div class="acc-icon" style="background:#fef3cd">📋</div>
+          <span class="acc-trigger-title">Computer Registers — Types & Functions</span>
+          <span class="acc-trigger-sub badge badge-red" style="background:var(--red-light);color:var(--red);padding:3px 8px;border-radius:4px;font-size:11px">🔥 High Frequency</span>
+          <span class="acc-arrow">▼</span>
+        </button>
+        <div class="acc-body">
+          <div class="content-prose">
+            <p>Registers are high-speed storage locations inside the CPU. They hold data currently being processed. Access time is several orders of magnitude faster than RAM.</p>
+            <table class="compare-table">
+              <tr><th>Register</th><th>Full Name</th><th>Function</th></tr>
+              <tr><td><strong>PC</strong></td><td>Program Counter</td><td>Holds address of the next instruction to be fetched</td></tr>
+              <tr><td><strong>IR</strong></td><td>Instruction Register</td><td>Holds the currently fetched instruction being decoded/executed</td></tr>
+              <tr><td><strong>MAR</strong></td><td>Memory Address Register</td><td>Holds the memory address to be read from or written to</td></tr>
+              <tr><td><strong>MDR / MBR</strong></td><td>Memory Data/Buffer Register</td><td>Holds data read from or to be written to memory</td></tr>
+              <tr><td><strong>AC</strong></td><td>Accumulator</td><td>General-purpose register; holds result of ALU operations</td></tr>
+              <tr><td><strong>SP</strong></td><td>Stack Pointer</td><td>Points to top of the stack in memory</td></tr>
+              <tr><td><strong>PSR / PSW</strong></td><td>Program Status Register / Word</td><td>Holds status flags: Zero, Carry, Overflow, Sign, Parity</td></tr>
+              <tr><td><strong>TR</strong></td><td>Temporary Register</td><td>Holds temporary data during execution</td></tr>
+              <tr><td><strong>INPR</strong></td><td>Input Register</td><td>Holds character received from input device</td></tr>
+              <tr><td><strong>OUTR</strong></td><td>Output Register</td><td>Holds character to be sent to output device</td></tr>
+            </table>
+            <div class="exam-tip">
+              <div class="exam-tip-label">📝 Status Flags (PSW)</div>
+              <p><strong>Z (Zero):</strong> Set if result = 0. <strong>C (Carry):</strong> Set if carry out from MSB. <strong>V (Overflow):</strong> Set if signed overflow. <strong>S/N (Sign/Negative):</strong> Set if result is negative. <strong>P (Parity):</strong> Set if even number of 1s. Know these cold — they appear in MCQs constantly.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- UNIT 02: CPU & INSTRUCTION SET -->
+    <section id="cpu" class="section anchor-target">
+      <div class="section-header reveal">
+        <div class="section-eyebrow">Unit 02</div>
+        <h2 class="section-title">CPU & Instruction Set Architecture</h2>
+        <p class="section-desc">RTL interpretation, addressing modes, instruction types, and ISA case studies — the heart of any CO course.</p>
+      </div>
+
+      <div class="accordion reveal">
+        <button class="acc-trigger open" onclick="toggleAcc(this)">
+          <div class="acc-icon" style="background:#dbeafe">🔀</div>
+          <span class="acc-trigger-title">Addressing Modes</span>
+          <span class="acc-trigger-sub badge badge-red" style="background:var(--red-light);color:var(--red);padding:3px 8px;border-radius:4px;font-size:11px">🔥 Very Important</span>
+          <span class="acc-arrow">▼</span>
+        </button>
+        <div class="acc-body open">
+          <div class="content-prose">
+            <p>An <strong>addressing mode</strong> specifies how the operand (or its address) is determined from the fields of the instruction. Different modes offer trade-offs between instruction size, flexibility, and speed.</p>
+            <table class="compare-table">
+              <tr><th>Addressing Mode</th><th>How Operand is Obtained</th><th>Example / Notation</th></tr>
+              <tr><td><strong>Immediate</strong></td><td>Operand is part of the instruction itself (the constant)</td><td><code>MOV AX, 5</code> — AX = 5 directly</td></tr>
+              <tr><td><strong>Direct (Absolute)</strong></td><td>Instruction contains the effective address of the operand</td><td><code>MOV AX, [2000]</code> — AX = Mem[2000]</td></tr>
+              <tr><td><strong>Indirect</strong></td><td>Instruction address field points to a location that holds the actual address</td><td><code>MOV AX, [[2000]]</code> — address of address</td></tr>
+              <tr><td><strong>Register</strong></td><td>Operand is in a register specified in the instruction</td><td><code>MOV AX, BX</code> — AX = BX</td></tr>
+              <tr><td><strong>Register Indirect</strong></td><td>Register holds the effective address of the operand</td><td><code>MOV AX, [BX]</code> — AX = Mem[BX]</td></tr>
+              <tr><td><strong>Displacement (Base + Offset)</strong></td><td>EA = Base Register + Constant offset in instruction</td><td><code>MOV AX, [BX+4]</code> — EA = BX + 4</td></tr>
+              <tr><td><strong>Indexed</strong></td><td>EA = Constant Address + Index Register</td><td><code>MOV AX, [1000+SI]</code></td></tr>
+              <tr><td><strong>Relative</strong></td><td>EA = PC + Displacement. Used for branches.</td><td><code>JMP +5</code> — PC relative</td></tr>
+              <tr><td><strong>Stack (Implicit)</strong></td><td>Operand is always on top of stack. SP implied.</td><td><code>PUSH</code>, <code>POP</code></td></tr>
+            </table>
+            <div class="exam-tip">
+              <div class="exam-tip-label">💡 Memory Trick</div>
+              <p><strong>I-D-I-R-RI-D-I-R-S</strong>: Immediate → fastest (no memory), Direct → 1 memory access, Indirect → 2 memory accesses, Register → fastest of all (no memory). Speed: Register &gt; Immediate &gt; Direct &gt; Indirect.</p>
+            </div>
+            <h4>RTL — Register Transfer Language</h4>
+            <p>RTL is a notation to describe register operations at the micro-level. It shows data transfers between registers and memory during each clock cycle.</p>
+            <table class="compare-table">
+              <tr><th>RTL Notation</th><th>Meaning</th></tr>
+              <tr><td><code>R2 ← R1</code></td><td>Transfer content of R1 to R2</td></tr>
+              <tr><td><code>R2 ← M[MAR]</code></td><td>Read from memory at address in MAR into R2</td></tr>
+              <tr><td><code>M[MAR] ← MDR</code></td><td>Write MDR contents to memory at MAR address</td></tr>
+              <tr><td><code>PC ← PC + 1</code></td><td>Increment Program Counter (next instruction)</td></tr>
+              <tr><td><code>IR ← M[PC]</code></td><td>Fetch instruction: load from memory[PC] into IR</td></tr>
+              <tr><td><code>AC ← AC + DR</code></td><td>Add Data Register to Accumulator</td></tr>
+            </table>
+            <h4>RTL for Fetch Cycle</h4>
+            <div class="schema-box">
+T0: <span class="tname">MAR ← PC</span><br>
+T1: <span class="tname">MDR ← M[MAR], PC ← PC + 1</span><br>
+T2: <span class="tname">IR ← MDR</span>
+            </div>
+            <h4>RISC vs CISC — ISA Philosophy</h4>
+            <table class="compare-table">
+              <tr><th>Feature</th><th>RISC</th><th>CISC</th></tr>
+              <tr><td>Instructions</td><td>Few, simple, fixed-length</td><td>Many, complex, variable-length</td></tr>
+              <tr><td>Execution</td><td>1 clock cycle per instruction</td><td>Multiple cycles per instruction</td></tr>
+              <tr><td>Registers</td><td>Many general-purpose registers</td><td>Fewer registers</td></tr>
+              <tr><td>Memory access</td><td>LOAD/STORE only</td><td>Any instruction can access memory</td></tr>
+              <tr><td>Examples</td><td>MIPS, ARM, SPARC, RISC-V</td><td>x86, x86-64, VAX</td></tr>
+              <tr><td>Pipelining</td><td>Easier (uniform stages)</td><td>Harder (variable instruction length)</td></tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- UNIT 03: DATA REPRESENTATION -->
+    <section id="datarepresentation" class="section anchor-target">
+      <div class="section-header reveal">
+        <div class="section-eyebrow">Unit 03</div>
+        <h2 class="section-title">Data Representation</h2>
+        <p class="section-desc">How computers represent numbers, characters, and fractions in binary — crucial for numerical questions in exams.</p>
+      </div>
+      <div class="important-banner reveal">
+        <div class="icon">🔥</div>
+        <p><strong>Guaranteed Numericals:</strong> Sign-magnitude, 1's complement, 2's complement conversions, IEEE 754 floating point — numericals from these appear in every exam.</p>
+      </div>
+
+      <div class="accordion reveal">
+        <button class="acc-trigger open" onclick="toggleAcc(this)">
+          <div class="acc-icon" style="background:#ede9fe">±</div>
+          <span class="acc-trigger-title">Signed Number Representation</span>
+          <span class="acc-trigger-sub badge badge-red" style="background:var(--red-light);color:var(--red);padding:3px 8px;border-radius:4px;font-size:11px">🔥 Numerical Questions</span>
+          <span class="acc-arrow">▼</span>
+        </button>
+        <div class="acc-body open">
+          <div class="content-prose">
+            <p>Computers represent negative numbers using special conventions. For an n-bit number:</p>
+            <div class="norm-step">
+              <div class="norm-step-num">S-M</div>
+              <div class="norm-step-title">Sign-Magnitude Representation</div>
+              <div class="norm-step-desc">MSB = sign bit (0 = positive, 1 = negative). Remaining bits = magnitude. <br>Example (8-bit): +25 = <code>0001 1001</code>, −25 = <code>1001 1001</code><br>Range: −(2ⁿ⁻¹ − 1) to +(2ⁿ⁻¹ − 1). Two representations of zero (−0 and +0). Arithmetic is complex.</div>
+              <div class="norm-step-badge"><span class="badge badge-blue">Problem: Two zeros, complex arithmetic</span></div>
+            </div>
+            <div class="norm-step">
+              <div class="norm-step-num">1's</div>
+              <div class="norm-step-title">One's Complement</div>
+              <div class="norm-step-desc">Negate by flipping all bits (invert). <br>Example: +25 = <code>0001 1001</code>, −25 = <code>1110 0110</code><br>Range: −(2ⁿ⁻¹ − 1) to +(2ⁿ⁻¹ − 1). Still has two zeros (+0 and −0). Addition requires end-around carry.</div>
+              <div class="norm-step-badge"><span class="badge badge-blue">Still has two zeros — rarely used today</span></div>
+            </div>
+            <div class="norm-step">
+              <div class="norm-step-num">2's</div>
+              <div class="norm-step-title">Two's Complement (Most Used)</div>
+              <div class="norm-step-desc">Negate by: invert all bits, then add 1. OR: subtract from 2ⁿ. <br>Example: +25 = <code>0001 1001</code>, −25 = invert → <code>1110 0110</code> + 1 = <code>1110 0111</code><br>Range: −2ⁿ⁻¹ to +(2ⁿ⁻¹ − 1). Only ONE representation of zero. Simple addition — no special handling.</div>
+              <div class="norm-step-badge"><span class="badge badge-green">Used in all modern computers. Most important!</span></div>
+            </div>
+            <h4>Quick Comparison Table</h4>
+            <table class="compare-table">
+              <tr><th>Representation</th><th>+5 (4-bit)</th><th>−5 (4-bit)</th><th>Range (n-bit)</th><th>Zero representations</th></tr>
+              <tr><td>Sign-Magnitude</td><td>0101</td><td>1101</td><td>−(2ⁿ⁻¹−1) to +(2ⁿ⁻¹−1)</td><td>Two (+0, −0)</td></tr>
+              <tr><td>1's Complement</td><td>0101</td><td>1010</td><td>−(2ⁿ⁻¹−1) to +(2ⁿ⁻¹−1)</td><td>Two (+0, −0)</td></tr>
+              <tr><td>2's Complement</td><td>0101</td><td>1011</td><td>−2ⁿ⁻¹ to +(2ⁿ⁻¹−1)</td><td>One (0000)</td></tr>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion reveal">
+        <button class="acc-trigger" onclick="toggleAcc(this)">
+          <div class="acc-icon" style="background:#fef3cd">📐</div>
+          <span class="acc-trigger-title">Fixed & Floating Point, Character Representation</span>
+          <span class="acc-trigger-sub">IEEE 754 · ASCII · EBCDIC</span>
+          <span class="acc-arrow">▼</span>
+        </button>
+        <div class="acc-body">
+          <div class="content-prose">
+            <h4>Fixed Point Representation</h4>
+            <p>The binary point is assumed to be at a fixed location (e.g., after the MSB for fractions, or after all bits for integers). Simple but limited range. Used in embedded systems and DSPs.</p>
+            <h4>Floating Point Representation — IEEE 754</h4>
+            <p>Format: <strong>±M × 2ᴱ</strong> where M = Mantissa (significand), E = Exponent.</p>
+            <table class="compare-table">
+              <tr><th>Field</th><th>Single Precision (32-bit)</th><th>Double Precision (64-bit)</th></tr>
+              <tr><td>Sign</td><td>1 bit</td><td>1 bit</td></tr>
+              <tr><td>Exponent</td><td>8 bits (biased by 127)</td><td>11 bits (biased by 1023)</td></tr>
+              <tr><td>Mantissa</td><td>23 bits (implied leading 1)</td><td>52 bits (implied leading 1)</td></tr>
+              <tr><td>Total</td><td>32 bits</td><td>64 bits</td></tr>
+            </table>
+            <p><strong>Bias (Excess) notation:</strong> Stored exponent = Actual exponent + Bias. For single precision: Stored = Actual + 127.</p>
+            <p><strong>Normalized form:</strong> 1.mantissa × 2ᴱ — the leading 1 before the point is implied (not stored), giving an extra bit of precision.</p>
+            <div class="exam-tip">
+              <div class="exam-tip-label">📝 IEEE 754 Special Values</div>
+              <p>Exponent all 0s + Mantissa all 0s = ±Zero. Exponent all 1s + Mantissa all 0s = ±Infinity. Exponent all 1s + Mantissa ≠ 0 = NaN (Not a Number). These are frequently asked in MCQs.</p>
+            </div>
+            <h4>Character Representation</h4>
+            <table class="compare-table">
+              <tr><th>Scheme</th><th>Bits</th><th>Characters</th><th>Usage</th></tr>
+              <tr><td><strong>ASCII</strong></td><td>7-bit (8-bit extended)</td><td>128 (256 extended)</td><td>Most computers, text files, internet</td></tr>
+              <tr><td><strong>EBCDIC</strong></td><td>8-bit</td><td>256</td><td>IBM mainframes</td></tr>
+              <tr><td><strong>Unicode (UTF-8)</strong></td><td>Variable (8–32 bit)</td><td>Over 143,000</td><td>Global text, web, modern OSes</td></tr>
+            </table>
+            <p>Key ASCII values: <code>'A' = 65</code>, <code>'a' = 97</code>, <code>'0' = 48</code>, Space = 32.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- UNIT 04: ARITHMETIC -->
+    <section id="arithmetic" class="section anchor-target">
+      <div class="section-header reveal">
+        <div class="section-eyebrow">Unit 04</div>
+        <h2 class="section-title">Computer Arithmetic</h2>
+        <p class="section-desc">Integer addition, subtraction, carry propagation, and ripple carry adder design — hardware-level computation.</p>
+      </div>
+
+      <div class="accordion reveal">
+        <button class="acc-trigger open" onclick="toggleAcc(this)">
+          <div class="acc-icon" style="background:#d8f3dc">➕</div>
+          <span class="acc-trigger-title">Integer Addition, Subtraction & Ripple Carry Adder</span>
+          <span class="acc-trigger-sub badge badge-red" style="background:var(--red-light);color:var(--red);padding:3px 8px;border-radius:4px;font-size:11px">🔥 Very Important</span>
+          <span class="acc-arrow">▼</span>
+        </button>
+        <div class="acc-body open">
+          <div class="content-prose">
+            <h4>Binary Addition — Rules</h4>
+            <table class="compare-table">
+              <tr><th>A</th><th>B</th><th>Cin</th><th>Sum</th><th>Cout</th></tr>
+              <tr><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+              <tr><td>0</td><td>1</td><td>0</td><td>1</td><td>0</td></tr>
+              <tr><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td></tr>
+              <tr><td>1</td><td>1</td><td>0</td><td>0</td><td>1</td></tr>
+              <tr><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td></tr>
+            </table>
+            <h4>2's Complement Subtraction</h4>
+            <p>A − B = A + (2's complement of B) = A + (B̄ + 1). This reduces subtraction to addition — no separate subtractor needed in hardware!</p>
+            <p><strong>Overflow detection in 2's complement:</strong> Overflow occurs if the carry into the sign bit ≠ carry out of the sign bit. Equivalently: positive + positive = negative, or negative + negative = positive.</p>
+            <h4>Half Adder</h4>
+            <p>Adds two single bits. No carry input.</p>
+            <div class="schema-box"><span class="tname">Sum</span> = A XOR B<br><span class="tname">Cout</span> = A AND B</div>
+            <h4>Full Adder</h4>
+            <p>Adds three bits (A, B, Carry-in). Building block of all multi-bit adders.</p>
+            <div class="schema-box"><span class="tname">Sum</span> = A XOR B XOR Cin<br><span class="tname">Cout</span> = (A AND B) OR (B AND Cin) OR (A AND Cin)</div>
+            <h4>Ripple Carry Adder (RCA)</h4>
+            <p>An n-bit ripple carry adder chains n Full Adders in series. The carry output of each stage ripples into the carry input of the next stage.</p>
+            <p><strong>Advantage:</strong> Simple design, easy to implement.</p>
+            <p><strong>Disadvantage:</strong> Slow for large n — worst-case delay is O(n) gate delays because carry must propagate through all stages sequentially.</p>
+            <div class="pipeline-diagram">
+              <div class="pipe-box">FA₀<br><small style="font-size:9px">Cin=0</small></div>
+              <div class="pipe-arrow">C₁→</div>
+              <div class="pipe-box">FA₁</div>
+              <div class="pipe-arrow">C₂→</div>
+              <div class="pipe-box">FA₂</div>
+              <div class="pipe-arrow">C₃→</div>
+              <div class="pipe-box">FA₃<br><small style="font-size:9px">Cout</small></div>
+            </div>
+            <p><strong>Carry Look-Ahead Adder (CLA):</strong> Pre-computes carries in parallel using Generate (G = A·B) and Propagate (P = A⊕B) signals. Reduces delay to O(log n) — much faster for large word sizes.</p>
+            <div class="exam-tip">
+              <div class="exam-tip-label">💡 Key Formulas</div>
+              <p>For n-bit RCA: delay = n × t<sub>FA</sub>. CLA reduces this to O(log n). In an exam: if asked "why CLA is faster" → mention parallel carry generation, O(log n) vs O(n) delay.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion reveal">
+        <button class="acc-trigger" onclick="toggleAcc(this)">
+          <div class="acc-icon" style="background:#fde8e8">🖥</div>
+          <span class="acc-trigger-title">Case Study — Design of a Simple Hypothetical CPU</span>
+          <span class="acc-trigger-sub">Datapath · Control Unit · RTL</span>
+          <span class="acc-arrow">▼</span>
+        </button>
+        <div class="acc-body">
+          <div class="content-prose">
+            <p>A simple hypothetical CPU (like the one in Hamacher's textbook) demonstrates all key concepts. Key components:</p>
+            <div class="info-grid">
+              <div class="info-card"><div class="info-card-icon">📊</div><div class="info-card-title">ALU</div><div class="info-card-desc">Arithmetic Logic Unit. Performs ADD, SUB, AND, OR, NOT, SHIFT operations on binary data.</div></div>
+              <div class="info-card"><div class="info-card-icon">🗃️</div><div class="info-card-title">Register File</div><div class="info-card-desc">Set of general-purpose registers (R0–R7 etc.). Stores operands and intermediate results. Fast access.</div></div>
+              <div class="info-card"><div class="info-card-icon">🎛️</div><div class="info-card-title">Control Unit</div><div class="info-card-desc">Generates control signals that coordinate operations of all other units. Hardwired or microprogrammed.</div></div>
+              <div class="info-card"><div class="info-card-icon">🚌</div><div class="info-card-title">System Bus</div><div class="info-card-desc">Address bus (CPU→Memory), Data bus (bidirectional), Control bus (read/write signals).</div></div>
+            </div>
+            <h4>Hardwired vs Microprogrammed Control</h4>
+            <table class="compare-table">
+              <tr><th>Feature</th><th>Hardwired Control</th><th>Microprogrammed Control</th></tr>
+              <tr><td>Implementation</td><td>Sequential logic circuits</td><td>Control memory (ROM) with microinstructions</td></tr>
+              <tr><td>Speed</td><td>Faster</td><td>Slower</td></tr>
+              <tr><td>Flexibility</td><td>Rigid, hard to modify</td><td>Easy to modify (change microcode)</td></tr>
+              <tr><td>Complexity</td><td>Complex for large ISAs</td><td>Manageable, structured</td></tr>
+              <tr><td>Used in</td><td>RISC processors</td><td>CISC processors (x86)</td></tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- UNIT 05: PIPELINING -->
+    <section id="pipelining" class="section anchor-target">
+      <div class="section-header reveal">
+        <div class="section-eyebrow">Unit 05</div>
+        <h2 class="section-title">Pipelining</h2>
+        <p class="section-desc">The technique that makes modern CPUs fast — overlapping instruction execution to maximize throughput.</p>
+      </div>
+      <div class="important-banner reveal">
+        <div class="icon">🔥</div>
+        <p><strong>Very Important:</strong> Speedup formula, pipeline stages, all three hazard types (structural, data, control) — numericals and theory appear in every exam.</p>
+      </div>
+
+      <div class="accordion reveal">
+        <button class="acc-trigger open" onclick="toggleAcc(this)">
+          <div class="acc-icon" style="background:#dbeafe">🔄</div>
+          <span class="acc-trigger-title">Pipeline Concepts, Throughput & Speedup</span>
+          <span class="acc-trigger-sub badge badge-red" style="background:var(--red-light);color:var(--red);padding:3px 8px;border-radius:4px;font-size:11px">🔥 Numerical Questions</span>
+          <span class="acc-arrow">▼</span>
+        </button>
+        <div class="acc-body open">
+          <div class="content-prose">
+            <p>Pipelining is a technique where multiple instructions are overlapped in execution. Like an assembly line — while one instruction is being executed, the next is being decoded, and the one after is being fetched.</p>
+            <h4>Classic 5-Stage RISC Pipeline</h4>
+            <div class="pipeline-diagram">
+              <div class="pipe-box">IF<br><small style="font-size:9px">Instruction<br>Fetch</small></div>
+              <div class="pipe-arrow">→</div>
+              <div class="pipe-box">ID<br><small style="font-size:9px">Instruction<br>Decode</small></div>
+              <div class="pipe-arrow">→</div>
+              <div class="pipe-box">EX<br><small style="font-size:9px">Execute</small></div>
+              <div class="pipe-arrow">→</div>
+              <div class="pipe-box">MEM<br><small style="font-size:9px">Memory<br>Access</small></div>
+              <div class="pipe-arrow">→</div>
+              <div class="pipe-box">WB<br><small style="font-size:9px">Write<br>Back</small></div>
+            </div>
+            <h4>Key Formulas</h4>
+            <div class="schema-box">
+<span class="tname">Time without pipeline</span> = n × k × t<br>
+<span class="tname">Time with pipeline</span> = (k + n − 1) × t<br>
+<span class="tname">Speedup</span> = (n × k) / (k + n − 1) ≈ k  (for large n)<br>
+<span class="tname">Throughput</span> = n / (k + n − 1) × t<br>
+<br>
+where: n = number of instructions, k = number of stages, t = time per stage
+            </div>
+            <p>For a large number of instructions, speedup approaches <strong>k</strong> (number of pipeline stages) — the theoretical maximum speedup.</p>
+            <div class="exam-tip">
+              <div class="exam-tip-label">📝 Example Numerical</div>
+              <p>5-stage pipeline, 100 instructions, 1ns per stage: Time = (5 + 100 − 1) × 1 = 104 ns. Without pipeline: 100 × 5 = 500 ns. Speedup = 500/104 ≈ 4.8 (close to k=5).</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion reveal">
+        <button class="acc-trigger" onclick="toggleAcc(this)">
+          <div class="acc-icon" style="background:#fde8e8">⚠️</div>
+          <span class="acc-trigger-title">Pipeline Hazards — All Three Types</span>
+          <span class="acc-trigger-sub badge badge-red" style="background:var(--red-light);color:var(--red);padding:3px 8px;border-radius:4px;font-size:11px">🔥 MCQ Favourite</span>
+          <span class="acc-arrow">▼</span>
+        </button>
+        <div class="acc-body">
+          <div class="content-prose">
+            <p>Pipeline hazards are situations that prevent the next instruction from executing during its designated clock cycle, causing pipeline <strong>stalls (bubbles)</strong>.</p>
+            <div class="norm-step">
+              <div class="norm-step-num">SH</div>
+              <div class="norm-step-title">Structural Hazard</div>
+              <div class="norm-step-desc">Two instructions need the same hardware resource at the same time. Example: Memory access conflict — one instruction in MEM stage, another trying to fetch from same memory (IF stage).<br><strong>Solutions:</strong> Duplicate resources (separate instruction cache and data cache), stall the pipeline.</div>
+              <div class="norm-step-badge"><span class="badge badge-blue">Caused by: Resource Conflict</span></div>
+            </div>
+            <div class="norm-step">
+              <div class="norm-step-num">DH</div>
+              <div class="norm-step-title">Data Hazard</div>
+              <div class="norm-step-desc">An instruction depends on the result of a previous instruction that hasn't completed yet.<br>Types: <strong>RAW</strong> (Read After Write — true dependency), <strong>WAR</strong> (Write After Read — anti-dependency), <strong>WAW</strong> (Write After Write — output dependency).<br><strong>Solutions:</strong> Forwarding/Bypassing (send result directly to next stage), Stalling (inserting NOP), Out-of-order execution.</div>
+              <div class="norm-step-badge"><span class="badge badge-red">RAW is most common and most important!</span></div>
+            </div>
+            <div class="norm-step">
+              <div class="norm-step-num">CH</div>
+              <div class="norm-step-title">Control Hazard (Branch Hazard)</div>
+              <div class="norm-step-desc">Caused by branch instructions. When a branch is taken, the instructions already in the pipeline (fetched after the branch) must be discarded (flushed).<br><strong>Solutions:</strong> Branch prediction (static/dynamic), Delayed branching (execute instruction after branch regardless), Speculative execution.</div>
+              <div class="norm-step-badge"><span class="badge badge-gold">Branch prediction accuracy is key to modern CPU performance</span></div>
+            </div>
+            <table class="compare-table">
+              <tr><th>Hazard Type</th><th>Cause</th><th>Best Solution</th></tr>
+              <tr><td>Structural</td><td>Resource conflict</td><td>Duplicate resources or stall</td></tr>
+              <tr><td>Data (RAW)</td><td>Read before write complete</td><td>Forwarding/Bypassing</td></tr>
+              <tr><td>Control</td><td>Branch — next PC unknown</td><td>Branch prediction</td></tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- UNIT 06: MEMORY -->
+    <section id="memory" class="section anchor-target">
+      <div class="section-header reveal">
+        <div class="section-eyebrow">Unit 06</div>
+        <h2 class="section-title">Memory Organization</h2>
+        <p class="section-desc">Hierarchical memory, cache design, mapping functions, replacement policies — a major exam topic.</p>
+      </div>
+
+      <div class="accordion reveal">
+        <button class="acc-trigger open" onclick="toggleAcc(this)">
+          <div class="acc-icon" style="background:#fef3cd">🏔</div>
+          <span class="acc-trigger-title">Hierarchical Memory & Cache Memory</span>
+          <span class="acc-trigger-sub badge badge-red" style="background:var(--red-light);color:var(--red);padding:3px 8px;border-radius:4px;font-size:11px">🔥 Very Important</span>
+          <span class="acc-arrow">▼</span>
+        </button>
+        <div class="acc-body open">
+          <div class="content-prose">
+            <p>The <strong>memory hierarchy</strong> exploits the principle of locality: programs tend to use recently accessed data and instructions (temporal locality) and nearby data (spatial locality).</p>
+            <table class="compare-table">
+              <tr><th>Level</th><th>Type</th><th>Access Time</th><th>Size</th><th>Cost/bit</th></tr>
+              <tr><td>Registers</td><td>CPU registers</td><td>~0.3 ns</td><td>Bytes (32–256)</td><td>Highest</td></tr>
+              <tr><td>L1 Cache</td><td>SRAM (on-chip)</td><td>1–2 ns</td><td>16–64 KB</td><td>Very High</td></tr>
+              <tr><td>L2 Cache</td><td>SRAM (on/near chip)</td><td>5–10 ns</td><td>256 KB – 4 MB</td><td>High</td></tr>
+              <tr><td>L3 Cache</td><td>SRAM (on chip)</td><td>15–40 ns</td><td>4 – 64 MB</td><td>Medium-High</td></tr>
+              <tr><td>Main Memory</td><td>DRAM</td><td>50–100 ns</td><td>4–64 GB</td><td>Medium</td></tr>
+              <tr><td>Secondary</td><td>SSD / HDD</td><td>0.1 ms – 10 ms</td><td>100 GB – TB</td><td>Low</td></tr>
+            </table>
+            <h4>Cache Memory — Mapping Functions</h4>
+            <p><strong>Direct Mapping:</strong> Each main memory block maps to exactly ONE cache line. Cache line = (Block number) mod (Number of cache lines). Simple, fast, but conflict misses are high.</p>
+            <p><strong>Fully Associative Mapping:</strong> Any main memory block can be placed in ANY cache line. Most flexible, least conflict misses, but expensive — requires parallel search of all tag entries.</p>
+            <p><strong>Set-Associative Mapping (k-way):</strong> Cache divided into sets of k lines. Block maps to a specific set, but can go in any of the k lines within that set. Best of both — balances flexibility and cost. Most commonly used (2-way, 4-way, 8-way).</p>
+            <table class="compare-table">
+              <tr><th>Mapping</th><th>Address Division</th><th>Flexibility</th><th>Hardware</th></tr>
+              <tr><td>Direct</td><td>Tag | Line | Offset</td><td>Low</td><td>Simple, fast</td></tr>
+              <tr><td>Fully Associative</td><td>Tag | Offset</td><td>High</td><td>Complex, slow</td></tr>
+              <tr><td>Set-Associative</td><td>Tag | Set | Offset</td><td>Medium</td><td>Balanced (most used)</td></tr>
+            </table>
+            <h4>Cache Replacement Algorithms</h4>
+            <div class="info-grid">
+              <div class="info-card"><div class="info-card-icon">⏰</div><div class="info-card-title">LRU (Least Recently Used)</div><div class="info-card-desc">Replace the block that was least recently accessed. Best practical performance. Expensive to implement exactly.</div></div>
+              <div class="info-card"><div class="info-card-icon">🎲</div><div class="info-card-title">Random</div><div class="info-card-desc">Replace a randomly selected block. Simple hardware. Surprisingly good in practice.</div></div>
+              <div class="info-card"><div class="info-card-icon">🔢</div><div class="info-card-title">FIFO (First In First Out)</div><div class="info-card-desc">Replace the block that has been in cache the longest. Simple counter-based implementation.</div></div>
+              <div class="info-card"><div class="info-card-icon">📊</div><div class="info-card-title">LFU (Least Frequently Used)</div><div class="info-card-desc">Replace the block accessed least often. Requires frequency counter per block.</div></div>
+            </div>
+            <h4>Write Policies</h4>
+            <p><strong>Write-Through:</strong> Every write to cache is immediately written to main memory. Ensures consistency but increases memory traffic. Often used with a write buffer.</p>
+            <p><strong>Write-Back (Copy-Back):</strong> Write only to cache; write to main memory only when the block is replaced (dirty bit set). Reduces memory traffic, but inconsistency risk if system crashes before write-back.</p>
+            <h4>Memory Interleaving</h4>
+            <p>Memory is divided into multiple modules (banks). Consecutive addresses are in different banks. Allows simultaneous access to multiple words, increasing effective bandwidth. Used to hide DRAM latency.</p>
+            <div class="exam-tip">
+              <div class="exam-tip-label">💡 Hit Ratio Formula</div>
+              <p>Effective Access Time = h × Tc + (1 − h) × Tm, where h = hit ratio, Tc = cache access time, Tm = main memory access time. High hit ratio (~0.95+) means cache is working well.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- UNIT 07: I/O -->
+    <section id="io" class="section anchor-target">
+      <div class="section-header reveal">
+        <div class="section-eyebrow">Unit 07</div>
+        <h2 class="section-title">Peripheral Devices & I/O Subsystems</h2>
+        <p class="section-desc">I/O transfer methods, interrupts, DMA, privileged instructions, and the role of interrupts in process management.</p>
+      </div>
+      <div class="important-banner reveal">
+        <div class="icon">🔥</div>
+        <p><strong>Important:</strong> Program-controlled, interrupt-driven, DMA I/O comparison; software interrupts vs hardware interrupts; role of interrupts in process state transitions — all frequently asked.</p>
+      </div>
+
+      <div class="accordion reveal">
+        <button class="acc-trigger open" onclick="toggleAcc(this)">
+          <div class="acc-icon" style="background:#d8f3dc">🔌</div>
+          <span class="acc-trigger-title">I/O Transfer Methods — Program Controlled, Interrupt, DMA</span>
+          <span class="acc-trigger-sub badge badge-red" style="background:var(--red-light);color:var(--red);padding:3px 8px;border-radius:4px;font-size:11px">🔥 Guaranteed in Exam</span>
+          <span class="acc-arrow">▼</span>
+        </button>
+        <div class="acc-body open">
+          <div class="content-prose">
+            <div class="mnemonic">
+              <div class="mnemonic-title">I/O Techniques — Remember PID</div>
+              <div class="mnemonic-letters">
+                <div class="mnem-letter">P<div class="mnem-word">Programmed</div></div>
+                <div class="mnem-letter">I<div class="mnem-word">Interrupt</div></div>
+                <div class="mnem-letter">D<div class="mnem-word">DMA</div></div>
+              </div>
+              <div class="mnemonic-phrase">"Process Interrupts Directly" — three I/O methods from slowest to fastest CPU involvement</div>
+            </div>
+            <table class="compare-table">
+              <tr><th>Method</th><th>How it Works</th><th>CPU Involvement</th><th>Use Case</th></tr>
+              <tr><td><strong>Programmed I/O (Polling)</strong></td><td>CPU continuously checks (polls) device status register in a busy-wait loop</td><td>100% — CPU wastes cycles polling</td><td>Simple embedded systems, slow devices</td></tr>
+              <tr><td><strong>Interrupt-Driven I/O</strong></td><td>CPU initiates I/O, then does other work. Device interrupts CPU when ready</td><td>Only during interrupt service routine (ISR)</td><td>Most general-purpose I/O (keyboard, mouse)</td></tr>
+              <tr><td><strong>DMA (Direct Memory Access)</strong></td><td>DMA controller transfers data directly between device and memory, bypassing CPU</td><td>Minimal — only to start/end transfer</td><td>High-speed bulk transfers (disk, network)</td></tr>
+            </table>
+            <h4>DMA Operation Steps</h4>
+            <div class="timeline">
+              <div class="tl-item"><div class="tl-title">1. CPU programs DMA</div><div class="tl-desc">CPU sets up DMA controller: source address, destination address, byte count, direction (read/write). Then CPU continues its own work.</div></div>
+              <div class="tl-item"><div class="tl-title">2. DMA takes bus control</div><div class="tl-desc">DMA controller requests and acquires control of the system bus (Bus Request / Bus Grant handshake with CPU). CPU is temporarily disconnected from bus (Cycle Stealing or Burst Mode).</div></div>
+              <div class="tl-item"><div class="tl-title">3. Data transfer</div><div class="tl-desc">DMA controller directly transfers data between I/O device and main memory. No CPU involvement in actual byte transfers.</div></div>
+              <div class="tl-item"><div class="tl-title">4. Interrupt CPU</div><div class="tl-desc">When transfer is complete, DMA interrupts CPU to signal completion. CPU can then process the transferred data.</div></div>
+            </div>
+            <h4>Privileged vs Non-Privileged Instructions</h4>
+            <p><strong>Privileged Instructions:</strong> Can only be executed in <em>kernel/supervisor mode</em>. Includes: I/O instructions, HALT, memory management instructions, interrupt enable/disable. Attempting these in user mode causes a protection fault.</p>
+            <p><strong>Non-Privileged Instructions:</strong> Can be executed in user mode (ADD, LOAD, STORE on user memory, arithmetic, branching). Normal user programs use only these.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion reveal">
+        <button class="acc-trigger" onclick="toggleAcc(this)">
+          <div class="acc-icon" style="background:#ede9fe">⚡</div>
+          <span class="acc-trigger-title">Interrupts — Software Interrupts, Exceptions & Process States</span>
+          <span class="acc-trigger-sub">Interrupt Handling · Context Switch · Exceptions</span>
+          <span class="acc-arrow">▼</span>
+        </button>
+        <div class="acc-body">
+          <div class="content-prose">
+            <h4>Types of Interrupts</h4>
+            <table class="compare-table">
+              <tr><th>Type</th><th>Source</th><th>Example</th><th>Maskable?</th></tr>
+              <tr><td><strong>Hardware Interrupt (Maskable)</strong></td><td>External I/O device</td><td>Keyboard press, timer</td><td>Yes — can be disabled by CPU</td></tr>
+              <tr><td><strong>Hardware Interrupt (Non-Maskable)</strong></td><td>Critical hardware failure</td><td>Power failure, memory error</td><td>No — always handled</td></tr>
+              <tr><td><strong>Software Interrupt (Trap)</strong></td><td>INT instruction in program</td><td><code>INT 21h</code> (DOS system call)</td><td>N/A — explicit instruction</td></tr>
+              <tr><td><strong>Exception (Fault/Trap/Abort)</strong></td><td>Program error or condition</td><td>Division by zero, page fault, illegal instruction</td><td>N/A — automatic</td></tr>
+            </table>
+            <h4>Interrupt Handling Sequence</h4>
+            <div class="timeline">
+              <div class="tl-item"><div class="tl-title">1. Interrupt Request</div><div class="tl-desc">Device asserts interrupt signal on the interrupt request line (INTR). CPU checks at end of each instruction.</div></div>
+              <div class="tl-item"><div class="tl-title">2. Context Save</div><div class="tl-desc">CPU saves current state — PC, PSR/flags, and possibly other registers — on the stack. This snapshot allows resuming later.</div></div>
+              <div class="tl-item"><div class="tl-title">3. ISR Execution</div><div class="tl-desc">CPU jumps to Interrupt Service Routine (ISR) address, found via Interrupt Vector Table (IVT). ISR handles the device.</div></div>
+              <div class="tl-item"><div class="tl-title">4. Context Restore</div><div class="tl-desc">ISR ends with RTI (Return from Interrupt). CPU restores saved state from stack and resumes interrupted program seamlessly.</div></div>
+            </div>
+            <h4>Role of Interrupts in Process State Transitions</h4>
+            <p>Interrupts are the mechanism by which the OS regains control from running processes and can perform context switching:</p>
+            <div class="info-grid">
+              <div class="info-card"><div class="info-card-icon">▶️</div><div class="info-card-title">Running → Waiting</div><div class="info-card-desc">Process issues I/O request (software interrupt / trap). OS moves it to waiting queue while device completes transfer.</div></div>
+              <div class="info-card"><div class="info-card-icon">✅</div><div class="info-card-title">Waiting → Ready</div><div class="info-card-desc">I/O completes → device interrupts CPU. OS moves process from waiting to ready queue (interrupt tells OS I/O is done).</div></div>
+              <div class="info-card"><div class="info-card-icon">⏱️</div><div class="info-card-title">Running → Ready</div><div class="info-card-desc">Timer interrupt fires (preemption). OS scheduler takes over, moves current process to ready and schedules another.</div></div>
+              <div class="info-card"><div class="info-card-icon">❌</div><div class="info-card-title">Running → Terminated</div><div class="info-card-desc">Exception (divide by zero, illegal instruction) → OS may terminate process. Software interrupt signals OS of fatal error.</div></div>
+            </div>
+            <div class="exam-tip">
+              <div class="exam-tip-label">📝 Exam Key Point</div>
+              <p>Without interrupts, the OS has no way to regain control from a running process (unless it cooperatively yields). The timer interrupt is the foundation of preemptive multitasking. This is a commonly asked conceptual question.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CASE STUDIES -->
+    <section id="casestudy" class="section anchor-target">
+      <div class="section-header reveal">
+        <div class="section-eyebrow">Unit 08</div>
+        <h2 class="section-title">Case Studies — Common CPU Instruction Sets</h2>
+        <p class="section-desc">Real-world ISA comparison: MIPS, x86, and ARM — the three most important architectures in university CO courses.</p>
+      </div>
+
+      <div class="accordion reveal">
+        <button class="acc-trigger open" onclick="toggleAcc(this)">
+          <div class="acc-icon" style="background:#dbeafe">📖</div>
+          <span class="acc-trigger-title">MIPS vs x86 vs ARM — ISA Comparison</span>
+          <span class="acc-trigger-sub">RISC vs CISC in Practice</span>
+          <span class="acc-arrow">▼</span>
+        </button>
+        <div class="acc-body open">
+          <div class="content-prose">
+            <table class="compare-table">
+              <tr><th>Feature</th><th>MIPS</th><th>x86</th><th>ARM</th></tr>
+              <tr><td>Type</td><td>RISC</td><td>CISC</td><td>RISC</td></tr>
+              <tr><td>Registers</td><td>32 × 32-bit GPRs</td><td>8–16 GPRs (AX,BX,CX,DX…)</td><td>16 × 32-bit (R0–R15)</td></tr>
+              <tr><td>Instruction length</td><td>Fixed 32-bit</td><td>Variable 1–15 bytes</td><td>Fixed 32-bit (Thumb: 16-bit)</td></tr>
+              <tr><td>Memory access</td><td>Only LOAD/STORE</td><td>Any instruction</td><td>Only LOAD/STORE</td></tr>
+              <tr><td>Addressing</td><td>Base + Offset only</td><td>Many modes</td><td>Many modes</td></tr>
+              <tr><td>Use</td><td>Education, embedded, MIPS CPUs</td><td>PCs, servers (Intel/AMD)</td><td>Mobile, embedded (smartphones)</td></tr>
+              <tr><td>Endianness</td><td>Configurable</td><td>Little-endian</td><td>Configurable (usually little)</td></tr>
+            </table>
+            <h4>MIPS Instruction Format Types</h4>
+            <table class="compare-table">
+              <tr><th>Type</th><th>Format</th><th>Used For</th></tr>
+              <tr><td><strong>R-type</strong></td><td>opcode(6) | rs(5) | rt(5) | rd(5) | shamt(5) | funct(6)</td><td>Register-to-register operations: ADD, SUB, AND, OR, SLT</td></tr>
+              <tr><td><strong>I-type</strong></td><td>opcode(6) | rs(5) | rt(5) | immediate(16)</td><td>Immediate and memory: ADDI, LW, SW, BEQ, BNE</td></tr>
+              <tr><td><strong>J-type</strong></td><td>opcode(6) | target(26)</td><td>Jumps: J, JAL</td></tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ASSEMBLY PROGRAMMING -->
+    <section id="assembly" class="section anchor-target">
+      <div class="section-header reveal">
+        <div class="section-eyebrow">Assembly Masterclass</div>
+        <h2 class="section-title">Assembly Language Programming</h2>
+        <p class="section-desc">Practical assembly — MIPS and x86 programs you must know for the practical exam and viva.</p>
+      </div>
+      <div class="important-banner reveal">
+        <div class="icon">🔥</div>
+        <p><strong>Guaranteed in Practical:</strong> Writing basic MIPS/x86 programs, understanding registers and addressing modes, loop and branch constructs — these are lab exam staples.</p>
+      </div>
+
+      <div class="accordion reveal">
+        <button class="acc-trigger open" onclick="toggleAcc(this)">
+          <div class="acc-icon" style="background:#d8f3dc">💻</div>
+          <span class="acc-trigger-title">MIPS Assembly — Core Instructions & Programs</span>
+          <span class="acc-trigger-sub">Registers · Arithmetic · Branches · Memory</span>
+          <span class="acc-arrow">▼</span>
+        </button>
+        <div class="acc-body open">
+          <div class="code-block">
+            <div class="code-header"><div class="code-dots"><span></span><span></span><span></span></div><span class="code-lang">MIPS Assembly</span></div>
+            <div class="code-body">
+<span class="cm"># MIPS Register Convention</span>
+<span class="cm"># $zero = 0 always  $v0-$v1 = return values</span>
+<span class="cm"># $a0-$a3 = arguments  $t0-$t9 = temporaries</span>
+<span class="cm"># $s0-$s7 = saved  $ra = return address</span>
+<span class="cm"># $sp = stack pointer  $gp = global pointer</span>
+
+<span class="cm"># Program: Sum of numbers 1 to N</span>
+<span class="lbl">main:</span>
+    <span class="kw">li</span>   <span class="reg">$t0</span>, <span class="num">10</span>         <span class="cm"># N = 10</span>
+    <span class="kw">li</span>   <span class="reg">$t1</span>, <span class="num">0</span>          <span class="cm"># sum = 0</span>
+    <span class="kw">li</span>   <span class="reg">$t2</span>, <span class="num">1</span>          <span class="cm"># counter i = 1</span>
+
+<span class="lbl">loop:</span>
+    <span class="kw">bgt</span>  <span class="reg">$t2</span>, <span class="reg">$t0</span>, <span class="lbl">done</span> <span class="cm"># if i > N, exit loop</span>
+    <span class="kw">add</span>  <span class="reg">$t1</span>, <span class="reg">$t1</span>, <span class="reg">$t2</span>  <span class="cm"># sum = sum + i</span>
+    <span class="kw">addi</span> <span class="reg">$t2</span>, <span class="reg">$t2</span>, <span class="num">1</span>   <span class="cm"># i = i + 1</span>
+    <span class="kw">j</span>    <span class="lbl">loop</span>           <span class="cm"># jump back</span>
+
+<span class="lbl">done:</span>
+    <span class="kw">move</span> <span class="reg">$a0</span>, <span class="reg">$t1</span>        <span class="cm"># move result to $a0</span>
+    <span class="kw">li</span>   <span class="reg">$v0</span>, <span class="num">1</span>          <span class="cm"># syscall: print integer</span>
+    <span class="kw">syscall</span>
+
+<span class="cm"># Memory: Load and Store</span>
+    <span class="kw">lw</span>   <span class="reg">$t0</span>, <span class="num">0</span>(<span class="reg">$s0</span>)     <span class="cm"># Load word: t0 = Mem[s0+0]</span>
+    <span class="kw">sw</span>   <span class="reg">$t0</span>, <span class="num">4</span>(<span class="reg">$s1</span>)     <span class="cm"># Store word: Mem[s1+4] = t0</span>
+    <span class="kw">lb</span>   <span class="reg">$t0</span>, <span class="num">0</span>(<span class="reg">$s0</span>)     <span class="cm"># Load byte (sign extended)</span>
+
+<span class="cm"># Procedure call</span>
+<span class="lbl">myFunc:</span>
+    <span class="kw">addi</span> <span class="reg">$sp</span>, <span class="reg">$sp</span>, <span class="num">-4</span>  <span class="cm"># Push: allocate stack space</span>
+    <span class="kw">sw</span>   <span class="reg">$ra</span>, <span class="num">0</span>(<span class="reg">$sp</span>)    <span class="cm"># Save return address</span>
+    <span class="cm"># ... function body ...</span>
+    <span class="kw">lw</span>   <span class="reg">$ra</span>, <span class="num">0</span>(<span class="reg">$sp</span>)    <span class="cm"># Restore return address</span>
+    <span class="kw">addi</span> <span class="reg">$sp</span>, <span class="reg">$sp</span>, <span class="num">4</span>   <span class="cm"># Pop: deallocate stack</span>
+    <span class="kw">jr</span>   <span class="reg">$ra</span>            <span class="cm"># Return to caller</span>
+            </div>
+          </div>
+          <div class="exam-tip">
+            <div class="exam-tip-label">📝 MIPS Key Rules</div>
+            <p>$zero is always 0 — hardwired. $ra holds return address for <code>jal</code>. <code>lw</code>/<code>sw</code> use base + offset. Branch (beq, bne) is PC-relative. Jump (j, jal) is pseudo-direct (26-bit target). Always save $ra before calling another function.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion reveal">
+        <button class="acc-trigger" onclick="toggleAcc(this)">
+          <div class="acc-icon" style="background:#dbeafe">🖥</div>
+          <span class="acc-trigger-title">x86 Assembly — Registers, Instructions & Programs</span>
+          <span class="acc-trigger-sub">MOV · ADD · CMP · JMP · LOOP</span>
+          <span class="acc-arrow">▼</span>
+        </button>
+        <div class="acc-body">
+          <div class="code-block">
+            <div class="code-header"><div class="code-dots"><span></span><span></span><span></span></div><span class="code-lang">x86 Assembly (8086 / 16-bit)</span></div>
+            <div class="code-body">
+<span class="cm">; x86 16-bit Registers</span>
+<span class="cm">; AX=Accumulator BX=Base CX=Count DX=Data</span>
+<span class="cm">; SI=Source Index DI=Dest Index SP=Stack Ptr BP=Base Ptr</span>
+<span class="cm">; CS DS SS ES = Segment registers</span>
+<span class="cm">; Flags: ZF CF SF OF PF AF</span>
+
+<span class="lbl">DATA SEGMENT</span>
+    <span class="reg">num1</span>    <span class="type">DW</span>  <span class="num">0050h</span>   <span class="cm">; 16-bit variable = 80</span>
+    <span class="reg">result</span>  <span class="type">DW</span>  <span class="num">0</span>
+<span class="lbl">DATA ENDS</span>
+
+<span class="lbl">CODE SEGMENT</span>
+<span class="lbl">START:</span>
+    <span class="kw">MOV</span> <span class="reg">AX</span>, <span class="reg">DATA</span>     <span class="cm">; Initialize data segment</span>
+    <span class="kw">MOV</span> <span class="reg">DS</span>, <span class="reg">AX</span>
+
+    <span class="kw">MOV</span> <span class="reg">AX</span>, <span class="reg">num1</span>    <span class="cm">; AX = 80</span>
+    <span class="kw">ADD</span> <span class="reg">AX</span>, <span class="num">0020h</span>   <span class="cm">; AX = AX + 32 = 112</span>
+    <span class="kw">MOV</span> <span class="reg">result</span>, <span class="reg">AX</span>  <span class="cm">; store result</span>
+
+<span class="cm">; Loop: Compute sum 1 to 5</span>
+    <span class="kw">MOV</span> <span class="reg">CX</span>, <span class="num">5</span>        <span class="cm">; loop counter</span>
+    <span class="kw">MOV</span> <span class="reg">AX</span>, <span class="num">0</span>        <span class="cm">; sum = 0</span>
+    <span class="kw">MOV</span> <span class="reg">BX</span>, <span class="num">1</span>        <span class="cm">; i = 1</span>
+<span class="lbl">LOOP_START:</span>
+    <span class="kw">ADD</span> <span class="reg">AX</span>, <span class="reg">BX</span>      <span class="cm">; sum += i</span>
+    <span class="kw">INC</span> <span class="reg">BX</span>           <span class="cm">; i++</span>
+    <span class="kw">LOOP</span> <span class="lbl">LOOP_START</span> <span class="cm">; DEC CX; if CX≠0 jump</span>
+
+<span class="cm">; Comparison and conditional jump</span>
+    <span class="kw">CMP</span> <span class="reg">AX</span>, <span class="num">15</span>       <span class="cm">; compare AX with 15</span>
+    <span class="kw">JE</span>  <span class="lbl">EQUAL</span>        <span class="cm">; jump if equal (ZF=1)</span>
+    <span class="kw">JG</span>  <span class="lbl">GREATER</span>      <span class="cm">; jump if greater</span>
+    <span class="kw">JL</span>  <span class="lbl">LESS</span>         <span class="cm">; jump if less</span>
+<span class="lbl">EQUAL:</span>
+    <span class="kw">NOP</span>               <span class="cm">; no operation (placeholder)</span>
+
+    <span class="kw">MOV</span> <span class="reg">AH</span>, <span class="num">4Ch</span>     <span class="cm">; DOS exit</span>
+    <span class="kw">INT</span> <span class="num">21h</span>
+<span class="lbl">CODE ENDS</span>
+<span class="kw">END</span> <span class="lbl">START</span>
+            </div>
+          </div>
+          <div class="exam-tip">
+            <div class="exam-tip-label">💡 x86 Memory Addressing Modes Example</div>
+            <p><code>MOV AX, 5</code> = Immediate. <code>MOV AX, [2000h]</code> = Direct. <code>MOV AX, [BX]</code> = Register Indirect. <code>MOV AX, [BX+4]</code> = Based. <code>MOV AX, [SI+BX]</code> = Based Indexed. Know these — they appear in every addressing modes question.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRACTICAL -->
+    <section id="practical" class="section anchor-target">
+      <div class="section-header reveal">
+        <div class="section-eyebrow">Practical Component</div>
+        <h2 class="section-title">Practical Lab Guide</h2>
+        <p class="section-desc">Everything you need for practical exams, viva, and lab sessions — datapath simulation and assembly programming.</p>
+      </div>
+
+      <div class="accordion reveal">
+        <button class="acc-trigger open" onclick="toggleAcc(this)">
+          <div class="acc-icon" style="background:#dbeafe">🔬</div>
+          <span class="acc-trigger-title">Datapath Design & Simulation</span>
+          <span class="acc-trigger-sub">ALU · Control · Simulation Tools</span>
+          <span class="acc-arrow">▼</span>
+        </button>
+        <div class="acc-body open">
+          <div class="content-prose">
+            <h4>Single-Cycle Datapath Components</h4>
+            <div class="info-grid">
+              <div class="info-card"><div class="info-card-icon">📊</div><div class="info-card-title">Instruction Memory</div><div class="info-card-desc">Stores the program instructions. Read-only during execution. Addressed by Program Counter (PC).</div></div>
+              <div class="info-card"><div class="info-card-icon">🗃️</div><div class="info-card-title">Register File</div><div class="info-card-desc">Two read ports, one write port. In MIPS: 32 registers × 32-bit. Reads happen on rising edge, writes on falling edge (or end of cycle).</div></div>
+              <div class="info-card"><div class="info-card-icon">📊</div><div class="info-card-title">ALU</div><div class="info-card-desc">Performs the arithmetic/logic operation. Outputs result and Zero flag (used for BEQ branch condition detection).</div></div>
+              <div class="info-card"><div class="info-card-icon">💾</div><div class="info-card-title">Data Memory</div><div class="info-card-desc">Holds data variables. Read (LW) and Write (SW) controlled by MemRead/MemWrite control signals from the control unit.</div></div>
+            </div>
+            <h4>Control Signals for MIPS Instruction Types</h4>
+            <table class="compare-table">
+              <tr><th>Signal</th><th>R-type</th><th>LW</th><th>SW</th><th>BEQ</th></tr>
+              <tr><td>RegDst</td><td>1 (rd field)</td><td>0 (rt field)</td><td>X</td><td>X</td></tr>
+              <tr><td>ALUSrc</td><td>0 (register)</td><td>1 (immediate)</td><td>1</td><td>0</td></tr>
+              <tr><td>MemtoReg</td><td>0 (ALU result)</td><td>1 (memory)</td><td>X</td><td>X</td></tr>
+              <tr><td>RegWrite</td><td>1</td><td>1</td><td>0</td><td>0</td></tr>
+              <tr><td>MemRead</td><td>0</td><td>1</td><td>0</td><td>0</td></tr>
+              <tr><td>MemWrite</td><td>0</td><td>0</td><td>1</td><td>0</td></tr>
+              <tr><td>Branch</td><td>0</td><td>0</td><td>0</td><td>1</td></tr>
+            </table>
+            <h4>Simulation Tools Used in Lab</h4>
+            <p><strong>MARS (MIPS Assembler and Runtime Simulator):</strong> Java-based, step-by-step MIPS execution, register/memory views. Most common in universities.</p>
+            <p><strong>SPIM:</strong> Another MIPS simulator. Lightweight, command-line or GUI.</p>
+            <p><strong>Logisim / Digital:</strong> Digital circuit simulation for datapath design — draw and simulate ALUs, multiplexers, registers, full CPU datapaths.</p>
+            <p><strong>8086 Emulator (emu8086):</strong> Emulates x86 8086 processor with full assembly debugging and memory/register visualization.</p>
+            <p><strong>QEMU / ARM DS:</strong> For ARM assembly simulation and cross-compilation.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MCQ PRACTICE -->
+    <section id="mcq" class="section anchor-target">
+      <div class="section-header reveal">
+        <div class="section-eyebrow">Practice Zone</div>
+        <h2 class="section-title">MCQ Practice</h2>
+        <p class="section-desc">Test your understanding. Click the answer to reveal explanation.</p>
+      </div>
+
+      <div class="mcq-grid" id="mcqGrid">
+
+        <div class="mcq-card reveal">
+          <div class="mcq-meta"><span class="badge badge-green">Fundamentals</span><span class="badge badge-blue">Easy</span></div>
+          <div class="mcq-q">Q1. Which register always holds the address of the next instruction to be fetched?</div>
+          <div class="mcq-options">
+            <div class="mcq-opt" onclick="revealMCQ(this,'wrong','IR (Instruction Register) holds the CURRENT instruction being decoded — not the address of the next one.')"><span class="mcq-opt-letter">A</span>Instruction Register (IR)</div>
+            <div class="mcq-opt" onclick="revealMCQ(this,'correct','✓ The Program Counter (PC) always holds the address of the next instruction to be fetched from memory. It is incremented during the Fetch stage.')"><span class="mcq-opt-letter">B</span>Program Counter (PC)</div>
+            <div class="mcq-opt" onclick="revealMCQ(this,'wrong','MAR (Memory Address Register) holds the address being accessed during a memory read or write — not necessarily the next instruction address.')"><span class="mcq-opt-letter">C</span>Memory Address Register (MAR)</div>
+            <div class="mcq-opt" onclick="revealMCQ(this,'wrong','SP (Stack Pointer) points to the top of the stack — it has no direct role in instruction fetching.')"><span class="mcq-opt-letter">D</span>Stack Pointer (SP)</div>
+          </div>
+          <div class="mcq-explanation" id="mcq-explanation-0"></div>
+        </div>
+
+        <div class="mcq-card reveal">
+          <div class="mcq-meta"><span class="badge badge-gold">Addressing Modes</span><span class="badge badge-purple">Medium</span></div>
+          <div class="mcq-q">Q2. In which addressing mode does the instruction field directly contain the operand value (not its address)?</div>
+          <div class="mcq-options">
+            <div class="mcq-opt" onclick="revealMCQ(this,'correct','✓ In Immediate addressing mode, the operand is part of the instruction itself. Example: MOV AX, 5 — the value 5 is the operand, not an address.')"><span class="mcq-opt-letter">A</span>Immediate Addressing</div>
+            <div class="mcq-opt" onclick="revealMCQ(this,'wrong','In Direct addressing, the instruction contains the effective ADDRESS of the operand in memory — one memory access is still needed.')"><span class="mcq-opt-letter">B</span>Direct Addressing</div>
+            <div class="mcq-opt" onclick="revealMCQ(this,'wrong','In Indirect addressing, the instruction gives an address that contains another address (the actual operand address) — two memory accesses needed.')"><span class="mcq-opt-letter">C</span>Indirect Addressing</div>
+            <div class="mcq-opt" onclick="revealMCQ(this,'wrong','In Register addressing, the operand is in a register — but the instruction specifies the register name, not the operand value directly.')"><span class="mcq-opt-letter">D</span>Register Addressing</div>
+          </div>
+          <div class="mcq-explanation" id="mcq-explanation-1"></div>
+        </div>
+
+        <div class="mcq-card reveal">
+          <div class="mcq-meta"><span class="badge badge-red">Pipelining</span><span class="badge badge-purple">Medium</span></div>
+          <div class="mcq-q">Q3. A 4-stage pipeline processes 100 instructions. Each stage takes 1 ns. What is the total execution time?</div>
+          <div class="mcq-options">
+            <div class="mcq-opt" onclick="revealMCQ(this,'wrong','400 ns is the time WITHOUT pipelining: 100 × 4 = 400 ns.')"><span class="mcq-opt-letter">A</span>400 ns</div>
+            <div class="mcq-opt" onclick="revealMCQ(this,'wrong','100 ns would mean 0 overhead stages — impossible for a 4-stage pipeline.')"><span class="mcq-opt-letter">B</span>100 ns</div>
+            <div class="mcq-opt" onclick="revealMCQ(this,'correct','✓ Time = (k + n − 1) × t = (4 + 100 − 1) × 1 = 103 ns. The pipeline needs k−1 cycles to fill initially, then produces 1 result per cycle.')"><span class="mcq-opt-letter">C</span>103 ns</div>
+            <div class="mcq-opt" onclick="revealMCQ(this,'wrong','25 ns would only make sense if 4 pipelines ran in parallel — not the case here.')"><span class="mcq-opt-letter">D</span>25 ns</div>
+          </div>
+          <div class="mcq-explanation" id="mcq-explanation-2"></div>
+        </div>
+
+        <div class="mcq-card reveal">
+          <div class="mcq-meta"><span class="badge badge-blue">Data Representation</span><span class="badge badge-red">Tricky</span></div>
+          <div class="mcq-q">Q4. What is the 2's complement representation of −13 in 8 bits?</div>
+          <div class="mcq-options">
+            <div class="mcq-opt" onclick="revealMCQ(this,'wrong','10001101 is the sign-magnitude representation of −13 (1 = negative, 0001101 = 13 in binary).')"><span class="mcq-opt-letter">A</span>10001101</div>
+            <div class="mcq-opt" onclick="revealMCQ(this,'wrong','11110010 is the 1\'s complement of 13 (invert 00001101 → 11110010). 2\'s complement requires one more step: add 1.')"><span class="mcq-opt-letter">B</span>11110010</div>
+            <div class="mcq-opt" onclick="revealMCQ(this,'correct','✓ +13 = 00001101. Invert: 11110010 (1\'s complement). Add 1: 11110011 = 243 unsigned = −13 in 2\'s complement 8-bit.')"><span class="mcq-opt-letter">C</span>11110011</div>
+            <div class="mcq-opt" onclick="revealMCQ(this,'wrong','01110011 represents +115 in unsigned binary — not −13.')"><span class="mcq-opt-letter">D</span>01110011</div>
+          </div>
+          <div class="mcq-explanation" id="mcq-explanation-3"></div>
+        </div>
+
+        <div class="mcq-card reveal">
+          <div class="mcq-meta"><span class="badge badge-purple">Memory</span><span class="badge badge-red">Tricky</span></div>
+          <div class="mcq-q">Q5. Which cache replacement algorithm replaces the block that has been in cache the LONGEST (regardless of how often it was used)?</div>
+          <div class="mcq-options">
+            <div class="mcq-opt" onclick="revealMCQ(this,'wrong','LRU replaces the block that was LEAST RECENTLY USED (last accessed the longest ago) — not the one that\'s been in cache the longest overall.')"><span class="mcq-opt-letter">A</span>LRU (Least Recently Used)</div>
+            <div class="mcq-opt" onclick="revealMCQ(this,'correct','✓ FIFO (First In First Out) replaces the block that was loaded into cache first — i.e., the oldest block. It uses a simple queue structure.')"><span class="mcq-opt-letter">B</span>FIFO (First In First Out)</div>
+            <div class="mcq-opt" onclick="revealMCQ(this,'wrong','LFU replaces the block accessed LEAST FREQUENTLY — based on access count, not time in cache.')"><span class="mcq-opt-letter">C</span>LFU (Least Frequently Used)</div>
+            <div class="mcq-opt" onclick="revealMCQ(this,'wrong','Random replacement picks a victim randomly — no order or frequency tracking.')"><span class="mcq-opt-letter">D</span>Random Replacement</div>
+          </div>
+          <div class="mcq-explanation" id="mcq-explanation-4"></div>
+        </div>
+
+        <div class="mcq-card reveal">
+          <div class="mcq-meta"><span class="badge badge-gold">I/O</span><span class="badge badge-blue">Medium</span></div>
+          <div class="mcq-q">Q6. Which I/O transfer method requires the CPU to continuously check the device status register in a loop, wasting CPU cycles?</div>
+          <div class="mcq-options">
+            <div class="mcq-opt" onclick="revealMCQ(this,'correct','✓ Programmed I/O (Polling) — the CPU busy-waits in a polling loop checking the device\'s status register repeatedly until the device is ready. This wastes 100% of CPU time during I/O.')"><span class="mcq-opt-letter">A</span>Programmed I/O (Polling)</div>
+            <div class="mcq-opt" onclick="revealMCQ(this,'wrong','Interrupt-driven I/O frees the CPU to do other work while the device operates. The device interrupts the CPU only when ready — no polling needed.')"><span class="mcq-opt-letter">B</span>Interrupt-Driven I/O</div>
+            <div class="mcq-opt" onclick="revealMCQ(this,'wrong','DMA transfers data directly between the device and memory, bypassing the CPU almost entirely. The CPU is only involved at the start and end of the transfer.')"><span class="mcq-opt-letter">C</span>DMA (Direct Memory Access)</div>
+            <div class="mcq-opt" onclick="revealMCQ(this,'wrong','Memory-mapped I/O is an addressing scheme (I/O devices share the memory address space) — not a transfer method itself. It can be used with any of the above methods.')"><span class="mcq-opt-letter">D</span>Memory-Mapped I/O</div>
+          </div>
+          <div class="mcq-explanation" id="mcq-explanation-5"></div>
+        </div>
+
+        <div class="mcq-card reveal">
+          <div class="mcq-meta"><span class="badge badge-red">Pipeline Hazards</span><span class="badge badge-purple">Medium</span></div>
+          <div class="mcq-q">Q7. An instruction uses the result of the immediately preceding instruction. Which hazard type is this, and what is the primary hardware solution?</div>
+          <div class="mcq-options">
+            <div class="mcq-opt" onclick="revealMCQ(this,'wrong','A structural hazard is caused by resource conflict (two instructions needing same hardware) — not data dependency between instructions.')"><span class="mcq-opt-letter">A</span>Structural Hazard — solved by resource duplication</div>
+            <div class="mcq-opt" onclick="revealMCQ(this,'correct','✓ This is a Data Hazard — specifically RAW (Read After Write). The primary hardware solution is forwarding (bypassing): the result is fed directly from the EX or MEM stage output back to the EX stage input of the next instruction, without waiting for WB.')"><span class="mcq-opt-letter">B</span>Data Hazard (RAW) — solved by forwarding/bypassing</div>
+            <div class="mcq-opt" onclick="revealMCQ(this,'wrong','Control hazard is caused by branch instructions — the CPU doesn\'t know which instruction to fetch next. It\'s not about data dependencies between sequential instructions.')"><span class="mcq-opt-letter">C</span>Control Hazard — solved by branch prediction</div>
+            <div class="mcq-opt" onclick="revealMCQ(this,'wrong','WAW (Write After Write) hazard occurs when two instructions write to the same register and you need to ensure the correct order of writes — not a read from the previous instruction\'s result.')"><span class="mcq-opt-letter">D</span>Data Hazard (WAW) — solved by register renaming</div>
+          </div>
+          <div class="mcq-explanation" id="mcq-explanation-6"></div>
+        </div>
+
+        <div class="mcq-card reveal">
+          <div class="mcq-meta"><span class="badge badge-blue">IEEE 754</span><span class="badge badge-red">Tricky</span></div>
+          <div class="mcq-q">Q8. In IEEE 754 single-precision floating point, if both the exponent field and mantissa field are all 1s, what does this represent?</div>
+          <div class="mcq-options">
+            <div class="mcq-opt" onclick="revealMCQ(this,'wrong','Positive infinity has exponent = all 1s but mantissa = all 0s. If mantissa is non-zero (all 1s here), it\'s different.')"><span class="mcq-opt-letter">A</span>+Infinity</div>
+            <div class="mcq-opt" onclick="revealMCQ(this,'wrong','Zero requires exponent = all 0s AND mantissa = all 0s. Exponent and mantissa all 1s is a different special case.')"><span class="mcq-opt-letter">B</span>Zero (positive or negative)</div>
+            <div class="mcq-opt" onclick="revealMCQ(this,'correct','✓ NaN (Not a Number): Exponent = all 1s AND Mantissa ≠ 0 (in this case all 1s) = NaN. Infinity = Exponent all 1s + Mantissa all 0s. Zero = Exponent all 0s + Mantissa all 0s.')"><span class="mcq-opt-letter">C</span>NaN (Not a Number)</div>
+            <div class="mcq-opt" onclick="revealMCQ(this,'wrong','Denormalized numbers (subnormal) are represented by exponent = all 0s (not all 1s) and non-zero mantissa.')"><span class="mcq-opt-letter">D</span>Denormalized (subnormal) number</div>
+          </div>
+          <div class="mcq-explanation" id="mcq-explanation-7"></div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- UNIVERSITY QUESTIONS -->
+    <section id="uqs" class="section anchor-target">
+      <div class="section-header reveal">
+        <div class="section-eyebrow">Exam Preparation</div>
+        <h2 class="section-title">Important University Questions</h2>
+        <p class="section-desc">High-frequency questions from past papers with marks weightage and importance level.</p>
+      </div>
+
+      <div class="uq-list">
+        <div class="uq-item reveal">
+          <div class="uq-marks">10<span>marks</span></div>
+          <div class="uq-content">
+            <div class="uq-q">Explain the fetch-decode-execute cycle in detail using RTL notation. How does the Program Counter get updated during the fetch stage? Trace the RTL steps for an ADD instruction using direct addressing.</div>
+            <div class="uq-tags"><span class="badge badge-red">🔥 Very High Frequency</span><span class="badge badge-green">Theory</span><span class="badge badge-gold">Architecture</span></div>
+          </div>
+        </div>
+        <div class="uq-item reveal">
+          <div class="uq-marks">10<span>marks</span></div>
+          <div class="uq-content">
+            <div class="uq-q">Explain all three types of pipeline hazards with examples. How is a data hazard (RAW) resolved using forwarding? Illustrate with a pipeline timing diagram showing 5 instructions with and without forwarding.</div>
+            <div class="uq-tags"><span class="badge badge-red">🔥 Numerical</span><span class="badge badge-purple">Pipelining</span></div>
+          </div>
+        </div>
+        <div class="uq-item reveal">
+          <div class="uq-marks">10<span>marks</span></div>
+          <div class="uq-content">
+            <div class="uq-q">What is cache memory? Explain the three cache mapping techniques — direct, fully associative, and set-associative — with diagrams. Calculate the number of cache lines, tag bits, and index bits for a 64KB 4-way set-associative cache with 32-byte blocks and 32-bit addresses.</div>
+            <div class="uq-tags"><span class="badge badge-red">🔥 Most Asked</span><span class="badge badge-red">Numerical</span><span class="badge badge-blue">Memory</span></div>
+          </div>
+        </div>
+        <div class="uq-item reveal">
+          <div class="uq-marks">10<span>marks</span></div>
+          <div class="uq-content">
+            <div class="uq-q">Represent the following in IEEE 754 single-precision format: (a) −12.75 (b) +0.1. Also identify what bit pattern 0 10000001 10000000000000000000000 represents.</div>
+            <div class="uq-tags"><span class="badge badge-red">🔥 Guaranteed</span><span class="badge badge-red">Numerical</span><span class="badge badge-gold">Data Representation</span></div>
+          </div>
+        </div>
+        <div class="uq-item reveal">
+          <div class="uq-marks">10<span>marks</span></div>
+          <div class="uq-content">
+            <div class="uq-q">Compare program-controlled I/O, interrupt-driven I/O, and DMA. How does a DMA controller take control of the system bus? Explain cycle stealing vs burst mode in DMA. Draw the DMA transfer flow diagram.</div>
+            <div class="uq-tags"><span class="badge badge-red">🔥 Always Asked</span><span class="badge badge-blue">I/O</span><span class="badge badge-green">Theory</span></div>
+          </div>
+        </div>
+        <div class="uq-item reveal">
+          <div class="uq-marks">7<span>marks</span></div>
+          <div class="uq-content">
+            <div class="uq-q">Write a MIPS assembly program to: (a) Find the factorial of a number using recursion. (b) Sort an array of 5 integers using bubble sort. Explain the use of $ra, $sp registers and the stack in recursive calls.</div>
+            <div class="uq-tags"><span class="badge badge-red">🔥 Practical</span><span class="badge badge-purple">Assembly</span></div>
+          </div>
+        </div>
+        <div class="uq-item reveal">
+          <div class="uq-marks">7<span>marks</span></div>
+          <div class="uq-content">
+            <div class="uq-q">A 5-stage pipeline has 200 instructions and each stage takes 2 ns. Calculate: (a) Speedup with pipelining vs without. (b) Throughput. (c) Efficiency. (d) How does throughput change if there are 3 stall cycles due to data hazards?</div>
+            <div class="uq-tags"><span class="badge badge-gold">High Priority</span><span class="badge badge-red">Numerical</span></div>
+          </div>
+        </div>
+        <div class="uq-item reveal">
+          <div class="uq-marks">5<span>marks</span></div>
+          <div class="uq-content">
+            <div class="uq-q">Write short notes on: (a) Ripple Carry Adder vs Carry Look-Ahead Adder (b) Hardwired vs Microprogrammed Control (c) Role of interrupts in process state transitions (d) Memory interleaving (e) RISC vs CISC</div>
+            <div class="uq-tags"><span class="badge badge-gold">Short Notes</span><span class="badge badge-blue">Multiple Topics</span></div>
+          </div>
+        </div>
+        <div class="uq-item reveal">
+          <div class="uq-marks">5<span>marks</span></div>
+          <div class="uq-content">
+            <div class="uq-q">Explain the Von Neumann bottleneck. How does the Harvard architecture address it? Compare with a modified Harvard architecture used in modern processors.</div>
+            <div class="uq-tags"><span class="badge badge-green">Architecture</span><span class="badge badge-blue">Theory</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- LAST NIGHT REVISION -->
+    <section id="revision" class="section anchor-target">
+      <div class="section-header reveal">
+        <div class="section-eyebrow">🌙 Exam Eve</div>
+        <h2 class="section-title">Last Night Revision</h2>
+        <p class="section-desc">The most important concepts distilled. Read these the night before your exam.</p>
+      </div>
+
+      <div class="rev-grid">
+        <div class="rev-card green reveal">
+          <div class="rev-card-title">⚙️ Fetch-Execute Cycle</div>
+          <div class="rev-item"><strong>Fetch</strong>IR ← M[PC]; PC ← PC+1</div>
+          <div class="rev-item"><strong>Decode</strong>CU decodes opcode in IR</div>
+          <div class="rev-item"><strong>Execute</strong>ALU/Control performs operation</div>
+          <div class="rev-item"><strong>PC role</strong>Always points to NEXT instruction</div>
+          <div class="rev-item"><strong>RTL</strong><span class="rev-code">MAR←PC; MDR←M[MAR]; IR←MDR</span></div>
+        </div>
+
+        <div class="rev-card gold reveal reveal-delay-1">
+          <div class="rev-card-title">📐 Addressing Modes Quick</div>
+          <div class="rev-item"><strong>Immediate</strong>Value in instruction (fastest)</div>
+          <div class="rev-item"><strong>Direct</strong>Instruction has address (1 access)</div>
+          <div class="rev-item"><strong>Indirect</strong>Address of address (2 accesses)</div>
+          <div class="rev-item"><strong>Register</strong>Operand in register (no memory)</div>
+          <div class="rev-item"><strong>Speed</strong><span class="rev-code">Reg &gt; Imm &gt; Direct &gt; Indirect</span></div>
+        </div>
+
+        <div class="rev-card blue reveal reveal-delay-2">
+          <div class="rev-card-title">🔢 Number Systems</div>
+          <div class="rev-item"><strong>Sign-Mag</strong>MSB=sign; two zeros</div>
+          <div class="rev-item"><strong>1's Comp</strong>Invert all bits; two zeros</div>
+          <div class="rev-item"><strong>2's Comp</strong>Invert + 1; ONE zero (used in CPUs)</div>
+          <div class="rev-item"><strong>Overflow</strong>Cin MSB ≠ Cout MSB</div>
+          <div class="rev-item"><strong>IEEE 754</strong><span class="rev-code">Sign|Exp(biased)|Mantissa</span></div>
+        </div>
+
+        <div class="rev-card purple reveal">
+          <div class="rev-card-title">🔄 Pipelining</div>
+          <div class="rev-item"><strong>Speedup</strong>(n×k) / (k+n−1) ≈ k for large n</div>
+          <div class="rev-item"><strong>Structural</strong>Resource conflict → stall/duplicate</div>
+          <div class="rev-item"><strong>Data (RAW)</strong>Dependency → forwarding</div>
+          <div class="rev-item"><strong>Control</strong>Branch unknown → prediction</div>
+          <div class="rev-item"><strong>Stages</strong><span class="rev-code">IF → ID → EX → MEM → WB</span></div>
+        </div>
+
+        <div class="rev-card red reveal reveal-delay-1">
+          <div class="rev-card-title">💾 Cache Memory</div>
+          <div class="rev-item"><strong>Direct</strong>1 possible line per block</div>
+          <div class="rev-item"><strong>Assoc</strong>Any line, most flexible</div>
+          <div class="rev-item"><strong>Set-Assoc</strong>k lines per set (most used)</div>
+          <div class="rev-item"><strong>LRU</strong>Best policy — replace oldest access</div>
+          <div class="rev-item"><strong>Hit Time</strong><span class="rev-code">h×Tc + (1−h)×Tm</span></div>
+        </div>
+
+        <div class="rev-card green reveal reveal-delay-2">
+          <div class="rev-card-title">🔌 I/O Methods</div>
+          <div class="rev-item"><strong>Polling</strong>CPU busy-waits — 100% CPU busy</div>
+          <div class="rev-item"><strong>Interrupt</strong>CPU free during I/O; ISR on signal</div>
+          <div class="rev-item"><strong>DMA</strong>Controller bypasses CPU — fastest</div>
+          <div class="rev-item"><strong>Interrupt</strong>Saves PC+PSW, jumps to ISR</div>
+          <div class="rev-item"><strong>Process</strong><span class="rev-code">Running→Waiting on I/O interrupt</span></div>
+        </div>
+
+        <div class="rev-card gold reveal">
+          <div class="rev-card-title">🖥 RISC vs CISC</div>
+          <div class="rev-item"><strong>RISC</strong>Few, fixed-length, 1 cycle/instr</div>
+          <div class="rev-item"><strong>CISC</strong>Many, variable, multi-cycle</div>
+          <div class="rev-item"><strong>MIPS</strong>RISC — 32 regs, R/I/J types</div>
+          <div class="rev-item"><strong>x86</strong>CISC — AX/BX/CX/DX registers</div>
+          <div class="rev-item"><strong>ARM</strong><span class="rev-code">RISC — mobile/embedded, R0–R15</span></div>
+        </div>
+
+        <div class="rev-card blue reveal reveal-delay-1">
+          <div class="rev-card-title">🏗 Registers to Know</div>
+          <div class="rev-item"><strong>PC</strong>Program Counter — next instr addr</div>
+          <div class="rev-item"><strong>IR</strong>Instruction Register — current instr</div>
+          <div class="rev-item"><strong>MAR/MDR</strong>Memory Address / Data Registers</div>
+          <div class="rev-item"><strong>SP</strong>Stack Pointer — top of stack</div>
+          <div class="rev-item"><strong>PSW</strong><span class="rev-code">Z, C, V, S, P flags (status)</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXAM STRATEGY -->
+    <section id="strategy" class="section anchor-target">
+      <div class="section-header reveal">
+        <div class="section-eyebrow">Exam Day</div>
+        <h2 class="section-title">Exam Strategy</h2>
+        <p class="section-desc">Maximize your score even with limited preparation time.</p>
+      </div>
+
+      <div class="strategy-grid">
+        <div class="strategy-card reveal">
+          <div class="strategy-card-num">01</div>
+          <div class="strategy-card-title">🎯 Most Scoring Topics</div>
+          <div class="strategy-card-desc">Focus on: Pipelining — speedup formula + hazards (20%), Cache memory — mapping + replacement (15%), Data Representation — 2's complement + IEEE 754 numericals (15%), I/O methods (10%), Addressing modes (10%). These cover 70%+ of marks.</div>
+        </div>
+        <div class="strategy-card reveal reveal-delay-1">
+          <div class="strategy-card-num">02</div>
+          <div class="strategy-card-title">⚡ 1-Day Revision Plan</div>
+          <div class="strategy-card-desc">Morning: Fetch cycle + Addressing modes + Registers (2hr). Afternoon: 2's complement + IEEE 754 numericals (2hr). Evening: Pipelining — speedup formula + hazards (2hr). Night: Cache mapping + I/O methods + Revision cards (1hr).</div>
+        </div>
+        <div class="strategy-card reveal reveal-delay-2">
+          <div class="strategy-card-num">03</div>
+          <div class="strategy-card-title">📝 Theory Answer Strategy</div>
+          <div class="strategy-card-desc">Structure: Definition (2 lines) → Types/Properties (bullets) → Example → Diagram (pipeline timing, cache mapping, circuit diagram) → Comparison table. A pipeline timing diagram can add 3–5 marks even if partially correct.</div>
+        </div>
+        <div class="strategy-card reveal">
+          <div class="strategy-card-num">04</div>
+          <div class="strategy-card-title">🔢 Solving Numericals</div>
+          <div class="strategy-card-desc">2's complement: +N → invert → add 1. IEEE 754: write sign, convert to binary, normalize (1.xxx × 2ᴱ), add bias (127) to exponent, write mantissa. Pipeline speedup: (n×k)/(k+n−1). Cache: divide address bits into Tag|Set|Offset.</div>
+        </div>
+        <div class="strategy-card reveal reveal-delay-1">
+          <div class="strategy-card-num">05</div>
+          <div class="strategy-card-title">❓ MCQ Elimination</div>
+          <div class="strategy-card-desc">For CO MCQs: absolute statements like "only", "always", "cannot" are often wrong. For hazard questions: identify the TYPE first (structural/data/control), then the solution. For addressing modes: count memory accesses — Immediate=0, Direct=1, Indirect=2+.</div>
+        </div>
+        <div class="strategy-card reveal reveal-delay-2">
+          <div class="strategy-card-num">06</div>
+          <div class="strategy-card-title">🕐 3-Hour Exam Plan</div>
+          <div class="strategy-card-desc">Hour 1: All MCQs + short answers you know well (address modes, register names, pipeline stages). Hour 2: Long questions — pipelining numerical + cache numerical + data representation (most marks). Hour 3: I/O theory + assembly + review. Never leave numericals blank — show formula for partial credit.</div>
+        </div>
+      </div>
+
+      <div class="important-banner reveal" style="margin-top:32px">
+        <div class="icon">💙</div>
+        <p><strong>You've got this.</strong> Computer Organization follows clear logical patterns. A student who can trace the fetch-execute cycle in RTL, compute 2's complement, calculate pipeline speedup, and explain cache mapping can comfortably score 70%+. Use this guide, draw diagrams, show your work — and trust your preparation. All the best!</p>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">CO Exam Prep — University Edition (BO CDA 204)</div>
+    <div class="footer-links">
+      <a href="#syllabus">Syllabus</a>
+      <a href="#assembly">Assembly Guide</a>
+      <a href="#mcq">MCQs</a>
+      <a href="#revision">Revision</a>
+      <a href="#strategy">Strategy</a>
+    </div>
+    <div class="footer-note">Built for university students. All the best for your exam ✌️</div>
+  </div>
+</footer>
+
+<script>
+// PROGRESS BAR
+window.addEventListener('scroll', () => {
+  const scrollTop = window.scrollY;
+  const docHeight = document.body.scrollHeight - window.innerHeight;
+  const progress = (scrollTop / docHeight) * 100;
+  document.getElementById('progressFill').style.width = progress + '%';
+});
+
+// REVEAL ON SCROLL
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => {
+  revealObserver.observe(el);
+});
+
+// SIDEBAR ACTIVE
+const sections = document.querySelectorAll('.anchor-target');
+const sidebarItems = document.querySelectorAll('.sidebar-item[data-sec]');
+
+const sectionObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const id = entry.target.id;
+      sidebarItems.forEach(item => {
+        item.classList.toggle('active', item.dataset.sec === id);
+      });
+    }
+  });
+}, { rootMargin: '-50% 0px -50% 0px' });
+
+sections.forEach(s => sectionObserver.observe(s));
+
+// ACCORDION
+function toggleAcc(trigger) {
+  const body = trigger.nextElementSibling;
+  const isOpen = trigger.classList.contains('open');
+  trigger.classList.toggle('open', !isOpen);
+  body.classList.toggle('open', !isOpen);
+}
+
+// MCQ LOGIC
+let mcqAnswered = {};
+
+function revealMCQ(optEl, result, explanation) {
+  const card = optEl.closest('.mcq-card');
+  const cardIdx = [...document.querySelectorAll('.mcq-card')].indexOf(card);
+  if (mcqAnswered[cardIdx]) return;
+  mcqAnswered[cardIdx] = true;
+
+  const opts = card.querySelectorAll('.mcq-opt');
+  opts.forEach(o => o.style.pointerEvents = 'none');
+  optEl.classList.add(result);
+
+  const expEl = card.querySelector('.mcq-explanation');
+  if (expEl) {
+    expEl.innerHTML = explanation;
+    expEl.classList.add('show');
+  }
+}
+
+// SMOOTH SIDEBAR CLICK
+document.querySelectorAll('.sidebar-item').forEach(item => {
+  item.addEventListener('click', (e) => {
+    e.preventDefault();
+    const sec = item.dataset.sec;
+    if (sec) {
+      const target = document.getElementById(sec);
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+
+// INITIAL REVEAL
+window.addEventListener('load', () => {
+  document.querySelectorAll('.reveal').forEach(el => {
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight) el.classList.add('visible');
+  });
+});
+</script>
+</body>
+</html>
