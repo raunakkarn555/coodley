@@ -397,7 +397,7 @@ mark { background: rgba(61,232,176,.13); color: var(--accent); padding: 1px 5px;
    DONATE BANNER
 ══════════════════════════════ */
 .donate-banner-wrap {
-  max-width: 1200px; margin: 24px auto 0; padding: 10px clamp(20px, 5%, 80px);
+  max-width: 1200px; margin: 24px auto 0; padding: 10px clamp(20px, 5%, 80px) 16px;
 
 }
 .donate-banner-inner {
