@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+  <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
@@ -11,20 +11,20 @@
   <link rel="canonical" href="https://raunakkarn555.github.io/coodley/" />
 
   <!-- Open Graph / Facebook -->
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://raunakkarn555.github.io/coodley/" />
-  <meta property="og:title" content="Coodley — India's Free Full Stack Learning Platform" />
+  <meta property="og:type"        content="website" />
+  <meta property="og:url"         content="https://raunakkarn555.github.io/coodley/" />
+  <meta property="og:title"       content="Coodley — India's Free Full Stack Learning Platform" />
   <meta property="og:description" content="From 10th grader to job-ready developer — completely free. India's most honest, sequenced full-stack development curriculum. No paywall. No clickbait." />
-  <meta property="og:image" content="https://raunakkarn555.github.io/coodley/assets/og-image.png" />
-  <meta property="og:site_name" content="Coodley" />
-  <meta property="og:locale" content="en_IN" />
+  <meta property="og:image"       content="https://raunakkarn555.github.io/coodley/assets/og-image.png" />
+  <meta property="og:site_name"   content="Coodley" />
+  <meta property="og:locale"      content="en_IN" />
 
   <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:url" content="https://raunakkarn555.github.io/coodley/" />
-  <meta name="twitter:title" content="Coodley — India's Free Full Stack Learning Platform" />
+  <meta name="twitter:card"        content="summary_large_image" />
+  <meta name="twitter:url"         content="https://raunakkarn555.github.io/coodley/" />
+  <meta name="twitter:title"       content="Coodley — India's Free Full Stack Learning Platform" />
   <meta name="twitter:description" content="Free full-stack development roadmap for Indian students. CS basics to System Design. No fees. No BS." />
-  <meta name="twitter:image" content="https://raunakkarn555.github.io/coodley/assets/og-image.png" />
+  <meta name="twitter:image"       content="https://raunakkarn555.github.io/coodley/assets/og-image.png" />
 
   <!-- Schema.org Structured Data -->
   <script type="application/ld+json">
@@ -65,553 +65,151 @@
   <!-- Lucide Icons CDN -->
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 
-  <!-- Phosphor Icons CDN (premium supplement) -->
+  <!-- Phosphor Icons CDN -->
   <script src="https://unpkg.com/@phosphor-icons/web@2.1.1/src/index.js"></script>
 
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --bg:      #07090f;
-      --bg2:     #0c0f1a;
-      --bg3:     #111827;
-      --bg4:     #1a2235;
-      --surface: rgba(255,255,255,0.04);
-      --border:  rgba(255,255,255,0.08);
-      --border2: rgba(255,255,255,0.13);
-      --border-glow: rgba(99,210,179,0.35);
-      --text:    #e8edf5;
-      --text2:   #8899b0;
-      --text3:   #4d5e72;
-      --accent:  #3de8b0;
-      --accent2: #00c98a;
-      --accent-dim: rgba(61,232,176,0.12);
-      --amber:   #f4a942;
-      --amber-bg:rgba(244,169,66,0.07);
-      --amber-border:rgba(244,169,66,0.22);
-      --blue:    #5ba4f5;
-      --blue-bg: rgba(91,164,245,0.08);
-      --purple:  #9d7cf5;
-      --red:     #f56565;
-      --font-head: 'Bricolage Grotesque', sans-serif;
-      --font-body: 'DM Sans', sans-serif;
-      --font-mono: 'JetBrains Mono', monospace;
-      --radius:    12px;
-      --radius-sm: 8px;
-      --radius-lg: 20px;
-      --nav-h:     64px;
-    }
-
-    [data-theme="light"] {
-      --bg:      #f3f5f9;
-      --bg2:     #e8ecf4;
-      --bg3:     #dde3ef;
-      --bg4:     #cfd7e8;
-      --surface: rgba(0,0,0,0.03);
-      --border:  rgba(0,0,0,0.08);
-      --border2: rgba(0,0,0,0.12);
-      --border-glow: rgba(0,180,130,0.4);
-      --text:    #0c1220;
-      --text2:   #3d4f64;
-      --text3:   #7a8fa6;
-      --accent:  #00a876;
-      --accent2: #008f62;
-      --accent-dim: rgba(0,168,118,0.1);
-    }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      font-family: var(--font-body);
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
-
-    ::-webkit-scrollbar { width: 5px; }
-    ::-webkit-scrollbar-track { background: var(--bg); }
-    ::-webkit-scrollbar-thumb { background: var(--bg4); border-radius: 4px; }
-
-    /* ── SVG ICON UTIL ── */
-    .icon {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      vertical-align: middle;
-    }
-    .icon svg { display: block; }
-
-
-    /* ── LUCIDE ICON ANIMATIONS ── */
-    [data-lucide] { transition: transform .2s ease, color .2s ease; }
-    .nav-links a:hover [data-lucide] { transform: scale(1.2); }
-    .btn-nav [data-lucide], .btn-nav i { animation: none; }
-    .btn-donate-nav:hover { background: rgba(244,169,66,.18) !important; transform: translateY(-1px); box-shadow: 0 6px 20px rgba(244,169,66,.15); }
-    .btn-donate-nav [data-lucide], .btn-donate-nav i { animation: heartbeat 1.8s ease-in-out infinite; }
-    @keyframes heartbeat {
-      0%,100% { transform: scale(1); }
-      14% { transform: scale(1.25); }
-      28% { transform: scale(1); }
-      42% { transform: scale(1.15); }
-      56% { transform: scale(1); }
-    }
-    .social-btn:hover [data-lucide], .social-btn:hover i { transform: scale(1.15) rotate(-5deg); }
-    .join-card:hover [data-lucide], .join-card:hover i { transform: scale(1.12) translateY(-2px); }
-    .aside-card:hover [data-lucide], .aside-card:hover i { transform: scale(1.1); color: var(--accent); }
-    .pillar-card:hover .pillar-icon [data-lucide],
-    .pillar-card:hover .pillar-icon i { transform: rotate(5deg) scale(1.1); }
-    .comm-card:hover [data-lucide], .comm-card:hover i { transform: scale(1.1); }
-    .footer-col a:hover [data-lucide], .footer-col a:hover i { transform: translateX(3px); }
-        /* ─── NAVBAR ─── */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
-      height: var(--nav-h);
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 0 clamp(20px, 5%, 80px);
-      background: rgba(7,9,15,0.92);
-      backdrop-filter: blur(24px);
-      -webkit-backdrop-filter: blur(24px);
-      border-bottom: 1px solid var(--border);
-    }
-    [data-theme="light"] nav { background: rgba(243,245,249,0.95); }
-
-    .nav-logo {
-      display: flex; align-items: center; gap: 10px;
-      text-decoration: none;
-      font-family: var(--font-head);
-      font-weight: 800;
-      font-size: 1.3rem;
-      color: var(--text);
-      letter-spacing: -0.5px;
-    }
-    .logo-mark {
-      width: 34px; height: 34px;
-      background: var(--accent);
-      border-radius: 9px;
-      display: flex; align-items: center; justify-content: center;
-      color: #07090f; flex-shrink: 0;
-    }
-
-    .nav-links { display: flex; align-items: center; gap: 2px; list-style: none; }
-    .nav-links a {
-      text-decoration: none; color: var(--text2); font-size: 0.875rem;
-      padding: 6px 13px; border-radius: var(--radius-sm);
-      transition: color .2s, background .2s;
-      display: flex; align-items: center; gap: 6px;
-    }
-    .nav-links a:hover { color: var(--text); background: var(--surface); }
-    .nav-links .ai-link { color: var(--amber); background: var(--amber-bg); }
-    .nav-links .ai-link:hover { background: rgba(244,169,66,.13); }
-
-    .nav-right { display: flex; align-items: center; gap: 10px; }
-    .theme-toggle {
-      background: var(--surface); border: 1px solid var(--border);
-      border-radius: var(--radius-sm); padding: 7px 10px; cursor: pointer;
-      color: var(--text2); transition: all .2s; display: flex; align-items: center;
-    }
-    .theme-toggle:hover { color: var(--text); border-color: var(--border2); }
-    .btn-nav {
-      background: var(--accent); color: #07090f; border: none;
-      padding: 8px 18px; border-radius: var(--radius-sm);
-      font-family: var(--font-body); font-size: .85rem; font-weight: 500;
-      cursor: pointer; text-decoration: none;
-      display: inline-flex; align-items: center; gap: 6px;
-      transition: background .2s, transform .15s;
-    }
-    .btn-nav:hover { background: var(--accent2); transform: translateY(-1px); }
-    .nav-hamburger {
-      display: none; background: var(--surface); border: 1px solid var(--border);
-      border-radius: var(--radius-sm); padding: 7px 9px; cursor: pointer; color: var(--text);
-    }
-    @media (max-width: 820px) { .nav-links { display: none; } .nav-hamburger { display: flex; } }
-
-    /* ─── HERO ─── */
-    .hero {
-      min-height: 100vh;
-      display: flex; flex-direction: column; align-items: center; justify-content: center;
-      text-align: center;
-      padding: calc(var(--nav-h) + 64px) clamp(20px,5%,80px) 80px;
-      position: relative; overflow: hidden;
-    }
-    .hero-grid {
-      position: absolute; inset: 0;
-      background-image:
-        linear-gradient(rgba(61,232,176,.025) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(61,232,176,.025) 1px, transparent 1px);
-      background-size: 56px 56px;
-      mask-image: radial-gradient(ellipse 80% 80% at 50% 30%, black 20%, transparent 100%);
-      pointer-events: none;
-    }
-    .hero-orb1 {
-      position: absolute; width: 600px; height: 600px; border-radius: 50%;
-      background: radial-gradient(circle, rgba(61,232,176,.07) 0%, transparent 65%);
-      top: -150px; left: 50%; transform: translateX(-50%);
-      filter: blur(40px); pointer-events: none;
-    }
-    .hero-orb2 {
-      position: absolute; width: 350px; height: 350px; border-radius: 50%;
-      background: radial-gradient(circle, rgba(91,164,245,.05) 0%, transparent 70%);
-      bottom: 0; right: 5%; filter: blur(60px); pointer-events: none;
-    }
-    .hero-badge {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: var(--surface); border: 1px solid var(--border2);
-      border-radius: 40px; padding: 6px 16px;
-      font-size: .78rem; color: var(--text2); margin-bottom: 28px;
-      animation: fadeUp .7s ease both;
-    }
-    .hero-badge .dot {
-      width: 6px; height: 6px; border-radius: 50%;
-      background: var(--accent); animation: pulse 2.2s infinite;
-    }
-    @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.4;transform:scale(.7)} }
-    .hero h1 {
-      font-family: var(--font-head);
-      font-size: clamp(2.8rem, 6.5vw, 5rem);
-      font-weight: 800; line-height: 1.05;
-      letter-spacing: -2.5px; margin-bottom: 22px;
-      animation: fadeUp .7s .1s ease both;
-    }
-    .hero h1 .hl { color: var(--accent); }
-    .hero-sub {
-      font-size: clamp(.95rem, 2vw, 1.1rem); color: var(--text2);
-      max-width: 540px; margin: 0 auto 36px;
-      font-weight: 300; line-height: 1.75;
-      animation: fadeUp .7s .2s ease both;
-    }
-    .hero-ctas {
-      display: flex; align-items: center; justify-content: center;
-      gap: 14px; flex-wrap: wrap; margin-bottom: 52px;
-      animation: fadeUp .7s .3s ease both;
-    }
-    .btn-primary {
-      background: var(--accent); color: #07090f; border: none;
-      padding: 13px 28px; border-radius: var(--radius-sm);
-      font-family: var(--font-body); font-size: .95rem; font-weight: 500;
-      cursor: pointer; text-decoration: none;
-      display: inline-flex; align-items: center; gap: 8px;
-      transition: background .2s, transform .15s, box-shadow .2s;
-    }
-    .btn-primary:hover { background: var(--accent2); transform: translateY(-2px); box-shadow: 0 10px 35px rgba(61,232,176,.3); }
-    .btn-ghost {
-      background: transparent; color: var(--text2); border: 1px solid var(--border2);
-      padding: 13px 24px; border-radius: var(--radius-sm);
-      font-family: var(--font-body); font-size: .95rem; cursor: pointer;
-      text-decoration: none; display: inline-flex; align-items: center; gap: 8px;
-      transition: all .2s;
-    }
-    .btn-ghost:hover { color: var(--text); border-color: var(--border-glow); background: var(--surface); }
-
-    .hero-terminal {
-      width: min(620px, 92vw); margin: 0 auto;
-      background: var(--bg2); border: 1px solid var(--border);
-      border-radius: var(--radius-lg); overflow: hidden;
-      animation: fadeUp .8s .5s ease both; text-align: left;
-      box-shadow: 0 32px 80px rgba(0,0,0,.5), inset 0 1px 0 rgba(255,255,255,.05);
-    }
-    .terminal-bar {
-      display: flex; align-items: center; gap: 7px;
-      padding: 12px 16px; background: var(--bg3);
-      border-bottom: 1px solid var(--border);
-    }
-    .t-dot { width: 11px; height: 11px; border-radius: 50%; }
-    .t-dot.r{background:#ff5f56} .t-dot.y{background:#ffbd2e} .t-dot.g{background:#27c93f}
-    .terminal-title { font-size: .72rem; color: var(--text3); font-family: var(--font-mono); margin-left: 6px; }
-    .terminal-body { padding: 20px 24px; font-family: var(--font-mono); font-size: .81rem; line-height: 2; }
-    .t-line { display: flex; align-items: flex-start; gap: 10px; }
-    .t-prompt { color: var(--accent); user-select: none; flex-shrink: 0; }
-    .t-out { color: var(--text2); padding-left: 22px; }
-    .t-comment { color: var(--text3); }
-    .t-hl { color: var(--accent); }
-    .t-cursor { display: inline-block; width: 8px; height: 15px; background: var(--accent); vertical-align: middle; animation: blink 1s step-end infinite; }
-    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
-    .hero-trust {
-      font-size: .76rem; color: var(--text3); margin-top: 26px;
-      animation: fadeUp .7s .6s ease both;
-      display: flex; align-items: center; justify-content: center; gap: 6px; flex-wrap: wrap;
-    }
-    .hero-trust .sep { opacity: .3; }
-    .hero-trust .check { color: var(--accent); }
-
-    /* ─── AI BANNER ─── */
-    .ai-banner {
-      background: var(--amber-bg);
-      border-top: 1px solid var(--amber-border);
-      border-bottom: 1px solid var(--amber-border);
-      padding: 14px clamp(20px,5%,80px);
-      display: flex; align-items: center; justify-content: center;
-      gap: 14px; flex-wrap: wrap; text-align: center;
-    }
-    .ai-banner-text { font-size: .875rem; color: var(--text2); }
-    .ai-banner-text strong { color: var(--amber); font-weight: 500; }
-    .ai-banner-link {
-      font-size: .8rem; color: var(--amber); text-decoration: none;
-      border: 1px solid var(--amber-border); padding: 4px 13px; border-radius: 40px;
-      transition: background .2s; white-space: nowrap;
-      display: inline-flex; align-items: center; gap: 5px;
-    }
-    .ai-banner-link:hover { background: rgba(244,169,66,.12); }
-
-    /* ─── SECTIONS ─── */
-    section { padding: 88px clamp(20px,5%,80px); }
-    .container { max-width: 1200px; margin: 0 auto; }
-
-    .section-eyebrow {
-      font-family: var(--font-mono); font-size: .7rem; color: var(--accent);
-      text-transform: uppercase; letter-spacing: 2.5px; margin-bottom: 12px;
-      display: flex; align-items: center; gap: 8px;
-    }
-    .section-eyebrow.amber { color: var(--amber); }
-    .section-eyebrow::before { content:''; display:inline-block; width:20px; height:1px; background:currentColor; }
-    .section-title {
-      font-family: var(--font-head);
-      font-size: clamp(1.9rem, 3.5vw, 2.7rem);
-      font-weight: 700; letter-spacing: -1.2px; line-height: 1.12; margin-bottom: 14px;
-    }
-    .section-sub { color: var(--text2); font-size: 1rem; max-width: 520px; line-height: 1.75; font-weight: 300; }
-
-    /* ─── ROADMAP ─── */
-    .roadmap-section {
-      background: var(--bg2);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-    }
-    .roadmap-intro { margin-bottom: 52px; }
-    .phase-list { display: flex; flex-direction: column; }
-    .phase-item { display: grid; grid-template-columns: 48px 1fr; gap: 0 24px; }
-    .phase-left { display: flex; flex-direction: column; align-items: center; padding-top: 4px; }
-    .phase-node {
-      width: 40px; height: 40px; border-radius: 50%;
-      border: 2px solid var(--border2); background: var(--bg3);
-      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
-      font-family: var(--font-mono); font-size: .65rem; color: var(--text3); font-weight: 500;
-      transition: border-color .2s, background .2s; z-index: 1;
-    }
-    .phase-item:hover .phase-node, .phase-item.active .phase-node { border-color: var(--accent); background: var(--accent-dim); color: var(--accent); }
-    .phase-item.lang .phase-node { border-color: rgba(157,124,245,.5); background: rgba(157,124,245,.08); color: var(--purple); }
-    .phase-item.dsa-item .phase-node { border-color: rgba(245,101,101,.4); background: rgba(245,101,101,.07); color: var(--red); }
-    .phase-line { flex:1; width:2px; background: var(--border); margin: 4px 0; min-height: 24px; }
-    .phase-item:last-child .phase-line { display: none; }
-    .phase-body {
-      background: var(--bg3); border: 1px solid var(--border);
-      border-radius: var(--radius); padding: 20px 22px; margin-bottom: 12px;
-      transition: border-color .2s, transform .2s, box-shadow .2s; cursor: default;
-    }
-    .phase-body:hover { border-color: var(--border-glow); transform: translateX(4px); box-shadow: -4px 0 20px rgba(61,232,176,.06); }
-    .phase-item.lang .phase-body:hover { border-color: rgba(157,124,245,.4); box-shadow: -4px 0 20px rgba(157,124,245,.06); }
-    .phase-item.dsa-item .phase-body:hover { border-color: rgba(245,101,101,.3); box-shadow: -4px 0 16px rgba(245,101,101,.05); }
-    .phase-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; margin-bottom: 10px; flex-wrap: wrap; }
-    .phase-title-row { display: flex; align-items: center; gap: 10px; }
-    .phase-icon {
-      width: 34px; height: 34px; border-radius: 8px;
-      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
-      background: var(--accent-dim); color: var(--accent);
-    }
-    .phase-icon.lang { background: rgba(157,124,245,.1); color: var(--purple); }
-    .phase-icon.dsa  { background: rgba(245,101,101,.08); color: var(--red); }
-    .phase-icon.cloud{ background: var(--blue-bg); color: var(--blue); }
-    .phase-icon.ai   { background: rgba(244,169,66,.1); color: var(--amber); }
-    .phase-name { font-family: var(--font-head); font-size: 1rem; font-weight: 600; line-height: 1.2; }
-    .phase-badges { display: flex; align-items: center; gap: 7px; flex-wrap: wrap; }
-    .badge { font-family: var(--font-mono); font-size: .63rem; padding: 3px 9px; border-radius: 40px; text-transform: uppercase; letter-spacing: .5px; }
-    .badge-green  { background: rgba(61,232,176,.1); color: var(--accent); border: 1px solid rgba(61,232,176,.2); }
-    .badge-blue   { background: rgba(91,164,245,.1); color: var(--blue); border: 1px solid rgba(91,164,245,.2); }
-    .badge-amber  { background: rgba(244,169,66,.1); color: var(--amber); border: 1px solid rgba(244,169,66,.2); }
-    .badge-purple { background: rgba(157,124,245,.1); color: var(--purple); border: 1px solid rgba(157,124,245,.2); }
-    .badge-red    { background: rgba(245,101,101,.1); color: var(--red); border: 1px solid rgba(245,101,101,.2); }
-    .phase-desc { font-size: .845rem; color: var(--text2); font-weight: 300; margin-bottom: 12px; line-height: 1.65; }
-    .phase-topics { display: flex; gap: 7px; flex-wrap: wrap; }
-    .topic-pill {
-      font-size: .72rem; color: var(--text3); background: var(--surface);
-      border: 1px solid var(--border); padding: 3px 10px; border-radius: 40px;
-      transition: color .15s, border-color .15s;
-    }
-    .phase-body:hover .topic-pill { color: var(--text2); border-color: var(--border2); }
-    .phase-meta { display: flex; align-items: center; gap: 16px; margin-top: 12px; font-size: .75rem; color: var(--text3); }
-    .phase-meta span { display: flex; align-items: center; gap: 5px; }
-    .fork-note {
-      background: var(--amber-bg); border: 1px solid var(--amber-border);
-      border-radius: var(--radius-sm); padding: 12px 16px;
-      font-size: .82rem; color: var(--text2); margin: 0 0 12px 0;
-      display: flex; align-items: flex-start; gap: 10px;
-    }
-    .fork-note strong { color: var(--amber); }
-    .fork-wrapper { grid-column: 2; }
-
-    /* ─── WHY SECTION ─── */
-    .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px,1fr)); gap: 16px; margin-top: 48px; }
-    .why-card { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius); padding: 28px 24px; transition: border-color .2s, transform .2s; }
-    .why-card:hover { border-color: var(--border-glow); transform: translateY(-2px); }
-    .why-icon { width: 44px; height: 44px; border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-bottom: 18px; }
-    .wi-green  { background: var(--accent-dim); color: var(--accent); }
-    .wi-blue   { background: var(--blue-bg); color: var(--blue); }
-    .wi-amber  { background: var(--amber-bg); color: var(--amber); }
-    .wi-purple { background: rgba(157,124,245,.1); color: var(--purple); }
-    .why-title { font-family: var(--font-head); font-size: 1rem; font-weight: 600; margin-bottom: 8px; }
-    .why-desc { font-size: .86rem; color: var(--text2); line-height: 1.7; font-weight: 300; }
-
-    /* ─── STATS ─── */
-    .stats-bar { display: flex; flex-wrap: wrap; border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; margin-top: 56px; }
-    .stat-item { flex:1; min-width: 130px; padding: 28px 20px; text-align: center; border-right: 1px solid var(--border); }
-    .stat-item:last-child { border-right: none; }
-    .stat-num { font-family: var(--font-head); font-size: 2.1rem; font-weight: 700; color: var(--accent); line-height: 1; margin-bottom: 6px; }
-    .stat-label { font-size: .78rem; color: var(--text3); }
-
-    /* ─── AI SECTION ─── */
-    .ai-section { background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-    .ai-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 52px; align-items: center; max-width: 1100px; margin: 48px auto 0; }
-    @media (max-width: 720px) { .ai-inner { grid-template-columns: 1fr; } }
-    .ai-quadrant { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-    .quad-card { background: var(--bg3); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 18px 16px; }
-    .quad-card.can { border-color: rgba(245,101,101,.2); background: rgba(245,101,101,.04); }
-    .quad-card.cannot { border-color: rgba(61,232,176,.2); background: rgba(61,232,176,.04); }
-    .quad-label { font-size: .67rem; font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 10px; }
-    .quad-can-label { color: #f87171; }
-    .quad-cannot-label { color: var(--accent); }
-    .quad-items { list-style: none; }
-    .quad-items li { font-size: .8rem; color: var(--text2); padding: 4px 0; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 8px; }
-    .quad-items li:last-child { border-bottom: none; }
-    .quad-items li::before { content:'—'; color: var(--text3); font-size: .7rem; }
-
-    /* ─── CURRICULUM ─── */
-    .curriculum-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px,1fr)); gap: 12px; margin-top: 48px; }
-    .curriculum-row {
-      background: var(--bg2); border: 1px solid var(--border);
-      border-radius: var(--radius); padding: 16px 18px;
-      display: flex; align-items: center; gap: 14px;
-      transition: border-color .2s, background .2s;
-    }
-    .curriculum-row:hover { border-color: var(--border-glow); background: rgba(61,232,176,.03); }
-    .curriculum-row.lang:hover { border-color: rgba(157,124,245,.35); background: rgba(157,124,245,.03); }
-    .curr-num { font-family: var(--font-mono); font-size: .68rem; color: var(--text3); width: 22px; flex-shrink: 0; }
-    .curr-icon { width: 32px; text-align: center; flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
-    .curr-info { flex: 1; min-width: 0; }
-    .curr-title { font-weight: 500; font-size: .88rem; margin-bottom: 2px; }
-    .curr-sub { font-size: .73rem; color: var(--text3); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-
-    /* ─── COMMUNITY ─── */
-    .community-section { background: var(--bg2); border-top: 1px solid var(--border); text-align: center; }
-    .community-values { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin-top: 32px; }
-    .val-pill {
-      background: var(--surface); border: 1px solid var(--border);
-      padding: 8px 18px; border-radius: 40px; font-size: .83rem; color: var(--text2);
-      display: flex; align-items: center; gap: 7px; transition: border-color .2s, color .2s;
-    }
-    .val-pill:hover { border-color: var(--border-glow); color: var(--accent); }
-    .join-cards { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-top: 40px; }
-    .join-card {
-      background: var(--bg3); border: 1px solid var(--border);
-      border-radius: var(--radius); padding: 24px 28px; text-align: center;
-      text-decoration: none; color: var(--text); min-width: 160px;
-      transition: border-color .2s, transform .2s;
-    }
-    .join-card:hover { border-color: var(--border-glow); transform: translateY(-3px); }
-    .join-card-icon { margin-bottom: 10px; color: var(--text2); display: flex; justify-content: center; }
-    .join-card-label { font-size: .88rem; font-weight: 500; margin-bottom: 4px; }
-    .join-card-sub { font-size: .73rem; color: var(--text3); }
-
-    /* ─── TESTIMONIALS ─── */
-    .testimonials { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); gap: 16px; margin-top: 48px; }
-    .testimonial-card { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; }
-    .t-stars { color: var(--amber); font-size: .72rem; letter-spacing: 2px; margin-bottom: 12px; }
-    .t-quote { font-size: .87rem; color: var(--text2); line-height: 1.75; font-weight: 300; margin-bottom: 16px; font-style: italic; }
-    .t-author { display: flex; align-items: center; gap: 10px; }
-    .t-avatar { width: 34px; height: 34px; border-radius: 50%; background: var(--bg4); display: flex; align-items: center; justify-content: center; font-size: .72rem; font-weight: 600; color: var(--accent); flex-shrink: 0; }
-    .t-name { font-size: .82rem; font-weight: 500; }
-    .t-detail { font-size: .7rem; color: var(--text3); }
-
-    /* ─── CTA ─── */
-    .cta-section { text-align: center; background: var(--bg2); border-top: 1px solid var(--border); }
-    .cta-inner { max-width: 640px; margin: 0 auto; }
-    .cta-section p { color: var(--text2); font-size: .95rem; margin-bottom: 32px; font-weight: 300; line-height: 1.75; }
-
-    /* ─── FOOTER ─── */
-    footer { background: var(--bg); border-top: 1px solid var(--border); padding: 56px clamp(20px,5%,80px) 32px; }
-    .footer-top { display: grid; grid-template-columns: 1.8fr repeat(4, 1fr); gap: 40px; margin-bottom: 48px; }
-    @media (max-width: 900px) { .footer-top { grid-template-columns: 1fr 1fr 1fr; } }
-    @media (max-width: 560px) { .footer-top { grid-template-columns: 1fr 1fr; } }
-    .footer-brand p { font-size: .82rem; color: var(--text3); margin-top: 12px; line-height: 1.65; max-width: 240px; }
-    .footer-social { display: flex; gap: 10px; margin-top: 18px; flex-wrap: wrap; }
-    .social-btn {
-      background: var(--surface); border: 1px solid var(--border);
-      border-radius: var(--radius-sm); padding: 8px 12px;
-      color: var(--text2); text-decoration: none; font-size: .78rem;
-      display: inline-flex; align-items: center; gap: 6px;
-      transition: color .2s, border-color .2s;
-    }
-    .social-btn:hover { color: var(--accent); border-color: var(--border-glow); }
-    .footer-col h4 { font-family: var(--font-head); font-size: .8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: var(--text3); margin-bottom: 16px; }
-    .footer-col a { display: flex; align-items: center; gap: 7px; text-decoration: none; font-size: .84rem; color: var(--text2); padding: 5px 0; transition: color .2s; }
-    .footer-col a:hover { color: var(--accent); }
-    .footer-divider { border: none; border-top: 1px solid var(--border); margin-bottom: 24px; }
-    .footer-bottom { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
-    .footer-bottom-left p { font-size: .78rem; color: var(--text3); line-height: 1.6; }
-    .footer-bottom-left p span { color: var(--accent); }
-    .footer-legal { display: flex; gap: 20px; flex-wrap: wrap; }
-    .footer-legal a { text-decoration: none; font-size: .76rem; color: var(--text3); transition: color .2s; }
-    .footer-legal a:hover { color: var(--text2); }
-
-    /* ─── ANIMATIONS ─── */
-    @keyframes fadeUp { from{opacity:0;transform:translateY(22px)} to{opacity:1;transform:translateY(0)} }
-    .reveal { opacity: 0; transform: translateY(22px); transition: opacity .55s ease, transform .55s ease; }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
-    mark { background: rgba(61,232,176,.13); color: var(--accent); padding: 1px 5px; border-radius: 4px; }
-
-    @media (max-width: 600px) {
-      .ai-quadrant { grid-template-columns: 1fr; }
-      .stats-bar { flex-direction: column; }
-      .stat-item { border-right: none; border-bottom: 1px solid var(--border); }
-      .stat-item:last-child { border-bottom: none; }
-    }
-  </style>
+  <!-- ✅ Global stylesheet -->
+  <link rel="stylesheet" href="main.css" />
 </head>
 <body>
 
-<!-- ── NAVBAR ── -->
+<!-- ============================================================
+     NAVBAR — starts
+     ============================================================ -->
 <nav>
+
+  <!-- Logo -->
   <a href="https://raunakkarn555.github.io/coodley/" class="nav-logo">
     <div class="logo-mark">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+           stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="16 18 22 12 16 6"/>
+        <polyline points="8 6 2 12 8 18"/>
+      </svg>
     </div>
     Coodley
   </a>
 
+  <!-- Desktop nav links (hidden on mobile via CSS) -->
   <ul class="nav-links">
-    <li><a href="https://raunakkarn555.github.io/coodley/learn/">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
-      Learn</a></li>
-    <li><a href="https://raunakkarn555.github.io/coodley/learn/roadmap.html">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
-      Roadmap</a></li>
-    <li><a href="https://raunakkarn555.github.io/coodley/community/">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-      Community</a></li>
-    <li><a href="https://raunakkarn555.github.io/coodley/tools/">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
-      Tools</a></li>
-    <li><a href="https://raunakkarn555.github.io/coodley/ai-reality/" class="ai-link">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-      AI Reality</a></li>
+    <li>
+      <a href="https://raunakkarn555.github.io/coodley/learn/">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+        Learn
+      </a>
+    </li>
+    <li>
+      <a href="https://raunakkarn555.github.io/coodley/learn/roadmap.html">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
+        Roadmap
+      </a>
+    </li>
+    <li>
+      <a href="https://raunakkarn555.github.io/coodley/community/">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        Community
+      </a>
+    </li>
+    <li>
+      <a href="https://raunakkarn555.github.io/coodley/tools/">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+        Tools
+      </a>
+    </li>
+    <li>
+      <a href="https://raunakkarn555.github.io/coodley/ai-reality/" class="ai-link">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        AI Reality
+      </a>
+    </li>
   </ul>
 
+  <!-- Right side: theme toggle + donate + start learning + hamburger -->
   <div class="nav-right">
+
+    <!-- Theme toggle (always visible) -->
     <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
-      <svg id="themeIcon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      <svg id="themeIcon" width="15" height="15" viewBox="0 0 24 24" fill="none"
+           stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <!-- icon injected by JS -->
+      </svg>
     </button>
-    <a href="https://raunakkarn555.github.io/coodley/donate.html" class="btn-donate-nav" style="background:linear-gradient(135deg,rgba(244,169,66,.15),rgba(244,169,66,.08));border:1px solid rgba(244,169,66,.3);color:var(--amber);padding:8px 16px;border-radius:var(--radius-sm);font-size:.82rem;font-weight:500;text-decoration:none;display:inline-flex;align-items:center;gap:6px;transition:all .2s;"><i data-lucide="heart" style="width:14px;height:14px"></i> Donate</a>
+
+    <!-- Donate button (always visible on all screen sizes) -->
+    <a href="https://raunakkarn555.github.io/coodley/donate.html" class="btn-donate-nav">
+      <i data-lucide="heart" style="width:14px;height:14px"></i>
+      Donate
+    </a>
+
+    <!-- Start Learning — hidden on mobile (shown inside drawer) -->
     <a href="https://raunakkarn555.github.io/coodley/learn/" class="btn-nav">
       Start Learning
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+           stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="5" y1="12" x2="19" y2="12"/>
+        <polyline points="12 5 19 12 12 19"/>
+      </svg>
     </a>
-    <button class="nav-hamburger" id="hamburger" aria-label="Menu">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+
+    <!-- Hamburger button — shown only on mobile -->
+    <button class="nav-hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+           stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="3"  y1="12" x2="21" y2="12"/>
+        <line x1="3"  y1="6"  x2="21" y2="6"/>
+        <line x1="3"  y1="18" x2="21" y2="18"/>
+      </svg>
     </button>
+
   </div>
 </nav>
 
-<!-- ── HERO ── -->
+<!-- Mobile drawer (injected below nav, controlled by JS) -->
+<div class="nav-mobile-drawer" id="mobileDrawer" role="navigation" aria-label="Mobile menu">
+
+  <!-- All nav links repeated for mobile -->
+  <a href="https://raunakkarn555.github.io/coodley/learn/">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+    Learn
+  </a>
+  <a href="https://raunakkarn555.github.io/coodley/learn/roadmap.html">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
+    Roadmap
+  </a>
+  <a href="https://raunakkarn555.github.io/coodley/community/">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+    Community
+  </a>
+  <a href="https://raunakkarn555.github.io/coodley/tools/">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+    Tools
+  </a>
+  <a href="https://raunakkarn555.github.io/coodley/ai-reality/" class="ai-link">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+    AI Reality
+  </a>
+
+  <!-- Bottom row: theme info + Start Learning button -->
+  <div class="nav-mobile-bottom">
+    <a href="https://raunakkarn555.github.io/coodley/learn/" class="btn-nav">
+      Start Learning
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+           stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="5" y1="12" x2="19" y2="12"/>
+        <polyline points="12 5 19 12 12 19"/>
+      </svg>
+    </a>
+  </div>
+
+</div>
+<!-- ============================================================
+     NAVBAR — ends
+     ============================================================ -->
+
+
+<!-- ============================================================
+     HERO SECTION — starts
+     ============================================================ -->
 <section class="hero">
   <div class="hero-grid"></div>
   <div class="hero-orb1"></div>
@@ -643,9 +241,12 @@
     </a>
   </div>
 
+  <!-- Terminal animation card -->
   <div class="hero-terminal">
     <div class="terminal-bar">
-      <div class="t-dot r"></div><div class="t-dot y"></div><div class="t-dot g"></div>
+      <div class="t-dot r"></div>
+      <div class="t-dot y"></div>
+      <div class="t-dot g"></div>
       <span class="terminal-title">your-journey.sh</span>
     </div>
     <div class="terminal-body">
@@ -676,21 +277,42 @@
     <span class="check">✓</span> Mobile &amp; desktop friendly
   </p>
 </section>
+<!-- ============================================================
+     HERO SECTION — ends
+     ============================================================ -->
 
-<!-- ── AI BANNER ── -->
+
+<!-- ============================================================
+     AI BANNER — starts
+     ============================================================ -->
 <div class="ai-banner">
-  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f4a942" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f4a942" stroke-width="2"
+       stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0">
+    <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+    <line x1="12" y1="9"  x2="12"    y2="13"/>
+    <line x1="12" y1="17" x2="12.01" y2="17"/>
+  </svg>
   <p class="ai-banner-text">
     <strong>AI job threat is real.</strong>
     Yahan tujhe sachchi picture milegi — kya khatam hoga, kya nahi, aur tu kaise survive karega.
   </p>
   <a href="https://raunakkarn555.github.io/coodley/ai-reality/" class="ai-banner-link">
     Read the AI Reality Report
-    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+         stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="5" y1="12" x2="19" y2="12"/>
+      <polyline points="12 5 19 12 12 19"/>
+    </svg>
   </a>
 </div>
+<!-- ============================================================
+     AI BANNER — ends
+     ============================================================ -->
 
-<!-- ── ROADMAP / PHASE SECTION ── -->
+
+<!-- ============================================================
+     ROADMAP SECTION — starts
+     ============================================================ -->
 <section class="roadmap-section">
   <div class="container">
     <div class="roadmap-intro reveal">
@@ -701,9 +323,12 @@
 
     <div class="phase-list">
 
-      <!-- PHASE 0 -->
+      <!-- Phase 00: CS Foundations -->
       <div class="phase-item active reveal">
-        <div class="phase-left"><div class="phase-node">00</div><div class="phase-line"></div></div>
+        <div class="phase-left">
+          <div class="phase-node">00</div>
+          <div class="phase-line"></div>
+        </div>
         <div class="phase-body">
           <div class="phase-top">
             <div class="phase-title-row">
@@ -712,11 +337,21 @@
               </div>
               <div class="phase-name">Computer Science Foundations</div>
             </div>
-            <div class="phase-badges"><span class="badge badge-green">Start Here</span><span class="badge badge-green">Beginner</span></div>
+            <div class="phase-badges">
+              <span class="badge badge-green">Start Here</span>
+              <span class="badge badge-green">Beginner</span>
+            </div>
           </div>
-          <p class="phase-desc">Programming shuru karne se pehle yeh samajhna zaroori hai ki computer kaam kaise karta hai. Binary se internet tak — yeh sab kuch ki neenv hai. Bahut log yeh step skip karte hain aur phir struggle karte hain.</p>
+          <p class="phase-desc">Programming shuru karne se pehle yeh samajhna zaroori hai ki computer kaam kaise karta hai. Binary se internet tak — yeh sab kuch ki neenv hai.</p>
           <div class="phase-topics">
-            <span class="topic-pill">How computers work</span><span class="topic-pill">Binary &amp; data</span><span class="topic-pill">CPU, RAM, Storage</span><span class="topic-pill">OS basics</span><span class="topic-pill">How internet works</span><span class="topic-pill">Client-Server model</span><span class="topic-pill">HTTP/HTTPS, DNS, IP</span><span class="topic-pill">How browsers work</span>
+            <span class="topic-pill">How computers work</span>
+            <span class="topic-pill">Binary &amp; data</span>
+            <span class="topic-pill">CPU, RAM, Storage</span>
+            <span class="topic-pill">OS basics</span>
+            <span class="topic-pill">How internet works</span>
+            <span class="topic-pill">Client-Server model</span>
+            <span class="topic-pill">HTTP/HTTPS, DNS, IP</span>
+            <span class="topic-pill">How browsers work</span>
           </div>
           <div class="phase-meta">
             <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg> 4–5 lessons</span>
@@ -725,9 +360,12 @@
         </div>
       </div>
 
-      <!-- PHASE 1 -->
+      <!-- Phase 01: Terminal & Git -->
       <div class="phase-item reveal">
-        <div class="phase-left"><div class="phase-node">01</div><div class="phase-line"></div></div>
+        <div class="phase-left">
+          <div class="phase-node">01</div>
+          <div class="phase-line"></div>
+        </div>
         <div class="phase-body">
           <div class="phase-top">
             <div class="phase-title-row">
@@ -736,11 +374,20 @@
               </div>
               <div class="phase-name">Terminal &amp; Git — The Developer's Tools</div>
             </div>
-            <div class="phase-badges"><span class="badge badge-blue">Essential</span></div>
+            <div class="phase-badges">
+              <span class="badge badge-blue">Essential</span>
+            </div>
           </div>
-          <p class="phase-desc">Pehle coding sikhne se pehle terminal aur Git seekho — yeh galti bahut log karte hain. Bina iske tum ek professional developer nahi ho. Har job mein yeh use hota hai. GitHub bana lo, pehla commit karo.</p>
+          <p class="phase-desc">Pehle coding sikhne se pehle terminal aur Git seekho — yeh galti bahut log karte hain. Bina iske tum ek professional developer nahi ho.</p>
           <div class="phase-topics">
-            <span class="topic-pill">CLI basics</span><span class="topic-pill">File system navigation</span><span class="topic-pill">Git init/add/commit/push</span><span class="topic-pill">Branching &amp; merging</span><span class="topic-pill">GitHub profile + README</span><span class="topic-pill">GitHub Pages deploy</span><span class="topic-pill">.gitignore</span><span class="topic-pill">Merge conflict resolve</span>
+            <span class="topic-pill">CLI basics</span>
+            <span class="topic-pill">File system navigation</span>
+            <span class="topic-pill">Git init/add/commit/push</span>
+            <span class="topic-pill">Branching &amp; merging</span>
+            <span class="topic-pill">GitHub profile + README</span>
+            <span class="topic-pill">GitHub Pages deploy</span>
+            <span class="topic-pill">.gitignore</span>
+            <span class="topic-pill">Merge conflict resolve</span>
           </div>
           <div class="phase-meta">
             <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg> 4 lessons</span>
@@ -749,20 +396,26 @@
         </div>
       </div>
 
-      <!-- FORK NOTE -->
+      <!-- Fork note -->
       <div class="phase-item reveal" style="grid-template-columns: 48px 1fr;">
-        <div class="phase-left"><div class="phase-node" style="opacity:0;pointer-events:none"></div><div class="phase-line"></div></div>
+        <div class="phase-left">
+          <div class="phase-node" style="opacity:0;pointer-events:none"></div>
+          <div class="phase-line"></div>
+        </div>
         <div class="fork-wrapper">
           <div class="fork-note">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f4a942" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:1px"><circle cx="18" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="6" y1="9" x2="6" y2="15"/><path d="M18 9V7a2 2 0 0 0-2-2H8"/></svg>
-            <div><strong>Yahan ek choice hai:</strong> Ab tum do paths le sakte ho. <strong>Web Developer</strong> banna chahte ho? Seedha HTML/CSS pe jao (Phase 2A). <strong>Software Engineer / DSA / Competitive Programming</strong> mein jaana hai? Pehle ek Programming Language seekho (Phase 2B). Dono paths eventually merge hote hain.</div>
+            <div><strong>Yahan ek choice hai:</strong> Ab tum do paths le sakte ho. <strong>Web Developer</strong> banna chahte ho? Seedha HTML/CSS pe jao (Phase 2A). <strong>Software Engineer / DSA</strong> mein jaana hai? Pehle ek Programming Language seekho (Phase 2B). Dono paths eventually merge hote hain.</div>
           </div>
         </div>
       </div>
 
-      <!-- PHASE 2A -->
+      <!-- Phase 2A: HTML & CSS -->
       <div class="phase-item reveal">
-        <div class="phase-left"><div class="phase-node">2A</div><div class="phase-line"></div></div>
+        <div class="phase-left">
+          <div class="phase-node">2A</div>
+          <div class="phase-line"></div>
+        </div>
         <div class="phase-body">
           <div class="phase-top">
             <div class="phase-title-row">
@@ -771,11 +424,21 @@
               </div>
               <div class="phase-name">HTML &amp; CSS — Web ka Dhaancha</div>
             </div>
-            <div class="phase-badges"><span class="badge badge-green">Web Path</span><span class="badge badge-green">Beginner</span></div>
+            <div class="phase-badges">
+              <span class="badge badge-green">Web Path</span>
+              <span class="badge badge-green">Beginner</span>
+            </div>
           </div>
-          <p class="phase-desc">Web development ka real starting point. Samjho ki ek browser HTML kaise render karta hai. CSS ke saath visual design seekho — responsive layouts banana sikhna aaj compulsory hai.</p>
+          <p class="phase-desc">Web development ka real starting point. Samjho ki ek browser HTML kaise render karta hai. CSS ke saath responsive layouts banana sikhna aaj compulsory hai.</p>
           <div class="phase-topics">
-            <span class="topic-pill">HTML structure &amp; tags</span><span class="topic-pill">Semantic HTML</span><span class="topic-pill">Forms &amp; inputs</span><span class="topic-pill">CSS selectors &amp; box model</span><span class="topic-pill">Flexbox (complete)</span><span class="topic-pill">CSS Grid (complete)</span><span class="topic-pill">Responsive + Media queries</span><span class="topic-pill">Bootstrap 5</span>
+            <span class="topic-pill">HTML structure &amp; tags</span>
+            <span class="topic-pill">Semantic HTML</span>
+            <span class="topic-pill">Forms &amp; inputs</span>
+            <span class="topic-pill">CSS selectors &amp; box model</span>
+            <span class="topic-pill">Flexbox (complete)</span>
+            <span class="topic-pill">CSS Grid (complete)</span>
+            <span class="topic-pill">Responsive + Media queries</span>
+            <span class="topic-pill">Bootstrap 5</span>
           </div>
           <div class="phase-meta">
             <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg> 8 lessons</span>
@@ -784,9 +447,12 @@
         </div>
       </div>
 
-      <!-- PHASE 2B -->
+      <!-- Phase 2B: Programming Language -->
       <div class="phase-item lang reveal">
-        <div class="phase-left"><div class="phase-node">2B</div><div class="phase-line"></div></div>
+        <div class="phase-left">
+          <div class="phase-node">2B</div>
+          <div class="phase-line"></div>
+        </div>
         <div class="phase-body">
           <div class="phase-top">
             <div class="phase-title-row">
@@ -795,11 +461,21 @@
               </div>
               <div class="phase-name">Programming Languages — Ek Choose Karo</div>
             </div>
-            <div class="phase-badges"><span class="badge badge-purple">Software Engineer Path</span><span class="badge badge-green">Beginner</span></div>
+            <div class="phase-badges">
+              <span class="badge badge-purple">Software Engineer Path</span>
+              <span class="badge badge-green">Beginner</span>
+            </div>
           </div>
-          <p class="phase-desc">C++, Java, ya Python — teeno mein se ek seedha seekho. C++ best hai DSA ke liye. Java best hai enterprise jobs ke liye. Python best hai AI/ML aur beginners ke liye.</p>
+          <p class="phase-desc">C++, Java, ya Python — teeno mein se ek seedha seekho. C++ best hai DSA ke liye. Java best hai enterprise jobs ke liye. Python best hai AI/ML ke liye.</p>
           <div class="phase-topics">
-            <span class="topic-pill">C++ — Basics se OOP tak</span><span class="topic-pill">Java — OOP, Collections</span><span class="topic-pill">Python — Syntax, Libraries</span><span class="topic-pill">Variables &amp; data types</span><span class="topic-pill">Functions &amp; scope</span><span class="topic-pill">OOP concepts</span><span class="topic-pill">STL / Standard library</span><span class="topic-pill">Error handling</span>
+            <span class="topic-pill">C++ — Basics se OOP tak</span>
+            <span class="topic-pill">Java — OOP, Collections</span>
+            <span class="topic-pill">Python — Syntax, Libraries</span>
+            <span class="topic-pill">Variables &amp; data types</span>
+            <span class="topic-pill">Functions &amp; scope</span>
+            <span class="topic-pill">OOP concepts</span>
+            <span class="topic-pill">STL / Standard library</span>
+            <span class="topic-pill">Error handling</span>
           </div>
           <div class="phase-meta">
             <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg> 10–12 lessons per language</span>
@@ -808,9 +484,12 @@
         </div>
       </div>
 
-      <!-- PHASE 3 DSA -->
+      <!-- Phase 03: DSA -->
       <div class="phase-item dsa-item reveal">
-        <div class="phase-left"><div class="phase-node">03</div><div class="phase-line"></div></div>
+        <div class="phase-left">
+          <div class="phase-node">03</div>
+          <div class="phase-line"></div>
+        </div>
         <div class="phase-body">
           <div class="phase-top">
             <div class="phase-title-row">
@@ -819,22 +498,38 @@
               </div>
               <div class="phase-name">Data Structures &amp; Algorithms (DSA)</div>
             </div>
-            <div class="phase-badges"><span class="badge badge-red">Interview Critical</span><span class="badge badge-blue">Intermediate</span></div>
+            <div class="phase-badges">
+              <span class="badge badge-red">Interview Critical</span>
+              <span class="badge badge-blue">Intermediate</span>
+            </div>
           </div>
-          <p class="phase-desc">Bade companies mein — Amazon, Google, Flipkart, Swiggy — DSA ke bina interview nahi doge toh nahi milega. Yeh boring lagta hai but yeh skip karna career ki sabse badi galti hai.</p>
+          <p class="phase-desc">Bade companies mein — Amazon, Google, Flipkart, Swiggy — DSA ke bina interview nahi milega. Yeh boring lagta hai but skip karna career ki sabse badi galti hai.</p>
           <div class="phase-topics">
-            <span class="topic-pill">Arrays &amp; Strings</span><span class="topic-pill">Linked Lists</span><span class="topic-pill">Stacks &amp; Queues</span><span class="topic-pill">Trees &amp; Binary Trees</span><span class="topic-pill">Graphs (BFS/DFS)</span><span class="topic-pill">Recursion &amp; Backtracking</span><span class="topic-pill">Sorting algorithms</span><span class="topic-pill">Binary Search</span><span class="topic-pill">Dynamic Programming</span><span class="topic-pill">Hashing</span><span class="topic-pill">Time &amp; Space complexity</span>
+            <span class="topic-pill">Arrays &amp; Strings</span>
+            <span class="topic-pill">Linked Lists</span>
+            <span class="topic-pill">Stacks &amp; Queues</span>
+            <span class="topic-pill">Trees &amp; Binary Trees</span>
+            <span class="topic-pill">Graphs (BFS/DFS)</span>
+            <span class="topic-pill">Recursion &amp; Backtracking</span>
+            <span class="topic-pill">Sorting algorithms</span>
+            <span class="topic-pill">Binary Search</span>
+            <span class="topic-pill">Dynamic Programming</span>
+            <span class="topic-pill">Hashing</span>
+            <span class="topic-pill">Time &amp; Space complexity</span>
           </div>
           <div class="phase-meta">
             <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg> 14+ lessons</span>
-            <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 2–4 months (ongoing)</span>
+            <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 2–4 months</span>
           </div>
         </div>
       </div>
 
-      <!-- PHASE 4 JS -->
+      <!-- Phase 04: JavaScript -->
       <div class="phase-item reveal">
-        <div class="phase-left"><div class="phase-node">04</div><div class="phase-line"></div></div>
+        <div class="phase-left">
+          <div class="phase-node">04</div>
+          <div class="phase-line"></div>
+        </div>
         <div class="phase-body">
           <div class="phase-top">
             <div class="phase-title-row">
@@ -843,11 +538,21 @@
               </div>
               <div class="phase-name">JavaScript — Web ki Jaan</div>
             </div>
-            <div class="phase-badges"><span class="badge badge-green">Web Path</span><span class="badge badge-blue">Intermediate</span></div>
+            <div class="phase-badges">
+              <span class="badge badge-green">Web Path</span>
+              <span class="badge badge-blue">Intermediate</span>
+            </div>
           </div>
-          <p class="phase-desc">Web development ka engine. HTML/CSS ke baad yahan aao — browser ko interactive banana sikhte hain. Modern JS (ES6+) pe focus karo, aur async programming ko deeply samjho.</p>
+          <p class="phase-desc">Web development ka engine. HTML/CSS ke baad yahan aao. Modern JS (ES6+) pe focus karo, aur async programming ko deeply samjho.</p>
           <div class="phase-topics">
-            <span class="topic-pill">Variables, types, scope</span><span class="topic-pill">Functions &amp; closures</span><span class="topic-pill">DOM manipulation</span><span class="topic-pill">Events</span><span class="topic-pill">Fetch API / AJAX</span><span class="topic-pill">Promises &amp; async/await</span><span class="topic-pill">ES6+ features</span><span class="topic-pill">LocalStorage</span>
+            <span class="topic-pill">Variables, types, scope</span>
+            <span class="topic-pill">Functions &amp; closures</span>
+            <span class="topic-pill">DOM manipulation</span>
+            <span class="topic-pill">Events</span>
+            <span class="topic-pill">Fetch API / AJAX</span>
+            <span class="topic-pill">Promises &amp; async/await</span>
+            <span class="topic-pill">ES6+ features</span>
+            <span class="topic-pill">LocalStorage</span>
           </div>
           <div class="phase-meta">
             <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg> 8 lessons</span>
@@ -856,9 +561,12 @@
         </div>
       </div>
 
-      <!-- PHASE 5 React -->
+      <!-- Phase 05: React -->
       <div class="phase-item reveal">
-        <div class="phase-left"><div class="phase-node">05</div><div class="phase-line"></div></div>
+        <div class="phase-left">
+          <div class="phase-node">05</div>
+          <div class="phase-line"></div>
+        </div>
         <div class="phase-body">
           <div class="phase-top">
             <div class="phase-title-row">
@@ -867,11 +575,21 @@
               </div>
               <div class="phase-name">React + Vite — Modern Frontend</div>
             </div>
-            <div class="phase-badges"><span class="badge badge-blue">Intermediate</span><span class="badge badge-blue">Most In-Demand</span></div>
+            <div class="phase-badges">
+              <span class="badge badge-blue">Intermediate</span>
+              <span class="badge badge-blue">Most In-Demand</span>
+            </div>
           </div>
-          <p class="phase-desc">2025 mein React sabse zyada use hone wala frontend framework hai. Job listings mein #1 requirement. Vite ke saath fast development workflow sikhna ab standard practice hai.</p>
+          <p class="phase-desc">2025 mein React sabse zyada use hone wala frontend framework hai. Job listings mein #1 requirement. Vite ke saath fast development workflow ab standard hai.</p>
           <div class="phase-topics">
-            <span class="topic-pill">Components &amp; JSX</span><span class="topic-pill">Props &amp; State</span><span class="topic-pill">useState, useEffect</span><span class="topic-pill">React Router</span><span class="topic-pill">Context API</span><span class="topic-pill">Custom hooks</span><span class="topic-pill">Vite setup</span><span class="topic-pill">API calls in React</span>
+            <span class="topic-pill">Components &amp; JSX</span>
+            <span class="topic-pill">Props &amp; State</span>
+            <span class="topic-pill">useState, useEffect</span>
+            <span class="topic-pill">React Router</span>
+            <span class="topic-pill">Context API</span>
+            <span class="topic-pill">Custom hooks</span>
+            <span class="topic-pill">Vite setup</span>
+            <span class="topic-pill">API calls in React</span>
           </div>
           <div class="phase-meta">
             <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg> 8 lessons</span>
@@ -880,22 +598,33 @@
         </div>
       </div>
 
-      <!-- PHASE 6 Backend -->
+      <!-- Phase 06: Node.js -->
       <div class="phase-item reveal">
-        <div class="phase-left"><div class="phase-node">06</div><div class="phase-line"></div></div>
+        <div class="phase-left">
+          <div class="phase-node">06</div>
+          <div class="phase-line"></div>
+        </div>
         <div class="phase-body">
           <div class="phase-top">
             <div class="phase-title-row">
               <div class="phase-icon">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"/><rect x="2" y="14" width="20" height="8" rx="2" ry="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
               </div>
               <div class="phase-name">Node.js + Express — Backend Basics</div>
             </div>
-            <div class="phase-badges"><span class="badge badge-blue">Intermediate</span></div>
+            <div class="phase-badges">
+              <span class="badge badge-blue">Intermediate</span>
+            </div>
           </div>
-          <p class="phase-desc">JavaScript ab server pe bhi chalega. APIs banao, user authentication karo, databases se connect karo. Yahan se full stack developer banega — frontend aur backend dono samajhne wala.</p>
+          <p class="phase-desc">JavaScript ab server pe bhi chalega. APIs banao, user authentication karo, databases se connect karo. Full stack developer banega yahan se.</p>
           <div class="phase-topics">
-            <span class="topic-pill">Node.js &amp; npm</span><span class="topic-pill">Express routes &amp; middleware</span><span class="topic-pill">REST API design</span><span class="topic-pill">EJS templating</span><span class="topic-pill">Authentication (JWT)</span><span class="topic-pill">Environment variables</span><span class="topic-pill">CORS basics</span>
+            <span class="topic-pill">Node.js &amp; npm</span>
+            <span class="topic-pill">Express routes &amp; middleware</span>
+            <span class="topic-pill">REST API design</span>
+            <span class="topic-pill">EJS templating</span>
+            <span class="topic-pill">Authentication (JWT)</span>
+            <span class="topic-pill">Environment variables</span>
+            <span class="topic-pill">CORS basics</span>
           </div>
           <div class="phase-meta">
             <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg> 7 lessons</span>
@@ -904,9 +633,12 @@
         </div>
       </div>
 
-      <!-- PHASE 7 DB -->
+      <!-- Phase 07: Databases -->
       <div class="phase-item reveal">
-        <div class="phase-left"><div class="phase-node">07</div><div class="phase-line"></div></div>
+        <div class="phase-left">
+          <div class="phase-node">07</div>
+          <div class="phase-line"></div>
+        </div>
         <div class="phase-body">
           <div class="phase-top">
             <div class="phase-title-row">
@@ -915,11 +647,19 @@
               </div>
               <div class="phase-name">Databases — Data Store Karna Sikhna</div>
             </div>
-            <div class="phase-badges"><span class="badge badge-blue">Intermediate</span></div>
+            <div class="phase-badges">
+              <span class="badge badge-blue">Intermediate</span>
+            </div>
           </div>
           <p class="phase-desc">Bina database ke koi real app nahi banta. SQL aur NoSQL dono seekhna important hai — different problems ke liye different tools hote hain.</p>
           <div class="phase-topics">
-            <span class="topic-pill">SQL basics</span><span class="topic-pill">MySQL CRUD + Joins</span><span class="topic-pill">MongoDB documents</span><span class="topic-pill">Mongoose ODM</span><span class="topic-pill">SQL vs NoSQL</span><span class="topic-pill">Database design basics</span><span class="topic-pill">Indexing</span>
+            <span class="topic-pill">SQL basics</span>
+            <span class="topic-pill">MySQL CRUD + Joins</span>
+            <span class="topic-pill">MongoDB documents</span>
+            <span class="topic-pill">Mongoose ODM</span>
+            <span class="topic-pill">SQL vs NoSQL</span>
+            <span class="topic-pill">Database design basics</span>
+            <span class="topic-pill">Indexing</span>
           </div>
           <div class="phase-meta">
             <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg> 5 lessons</span>
@@ -928,9 +668,12 @@
         </div>
       </div>
 
-      <!-- PHASE 8 DevOps -->
+      <!-- Phase 08: DevOps -->
       <div class="phase-item reveal">
-        <div class="phase-left"><div class="phase-node">08</div><div class="phase-line"></div></div>
+        <div class="phase-left">
+          <div class="phase-node">08</div>
+          <div class="phase-line"></div>
+        </div>
         <div class="phase-body">
           <div class="phase-top">
             <div class="phase-title-row">
@@ -939,11 +682,18 @@
               </div>
               <div class="phase-name">DevOps &amp; Cloud Basics</div>
             </div>
-            <div class="phase-badges"><span class="badge badge-amber">Advanced</span></div>
+            <div class="phase-badges">
+              <span class="badge badge-amber">Advanced</span>
+            </div>
           </div>
-          <p class="phase-desc">Apna project sirf locally nahi, duniya ke saamne bhi chalana seekho. Deployment, CI/CD, Docker — yeh concepts aaj har developer se expected hain.</p>
+          <p class="phase-desc">Apna project duniya ke saamne bhi chalana seekho. Deployment, CI/CD, Docker — yeh concepts aaj har developer se expected hain.</p>
           <div class="phase-topics">
-            <span class="topic-pill">Hosting (Vercel, Railway)</span><span class="topic-pill">CI/CD basics</span><span class="topic-pill">Docker concepts</span><span class="topic-pill">Cloud (AWS/GCP overview)</span><span class="topic-pill">Linux basics for servers</span><span class="topic-pill">Domain &amp; DNS</span>
+            <span class="topic-pill">Hosting (Vercel, Railway)</span>
+            <span class="topic-pill">CI/CD basics</span>
+            <span class="topic-pill">Docker concepts</span>
+            <span class="topic-pill">Cloud (AWS/GCP overview)</span>
+            <span class="topic-pill">Linux basics for servers</span>
+            <span class="topic-pill">Domain &amp; DNS</span>
           </div>
           <div class="phase-meta">
             <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg> 5 lessons</span>
@@ -952,9 +702,12 @@
         </div>
       </div>
 
-      <!-- PHASE 9 System Design -->
+      <!-- Phase 09: System Design -->
       <div class="phase-item reveal">
-        <div class="phase-left"><div class="phase-node">09</div><div class="phase-line"></div></div>
+        <div class="phase-left">
+          <div class="phase-node">09</div>
+          <div class="phase-line"></div>
+        </div>
         <div class="phase-body">
           <div class="phase-top">
             <div class="phase-title-row">
@@ -963,11 +716,20 @@
               </div>
               <div class="phase-name">System Design — Bade Systems Sochna Sikhna</div>
             </div>
-            <div class="phase-badges"><span class="badge badge-amber">Senior Level</span><span class="badge badge-red">Interview Critical</span></div>
+            <div class="phase-badges">
+              <span class="badge badge-amber">Senior Level</span>
+              <span class="badge badge-red">Interview Critical</span>
+            </div>
           </div>
-          <p class="phase-desc">Mid/senior level interviews mein yeh compulsory hai. Scalable systems kaise design karte hain — load balancing, caching, databases at scale. Yeh skill AI replace nahi kar sakta.</p>
+          <p class="phase-desc">Mid/senior level interviews mein yeh compulsory hai. Scalable systems kaise design karte hain — load balancing, caching, databases at scale.</p>
           <div class="phase-topics">
-            <span class="topic-pill">Scalability concepts</span><span class="topic-pill">Load balancing</span><span class="topic-pill">Caching (Redis)</span><span class="topic-pill">CDN</span><span class="topic-pill">DB sharding &amp; replication</span><span class="topic-pill">Microservices</span><span class="topic-pill">Real-world case studies</span>
+            <span class="topic-pill">Scalability concepts</span>
+            <span class="topic-pill">Load balancing</span>
+            <span class="topic-pill">Caching (Redis)</span>
+            <span class="topic-pill">CDN</span>
+            <span class="topic-pill">DB sharding &amp; replication</span>
+            <span class="topic-pill">Microservices</span>
+            <span class="topic-pill">Real-world case studies</span>
           </div>
           <div class="phase-meta">
             <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg> 6 lessons</span>
@@ -976,9 +738,12 @@
         </div>
       </div>
 
-      <!-- PHASE 10 AI -->
+      <!-- Phase 10: AI Tools -->
       <div class="phase-item reveal">
-        <div class="phase-left"><div class="phase-node">10</div><div class="phase-line"></div></div>
+        <div class="phase-left">
+          <div class="phase-node">10</div>
+          <!-- last item — no line needed -->
+        </div>
         <div class="phase-body">
           <div class="phase-top">
             <div class="phase-title-row">
@@ -987,11 +752,19 @@
               </div>
               <div class="phase-name">AI Tools &amp; Prompt Engineering</div>
             </div>
-            <div class="phase-badges"><span class="badge badge-amber">Future Skills</span><span class="badge badge-amber">2025 Must-Have</span></div>
+            <div class="phase-badges">
+              <span class="badge badge-amber">Future Skills</span>
+              <span class="badge badge-amber">2025 Must-Have</span>
+            </div>
           </div>
-          <p class="phase-desc">AI ko apna competitor mat samjho — apna superpower banao. Jo developer AI tools effectively use karta hai woh 3–10x zyada productive hai. Prompt engineering ab ek real, valuable skill hai.</p>
+          <p class="phase-desc">AI ko apna competitor mat samjho — apna superpower banao. Jo developer AI tools effectively use karta hai woh 3–10x zyada productive hai.</p>
           <div class="phase-topics">
-            <span class="topic-pill">Prompt Engineering basics</span><span class="topic-pill">ChatGPT for debugging</span><span class="topic-pill">GitHub Copilot effectively</span><span class="topic-pill">AI for documentation</span><span class="topic-pill">Claude for code review</span><span class="topic-pill">AI API integration</span>
+            <span class="topic-pill">Prompt Engineering basics</span>
+            <span class="topic-pill">ChatGPT for debugging</span>
+            <span class="topic-pill">GitHub Copilot effectively</span>
+            <span class="topic-pill">AI for documentation</span>
+            <span class="topic-pill">Claude for code review</span>
+            <span class="topic-pill">AI API integration</span>
           </div>
           <div class="phase-meta">
             <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg> 4 lessons</span>
@@ -1000,11 +773,17 @@
         </div>
       </div>
 
-    </div>
-  </div>
+    </div><!-- end .phase-list -->
+  </div><!-- end .container -->
 </section>
+<!-- ============================================================
+     ROADMAP SECTION — ends
+     ============================================================ -->
 
-<!-- ── WHY COODLEY ── -->
+
+<!-- ============================================================
+     WHY COODLEY SECTION — starts
+     ============================================================ -->
 <section>
   <div class="container">
     <div class="reveal">
@@ -1026,17 +805,17 @@
       <div class="why-card reveal">
         <div class="why-icon wi-amber"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
         <h3 class="why-title">Real Community</h3>
-        <p class="why-desc">Koi toxicity nahi, koi gatekeeping nahi. Hindi, English, Hinglish — jo bhi comfortable ho. Sirf real help.</p>
+        <p class="why-desc">Koi toxicity nahi. Hindi, English, Hinglish — jo bhi comfortable ho. Sirf real help.</p>
       </div>
       <div class="why-card reveal">
         <div class="why-icon wi-purple"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
         <h3 class="why-title">Zero Fakeness</h3>
-        <p class="why-desc">No clickbait titles, no fake guarantees. Agar AI kuch replace karega, hum batayenge. Real talk only, hamesha.</p>
+        <p class="why-desc">No clickbait titles, no fake guarantees. Real talk only, hamesha.</p>
       </div>
       <div class="why-card reveal">
         <div class="why-icon wi-green"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
         <h3 class="why-title">Practical First</h3>
-        <p class="why-desc">Theory ke baad hamesha practical. Real projects, real code, real problems. Sirf padhna nahi — banana bhi.</p>
+        <p class="why-desc">Theory ke baad hamesha practical. Real projects, real code. Sirf padhna nahi — banana bhi.</p>
       </div>
       <div class="why-card reveal">
         <div class="why-icon wi-blue"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
@@ -1048,12 +827,18 @@
       <div class="stat-item"><div class="stat-num">80+</div><div class="stat-label">Detailed lessons</div></div>
       <div class="stat-item"><div class="stat-num">14</div><div class="stat-label">Learning modules</div></div>
       <div class="stat-item"><div class="stat-num">₹0</div><div class="stat-label">Cost for core content</div></div>
-      <div class="stat-item"><div class="stat-num">3</div><div class="stat-label">Language tracks (C++, Java, Python)</div></div>
+      <div class="stat-item"><div class="stat-num">3</div><div class="stat-label">Language tracks</div></div>
     </div>
   </div>
 </section>
+<!-- ============================================================
+     WHY COODLEY SECTION — ends
+     ============================================================ -->
 
-<!-- ── AI SECTION ── -->
+
+<!-- ============================================================
+     AI REALITY SECTION — starts
+     ============================================================ -->
 <section class="ai-section">
   <div class="container">
     <div class="ai-inner">
@@ -1092,8 +877,14 @@
     </div>
   </div>
 </section>
+<!-- ============================================================
+     AI REALITY SECTION — ends
+     ============================================================ -->
 
-<!-- ── CURRICULUM PREVIEW ── -->
+
+<!-- ============================================================
+     CURRICULUM PREVIEW SECTION — starts
+     ============================================================ -->
 <section>
   <div class="container">
     <div class="reveal">
@@ -1140,7 +931,7 @@
 
       <div class="curriculum-row">
         <span class="curr-num">06</span>
-        <span class="curr-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2Z"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2Z"/></svg></span>
+        <span class="curr-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5"/></svg></span>
         <div class="curr-info"><p class="curr-title">DSA — Data Structures &amp; Algorithms</p><p class="curr-sub">Arrays, Trees, Graphs, DP, Complexity</p></div>
         <span class="badge badge-red">Interview</span>
       </div>
@@ -1208,17 +999,23 @@
         <span class="badge badge-amber">Future Skills</span>
       </div>
 
-    </div>
+    </div><!-- end .curriculum-grid -->
   </div>
 </section>
+<!-- ============================================================
+     CURRICULUM PREVIEW SECTION — ends
+     ============================================================ -->
 
-<!-- ── COMMUNITY ── -->
+
+<!-- ============================================================
+     COMMUNITY SECTION — starts
+     ============================================================ -->
 <section class="community-section">
   <div class="container">
     <div class="reveal">
       <p class="section-eyebrow" style="justify-content:center">Community</p>
       <h2 class="section-title">Ek aisi community jo actually help karti hai</h2>
-      <p class="section-sub" style="margin:0 auto;text-align:center">Koi toxic culture nahi. Koi judge nahi karega. Hindi mein pucho, English mein pucho — koi baat nahi.</p>
+      <p class="section-sub" style="margin:0 auto;text-align:center">Koi toxic culture nahi. Hindi mein pucho, English mein pucho — koi baat nahi.</p>
     </div>
     <div class="community-values reveal">
       <span class="val-pill"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> No question shaming</span>
@@ -1231,21 +1028,30 @@
     <div class="join-cards reveal">
       <a href="#" class="join-card">
         <div class="join-card-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
-        <p class="join-card-label">Discord</p><p class="join-card-sub">Join the server</p>
+        <p class="join-card-label">Discord</p>
+        <p class="join-card-sub">Join the server</p>
       </a>
       <a href="#" class="join-card">
         <div class="join-card-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg></div>
-        <p class="join-card-label">GitHub</p><p class="join-card-sub">Discussions &amp; Issues</p>
+        <p class="join-card-label">GitHub</p>
+        <p class="join-card-sub">Discussions &amp; Issues</p>
       </a>
       <a href="https://raunakkarn555.github.io/coodley/community/projects.html" class="join-card">
         <div class="join-card-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg></div>
-        <p class="join-card-label">Projects</p><p class="join-card-sub">Show your work</p>
+        <p class="join-card-label">Projects</p>
+        <p class="join-card-sub">Show your work</p>
       </a>
     </div>
   </div>
 </section>
+<!-- ============================================================
+     COMMUNITY SECTION — ends
+     ============================================================ -->
 
-<!-- ── TESTIMONIALS ── -->
+
+<!-- ============================================================
+     TESTIMONIALS SECTION — starts
+     ============================================================ -->
 <section>
   <div class="container">
     <div class="reveal">
@@ -1263,7 +1069,7 @@
       </div>
       <div class="testimonial-card">
         <div class="t-stars">★★★★★</div>
-        <p class="t-quote">"AI wali section ne mujhe sabse zyada help kiya. Maine sochta tha mera koi future nahi developer banne ka. Ab samajh aaya kaise AI ke saath kaam karein."</p>
+        <p class="t-quote">"AI wali section ne mujhe sabse zyada help kiya. Ab samajh aaya kaise AI ke saath kaam karein developer banne ke liye."</p>
         <div class="t-author">
           <div class="t-avatar">PS</div>
           <div><p class="t-name">Priya Sharma</p><p class="t-detail">1st Year BCA, Jaipur</p></div>
@@ -1271,7 +1077,7 @@
       </div>
       <div class="testimonial-card">
         <div class="t-stars">★★★★★</div>
-        <p class="t-quote">"DSA section bahut kaam aaya. C++ ke saath shuru kiya, aur ab LeetCode Medium solve kar raha hoon. Sequence bilkul sahi thi — CS basics se direct DSA."</p>
+        <p class="t-quote">"DSA section bahut kaam aaya. C++ ke saath shuru kiya, aur ab LeetCode Medium solve kar raha hoon. Sequence bilkul sahi thi."</p>
         <div class="t-author">
           <div class="t-avatar">RM</div>
           <div><p class="t-name">Rahul Mishra</p><p class="t-detail">Self-taught Dev, Patna</p></div>
@@ -1280,8 +1086,14 @@
     </div>
   </div>
 </section>
+<!-- ============================================================
+     TESTIMONIALS SECTION — ends
+     ============================================================ -->
 
-<!-- ── CTA ── -->
+
+<!-- ============================================================
+     CTA SECTION — starts
+     ============================================================ -->
 <section class="cta-section">
   <div class="cta-inner container reveal">
     <p class="section-eyebrow" style="justify-content:center">Ready?</p>
@@ -1299,14 +1111,24 @@
     </div>
   </div>
 </section>
+<!-- ============================================================
+     CTA SECTION — ends
+     ============================================================ -->
 
-<!-- ── FOOTER ── -->
+
+<!-- ============================================================
+     FOOTER — starts
+     ============================================================ -->
 <footer>
   <div class="container">
     <div class="footer-top">
+
+      <!-- Brand column -->
       <div class="footer-brand">
         <a href="https://raunakkarn555.github.io/coodley/" class="nav-logo" style="display:inline-flex;margin-bottom:4px">
-          <div class="logo-mark"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
+          <div class="logo-mark">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          </div>
           Coodley
         </a>
         <p>India's most honest full-stack web &amp; software development learning platform. From scratch to production, completely free.</p>
@@ -1317,6 +1139,7 @@
         </div>
       </div>
 
+      <!-- Learn column -->
       <div class="footer-col">
         <h4>Learn</h4>
         <a href="https://raunakkarn555.github.io/coodley/learn/"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg> All Modules</a>
@@ -1328,6 +1151,7 @@
         <a href="https://raunakkarn555.github.io/coodley/learn/backend/"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/></svg> Node.js + Express</a>
       </div>
 
+      <!-- Languages & DSA column -->
       <div class="footer-col">
         <h4>Languages &amp; DSA</h4>
         <a href="https://raunakkarn555.github.io/coodley/learn/cpp/"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg> C++ Programming</a>
@@ -1339,6 +1163,7 @@
         <a href="https://raunakkarn555.github.io/coodley/learn/devops/"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg> DevOps &amp; Cloud</a>
       </div>
 
+      <!-- Platform column -->
       <div class="footer-col">
         <h4>Platform</h4>
         <a href="https://raunakkarn555.github.io/coodley/community/"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg> Community</a>
@@ -1350,18 +1175,21 @@
         <a href="https://raunakkarn555.github.io/coodley/tools/progress-tracker.html"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Progress Tracker</a>
       </div>
 
+      <!-- Legal column -->
       <div class="footer-col">
         <h4>Legal</h4>
         <a href="https://raunakkarn555.github.io/coodley/legal/terms.html"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg> Terms of Service</a>
-        <a href="https://raunakkarn555.github.io/coodley/legal/privacy.html"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> Privacy Policy</a>
+        <a href="https://raunakkarn555.github.io/coodley/legal/privacy.html"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> Privacy Policy</a>
         <a href="https://raunakkarn555.github.io/coodley/legal/cookie-policy.html"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg> Cookie Policy</a>
         <a href="https://raunakkarn555.github.io/coodley/community/rules.html"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> Community Rules</a>
         <a href="mailto:raunakkarn555@gmail.com"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg> Contact Us</a>
       </div>
-    </div>
+
+    </div><!-- end .footer-top -->
 
     <hr class="footer-divider" />
 
+    <!-- Footer bottom bar -->
     <div class="footer-bottom">
       <div class="footer-bottom-left">
         <p>Made with <span>♥</span> for Indian developers &nbsp;·&nbsp; © 2026 Coodley</p>
@@ -1374,65 +1202,16 @@
         <a href="https://raunakkarn555.github.io/coodley/sitemap.xml">Sitemap</a>
       </div>
     </div>
-  </div>
+
+  </div><!-- end .container -->
 </footer>
+<!-- ============================================================
+     FOOTER — ends
+     ============================================================ -->
 
-<script>
-  // ── INIT LUCIDE ICONS ──
-  if (typeof lucide !== "undefined") lucide.createIcons();
 
-  // ── THEME TOGGLE ──
-  const toggleBtn = document.getElementById('themeToggle');
-  const themeIcon = document.getElementById('themeIcon');
-  const htmlEl    = document.documentElement;
+<!-- ✅ Global JS (theme, mobile nav, scroll reveal) -->
+<script src="main.js"></script>
 
-  const SUN_SVG = `<circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>`;
-  const MOON_SVG = `<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>`;
-
-  function setTheme(theme) {
-    htmlEl.setAttribute('data-theme', theme);
-    themeIcon.innerHTML = theme === 'dark' ? SUN_SVG : MOON_SVG;
-    localStorage.setItem('coodley-theme', theme);
-  }
-
-  const saved = localStorage.getItem('coodley-theme') || 'dark';
-  setTheme(saved);
-
-  toggleBtn.addEventListener('click', () => {
-    const current = htmlEl.getAttribute('data-theme');
-    setTheme(current === 'dark' ? 'light' : 'dark');
-  });
-
-  // ── SCROLL REVEAL ──
-  const revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('visible');
-        revealObserver.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.06 });
-
-  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
-
-  // ── MOBILE MENU ──
-  const hamburger = document.getElementById('hamburger');
-  let menuOpen = false;
-  hamburger.addEventListener('click', () => {
-    const links = document.querySelector('.nav-links');
-    menuOpen = !menuOpen;
-    if (menuOpen) {
-      links.style.cssText = `display:flex;flex-direction:column;gap:4px;position:fixed;top:64px;left:0;right:0;background:var(--bg2);padding:16px 20px 24px;border-bottom:1px solid var(--border);z-index:199;`;
-    } else {
-      links.style.cssText = '';
-    }
-  });
-  document.querySelectorAll('.nav-links a').forEach(a => {
-    a.addEventListener('click', () => {
-      menuOpen = false;
-      document.querySelector('.nav-links').style.cssText = '';
-    });
-  });
-</script>
 </body>
 </html>
