@@ -170,6 +170,38 @@ nav {
 .nav-mobile-menu .mobile-divider { height: 1px; background: var(--border); margin: 8px 0; }
 .nav-mobile-menu .mobile-actions { display: flex; gap: 8px; padding: 8px 0 0; flex-wrap: wrap; }
 
+
+///
+
+
+/* ── MOBILE NAV BUTTON FIX ── */
+.mobile-start-btn {
+  width: 100%;
+  justify-content: center;
+}
+
+@media (max-width: 820px) {
+
+  /* hide top navbar start button */
+  .mobile-only-start {
+    display: none;
+  }
+
+  /* keep donate + theme visible */
+  .nav-right {
+    gap: 8px;
+  }
+
+  .btn-donate {
+    display: inline-flex;
+  }
+
+  .theme-toggle {
+    display: flex;
+  }
+}
+
+///
 /* ══════════════════════════════
    SHARED SECTION / CONTAINER
 ══════════════════════════════ */
@@ -365,7 +397,8 @@ mark { background: rgba(61,232,176,.13); color: var(--accent); padding: 1px 5px;
    DONATE BANNER
 ══════════════════════════════ */
 .donate-banner-wrap {
-  max-width: 1200px; margin: 24px auto 0; padding: 0 clamp(20px,5%,80px);
+  max-width: 1200px; margin: 24px auto 0; padding: 10px clamp(20px, 5%, 80px);
+
 }
 .donate-banner-inner {
   display: flex; align-items: center; justify-content: space-between;
