@@ -1,0 +1,2266 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Coodley — 9-Month Web Dev Tracker | 15 LPA Goal</title>
+<meta name="description" content="India's most honest full-stack web development learning platform. Free step-by-step roadmap from CS basics to React, Node.js, DSA, System Design. No paywall. No fake promises. Built for Indian students." />
+<meta name="keywords" content="free coding course India, full stack developer India, learn web development free, JavaScript tutorial Hindi, DSA for beginners India, free programming course, Coodley, Indian developer platform, React Node.js free course" />
+<meta name="author" content="Coodley" />
+<meta name="robots" content="index, follow" />
+<link rel="canonical" href="https://raunakkarn555.github.io/coodley/" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://raunakkarn555.github.io/coodley/" />
+<meta property="og:title" content="Coodley — India's Free Full Stack Learning Platform" />
+<meta property="og:description" content="From 10th grader to job-ready developer — completely free. India's most honest, sequenced full-stack development curriculum. No paywall. No clickbait." />
+<meta property="og:site_name" content="Coodley" />
+<meta property="og:locale" content="en_IN" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Coodley — India's Free Full Stack Learning Platform" />
+<meta name="twitter:description" content="Free full-stack development roadmap for Indian students. CS basics to System Design. No fees. No BS." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../assets/css/main.css" />
+
+<style>
+/* ============================================================
+   COODLEY DESIGN TOKENS
+   ============================================================ */
+:root {
+  --bg:      #07090f;
+  --bg1:     #07090f;
+  --bg2:     #0c0f1a;
+  --bg3:     #111827;
+  --bg4:     #1a2235;
+  --bg5:     #22304a;
+  --surface: rgba(255,255,255,0.04);
+  --border:  rgba(255,255,255,0.08);
+  --border2: rgba(255,255,255,0.13);
+  --border3: rgba(99,210,179,0.35);
+  --border-glow: rgba(61,232,176,0.35);
+  --text:    #e8edf5;
+  --fg:      #e8edf5;
+  --muted:   #4d5e72;
+  --muted2:  #8899b0;
+  --accent:  #3de8b0;
+  --accent2: #00c98a;
+  --accent3: #6ef5ce;
+  --accent-dim: rgba(61,232,176,0.12);
+  --amber:   #f4a942;
+  --amber-bg:rgba(244,169,66,0.07);
+  --amber-border:rgba(244,169,66,0.22);
+  --blue:    #5ba4f5;
+  --blue-bg: rgba(91,164,245,0.08);
+  --purple:  #9d7cf5;
+  --red:     #f56565;
+  --green:   #3de8b0;
+  --green2:  #00ffaa;
+  --yellow:  #f4a942;
+  --pink:    #f472b6;
+  --orange:  #fb923c;
+  --teal:    #2dd4bf;
+  --glow-accent: 0 0 30px rgba(61,232,176,0.18), 0 0 60px rgba(61,232,176,0.07);
+  --shadow:  0 8px 32px rgba(0,0,0,0.4);
+  --shadow-lg: 0 20px 60px rgba(0,0,0,0.5);
+  --radius:    12px;
+  --radius-sm: 8px;
+  --radius-lg: 18px;
+  --radius-xl: 24px;
+  --font-head: 'Bricolage Grotesque', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --nav-h:     64px;
+  --subnav-h:  48px;
+}
+
+[data-theme="light"] {
+  --bg:      #f3f5f9;
+  --bg1:     #fafaff;
+  --bg2:     #f0f2f8;
+  --bg3:     #e5e9f4;
+  --bg4:     #d8dded;
+  --bg5:     #ccd4e8;
+  --surface: rgba(0,0,0,0.03);
+  --border:  rgba(0,0,0,0.08);
+  --border2: rgba(0,0,0,0.13);
+  --border3: rgba(0,180,130,0.35);
+  --border-glow: rgba(0,180,130,0.4);
+  --text:    #0c1220;
+  --fg:      #0c1220;
+  --muted:   #7a8fa6;
+  --muted2:  #3d4f64;
+  --accent:  #00a876;
+  --accent2: #008f62;
+  --accent3: #00d495;
+  --amber:   #d97706;
+  --blue:    #2563eb;
+  --purple:  #7c3aed;
+  --red:     #dc2626;
+  --green:   #059669;
+  --yellow:  #d97706;
+  --pink:    #db2777;
+  --orange:  #ea580c;
+  --shadow:  0 8px 32px rgba(0,0,0,0.1);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--fg);
+  font-size: 15px;
+  line-height: 1.6;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+body::before {
+  content: '';
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  pointer-events: none; z-index: 0;
+  background:
+    radial-gradient(ellipse 80% 50% at 20% -10%, rgba(61,232,176,0.06) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 80% 100%, rgba(91,164,245,0.05) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 30% at 60% 40%, rgba(157,124,245,0.03) 0%, transparent 60%);
+}
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--bg4); border-radius: 2px; }
+
+
+
+/* ============================================================
+   DEVPATH SUB-NAVBAR  (was the main nav, now sits below)
+   ============================================================ */
+.sub-nav {
+  position: fixed;
+  top: var(--nav-h);
+  left: 0; right: 0;
+  z-index: 200;
+  height: var(--subnav-h);
+  background: rgba(11,14,26,0.96);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+}
+[data-theme="light"] .sub-nav { background: rgba(240,242,248,0.97); }
+
+.sub-nav-inner {
+  max-width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  padding: 0 16px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.sub-nav-inner::-webkit-scrollbar { display: none; }
+
+/* Sub-nav buttons (restyled DevPath nbtn to match Coodley) */
+.nbtn {
+  padding: 5px 11px;
+  border: none;
+  background: transparent;
+  color: var(--muted);
+  font-family: var(--font-body);
+  font-size: .775rem;
+  font-weight: 500;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all .2s;
+  border: 1px solid transparent;
+  letter-spacing: .01em;
+  flex-shrink: 0;
+}
+.nbtn:hover { background: var(--surface); color: var(--fg); border-color: var(--border2); }
+.nbtn.active {
+  background: rgba(61,232,176,0.1);
+  color: var(--accent3);
+  border-color: rgba(61,232,176,0.3);
+  box-shadow: 0 0 12px rgba(61,232,176,0.1);
+}
+.nbtn.special { color: var(--accent); border-color: rgba(61,232,176,0.2); background: rgba(61,232,176,0.05); }
+.nbtn.special.active { background: rgba(61,232,176,0.15); color: var(--accent); border-color: rgba(61,232,176,0.4); box-shadow: 0 0 14px rgba(61,232,176,0.18); }
+.nbtn.job { color: var(--amber); border-color: rgba(244,169,66,0.2); background: rgba(244,169,66,0.05); }
+.nbtn.job.active { background: rgba(244,169,66,0.15); color: var(--amber); border-color: rgba(244,169,66,0.4); }
+
+/* ============================================================
+   MAIN CONTENT AREA
+   ============================================================ */
+.main {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding-top: calc(var(--nav-h) + var(--subnav-h) + 24px);
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 100px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ============================================================
+   DEVPATH SECTIONS — all original styles, updated tokens
+   ============================================================ */
+.section { display: none; animation: fadeIn .35s ease; }
+.section.active { display: block; }
+@keyframes fadeIn { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }
+
+/* HERO */
+.hero {
+  background: linear-gradient(135deg, rgba(61,232,176,0.07) 0%, rgba(91,164,245,0.04) 50%, rgba(157,124,245,0.04) 100%);
+  border: 1px solid var(--border2);
+  border-radius: var(--radius-xl);
+  padding: 40px;
+  margin-bottom: 24px;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute; top: -60px; right: -60px; width: 300px; height: 300px;
+  background: radial-gradient(circle, rgba(61,232,176,0.12), transparent 70%);
+  pointer-events: none;
+}
+.hero::after {
+  content: '';
+  position: absolute; bottom: -40px; left: 200px; width: 200px; height: 200px;
+  background: radial-gradient(circle, rgba(91,164,245,0.07), transparent 70%);
+  pointer-events: none;
+}
+.hero-tag {
+  display: inline-flex; align-items: center; gap: 7px;
+  background: rgba(61,232,176,0.08);
+  border: 1px solid rgba(61,232,176,0.25);
+  border-radius: 20px; padding: 4px 14px;
+  font-size: .72rem; font-weight: 700; color: var(--accent3);
+  letter-spacing: .06em; text-transform: uppercase; margin-bottom: 16px;
+  font-family: var(--font-mono);
+}
+.hero h1 {
+  font-family: var(--font-head);
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 800; line-height: 1.05; margin-bottom: 10px; letter-spacing: -0.03em;
+}
+.hero h1 .hl { color: var(--accent); }
+.hero p { color: var(--muted2); font-size: .92rem; max-width: 560px; line-height: 1.7; margin-bottom: 24px; }
+.hero-meta { display: flex; gap: 10px; flex-wrap: wrap; }
+.hero-badge {
+  padding: 6px 16px; border-radius: 20px; font-size: .75rem; font-weight: 700;
+  border: 1px solid; display: flex; align-items: center; gap: 6px;
+  transition: all .2s; letter-spacing: .02em; font-family: var(--font-body);
+}
+.hero-badge:hover { transform: translateY(-1px); }
+.hb-green { color: var(--green); border-color: rgba(61,232,176,0.3); background: rgba(61,232,176,0.07); }
+.hb-blue  { color: var(--blue);  border-color: rgba(91,164,245,0.3); background: rgba(91,164,245,0.07); }
+.hb-yellow{ color: var(--amber); border-color: rgba(244,169,66,0.3);  background: rgba(244,169,66,0.07); }
+.hb-pink  { color: var(--pink);  border-color: rgba(244,114,182,0.3); background: rgba(244,114,182,0.07); }
+.hb-teal  { color: var(--teal);  border-color: rgba(45,212,191,0.3);  background: rgba(45,212,191,0.07); }
+
+/* STATS GRID */
+.stats-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(155px,1fr)); gap: 14px; margin-bottom: 24px; }
+.stat-card {
+  background: var(--bg2); border: 1px solid var(--border);
+  border-radius: var(--radius-lg); padding: 20px 20px 18px;
+  transition: all .25s; cursor: default; position: relative; overflow: hidden;
+}
+.stat-card::before {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,.015), transparent);
+  border-radius: inherit;
+}
+.stat-card:hover { transform: translateY(-3px); border-color: var(--border2); box-shadow: var(--shadow); }
+.stat-num { font-family: var(--font-mono); font-size: 2.1rem; font-weight: 700; line-height: 1; margin-bottom: 6px; }
+.stat-label { font-size: .68rem; color: var(--muted); font-weight: 700; text-transform: uppercase; letter-spacing: .08em; font-family: var(--font-body); }
+.stat-glow { position: absolute; bottom: -10px; right: -10px; width: 60px; height: 60px; border-radius: 50%; opacity: .12; filter: blur(20px); }
+.s-green .stat-num { color: var(--green); } .s-green .stat-glow { background: var(--green); }
+.s-blue  .stat-num { color: var(--blue);  } .s-blue  .stat-glow { background: var(--blue);  }
+.s-yellow.stat-num { color: var(--amber); } .s-yellow .stat-glow{ background: var(--amber); }
+.s-yellow .stat-num{ color: var(--amber); }
+.s-pink  .stat-num { color: var(--pink);  } .s-pink  .stat-glow { background: var(--pink);  }
+.s-orange.stat-num { color: var(--orange);} .s-orange .stat-glow{ background: var(--orange);}
+.s-orange .stat-num{ color: var(--orange);}
+.s-accent .stat-num{ color: var(--accent3);} .s-accent .stat-glow { background: var(--accent3); }
+
+/* SECTION TITLES */
+.sec-title {
+  font-family: var(--font-head);
+  font-size: 1.2rem; font-weight: 700;
+  margin: 32px 0 16px; display: flex; align-items: center; gap: 12px; letter-spacing: -.02em;
+}
+.sec-icon {
+  width: 34px; height: 34px; border-radius: 10px;
+  display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0;
+}
+.si-green  { background: rgba(61,232,176,0.1);  box-shadow: 0 0 16px rgba(61,232,176,0.12); }
+.si-blue   { background: rgba(91,164,245,0.1);  box-shadow: 0 0 16px rgba(91,164,245,0.12); }
+.si-yellow { background: rgba(244,169,66,0.1);  box-shadow: 0 0 16px rgba(244,169,66,0.12); }
+.si-accent { background: rgba(61,232,176,0.1);  box-shadow: 0 0 16px rgba(61,232,176,0.12); }
+.si-pink   { background: rgba(244,114,182,0.1); box-shadow: 0 0 16px rgba(244,114,182,0.12); }
+.si-orange { background: rgba(251,146,60,0.1);  box-shadow: 0 0 16px rgba(251,146,60,0.12); }
+
+/* CARDS */
+.card {
+  background: var(--bg2); border: 1px solid var(--border);
+  border-radius: var(--radius-lg); padding: 24px; margin-bottom: 16px;
+  position: relative; overflow: hidden;
+}
+.card::before {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,.012), transparent 50%);
+  pointer-events: none; border-radius: inherit;
+}
+
+/* SUBJECT PROGRESS */
+.subj-progress-card { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 22px; }
+.prog-row { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+.prog-label { font-size: .8rem; font-weight: 700; min-width: 100px; font-family: var(--font-body); }
+.prog-bar-wrap { flex: 1; height: 8px; background: var(--bg4); border-radius: 4px; overflow: hidden; }
+.prog-bar-fill { height: 100%; border-radius: 4px; transition: width .6s cubic-bezier(.4,0,.2,1); position: relative; }
+.prog-bar-fill::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.25), transparent);
+  border-radius: 4px; animation: shimmer 2.5s infinite;
+}
+@keyframes shimmer { 0%{transform:translateX(-100%)} 100%{transform:translateX(100%)} }
+.prog-pct { font-size: .72rem; font-family: var(--font-mono); color: var(--muted); min-width: 36px; text-align: right; font-weight: 600; }
+
+/* SYLLABUS TABS */
+.subj-tabs { display: flex; gap: 6px; margin-bottom: 20px; flex-wrap: wrap; }
+.subj-tab {
+  padding: 8px 18px; border-radius: 10px; border: 1px solid var(--border);
+  background: var(--bg3); color: var(--muted); font-size: .82rem; font-weight: 600;
+  cursor: pointer; transition: all .2s; font-family: var(--font-body);
+}
+.subj-tab:hover { border-color: var(--border2); color: var(--fg); }
+.subj-tab.st-green.active { border-color: var(--accent); color: var(--accent); background: rgba(61,232,176,0.08); box-shadow: 0 0 18px rgba(61,232,176,0.12); }
+.subj-tab.st-blue.active  { border-color: var(--blue);   color: var(--blue);   background: rgba(91,164,245,0.08); box-shadow: 0 0 18px rgba(91,164,245,0.12); }
+.subj-tab.st-yellow.active{ border-color: var(--amber);  color: var(--amber);  background: rgba(244,169,66,0.08);  box-shadow: 0 0 18px rgba(244,169,66,0.12); }
+.subj-tab.st-pink.active  { border-color: var(--pink);   color: var(--pink);   background: rgba(244,114,182,0.08); box-shadow: 0 0 18px rgba(244,114,182,0.12); }
+.subj-panel { display: none; }
+.subj-panel.active { display: block; animation: fadeIn .3s ease; }
+
+/* UNIT / STAGE / CHAPTER */
+.unit-block { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius-xl); margin-bottom: 16px; overflow: hidden; box-shadow: var(--shadow); }
+.unit-header { padding: 20px 24px; background: linear-gradient(135deg, var(--bg3), var(--bg2)); border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.unit-badge { font-size: .65rem; font-weight: 800; text-transform: uppercase; letter-spacing: .08em; padding: 4px 12px; border-radius: 20px; border: 1px solid; font-family: var(--font-mono); }
+.ub-green  { color: var(--green); border-color: rgba(61,232,176,0.35);  background: rgba(61,232,176,0.07); }
+.ub-blue   { color: var(--blue);  border-color: rgba(91,164,245,0.35);  background: rgba(91,164,245,0.07); }
+.ub-yellow { color: var(--amber); border-color: rgba(244,169,66,0.35);  background: rgba(244,169,66,0.07); }
+.ub-pink   { color: var(--pink);  border-color: rgba(244,114,182,0.35); background: rgba(244,114,182,0.07);}
+.ub-accent { color: var(--accent3); border-color: rgba(61,232,176,0.35); background: rgba(61,232,176,0.08);}
+.unit-title { font-family: var(--font-head); font-weight: 800; font-size: 1.05rem; flex: 1; letter-spacing: -.01em; }
+.unit-pct { font-family: var(--font-mono); font-size: .9rem; font-weight: 700; }
+.unit-bar-wrap { height: 3px; background: var(--bg4); margin: 0 24px; overflow: hidden; border-radius: 2px; }
+
+.stage-block { margin: 16px 20px 0; border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; transition: border-color .2s; }
+.stage-block:last-child { margin-bottom: 16px; }
+.stage-block:hover { border-color: var(--border2); }
+.stage-header { padding: 14px 18px; display: flex; align-items: center; gap: 12px; cursor: pointer; user-select: none; background: var(--bg3); transition: background .2s; }
+.stage-header:hover { background: var(--bg4); }
+.stage-num { width: 26px; height: 26px; border-radius: 7px; display: flex; align-items: center; justify-content: center; font-size: .72rem; font-weight: 800; flex-shrink: 0; font-family: var(--font-mono); }
+.stage-name { font-weight: 700; font-size: .9rem; flex: 1; letter-spacing: -.01em; font-family: var(--font-body); }
+.stage-prog { font-size: .72rem; color: var(--muted); font-family: var(--font-mono); font-weight: 600; }
+.stage-arrow { color: var(--muted); transition: transform .25s; flex-shrink: 0; }
+.stage-block.open .stage-arrow { transform: rotate(180deg); }
+.chapter-list { padding: 0 16px 16px; display: none; }
+.stage-block.open .chapter-list { display: block; }
+
+.chapter-card { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius); margin-top: 10px; overflow: hidden; transition: all .2s; }
+.chapter-card:hover { border-color: var(--border2); box-shadow: 0 4px 16px rgba(0,0,0,.2); }
+.chapter-header { display: flex; align-items: center; gap: 12px; padding: 14px 18px; cursor: pointer; user-select: none; }
+.chapter-chk { width: 18px; height: 18px; border-radius: 5px; border: 2px solid var(--border2); appearance: none; cursor: pointer; flex-shrink: 0; transition: all .15s; position: relative; }
+.chapter-chk:checked { border-color: var(--accent); background: var(--accent); }
+.chapter-chk:checked::after { content:'✓'; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); color:#07090f; font-size:.6rem; font-weight:900; }
+.chapter-info { flex: 1; min-width: 0; }
+.chapter-name { font-weight: 700; font-size: .88rem; margin-bottom: 4px; display: flex; align-items: center; gap: 7px; flex-wrap: wrap; font-family: var(--font-body); }
+.high-tag { font-size: .58rem; font-weight: 800; text-transform: uppercase; padding: 2px 7px; border-radius: 4px; letter-spacing: .05em; color: var(--red); border: 1px solid rgba(245,101,101,.35); background: rgba(245,101,101,.08); }
+.ch-meta { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.ch-prog-txt { font-size: .7rem; color: var(--muted); font-family: var(--font-mono); font-weight: 600; }
+.mini-bar { height: 4px; background: var(--bg4); border-radius: 2px; flex: 1; min-width: 60px; max-width: 130px; overflow: hidden; }
+.mini-bar-fill { height: 100%; border-radius: 2px; transition: width .4s; }
+.ch-arrow { color: var(--muted); transition: transform .25s; flex-shrink: 0; }
+.chapter-card.open .ch-arrow { transform: rotate(180deg); }
+.topics-area { display: none; border-top: 1px solid var(--border); padding: 4px 18px 14px; }
+.chapter-card.open .topics-area { display: block; }
+
+/* TOPIC ROWS */
+.topic-row { display: grid; grid-template-columns: 16px 1fr; gap: 12px; padding: 9px 4px; border-bottom: 1px solid rgba(61,232,176,.04); align-items: start; border-radius: 6px; transition: background .15s; }
+.topic-row:last-child { border-bottom: none; }
+.topic-row:hover { background: rgba(61,232,176,.03); }
+.topic-chk { width: 15px; height: 15px; border-radius: 4px; border: 1.5px solid var(--border2); appearance: none; cursor: pointer; transition: all .15s; margin-top: 4px; flex-shrink: 0; }
+.topic-chk:checked { background: var(--accent); border-color: var(--accent); box-shadow: 0 0 8px rgba(61,232,176,.3); }
+.topic-info { flex: 1; }
+.topic-name { font-size: .82rem; font-weight: 500; margin-bottom: 3px; line-height: 1.5; font-family: var(--font-body); }
+.topic-name.done { text-decoration: line-through; color: var(--muted); }
+.topic-sub { font-size: .72rem; color: var(--muted2); margin-bottom: 4px; line-height: 1.5; font-style: italic; padding-left: 2px; }
+.topic-cat { display: inline-flex; align-items: center; gap: 4px; font-size: .6rem; font-weight: 700; padding: 1px 6px; border-radius: 4px; text-transform: uppercase; letter-spacing: .04em; margin-bottom: 4px; font-family: var(--font-mono); }
+.tc-theory    { color: var(--blue);   background: rgba(91,164,245,.08);  border: 1px solid rgba(91,164,245,.2);   }
+.tc-practice  { color: var(--accent); background: rgba(61,232,176,.08);  border: 1px solid rgba(61,232,176,.2);   }
+.tc-project   { color: var(--orange); background: rgba(251,146,60,.08);  border: 1px solid rgba(251,146,60,.2);   }
+.tc-interview { color: var(--pink);   background: rgba(244,114,182,.08); border: 1px solid rgba(244,114,182,.2);  }
+
+.topic-notes {
+  width: 100%; background: var(--bg3); border: 1px solid transparent;
+  border-radius: 8px; padding: 5px 9px; color: var(--fg);
+  font-family: var(--font-body); font-size: .75rem; outline: none;
+  margin-top: 4px; transition: border-color .2s; resize: none;
+}
+.topic-notes:focus { border-color: var(--border2); }
+.conf-stars { display: flex; gap: 2px; margin-top: 5px; }
+.cstar { font-size: .72rem; cursor: pointer; color: var(--bg5); transition: color .1s; line-height: 1; }
+.cstar.lit { color: var(--amber); }
+.topic-flags { display: flex; gap: 4px; margin-top: 5px; }
+.flag-btn { width: 20px; height: 20px; border-radius: 5px; border: 1px solid var(--border); background: transparent; cursor: pointer; font-size: .62rem; display: flex; align-items: center; justify-content: center; transition: all .15s; }
+.flag-btn.f-rev   { border-color: rgba(61,232,176,.45);  background: rgba(61,232,176,.1);   }
+.flag-btn.f-doubt { border-color: rgba(245,101,101,.45); background: rgba(245,101,101,.1);  }
+.flag-btn.f-prio  { border-color: rgba(244,169,66,.45);  background: rgba(244,169,66,.1);   }
+
+.topic-count-chip {
+  display: inline-flex; align-items: center; gap: 4px;
+  background: var(--bg4); border: 1px solid var(--border);
+  border-radius: 6px; font-size: .6rem; font-weight: 700; color: var(--muted);
+  padding: 2px 7px; font-family: var(--font-mono);
+}
+
+/* COMPANION BANNER */
+.companion-banner {
+  background: linear-gradient(135deg, rgba(61,232,176,.07), rgba(45,212,191,.04));
+  border: 1px solid rgba(61,232,176,.2);
+  border-radius: var(--radius-lg); padding: 16px 20px; margin-bottom: 20px;
+  display: flex; align-items: flex-start; gap: 14px;
+}
+.companion-avatar {
+  width: 42px; height: 42px; border-radius: 12px;
+  background: linear-gradient(135deg, var(--accent), var(--teal));
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.2rem; flex-shrink: 0;
+}
+.companion-text { font-size: .85rem; color: var(--muted2); line-height: 1.7; font-family: var(--font-body); }
+.companion-text strong { color: var(--fg); }
+
+/* DAILY TRACKER */
+.daily-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(190px,1fr)); gap: 14px; margin: 16px 0; }
+.daily-card { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 20px; transition: all .2s; }
+.daily-card:hover { border-color: var(--border2); transform: translateY(-2px); }
+.daily-card h4 { font-size: .72rem; color: var(--muted); text-transform: uppercase; letter-spacing: .07em; font-weight: 700; margin-bottom: 10px; font-family: var(--font-body); }
+.big-inp { font-size: 2rem; font-family: var(--font-mono); font-weight: 700; background: none; border: none; width: 100%; outline: none; color: var(--fg); }
+.big-inp::placeholder { color: var(--muted); }
+.streak-display { display: flex; align-items: center; gap: 12px; }
+.streak-num { font-family: var(--font-mono); font-size: 3rem; font-weight: 700; color: var(--amber); line-height: 1; }
+.mood-grid { display: flex; gap: 7px; flex-wrap: wrap; }
+.mood-btn { padding: 6px 13px; border-radius: 20px; border: 1px solid var(--border); background: transparent; cursor: pointer; font-size: .8rem; transition: all .2s; color: var(--fg); font-family: var(--font-body); font-weight: 500; }
+.mood-btn:hover { background: var(--bg4); border-color: var(--border2); }
+.mood-btn.selected { border-color: var(--accent); background: rgba(61,232,176,.12); color: var(--accent3); }
+
+/* HEATMAP */
+.heatmap-row { display: flex; gap: 3px; flex-wrap: wrap; margin-top: 12px; }
+.heat-cell { width: 20px; height: 20px; border-radius: 4px; background: var(--bg4); border: 1px solid var(--border); cursor: pointer; transition: all .15s; }
+.heat-cell:hover { transform: scale(1.3); z-index: 1; }
+.heat-cell[data-level="1"] { background: rgba(61,232,176,.2);  border-color: rgba(61,232,176,.25); }
+.heat-cell[data-level="2"] { background: rgba(61,232,176,.4);  border-color: rgba(61,232,176,.45); }
+.heat-cell[data-level="3"] { background: rgba(61,232,176,.65); border-color: rgba(61,232,176,.65); }
+.heat-cell[data-level="4"] { background: var(--accent); border-color: var(--accent); box-shadow: 0 0 8px rgba(61,232,176,.4); }
+
+/* TODO */
+.todo-add-row { display: flex; gap: 8px; margin-bottom: 16px; flex-wrap: wrap; }
+.todo-inp { flex: 1; min-width: 180px; background: var(--bg3); border: 1px solid var(--border); border-radius: 10px; padding: 10px 14px; color: var(--fg); font-family: var(--font-body); font-size: .85rem; outline: none; }
+.todo-inp:focus { border-color: var(--border2); }
+.todo-sel { background: var(--bg3); border: 1px solid var(--border); border-radius: 10px; padding: 10px; color: var(--fg); font-family: var(--font-body); font-size: .82rem; outline: none; }
+.btn-add { background: var(--accent); color: #07090f; border: none; border-radius: 10px; padding: 10px 18px; font-weight: 700; font-family: var(--font-body); cursor: pointer; font-size: .82rem; box-shadow: 0 4px 15px rgba(61,232,176,.25); transition: all .2s; }
+.btn-add:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(61,232,176,.35); background: var(--accent2); }
+.todo-list { display: flex; flex-direction: column; gap: 8px; }
+.todo-item { display: flex; align-items: center; gap: 10px; background: var(--bg3); border: 1px solid var(--border); border-radius: 12px; padding: 12px 16px; transition: all .2s; }
+.todo-item:hover { border-color: var(--border2); }
+.todo-item.done-item { opacity: .5; }
+.todo-item.done-item .todo-text { text-decoration: line-through; }
+.todo-text { flex: 1; font-size: .85rem; font-weight: 500; font-family: var(--font-body); }
+.todo-tag { font-size: .62rem; padding: 2px 8px; border-radius: 8px; font-weight: 700; border: 1px solid; font-family: var(--font-mono); }
+.tag-js      { color: var(--amber); border-color: rgba(244,169,66,.3);  background: rgba(244,169,66,.06); }
+.tag-react   { color: var(--blue);  border-color: rgba(91,164,245,.3);  background: rgba(91,164,245,.06); }
+.tag-node    { color: var(--accent);border-color: rgba(61,232,176,.3);  background: rgba(61,232,176,.06); }
+.tag-dsa     { color: var(--pink);  border-color: rgba(244,114,182,.3); background: rgba(244,114,182,.06);}
+.tag-general { color: var(--accent3);border-color:rgba(61,232,176,.3);  background: rgba(61,232,176,.06); }
+.tag-job     { color: var(--orange);border-color: rgba(251,146,60,.3);  background: rgba(251,146,60,.06); }
+.prio-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+.pd-high { background: var(--red);    box-shadow: 0 0 6px rgba(245,101,101,.5); }
+.pd-med  { background: var(--amber);  }
+.pd-low  { background: var(--accent); }
+.todo-del { background: none; border: none; color: var(--muted); cursor: pointer; font-size: .75rem; padding: 2px; transition: color .2s; }
+.todo-del:hover { color: var(--red); }
+
+/* FORMS */
+.form-group { margin-bottom: 14px; }
+.form-group label { display: block; font-size: .72rem; color: var(--muted); margin-bottom: 6px; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; font-family: var(--font-body); }
+.form-group input, .form-group select, .form-group textarea { width: 100%; background: var(--bg3); border: 1px solid var(--border); border-radius: 10px; padding: 10px 13px; color: var(--fg); font-family: var(--font-body); font-size: .88rem; outline: none; transition: all .2s; box-sizing: border-box; }
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--border3); box-shadow: 0 0 0 3px rgba(61,232,176,.1); }
+.form-group textarea { resize: vertical; min-height: 80px; }
+.form-group select option { background: var(--bg2); }
+.form-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(180px,1fr)); gap: 12px; }
+.btn-save { background: var(--accent); color: #07090f; border: none; border-radius: 10px; padding: 11px 24px; font-family: var(--font-body); font-size: .9rem; font-weight: 700; cursor: pointer; transition: all .2s; box-shadow: 0 4px 15px rgba(61,232,176,.25); }
+.btn-save:hover { opacity: .9; transform: translateY(-1px); box-shadow: 0 6px 20px rgba(61,232,176,.35); background: var(--accent2); }
+
+/* TESTS / PROJECTS */
+.test-card { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius); padding: 18px 22px; display: grid; grid-template-columns: 1fr auto; gap: 10px; align-items: start; margin-bottom: 10px; transition: all .2s; }
+.test-card:hover { border-color: var(--border2); box-shadow: var(--shadow); }
+.test-card h4 { font-family: var(--font-head); font-weight: 700; font-size: .92rem; margin-bottom: 6px; }
+.test-meta { display: flex; gap: 10px; flex-wrap: wrap; font-size: .72rem; color: var(--muted); margin-bottom: 6px; font-family: var(--font-body); }
+
+/* PROFILE */
+.profile-card { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius-xl); padding: 28px; margin-bottom: 16px; }
+.profile-header { display: flex; align-items: center; gap: 20px; margin-bottom: 24px; flex-wrap: wrap; }
+.profile-avatar { width: 72px; height: 72px; border-radius: 50%; border: 2px solid var(--border2); background: linear-gradient(135deg, var(--bg3), var(--bg4)); display: flex; align-items: center; justify-content: center; cursor: pointer; overflow: hidden; flex-shrink: 0; font-size: 1.8rem; transition: all .2s; box-shadow: var(--glow-accent); }
+.profile-avatar:hover { transform: scale(1.05); }
+.profile-avatar img { width: 100%; height: 100%; object-fit: cover; display: none; }
+.profile-info h2 { font-family: var(--font-head); font-size: 1.4rem; font-weight: 900; margin-bottom: 5px; letter-spacing: -.02em; }
+.profile-meta { display: flex; gap: 8px; flex-wrap: wrap; }
+.p-badge { background: var(--bg3); border: 1px solid var(--border); border-radius: 20px; padding: 4px 12px; font-size: .72rem; font-weight: 600; font-family: var(--font-body); }
+
+/* ANALYTICS */
+.analytics-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(270px,1fr)); gap: 16px; margin: 16px 0; }
+.analytics-card { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 22px; transition: all .2s; }
+.analytics-card:hover { border-color: var(--border2); }
+.analytics-card h3 { font-family: var(--font-head); font-size: .95rem; font-weight: 800; margin-bottom: 16px; }
+.readiness-ring { width: 100px; height: 100px; border-radius: 50%; border: 7px solid var(--bg4); display: flex; align-items: center; justify-content: center; position: relative; margin: 0 auto 12px; transition: border-color .4s; }
+.readiness-pct { font-family: var(--font-mono); font-size: 1.2rem; font-weight: 700; }
+.readiness-label { font-weight: 800; font-size: .95rem; text-align: center; font-family: var(--font-head); }
+.weakness-item { display: flex; align-items: center; gap: 9px; margin-bottom: 8px; font-size: .82rem; font-family: var(--font-body); }
+.w-bar { flex: 1; height: 6px; background: var(--bg4); border-radius: 3px; overflow: hidden; }
+.w-fill { height: 100%; border-radius: 3px; }
+
+/* JOB HUNT */
+.job-section-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(280px,1fr)); gap: 16px; margin: 16px 0; }
+.job-card { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 24px; transition: all .2s; }
+.job-card:hover { border-color: var(--border2); transform: translateY(-2px); }
+.job-card h3 { font-family: var(--font-head); font-size: .95rem; font-weight: 800; margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
+.job-card ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.job-card li { font-size: .83rem; color: var(--muted2); line-height: 1.5; display: flex; gap: 8px; align-items: flex-start; font-family: var(--font-body); }
+.job-card li::before { content: '→'; color: var(--accent3); flex-shrink: 0; font-weight: 800; }
+.checklist-item { display: flex; align-items: flex-start; gap: 10px; background: var(--bg3); border-radius: 10px; padding: 11px 14px; margin-bottom: 7px; font-size: .83rem; border: 1px solid var(--border); transition: all .2s; font-family: var(--font-body); }
+.checklist-item:hover { border-color: var(--border2); }
+.checklist-item input { width: 15px; height: 15px; accent-color: var(--accent); flex-shrink: 0; margin-top: 2px; cursor: pointer; }
+.checklist-item.done-check { opacity: .55; }
+.checklist-item.done-check span { text-decoration: line-through; }
+.resume-tip { background: linear-gradient(135deg,rgba(244,169,66,.06),rgba(251,146,60,.04)); border: 1px solid rgba(244,169,66,.2); border-radius: var(--radius); padding: 16px 18px; margin-bottom: 12px; font-size: .83rem; line-height: 1.7; font-family: var(--font-body); }
+.resume-tip strong { color: var(--amber); }
+
+/* JOURNAL */
+.journal-card { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius-xl); padding: 24px; margin-bottom: 16px; }
+.journal-entry { background: var(--bg3); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px; margin-top: 10px; position: relative; transition: all .2s; }
+.journal-entry:hover { border-color: var(--border2); }
+.entry-date { font-size: .68rem; color: var(--muted); font-family: var(--font-mono); margin-bottom: 6px; font-weight: 600; }
+.entry-text { font-size: .85rem; line-height: 1.7; white-space: pre-wrap; font-family: var(--font-body); }
+.entry-mood { position: absolute; top: 12px; right: 14px; font-size: 1.1rem; }
+.entry-del { margin-top: 10px; background: none; border: none; color: var(--red); font-size: .72rem; cursor: pointer; padding: 0; opacity: .7; font-family: var(--font-body); }
+.entry-del:hover { opacity: 1; }
+.journal-entries { max-height: 400px; overflow-y: auto; display: flex; flex-direction: column; gap: 8px; margin-top: 14px; }
+
+/* BACKUP */
+.backup-row { display: flex; gap: 10px; flex-wrap: wrap; margin: 16px 0; }
+.btn-export { display: flex; align-items: center; gap: 7px; background: var(--bg2); border: 1px solid var(--border); border-radius: 10px; padding: 10px 20px; color: var(--fg); font-family: var(--font-body); font-size: .85rem; font-weight: 700; cursor: pointer; transition: all .2s; }
+.btn-export:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-1px); }
+.btn-import:hover { border-color: var(--blue); color: var(--blue); }
+.backup-steps { display: grid; grid-template-columns: repeat(auto-fit,minmax(200px,1fr)); gap: 14px; margin-top: 16px; }
+.backup-step { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 18px; }
+.step-num { width: 30px; height: 30px; border-radius: 50%; background: var(--accent); color: #07090f; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: .78rem; margin-bottom: 10px; }
+.backup-step h4 { font-size: .88rem; font-weight: 700; margin-bottom: 6px; font-family: var(--font-head); }
+.backup-step p { font-size: .78rem; color: var(--muted); line-height: 1.6; margin: 0; font-family: var(--font-body); }
+.privacy-notice { background: linear-gradient(135deg,rgba(61,232,176,.06),rgba(91,164,245,.04)); border: 1px solid var(--border2); border-radius: var(--radius); padding: 16px 20px; margin-bottom: 18px; display: flex; align-items: flex-start; gap: 12px; }
+.privacy-notice p { font-size: .82rem; color: var(--muted2); line-height: 1.7; margin: 0; font-family: var(--font-body); }
+.privacy-notice strong { color: var(--fg); }
+
+/* OVERVIEW */
+.ov-ch-row { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 10px; background: var(--bg3); border: 1px solid var(--border); border-radius: 10px; padding: 12px 16px; margin-bottom: 8px; transition: all .2s; }
+.ov-ch-row:hover { border-color: var(--border2); }
+
+/* BOOKS */
+.books-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); gap: 14px; }
+.book-card { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 20px; transition: all .2s; }
+.book-card:hover { border-color: var(--border2); transform: translateY(-2px); }
+.book-card h4 { font-family: var(--font-head); font-size: .92rem; font-weight: 800; margin-bottom: 14px; display: flex; align-items: center; gap: 7px; }
+.book-pct { font-family: var(--font-mono); font-size: 1.4rem; font-weight: 700; min-width: 45px; }
+.book-range { width: 100%; accent-color: var(--accent); cursor: pointer; margin-top: 8px; }
+
+/* TIMER */
+.timer-card { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius-xl); padding: 28px; margin-bottom: 16px; }
+.timer-display { font-family: var(--font-mono); font-size: 3.5rem; font-weight: 700; color: var(--blue); letter-spacing: .05em; text-align: center; margin: 18px 0; transition: color .3s; text-shadow: 0 0 30px rgba(91,164,245,.3); }
+.timer-display.tw { color: var(--amber); text-shadow: 0 0 30px rgba(244,169,66,.3); }
+.timer-display.td { color: var(--red); animation: td-pulse .6s ease-in-out infinite alternate; text-shadow: 0 0 30px rgba(245,101,101,.3); }
+@keyframes td-pulse { from{opacity:1} to{opacity:.4} }
+.timer-prog { height: 6px; background: var(--bg4); border-radius: 3px; overflow: hidden; margin-bottom: 18px; }
+.timer-prog-fill { height: 100%; background: linear-gradient(90deg, var(--blue), var(--accent)); border-radius: 3px; transition: width .9s linear; }
+.timer-btns { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+.t-btn { padding: 10px 28px; border-radius: 10px; border: 1px solid; font-family: var(--font-body); font-size: .9rem; font-weight: 700; cursor: pointer; transition: all .2s; background: transparent; }
+.t-btn-start { border-color: var(--blue); color: var(--blue); }
+.t-btn-start:hover { background: rgba(91,164,245,.1); }
+.t-btn-start.running { border-color: var(--amber); color: var(--amber); }
+.t-btn-reset { border-color: var(--border2); color: var(--muted); }
+.t-btn-reset:hover { border-color: var(--red); color: var(--red); }
+.timer-preset-row { display: flex; gap: 7px; justify-content: center; flex-wrap: wrap; margin-bottom: 14px; }
+.timer-preset { padding: 5px 14px; border-radius: 20px; border: 1px solid var(--border2); background: var(--bg4); color: var(--muted2); font-size: .75rem; font-weight: 700; cursor: pointer; transition: all .2s; font-family: var(--font-body); }
+.timer-preset:hover { border-color: var(--accent3); color: var(--accent3); }
+
+/* MONTH TIMELINE */
+.month-timeline { display: grid; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); gap: 12px; margin: 16px 0; }
+.month-card { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 18px; transition: all .2s; }
+.month-card:hover { border-color: var(--border2); transform: translateY(-2px); box-shadow: var(--shadow); }
+.month-num { font-family: var(--font-mono); font-size: .68rem; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); margin-bottom: 6px; }
+.month-title { font-family: var(--font-head); font-weight: 800; font-size: .95rem; margin-bottom: 8px; }
+.month-tag { display: inline-block; font-size: .6rem; font-weight: 800; text-transform: uppercase; letter-spacing: .07em; padding: 2px 9px; border-radius: 10px; border: 1px solid; margin-bottom: 10px; font-family: var(--font-mono); }
+.month-items { display: flex; flex-direction: column; gap: 5px; font-size: .78rem; color: var(--muted2); line-height: 1.5; font-family: var(--font-body); }
+.month-items span { display: flex; gap: 7px; align-items: flex-start; }
+.month-items span::before { content: '·'; color: var(--accent3); font-weight: 900; flex-shrink: 0; font-size: 1rem; line-height: 1.4; }
+
+/* FAQ */
+.faq-item { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius); margin-bottom: 8px; overflow: hidden; transition: all .2s; }
+.faq-item:hover, .faq-item.open { border-color: var(--border2); }
+.faq-q { width: 100%; background: none; border: none; color: var(--fg); font-family: var(--font-body); font-size: .88rem; font-weight: 700; padding: 15px 20px; text-align: left; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+.faq-q span { transition: transform .25s; color: var(--accent3); font-size: 1.1rem; font-weight: 400; }
+.faq-item.open .faq-q span { transform: rotate(45deg); }
+.faq-a { display: none; padding: 0 20px 15px; font-size: .83rem; color: var(--muted2); line-height: 1.8; font-family: var(--font-body); }
+.faq-item.open .faq-a { display: block; }
+
+/* TOAST */
+.toast { position: fixed; bottom: 24px; right: 24px; background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius); padding: 12px 20px; font-size: .83rem; font-weight: 700; z-index: 9999; transform: translateY(100px); opacity: 0; transition: all .35s cubic-bezier(.4,0,.2,1); display: flex; align-items: center; gap: 8px; backdrop-filter: blur(12px); font-family: var(--font-body); }
+.toast.show { transform: translateY(0); opacity: 1; }
+.toast.t-green { border-color: rgba(61,232,176,.4); color: var(--accent); box-shadow: 0 0 20px rgba(61,232,176,.18); }
+.toast.t-blue  { border-color: rgba(91,164,245,.4); color: var(--blue);  }
+
+/* ============================================================
+   COODLEY FOOTER
+   ============================================================ */
+footer.coodley-footer {
+  background: var(--bg);
+  border-top: 1px solid var(--border);
+  padding: 56px clamp(20px,4%,64px) 32px;
+  position: relative; z-index: 1;
+  font-family: var(--font-body);
+}
+.footer-top { display: grid; grid-template-columns: 1.8fr repeat(4,1fr); gap: 40px; margin-bottom: 48px; }
+@media (max-width: 900px) { .footer-top { grid-template-columns: 1fr 1fr 1fr; } }
+@media (max-width: 560px) { .footer-top { grid-template-columns: 1fr 1fr; } }
+.footer-brand p { font-size: .82rem; color: var(--muted); margin-top: 12px; line-height: 1.65; max-width: 240px; }
+.footer-social { display: flex; gap: 10px; margin-top: 18px; flex-wrap: wrap; }
+.social-btn { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 8px 12px; color: var(--muted2); text-decoration: none; font-size: .78rem; display: inline-flex; align-items: center; gap: 6px; transition: color .2s, border-color .2s; }
+.social-btn:hover { color: var(--accent); border-color: var(--border-glow); }
+.footer-col h4 { font-family: var(--font-head); font-size: .78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); margin-bottom: 16px; }
+.footer-col a { display: flex; align-items: center; gap: 7px; text-decoration: none; font-size: .84rem; color: var(--muted2); padding: 5px 0; transition: color .2s; }
+.footer-col a:hover { color: var(--accent); }
+.footer-divider { border: none; border-top: 1px solid var(--border); margin-bottom: 24px; }
+.footer-bottom { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+.footer-bottom-left p { font-size: .78rem; color: var(--muted); line-height: 1.6; }
+.footer-bottom-left p span { color: var(--accent); }
+.footer-legal { display: flex; gap: 20px; flex-wrap: wrap; }
+.footer-legal a { text-decoration: none; font-size: .76rem; color: var(--muted); transition: color .2s; }
+.footer-legal a:hover { color: var(--muted2); }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 640px) {
+  .stats-grid { grid-template-columns: repeat(2,1fr); }
+  .daily-grid { grid-template-columns: 1fr 1fr; }
+  .todo-add-row { flex-direction: column; }
+  .month-timeline, .job-section-grid, .analytics-grid { grid-template-columns: 1fr; }
+  .hero { padding: 24px; }
+  .hero h1 { font-size: 1.8rem; }
+}
+@media (max-width: 380px) {
+  .stats-grid { grid-template-columns: 1fr 1fr; }
+  .daily-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+
+<!-- ══════════════════════════════
+     NAVBAR
+══════════════════════════════ -->
+<nav>
+  <a href="index.html" class="nav-logo">
+    <div class="logo-mark">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+    </div>
+    Coodley
+  </a>
+
+  <ul class="nav-links">
+    <li><a href="learn/index.html">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+      Learn</a></li>
+    <li><a href="learn/roadmap.html">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
+      Roadmap</a></li>
+    <li><a href="learn/dsa/index.html">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#f56565" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2Z"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2Z"/></svg>
+      DSA</a></li>
+    <li><a href="learn/react/index.html">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#5ba4f5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/><circle cx="12" cy="12" r="10"/></svg>
+      React</a></li>
+    <li><a href="learn/backend/index.html">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
+      Backend</a></li>
+    <li><a href="ai-reality/index.html" class="ai-link">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+      AI Reality</a></li>
+  </ul>
+
+  <div class="nav-right">
+    <a href="donate.html" class="btn-donate" style="padding:7px 14px;font-size:.78rem;">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+      Donate
+    </a>
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+      <svg id="themeIcon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="5"/>
+        <line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
+        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+        <line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
+        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+      </svg>
+    </button>
+    <a href="learn/index.html" class="btn-nav mobile-only-start">
+      Start Learning
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    </a>
+    <button class="nav-hamburger" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobileMenu" onclick="toggleMobileMenu()">
+      <svg id="hamburgerIcon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile Nav Overlay -->
+<div class="mobile-nav-overlay" id="mobileOverlay" onclick="toggleMobileMenu()"></div>
+
+<!-- Mobile Nav Menu -->
+<div class="nav-mobile-menu" id="mobileMenu" aria-label="Mobile Navigation">
+  <a href="learn/index.html">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+    Learn
+  </a>
+  <a href="learn/roadmap.html">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
+    Roadmap
+  </a>
+  <a href="learn/dsa/index.html">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#f56565" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2Z"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2Z"/></svg>
+    DSA
+  </a>
+  <a href="learn/react/index.html">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#5ba4f5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2"/><circle cx="12" cy="12" r="10"/></svg>
+    React + Vite
+  </a>
+  <a href="learn/backend/index.html">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/></svg>
+    Backend / Node.js
+  </a>
+  <a href="ai-reality/index.html" class="ai-link">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+    AI Reality
+  </a>
+  <a href="community/index.html">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+    Community
+  </a>
+  <a href="tools/progress-tracker.html">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+    Progress Tracker
+  </a>
+  <div class="mobile-divider"></div>
+  <div class="mobile-actions">
+    <a href="donate.html" class="btn-donate" style="font-size:.82rem;padding:8px 16px;">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+      Donate
+    </a>
+
+    <a href="learn/index.html" class="btn-nav mobile-start-btn">
+  Start Learning
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="5" y1="12" x2="19" y2="12"/>
+    <polyline points="12 5 19 12 12 19"/>
+  </svg>
+</a>
+
+  </div>
+</div>
+
+<!-- ============================================================
+     DEVPATH SUB-NAVBAR (tracker navigation)
+     ============================================================ -->
+<div class="sub-nav">
+  <div class="sub-nav-inner">
+    <button class="nbtn active" data-sec="dashboard">📊 Dashboard</button>
+    <button class="nbtn" data-sec="profile">👤 Profile</button>
+    <button class="nbtn" data-sec="syllabus">📚 Syllabus</button>
+    <button class="nbtn" data-sec="overview">📈 Overview</button>
+    <button class="nbtn" data-sec="daily">🗓 Daily</button>
+    <button class="nbtn" data-sec="todo">✅ To-Do</button>
+    <button class="nbtn" data-sec="tests">🧪 Projects</button>
+    <button class="nbtn" data-sec="books">📖 Resources</button>
+    <button class="nbtn" data-sec="analytics">🎯 Analytics</button>
+    <button class="nbtn" data-sec="journal">🗒 Journal</button>
+    <button class="nbtn job" data-sec="jobhunt">💼 Job Hunt</button>
+    <button class="nbtn special" data-sec="timer">⏱ Timer</button>
+    <button class="nbtn" data-sec="backup">💾 Backup</button>
+    <button class="nbtn" data-sec="faq">❓ FAQ</button>
+  </div>
+</div>
+
+<!-- ============================================================
+     MAIN CONTENT (all original DevPath sections, unchanged)
+     ============================================================ -->
+<main class="main">
+
+<section class="section active" id="sec-dashboard">
+  <div class="hero">
+    <div class="hero-tag">✦ Your 9-Month Roadmap to 15 LPA</div>
+    <h1>Land Your Dream<br/><span class="hl">Web Dev Job</span></h1>
+    <p>A structured, friend-level guide through every topic, project, and skill you need. Follow the path — one checkbox at a time.</p>
+    <div class="hero-meta">
+      <div class="hero-badge hb-green">🎯 Goal: 15 LPA</div>
+      <div class="hero-badge hb-blue">⏱ 9 Months</div>
+      <div class="hero-badge hb-yellow">🏢 Startup / Product</div>
+      <div class="hero-badge hb-teal">📅 <span id="hero-date">—</span></div>
+    </div>
+  </div>
+  <div class="companion-banner">
+    <div class="companion-avatar">🤖</div>
+    <div class="companion-text"><strong>Hey! I'm your Coodley companion.</strong> Every topic you check off brings you closer to that offer letter. Don't rush — depth beats speed. Open the Syllabus, start at Stage 1.1, and check off topics as you genuinely understand them. <strong>Build something every week.</strong> You've got this. 💪</div>
+  </div>
+  <div class="stats-grid">
+    <div class="stat-card s-green"><div class="stat-num" id="stat-topics">0</div><div class="stat-label">Topics Done</div><div class="stat-glow"></div></div>
+    <div class="stat-card s-blue"><div class="stat-num" id="stat-chapters">0</div><div class="stat-label">Chapters Done</div><div class="stat-glow"></div></div>
+    <div class="stat-card s-yellow"><div class="stat-num" id="stat-streak">0🔥</div><div class="stat-label">Day Streak</div><div class="stat-glow"></div></div>
+    <div class="stat-card s-pink"><div class="stat-num" id="stat-projects">0</div><div class="stat-label">Projects Built</div><div class="stat-glow"></div></div>
+    <div class="stat-card s-orange"><div class="stat-num" id="stat-applied">0</div><div class="stat-label">Jobs Applied</div><div class="stat-glow"></div></div>
+    <div class="stat-card s-accent"><div class="stat-num" id="stat-consistency">0%</div><div class="stat-label">Consistency</div><div class="stat-glow"></div></div>
+  </div>
+  <div class="sec-title"><div class="sec-icon si-green">📊</div> Subject Progress</div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px;margin-bottom:24px">
+    <div class="subj-progress-card">
+      <div class="prog-row"><div class="prog-label" style="color:var(--amber)">⚡ JavaScript</div><div class="prog-bar-wrap"><div class="prog-bar-fill" id="pb-js" style="width:0%;background:var(--amber)"></div></div><div class="prog-pct" id="pp-js">0%</div></div>
+      <div class="prog-row"><div class="prog-label" style="color:var(--blue)">⚛ React</div><div class="prog-bar-wrap"><div class="prog-bar-fill" id="pb-react" style="width:0%;background:var(--blue)"></div></div><div class="prog-pct" id="pp-react">0%</div></div>
+      <div class="prog-row"><div class="prog-label" style="color:var(--accent)">🟢 Node.js</div><div class="prog-bar-wrap"><div class="prog-bar-fill" id="pb-node" style="width:0%;background:var(--accent)"></div></div><div class="prog-pct" id="pp-node">0%</div></div>
+      <div class="prog-row"><div class="prog-label" style="color:var(--pink)">🧩 DSA</div><div class="prog-bar-wrap"><div class="prog-bar-fill" id="pb-dsa" style="width:0%;background:var(--pink)"></div></div><div class="prog-pct" id="pp-dsa">0%</div></div>
+      <div class="prog-row"><div class="prog-label" style="color:var(--orange)">🏗 System</div><div class="prog-bar-wrap"><div class="prog-bar-fill" id="pb-sys" style="width:0%;background:var(--orange)"></div></div><div class="prog-pct" id="pp-sys">0%</div></div>
+    </div>
+    <div class="subj-progress-card" style="display:flex;flex-direction:column;justify-content:center;gap:12px;text-align:center">
+      <div style="font-size:3rem;font-family:var(--font-mono);font-weight:700;color:var(--accent3);line-height:1" id="overall-pct">0%</div>
+      <div style="font-size:.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;font-weight:700;font-family:var(--font-body)">Overall Progress</div>
+      <div style="height:10px;background:var(--bg4);border-radius:5px;overflow:hidden"><div id="overall-bar" style="height:100%;width:0%;background:linear-gradient(90deg,var(--accent),var(--accent3),var(--blue));border-radius:5px;transition:width .6s"></div></div>
+      <div style="font-size:.8rem;color:var(--muted2);font-family:var(--font-body)" id="overall-detail">0 / 0 topics</div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="sec-profile">
+  <div class="sec-title"><div class="sec-icon si-accent">👤</div> Your Profile</div>
+  <div class="profile-card">
+    <div class="profile-header">
+      <div class="profile-avatar" id="avatarBox" onclick="document.getElementById('avatarInp').click()"><img id="avatarImg" src="" alt=""/><span id="avatarIcon">🧑‍💻</span></div>
+      <input type="file" id="avatarInp" accept="image/*" style="display:none" onchange="handleAvatar(event)"/>
+      <div class="profile-info"><h2 id="pname">Your Name</h2><div class="profile-meta"><span class="p-badge" id="pbadge-bg">Background: —</span><span class="p-badge" id="pbadge-goal">Goal: 15 LPA</span><span class="p-badge" id="pbadge-start">Start: —</span></div></div>
+    </div>
+    <div class="form-grid">
+      <div class="form-group"><label>Full Name</label><input type="text" id="inp-name" placeholder="Your name"/></div>
+      <div class="form-group"><label>Current Background</label><select id="inp-bg"><option value="">Select...</option><option>Complete Beginner</option><option>Knows HTML/CSS</option><option>Knows basic JS</option><option>CS Student</option><option>Non-CS Graduate</option></select></div>
+      <div class="form-group"><label>Start Month</label><input type="month" id="inp-start"/></div>
+      <div class="form-group"><label>Target Salary (LPA)</label><input type="number" id="inp-lpa" placeholder="15" min="5" max="50"/></div>
+      <div class="form-group"><label>Daily Study Hours</label><input type="number" id="inp-daily-goal" placeholder="3" min="1" max="12"/></div>
+      <div class="form-group"><label>Weak Area</label><select id="inp-weak"><option value="">Select...</option><option>JavaScript</option><option>DSA</option><option>React</option><option>Backend</option><option>System Design</option><option>Consistency</option></select></div>
+    </div>
+    <div class="form-group"><label>Why do you want this job? (Your "why")</label><textarea id="inp-why" placeholder="Write your motivation — read it when you feel like giving up..."></textarea></div>
+    <button class="btn-save" onclick="saveProfile()">💾 Save Profile</button>
+  </div>
+</section>
+
+<section class="section" id="sec-syllabus">
+  <div class="sec-title"><div class="sec-icon si-blue">📚</div> Complete Web Dev Syllabus</div>
+  <div class="companion-banner" style="background:linear-gradient(135deg,rgba(91,164,245,.07),rgba(61,232,176,.04));border-color:rgba(91,164,245,.2)">
+    <div class="companion-avatar" style="background:linear-gradient(135deg,var(--blue),var(--accent))">💡</div>
+    <div class="companion-text"><strong>How to use this syllabus:</strong> Open a Stage → open a Chapter → read each topic, try it in code, then check it off. Add notes while you learn. Rate your confidence with ⭐. Flag doubts with <strong>?</strong> and come back. <strong>Don't skip — every topic here is here for a reason.</strong></div>
+  </div>
+  <div class="subj-tabs" id="syllabus-tabs"></div>
+  <div id="syllabus-panels"></div>
+</section>
+
+<section class="section" id="sec-overview">
+  <div class="sec-title"><div class="sec-icon si-blue">📈</div> Progress Overview</div>
+  <div id="overview-summary" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;margin-bottom:28px"></div>
+  <div id="overview-content"></div>
+</section>
+
+<section class="section" id="sec-daily">
+  <div class="sec-title"><div class="sec-icon si-yellow">🗓</div> Daily Tracker</div>
+  <p style="color:var(--muted2);font-size:.85rem;margin-bottom:6px">Today: <strong id="today-date">—</strong></p>
+  <div class="daily-grid">
+    <div class="daily-card"><h4>⏱ Study Hours Today</h4><input class="big-inp" type="number" id="d-hours" min="0" max="16" placeholder="0" oninput="saveDailyData()"/><div style="font-size:.72rem;color:var(--muted);margin-top:4px">Goal: <span id="d-goal-show">—</span> hrs</div></div>
+    <div class="daily-card"><h4>🔥 Day Streak</h4><div class="streak-display"><div class="streak-num" id="d-streak">0</div><div><div style="font-size:.72rem;color:var(--muted)">consecutive</div><div style="font-size:.72rem;color:var(--muted)">study days</div></div></div></div>
+    <div class="daily-card"><h4>💧 Water (glasses)</h4><input class="big-inp" type="number" id="d-water" min="0" max="20" placeholder="0" oninput="saveDailyData()"/><div style="font-size:.72rem;color:var(--muted);margin-top:4px">Target: 8 glasses</div></div>
+    <div class="daily-card"><h4>😴 Sleep (hours)</h4><input class="big-inp" type="number" id="d-sleep" min="0" max="12" placeholder="0" oninput="saveDailyData()"/><div style="font-size:.72rem;color:var(--muted);margin-top:4px">Target: 7–8 hrs</div></div>
+  </div>
+  <div class="card"><h4 style="font-family:var(--font-head);font-weight:800;margin-bottom:12px">😊 Mood Today</h4>
+    <div class="mood-grid" id="mood-grid">
+      <button class="mood-btn" data-mood="🔥 Focused">🔥 Focused</button>
+      <button class="mood-btn" data-mood="😊 Good">😊 Good</button>
+      <button class="mood-btn" data-mood="😐 Okay">😐 Okay</button>
+      <button class="mood-btn" data-mood="😩 Tired">😩 Tired</button>
+      <button class="mood-btn" data-mood="😰 Stuck">😰 Stuck</button>
+      <button class="mood-btn" data-mood="💪 Motivated">💪 Motivated</button>
+    </div>
+  </div>
+  <div class="card">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;flex-wrap:wrap;gap:8px">
+      <h4 style="font-family:var(--font-head);font-weight:800">📅 Study Heatmap (Last 84 Days)</h4>
+      <div style="display:flex;gap:5px;align-items:center;font-size:.7rem;color:var(--muted)"><span>Less</span><div style="width:12px;height:12px;border-radius:3px;background:var(--bg4);border:1px solid var(--border)"></div><div style="width:12px;height:12px;border-radius:3px;background:rgba(61,232,176,.3)"></div><div style="width:12px;height:12px;border-radius:3px;background:rgba(61,232,176,.6)"></div><div style="width:12px;height:12px;border-radius:3px;background:var(--accent)"></div><span>More</span></div>
+    </div>
+    <div class="heatmap-row" id="heatmap"></div>
+    <p style="font-size:.72rem;color:var(--muted);margin-top:10px">Consistency compounds. Every green square counts.</p>
+  </div>
+  <div class="card">
+    <h4 style="font-family:var(--font-head);font-weight:800;margin-bottom:12px">📝 Daily Notes</h4>
+    <textarea style="width:100%;background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:12px 14px;color:var(--fg);font-family:var(--font-body);font-size:.85rem;outline:none;resize:vertical;min-height:80px;box-sizing:border-box" id="d-notes" placeholder="What did you code today? Any blockers? Tomorrow's plan?" oninput="saveDailyData()"></textarea>
+    <div style="display:flex;gap:12px;margin-top:12px;flex-wrap:wrap;align-items:center">
+      <label style="display:flex;align-items:center;gap:7px;font-size:.83rem;cursor:pointer;font-family:var(--font-body)"><input type="checkbox" id="d-built" onchange="saveDailyData()" style="width:14px;height:14px;accent-color:var(--accent)"/>Built something today</label>
+      <label style="display:flex;align-items:center;gap:7px;font-size:.83rem;cursor:pointer;font-family:var(--font-body)"><input type="checkbox" id="d-leetcode" onchange="saveDailyData()" style="width:14px;height:14px;accent-color:var(--pink)"/>Solved DSA today</label>
+      <button class="btn-save" style="margin-left:auto" onclick="logDay()">✅ Log Today</button>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="sec-todo">
+  <div class="sec-title"><div class="sec-icon si-green">✅</div> Daily To-Do</div>
+  <div class="card">
+    <div class="todo-add-row">
+      <input type="text" class="todo-inp" id="todo-inp" placeholder="Add a task..." onkeydown="if(event.key==='Enter')addTodo()"/>
+      <select class="todo-sel" id="todo-tag"><option value="general">General</option><option value="js">JavaScript</option><option value="react">React</option><option value="node">Node.js</option><option value="dsa">DSA</option><option value="job">Job Hunt</option></select>
+      <select class="todo-sel" id="todo-prio"><option value="high">🔴 High</option><option value="med">🟡 Medium</option><option value="low">🟢 Low</option></select>
+      <button class="btn-add" onclick="addTodo()">+ Add</button>
+    </div>
+    <div class="todo-list" id="todo-list"></div>
+    <div style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap">
+      <button class="btn-export" onclick="clearDoneTodos()" style="border-color:rgba(245,101,101,.3);color:var(--red)">🗑 Clear Done</button>
+      <span style="margin-left:auto;font-size:.78rem;color:var(--muted);align-self:center;font-family:var(--font-body)" id="todo-count">0 tasks</span>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="sec-tests">
+  <div class="sec-title"><div class="sec-icon si-pink">🧪</div> Projects Tracker</div>
+  <div class="card">
+    <h3 style="font-family:var(--font-head);font-weight:800;margin-bottom:16px">+ Log a Project</h3>
+    <div class="form-grid">
+      <div class="form-group"><label>Project Name</label><input type="text" id="proj-name" placeholder="e.g. Full Stack Todo App"/></div>
+      <div class="form-group"><label>Date Completed</label><input type="date" id="proj-date"/></div>
+      <div class="form-group"><label>Tech Stack Used</label><input type="text" id="proj-stack" placeholder="e.g. React, Node, MongoDB"/></div>
+      <div class="form-group"><label>GitHub URL</label><input type="url" id="proj-github" placeholder="https://github.com/..."/></div>
+      <div class="form-group"><label>Live URL</label><input type="url" id="proj-live" placeholder="https://..."/></div>
+      <div class="form-group"><label>Difficulty (1–5)</label><input type="number" id="proj-diff" min="1" max="5" placeholder="3"/></div>
+    </div>
+    <div class="form-group"><label>What I learned / Key features</label><textarea id="proj-notes" placeholder="List the main features and things you learned..."></textarea></div>
+    <button class="btn-save" onclick="addProject()">🚀 Save Project</button>
+  </div>
+  <div class="sec-title" style="font-size:.95rem;margin-top:20px"><div class="sec-icon si-green">📁</div> My Projects</div>
+  <div id="projects-list"></div>
+</section>
+
+<section class="section" id="sec-books">
+  <div class="sec-title"><div class="sec-icon si-yellow">📖</div> Resources & Learning Materials</div>
+  <div class="books-grid" id="books-grid"></div>
+</section>
+
+<section class="section" id="sec-analytics">
+  <div class="sec-title"><div class="sec-icon si-accent">🎯</div> Performance Analytics</div>
+  <div class="analytics-grid">
+    <div class="analytics-card"><h3>🎯 Readiness Level</h3><div style="text-align:center;padding:14px 0"><div class="readiness-ring" id="readiness-ring"><div class="readiness-pct" id="readiness-pct">0%</div></div><div class="readiness-label" id="readiness-label">Beginner</div><p style="font-size:.78rem;color:var(--muted2);margin-top:10px;max-width:180px;margin-left:auto;margin-right:auto;font-family:var(--font-body)" id="readiness-msg">Start completing topics to build momentum.</p></div></div>
+    <div class="analytics-card"><h3>⚠️ Weak Areas</h3><div id="weak-list"></div></div>
+    <div class="analytics-card"><h3>💡 Suggestions</h3><div id="suggestions" style="display:flex;flex-direction:column;gap:8px;font-size:.83rem;line-height:1.7;color:var(--muted2);font-family:var(--font-body)"></div></div>
+  </div>
+  <div class="card" style="margin-top:16px"><h3 style="font-family:var(--font-head);font-weight:800;margin-bottom:16px">📅 9-Month Roadmap Timeline</h3><div class="month-timeline" id="month-timeline"></div></div>
+</section>
+
+<section class="section" id="sec-journal">
+  <div class="sec-title"><div class="sec-icon si-accent">🗒</div> My Journal</div>
+  <div class="journal-card">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;flex-wrap:wrap;gap:10px">
+      <h3 style="font-family:var(--font-head);font-weight:800">Write Today's Entry</h3>
+      <div style="display:flex;gap:8px">
+        <select id="j-mood" style="background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:8px 10px;color:var(--fg);font-family:var(--font-body);font-size:.82rem;outline:none"><option value="🔥">🔥 Fired up</option><option value="😊">😊 Happy</option><option value="😐">😐 Neutral</option><option value="😩">😩 Tired</option><option value="💪">💪 Determined</option><option value="😰">😰 Frustrated</option></select>
+        <button class="btn-save" onclick="addJournalEntry()">+ Entry</button>
+      </div>
+    </div>
+    <textarea id="j-inp" style="width:100%;background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:12px 14px;color:var(--fg);font-family:var(--font-body);font-size:.85rem;outline:none;resize:vertical;min-height:100px;box-sizing:border-box" placeholder="Write your thoughts, breakthroughs, frustrations, learnings..."></textarea>
+    <div class="journal-entries" id="journal-entries"></div>
+  </div>
+</section>
+
+<section class="section" id="sec-jobhunt">
+  <div class="sec-title"><div class="sec-icon si-yellow">💼</div> Job Hunt Guide</div>
+  <div class="privacy-notice"><div style="font-size:1.2rem">🎯</div><p><strong>This section activates from Month 7 onwards.</strong> But start building your profile, GitHub, and LinkedIn from Day 1. Recruiters look at your commit history — green squares matter.</p></div>
+  <div class="job-section-grid">
+    <div class="job-card"><h3>📄 Resume Building</h3><ul><li>ATS-friendly: single column, no tables, no graphics</li><li>Tools: <strong>Resumake.io, FlowCV.io, Canva (simple)</strong></li><li>Order: Skills → Projects (2–3) → Experience → Education</li><li>Projects > Everything. GitHub URL + live demo on each</li><li>Skills: React, Node.js, Express, MongoDB, PostgreSQL, TypeScript, Git</li><li>1 page only. No objective statement. Start with a summary line</li><li>Quantify: "Built REST API handling 500+ req/sec" not "Built an API"</li></ul></div>
+    <div class="job-card"><h3>🌐 Online Presence</h3><ul><li><strong>GitHub:</strong> Pin 3–4 best projects. README with screenshots + demo link</li><li><strong>LinkedIn:</strong> 500+ connections. Post your projects with write-ups</li><li><strong>Portfolio:</strong> Simple Next.js or HTML. 3 projects, live demo + code</li><li><strong>Twitter/X:</strong> Tweet your learning — devs hire devs they know</li><li>Contribute to open-source. Even fixing a typo counts</li><li>Write 2–3 blogs on Hashnode/Dev.to</li></ul></div>
+    <div class="job-card"><h3>🏢 Job Sites — India</h3><ul><li><strong>Naukri.com</strong> — largest Indian job board. Fill 100% profile</li><li><strong>LinkedIn Jobs</strong> — set job alerts for "React Developer"</li><li><strong>Instahyre.com</strong> — startups match you to jobs</li><li><strong>Cutshort.io</strong> — startup-focused, great for freshers</li><li><strong>AngelList / Wellfound</strong> — startups directly</li><li><strong>Internshala</strong> — first internship → then full-time</li><li><strong>YC Work at a Startup</strong> — YC-backed companies</li></ul></div>
+    <div class="job-card"><h3>🌍 Remote Jobs</h3><ul><li><strong>Remote.co</strong> — curated remote dev roles</li><li><strong>We Work Remotely</strong> — top remote board for devs</li><li><strong>Remotive.io</strong> — remote tech, India-friendly</li><li><strong>Toptal</strong> — hard screening, huge pay</li><li><strong>Turing.com</strong> — vetted roles for Indian devs</li><li><strong>Deel companies</strong> — hiring via Deel from India</li><li><strong>X/Twitter DMs</strong> — US startup CTOs hire via DMs</li></ul></div>
+  </div>
+  <div class="sec-title" style="font-size:1rem;margin-top:24px"><div class="sec-icon si-green">✅</div> Interview Prep Checklist</div>
+  <div id="interview-checklist"></div>
+  <div class="sec-title" style="font-size:1rem"><div class="sec-icon si-yellow">💡</div> Resume Tips</div>
+  <div class="resume-tip"><strong>Project descriptions that get interviews:</strong><br>❌ "Built a to-do app using React"<br>✅ "Built a full-stack task manager with React + Node.js + MongoDB. Features: JWT auth, real-time updates with Socket.io, deployed on Vercel + Railway. 200+ GitHub stars."</div>
+  <div class="resume-tip"><strong>Cold outreach template (LinkedIn):</strong><br>"Hi [Name], I noticed [Company] is building [Product]. I'm a self-taught full-stack developer with projects in React/Node. I shipped [X project] recently — [GitHub link]. Would love to explore if there's a fit. No pressure if not the right time."</div>
+  <div class="sec-title" style="font-size:1rem"><div class="sec-icon si-accent">📊</div> Log Your Applications</div>
+  <div class="card">
+    <div class="form-grid">
+      <div class="form-group"><label>Company Name</label><input type="text" id="app-company" placeholder="e.g. Razorpay"/></div>
+      <div class="form-group"><label>Role</label><input type="text" id="app-role" placeholder="e.g. Frontend Developer"/></div>
+      <div class="form-group"><label>Applied Date</label><input type="date" id="app-date"/></div>
+      <div class="form-group"><label>Status</label><select id="app-status"><option>Applied</option><option>OA</option><option>Interview</option><option>Offer</option><option>Rejected</option><option>Ghosted</option></select></div>
+      <div class="form-group"><label>Salary Offered (LPA)</label><input type="number" id="app-sal" placeholder="0" min="0"/></div>
+      <div class="form-group"><label>Source</label><select id="app-source"><option>LinkedIn</option><option>Naukri</option><option>Cutshort</option><option>AngelList</option><option>Referral</option><option>Cold Outreach</option><option>Other</option></select></div>
+    </div>
+    <div class="form-group"><label>Notes / Feedback</label><textarea id="app-notes" placeholder="Interview questions asked, feedback received..."></textarea></div>
+    <button class="btn-save" onclick="addApplication()">📝 Log Application</button>
+  </div>
+  <div id="applications-list"></div>
+</section>
+
+<section class="section" id="sec-timer">
+  <div class="sec-title"><div class="sec-icon si-blue">⏱</div> Focus Timer</div>
+  <div class="timer-card">
+    <div style="text-align:center"><div style="font-size:.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px;font-weight:700;font-family:var(--font-body)">Focus Session Timer</div><div class="timer-display" id="timer-disp">1:30:00</div></div>
+    <div class="timer-prog"><div class="timer-prog-fill" id="timer-prog-fill" style="width:100%"></div></div>
+    <div class="timer-preset-row">
+      <button class="timer-preset" onclick="setTimerPreset(25,0)">25 min</button>
+      <button class="timer-preset" onclick="setTimerPreset(45,0)">45 min</button>
+      <button class="timer-preset" onclick="setTimerPreset(60,0)">1 hr</button>
+      <button class="timer-preset" onclick="setTimerPreset(90,0)">1.5 hr</button>
+      <button class="timer-preset" onclick="setTimerPreset(120,0)">2 hr</button>
+      <button class="timer-preset" onclick="setTimerPreset(180,0)">3 hr</button>
+    </div>
+    <div style="display:flex;align-items:center;gap:8px;justify-content:center;margin-bottom:14px;flex-wrap:wrap">
+      <div style="font-size:.72rem;color:var(--muted);font-weight:600;font-family:var(--font-body)">Custom:</div>
+      <input type="number" id="t-h" min="0" max="12" value="1" style="width:55px;background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:7px 8px;color:var(--fg);font-family:var(--font-mono);font-size:.9rem;font-weight:700;text-align:center;outline:none"/>
+      <span style="color:var(--muted);font-weight:700">:</span>
+      <input type="number" id="t-m" min="0" max="59" value="30" style="width:55px;background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:7px 8px;color:var(--fg);font-family:var(--font-mono);font-size:.9rem;font-weight:700;text-align:center;outline:none"/>
+      <button class="timer-preset" onclick="setCustomTimer()">Set</button>
+    </div>
+    <div class="timer-btns"><button class="t-btn t-btn-start" id="timer-start-btn" onclick="toggleTimer()">▶ Start</button><button class="t-btn t-btn-reset" onclick="resetTimer()">↺ Reset</button></div>
+    <p style="text-align:center;font-size:.75rem;color:var(--muted);margin-top:16px;font-family:var(--font-body)">💡 Pomodoro: 25 min focus → 5 min break → repeat 4x → long break</p>
+  </div>
+</section>
+
+<section class="section" id="sec-backup">
+  <div class="sec-title"><div class="sec-icon si-orange">💾</div> Backup & Restore</div>
+  <div class="privacy-notice"><div>⚠️</div><p><strong>Your data is stored only in this browser.</strong> Clearing browser data or switching devices will erase everything. Export a backup weekly and save to Google Drive.</p></div>
+  <div class="backup-row">
+    <button class="btn-export" onclick="exportData()">⬇️ Export Backup (.json)</button>
+    <button class="btn-export btn-import" onclick="document.getElementById('import-file').click()">⬆️ Import Backup</button>
+    <input type="file" id="import-file" accept=".json" style="display:none" onchange="importData(event)"/>
+  </div>
+  <div class="backup-steps">
+    <div class="backup-step"><div class="step-num">1</div><h4>Export Backup</h4><p>Click "Export Backup" to download all your data — topics, notes, projects, journal, applications.</p></div>
+    <div class="backup-step"><div class="step-num">2</div><h4>Save Safely</h4><p>Save the JSON file to Google Drive or email yourself. Do this weekly.</p></div>
+    <div class="backup-step"><div class="step-num">3</div><h4>Restore</h4><p>Click "Import Backup" on any device and select your saved JSON file. All progress restored.</p></div>
+    <div class="backup-step"><div class="step-num">4</div><h4>Stay Safe</h4><p>Don't use incognito mode. Export before clearing browser cache.</p></div>
+  </div>
+  <div class="card" style="margin-top:16px"><h3 style="font-family:var(--font-head);font-weight:800;margin-bottom:10px">Storage Info</h3><div id="storage-info" style="font-size:.83rem;color:var(--muted2);line-height:2;font-family:var(--font-body)"></div><button class="btn-export" onclick="clearAll()" style="margin-top:12px;border-color:rgba(245,101,101,.3);color:var(--red)">🗑 Clear ALL Data</button></div>
+</section>
+
+<section class="section" id="sec-faq">
+  <div class="sec-title"><div class="sec-icon si-accent">❓</div> FAQ</div>
+  <div class="faq-list">
+    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Is my data stored online? <span>+</span></button><div class="faq-a">No. Everything is stored only in your browser's localStorage. No server, no account, no tracking. Your notes, progress, journal — all 100% private on your device.</div></div>
+    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">How is the syllabus structured? <span>+</span></button><div class="faq-a">Unit (e.g. Unit 1 — Foundation) → Stage → Chapter → Topics (individual checkbox items with hints). This mirrors how you should actually learn — foundation first, then complexity.</div></div>
+    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">How many hours per day should I study? <span>+</span></button><div class="faq-a">3–4 hours minimum, 5–6 ideally. But consistency beats intensity. 3 hours every single day beats 8 hours twice a week. Track your daily hours and build the streak habit.</div></div>
+    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">When should I start applying for jobs? <span>+</span></button><div class="faq-a">Month 7 onwards. Start applying at 70% syllabus completion — don't wait for perfection. Interviews teach you more than tutorials.</div></div>
+    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Should I fear AI replacing web developers? <span>+</span></button><div class="faq-a">No. AI is replacing copy-paste developers, not problem-solving ones. Learn to use AI tools (Cursor, Copilot, Claude) as multipliers. Focus on system design, debugging, product thinking.</div></div>
+    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">How deep should I go on each topic? <span>+</span></button><div class="faq-a">Deep enough to build something with it and explain it in an interview. The test: "Can I use this in a project and explain it to someone else?" If yes, move on.</div></div>
+    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Should I learn everything before applying? <span>+</span></button><div class="faq-a">Absolutely not. Start applying at Month 7–8. Show 2 solid projects, understand JavaScript deeply, know React basics — you're ready to interview.</div></div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============================================================
+     COODLEY FOOTER
+     ============================================================ -->
+<footer class="coodley-footer">
+  <div style="max-width:1200px;margin:0 auto">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="https://raunakkarn555.github.io/coodley/" class="nav-logo" style="display:inline-flex;margin-bottom:4px">
+          <div class="logo-mark"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
+          Coodley
+        </a>
+        <p>India's most honest full-stack web &amp; software development learning platform. From scratch to production, completely free.</p>
+        <div class="footer-social">
+          <a href="#" class="social-btn"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg> GitHub</a>
+          <a href="#" class="social-btn"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg> Discord</a>
+          <a href="#" class="social-btn"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg> Twitter</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Learn</h4>
+        <a href="https://raunakkarn555.github.io/coodley/learn/"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg> All Modules</a>
+        <a href="https://raunakkarn555.github.io/coodley/learn/roadmap.html"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg> Full Roadmap</a>
+        <a href="https://raunakkarn555.github.io/coodley/learn/html-css/"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/></svg> HTML &amp; CSS</a>
+        <a href="https://raunakkarn555.github.io/coodley/learn/javascript/"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg> JavaScript</a>
+        <a href="https://raunakkarn555.github.io/coodley/learn/react/"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="1"/></svg> React + Vite</a>
+        <a href="https://raunakkarn555.github.io/coodley/learn/backend/"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/></svg> Node.js + Express</a>
+      </div>
+      <div class="footer-col">
+        <h4>Languages &amp; DSA</h4>
+        <a href="https://raunakkarn555.github.io/coodley/learn/cpp/"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg> C++ Programming</a>
+        <a href="https://raunakkarn555.github.io/coodley/learn/java/"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/></svg> Java Programming</a>
+        <a href="https://raunakkarn555.github.io/coodley/learn/python/"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg> Python Programming</a>
+        <a href="https://raunakkarn555.github.io/coodley/learn/dsa/"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5"/></svg> DSA Complete</a>
+        <a href="https://raunakkarn555.github.io/coodley/learn/system-design/"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/></svg> System Design</a>
+        <a href="https://raunakkarn555.github.io/coodley/learn/databases/"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg> Databases</a>
+      </div>
+      <div class="footer-col">
+        <h4>Platform</h4>
+        <a href="https://raunakkarn555.github.io/coodley/community/"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg> Community</a>
+        <a href="https://raunakkarn555.github.io/coodley/tools/"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg> Free Tools</a>
+        <a href="https://raunakkarn555.github.io/coodley/ai-reality/"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/></svg> AI Reality</a>
+        <a href="https://raunakkarn555.github.io/coodley/community/projects.html"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg> Project Showcase</a>
+        <a href="https://raunakkarn555.github.io/coodley/about.html"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg> About Us</a>
+        <a href="https://raunakkarn555.github.io/coodley/donate.html"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg> ❤️ Donate</a>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <a href="https://raunakkarn555.github.io/coodley/legal/terms.html"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg> Terms of Service</a>
+        <a href="https://raunakkarn555.github.io/coodley/legal/privacy.html"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> Privacy Policy</a>
+        <a href="https://raunakkarn555.github.io/coodley/community/rules.html"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> Community Rules</a>
+        <a href="mailto:raunakkarn555@gmail.com"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg> Contact Us</a>
+      </div>
+    </div>
+    <hr class="footer-divider"/>
+    <div class="footer-bottom">
+      <div class="footer-bottom-left">
+        <p>Made with <span>♥</span> for Indian developers &nbsp;·&nbsp; © 2026 Coodley</p>
+        <p style="margin-top:3px;font-size:.72rem">No ads. No data selling. No fake promises. Just learning.</p>
+      </div>
+      <div class="footer-legal">
+        <a href="https://raunakkarn555.github.io/coodley/legal/terms.html">Terms</a>
+        <a href="https://raunakkarn555.github.io/coodley/legal/privacy.html">Privacy</a>
+        <a href="https://raunakkarn555.github.io/coodley/community/rules.html">Guidelines</a>
+        <a href="https://raunakkarn555.github.io/coodley/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<!-- ============================================================
+     ALL ORIGINAL DEVPATH JAVASCRIPT — ZERO CHANGES
+     ============================================================ -->
+ <script src="../assets/js/main.js"></script>
+
+<script>
+'use strict';
+const STORE='devpath-v2';
+const getData=()=>{try{return JSON.parse(localStorage.getItem(STORE)||'{}')}catch{return{}}};
+const setData=d=>localStorage.setItem(STORE,JSON.stringify(d));
+const safe=(id,v)=>{const e=document.getElementById(id);if(e)e.textContent=v};
+const showToast=(msg,type='t-green')=>{
+  const t=document.getElementById('toast');
+  t.textContent=(type==='t-green'?'✅ ':'ℹ️ ')+msg;
+  t.className=`toast ${type} show`;
+  setTimeout(()=>t.className='toast',2800);
+};
+
+// CURRICULUM DATA
+const T=(name,sub,cat)=>({name,sub:sub||'',cat:cat||'theory'});
+const P=(name,sub)=>T(name,sub,'practice');
+const PR=(name,sub)=>T(name,sub,'project');
+const IV=(name,sub)=>T(name,sub,'interview');
+
+const CURRICULUM=[
+  {id:'u1',name:'Unit 1 — Foundation',color:'green',months:'Month 1–3',stages:[
+    {id:'s1-1',name:'Stage 1.1 — Web Fundamentals',color:'green',chapters:[
+      {id:'c1-1-1',name:'HTML5 Essentials',high:false,topics:[
+        T('HTML5 document structure — DOCTYPE, html, head, body','Every HTML file starts here. Understand what each tag does.'),
+        T('Semantic elements — header, nav, main, section, article, footer, aside','These tell browsers AND screen readers what the content IS.'),
+        T('Text elements — h1–h6, p, span, strong, em, blockquote, code, pre','h1 is unique per page. Use headings for document outline, not styling.'),
+        T('Lists — ul, ol, dl — when to use each','Menus, steps, key-value pairs. Don\'t use divs for lists.'),
+        T('Links — anchor tags, href, target="_blank", rel="noopener", download','Always add rel="noopener noreferrer" to external links for security.'),
+        T('Images — alt text, loading="lazy", srcset, figure/figcaption','Alt text is both accessibility AND SEO. Lazy loading improves performance.'),
+        T('Forms — input types (text, email, number, date, checkbox, radio, file, range)','Forms are how users send data. Know every input type.'),
+        T('Form elements — label, fieldset, legend, select, textarea, datalist','Labels must link to inputs via "for" attribute. Never skip labels.'),
+        T('Form attributes — required, placeholder, autocomplete, pattern, min/max','HTML validation catches errors before JS runs.'),
+        T('Tables — thead, tbody, tfoot, th (with scope), tr, td','Tables are for tabular data only. Never for layout.'),
+        T('Media elements — video, audio, source, track (captions), iframe','Use native HTML5 video/audio for better performance.'),
+        T('Meta tags — viewport, charset, description, og:title/image, twitter:card','Open Graph tags control how your links appear on social media.'),
+        T('HTML entities — &amp;, &lt;, &gt;, &nbsp;, &copy;','Essential for displaying reserved characters.'),
+        T('Accessibility basics — ARIA roles, aria-label, aria-hidden, tabindex','Build accessible apps from day 1. Recruiters notice. Users need it.'),
+        T('SEO fundamentals — canonical, robots meta, structured data basics','Basic SEO is expected of every frontend developer.'),
+        P('Build: Semantic HTML resume page — no CSS yet, structure only','Focus purely on meaning and structure.'),
+      ]},
+      {id:'c1-1-2',name:'CSS Core — The Language of Styling',high:false,topics:[
+        T('Box model — content, padding, border, margin; box-sizing: border-box','The single most important CSS concept. border-box is almost always what you want.'),
+        T('Selectors — element, class, ID, attribute, universal selectors','How CSS targets HTML elements.'),
+        T('Pseudo-classes — :hover, :focus, :active, :nth-child, :first-child, :not()','Powerful for styling without extra classes or JS.'),
+        T('Pseudo-elements — ::before, ::after, ::placeholder, ::selection','Create decorative elements and style browser-generated content.'),
+        T('Cascade, specificity, and inheritance','Specificity score: inline > ID > class > element.'),
+        T('Display — block, inline, inline-block, none','Understanding display is the key to controlling element flow.'),
+        T('Positioning — static, relative, absolute, fixed, sticky','Absolute positions relative to the nearest positioned ancestor.'),
+        T('CSS units — px, %, em, rem, vw, vh, vmin, vmax, ch','Use rem for font sizes. Use % and vw/vh for responsive layouts.'),
+        T('Colors — hex, rgb(), rgba(), hsl(), hsla(), CSS variables','CSS vars enable theming. hsl is the most intuitive.'),
+        T('Typography — font-family, font-size, font-weight, line-height, letter-spacing','line-height 1.5–1.7 for body text.'),
+        T('Text properties — overflow, text-overflow: ellipsis, white-space: nowrap','Essential for truncating long text in cards.'),
+        T('Backgrounds — color, image, gradient (linear, radial), background-size','Master gradients — they\'re everywhere in modern UIs.'),
+        T('Borders — border shorthand, border-radius, border-image','border-radius: 50% on a square = circle.'),
+        T('Box-shadow — inset vs outset, multiple shadows','Multi-layer shadows create realistic depth.'),
+        T('CSS custom properties (variables) — declaring, using, updating with JS','--primary-color in :root, then var(--primary-color).'),
+        T('Transitions — property, duration, timing-function, delay','Add to the element, not :hover.'),
+        T('Animations — @keyframes, animation shorthand, will-change','will-change: transform hints browser to use GPU.'),
+        T('Object-fit — cover, contain, fill','object-fit: cover prevents image squashing.'),
+        T('Filter — blur, brightness, contrast, grayscale, drop-shadow','Useful for hover effects on images.'),
+        T('CSS calc() — mixing units like calc(100% - 24px)','Powerful for dynamic sizing without JS.'),
+        P('Build: Style the HTML resume with real CSS'),
+      ]},
+      {id:'c1-1-3',name:'CSS Layouts — Flexbox & Grid',high:true,topics:[
+        T('Flexbox — display: flex, flex-direction, main axis vs cross axis','Everything else in flexbox makes sense once you understand the two axes.'),
+        T('Flexbox — justify-content: flex-start, center, flex-end, space-between, space-around','justify-content aligns on the main axis. Your most-used property.'),
+        T('Flexbox — align-items: flex-start, center, flex-end, stretch, baseline','align-items aligns on the cross axis. center + center = perfectly centered.'),
+        T('Flexbox — flex-wrap, align-content','flex-wrap: wrap lets items move to next line.'),
+        T('Flexbox — flex-grow, flex-shrink, flex-basis (flex: 1)','flex: 1 means "take all available space".'),
+        T('Flexbox — align-self, order, gap','gap: 16px adds space between flex items without outer edge effects.'),
+        T('Common flexbox patterns — navbar, card row, centering, sticky footer','Practice: display:flex; justify-content:center; align-items:center'),
+        T('CSS Grid — display: grid, grid-template-columns, grid-template-rows','grid-template-columns: 1fr 1fr 1fr creates 3 equal columns.'),
+        T('CSS Grid — fr unit, repeat(), minmax(), auto-fill vs auto-fit','repeat(auto-fit, minmax(200px, 1fr)) = responsive grid without media queries.'),
+        T('CSS Grid — gap, grid-column/row span','grid-column: span 2 makes an item span 2 columns.'),
+        T('CSS Grid — grid-template-areas — naming regions','Name areas like "header", "sidebar", "main", "footer".'),
+        T('CSS Grid — align-items, justify-items, place-items','place-items: center centers all grid items in their cells.'),
+        T('CSS Grid — implicit vs explicit grid, grid-auto-flow, grid-auto-rows','Implicit rows are created automatically.'),
+        T('Responsive design — mobile-first approach (min-width media queries)','Always design for mobile first, then add complexity for larger screens.'),
+        T('Media queries — @media (min-width), (max-width), (prefers-color-scheme)','prefers-color-scheme: dark enables system-level dark mode.'),
+        T('Fluid typography — clamp(min, preferred, max)','clamp(1rem, 2.5vw, 2rem) scales smoothly between breakpoints.'),
+        P('Build: Responsive pricing cards — 3 columns to 1 column on mobile'),
+        P('Build: Full page layout — header, sidebar, main, footer with Grid'),
+        PR('Project: Responsive landing page — hero, features, testimonials, CTA, footer'),
+      ]},
+      {id:'c1-1-4',name:'Git & GitHub — Version Control',high:true,topics:[
+        T('What Git is — distributed version control, why every developer uses it','Git tracks every change to your code. Think of it as time travel.'),
+        T('Git concepts — working tree, staging area (index), commit history','Three areas: your files → staged changes → committed history.'),
+        T('git config, git init, git clone','Do git config before your first commit. git clone downloads full history.'),
+        T('git status, git add, git commit -m','Run git status constantly. Use conventional commit messages.'),
+        T('git log, git diff — viewing history and changes','git log --oneline --graph is a beautiful tree view.'),
+        T('Branching — git branch, git checkout -b, git switch, git merge','Create a branch for every feature: git checkout -b feat/user-login'),
+        T('git stash, git remote, git push, git pull, git fetch','git stash / git stash pop — useful when switching branches quickly.'),
+        T('GitHub — creating repos, READMEs, .gitignore, GitHub Pages','A good README: what it does, how to run it, screenshots, tech stack.'),
+        T('GitHub — forking, Pull Requests, code reviews','PR-based workflow is how every company works.'),
+        T('Conventional commits — feat:, fix:, docs:, refactor:, chore:','Teams use this format. Start doing it now.'),
+        P('Practice: Create a repo, make 10+ commits with good messages, push to GitHub'),
+        P('Practice: Simulate a merge conflict and resolve it'),
+      ]},
+    ]},
+    {id:'s1-2',name:'Stage 1.2 — JavaScript Core',color:'green',chapters:[
+      {id:'c1-2-1',name:'JS Fundamentals — The Non-Negotiables',high:true,topics:[
+        T('How JS runs — single-threaded, synchronous execution model','JS runs line by line. This shapes everything.'),
+        T('Variables — var (avoid), let (reassignable), const (preferred)','Use const by default. Use let when you need to reassign. Never use var.'),
+        T('Primitive types — string, number, boolean, null, undefined, symbol, BigInt','There are exactly 7 primitive types.'),
+        T('typeof operator — typeof null === "object" (the famous bug)','typeof undefined === "undefined". typeof null === "object" is a historic bug.'),
+        T('Type coercion — implicit (1 + "1" = "11") vs explicit (Number("1"))','JavaScript silently converts types. Always be explicit.'),
+        T('== vs === — abstract equality vs strict equality','Always use ===. Only exception some make: == null.'),
+        T('Falsy values — false, 0, -0, "", null, undefined, NaN','if(!value) catches all falsy values.'),
+        T('String methods — .length, .slice(), .indexOf(), .includes(), .replace(), .split(), .trim()','Strings are immutable — methods return new strings.'),
+        T('Template literals — `${expression}` interpolation, multiline strings','Template literals are cleaner than string concatenation.'),
+        T('Number methods — Number(), parseInt(), parseFloat(), .toFixed(), isNaN()','NaN is the only value not equal to itself: NaN !== NaN.'),
+        T('Operators — arithmetic, comparison, logical, ternary, short-circuit','Short-circuit: a && b. If a is falsy, return a. Used everywhere in React JSX.'),
+        T('Nullish coalescing ?? — returns right side only if left is null/undefined','const name = user.name ?? "Guest" — safer than ||'),
+        T('Conditionals — if/else, switch/case, guard clauses pattern','Guard clause: return early if invalid. Avoids deeply nested if/else.'),
+        T('Loops — for, while, do-while, for...of, for...in','Use for...of for arrays. Use for...in for objects (carefully).'),
+        T('Functions — declaration, expression, arrow functions','Arrow functions don\'t have their own "this" — crucial for React.'),
+        T('Arrow functions — syntax variations, implicit return, no "this"','() => value is implicit return.'),
+        T('Default parameters, rest parameters — function sum(...nums)','...nums collects remaining args into an array.'),
+        T('Scope — global, function, block scope','Block scope: let/const inside {} don\'t exist outside.'),
+        T('Hoisting — var declarations hoisted, function declarations fully hoisted','let/const are hoisted but not initialized (temporal dead zone).'),
+        T('Closures — inner function accessing outer scope after outer returns','THE most important JS concept for interviews.'),
+        T('Closure practical uses — data privacy, factory functions, memoization','function counter() { let n=0; return ()=>++n }'),
+        P('Practice: Write 5 functions using closures — counter, memoize, partial application'),
+        IV('Interview: Explain closures. What does "closing over" mean? Write an example.'),
+      ]},
+      {id:'c1-2-2',name:'Arrays & Objects — Data Structures You\'ll Use Daily',high:true,topics:[
+        T('Array creation — literals [], Array.from(), Array.of()','Array.from({length:5}, (_,i)=>i) creates [0,1,2,3,4].'),
+        T('Array mutation — push, pop, shift, unshift, splice','splice(index, deleteCount, ...items) — the Swiss Army knife of array mutation.'),
+        T('Array access — indexing, .length, .at(-1)','arr.at(-1) is the last element. Cleaner than arr[arr.length-1].'),
+        T('Array search — indexOf, includes, find, findIndex, findLast','find returns the element, findIndex returns its position.'),
+        T('.map() — transform every element, returns new array','const doubled = [1,2,3].map(n=>n*2) → [2,4,6].'),
+        T('.filter() — keep elements that pass a test','const evens = [1,2,3,4].filter(n=>n%2===0) → [2,4].'),
+        T('.reduce() — accumulate into a single value','const sum = [1,2,3].reduce((acc,n)=>acc+n, 0) → 6.'),
+        T('.forEach() — iterate with side effects, no return value','Use map/filter/reduce for data transformation. forEach for side effects.'),
+        T('.some() and .every() — return boolean','arr.every(n=>n>0) — are ALL positive?'),
+        T('.flat(), .flatMap() — flatten nested arrays','[1,[2,3]].flat() → [1,2,3].'),
+        T('.slice(), .concat(), spread — non-mutating operations','arr.slice(1, 3) — original unchanged.'),
+        T('.sort() — sorts in place (mutation!), needs comparator for numbers','[3,1,2].sort((a,b)=>a-b) → ascending.'),
+        T('.join() — combine array to string','["a","b","c"].join("-") → "a-b-c".'),
+        T('Objects — literal syntax, dot notation, bracket notation','Use bracket notation for dynamic keys: obj[variableKey].'),
+        T('Computed property names — {[varName]: value}','const key = "name"; const obj = {[key]: "Alice"} → {name: "Alice"}'),
+        T('Shorthand properties and methods','const obj = {name, age} instead of {name:name}.'),
+        T('Object.keys(), Object.values(), Object.entries()','Object.entries(obj).map(([key,val])=>...) — cleanest way to transform objects.'),
+        T('Object.assign(), Object.freeze(), Object.create()','Object.assign({}, defaults, overrides) is a classic merge pattern.'),
+        T('Destructuring — arrays and objects','const {name, age} = user. const [a, b] = arr.'),
+        T('Destructuring — with defaults, renaming','const {name="Guest"}=obj. const {name:n}=obj.'),
+        T('Spread in objects — shallow merge','const merged = {...obj1, ...obj2}.'),
+        T('Optional chaining ?. — user?.address?.city','Avoids "Cannot read property of undefined" errors.'),
+        T('Nullish coalescing ?? with optional chaining','user?.name ?? "Guest" — null-safe data access.'),
+        T('Shallow vs deep copy — structuredClone()','structuredClone() is the modern way to deep copy.'),
+        P('Practice: Implement map, filter, reduce from scratch'),
+        IV('Interview: Difference between .map() and .forEach()? When to use each?'),
+      ]},
+      {id:'c1-2-3',name:'ES6+ Modern JavaScript',high:true,topics:[
+        T('Modules — import/export, named exports, default export','Every React file uses ES modules.'),
+        T('Classes — constructor, methods, extends, super()','Classes are syntactic sugar over prototype chains.'),
+        T('Static methods, getters/setters, private fields (#)','Static: called on the class, not instances.'),
+        T('Symbols, Iterators, Generators (conceptual)','Generators are the foundation of async/await patterns.'),
+        T('Map vs Object — ordered, any key type, size property','Use Map when keys aren\'t strings or need insertion-order iteration.'),
+        T('Set — unique values, O(1) has() check','const unique = [...new Set(arr)] — remove duplicates.'),
+        T('WeakMap and WeakSet — weak references, no memory leaks','Used in library code for caching DOM node metadata.'),
+        T('Proxy and Reflect — intercept object operations','Used by Vue 3\'s reactivity system.'),
+        T('Logical assignment operators — &&=, ||=, ??=','a ??= "default" — assign if null/undefined.'),
+        P('Practice: Rewrite old code using modern syntax — classes, modules, destructuring'),
+      ]},
+      {id:'c1-2-4',name:'Async JavaScript — The Most Critical Concept',high:true,topics:[
+        T('How JS works — event loop, call stack, Web APIs, task queue, microtask queue','The event loop is THE most asked interview topic. Draw the diagram.'),
+        T('Event loop — why setTimeout(fn, 0) doesn\'t mean 0ms','Microtasks (Promises) run before tasks (setTimeout).'),
+        T('Synchronous vs asynchronous — blocking vs non-blocking','Network requests are async because waiting would freeze the UI.'),
+        T('Callbacks — what they are, callback hell (pyramid of doom)','Callbacks are functions passed as arguments.'),
+        T('Promises — 3 states: pending, fulfilled, rejected','A Promise is a container for a future value.'),
+        T('Creating Promises — new Promise((resolve, reject) => {})','resolve(value) fulfills. reject(error) rejects.'),
+        T('.then(), .catch(), .finally() — chaining','Put one .catch() at the end to catch any error in the chain.'),
+        T('Promise.all — all succeed or first fail','const [user, posts] = await Promise.all([getUser(), getPosts()])'),
+        T('Promise.allSettled, Promise.race, Promise.any','allSettled: waits for all, never rejects. race: first settled wins.'),
+        T('async/await — syntactic sugar over Promises','async functions always return a Promise. await pauses until settled.'),
+        T('try/catch with async/await — proper error handling','await without try/catch = unhandled rejection. Always wrap it.'),
+        T('Custom errors — class NetworkError extends Error','class NetworkError extends Error { constructor(msg) { super(msg); } }'),
+        T('Fetch API — fetch(url), response.json(), response.ok','response.ok is true for 2xx status codes. Always check it.'),
+        T('Fetch POST — headers, body: JSON.stringify(data)','Always set Content-Type: application/json when sending JSON.'),
+        T('Fetch error handling — fetch doesn\'t throw on 4xx/5xx','You must check response.ok manually.'),
+        T('JSON — JSON.parse(), JSON.stringify(), formatting','JSON.stringify(obj, null, 2) — pretty-print for debugging.'),
+        T('CORS — what it is, why it happens, how servers fix it','CORS is a browser security feature. Servers must allow cross-origin requests.'),
+        T('AbortController — cancel fetch requests on component unmount','Prevents memory leaks in React useEffect fetch patterns.'),
+        P('Build: Weather app using fetch + async/await + OpenWeather API'),
+        P('Practice: Implement a retry function with exponential backoff'),
+        IV('Interview: What is the event loop? Difference between microtasks and tasks?'),
+      ]},
+      {id:'c1-2-5',name:'Prototypes, this & OOP',high:true,topics:[
+        T('Prototypes — prototype chain, __proto__, Object.getPrototypeOf()','Every object has a prototype. Property lookup walks up the chain.'),
+        T('Function.prototype — .call(), .apply(), .bind()','call(thisArg, arg1), apply(thisArg, [args]), bind returns new function.'),
+        T('"this" keyword — 4 binding rules: default, implicit, explicit, new','In a method: this = the object. Arrow functions: this = enclosing context.'),
+        T('"this" in regular vs arrow functions — the critical difference','Arrow functions inherit "this" from definition context.'),
+        T('"this" in event listeners, setTimeout — common gotchas','setTimeout(this.method, 1000) — "this" is wrong. Use arrow or bind.'),
+        T('new keyword — creates object, sets prototype, returns "this"','new calls constructor, sets obj.__proto__ = Constructor.prototype.'),
+        IV('Interview: Explain prototypal inheritance. How does "this" work?'),
+      ]},
+    ]},
+    {id:'s1-3',name:'Stage 1.3 — DOM, Browser APIs & Projects',color:'green',chapters:[
+      {id:'c1-3-1',name:'DOM Manipulation',high:false,topics:[
+        T('What the DOM is — tree representation of HTML','querySelector returns a static snapshot. querySelectorAll returns live HTMLCollection.'),
+        T('Selecting elements — querySelector, querySelectorAll, getElementById','querySelector is more flexible.'),
+        T('DOM traversal — parentElement, children, nextElementSibling','Navigate the tree without hardcoding selectors.'),
+        T('Closest — el.closest(".container") — traverses up the tree','Essential for event delegation.'),
+        T('Creating and inserting elements — createElement, append, prepend, before, after','Modern: parent.append(child1, child2, "text").'),
+        T('Removing elements — el.remove()','Modern way. No need to reference the parent.'),
+        T('Modifying content — textContent (safe), innerHTML (XSS risk!), innerText','NEVER use innerHTML with user data. Use textContent.'),
+        T('Attributes — getAttribute, setAttribute, classList — .add, .remove, .toggle, .contains','classList.toggle("active") adds if absent, removes if present.'),
+        T('Style manipulation — prefer CSS classes over el.style','Only use el.style for dynamically computed values.'),
+        T('Data attributes — data-id="123", el.dataset.id','dataset converts kebab-case to camelCase.'),
+        T('Events — addEventListener, removeEventListener','Always keep a reference to handlers you need to remove later.'),
+        T('Event object — event.target vs event.currentTarget','target: what was clicked. currentTarget: where listener is attached.'),
+        T('preventDefault(), stopPropagation()','preventDefault stops default browser behavior.'),
+        T('Event bubbling and capturing','Most events bubble. Use this for event delegation.'),
+        T('Event delegation — ONE listener on parent for multiple children','Instead of 100 button listeners, attach one to the container.'),
+        T('Common events — click, mouseover, mouseenter, contextmenu','mouseenter/leave don\'t bubble. mouseover/out do.'),
+        T('Keyboard events — keydown, keyup; event.key','event.key === "Enter", event.key === "Escape".'),
+        T('Form events — submit, change, input, focus, blur','input fires on every keystroke. change fires on value commit.'),
+        T('Custom events — new CustomEvent("myEvent", {detail:{data}})','Powerful for component-to-component communication.'),
+        P('Build: Dynamic to-do list — add, delete, toggle complete, filter — pure DOM'),
+      ]},
+      {id:'c1-3-2',name:'Browser Storage & Modern APIs',high:false,topics:[
+        T('localStorage — setItem, getItem, removeItem — persists after close','Always JSON.stringify/parse objects.'),
+        T('sessionStorage — same API, cleared when tab closes','Use for temporary data like form drafts.'),
+        T('localStorage limits — ~5MB, string-only, synchronous','For large data, use IndexedDB or a server.'),
+        T('Cookies — document.cookie, HttpOnly, Secure, SameSite, expires','HttpOnly cookies can\'t be accessed by JS — used for auth tokens.'),
+        T('History API — pushState, replaceState, popstate','React Router uses this.'),
+        T('URL API — new URL(href), URLSearchParams','URLSearchParams makes query string parsing trivial.'),
+        T('Intersection Observer — observe viewport entry/exit','Use for: lazy loading images, scroll animations, infinite scroll.'),
+        T('ResizeObserver, MutationObserver — observe size/DOM changes','Use instead of window resize events for element-level handling.'),
+        T('Web Workers — run JS in background thread','Offload heavy computation off the main thread.'),
+        T('Service Workers — intercept network requests, offline/PWA','The foundation of PWAs.'),
+      ]},
+      {id:'c1-3-3',name:'Real Projects — Consolidate Your Learning',high:true,topics:[
+        PR('Project 1: JavaScript Calculator — keyboard + click input, history'),
+        PR('Project 2: Weather App — fetch OpenWeather API, search, 5-day forecast, geolocation'),
+        PR('Project 3: Todo App with localStorage persistence, drag-to-reorder, categories'),
+        PR('Project 4: Quiz App — JSON data, timer, score tracking, localStorage high score'),
+        PR('Project 5: GitHub User Search — GitHub REST API, pagination, repos list'),
+        T('Deploy all projects to GitHub Pages or Netlify','Every project needs a live link.'),
+        T('Write proper README.md — what it does, how to run, screenshot, live link, tech stack','A README without a screenshot is half a README.'),
+        IV('Interview: Walk me through how you built one of your projects.'),
+      ]},
+    ]},
+  ]},
+  {id:'u2',name:'Unit 2 — Core Stack',color:'blue',months:'Month 4–6',stages:[
+    {id:'s2-1',name:'Stage 2.1 — React',color:'blue',chapters:[
+      {id:'c2-1-1',name:'React Fundamentals',high:true,topics:[
+        T('Why React — virtual DOM, reconciliation, declarative vs imperative UI','React re-renders the minimum needed.'),
+        T('Setup — Vite (recommended), project structure','npm create vite@latest my-app -- --template react'),
+        T('JSX — rules: one root element, className, camelCase attrs, fragments','JSX compiles to React.createElement().'),
+        T('Functional components — PascalCase naming','function Button({label}) { return <button>{label}</button>; }'),
+        T('Props — passing data, destructuring, children prop, default values','Props flow down (parent → child). They\'re immutable inside the child.'),
+        T('Conditional rendering — ternary, &&, null','{isLoggedIn && <Dashboard/>} — renders only when true.'),
+        T('Rendering lists — .map() with JSX, the key prop','key must be unique and stable. Never use array index as key.'),
+        T('CSS in React — CSS modules, plain CSS, inline styles, Tailwind','CSS modules: import styles from "./Button.module.css"'),
+        T('Handling events — camelCase, pass function reference, not call','<button onClick={handleClick}> NOT onClick={handleClick()}'),
+        T('Controlled vs uncontrolled inputs','Controlled: React controls value. Use controlled.'),
+        T('React DevTools — inspect component tree and props','Essential for debugging.'),
+        P('Build: Contact card, button group, nav bar components'),
+      ]},
+      {id:'c2-1-2',name:'React Hooks — The Core of Modern React',high:true,topics:[
+        T('Rules of Hooks — only at top level, only in components/custom hooks','Breaking rules causes bugs. ESLint enforces this.'),
+        T('useState — const [state, setState] = useState(initial)','setState replaces state (for objects: spread first).'),
+        T('useState — functional updates setState(prev => prev + 1)','Use when new state depends on previous state.'),
+        T('useEffect — side effects after render','Think of it as "after render, do this."'),
+        T('useEffect dependency array — [], [dep], no array','Missing deps = bugs. Extra deps = unnecessary runs.'),
+        T('useEffect cleanup — return a function','return () => clearInterval(timer). Runs before next effect and on unmount.'),
+        T('useEffect for data fetching — async function inside','Don\'t make the callback async. Create async fn inside it.'),
+        T('useRef — access DOM elements, store mutable values without re-render','inputRef.current.focus() after <input ref={inputRef}/>'),
+        T('forwardRef — pass ref through a component to its DOM element','Used when building reusable component libraries.'),
+        T('useMemo — memoize expensive computed values','useMemo(() => filterLargeList(data), [data])'),
+        T('useCallback — memoize function references for stable child props','useCallback(() => handleClick(id), [id])'),
+        T('When NOT to optimize — measure first with React DevTools Profiler','Don\'t add useMemo/useCallback everywhere.'),
+        T('useContext — read from React Context without prop drilling','const user = useContext(UserContext)'),
+        T('useReducer — complex state logic, multiple state values','dispatch({type:"INCREMENT"}) is clearer intent.'),
+        T('Custom Hooks — extract reusable stateful logic into use* functions','function useFetch(url) — returns {data, loading, error}'),
+        P('Build custom hook: useFetch(url) — handles loading, error, data'),
+        P('Build custom hook: useLocalStorage(key, initialValue)'),
+        P('Build custom hook: useDebounce(value, delay)'),
+        P('Build custom hook: useWindowSize()'),
+        IV('Interview: Rules of hooks? Why can\'t you call hooks conditionally?'),
+      ]},
+      {id:'c2-1-3',name:'React Router, State Management & Data Fetching',high:false,topics:[
+        T('React Router v6 — BrowserRouter, Routes, Route, Link, NavLink','NavLink adds "active" class automatically.'),
+        T('Route params — /users/:id — useParams()','const {id} = useParams()'),
+        T('useNavigate, useLocation, useSearchParams','navigate("/dashboard") or navigate(-1) to go back.'),
+        T('Nested routes — layout with <Outlet/>','The Outlet placeholder is where child routes render.'),
+        T('Protected routes — wrap routes with auth check','if (!user) return <Navigate to="/login"/>'),
+        T('Global state — Context + useReducer for medium apps','For apps without complex state, this is enough.'),
+        T('Zustand — minimal API, no boilerplate','const useStore = create(set => ({count: 0, inc: () => set(s => ({count:s.count+1}))}))'),
+        T('Redux Toolkit — createSlice, configureStore, useSelector, useDispatch, RTK Query','RTK is the ONLY way to use Redux in 2024.'),
+        T('TanStack Query (React Query) — useQuery, useMutation, staleTime, invalidation','Handles caching, background refetching, loading/error states.'),
+        P('Build: Multi-page React app with React Router'),
+        P('Build: Shopping cart with Zustand'),
+      ]},
+      {id:'c2-1-4',name:'React Production Patterns',high:true,topics:[
+        T('Project structure — feature-based folder organization','Feature-based: /features/auth, /features/products. More scalable.'),
+        T('Error boundaries — class component to catch rendering errors','Use react-error-boundary library.'),
+        T('Suspense + React.lazy() — code splitting, reduce initial bundle','Lazy load heavy components/pages.'),
+        T('React performance — React.memo, avoiding unnecessary re-renders','React.memo: only re-render if props changed.'),
+        T('react-hook-form + Zod — industry standard form validation','Less re-renders than other form libraries.'),
+        PR('Project: Full CRUD React app — Notes/Blog with auth, search, pagination, dark mode'),
+        T('Deploy React app to Vercel — connect GitHub, auto-deploy on push','Vercel is the fastest way to deploy. Free tier is generous.'),
+      ]},
+    ]},
+    {id:'s2-2',name:'Stage 2.2 — Node.js & Express',color:'blue',chapters:[
+      {id:'c2-2-1',name:'Node.js Runtime',high:false,topics:[
+        T('What Node.js is — V8 engine + libuv for async I/O','Node\'s event loop has more phases than browser\'s.'),
+        T('Node.js vs browser JS — no window/document, has process, __dirname, require','Node adds: process.env, process.argv, path, fs.'),
+        T('npm — package.json, package-lock.json, semantic versioning, npm scripts','package.json tracks what you NEED. lock file tracks exact versions.'),
+        T('CommonJS vs ES Modules — require() vs import/export','Most new projects use ESM.'),
+        T('Built-in modules — fs, path, os, http, url, events, crypto','fs.promises.readFile — modern async file reading.'),
+        T('process object — process.env, process.argv, process.exit()','process.env.NODE_ENV is "development" or "production".'),
+        T('dotenv — loading .env files, keeping secrets out of git','NEVER commit .env to git (add to .gitignore).'),
+        T('Streams — readable, writable, transform, pipe for efficiency','Streams process data in chunks. Great for large files.'),
+        T('Events — EventEmitter — .on(), .emit(), .once()','Node\'s pub/sub system. Used internally by streams.'),
+      ]},
+      {id:'c2-2-2',name:'Express.js — Building REST APIs',high:true,topics:[
+        T('Express basics — app setup, app.listen(PORT)','const express=require("express"); const app=express(); app.listen(3000)'),
+        T('HTTP methods — GET, POST, PUT, PATCH, DELETE','REST convention: GET /users (list), POST /users (create), etc.'),
+        T('Route definition — app.get(), app.post(), route params, query strings','Handler: (req, res) => {}. Always send a response.'),
+        T('Request body — req.body — requires express.json() middleware','Without middleware, req.body is undefined.'),
+        T('Response methods — res.json(), res.status(404).json(), res.redirect()','Always send exactly ONE response per request.'),
+        T('HTTP status codes — 200, 201, 400, 401, 403, 404, 500','Use correct status codes. 4xx for client errors, 5xx for server.'),
+        T('Middleware — functions(req, res, next) — request pipeline','Middleware executes in order. Each must call next() or send response.'),
+        T('Custom middleware — logging, authentication, timestamps','app.use((req,res,next)=>{ console.log(req.method, req.url); next(); })'),
+        T('Error handling middleware — 4 parameters: (err, req, res, next)','Express detects error middleware by its 4-arg signature.'),
+        T('Express Router — split routes into separate files','const router = express.Router(); app.use("/api/users", router)'),
+        T('CORS — cors npm package, controlling origins','In production: cors({origin:"https://yourapp.com"})'),
+        T('Rate limiting, Helmet.js — security essentials','app.use(helmet()) adds 11 security headers automatically.'),
+        P('Build: REST API for a blog — CRUD for posts and comments'),
+      ]},
+      {id:'c2-2-3',name:'Authentication & Security',high:true,topics:[
+        T('Authentication vs Authorization','Auth: who are you? Authorization: what can you do?'),
+        T('Password hashing — bcrypt — saltRounds, hash(), compare()','Never store plain text passwords. bcrypt is slow BY DESIGN.'),
+        T('JWT structure — header.payload.signature — base64 encoded, NOT encrypted','JWT is encoded, not encrypted. Don\'t put sensitive data in payload.'),
+        T('JWT — jwt.sign(), jwt.verify() — access vs refresh tokens','Access tokens: 15 minutes. Refresh tokens: 7–30 days.'),
+        T('Auth middleware — extracting Bearer token, verifying, attaching user to req','Authorization: Bearer <token>. Extract the token part.'),
+        T('Cookie-based auth — httpOnly, Secure, SameSite cookies vs localStorage JWTs','httpOnly cookies can\'t be read by JS — safer for tokens.'),
+        T('Role-based access control — admin, user, moderator','if(req.user.role!=="admin") return res.status(403)...'),
+        T('Input validation and sanitization — never trust user input','Validation: is data the right type? Sanitization: remove dangerous chars.'),
+        T('SQL injection — parameterized queries prevent it','db.query("SELECT * FROM users WHERE id = $1", [userId]) — safe.'),
+        T('XSS — Cross-Site Scripting — sanitize output, set CSP','Set Content-Security-Policy. Use textContent not innerHTML.'),
+        T('CSRF protection — SameSite cookies, CSRF tokens','SameSite=Strict/Lax prevents CSRF.'),
+        T('OAuth 2.0 — conceptual flow, authorization code, tokens, scopes','Google Sign-in flow: user → your app → Google → tokens.'),
+        IV('Interview: How does JWT auth work? Security tradeoffs vs sessions?'),
+      ]},
+    ]},
+    {id:'s2-3',name:'Stage 2.3 — Databases',color:'blue',chapters:[
+      {id:'c2-3-1',name:'MongoDB & Mongoose',high:false,topics:[
+        T('NoSQL vs SQL — document vs relational, when to use which','NoSQL: flexible schema, nested data. SQL: relations, transactions.'),
+        T('MongoDB concepts — documents, collections, CRUD operations','A document: {_id, name:"Alice", age:30}.'),
+        T('Query operators — $eq, $gt, $lt, $in, $nin, $set, $push, $pull, $inc','$set: {$set:{name:"Bob"}} — only changes name field.'),
+        T('Aggregation pipeline — $match, $group, $sort, $project, $lookup','Complex queries: count posts per user, join collections.'),
+        T('MongoDB indexes — createIndex, compound indexes, explain()','Without index, MongoDB scans every document.'),
+        T('Mongoose schema, model, CRUD, populate, hooks','userSchema.pre("save", async fn) — hash password before save.'),
+        T('MongoDB Atlas — cloud MongoDB, free tier, connection string','Set Network Access restrictions in production.'),
+      ]},
+      {id:'c2-3-2',name:'SQL & PostgreSQL',high:true,topics:[
+        T('Why SQL — ACID guarantees, complex relations, data integrity','Most companies use PostgreSQL or MySQL for core data.'),
+        T('Relational concepts — tables, rows, primary key, foreign key','Primary key: unique identifier. Foreign key: reference to another table.'),
+        T('SELECT, WHERE, ORDER BY, LIMIT, OFFSET — filtering and pagination','LIMIT + OFFSET = pagination.'),
+        T('INSERT, UPDATE, DELETE — always use parameterized queries and WHERE','Forgetting WHERE on UPDATE/DELETE updates ALL rows.'),
+        T('JOINs — INNER JOIN (both match), LEFT JOIN (all left + matching right)','SELECT p.title, u.name FROM posts p LEFT JOIN users u ON p.user_id = u.id'),
+        T('Aggregation — COUNT, SUM, AVG, MAX, MIN, GROUP BY, HAVING','GROUP BY groups rows. HAVING filters groups.'),
+        T('Subqueries and CTEs — named subqueries for readability','CTEs make complex queries readable.'),
+        T('Schema design — normalization, constraints (NOT NULL, UNIQUE, CHECK, REFERENCES)','Constraints enforce integrity at database level.'),
+        T('Indexes, EXPLAIN ANALYZE, transactions — ACID','EXPLAIN your slow queries to see sequential scans.'),
+        T('Prisma ORM — schema.prisma, migrate, type-safe queries','Prisma generates TypeScript types from your schema.'),
+        IV('Interview: Difference between INNER JOIN and LEFT JOIN with an example.'),
+      ]},
+      {id:'c2-3-3',name:'Full-Stack Integration Project',high:true,topics:[
+        PR('Full-Stack Project: React + Express + MongoDB or PostgreSQL'),
+        T('Feature: User auth — bcrypt passwords, JWT tokens','The most common feature in real apps.'),
+        T('Feature: Protected API routes — auth middleware + frontend route guards','Both frontend and backend should be protected.'),
+        T('Feature: User profile — view, update, upload avatar (Cloudinary)','Cloudinary offers a free tier.'),
+        T('Feature: CRUD for main resource with ownership checks','A user can only delete THEIR posts.'),
+        T('Feature: Pagination, Search with proper database indexes','Cursor-based pagination is better than offset for large datasets.'),
+        T('Deploy backend to Railway or Render — free tiers, env vars','Never commit .env to git.'),
+        T('Deploy frontend to Vercel — set VITE_API_URL env var','VITE_ prefix makes vars available to browser bundle.'),
+        T('CORS for production — only allow your frontend origin','cors({origin: process.env.FRONTEND_URL})'),
+        T('Error handling — global error handler, consistent API error format','Never leak stack traces to clients in production.'),
+      ]},
+    ]},
+  ]},
+  {id:'u3',name:'Unit 3 — Product-Grade Skills',color:'yellow',months:'Month 7–9',stages:[
+    {id:'s3-1',name:'Stage 3.1 — TypeScript',color:'yellow',chapters:[
+      {id:'c3-1-1',name:'TypeScript Fundamentals',high:true,topics:[
+        T('Why TypeScript — catch bugs at compile time, autocomplete, safe refactoring','If you rename a function, TypeScript tells you everywhere it\'s used.'),
+        T('Setup — tsconfig.json, ts-node, tsc compiler','npx create-next-app with TypeScript is the easiest start.'),
+        T('Basic types — string, number, boolean, null, undefined, any, unknown, never, void','unknown is like any but safe — you must narrow before using.'),
+        T('Type annotations, inference, arrays, tuples','TypeScript can infer most types. Only annotate when needed.'),
+        T('Type aliases and Interfaces — extendable, mergeable','interface vs type: interfaces can be merged.'),
+        T('Optional/readonly properties, union types, intersection types','{name?: string} — name might not exist.'),
+        T('Literal types — "GET" | "POST" | "PUT"','Only these exact values allowed. Catches typos at compile time.'),
+        T('Type narrowing — typeof, instanceof, in operator, discriminated unions','if (typeof val === "string") — TS knows type inside the block.'),
+        T('Type assertions — value as Type','const input = document.getElementById("email") as HTMLInputElement'),
+      ]},
+      {id:'c3-1-2',name:'Advanced TypeScript',high:false,topics:[
+        T('Generics — function identity<T>(val: T): T','function first<T>(arr: T[]): T | undefined'),
+        T('Generic constraints — <T extends object>','<T extends {id: number}> — T must have an id property.'),
+        T('Utility types — Partial, Required, Pick, Omit, Record, Readonly, ReturnType','Partial<User> makes all User fields optional.'),
+        T('Mapped types, conditional types, template literal types','The foundation of how Partial, Readonly, Record work.'),
+        T('TypeScript with React — FC<Props>, ReactNode, event types','type Props = {onClick: (e: React.MouseEvent<HTMLButtonElement>) => void}'),
+        T('TypeScript with Express — typed req.body, custom Request interface','interface AuthRequest extends Request { user?: User }'),
+        T('Declaration files — .d.ts, @types packages','@types/node, @types/express add types to untyped packages.'),
+      ]},
+    ]},
+    {id:'s3-2',name:'Stage 3.2 — Next.js',color:'yellow',chapters:[
+      {id:'c3-2-1',name:'Next.js Core',high:true,topics:[
+        T('Why Next.js — SSR, SSG, file routing, API routes, image optimization, SEO','Used by Vercel, Airbnb, Twitch, TikTok.'),
+        T('App Router vs Pages Router — learn App Router (the future)','App Router uses React Server Components.'),
+        T('File-based routing — folders = routes, page.tsx, layout.tsx, loading.tsx, error.tsx','app/about/page.tsx → /about route.'),
+        T('Server Components vs Client Components — the most important Next.js concept','Server: no useState/effects. Client: "use client" directive.'),
+        T('Data fetching in Server Components — async/await directly','async function Page() { const data = await fetch(url); }'),
+        T('Next.js fetch caching — force-cache, no-store, revalidate (ISR)','fetch(url, {next:{revalidate:3600}}) — regenerate every hour.'),
+        T('generateStaticParams — pre-render dynamic routes at build time','Returns array of params to statically generate.'),
+        T('Server Actions — handle forms without API routes','Add "use server" to a function.'),
+        T('API Routes — app/api/route.ts — export GET, POST handlers','export async function GET(request) { return Response.json({data}) }'),
+        T('Next.js Image, Middleware, env variables, Metadata API','NEXT_PUBLIC_ prefix for browser-safe vars.'),
+        PR('Project: SaaS Dashboard — Next.js + Prisma + PostgreSQL + Auth.js + Stripe'),
+      ]},
+    ]},
+    {id:'s3-3',name:'Stage 3.3 — System Design Basics',color:'yellow',chapters:[
+      {id:'c3-3-1',name:'System Design for Interviews',high:true,topics:[
+        T('What system design interviews test — architecture thinking, trade-off reasoning','They want to see how you THINK through problems.'),
+        T('Scalability — vertical scaling (bigger server) vs horizontal (more servers)','Horizontal requires stateless servers, load balancers.'),
+        T('Load balancers, caching (CDN, Redis), database scaling','Cache what\'s expensive to compute and frequently accessed.'),
+        T('CAP theorem — Consistency, Availability, Partition tolerance — pick 2','MongoDB: AP. PostgreSQL: CP.'),
+        T('REST API design — naming, versioning, filtering, pagination, rate limiting','GET /v1/posts?status=published&page=2&limit=10'),
+        T('Message queues — BullMQ (Redis-based) — async job processing','Use queues for: email sending, image processing, notifications.'),
+        T('WebSockets — bidirectional — chat, live scores; SSE — one-directional','Socket.io for Node.js. JWT auth in the handshake.'),
+        T('CDN — serve static assets from edge locations','Store images, JS, CSS on CDN.'),
+        T('System design: URL shortener, Social media feed, File upload service','Walk through: API design → storage → algorithm → scalability.'),
+        IV('Interview: Design a URL shortener. What database would you use and why?'),
+      ]},
+    ]},
+    {id:'s3-4',name:'Stage 3.4 — DSA for Interviews',color:'yellow',chapters:[
+      {id:'c3-4-1',name:'DSA — Complexity & Arrays',high:true,topics:[
+        T('Big O notation — time and space complexity','O(1): constant. O(log n): binary search. O(n): one loop. O(n²): nested loops.'),
+        T('Two-pointer technique — one array: left/right pointers','Two Sum (sorted), reverse string, valid palindrome.'),
+        T('Sliding window — subarray problems with O(n) instead of O(n²)','Fixed window: max sum of k elements. Variable: longest substring.'),
+        T('Prefix sum — precompute cumulative sums for O(1) range queries','prefix[i] = arr[0]+...+arr[i]. Range sum = prefix[r] - prefix[l-1].'),
+        P('Practice: Two Sum, Three Sum, Maximum Subarray (Kadane\'s), Container With Most Water'),
+      ]},
+      {id:'c3-4-2',name:'DSA — Hash Maps, Stacks, Queues',high:true,topics:[
+        T('Hash Maps — O(1) average lookup, insert, delete','The most powerful DS. Solve 30% of interview problems with hash maps.'),
+        T('Frequency counting, two-sum with hash map, grouping/bucketing','const freq = {}; for (const c of s) freq[c] = (freq[c] || 0) + 1'),
+        T('Sets — uniqueness, O(1) has() check','const unique = [...new Set(arr)] — remove duplicates.'),
+        T('Stacks — LIFO; Monotonic stack — increasing/decreasing order','Stack: balanced brackets, min stack, daily temperatures.'),
+        T('Queues — FIFO; Deque — push/pop from both ends','BFS always uses a queue.'),
+        P('Practice: Valid Parentheses, Min Stack, Daily Temperatures, Sliding Window Maximum'),
+      ]},
+      {id:'c3-4-3',name:'DSA — Linked Lists',high:true,topics:[
+        T('Linked list structure — node with value and next pointer','class Node { constructor(val) { this.val=val; this.next=null; } }'),
+        T('Traversal, reverse (3 pointers + recursive)','Classic question. Know both approaches.'),
+        T('Detect cycle — Floyd\'s algorithm (slow/fast pointers)','If they meet, there\'s a cycle.'),
+        T('Find middle, merge sorted lists, remove nth from end, intersection','Slow/fast: when fast reaches end, slow is at middle.'),
+      ]},
+      {id:'c3-4-4',name:'DSA — Trees & Recursion',high:true,topics:[
+        T('Binary tree structure — inorder, preorder, postorder, level-order traversal','Inorder of BST = sorted array.'),
+        T('Tree height/depth, path sum, LCA, BST operations','LCA: if both p and q in different subtrees, current is LCA.'),
+        T('BST — search, insert, delete, validate','Balanced BST: h = O(log n).'),
+        T('Recursion pattern — base case + recursive case + trust the recursion','Write base case first. Trust the recursive call works.'),
+        P('Practice: Max Depth, Same Tree, Symmetric Tree, Invert Binary Tree, Path Sum'),
+      ]},
+      {id:'c3-4-5',name:'DSA — Graphs',high:true,topics:[
+        T('Graph representations — adjacency list (preferred)','Adjacency list: {0:[1,2], 1:[0,3]}.'),
+        T('BFS — level-by-level, queue — shortest path in unweighted graph','Use visited set to avoid cycles.'),
+        T('DFS — depth-first, stack/recursion — path finding, connectivity','DFS explores as far as possible before backtracking.'),
+        T('Connected components, cycle detection, topological sort','Course schedule: directed cycle. Valid tree: undirected cycle.'),
+        T('Grid problems — treat grid as graph, 4-directional BFS/DFS','Number of Islands, Max Area of Island.'),
+        P('Practice: Number of Islands, Clone Graph, Course Schedule, Rotting Oranges'),
+      ]},
+      {id:'c3-4-6',name:'DSA — Binary Search & Sorting',high:false,topics:[
+        T('Binary search — O(log n) on sorted array','lo=0, hi=n-1. while(lo<=hi): mid=lo+hi>>1.'),
+        T('Binary search on answer space — min/max value satisfying condition','Koko Eating Bananas, Capacity to Ship.'),
+        T('Merge sort — O(n log n), stable; Quick sort — O(n log n) avg, in-place','Understand the merge step deeply.'),
+        P('Practice: Binary Search, Search in Rotated Array, Koko Eating Bananas'),
+      ]},
+      {id:'c3-4-7',name:'DSA — Dynamic Programming',high:false,topics:[
+        T('What is DP — overlapping subproblems + optimal substructure','DP = "clever recursion with caching."'),
+        T('Memoization (top-down) — recursive + cache results','function fib(n, memo={}) { if (n in memo) return memo[n]; ... }'),
+        T('Tabulation (bottom-up) — iterative, fill dp array','Usually more space-efficient, avoids stack overflow.'),
+        T('1D DP — Climbing Stairs, House Robber, Min Cost Climbing Stairs','dp[i] = min(dp[i-1], dp[i-2]) + cost[i].'),
+        T('2D DP — Unique Paths, Coin Change, LCS, 0/1 Knapsack','dp[i][j] depends on dp[i-1][j] and dp[i][j-1].'),
+        P('NeetCode 150 — complete all Easy and most Medium problems by Month 9'),
+      ]},
+      {id:'c3-4-8',name:'Testing',high:false,topics:[
+        T('Why testing — confidence to refactor, catch regressions, documentation','Tests tell future you what the code is supposed to do.'),
+        T('Types — unit (pure functions), integration (components), e2e (full flow)','Unit: fast, isolated. Integration: realistic. E2E: slow but complete.'),
+        T('Jest — describe(), it(), expect() matchers, jest.fn(), jest.mock()','expect(sum(2,3)).toBe(5). toBe: strict. toEqual: deep equality.'),
+        T('React Testing Library — render, screen, userEvent, findBy/getBy/queryBy','screen.getByRole("button") — test by accessibility, not implementation.'),
+        T('MSW (Mock Service Worker) — intercept real fetch calls in tests','Better than mocking fetch directly.'),
+      ]},
+    ]},
+    {id:'s3-5',name:'Stage 3.5 — Job-Ready Projects & Interview Prep',color:'yellow',chapters:[
+      {id:'c3-5-1',name:'Portfolio Projects',high:true,topics:[
+        PR('Project A: SaaS Dashboard — Next.js 14 + Prisma + PostgreSQL + Auth.js + Stripe'),
+        T('Feature: Stripe payments — checkout, webhooks, subscriptions','Webhooks confirm payments. Handle them or payments won\'t activate.'),
+        T('Feature: Email with Resend — transactional emails (welcome, password reset)','Basic but expected in any SaaS.'),
+        T('Feature: Role-based access, data visualization with Recharts','Charts make dashboards feel real.'),
+        PR('Project B: Real-time Chat App — Socket.io + Node.js + React'),
+        T('Feature: Rooms, online presence, typing indicator, message persistence','Typing indicator: emit event on keydown, clear after 3 seconds.'),
+        PR('Project C: REST API with OpenAPI/Swagger documentation'),
+        T('All projects: comprehensive README with screenshots, tech stack, setup','A README without screenshots gets skipped by recruiters.'),
+        T('All projects: deployed and live','If the link doesn\'t work, it might as well not exist.'),
+        T('GitHub: green commit history, good commit messages, clean code','Recruiters look at your GitHub. Make it look active.'),
+      ]},
+      {id:'c3-5-2',name:'Interview Preparation',high:true,topics:[
+        T('Resume — 1 page, ATS format, 2–3 projects, skills section','Every line should answer: "so what?" — what did this achieve?'),
+        T('LinkedIn — 500+ connections, projects as posts, recommendations','Post about your projects with screenshots.'),
+        T('Portfolio website — clean, fast, 3 projects with live demo + code','Keep it simple. Load time matters.'),
+        T('Mock interviews — Pramp.com (free), interviewing.io, peers','Do at least 5 mock interviews before the real thing.'),
+        T('STAR method — Situation, Task, Action, Result — for behavioral questions','Have 3–4 stories ready.'),
+        T('Common technical questions — closures, event loop, CORS, REST vs GraphQL, JWT','Prepare written explanations, then practice verbally.'),
+        T('React interview questions — virtual DOM, hooks rules, useEffect, reconciliation','Can you explain why keys matter in lists?'),
+        T('Live coding — explain approach before coding, talk while you think','Silence is bad in a live coding interview.'),
+        T('Company research — use their product, know their tech stack, read engineering blog','Instant points: "I read your article on migrating to microservices."'),
+        T('Salary negotiation — always negotiate, use levels.fyi, Glassdoor','The first offer is rarely the final offer. Counter with data.'),
+        T('Apply 5–10 companies per week from Month 7','Don\'t apply to 2 and wait. Cast a wide net.'),
+        IV('Interview: Walk me through your best project from design to deployment.'),
+        IV('Interview: How would you handle a performance issue in a React app?'),
+        IV('Interview: What happens when you type a URL in the browser and press Enter?'),
+      ]},
+    ]},
+  ]},
+];
+
+// Color helpers
+const unitColors={green:'ub-green',blue:'ub-blue',yellow:'ub-yellow',pink:'ub-pink',orange:'ub-orange',accent:'ub-accent'};
+const barColors={green:'var(--accent)',blue:'var(--blue)',yellow:'var(--amber)',pink:'var(--pink)',orange:'var(--orange)',accent:'var(--accent3)'};
+const stageNumStyles={green:'background:rgba(61,232,176,.15);color:var(--accent)',blue:'background:rgba(91,164,245,.15);color:var(--blue)',yellow:'background:rgba(244,169,66,.15);color:var(--amber)',pink:'background:rgba(244,114,182,.15);color:var(--pink)',orange:'background:rgba(251,146,60,.15);color:var(--orange)'};
+const catLabels={theory:'📖 Theory',practice:'💻 Practice',project:'🚀 Build',interview:'🎤 Interview'};
+const catClass={theory:'tc-theory',practice:'tc-practice',project:'tc-project',interview:'tc-interview'};
+
+function buildSyllabus(){
+  const tabsEl=document.getElementById('syllabus-tabs');
+  const panelsEl=document.getElementById('syllabus-panels');
+  if(!tabsEl||!panelsEl)return;
+  tabsEl.innerHTML='';panelsEl.innerHTML='';
+  const d=getData();
+  CURRICULUM.forEach((unit,ui)=>{
+    const panelId='sp-'+unit.id;
+    const colClass=unitColors[unit.color]||'ub-accent';
+    const barCol=barColors[unit.color]||'var(--accent)';
+    let uTotal=0,uDone=0;
+    unit.stages.forEach(st=>st.chapters.forEach(ch=>{ch.topics.forEach((_,ti)=>{uTotal++;if(d['t-'+ch.id+'-'+ti])uDone++;})}));
+    const uPct=uTotal?Math.round(uDone/uTotal*100):0;
+    const tab=document.createElement('button');
+    tab.className='subj-tab st-'+unit.color+(ui===0?' active':'');
+    tab.innerHTML=`${unit.name} <span class="topic-count-chip" style="margin-left:4px">${uDone}/${uTotal}</span>`;
+    tab.dataset.panel=panelId;
+    tabsEl.appendChild(tab);
+    const panel=document.createElement('div');
+    panel.className='subj-panel'+(ui===0?' active':'');
+    panel.id=panelId;
+    let html=`<div class="unit-block">
+      <div class="unit-header">
+        <span class="unit-badge ${colClass}">${unit.months}</span>
+        <div class="unit-title">${unit.name}</div>
+        <span class="unit-pct" style="color:${barCol}" id="upct-${unit.id}">${uPct}%</span>
+      </div>
+      <div class="unit-bar-wrap"><div style="height:3px;width:${uPct}%;background:${barCol};border-radius:2px;transition:width .6s" id="ubar-${unit.id}"></div></div>`;
+    unit.stages.forEach((st,si)=>{
+      let stTotal=0,stDone=0;
+      st.chapters.forEach(ch=>{ch.topics.forEach((_,ti)=>{stTotal++;if(d['t-'+ch.id+'-'+ti])stDone++;})});
+      const stPct=stTotal?Math.round(stDone/stTotal*100):0;
+      const snStyle=stageNumStyles[unit.color]||stageNumStyles.green;
+      html+=`<div class="stage-block" id="sb-${st.id}">
+        <div class="stage-header" onclick="toggleStage('${st.id}')">
+          <div class="stage-num" style="${snStyle}">${si+1}</div>
+          <div class="stage-name">${st.name}</div>
+          <div class="stage-prog" id="sprog-${st.id}">${stDone}/${stTotal} topics</div>
+          <svg class="stage-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="chapter-list">`;
+      st.chapters.forEach(ch=>{
+        let chTotal=ch.topics.length;
+        let chDone=ch.topics.filter((_,ti)=>d['t-'+ch.id+'-'+ti]).length;
+        let chPct=chTotal?Math.round(chDone/chTotal*100):0;
+        const rev=d['rev-'+ch.id];
+        const barColCh=barColors[unit.color]||'var(--accent)';
+        html+=`<div class="chapter-card" id="chc-${ch.id}">
+          <div class="chapter-header" onclick="toggleChapter('${ch.id}')">
+            <input type="checkbox" class="chapter-chk" id="chk-${ch.id}" ${chDone===chTotal&&chTotal>0?'checked':''} onclick="event.stopPropagation()"/>
+            <div class="chapter-info">
+              <div class="chapter-name">${ch.high?'<span class="high-tag">🔥 CORE</span>':''}${ch.name} <span class="topic-count-chip">${chTotal} topics</span></div>
+              <div class="ch-meta">
+                <span class="ch-prog-txt" id="chprog-${ch.id}">${chDone}/${chTotal}</span>
+                <div class="mini-bar"><div class="mini-bar-fill" id="chbar-${ch.id}" style="width:${chPct}%;background:${barColCh}"></div></div>
+                <span class="ch-prog-txt">${chPct}%</span>
+                ${rev?'<span style="font-size:.65rem;color:var(--accent);font-weight:700">✓ Revised</span>':''}
+              </div>
+            </div>
+            <svg class="ch-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="topics-area">
+            ${ch.topics.map((topic,ti)=>buildTopicRow(ch.id,ti,topic,d)).join('')}
+            <div style="margin-top:12px">
+              <label style="display:flex;align-items:center;gap:6px;font-size:.75rem;cursor:pointer;font-family:var(--font-body)">
+                <input type="checkbox" id="rev-${ch.id}" ${rev?'checked':''} onchange="toggleChFlag('${ch.id}','rev')" style="accent-color:var(--accent);width:12px;height:12px"/>
+                Revision done
+              </label>
+            </div>
+          </div>
+        </div>`;
+      });
+      html+=`</div></div>`;
+    });
+    html+=`</div>`;
+    panel.innerHTML=html;
+    panelsEl.appendChild(panel);
+  });
+  tabsEl.querySelectorAll('.subj-tab').forEach(tab=>{
+    tab.addEventListener('click',()=>{
+      tabsEl.querySelectorAll('.subj-tab').forEach(t=>t.classList.remove('active'));
+      document.querySelectorAll('.subj-panel').forEach(p=>p.classList.remove('active'));
+      tab.classList.add('active');
+      const p=document.getElementById(tab.dataset.panel);
+      if(p)p.classList.add('active');
+    });
+  });
+}
+
+function buildTopicRow(chId,ti,topic,d){
+  const key='t-'+chId+'-'+ti;
+  const nk='tn-'+chId+'-'+ti;
+  const ck='tc-'+chId+'-'+ti;
+  const rk='tr-'+chId+'-'+ti;
+  const dk='td-'+chId+'-'+ti;
+  const pk='tp-'+chId+'-'+ti;
+  const done=d[key];const notes=d[nk]||'';const conf=d[ck]||0;
+  const isObj=typeof topic==='object';
+  const topicName=isObj?topic.name:topic;
+  const topicSub=isObj?topic.sub:'';
+  const topicCat=isObj?topic.cat:'theory';
+  return `<div class="topic-row" id="trow-${key}">
+    <input type="checkbox" class="topic-chk" id="${key}" ${done?'checked':''} onchange="toggleTopic('${chId}','${ti}',this)"/>
+    <div class="topic-info">
+      <div class="topic-cat ${catClass[topicCat]||'tc-theory'}">${catLabels[topicCat]||'📖 Theory'}</div>
+      <div class="topic-name${done?' done':''}" id="tn-${key}">${topicName}</div>
+      ${topicSub?`<div class="topic-sub">💡 ${topicSub}</div>`:''}
+      <textarea class="topic-notes" rows="1" placeholder="Add your notes here..." onchange="saveTopicData('${nk}',this.value)">${notes}</textarea>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center">
+        <div class="conf-stars">${[1,2,3,4,5].map(s=>`<span class="cstar${conf>=s?' lit':''}" onclick="setConf('${ck}','${key}',${s})" title="Confidence ${s}/5">★</span>`).join('')}</div>
+        <div class="topic-flags">
+          <button class="flag-btn${d[rk]?' f-rev':''}" title="Revised" onclick="toggleFlag('${rk}','${key}','rev',this)">✓</button>
+          <button class="flag-btn${d[dk]?' f-doubt':''}" title="Doubt" onclick="toggleFlag('${dk}','${key}','doubt',this)">?</button>
+          <button class="flag-btn${d[pk]?' f-prio':''}" title="Priority" onclick="toggleFlag('${pk}','${key}','prio',this)">★</button>
+        </div>
+      </div>
+    </div>
+  </div>`;
+}
+
+function toggleStage(id){document.getElementById('sb-'+id)?.classList.toggle('open')}
+function toggleChapter(id){document.getElementById('chc-'+id)?.classList.toggle('open')}
+function toggleTopic(chId,ti,el){
+  const key='t-'+chId+'-'+ti;
+  const d=getData();
+  if(el.checked)d[key]=1;else delete d[key];
+  setData(d);
+  const nm=document.getElementById('tn-'+key);
+  if(nm)nm.className='topic-name'+(el.checked?' done':'');
+  updateChapterProgress(chId);updateStats();
+}
+function updateChapterProgress(chId){
+  let unit=null,ch=null;
+  CURRICULUM.forEach(u=>u.stages.forEach(st=>st.chapters.forEach(c=>{if(c.id===chId){unit=u;ch=c;}})));
+  if(!ch)return;
+  const d=getData();
+  const tot=ch.topics.length,done=ch.topics.filter((_,ti)=>d['t-'+chId+'-'+ti]).length;
+  const pct=tot?Math.round(done/tot*100):0;
+  const bar=document.getElementById('chbar-'+chId),prog=document.getElementById('chprog-'+chId),chk=document.getElementById('chk-'+chId);
+  if(bar)bar.style.width=pct+'%';if(prog)prog.textContent=done+'/'+tot;if(chk&&tot>0)chk.checked=done===tot;
+  if(unit)updateUnitProgress(unit.id,unit);
+}
+function updateUnitProgress(uid,unit){
+  const d=getData();let tot=0,done=0;
+  unit.stages.forEach(st=>st.chapters.forEach(ch=>{ch.topics.forEach((_,ti)=>{tot++;if(d['t-'+ch.id+'-'+ti])done++;})}));
+  const pct=tot?Math.round(done/tot*100):0;
+  const bar=document.getElementById('ubar-'+uid),pctEl=document.getElementById('upct-'+uid);
+  if(bar)bar.style.width=pct+'%';if(pctEl)pctEl.textContent=pct+'%';
+}
+function saveTopicData(key,val){const d=getData();d[key]=val;setData(d)}
+function setConf(ck,key,stars){
+  const d=getData();d[ck]=stars;setData(d);
+  const row=document.getElementById('trow-'+key);
+  if(row)row.querySelectorAll('.cstar').forEach((s,i)=>s.classList.toggle('lit',i<stars));
+}
+function toggleFlag(fk,key,type,btn){
+  const d=getData();if(d[fk])delete d[fk];else d[fk]=1;setData(d);
+  const cm={rev:'f-rev',doubt:'f-doubt',prio:'f-prio'};btn.classList.toggle(cm[type],!!d[fk]);
+}
+function toggleChFlag(chId,type){
+  const key=type+'-'+chId;const d=getData();if(d[key])delete d[key];else d[key]=1;setData(d);
+}
+
+// STATS
+function getAllTopicStats(){
+  const d=getData();
+  const subjTotals={js:{t:0,d:0},react:{t:0,d:0},node:{t:0,d:0},dsa:{t:0,d:0},sys:{t:0,d:0}};
+  let total=0,done=0,chTotal=0,chDone=0;
+  CURRICULUM.forEach((unit,ui)=>{
+    unit.stages.forEach((st,si)=>{
+      st.chapters.forEach(ch=>{
+        const chT=ch.topics.length,chD=ch.topics.filter((_,ti)=>d['t-'+ch.id+'-'+ti]).length;
+        total+=chT;done+=chD;chTotal++;if(chD===chT&&chT>0)chDone++;
+        if(ui===0){subjTotals.js.t+=chT;subjTotals.js.d+=chD;}
+        else if(ui===1&&si===0){subjTotals.react.t+=chT;subjTotals.react.d+=chD;}
+        else if(ui===1&&si>0){subjTotals.node.t+=chT;subjTotals.node.d+=chD;}
+        else if(ui===2&&st.id==='s3-4'){subjTotals.dsa.t+=chT;subjTotals.dsa.d+=chD;}
+        else if(ui===2&&st.id==='s3-3'){subjTotals.sys.t+=chT;subjTotals.sys.d+=chD;}
+      });
+    });
+  });
+  const pct=s=>s.t?Math.round(s.d/s.t*100):0;
+  return{total,done,chTotal,chDone,overallPct:total?Math.round(done/total*100):0,
+    js:pct(subjTotals.js),react:pct(subjTotals.react),node:pct(subjTotals.node),dsa:pct(subjTotals.dsa),sys:pct(subjTotals.sys)};
+}
+function updateStats(){
+  const st=getAllTopicStats();const d=getData();
+  const tests=JSON.parse(d['projects-list']||'[]');const apps=JSON.parse(d['apps-list']||'[]');
+  const streak=d['streak']||0;
+  let studyDays=0;for(let i=0;i<30;i++){const dd=new Date();dd.setDate(dd.getDate()-i);if(d['day-'+dd.toISOString().slice(0,10)])studyDays++;}
+  const consistency=Math.round(studyDays/30*100);
+  safe('stat-topics',st.done);safe('stat-chapters',st.chDone);safe('stat-streak',streak+'🔥');
+  safe('stat-projects',tests.length);safe('stat-applied',apps.length);safe('stat-consistency',consistency+'%');
+  safe('overall-pct',st.overallPct+'%');safe('overall-detail',st.done+' / '+st.total+' topics');
+  const ob=document.getElementById('overall-bar');if(ob)ob.style.width=st.overallPct+'%';
+  const setBar=(id,val)=>{const b=document.getElementById('pb-'+id);const p=document.getElementById('pp-'+id);if(b)b.style.width=val+'%';if(p)p.textContent=val+'%';};
+  setBar('js',st.js);setBar('react',st.react);setBar('node',st.node);setBar('dsa',st.dsa);setBar('sys',st.sys);
+}
+
+// PROFILE
+function saveProfile(){
+  const d=getData();
+  d['p-name']=document.getElementById('inp-name')?.value||'';
+  d['p-bg']=document.getElementById('inp-bg')?.value||'';
+  d['p-start']=document.getElementById('inp-start')?.value||'';
+  d['p-lpa']=document.getElementById('inp-lpa')?.value||'';
+  d['p-daily']=document.getElementById('inp-daily-goal')?.value||'';
+  d['p-weak']=document.getElementById('inp-weak')?.value||'';
+  d['p-why']=document.getElementById('inp-why')?.value||'';
+  setData(d);loadProfile();showToast('Profile saved!');
+}
+function loadProfile(){
+  const d=getData();
+  safe('pname',d['p-name']||'Your Name');
+  safe('pbadge-bg','Background: '+(d['p-bg']||'—'));
+  safe('pbadge-goal','Goal: '+(d['p-lpa']||'15')+' LPA');
+  safe('pbadge-start','Start: '+(d['p-start']?new Date(d['p-start']).toLocaleDateString('en-IN',{month:'short',year:'numeric'}):'—'));
+  safe('d-goal-show',d['p-daily']||'—');
+  const map={'inp-name':'p-name','inp-bg':'p-bg','inp-start':'p-start','inp-lpa':'p-lpa','inp-daily-goal':'p-daily','inp-weak':'p-weak','inp-why':'p-why'};
+  Object.entries(map).forEach(([id,key])=>{const el=document.getElementById(id);if(el&&d[key])el.value=d[key];});
+}
+function handleAvatar(event){
+  const file=event.target.files[0];if(!file)return;
+  const reader=new FileReader();
+  reader.onload=e=>{
+    const canvas=document.createElement('canvas');canvas.width=140;canvas.height=140;
+    const img=new Image();
+    img.onload=()=>{
+      canvas.getContext('2d').drawImage(img,0,0,140,140);
+      const c=canvas.toDataURL('image/jpeg',0.7);
+      const d=getData();d['p-avatar']=c;setData(d);
+      const i=document.getElementById('avatarImg');const ic=document.getElementById('avatarIcon');
+      if(i){i.src=c;i.style.display='block';}if(ic)ic.style.display='none';
+    };img.src=e.target.result;
+  };reader.readAsDataURL(file);
+}
+function loadAvatar(){
+  const d=getData();
+  if(d['p-avatar']){const i=document.getElementById('avatarImg');const ic=document.getElementById('avatarIcon');if(i){i.src=d['p-avatar'];i.style.display='block';}if(ic)ic.style.display='none';}
+}
+
+// DAILY
+function initDaily(){
+  const today=new Date();
+  safe('today-date',today.toLocaleDateString('en-IN',{weekday:'long',year:'numeric',month:'long',day:'numeric'}));
+  const heroDate=document.getElementById('hero-date');if(heroDate)heroDate.textContent=today.toLocaleDateString('en-IN',{month:'short',year:'numeric'});
+  const d=getData();const dk='dd-'+today.toISOString().slice(0,10);const dd=d[dk]||{};
+  const set=(id,val)=>{const e=document.getElementById(id);if(e&&val!=null)e.value=val;};
+  set('d-hours',dd.hours);set('d-water',dd.water);set('d-sleep',dd.sleep);
+  const dn=document.getElementById('d-notes');if(dn&&dd.notes)dn.value=dd.notes;
+  const db=document.getElementById('d-built');if(db)db.checked=!!dd.built;
+  const dl=document.getElementById('d-leetcode');if(dl)dl.checked=!!dd.leet;
+  safe('d-streak',d['streak']||0);
+  document.querySelectorAll('.mood-btn').forEach(btn=>{
+    if(dd.mood===btn.dataset.mood)btn.classList.add('selected');
+    btn.addEventListener('click',()=>{document.querySelectorAll('.mood-btn').forEach(b=>b.classList.remove('selected'));btn.classList.add('selected');saveDailyData();});
+  });
+  buildHeatmap();
+}
+function saveDailyData(){
+  const today=new Date().toISOString().slice(0,10);const d=getData();
+  const mood=document.querySelector('.mood-btn.selected');
+  d['dd-'+today]={hours:document.getElementById('d-hours')?.value||0,water:document.getElementById('d-water')?.value||0,sleep:document.getElementById('d-sleep')?.value||0,notes:document.getElementById('d-notes')?.value||'',built:document.getElementById('d-built')?.checked||false,leet:document.getElementById('d-leetcode')?.checked||false,mood:mood?mood.dataset.mood:''};
+  setData(d);
+}
+function logDay(){
+  saveDailyData();const today=new Date().toISOString().slice(0,10);const d=getData();
+  const hrs=parseFloat(document.getElementById('d-hours')?.value)||1;d['day-'+today]=hrs;
+  let streak=0;for(let i=0;i<365;i++){const dd=new Date();dd.setDate(dd.getDate()-i);if(d['day-'+dd.toISOString().slice(0,10)])streak++;else break;}
+  d['streak']=streak;setData(d);safe('d-streak',streak);showToast('Day logged! Streak: '+streak+'🔥');buildHeatmap();updateStats();
+}
+function buildHeatmap(){
+  const c=document.getElementById('heatmap');if(!c)return;c.innerHTML='';const d=getData();
+  for(let i=83;i>=0;i--){const dd=new Date();dd.setDate(dd.getDate()-i);const hrs=parseFloat(d['day-'+dd.toISOString().slice(0,10)])||0;let lvl=0;if(hrs>0)lvl=1;if(hrs>=3)lvl=2;if(hrs>=5)lvl=3;if(hrs>=7)lvl=4;
+    const cell=document.createElement('div');cell.className='heat-cell';cell.dataset.level=lvl;cell.title=dd.toLocaleDateString('en-IN')+': '+(hrs?hrs+'h':'No data');c.appendChild(cell);}
+}
+
+// TODOS
+function loadTodos(){const d=getData();renderTodos(JSON.parse(d['todos']||'[]'));}
+function addTodo(){
+  const inp=document.getElementById('todo-inp');const tag=document.getElementById('todo-tag')?.value||'general';const prio=document.getElementById('todo-prio')?.value||'med';const text=inp?.value?.trim();if(!text)return;
+  const d=getData();const todos=JSON.parse(d['todos']||'[]');todos.unshift({id:Date.now(),text,tag,prio,done:false});d['todos']=JSON.stringify(todos);setData(d);if(inp)inp.value='';renderTodos(todos);showToast('Task added!');
+}
+function renderTodos(todos){
+  const list=document.getElementById('todo-list');if(!list)return;
+  safe('todo-count',todos.length+' task'+(todos.length!==1?'s':''));
+  list.innerHTML=todos.map(t=>`<div class="todo-item${t.done?' done-item':''}"><div class="prio-dot pd-${t.prio}"></div><input type="checkbox" ${t.done?'checked':''} style="width:14px;height:14px;accent-color:var(--accent);cursor:pointer" onchange="toggleTodoItem(${t.id})"/><span class="todo-text">${t.text}</span><span class="todo-tag tag-${t.tag}">${t.tag}</span><button class="todo-del" onclick="deleteTodo(${t.id})">✕</button></div>`).join('');
+}
+function toggleTodoItem(id){const d=getData();const todos=JSON.parse(d['todos']||'[]');const t=todos.find(x=>x.id===id);if(t)t.done=!t.done;d['todos']=JSON.stringify(todos);setData(d);renderTodos(todos);}
+function deleteTodo(id){const d=getData();let todos=JSON.parse(d['todos']||'[]');todos=todos.filter(t=>t.id!==id);d['todos']=JSON.stringify(todos);setData(d);renderTodos(todos);}
+function clearDoneTodos(){const d=getData();let todos=JSON.parse(d['todos']||'[]');todos=todos.filter(t=>!t.done);d['todos']=JSON.stringify(todos);setData(d);renderTodos(todos);showToast('Done tasks cleared!');}
+
+// PROJECTS
+function addProject(){
+  const name=document.getElementById('proj-name')?.value?.trim();if(!name){showToast('Enter project name','t-blue');return;}
+  const d=getData();const projects=JSON.parse(d['projects-list']||'[]');
+  projects.unshift({id:Date.now(),name,date:document.getElementById('proj-date')?.value,stack:document.getElementById('proj-stack')?.value,github:document.getElementById('proj-github')?.value,live:document.getElementById('proj-live')?.value,diff:document.getElementById('proj-diff')?.value,notes:document.getElementById('proj-notes')?.value});
+  d['projects-list']=JSON.stringify(projects);setData(d);renderProjects(projects);updateStats();showToast('Project saved! 🚀');
+  ['proj-name','proj-date','proj-stack','proj-github','proj-live','proj-diff','proj-notes'].forEach(id=>{const e=document.getElementById(id);if(e)e.value='';});
+}
+function renderProjects(projects){
+  const list=document.getElementById('projects-list');if(!list)return;
+  if(!projects.length){list.innerHTML='<div style="color:var(--muted);font-size:.85rem;text-align:center;padding:24px">No projects yet. Build something and log it here!</div>';return;}
+  list.innerHTML=projects.map(p=>`<div class="test-card"><div><h4>${p.name}</h4><div class="test-meta"><span>📅 ${p.date||'—'}</span><span>⚡ ${p.stack||'—'}</span>${p.github?`<a href="${p.github}" target="_blank" style="color:var(--blue);font-size:.72rem">GitHub ↗</a>`:''} ${p.live?`<a href="${p.live}" target="_blank" style="color:var(--accent);font-size:.72rem">Live ↗</a>`:''}</div>${p.notes?`<div style="font-size:.78rem;color:var(--muted2);margin-top:7px;background:var(--bg3);padding:9px 12px;border-radius:8px">${p.notes}</div>`:''}</div><div style="text-align:right"><div style="font-size:1.3rem">${'⭐'.repeat(parseInt(p.diff)||3)}</div><div style="font-size:.65rem;color:var(--muted);margin-top:3px">Difficulty</div><button onclick="deleteProject(${p.id})" style="margin-top:10px;background:none;border:none;color:var(--red);cursor:pointer;font-size:.72rem;opacity:.7">Delete</button></div></div>`).join('');
+}
+function deleteProject(id){const d=getData();let projects=JSON.parse(d['projects-list']||'[]');projects=projects.filter(p=>p.id!==id);d['projects-list']=JSON.stringify(projects);setData(d);renderProjects(projects);updateStats();}
+function loadProjects(){const d=getData();renderProjects(JSON.parse(d['projects-list']||'[]'));}
+
+// BOOKS
+const BOOKS_DATA=[
+  {id:'js-course',name:'JS Course (Primary)',emoji:'⚡',color:'var(--amber)'},
+  {id:'react-course',name:'React Course',emoji:'⚛',color:'var(--blue)'},
+  {id:'node-course',name:'Node.js Course',emoji:'🟢',color:'var(--accent)'},
+  {id:'ts-course',name:'TypeScript Course',emoji:'🔷',color:'var(--blue)'},
+  {id:'next-course',name:'Next.js Course',emoji:'▲',color:'var(--muted2)'},
+  {id:'dsa-book',name:'DSA (NeetCode 150)',emoji:'🧩',color:'var(--pink)'},
+  {id:'system-design',name:'System Design Primer',emoji:'🏗',color:'var(--orange)'},
+  {id:'cs-fundamentals',name:'CS Fundamentals',emoji:'💻',color:'var(--accent3)'},
+  {id:'my-notes-js',name:'My JS Notes',emoji:'📓',color:'var(--amber)'},
+  {id:'my-notes-react',name:'My React Notes',emoji:'📓',color:'var(--blue)'},
+  {id:'interview-prep',name:'Interview Prep Guide',emoji:'🎯',color:'var(--accent)'},
+  {id:'leetcode-solved',name:'LeetCode Problems',emoji:'✅',color:'var(--pink)'},
+];
+function buildBooks(){
+  const grid=document.getElementById('books-grid');if(!grid)return;const d=getData();
+  grid.innerHTML=BOOKS_DATA.map(b=>{const pct=d['book-'+b.id]||0;const rev=d['bookrev-'+b.id]||false;
+    return `<div class="book-card"><h4>${b.emoji} ${b.name}</h4><div style="display:flex;align-items:center;gap:10px;margin-bottom:10px"><div class="book-pct" style="color:${b.color}" id="bpct-${b.id}">${pct}%</div><div style="flex:1;height:7px;background:var(--bg4);border-radius:4px;overflow:hidden"><div id="bbar-${b.id}" style="height:100%;width:${pct}%;background:${b.color};border-radius:4px;transition:width .4s"></div></div></div><input type="range" class="book-range" min="0" max="100" value="${pct}" oninput="updateBook('${b.id}','${b.color}',this.value)"/><label style="display:flex;align-items:center;gap:6px;font-size:.75rem;margin-top:10px;cursor:pointer;font-family:var(--font-body)"><input type="checkbox" ${rev?'checked':''} onchange="saveBookRev('${b.id}',this.checked)" style="accent-color:var(--accent);width:13px;height:13px"/>Completed / Revised</label></div>`;
+  }).join('');
+}
+function updateBook(id,color,val){const d=getData();d['book-'+id]=parseInt(val);setData(d);safe('bpct-'+id,val+'%');const bar=document.getElementById('bbar-'+id);if(bar)bar.style.width=val+'%';}
+function saveBookRev(id,checked){const d=getData();d['bookrev-'+id]=checked;setData(d);}
+
+// ANALYTICS
+function updateAnalytics(){
+  const st=getAllTopicStats();const pct=st.overallPct;
+  safe('readiness-pct',pct+'%');
+  let lvl='Beginner 🌱',msg='Start completing topics. Begin with HTML/CSS → JS fundamentals.',ringColor='var(--bg4)';
+  if(pct>=80){lvl='Job Ready 🎯';msg='Excellent! Focus on projects, mock interviews, and applying now.';ringColor='var(--accent)';}
+  else if(pct>=55){lvl='Competitive 💪';msg='Great progress! Fix weak areas and start portfolio projects.';ringColor='var(--blue)';}
+  else if(pct>=35){lvl='Improving 📈';msg='Good momentum. Add more hours and start building real projects.';ringColor='var(--amber)';}
+  else if(pct>=15){lvl='Building 🔨';msg='Keep going. Consistency now will compound into results.';ringColor='var(--accent3)';}
+  safe('readiness-label',lvl);safe('readiness-msg',msg);
+  const ring=document.getElementById('readiness-ring');if(ring)ring.style.borderColor=ringColor;
+  const wl=document.getElementById('weak-list');
+  if(wl){
+    const areas=[{name:'JavaScript',pct:st.js,color:'var(--amber)'},{name:'React',pct:st.react,color:'var(--blue)'},{name:'Node + DB',pct:st.node,color:'var(--accent)'},{name:'DSA',pct:st.dsa,color:'var(--pink)'},{name:'System Design',pct:st.sys,color:'var(--orange)'}].sort((a,b)=>a.pct-b.pct);
+    wl.innerHTML=areas.map(a=>`<div class="weakness-item"><span style="min-width:90px;font-size:.78rem;font-weight:600">${a.name}</span><div class="w-bar"><div class="w-fill" style="width:${a.pct}%;background:${a.color}"></div></div><span style="font-size:.7rem;font-family:var(--font-mono);min-width:32px;text-align:right">${a.pct}%</span></div>`).join('');
+  }
+  const sugg=document.getElementById('suggestions');
+  if(sugg){
+    const s=[];
+    if(pct<15)s.push('📌 Start with HTML/CSS → complete Stage 1.1 first.');
+    if(st.js<30)s.push('⚡ JavaScript is the most important skill — spend 60% of time here until solid.');
+    if(st.js>50&&st.react<20)s.push('⚛ You\'re ready to start React. Move to Stage 2.1.');
+    if(st.dsa<20)s.push('🧩 Start solving 1 DSA problem daily — 10 mins minimum. Use NeetCode.io.');
+    const d=getData();const projects=JSON.parse(d['projects-list']||'[]');
+    if(projects.length===0&&pct>15)s.push('🚀 Build your first project! Even a simple JS app counts.');
+    if(pct>40&&projects.length<2)s.push('🏗 You need 2+ projects before applying. Start a full-stack project now.');
+    if(pct>70)s.push('📝 Start applying from this week. 5–10 companies per week on Cutshort and AngelList.');
+    if(!s.length)s.push('🌟 Great progress! Keep the consistency going. You\'re on track for 15 LPA.');
+    sugg.innerHTML=s.map(x=>`<div style="background:var(--bg3);padding:10px 14px;border-radius:10px;border-left:3px solid var(--accent)">${x}</div>`).join('');
+  }
+  buildMonthTimeline();
+}
+function buildMonthTimeline(){
+  const el=document.getElementById('month-timeline');if(!el)return;
+  const months=[
+    {m:'M1',title:'HTML/CSS + Git',color:'ub-green',items:['HTML5 semantic structure','CSS Flexbox & Grid mastery','Responsive design','Git + GitHub basics','Deploy static site']},
+    {m:'M2',title:'JavaScript Core',color:'ub-green',items:['Variables, types, operators','Functions, scope, closures','Arrays, objects, destructuring','ES6+ features','1 DSA problem/day']},
+    {m:'M3',title:'Async JS + Projects',color:'ub-green',items:['Async/await, Promises, Fetch','DOM manipulation','Build: Weather + Todo + Quiz apps','DSA: hashing, two pointers','Deploy all projects']},
+    {m:'M4',title:'React Fundamentals',color:'ub-blue',items:['Components, props, JSX','useState, useEffect, useRef','React Router v6','Build CRUD React app','DSA: stacks, queues']},
+    {m:'M5',title:'Node.js + Express',color:'ub-blue',items:['Node runtime, npm ecosystem','Express routes, middleware','JWT auth + bcrypt','REST API design','DSA: linked lists']},
+    {m:'M6',title:'Databases + Full-Stack',color:'ub-blue',items:['MongoDB + Mongoose','PostgreSQL basics + SQL','Full-stack: React + Node + DB','Deploy: Vercel + Railway','DSA: binary search']},
+    {m:'M7',title:'TypeScript + Next.js',color:'ub-yellow',items:['TypeScript fundamentals','Next.js App Router','Server Components + SSR','Start applying to companies','DSA: trees, graphs']},
+    {m:'M8',title:'System Design + Projects',color:'ub-yellow',items:['System design concepts','SaaS project: Next.js + Prisma','Testing: Jest + RTL','Mock interviews (2/week)','DSA: recursion, backtracking']},
+    {m:'M9',title:'Job Hunt Full Mode',color:'ub-yellow',items:['Portfolio polish + README','Apply 5–10 companies/week','Salary negotiation practice','DSA: DP, advanced patterns','🎯 Target: OFFER']},
+  ];
+  el.innerHTML=months.map(m=>`<div class="month-card"><div class="month-num">${m.m}</div><div class="month-tag ${m.color}">${m.color==='ub-green'?'Foundation':m.color==='ub-blue'?'Core Stack':'Advanced'}</div><div class="month-title">${m.title}</div><div class="month-items">${m.items.map(i=>`<span>${i}</span>`).join('')}</div></div>`).join('');
+}
+
+// OVERVIEW
+function updateOverview(){
+  const d=getData();const st=getAllTopicStats();
+  const sumEl=document.getElementById('overview-summary');
+  if(sumEl)sumEl.innerHTML=[
+    {label:'Overall Progress',val:st.overallPct+'%',sub:st.done+'/'+st.total+' topics',color:'var(--accent3)'},
+    {label:'Chapters Done',val:st.chDone+'/'+st.chTotal,sub:Math.round(st.chDone/Math.max(1,st.chTotal)*100)+'% complete',color:'var(--accent)'},
+    {label:'Remaining',val:st.total-st.done,sub:'topics left',color:'var(--amber)'},
+    {label:'JS Progress',val:st.js+'%',sub:'foundation',color:'var(--amber)'},
+  ].map(c=>`<div style="background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:20px;text-align:center;transition:all .2s" onmouseover="this.style.borderColor='var(--border2)'" onmouseout="this.style.borderColor='var(--border)'"><div style="font-family:var(--font-mono);font-size:2rem;font-weight:700;color:${c.color};line-height:1;margin-bottom:6px">${c.val}</div><div style="font-size:.65rem;font-weight:800;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin-bottom:4px;font-family:var(--font-body)">${c.label}</div><div style="font-size:.72rem;color:var(--muted2);font-family:var(--font-body)">${c.sub}</div></div>`).join('');
+  const contentEl=document.getElementById('overview-content');if(!contentEl)return;
+  let html='';const colors={green:'var(--accent)',blue:'var(--blue)',yellow:'var(--amber)'};
+  CURRICULUM.forEach(unit=>{
+    const col=colors[unit.color]||'var(--accent3)';
+    let uTotal=0,uDone=0;
+    unit.stages.forEach(st=>st.chapters.forEach(ch=>{ch.topics.forEach((_,ti)=>{uTotal++;if(d['t-'+ch.id+'-'+ti])uDone++;})}));
+    const uPct=uTotal?Math.round(uDone/uTotal*100):0;
+    html+=`<div style="margin-bottom:32px"><div style="display:flex;align-items:center;gap:14px;margin-bottom:14px"><div style="font-family:var(--font-head);font-weight:800;font-size:1.1rem">${unit.name}</div><span style="color:${col};font-family:var(--font-mono);font-weight:700">${uPct}%</span><span style="font-size:.72rem;color:var(--muted)">${uDone}/${uTotal}</span></div>`;
+    unit.stages.forEach(st=>{
+      st.chapters.forEach(ch=>{
+        const chT=ch.topics.length,chD=ch.topics.filter((_,ti)=>d['t-'+ch.id+'-'+ti]).length;
+        const pct=chT?Math.round(chD/chT*100):0;
+        html+=`<div class="ov-ch-row"><div><div style="font-size:.85rem;font-weight:700;margin-bottom:4px;font-family:var(--font-body)">${ch.name}</div><div style="height:4px;background:var(--bg4);border-radius:2px;overflow:hidden;max-width:200px"><div style="height:100%;width:${pct}%;background:${col};border-radius:2px;transition:width .4s"></div></div></div><div style="font-family:var(--font-mono);font-size:.78rem;font-weight:700;color:${col}">${chD}/${chT}</div></div>`;
+      });
+    });
+    html+=`</div>`;
+  });
+  contentEl.innerHTML=html;
+}
+
+// JOURNAL
+function addJournalEntry(){
+  const inp=document.getElementById('j-inp');const mood=document.getElementById('j-mood')?.value||'😊';const text=inp?.value?.trim();if(!text){showToast('Write something first!','t-blue');return;}
+  const d=getData();const entries=JSON.parse(d['journal']||'[]');
+  entries.unshift({id:Date.now(),text,mood,date:new Date().toLocaleString('en-IN')});
+  d['journal']=JSON.stringify(entries);setData(d);if(inp)inp.value='';renderJournal(entries);showToast('Entry saved! 🗒');
+}
+function renderJournal(entries){
+  const el=document.getElementById('journal-entries');if(!el)return;
+  if(!entries.length){el.innerHTML='<div style="color:var(--muted);font-size:.83rem;text-align:center;padding:20px">No entries yet. Write your first thought.</div>';return;}
+  el.innerHTML=entries.map(e=>`<div class="journal-entry"><div class="entry-date">${e.date}</div><div class="entry-text">${e.text}</div><div class="entry-mood">${e.mood}</div><button class="entry-del" onclick="deleteEntry(${e.id})">Delete entry</button></div>`).join('');
+}
+function deleteEntry(id){const d=getData();let entries=JSON.parse(d['journal']||'[]');entries=entries.filter(e=>e.id!==id);d['journal']=JSON.stringify(entries);setData(d);renderJournal(entries);}
+function loadJournal(){const d=getData();renderJournal(JSON.parse(d['journal']||'[]'));}
+
+// APPLICATIONS
+function addApplication(){
+  const company=document.getElementById('app-company')?.value?.trim();if(!company){showToast('Enter company name','t-blue');return;}
+  const d=getData();const apps=JSON.parse(d['apps-list']||'[]');
+  apps.unshift({id:Date.now(),company,role:document.getElementById('app-role')?.value,date:document.getElementById('app-date')?.value,status:document.getElementById('app-status')?.value,sal:document.getElementById('app-sal')?.value,source:document.getElementById('app-source')?.value,notes:document.getElementById('app-notes')?.value});
+  d['apps-list']=JSON.stringify(apps);setData(d);renderApplications(apps);updateStats();showToast('Application logged! 📝');
+  ['app-company','app-role','app-date','app-notes'].forEach(id=>{const e=document.getElementById(id);if(e)e.value='';});
+}
+function renderApplications(apps){
+  const list=document.getElementById('applications-list');if(!list)return;
+  if(!apps.length){list.innerHTML='<div style="color:var(--muted);font-size:.85rem;text-align:center;padding:24px">No applications logged yet. Start applying from Month 7!</div>';return;}
+  const statusColors={Applied:'var(--blue)',OA:'var(--amber)',Interview:'var(--orange)',Offer:'var(--accent)',Rejected:'var(--red)',Ghosted:'var(--muted)'};
+  list.innerHTML=apps.map(a=>`<div class="test-card"><div><h4>${a.company} — <span style="color:var(--muted2);font-weight:500">${a.role||'—'}</span></h4><div class="test-meta"><span>📅 ${a.date||'—'}</span><span>📡 ${a.source||'—'}</span><span style="color:${statusColors[a.status]||'var(--muted)'}">● ${a.status||'Applied'}</span>${a.sal&&a.sal>0?`<span style="color:var(--accent)">₹${a.sal} LPA</span>`:''}</div>${a.notes?`<div style="font-size:.78rem;color:var(--muted2);margin-top:6px;background:var(--bg3);padding:8px 12px;border-radius:8px">${a.notes}</div>`:''}</div><button onclick="deleteApp(${a.id})" style="background:none;border:none;color:var(--red);cursor:pointer;font-size:.72rem;opacity:.7;align-self:start">Delete</button></div>`).join('');
+}
+function deleteApp(id){const d=getData();let apps=JSON.parse(d['apps-list']||'[]');apps=apps.filter(a=>a.id!==id);d['apps-list']=JSON.stringify(apps);setData(d);renderApplications(apps);updateStats();}
+function loadApplications(){const d=getData();renderApplications(JSON.parse(d['apps-list']||'[]'));}
+
+// INTERVIEW CHECKLIST
+function buildInterviewChecklist(){
+  const el=document.getElementById('interview-checklist');if(!el)return;
+  const items=['JavaScript: closures, event loop, promises, this keyword','React: reconciliation, hooks rules, useEffect patterns, performance','Node.js: event loop phases, streams, middleware pattern','Databases: SQL joins, indexes, transactions, MongoDB aggregation','System Design: URL shortener walkthrough, load balancer concepts','DSA: solved 50+ LeetCode (Easy/Medium) problems','Projects: can explain architecture, decisions, and tradeoffs','Resume: 1 page, quantified achievements, ATS-friendly format','GitHub: active commits, pinned projects, good READMEs','LinkedIn: 500+ connections, all sections filled','Portfolio: live and loading in <2 seconds','Mock interviews: done at least 3 mock technical rounds'];
+  const d=getData();
+  el.innerHTML=items.map((item,i)=>{const key='cl-'+i;const checked=d[key];return `<div class="checklist-item${checked?' done-check':''}"><input type="checkbox" ${checked?'checked':''} onchange="toggleChecklist('${key}',this)"/><span>${item}</span></div>`;}).join('');
+}
+function toggleChecklist(key,el){
+  const d=getData();if(el.checked)d[key]=1;else delete d[key];setData(d);
+  const parent=el.closest('.checklist-item');if(parent)parent.classList.toggle('done-check',el.checked);
+}
+
+// TIMER
+let timerInterval=null,timerTotal=90*60,timerRemaining=90*60,timerRunning=false;
+function setTimerPreset(h,m){timerTotal=timerRemaining=h*60*60+m*60;resetTimer();}
+function setCustomTimer(){const h=parseInt(document.getElementById('t-h')?.value)||0;const m=parseInt(document.getElementById('t-m')?.value)||0;setTimerPreset(h,m);}
+function formatTimer(s){const h=Math.floor(s/3600),m=Math.floor(s%3600/60),sec=s%60;return h>0?`${h}:${m.toString().padStart(2,'0')}:${sec.toString().padStart(2,'0')}`:`${m}:${sec.toString().padStart(2,'0')}`}
+function updateTimerDisplay(){
+  const disp=document.getElementById('timer-disp');const prog=document.getElementById('timer-prog-fill');
+  if(!disp)return;
+  disp.textContent=formatTimer(timerRemaining);
+  const pct=timerTotal>0?(timerRemaining/timerTotal*100):100;
+  if(prog)prog.style.width=pct+'%';
+  const warn=timerRemaining<=60,danger=timerRemaining===0;
+  disp.className='timer-display'+(danger?' td':warn?' tw':'');
+}
+function toggleTimer(){
+  if(timerRunning){clearInterval(timerInterval);timerRunning=false;const btn=document.getElementById('timer-start-btn');if(btn){btn.textContent='▶ Resume';btn.classList.remove('running');}}
+  else{if(timerRemaining<=0){timerRemaining=timerTotal;}timerRunning=true;const btn=document.getElementById('timer-start-btn');if(btn){btn.textContent='⏸ Pause';btn.classList.add('running');}
+  timerInterval=setInterval(()=>{if(timerRemaining>0){timerRemaining--;updateTimerDisplay();}else{clearInterval(timerInterval);timerRunning=false;const btn=document.getElementById('timer-start-btn');if(btn){btn.textContent='▶ Start';btn.classList.remove('running');}showToast('Session complete! Take a break. 🎉');}},1000);}
+}
+function resetTimer(){clearInterval(timerInterval);timerRunning=false;timerRemaining=timerTotal;updateTimerDisplay();const btn=document.getElementById('timer-start-btn');if(btn){btn.textContent='▶ Start';btn.classList.remove('running');}}
+
+// BACKUP
+function exportData(){
+  const d=getData();const blob=new Blob([JSON.stringify(d,null,2)],{type:'application/json'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='coodley-backup-'+new Date().toISOString().slice(0,10)+'.json';a.click();showToast('Backup exported!');
+}
+function importData(event){
+  const file=event.target.files[0];if(!file)return;
+  const reader=new FileReader();reader.onload=e=>{try{const data=JSON.parse(e.target.result);localStorage.setItem(STORE,JSON.stringify(data));showToast('Data restored successfully!');setTimeout(()=>location.reload(),1500);}catch{showToast('Invalid file!','t-blue');}};
+  reader.readAsText(file);
+}
+function clearAll(){if(!confirm('Clear ALL data? This cannot be undone!'))return;localStorage.removeItem(STORE);showToast('All data cleared.');setTimeout(()=>location.reload(),1000);}
+function updateStorageInfo(){
+  const d=getData();const bytes=new Blob([JSON.stringify(d)]).size;const kb=(bytes/1024).toFixed(1);
+  const el=document.getElementById('storage-info');
+  if(el)el.innerHTML=`Data size: <strong>${kb} KB</strong><br>Topics checked: <strong>${Object.keys(d).filter(k=>k.startsWith('t-')&&d[k]).length}</strong><br>Journal entries: <strong>${JSON.parse(d['journal']||'[]').length}</strong><br>Projects logged: <strong>${JSON.parse(d['projects-list']||'[]').length}</strong><br>Applications: <strong>${JSON.parse(d['apps-list']||'[]').length}</strong>`;
+}
+
+// FAQ
+function toggleFaq(btn){const item=btn.closest('.faq-item');if(item)item.classList.toggle('open');}
+
+// NAVIGATION
+function initNav(){
+  document.querySelectorAll('.nbtn').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      const sec=btn.dataset.sec;if(!sec)return;
+      document.querySelectorAll('.nbtn').forEach(b=>b.classList.remove('active'));
+      document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+      btn.classList.add('active');
+      const section=document.getElementById('sec-'+sec);if(section)section.classList.add('active');
+      if(sec==='analytics')updateAnalytics();
+      if(sec==='overview')updateOverview();
+      if(sec==='backup')updateStorageInfo();
+      if(sec==='jobhunt'){loadApplications();buildInterviewChecklist();}
+    });
+  });
+
+  // COODLEY THEME TOGGLE
+  const themeBtn=document.getElementById('themeBtn');
+  const SUN_SVG=`<circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>`;
+  const MOON_SVG=`<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>`;
+  function setTheme(theme){
+    document.documentElement.setAttribute('data-theme',theme);
+    const icon=document.getElementById('themeIcon');
+    if(icon)icon.innerHTML=theme==='dark'?SUN_SVG:MOON_SVG;
+    const d=getData();d['theme']=theme;setData(d);
+  }
+  if(themeBtn){
+    themeBtn.addEventListener('click',()=>{
+      const isDark=document.documentElement.getAttribute('data-theme')==='dark';
+      setTheme(isDark?'light':'dark');
+    });
+  }
+
+  // MOBILE HAMBURGER
+  const hamburger=document.getElementById('hamburger');
+  let menuOpen=false;
+  if(hamburger){
+    hamburger.addEventListener('click',()=>{
+      const links=document.querySelector('.main-nav-links');
+      menuOpen=!menuOpen;
+      if(menuOpen){
+        links.style.cssText=`display:flex;flex-direction:column;gap:4px;position:fixed;top:64px;left:0;right:0;background:var(--bg2);padding:16px 20px 24px;border-bottom:1px solid var(--border);z-index:299;`;
+      } else {
+        links.style.cssText='';
+      }
+    });
+    document.querySelectorAll('.main-nav-links a').forEach(a=>{
+      a.addEventListener('click',()=>{
+        menuOpen=false;
+        const links=document.querySelector('.main-nav-links');
+        if(links)links.style.cssText='';
+      });
+    });
+  }
+}
+
+// INIT
+window.addEventListener('DOMContentLoaded',()=>{
+  const d=getData();const theme=d['theme']||'dark';
+  document.documentElement.setAttribute('data-theme',theme);
+  const SUN_SVG=`<circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>`;
+  const MOON_SVG=`<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>`;
+  const icon=document.getElementById('themeIcon');
+  if(icon)icon.innerHTML=theme==='dark'?SUN_SVG:MOON_SVG;
+  initNav();buildSyllabus();loadProfile();loadAvatar();initDaily();loadTodos();loadProjects();buildBooks();updateStats();
+  buildInterviewChecklist();
+  updateTimerDisplay();
+});
+</script>
+</body>
+</html>
