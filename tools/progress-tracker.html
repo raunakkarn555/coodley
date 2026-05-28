@@ -837,10 +837,34 @@ footer.coodley-footer{background:var(--bg);border-top:1px solid var(--border);pa
   cursor:pointer;
   transition:border-color .2s;
   color-scheme:dark;
+  -webkit-text-fill-color:var(--fg);
 }
 
 [data-theme="light"] .hist-date-inp{
   color-scheme:light;
+  -webkit-text-fill-color:var(--text);
+}
+
+.hist-date-inp::-webkit-datetime-edit{
+  color:var(--fg);
+  -webkit-text-fill-color:var(--fg);
+}
+
+.hist-date-inp::-webkit-datetime-edit-fields-wrapper{
+  color:var(--fg);
+  -webkit-text-fill-color:var(--fg);
+}
+
+.hist-date-inp::-webkit-datetime-edit-text{
+  color:var(--muted2);
+  -webkit-text-fill-color:var(--muted2);
+}
+
+.hist-date-inp::-webkit-datetime-edit-day-field,
+.hist-date-inp::-webkit-datetime-edit-month-field,
+.hist-date-inp::-webkit-datetime-edit-year-field{
+  color:var(--fg);
+  -webkit-text-fill-color:var(--fg);
 }
 
 .hist-date-inp::-webkit-calendar-picker-indicator{
@@ -852,24 +876,6 @@ footer.coodley-footer{background:var(--bg);border-top:1px solid var(--border);pa
 [data-theme="light"] .hist-date-inp::-webkit-calendar-picker-indicator{
   filter:invert(0);
 }
-
-@media(max-width:480px){
-  .hist-date-inp{
-    background:var(--bg3);
-    color:var(--fg);
-    color-scheme:dark;
-    border:1px solid var(--accent);
-    padding:6px 14px;
-    font-size:.75rem;
-    width:auto;
-    min-width:130px;
-  }
-  [data-theme="light"] .hist-date-inp{
-    color-scheme:light;
-    border-color:var(--border2);
-  }
-}
-
 
 .viewing-banner{background:linear-gradient(135deg,rgba(91,164,245,.08),rgba(91,164,245,.04));border:1px solid rgba(91,164,245,.3);border-radius:var(--radius);padding:10px 16px;margin-bottom:14px;display:none;align-items:center;gap:10px;font-size:.82rem;color:var(--blue);font-family:var(--font-body);font-weight:600}
 .viewing-banner.show{display:flex}
