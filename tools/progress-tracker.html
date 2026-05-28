@@ -854,8 +854,8 @@ footer.coodley-footer{background:var(--bg);border-top:1px solid var(--border);pa
       <svg width="64" height="64" viewBox="0 0 64 64">
         <circle cx="32" cy="32" r="26" fill="none" stroke="var(--bg4)" stroke-width="6"/>
         <circle cx="32" cy="32" r="26" fill="none" stroke="var(--accent)" stroke-width="6"
-          stroke-dasharray="163.4" id="goal-ring-fill"
-          stroke-dashoffset="163.4"
+         stroke-dasharray="163.36" id="goal-ring-fill"
+         stroke-dashoffset="163.36"
           stroke-linecap="round"
           transform="rotate(-90 32 32)"
           style="transition:stroke-dashoffset .6s cubic-bezier(.4,0,.2,1)"/>
@@ -3200,7 +3200,7 @@ function toggleChapter(id){document.getElementById('chc-'+id)?.classList.toggle(
 function toggleTopic(chId,ti,el){
   const key='t-'+chId+'-'+ti;
   const d=getData();
-  if(el.checked)d[key]=1;else delete d[key];
+  if(el.checked)d[key]= Date.now();;else delete d[key];
   setData(d);
   const nm=document.getElementById('tn-'+key);
   if(nm)nm.className='topic-name'+(el.checked?' done':'');
@@ -3419,7 +3419,19 @@ function saveDailyData(){
 function logDay(){
   saveDailyData();const today=new Date().toISOString().slice(0,10);const d=getData();
   const hrs=parseFloat(document.getElementById('d-hours')?.value)||1;d['day-'+today]=hrs;
-  let streak=0;for(let i=0;i<365;i++){const dd=new Date();dd.setDate(dd.getDate()-i);if(d['day-'+dd.toISOString().slice(0,10)])streak++;else break;}
+  // Count today first, then go backwards
+let streak = 0;
+const todayKey = 'day-' + new Date().toISOString().slice(0, 10);
+if(d[todayKey]) {
+  streak = 1;
+  for(let i = 1; i < 365; i++){
+    const dd = new Date();
+    dd.setDate(dd.getDate() - i);
+    if(d['day-' + dd.toISOString().slice(0, 10)]) streak++;
+    else break;
+  }
+}
+
   d['streak']=streak;setData(d);safe('d-streak',streak);showToast('Day logged! Streak: '+streak+'🔥');buildHeatmap();updateStats();
 }
 function buildHeatmap(){
@@ -3632,7 +3644,10 @@ const BOOKS_DATA=[
 function buildBooks(){
   const grid=document.getElementById('books-grid');if(!grid)return;const d=getData();
   grid.innerHTML=BOOKS_DATA.map(b=>{const pct=d['book-'+b.id]||0;const rev=d['bookrev-'+b.id]||false;
-    return `<div class="book-card"><h4>${b.emoji} ${b.name}</h4><div style="display:flex;align-items:center;gap:10px;margin-bottom:10px"><div class="book-pct" style="color:${b.color}" id="bpct-${b.id}">${pct}%</div><div style="flex:1;height:7px;background:var(--bg4);border-radius:4px;overflow:hidden"><div id="bbar-${b.id}" style="height:100%;width:${pct}%;background:${b.color};border-radius:4px;transition:width .4s"></div></div></div><input type="range" style="width:100%;accent-color:var(--accent);cursor:pointer;margin-top:4px" min="0" max="100" value="${pct}" oninput="updateBook('${b.id}','${b.color}',this.value)"/><label style="display:flex;align-items:center;gap:6px;font-size:.75rem;margin-top:10px;cursor:pointer;font-family:var(--font-body)"><input type="checkbox" ${rev?'checked':''} onchange="saveBookRev('${b.id}',this.checked)" style="accent-color:var(--accent);width:13px;height:13px"/>Completed / Revised</label></div>`;
+    return `<div class="book-card"><h4>${b.emoji} ${b.name}</h4><div style="display:flex;align-items:center;gap:10px;margin-bottom:10px"><div class="book-pct" style="color:${b.color}" id="bpct-${b.id}">${pct}%</div><div style="flex:1;height:7px;background:var(--bg4);border-radius:4px;overflow:hidden"><div id="bbar-${b.id}" style="height:100%;width:${pct}%;background:${b.color};border-radius:4px;transition:width .4s"></div></div></div>
+    <input type="range" id="brange-${b.id}" class="book-range" style="width:100%;cursor:pointer;margin-top:4px;background:linear-gradient(to right,${b.color} ${pct}%,var(--bg4) ${pct}%)" min="0" max="100" value="${pct}" oninput="updateBook('${b.id}','${b.color}',this.value)"/>
+    <label style="display:flex;align-items:center;gap:6px;font-size:.75rem;margin-top:10px;cursor:pointer;font-family:var(--font-body)">
+      <input type="checkbox" ${rev?'checked':''} onchange="saveBookRev('${b.id}',this.checked)" style="accent-color:var(--accent);width:13px;height:13px"/>Completed / Revised</label></div>`;
   }).join('');
 }
 
@@ -3643,8 +3658,8 @@ function updateBook(id, color, val){
   safe('bpct-' + id, val + '%');
   const bar = document.getElementById('bbar-' + id);
   if(bar) bar.style.width = val + '%';
-  // Update range track fill color dynamically
-  const range = document.querySelector(`input[oninput*="'${id}'"]`);
+  // Fix: target by data attribute instead of oninput string
+  const range = document.getElementById('brange-' + id);
   if(range){
     const pct = parseInt(val);
     range.style.background = `linear-gradient(to right, ${color} ${pct}%, var(--bg4) ${pct}%)`;
@@ -4247,6 +4262,7 @@ function renderJournal(){
   }).join('');
 }
 
+
 function expandEntry(btn, id){
   const d = getData();
   const entries = JSON.parse(d['journal'] || '[]');
@@ -4254,13 +4270,14 @@ function expandEntry(btn, id){
   if(entry){
     const textEl = document.getElementById('jetxt-' + id);
     if(textEl){
-      // Safe: set as textContent first, then wrap lines
-      const safe = entry.text
-        .replace(/&/g,'&amp;')
-        .replace(/</g,'&lt;')
-        .replace(/>/g,'&gt;')
-        .replace(/\n/g,'<br>');
-      textEl.innerHTML = safe;
+      const escaped = entry.text
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;')
+        .replace(/\n/g, '<br>');
+      textEl.innerHTML = escaped;
     }
     btn.remove();
   }
@@ -4451,10 +4468,10 @@ function toggleTimer(){
 }
 function resetTimer(){clearInterval(timerInterval);timerRunning=false;timerRemaining=timerTotal;updateTimerDisplay();const btn=document.getElementById('timer-start-btn');if(btn){btn.textContent='▶ Start';btn.classList.remove('running');}}
 
+
 function exportData(){
   const d = getData();
 
-  // Build a full export object with metadata
   const exportObj = {
     _meta: {
       version: 'coodley-v3',
@@ -4474,14 +4491,17 @@ function exportData(){
   const a = document.createElement('a');
   a.href = URL.createObjectURL(blob);
   a.download = 'coodley-progress-' + new Date().toISOString().slice(0,10) + '.json';
-  document.body.appendChild(a);
-  a.click();
-  document.body.removeChild(a);
-  URL.revokeObjectURL(a.href);
+
+  try {
+    document.body.appendChild(a);
+    a.click();
+  } finally {
+    document.body.removeChild(a);
+    URL.revokeObjectURL(a.href);
+  }
 
   showToast('Full backup exported! Save it to Google Drive 📁');
 }
-
 
 function importData(event){
   const file = event.target.files[0];
@@ -4545,7 +4565,16 @@ function importData(event){
   reader.readAsText(file);
 }
 
-function clearAll(){if(!confirm('Clear ALL data? This cannot be undone!'))return;localStorage.removeItem(STORE);showToast('All data cleared.');setTimeout(()=>location.reload(),1000);}
+function clearAll(){
+  if(!confirm('Clear ALL data? This cannot be undone!')) return;
+
+  localStorage.removeItem(STORE);
+
+  showToast('All data cleared. Reloading...');
+
+  setTimeout(() => location.reload(), 1800);
+}
+
 
 function updateStorageInfo(){
   const d = getData();
@@ -4761,7 +4790,7 @@ function updateGoalRing(d){
   const hoursToday = parseFloat(dd.hours) || 0;
   const goalHours = parseFloat(d['p-daily']) || 3;
   const pct = Math.min(100, Math.round(hoursToday / goalHours * 100));
-  const circumference = 163.4;
+  const circumference = 163.36;
   const offset = circumference - (pct / 100) * circumference;
 
   const ring = document.getElementById('goal-ring-fill');
@@ -4970,6 +4999,7 @@ function updateRecentActivity(d){
               chapter: ch.name,
               topic: topicName,
               color: unit.color,
+              ts: d['t-' + ch.id + '-' + ti] || 0,  // timestamp here
             });
           }
         });
@@ -4977,19 +5007,21 @@ function updateRecentActivity(d){
     });
   });
 
+  // Sort by most recent first
+  recent.sort((a, b) => b.ts - a.ts);
+  const last5 = recent.slice(0, 5);  // take top 5 recent
+
   const colorMap = {
     green:'var(--accent)', blue:'var(--blue)',
     yellow:'var(--amber)', purple:'var(--purple)',
     orange:'var(--orange)', pink:'var(--pink)'
   };
 
-  if(!recent.length){
+  if(!last5.length){
     el.innerHTML = `<div style="color:var(--muted);font-size:.83rem;text-align:center;padding:16px;font-family:var(--font-body)">No activity yet. Start checking off topics in the Syllabus!</div>`;
-       return;
+    return;
   }
 
-  // Show last 5 checked topics
-  const last5 = recent.slice(-5).reverse();
   el.innerHTML = last5.map((item, idx) => `
     <div style="display:flex;align-items:center;gap:12px;padding:10px 0;${idx < last5.length - 1 ? 'border-bottom:1px solid var(--border)' : ''}">
       <div style="width:8px;height:8px;border-radius:50%;background:${colorMap[item.color]||'var(--accent)'};flex-shrink:0;box-shadow:0 0 6px ${colorMap[item.color]||'var(--accent)'}"></div>
@@ -4997,8 +5029,9 @@ function updateRecentActivity(d){
         <div style="font-size:.82rem;font-weight:600;color:var(--fg);font-family:var(--font-body);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${item.topic}</div>
         <div style="font-size:.68rem;color:var(--muted);font-family:var(--font-body)">${item.unit} · ${item.chapter}</div>
       </div>
-      <div style="font-size:.65rem;color:var(--accent);font-weight:700;font-family:var(--font-mono);flex-shrink:0;display:flex;align-items:center;gap:4px">${SVG_ICONS.check} Done</div>
+      <div style="font-size:.65rem;color:var(--accent);font-weight:700;font-family:var(--font-mono);flex-shrink:0">✓ Done</div>
     </div>`).join('');
+
   };
 </script>
 </body>
