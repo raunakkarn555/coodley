@@ -929,6 +929,8 @@ footer.coodley-footer{background:var(--bg);border-top:1px solid var(--border);pa
 }
 
 </style>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 </head>
 <body>
 
@@ -1669,10 +1671,55 @@ footer.coodley-footer{background:var(--bg);border-top:1px solid var(--border);pa
     Performance Analytics
   </div>
   <div class="analytics-grid">
-    <div class="analytics-card"><h3>🎯 Readiness Level</h3><div style="text-align:center;padding:14px 0"><div class="readiness-ring" id="readiness-ring"><div class="readiness-pct" id="readiness-pct">0%</div></div><div class="readiness-label" id="readiness-label">Beginner</div><p style="font-size:.78rem;color:var(--muted2);margin-top:10px;max-width:180px;margin-left:auto;margin-right:auto;font-family:var(--font-body)" id="readiness-msg">Start completing topics to build momentum.</p></div></div>
-    <div class="analytics-card"><h3>⚠️ Weak Areas</h3><div id="weak-list"></div></div>
-    <div class="analytics-card"><h3>💡 Suggestions</h3><div id="suggestions" style="display:flex;flex-direction:column;gap:8px;font-size:.83rem;line-height:1.7;color:var(--muted2);font-family:var(--font-body)"></div></div>
+  <div class="analytics-card"><h3>🎯 Readiness Level</h3><div style="text-align:center;padding:14px 0"><div class="readiness-ring" id="readiness-ring"><div class="readiness-pct" id="readiness-pct">0%</div></div><div class="readiness-label" id="readiness-label">Beginner</div><p style="font-size:.78rem;color:var(--muted2);margin-top:10px;max-width:180px;margin-left:auto;margin-right:auto;font-family:var(--font-body)" id="readiness-msg">Start completing topics to build momentum.</p></div></div>
+  <div class="analytics-card"><h3>⚠️ Weak Areas</h3><div id="weak-list"></div></div>
+  <div class="analytics-card"><h3>💡 Suggestions</h3><div id="suggestions" style="display:flex;flex-direction:column;gap:8px;font-size:.83rem;line-height:1.7;color:var(--muted2);font-family:var(--font-body)"></div></div>
+</div>
+
+<!-- NEW CHARTS ROW -->
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;margin:20px 0">
+
+  <!-- Radar Chart -->
+  <div class="analytics-card" style="position:relative">
+    <h3 style="font-family:var(--font-head);font-weight:800;margin-bottom:16px;font-size:.95rem">
+      🕸 Skills Radar
+    </h3>
+    <div style="position:relative;height:280px;display:flex;align-items:center;justify-content:center">
+      <canvas id="radarChart"></canvas>
+    </div>
   </div>
+
+  <!-- Bar Chart -->
+  <div class="analytics-card" style="position:relative">
+    <h3 style="font-family:var(--font-head);font-weight:800;margin-bottom:16px;font-size:.95rem">
+      📊 Progress by Unit
+    </h3>
+    <div style="position:relative;height:280px">
+      <canvas id="barChart"></canvas>
+    </div>
+  </div>
+
+  <!-- Line Chart -->
+  <div class="analytics-card" style="position:relative">
+    <h3 style="font-family:var(--font-head);font-weight:800;margin-bottom:16px;font-size:.95rem">
+      📈 Study Hours — Last 14 Days
+    </h3>
+    <div style="position:relative;height:280px">
+      <canvas id="lineChart"></canvas>
+    </div>
+  </div>
+
+  <!-- Doughnut Chart -->
+  <div class="analytics-card" style="position:relative">
+    <h3 style="font-family:var(--font-head);font-weight:800;margin-bottom:16px;font-size:.95rem">
+      🍩 Topic Distribution
+    </h3>
+    <div style="position:relative;height:280px;display:flex;align-items:center;justify-content:center">
+      <canvas id="doughnutChart"></canvas>
+    </div>
+  </div>
+
+</div>
   <div class="card" style="margin-top:16px"><h3 style="font-family:var(--font-head);font-weight:800;margin-bottom:16px">📅 9-Month Roadmap Timeline</h3><div class="month-timeline" id="month-timeline"></div></div>
 </section>
 
@@ -4244,6 +4291,323 @@ function updateBook(id, color, val){
 
 function saveBookRev(id,checked){const d=getData();d['bookrev-'+id]=checked;setData(d);}
 
+
+// ========= ends book resource functions ========= //
+
+// ===== CHART INSTANCES (destroy before re-render) =====
+const _charts = {};
+
+function destroyChart(id){
+  if(_charts[id]){ _charts[id].destroy(); delete _charts[id]; }
+}
+
+function getChartColors(){
+  // Detect dark vs light mode
+  const isDark = document.documentElement.getAttribute('data-theme') !== 'light';
+  return {
+    gridColor:  isDark ? 'rgba(255,255,255,0.07)' : 'rgba(0,0,0,0.07)',
+    tickColor:  isDark ? 'rgba(255,255,255,0.45)' : 'rgba(0,0,0,0.45)',
+    labelColor: isDark ? 'rgba(255,255,255,0.7)'  : 'rgba(0,0,0,0.7)',
+  };
+}
+
+function buildRadarChart(st){
+  destroyChart('radar');
+  const canvas = document.getElementById('radarChart');
+  if(!canvas || typeof Chart === 'undefined') return;
+  const c = getChartColors();
+  _charts['radar'] = new Chart(canvas, {
+    type: 'radar',
+    data: {
+      labels: ['Frontend\n(HTML/CSS/JS)', 'React &\nNext.js', 'Backend\n(Node/Express)', 'Databases\n(SQL/NoSQL)', 'DSA\n(Algorithms)', 'System\nDesign'],
+      datasets:[{
+        label: 'Your Progress %',
+        data: [st.js, st.react, st.node, st.db, st.dsa, st.sys],
+        backgroundColor: 'rgba(61,232,176,0.15)',
+        borderColor:     'rgba(61,232,176,0.9)',
+        borderWidth: 2.5,
+        pointBackgroundColor: [
+          'rgba(244,169,66,1)',
+          'rgba(91,164,245,1)',
+          'rgba(61,232,176,1)',
+          'rgba(244,169,66,1)',
+          'rgba(244,114,182,1)',
+          'rgba(251,146,60,1)',
+        ],
+        pointBorderColor: '#07090f',
+        pointBorderWidth: 2,
+        pointRadius: 5,
+        pointHoverRadius: 7,
+      }]
+    },
+    options:{
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins:{
+        legend:{ display:false },
+        tooltip:{
+          callbacks:{
+            label: ctx => ' ' + ctx.raw + '% complete'
+          },
+          backgroundColor: 'rgba(12,15,26,0.95)',
+          titleColor: '#e8edf5',
+          bodyColor:  '#8899b0',
+          borderColor: 'rgba(61,232,176,0.3)',
+          borderWidth: 1,
+          padding: 10,
+        }
+      },
+      scales:{
+        r:{
+          min: 0,
+          max: 100,
+          ticks:{
+            stepSize: 25,
+            color: c.tickColor,
+            font:{ size:9, family:"'JetBrains Mono', monospace" },
+            backdropColor: 'transparent',
+            callback: v => v + '%'
+          },
+          grid:{ color: c.gridColor },
+          angleLines:{ color: c.gridColor },
+          pointLabels:{
+            color: c.labelColor,
+            font:{ size:10, family:"'DM Sans', sans-serif", weight:'600' },
+          }
+        }
+      }
+    }
+  });
+}
+
+function buildBarChart(st){
+  destroyChart('bar');
+  const canvas = document.getElementById('barChart');
+  if(!canvas || typeof Chart === 'undefined') return;
+  const c = getChartColors();
+  _charts['bar'] = new Chart(canvas, {
+    type: 'bar',
+    data:{
+      labels: ['Frontend', 'React/Next', 'Backend', 'Databases', 'DSA', 'Sys Design', 'Job Prep'],
+      datasets:[{
+        label: 'Progress %',
+        data: [st.js, st.react, st.node, st.db, st.dsa, st.sys, st.job],
+        backgroundColor: [
+          'rgba(244,169,66,0.75)',
+          'rgba(91,164,245,0.75)',
+          'rgba(61,232,176,0.75)',
+          'rgba(244,169,66,0.75)',
+          'rgba(244,114,182,0.75)',
+          'rgba(251,146,60,0.75)',
+          'rgba(45,212,191,0.75)',
+        ],
+        borderColor: [
+          'rgba(244,169,66,1)',
+          'rgba(91,164,245,1)',
+          'rgba(61,232,176,1)',
+          'rgba(244,169,66,1)',
+          'rgba(244,114,182,1)',
+          'rgba(251,146,60,1)',
+          'rgba(45,212,191,1)',
+        ],
+        borderWidth: 1.5,
+        borderRadius: 6,
+        borderSkipped: false,
+      }]
+    },
+    options:{
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins:{
+        legend:{ display:false },
+        tooltip:{
+          callbacks:{
+            label: ctx => ' ' + ctx.raw + '% complete'
+          },
+          backgroundColor: 'rgba(12,15,26,0.95)',
+          titleColor: '#e8edf5',
+          bodyColor:  '#8899b0',
+          borderColor: 'rgba(61,232,176,0.3)',
+          borderWidth: 1,
+          padding: 10,
+        }
+      },
+      scales:{
+        x:{
+          ticks:{ color: c.tickColor, font:{ size:10, family:"'DM Sans', sans-serif" } },
+          grid:{ color: c.gridColor },
+          border:{ color: c.gridColor }
+        },
+        y:{
+          min: 0,
+          max: 100,
+          ticks:{
+            stepSize: 25,
+            color: c.tickColor,
+            font:{ size:10, family:"'JetBrains Mono', monospace" },
+            callback: v => v + '%'
+          },
+          grid:{ color: c.gridColor },
+          border:{ color: c.gridColor }
+        }
+      }
+    }
+  });
+}
+
+function buildLineChart(){
+  destroyChart('line');
+  const canvas = document.getElementById('lineChart');
+  if(!canvas || typeof Chart === 'undefined') return;
+  const d = getData();
+  const c = getChartColors();
+
+  const labels = [], data = [];
+  for(let i = 13; i >= 0; i--){
+    const dd = new Date();
+    dd.setDate(dd.getDate() - i);
+    const key = dd.toISOString().slice(0,10);
+    labels.push(dd.toLocaleDateString('en-IN',{month:'short',day:'numeric'}));
+    data.push(parseFloat(d['day-' + key]) || 0);
+  }
+
+  _charts['line'] = new Chart(canvas, {
+    type: 'line',
+    data:{
+      labels,
+      datasets:[{
+        label: 'Study Hours',
+        data,
+        borderColor:     'rgba(91,164,245,1)',
+        backgroundColor: 'rgba(91,164,245,0.08)',
+        borderWidth: 2.5,
+        fill: true,
+        tension: 0.4,
+        pointBackgroundColor: data.map(v =>
+          v === 0 ? 'rgba(91,164,245,0.2)' : v >= 5 ? 'rgba(61,232,176,1)' : 'rgba(91,164,245,1)'
+        ),
+        pointBorderColor: '#07090f',
+        pointBorderWidth: 1.5,
+        pointRadius: data.map(v => v === 0 ? 3 : 5),
+        pointHoverRadius: 7,
+      }]
+    },
+    options:{
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins:{
+        legend:{ display:false },
+        tooltip:{
+          callbacks:{
+            label: ctx => ' ' + ctx.raw + ' hours studied'
+          },
+          backgroundColor: 'rgba(12,15,26,0.95)',
+          titleColor: '#e8edf5',
+          bodyColor:  '#8899b0',
+          borderColor: 'rgba(91,164,245,0.3)',
+          borderWidth: 1,
+          padding: 10,
+        }
+      },
+      scales:{
+        x:{
+          ticks:{
+            color: c.tickColor,
+            font:{ size:9, family:"'DM Sans', sans-serif" },
+            maxRotation: 45,
+            minRotation: 45,
+          },
+          grid:{ color: c.gridColor },
+          border:{ color: c.gridColor }
+        },
+        y:{
+          min: 0,
+          ticks:{
+            stepSize: 2,
+            color: c.tickColor,
+            font:{ size:10, family:"'JetBrains Mono', monospace" },
+            callback: v => v + 'h'
+          },
+          grid:{ color: c.gridColor },
+          border:{ color: c.gridColor }
+        }
+      }
+    }
+  });
+}
+
+function buildDoughnutChart(st){
+  destroyChart('doughnut');
+  const canvas = document.getElementById('doughnutChart');
+  if(!canvas || typeof Chart === 'undefined') return;
+
+  const total = st.total || 1;
+  const done  = st.done  || 0;
+
+  // Count by unit
+  const d = getData();
+  const unitCounts = CURRICULUM.map(unit => {
+    let uDone = 0;
+    unit.stages.forEach(st => st.chapters.forEach(ch =>
+      ch.topics.forEach((_,ti) => { if(d['t-'+ch.id+'-'+ti]) uDone++; })
+    ));
+    return uDone;
+  });
+
+  _charts['doughnut'] = new Chart(canvas, {
+    type: 'doughnut',
+    data:{
+      labels: CURRICULUM.map(u => u.name.replace('Unit ','').split(' — ')[1] || u.name),
+      datasets:[{
+        data: unitCounts,
+        backgroundColor:[
+          'rgba(61,232,176,0.8)',
+          'rgba(91,164,245,0.8)',
+          'rgba(244,169,66,0.8)',
+          'rgba(167,139,250,0.8)',
+          'rgba(251,146,60,0.8)',
+          'rgba(244,114,182,0.8)',
+        ],
+        borderColor: '#07090f',
+        borderWidth: 3,
+        hoverOffset: 8,
+      }]
+    },
+    options:{
+      responsive: true,
+      maintainAspectRatio: false,
+      cutout: '65%',
+      plugins:{
+        legend:{
+          display: true,
+          position: 'bottom',
+          labels:{
+            color: 'rgba(136,153,176,0.9)',
+            font:{ size:10, family:"'DM Sans', sans-serif" },
+            padding: 12,
+            usePointStyle: true,
+            pointStyleWidth: 8,
+          }
+        },
+        tooltip:{
+          callbacks:{
+            label: ctx => ' ' + ctx.label + ': ' + ctx.raw + ' topics done'
+          },
+          backgroundColor: 'rgba(12,15,26,0.95)',
+          titleColor: '#e8edf5',
+          bodyColor:  '#8899b0',
+          borderColor: 'rgba(61,232,176,0.3)',
+          borderWidth: 1,
+          padding: 10,
+        }
+      }
+    }
+  });
+}
+// ===== END CHARTS =====
+
+
+
 function updateAnalytics(){
   const st = getAllTopicStats();
   const pct = st.overallPct;
@@ -4374,8 +4738,16 @@ function updateAnalytics(){
 
  // ── 9-Month Roadmap Timeline ─────────────────────────────────
   buildMonthTimeline();
-  // ── Pace Prediction ──
-updatePacePrediction(st);
+  updatePacePrediction(st);
+
+  // Build all 4 charts
+  // Small delay lets the canvas render first
+  setTimeout(() => {
+    buildRadarChart(st);
+    buildBarChart(st);
+    buildLineChart();
+    buildDoughnutChart(st);
+  }, 80);
 }
 
 function buildMonthTimeline(){
@@ -5271,7 +5643,16 @@ function initNav(){
   }
   const themeBtn=document.getElementById('themeBtn');
   if(themeBtn)themeBtn.addEventListener('click',()=>{
-    const isDark=document.documentElement.getAttribute('data-theme')==='dark';setTheme(isDark?'light':'dark');
+  const isDark=document.documentElement.getAttribute('data-theme')==='dark';
+  setTheme(isDark?'light':'dark');
+  // Rebuild charts with new theme colors
+  setTimeout(() => {
+    const st = getAllTopicStats();
+    buildRadarChart(st);
+    buildBarChart(st);
+    buildLineChart();
+    buildDoughnutChart(st);
+  }, 100);
   });
 
   // HAMBURGER
