@@ -348,8 +348,7 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;point
 .todo-expand-btn:hover{border-color:var(--accent);color:var(--accent);}
 .todo-note-wrap{display:none;margin-top:8px;}
 .todo-note-wrap.open{display:block;}
-.todo-due-badge{font-size:.62rem;font-weight:700;padding:2px 8px;border-radius:8px;border:1px solid rgba(91,164,245,.3);background:rgba(91,164,245,.07);color:var(--blue);font-family:var(--font-mono);white-space:nowrap;}
-.todo-due-badge.overdue{border-color:rgba(245,101,101,.4);background:rgba(245,101,101,.08);color:var(--red);}
+
 .todo-status-sel{background:var(--bg4);border:1px solid var(--border);border-radius:6px;color:var(--muted2);font-size:.65rem;padding:2px 6px;cursor:pointer;font-family:var(--font-body);outline:none;}
 
 
@@ -1123,7 +1122,7 @@ footer.coodley-footer{background:var(--bg);border-top:1px solid var(--border);pa
         <option value="med">🟡 Medium</option>
         <option value="low">🟢 Low</option>
       </select>
-      <input type="date" class="todo-sel" id="todo-due" style="font-size:.78rem;color:var(--muted2)"/>
+
       <button class="btn-add" onclick="addTodo()">+ Add</button>
     </div>
 
@@ -3456,7 +3455,7 @@ function addTodo(){
   const inp = document.getElementById('todo-inp');
   const tag = document.getElementById('todo-tag')?.value || 'general';
   const prio = document.getElementById('todo-prio')?.value || 'med';
-  const due = document.getElementById('todo-due')?.value || '';
+  
   const text = inp?.value?.trim();
   if(!text) return;
   const d = getData();
@@ -3466,7 +3465,6 @@ function addTodo(){
     text,
     tag,
     prio,
-    due,
     done: false,
     note: '',
     status: 'notstarted'
@@ -3504,7 +3502,7 @@ function renderTodos(todos){
     return;
   }
 
-  const today = new Date().toISOString().slice(0,10);
+
 
   const statusLabels = {
     notstarted: '⬜ Not Started',
@@ -3513,10 +3511,7 @@ function renderTodos(todos){
   };
 
   list.innerHTML = filtered.map(t => {
-    const isOverdue = t.due && t.due < today && !t.done;
-    const dueBadge = t.due
-      ? `<span class="todo-due-badge${isOverdue?' overdue':''}">${isOverdue ? '⚠ ' : '📅 '}${new Date(t.due + 'T00:00:00').toLocaleDateString('en-IN',{month:'short',day:'numeric'})}</span>`
-      : '';
+  
 
     return `<div class="todo-item${t.done?' done-item':''}" id="tdi-${t.id}">
       <div class="todo-item-top">
@@ -3524,7 +3519,7 @@ function renderTodos(todos){
         <input type="checkbox" ${t.done?'checked':''} style="width:15px;height:15px;accent-color:var(--accent);cursor:pointer;flex-shrink:0" onchange="toggleTodoItem(${t.id})"/>
         <span class="todo-text" id="tdt-${t.id}">${t.text}</span>
         <span class="todo-tag tag-${t.tag}">${t.tag}</span>
-        ${dueBadge}
+       
         <select class="todo-status-sel" onchange="updateTodoStatus(${t.id},this.value)">
           <option value="notstarted" ${(t.status||'notstarted')==='notstarted'?'selected':''}>⬜ Not Started</option>
           <option value="inprogress" ${t.status==='inprogress'?'selected':''}>🔄 In Progress</option>
