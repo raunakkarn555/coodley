@@ -550,6 +550,21 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;point
 .journal-streak-heatmap{display:flex;gap:3px;flex-wrap:wrap;margin-top:8px;}
 .j-heat{width:16px;height:16px;border-radius:3px;background:var(--bg4);border:1px solid var(--border);}
 .j-heat[data-has="1"]{background:rgba(61,232,176,.4);border-color:rgba(61,232,176,.45);}
+/* Journal entry length badge */
+.j-len-short{color:var(--muted);border-color:var(--border);}
+.j-len-medium{color:var(--blue);border-color:rgba(91,164,245,.3);background:rgba(91,164,245,.07);}
+.j-len-detailed{color:var(--accent);border-color:rgba(61,232,176,.3);background:rgba(61,232,176,.07);}
+
+/* Journal entry tags */
+.je-custom-tag{font-size:.6rem;font-weight:700;padding:2px 8px;border-radius:8px;border:1px solid rgba(157,124,245,.3);background:rgba(157,124,245,.07);color:var(--purple);font-family:var(--font-mono);}
+
+/* Journal energy bar */
+.je-energy-bar{display:flex;gap:2px;align-items:center;}
+.je-energy-dot{width:6px;height:6px;border-radius:50%;background:var(--bg4);}
+.je-energy-dot.lit{background:var(--amber);}
+
+/* Edit mode highlight */
+.journal-write-box.editing{border-color:rgba(244,169,66,.4);box-shadow:0 0 0 3px rgba(244,169,66,.08);}
 
 /* ===== JOB HUNT ENHANCED ===== */
 .job-phase{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-xl);padding:28px;margin-bottom:20px;position:relative;overflow:hidden;}
@@ -1227,6 +1242,7 @@ footer.coodley-footer{background:var(--bg);border-top:1px solid var(--border);pa
 </section>
 
 <!-- JOURNAL ENHANCED -->
+<!-- JOURNAL ENHANCED -->
 <section class="section" id="sec-journal">
   <div class="sec-title">
     <div class="sec-icon si-accent">
@@ -1238,12 +1254,28 @@ footer.coodley-footer{background:var(--bg);border-top:1px solid var(--border);pa
   <!-- Journal Stats -->
   <div class="journal-stats-bar" id="journal-stats"></div>
 
+  <!-- Streak Heatmap -->
+  <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px 20px;margin-bottom:20px">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;flex-wrap:wrap;gap:8px">
+      <div style="font-size:.75rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;font-family:var(--font-body)">📅 Journal Activity — Last 30 Days</div>
+      <div style="display:flex;gap:5px;align-items:center;font-size:.68rem;color:var(--muted)">
+        <span>Less</span>
+        <div style="width:11px;height:11px;border-radius:2px;background:var(--bg4);border:1px solid var(--border)"></div>
+        <div style="width:11px;height:11px;border-radius:2px;background:rgba(61,232,176,.3)"></div>
+        <div style="width:11px;height:11px;border-radius:2px;background:rgba(61,232,176,.6)"></div>
+        <div style="width:11px;height:11px;border-radius:2px;background:var(--accent)"></div>
+        <span>More</span>
+      </div>
+    </div>
+    <div id="journal-heatmap" style="display:flex;gap:4px;flex-wrap:wrap"></div>
+  </div>
+
   <!-- Write Box -->
   <div class="journal-write-box">
     <div class="journal-write-header">
       <h3 style="font-family:var(--font-head);font-weight:800;font-size:1rem;display:flex;align-items:center;gap:8px">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
-        Write Today's Entry
+        <span id="journal-write-title">Write Today's Entry</span>
       </h3>
       <span id="j-today-display" style="font-size:.75rem;color:var(--muted);font-family:var(--font-mono)"></span>
     </div>
@@ -1257,6 +1289,8 @@ footer.coodley-footer{background:var(--bg);border-top:1px solid var(--border);pa
       <button class="j-prompt" onclick="insertPrompt('Tomorrow I will focus on...')">🎯 Tomorrow\'s focus</button>
       <button class="j-prompt" onclick="insertPrompt('The concept I finally understood is...')">✅ Aha moment</button>
       <button class="j-prompt" onclick="insertPrompt('My energy level was _/10 because...')">⚡ Energy check</button>
+      <button class="j-prompt" onclick="insertPrompt('One thing I am proud of today is...')">😊 Proud moment</button>
+      <button class="j-prompt" onclick="insertPrompt('My biggest distraction today was...')">😬 Distraction</button>
     </div>
 
     <div class="journal-meta-row">
@@ -1282,16 +1316,30 @@ footer.coodley-footer{background:var(--bg);border-top:1px solid var(--border);pa
         <option value="3" selected>⚡⚡ Medium energy</option>
         <option value="1">⚡ Low energy</option>
       </select>
+      <input type="text" class="j-select" id="j-tags-inp" placeholder="Tags (comma separated)" style="min-width:160px;font-size:.78rem"/>
     </div>
 
-    <textarea class="journal-textarea" id="j-inp" placeholder="Write your thoughts, breakthroughs, frustrations, aha-moments... This is your safe space to process your learning journey." oninput="updateCharCount()"></textarea>
+    <textarea class="journal-textarea" id="j-inp" placeholder="Write your thoughts, breakthroughs, frustrations, aha-moments... This is your safe space to process your learning journey." oninput="updateJournalMeta()"></textarea>
+
+    <!-- Word count + length indicator -->
+    <div style="display:flex;align-items:center;gap:10px;margin-top:8px;flex-wrap:wrap">
+      <span class="j-char-count" id="j-char-count">0 words</span>
+      <span id="j-length-badge" style="font-size:.62rem;font-weight:800;padding:2px 8px;border-radius:10px;border:1px solid var(--border);color:var(--muted);font-family:var(--font-mono)">Short</span>
+      <span id="j-read-time" style="font-size:.68rem;color:var(--muted);font-family:var(--font-mono)"></span>
+    </div>
 
     <div class="journal-actions-row">
-      <span class="j-char-count" id="j-char-count">0 characters</span>
-      <button class="btn-save" onclick="addJournalEntry()">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-right:5px"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/></svg>
-        Save Entry
+      <button class="btn-export" onclick="exportJournal()" style="border-color:rgba(61,232,176,.3);color:var(--accent);padding:8px 16px">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Export .txt
       </button>
+      <div style="display:flex;gap:8px;margin-left:auto">
+        <button class="btn-export" id="j-cancel-edit-btn" onclick="cancelEditEntry()" style="display:none;border-color:rgba(245,101,101,.3);color:var(--red);padding:8px 16px">Cancel Edit</button>
+        <button class="btn-save" onclick="addJournalEntry()" id="j-save-btn">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-right:5px"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/></svg>
+          Save Entry
+        </button>
+      </div>
     </div>
   </div>
 
@@ -3944,116 +3992,380 @@ function updateOverview(){
 }
 
 // ===== JOURNAL ENHANCED =====
-let journalFilter='all';
+let journalFilter = 'all';
+let editingEntryId = null;
 
 function insertPrompt(text){
-  const inp=document.getElementById('j-inp');
-  if(!inp)return;
-  const current=inp.value;
-  inp.value=current?(current+'\n\n'+text+'\n'):text+'\n';
+  const inp = document.getElementById('j-inp');
+  if(!inp) return;
+  const current = inp.value;
+  inp.value = current ? (current + '\n\n' + text + '\n') : text + '\n';
   inp.focus();
-  updateCharCount();
+  updateJournalMeta();
 }
-function updateCharCount(){
-  const inp=document.getElementById('j-inp');
-  const cc=document.getElementById('j-char-count');
-  if(inp&&cc)cc.textContent=(inp.value.length)+' characters';
+
+function updateJournalMeta(){
+  const inp = document.getElementById('j-inp');
+  const cc = document.getElementById('j-char-count');
+  const lb = document.getElementById('j-length-badge');
+  const rt = document.getElementById('j-read-time');
+  if(!inp) return;
+
+  const text = inp.value.trim();
+  const words = text ? text.split(/\s+/).length : 0;
+  const readSecs = Math.ceil(words / 3);
+
+  if(cc) cc.textContent = words + ' word' + (words !== 1 ? 's' : '');
+
+  if(lb){
+    if(words < 30){
+      lb.textContent = 'Short';
+      lb.className = '';
+      lb.style.cssText = 'font-size:.62rem;font-weight:800;padding:2px 8px;border-radius:10px;border:1px solid var(--border);color:var(--muted);font-family:var(--font-mono)';
+    } else if(words < 100){
+      lb.textContent = 'Medium';
+      lb.style.cssText = 'font-size:.62rem;font-weight:800;padding:2px 8px;border-radius:10px;border:1px solid rgba(91,164,245,.3);background:rgba(91,164,245,.07);color:var(--blue);font-family:var(--font-mono)';
+    } else {
+      lb.textContent = '✦ Detailed';
+      lb.style.cssText = 'font-size:.62rem;font-weight:800;padding:2px 8px;border-radius:10px;border:1px solid rgba(61,232,176,.3);background:rgba(61,232,176,.07);color:var(--accent);font-family:var(--font-mono)';
+    }
+  }
+
+  if(rt) rt.textContent = words > 0 ? '~' + readSecs + 's read' : '';
 }
+
+// keep old name working too
+function updateCharCount(){ updateJournalMeta(); }
+
 function addJournalEntry(){
-  const inp=document.getElementById('j-inp');
-  const mood=document.getElementById('j-mood')?.value||'😐';
-  const cat=document.getElementById('j-category')?.value||'learn';
-  const energy=document.getElementById('j-energy')?.value||'3';
-  const text=inp?.value?.trim();
-  if(!text){showToast('Write something first!','t-blue');return;}
-  const d=getData();
-  const entries=JSON.parse(d['journal']||'[]');
-  entries.unshift({id:Date.now(),text,mood,cat,energy:parseInt(energy),date:new Date().toLocaleString('en-IN'),pinned:false});
-  d['journal']=JSON.stringify(entries);setData(d);
-  if(inp)inp.value='';
-  updateCharCount();
-  renderJournal();
-  updateJournalStats();
-  showToast('Entry saved! 🗒');
-}
-function renderJournal(){
-  const el=document.getElementById('journal-entries');if(!el)return;
-  const d=getData();
-  let entries=JSON.parse(d['journal']||'[]');
-  const filter=journalFilter;
-  const search=(document.getElementById('j-search')?.value||'').toLowerCase();
-  if(filter==='pinned')entries=entries.filter(e=>e.pinned);
-  else if(filter!=='all')entries=entries.filter(e=>e.cat===filter);
-  if(search)entries=entries.filter(e=>e.text.toLowerCase().includes(search)||e.mood.toLowerCase().includes(search));
-  const pinned=entries.filter(e=>e.pinned);
-  const unpinned=entries.filter(e=>!e.pinned);
-  const sorted=[...pinned,...unpinned];
-  if(!sorted.length){
-    el.innerHTML=`<div class="journal-empty"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><p style="font-size:.85rem;margin-top:8px">${filter==='all'?'No entries yet. Write your first thought.':'No entries in this category.'}</p></div>`;
+  const inp = document.getElementById('j-inp');
+  const mood = document.getElementById('j-mood')?.value || '😐';
+  const cat = document.getElementById('j-category')?.value || 'learn';
+  const energy = document.getElementById('j-energy')?.value || '3';
+  const tagsRaw = document.getElementById('j-tags-inp')?.value || '';
+  const text = inp?.value?.trim();
+  if(!text){ showToast('Write something first!', 't-blue'); return; }
+
+  const tags = tagsRaw.split(',').map(t => t.trim()).filter(Boolean);
+  const words = text.split(/\s+/).length;
+
+  const d = getData();
+  const entries = JSON.parse(d['journal'] || '[]');
+
+  // If editing existing entry
+  if(editingEntryId !== null){
+    const entry = entries.find(e => e.id === editingEntryId);
+    if(entry){
+      entry.text = text;
+      entry.mood = mood;
+      entry.cat = cat;
+      entry.energy = parseInt(energy);
+      entry.tags = tags;
+      entry.words = words;
+      entry.edited = true;
+    }
+    editingEntryId = null;
+    resetJournalForm();
+    d['journal'] = JSON.stringify(entries);
+    setData(d);
+    renderJournal();
+    updateJournalStats();
+    showToast('Entry updated! ✏️');
     return;
   }
-  const tagLabels={learn:'📚 Learning',win:'🏆 Win',struggle:'⚡ Struggle',reflect:'🔍 Reflection',goal:'🎯 Goal'};
-  const tagClass={learn:'je-tag-learn',win:'je-tag-win',struggle:'je-tag-struggle',reflect:'je-tag-reflect',goal:'je-tag-goal'};
-  const energyStars=e=>{const n=parseInt(e)||3;return n>=5?'⚡⚡⚡':n>=3?'⚡⚡':'⚡';};
-  el.innerHTML=sorted.map(e=>`<div class="journal-entry-card${e.pinned?' pinned':''}" id="je-${e.id}">
-    <div class="je-header">
-      <div class="je-meta">
-        <span class="je-mood-badge">${e.mood||'😐'}</span>
-        <span class="je-date">${e.date}</span>
-        ${e.cat?`<span class="je-tag ${tagClass[e.cat]||'je-tag-learn'}">${tagLabels[e.cat]||e.cat}</span>`:''}
-        <span style="font-size:.7rem;color:var(--muted)" title="Energy">${energyStars(e.energy)}</span>
-        ${e.pinned?'<span style="font-size:.7rem;color:var(--amber);font-weight:700">📌 Pinned</span>':''}
+
+  entries.unshift({
+    id: Date.now(),
+    text,
+    mood,
+    cat,
+    energy: parseInt(energy),
+    tags,
+    words,
+    date: new Date().toLocaleString('en-IN'),
+    dateISO: new Date().toISOString().slice(0,10),
+    pinned: false,
+    edited: false
+  });
+
+  d['journal'] = JSON.stringify(entries);
+  setData(d);
+  resetJournalForm();
+  renderJournal();
+  updateJournalStats();
+  buildJournalHeatmap();
+  showToast('Entry saved! 🗒');
+}
+
+function resetJournalForm(){
+  const inp = document.getElementById('j-inp');
+  const tagsInp = document.getElementById('j-tags-inp');
+  if(inp) inp.value = '';
+  if(tagsInp) tagsInp.value = '';
+  updateJournalMeta();
+  editingEntryId = null;
+  const writeBox = document.querySelector('.journal-write-box');
+  if(writeBox) writeBox.classList.remove('editing');
+  const title = document.getElementById('journal-write-title');
+  if(title) title.textContent = "Write Today's Entry";
+  const cancelBtn = document.getElementById('j-cancel-edit-btn');
+  if(cancelBtn) cancelBtn.style.display = 'none';
+  const saveBtn = document.getElementById('j-save-btn');
+  if(saveBtn) saveBtn.textContent = 'Save Entry';
+}
+
+function cancelEditEntry(){
+  resetJournalForm();
+  showToast('Edit cancelled');
+}
+
+function startEditEntry(id){
+  const d = getData();
+  const entries = JSON.parse(d['journal'] || '[]');
+  const entry = entries.find(e => e.id === id);
+  if(!entry) return;
+
+  editingEntryId = id;
+
+  const inp = document.getElementById('j-inp');
+  const moodSel = document.getElementById('j-mood');
+  const catSel = document.getElementById('j-category');
+  const energySel = document.getElementById('j-energy');
+  const tagsInp = document.getElementById('j-tags-inp');
+
+  if(inp) inp.value = entry.text;
+  if(moodSel) moodSel.value = entry.mood || '😐';
+  if(catSel) catSel.value = entry.cat || 'learn';
+  if(energySel) energySel.value = entry.energy || '3';
+  if(tagsInp) tagsInp.value = (entry.tags || []).join(', ');
+
+  updateJournalMeta();
+
+  const writeBox = document.querySelector('.journal-write-box');
+  if(writeBox){
+    writeBox.classList.add('editing');
+    writeBox.scrollIntoView({ behavior:'smooth', block:'start' });
+  }
+
+  const title = document.getElementById('journal-write-title');
+  if(title) title.textContent = '✏️ Editing Entry';
+
+  const cancelBtn = document.getElementById('j-cancel-edit-btn');
+  if(cancelBtn) cancelBtn.style.display = 'inline-flex';
+
+  const saveBtn = document.getElementById('j-save-btn');
+  if(saveBtn) saveBtn.textContent = 'Update Entry';
+}
+
+function renderJournal(){
+  const el = document.getElementById('journal-entries');
+  if(!el) return;
+  const d = getData();
+  let entries = JSON.parse(d['journal'] || '[]');
+  const filter = journalFilter;
+  const search = (document.getElementById('j-search')?.value || '').toLowerCase();
+
+  if(filter === 'pinned') entries = entries.filter(e => e.pinned);
+  else if(filter !== 'all') entries = entries.filter(e => e.cat === filter);
+  if(search) entries = entries.filter(e =>
+    e.text.toLowerCase().includes(search) ||
+    e.mood?.toLowerCase().includes(search) ||
+    (e.tags || []).some(t => t.toLowerCase().includes(search))
+  );
+
+  const pinned = entries.filter(e => e.pinned);
+  const unpinned = entries.filter(e => !e.pinned);
+  const sorted = [...pinned, ...unpinned];
+
+  if(!sorted.length){
+    el.innerHTML = `<div class="journal-empty">
+      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+      <p style="font-size:.85rem;margin-top:8px">${filter === 'all' ? 'No entries yet. Write your first thought.' : 'No entries in this category.'}</p>
+    </div>`;
+    return;
+  }
+
+  const tagLabels = {learn:'📚 Learning', win:'🏆 Win', struggle:'⚡ Struggle', reflect:'🔍 Reflection', goal:'🎯 Goal'};
+  const tagClass = {learn:'je-tag-learn', win:'je-tag-win', struggle:'je-tag-struggle', reflect:'je-tag-reflect', goal:'je-tag-goal'};
+
+  const energyBar = (e) => {
+    const n = parseInt(e) || 3;
+    return `<div class="je-energy-bar" title="Energy: ${n}/5">
+      ${[1,2,3,4,5].map(i => `<div class="je-energy-dot${i<=n?' lit':''}"></div>`).join('')}
+    </div>`;
+  };
+
+  el.innerHTML = sorted.map(e => {
+    const words = e.words || (e.text ? e.text.split(/\s+/).length : 0);
+    const readSecs = Math.ceil(words / 3);
+    const customTags = (e.tags || []).map(t =>
+      `<span class="je-custom-tag">#${t}</span>`
+    ).join('');
+
+    const preview = e.text.length > 250 ? e.text.slice(0, 250) + '...' : e.text;
+    const hasMore = e.text.length > 250;
+
+    return `<div class="journal-entry-card${e.pinned?' pinned':''}" id="je-${e.id}">
+      <div class="je-header">
+        <div class="je-meta">
+          <span class="je-mood-badge">${e.mood||'😐'}</span>
+          <span class="je-date">${e.date}</span>
+          ${e.cat ? `<span class="je-tag ${tagClass[e.cat]||'je-tag-learn'}">${tagLabels[e.cat]||e.cat}</span>` : ''}
+          ${energyBar(e.energy)}
+          <span style="font-size:.65rem;color:var(--muted);font-family:var(--font-mono)">${words}w · ~${readSecs}s</span>
+          ${e.edited ? '<span style="font-size:.6rem;color:var(--muted);font-style:italic">edited</span>' : ''}
+          ${e.pinned ? '<span style="font-size:.7rem;color:var(--amber);font-weight:700">📌</span>' : ''}
+        </div>
+        <div class="je-actions">
+          <button class="je-action-btn" onclick="startEditEntry(${e.id})" title="Edit">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+            Edit
+          </button>
+          <button class="je-action-btn${e.pinned?' active':''}" onclick="togglePin(${e.id})" title="${e.pinned?'Unpin':'Pin'}">
+            📌 ${e.pinned ? 'Unpin' : 'Pin'}
+          </button>
+          <button class="je-action-btn" onclick="deleteEntry(${e.id})" style="color:var(--red)" title="Delete">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/></svg>
+            Delete
+          </button>
+        </div>
       </div>
-      <div class="je-actions">
-        <button class="je-action-btn${e.pinned?' pin-active':''}" onclick="togglePin(${e.id})" title="${e.pinned?'Unpin':'Pin'}">
-          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="17" x2="12" y2="22"/><path d="M5 17h14v-1.76a2 2 0 0 0-1.11-1.79l-1.78-.9A2 2 0 0 1 15 10.76V6h1a2 2 0 0 0 0-4H8a2 2 0 0 0 0 4h1v4.76a2 2 0 0 1-1.11 1.79l-1.78.9A2 2 0 0 0 5 15.24Z"/></svg>
-          Pin
-        </button>
-        <button class="je-action-btn" onclick="deleteEntry(${e.id})" style="color:var(--red)" title="Delete">
-          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/></svg>
-          Delete
-        </button>
-      </div>
-    </div>
-    <div class="je-text">${e.text.length>300?e.text.slice(0,300)+'...<button onclick="expandEntry(this)" style="background:none;border:none;color:var(--accent);cursor:pointer;font-size:.78rem;margin-left:4px">Read more</button>':e.text}</div>
+      ${customTags ? `<div style="display:flex;gap:5px;flex-wrap:wrap;margin-bottom:8px">${customTags}</div>` : ''}
+      <div class="je-text" id="jetxt-${e.id}">${preview}</div>
+      ${hasMore ? `<button onclick="expandEntry(this,${e.id})" style="background:none;border:none;color:var(--accent);cursor:pointer;font-size:.75rem;margin-top:4px;padding:0;font-family:var(--font-body)">▼ Read more</button>` : ''}
+    </div>`;
+  }).join('');
+}
+
+function expandEntry(btn, id){
+  const d = getData();
+  const entries = JSON.parse(d['journal'] || '[]');
+  const entry = entries.find(e => e.id === id);
+  if(entry){
+    const textEl = document.getElementById('jetxt-' + id);
+    if(textEl) textEl.innerHTML = entry.text.replace(/\n/g,'<br>');
+    btn.remove();
+  }
+}
+
+function togglePin(id){
+  const d = getData();
+  const entries = JSON.parse(d['journal'] || '[]');
+  const e = entries.find(x => x.id === id);
+  if(e) e.pinned = !e.pinned;
+  d['journal'] = JSON.stringify(entries);
+  setData(d);
+  renderJournal();
+}
+
+function deleteEntry(id){
+  if(!confirm('Delete this entry?')) return;
+  const d = getData();
+  let entries = JSON.parse(d['journal'] || '[]');
+  entries = entries.filter(e => e.id !== id);
+  d['journal'] = JSON.stringify(entries);
+  setData(d);
+  renderJournal();
+  updateJournalStats();
+  buildJournalHeatmap();
+}
+
+function updateJournalStats(){
+  const d = getData();
+  const entries = JSON.parse(d['journal'] || '[]');
+  const el = document.getElementById('journal-stats');
+  if(!el) return;
+
+  const wins = entries.filter(e => e.cat === 'win').length;
+  const struggles = entries.filter(e => e.cat === 'struggle').length;
+  const totalWords = entries.reduce((a, e) => a + (e.words || 0), 0);
+
+  let streak = 0;
+  const dates = new Set(entries.map(e => e.dateISO || new Date(e.date).toISOString().slice(0,10)));
+  for(let i = 0; i < 30; i++){
+    const dd = new Date();
+    dd.setDate(dd.getDate() - i);
+    if(dates.has(dd.toISOString().slice(0,10))) streak++;
+    else break;
+  }
+
+  el.innerHTML = [
+    {num: entries.length, label:'Total Entries', color:'var(--accent3)'},
+    {num: wins, label:'Wins Logged', color:'var(--amber)'},
+    {num: struggles, label:'Struggles', color:'var(--red)'},
+    {num: streak + '🔥', label:'Journal Streak', color:'var(--orange)'},
+    {num: totalWords, label:'Words Written', color:'var(--blue)'},
+  ].map(s => `<div class="j-stat">
+    <div class="j-stat-num" style="color:${s.color}">${s.num}</div>
+    <div class="j-stat-label">${s.label}</div>
   </div>`).join('');
 }
-function expandEntry(btn){
-  const d=getData();
-  const entries=JSON.parse(d['journal']||'[]');
-  const card=btn.closest('.journal-entry-card');
-  const id=parseInt(card.id.replace('je-',''));
-  const entry=entries.find(e=>e.id===id);
-  if(entry){const textEl=card.querySelector('.je-text');if(textEl)textEl.innerHTML=entry.text;}
+
+function buildJournalHeatmap(){
+  const el = document.getElementById('journal-heatmap');
+  if(!el) return;
+  const d = getData();
+  const entries = JSON.parse(d['journal'] || '[]');
+
+  // Count entries per day
+  const countMap = {};
+  entries.forEach(e => {
+    const day = e.dateISO || new Date(e.date).toISOString().slice(0,10);
+    countMap[day] = (countMap[day] || 0) + 1;
+  });
+
+  el.innerHTML = '';
+  for(let i = 29; i >= 0; i--){
+    const dd = new Date();
+    dd.setDate(dd.getDate() - i);
+    const key = dd.toISOString().slice(0,10);
+    const count = countMap[key] || 0;
+    let lvl = 0;
+    if(count >= 1) lvl = 1;
+    if(count >= 2) lvl = 2;
+    if(count >= 3) lvl = 3;
+
+    const colors = ['var(--bg4)', 'rgba(61,232,176,.3)', 'rgba(61,232,176,.6)', 'var(--accent)'];
+    const cell = document.createElement('div');
+    cell.style.cssText = `width:18px;height:18px;border-radius:3px;background:${colors[lvl]};border:1px solid ${lvl>0?'rgba(61,232,176,.2)':'var(--border)'};cursor:default;transition:transform .15s;flex-shrink:0`;
+    cell.title = key + ': ' + (count ? count + ' entr' + (count>1?'ies':'y') : 'No entries');
+    cell.addEventListener('mouseover', () => cell.style.transform = 'scale(1.3)');
+    cell.addEventListener('mouseout', () => cell.style.transform = 'scale(1)');
+    el.appendChild(cell);
+  }
 }
-function togglePin(id){
-  const d=getData();
-  const entries=JSON.parse(d['journal']||'[]');
-  const e=entries.find(x=>x.id===id);
-  if(e)e.pinned=!e.pinned;
-  d['journal']=JSON.stringify(entries);setData(d);renderJournal();
+
+function exportJournal(){
+  const d = getData();
+  const entries = JSON.parse(d['journal'] || '[]');
+  if(!entries.length){ showToast('No entries to export', 't-blue'); return; }
+
+  let txt = 'COODLEY — DEVELOPER JOURNAL EXPORT\n';
+  txt += '='.repeat(40) + '\n\n';
+  entries.forEach((e, i) => {
+    txt += `Entry ${i+1} | ${e.date}\n`;
+    txt += `Mood: ${e.mood || '—'}  |  Category: ${e.cat || '—'}  |  Energy: ${e.energy || '—'}/5\n`;
+    if(e.tags?.length) txt += `Tags: ${e.tags.join(', ')}\n`;
+    txt += '-'.repeat(30) + '\n';
+    txt += e.text + '\n\n';
+    txt += '='.repeat(40) + '\n\n';
+  });
+
+  const blob = new Blob([txt], {type:'text/plain'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'journal-export-' + new Date().toISOString().slice(0,10) + '.txt';
+  a.click();
+  showToast('Journal exported! 📄');
 }
-function deleteEntry(id){
-  const d=getData();let entries=JSON.parse(d['journal']||'[]');entries=entries.filter(e=>e.id!==id);d['journal']=JSON.stringify(entries);setData(d);renderJournal();updateJournalStats();
+
+function loadJournal(){
+  renderJournal();
+  updateJournalStats();
+  buildJournalHeatmap();
 }
-function updateJournalStats(){
-  const d=getData();
-  const entries=JSON.parse(d['journal']||'[]');
-  const el=document.getElementById('journal-stats');if(!el)return;
-  const wins=entries.filter(e=>e.cat==='win').length;
-  const struggles=entries.filter(e=>e.cat==='struggle').length;
-  const avgEnergy=entries.length?Math.round(entries.reduce((a,e)=>a+(e.energy||3),0)/entries.length):0;
-  let streak=0;const today=new Date().toDateString();
-  const dates=new Set(entries.map(e=>new Date(e.date).toDateString()));
-  for(let i=0;i<30;i++){const dd=new Date();dd.setDate(dd.getDate()-i);if(dates.has(dd.toDateString()))streak++;else break;}
-  el.innerHTML=[
-    {num:entries.length,label:'Total Entries',color:'var(--accent3)'},
-    {num:wins,label:'Wins Logged',color:'var(--amber)'},
-    {num:struggles,label:'Struggles Faced',color:'var(--red)'},
-    {num:streak+'🔥',label:'Journal Streak',color:'var(--orange)'},
-  ].map(s=>`<div class="j-stat"><div class="j-stat-num" style="color:${s.color}">${s.num}</div><div class="j-stat-label">${s.label}</div></div>`).join('');
-}
-function loadJournal(){renderJournal();updateJournalStats();}
+
+
 
 function addApplication(){
   const company=document.getElementById('app-company')?.value?.trim();if(!company){showToast('Enter company name','t-blue');return;}
