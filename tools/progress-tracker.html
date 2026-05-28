@@ -1328,10 +1328,7 @@ footer.coodley-footer{background:var(--bg);border-top:1px solid var(--border);pa
     </div>
 
     <div class="journal-actions-row">
-      <button class="btn-export" onclick="exportJournal()" style="border-color:rgba(61,232,176,.3);color:var(--accent);padding:8px 16px">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-        Export .txt
-      </button>
+      
       <div style="display:flex;gap:8px;margin-left:auto">
         <button class="btn-export" id="j-cancel-edit-btn" onclick="cancelEditEntry()" style="display:none;border-color:rgba(245,101,101,.3);color:var(--red);padding:8px 16px">Cancel Edit</button>
         <button class="btn-save" onclick="addJournalEntry()" id="j-save-btn">
@@ -1884,17 +1881,17 @@ footer.coodley-footer{background:var(--bg);border-top:1px solid var(--border);pa
     Backup & Restore
   </div>
   <div class="privacy-notice"><div>⚠️</div><p><strong>Your data is stored only in this browser.</strong> Clearing browser data or switching devices will erase everything. Export a backup weekly and save to Google Drive.</p></div>
-  <div class="backup-row">
-    <button class="btn-export" onclick="exportData()">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-      Export Backup (.json)
-    </button>
-    <button class="btn-export btn-import" onclick="document.getElementById('import-file').click()" style="color:var(--blue)">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
-      Import Backup
-    </button>
-    <input type="file" id="import-file" accept=".json" style="display:none" onchange="importData(event)"/>
-  </div>
+  <div class="backup-row" style="gap:12px">
+   <button class="btn-export" onclick="exportData()" style="background:linear-gradient(135deg,rgba(61,232,176,.12),rgba(61,232,176,.06));border-color:rgba(61,232,176,.4);color:var(--accent);padding:12px 24px;font-size:.88rem;border-radius:12px">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+    Export All Data (.json)
+  </button>
+  <button class="btn-export" onclick="document.getElementById('import-file').click()" style="background:linear-gradient(135deg,rgba(91,164,245,.12),rgba(91,164,245,.06));border-color:rgba(91,164,245,.4);color:var(--blue);padding:12px 24px;font-size:.88rem;border-radius:12px">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+    Import & Restore Data
+  </button>
+  <input type="file" id="import-file" accept=".json" style="display:none" onchange="importData(event)"/>
+ </div>
   <div class="backup-steps">
     <div class="backup-step"><div class="step-num">1</div><h4>Export Backup</h4><p>Download all your data — topics, notes, projects, journal, applications.</p></div>
     <div class="backup-step"><div class="step-num">2</div><h4>Save Safely</h4><p>Save the JSON file to Google Drive or email yourself. Do this weekly.</p></div>
@@ -3642,7 +3639,22 @@ function buildBooks(){
     return `<div class="book-card"><h4>${b.emoji} ${b.name}</h4><div style="display:flex;align-items:center;gap:10px;margin-bottom:10px"><div class="book-pct" style="color:${b.color}" id="bpct-${b.id}">${pct}%</div><div style="flex:1;height:7px;background:var(--bg4);border-radius:4px;overflow:hidden"><div id="bbar-${b.id}" style="height:100%;width:${pct}%;background:${b.color};border-radius:4px;transition:width .4s"></div></div></div><input type="range" style="width:100%;accent-color:var(--accent);cursor:pointer;margin-top:4px" min="0" max="100" value="${pct}" oninput="updateBook('${b.id}','${b.color}',this.value)"/><label style="display:flex;align-items:center;gap:6px;font-size:.75rem;margin-top:10px;cursor:pointer;font-family:var(--font-body)"><input type="checkbox" ${rev?'checked':''} onchange="saveBookRev('${b.id}',this.checked)" style="accent-color:var(--accent);width:13px;height:13px"/>Completed / Revised</label></div>`;
   }).join('');
 }
-function updateBook(id,color,val){const d=getData();d['book-'+id]=parseInt(val);setData(d);safe('bpct-'+id,val+'%');const bar=document.getElementById('bbar-'+id);if(bar)bar.style.width=val+'%';}
+
+function updateBook(id, color, val){
+  const d = getData();
+  d['book-' + id] = parseInt(val);
+  setData(d);
+  safe('bpct-' + id, val + '%');
+  const bar = document.getElementById('bbar-' + id);
+  if(bar) bar.style.width = val + '%';
+  // Update range track fill color dynamically
+  const range = document.querySelector(`input[oninput*="'${id}'"]`);
+  if(range){
+    const pct = parseInt(val);
+    range.style.background = `linear-gradient(to right, ${color} ${pct}%, var(--bg4) ${pct}%)`;
+  }
+}
+
 function saveBookRev(id,checked){const d=getData();d['bookrev-'+id]=checked;setData(d);}
 
 function updateAnalytics(){
@@ -4226,7 +4238,12 @@ function renderJournal(){
         </div>
       </div>
       ${customTags ? `<div style="display:flex;gap:5px;flex-wrap:wrap;margin-bottom:8px">${customTags}</div>` : ''}
-      <div class="je-text" id="jetxt-${e.id}">${preview}</div>
+     const rawPreview = e.text.length > 250 ? e.text.slice(0, 250) + '...' : e.text;
+      const preview = rawPreview
+    .replace(/&/g,'&amp;')
+    .replace(/</g,'&lt;')
+    .replace(/>/g,'&gt;')
+    .replace(/\n/g,'<br>');
       ${hasMore ? `<button onclick="expandEntry(this,${e.id})" style="background:none;border:none;color:var(--accent);cursor:pointer;font-size:.75rem;margin-top:4px;padding:0;font-family:var(--font-body)">▼ Read more</button>` : ''}
     </div>`;
   }).join('');
@@ -4238,10 +4255,19 @@ function expandEntry(btn, id){
   const entry = entries.find(e => e.id === id);
   if(entry){
     const textEl = document.getElementById('jetxt-' + id);
-    if(textEl) textEl.innerHTML = entry.text.replace(/\n/g,'<br>');
+    if(textEl){
+      // Safe: set as textContent first, then wrap lines
+      const safe = entry.text
+        .replace(/&/g,'&amp;')
+        .replace(/</g,'&lt;')
+        .replace(/>/g,'&gt;')
+        .replace(/\n/g,'<br>');
+      textEl.innerHTML = safe;
+    }
     btn.remove();
   }
 }
+
 
 function togglePin(id){
   const d = getData();
@@ -4428,19 +4454,136 @@ function toggleTimer(){
 function resetTimer(){clearInterval(timerInterval);timerRunning=false;timerRemaining=timerTotal;updateTimerDisplay();const btn=document.getElementById('timer-start-btn');if(btn){btn.textContent='▶ Start';btn.classList.remove('running');}}
 
 function exportData(){
-  const d=getData();const blob=new Blob([JSON.stringify(d,null,2)],{type:'application/json'});
-  const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='coodley-backup-'+new Date().toISOString().slice(0,10)+'.json';a.click();showToast('Backup exported!');
+  const d = getData();
+
+  // Build a full export object with metadata
+  const exportObj = {
+    _meta: {
+      version: 'coodley-v3',
+      exportedAt: new Date().toISOString(),
+      exportedDate: new Date().toLocaleDateString('en-IN'),
+      totalKeys: Object.keys(d).length,
+      topicsDone: Object.keys(d).filter(k => k.startsWith('t-') && d[k]).length,
+      journalEntries: JSON.parse(d['journal'] || '[]').length,
+      projects: JSON.parse(d['projects-list'] || '[]').length,
+      applications: JSON.parse(d['apps-list'] || '[]').length,
+    },
+    data: d
+  };
+
+  const json = JSON.stringify(exportObj, null, 2);
+  const blob = new Blob([json], { type: 'application/json' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'coodley-progress-' + new Date().toISOString().slice(0,10) + '.json';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(a.href);
+
+  showToast('Full backup exported! Save it to Google Drive 📁');
 }
+
+
 function importData(event){
-  const file=event.target.files[0];if(!file)return;
-  const reader=new FileReader();reader.onload=e=>{try{const data=JSON.parse(e.target.result);localStorage.setItem(STORE,JSON.stringify(data));showToast('Data restored!');setTimeout(()=>location.reload(),1500);}catch{showToast('Invalid file!','t-blue');}};
+  const file = event.target.files[0];
+  if(!file) return;
+
+  // Reset input so same file can be re-imported
+  event.target.value = '';
+
+  const reader = new FileReader();
+  reader.onload = (e) => {
+    try {
+      const parsed = JSON.parse(e.target.result);
+
+      // Support both old format (raw data) and new format (with _meta wrapper)
+      let data;
+      if(parsed._meta && parsed.data){
+        // New format with metadata
+        data = parsed.data;
+        const meta = parsed._meta;
+        const confirmed = confirm(
+          `Restore backup?\n\n` +
+          `Exported: ${meta.exportedDate}\n` +
+          `Topics done: ${meta.topicsDone}\n` +
+          `Journal entries: ${meta.journalEntries}\n` +
+          `Projects: ${meta.projects}\n` +
+          `Applications: ${meta.applications}\n\n` +
+          `This will REPLACE all current data on this device.`
+        );
+        if(!confirmed) return;
+      } else if(typeof parsed === 'object' && !Array.isArray(parsed)){
+        // Old format — raw localStorage object
+        data = parsed;
+        const confirmed = confirm('Restore this backup? This will replace all current data.');
+        if(!confirmed) return;
+      } else {
+        showToast('Invalid backup file format!', 't-blue');
+        return;
+      }
+
+      // Validate it has at least some expected keys
+      const hasValidData = Object.keys(data).length > 0;
+      if(!hasValidData){
+        showToast('Backup file appears empty!', 't-blue');
+        return;
+      }
+
+      localStorage.setItem(STORE, JSON.stringify(data));
+      showToast('Data restored successfully! Reloading... ✅');
+      setTimeout(() => location.reload(), 1500);
+
+    } catch(err) {
+      console.error('Import error:', err);
+      showToast('Failed to read file. Make sure it is a valid Coodley backup.', 't-blue');
+    }
+  };
+
+  reader.onerror = () => {
+    showToast('Could not read file!', 't-blue');
+  };
+
   reader.readAsText(file);
 }
+
 function clearAll(){if(!confirm('Clear ALL data? This cannot be undone!'))return;localStorage.removeItem(STORE);showToast('All data cleared.');setTimeout(()=>location.reload(),1000);}
+
 function updateStorageInfo(){
-  const d=getData();const bytes=new Blob([JSON.stringify(d)]).size;const kb=(bytes/1024).toFixed(1);
-  const el=document.getElementById('storage-info');
-  if(el)el.innerHTML=`Data size: <strong>${kb} KB</strong><br>Topics checked: <strong>${Object.keys(d).filter(k=>k.startsWith('t-')&&d[k]).length}</strong><br>Journal entries: <strong>${JSON.parse(d['journal']||'[]').length}</strong><br>Projects logged: <strong>${JSON.parse(d['projects-list']||'[]').length}</strong><br>Applications: <strong>${JSON.parse(d['apps-list']||'[]').length}</strong>`;
+  const d = getData();
+  const bytes = new Blob([JSON.stringify(d)]).size;
+  const kb = (bytes / 1024).toFixed(1);
+  const mb = (bytes / 1024 / 1024).toFixed(2);
+  const el = document.getElementById('storage-info');
+  if(!el) return;
+
+  const projects = JSON.parse(d['projects-list'] || '[]').length;
+  const apps = JSON.parse(d['apps-list'] || '[]').length;
+  const journal = JSON.parse(d['journal'] || '[]').length;
+  const todos = JSON.parse(d['todos'] || '[]').length;
+  const topicsDone = Object.keys(d).filter(k => k.startsWith('t-') && d[k]).length;
+  const st = getAllTopicStats();
+
+  el.innerHTML = `
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin-bottom:16px">
+      ${[
+        {label:'Storage Used', val: kb + ' KB / 5 MB', color:'var(--accent)'},
+        {label:'Overall Progress', val: st.overallPct + '%', color:'var(--blue)'},
+        {label:'Topics Checked', val: topicsDone, color:'var(--accent3)'},
+        {label:'Journal Entries', val: journal, color:'var(--purple)'},
+        {label:'Projects Logged', val: projects, color:'var(--pink)'},
+        {label:'Jobs Applied', val: apps, color:'var(--amber)'},
+        {label:'Todos', val: todos, color:'var(--orange)'},
+      ].map(s => `
+        <div style="background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:12px;text-align:center">
+          <div style="font-family:var(--font-mono);font-size:1.3rem;font-weight:700;color:${s.color}">${s.val}</div>
+          <div style="font-size:.62rem;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-top:3px">${s.label}</div>
+        </div>`).join('')}
+    </div>
+    <div style="font-size:.75rem;color:var(--muted);font-family:var(--font-body);line-height:1.8">
+      💡 <strong style="color:var(--fg)">Tip:</strong> Export weekly and save to Google Drive or email to yourself.<br>
+      ⚠️ <strong style="color:var(--amber)">Warning:</strong> Clearing browser data or using incognito mode will erase everything.
+    </div>`;
 }
 
 function toggleFaq(btn){const item=btn.closest('.faq-item');if(item)item.classList.toggle('open');}
@@ -4513,17 +4656,27 @@ function initNav(){
   }
 }
 
-window.addEventListener('DOMContentLoaded',()=>{
-  const d=getData();const theme=d['theme']||'dark';
-  document.documentElement.setAttribute('data-theme',theme);
-  // ... existing code ...
-  initNav();buildSyllabus();loadProfile();loadAvatar();
-  initDaily();loadTodos();loadProjects();buildBooks();
-  buildInterviewChecklist();updateStats();loadJournal();
-  updateTimerDisplay();
-  updateDashboardExtras(); // ← ADD THIS LINE
-});
+window.addEventListener('DOMContentLoaded', () => {
+  const d = getData();
+  const theme = d['theme'] || 'dark';
+  document.documentElement.setAttribute('data-theme', theme);
 
+  initNav();
+  buildSyllabus();
+  loadProfile();
+  loadAvatar();
+  initDaily();
+  loadTodos();
+  loadProjects();
+  buildBooks();
+  buildInterviewChecklist();
+  updateStats();
+  updateAnalytics();
+  updateOverview();
+  loadJournal();
+  updateTimerDisplay();
+  updateDashboardExtras();
+});
 // ANALYTICS CHARTS
 // ===== DASHBOARD UPDATES =====
 
@@ -4703,14 +4856,6 @@ function updateStatSubtext(d, st){
 
   // Topics done today
   const today = new Date().toISOString().slice(0,10);
-  let topicsToday = 0;
-  Object.keys(d).forEach(k => {
-    if(k.startsWith('t-') && d[k] === 1){
-      // count all checked — approximate today count from session
-      topicsToday++;
-    }
-  });
-  // Simpler: show total remaining
   const remaining = st.total - st.done;
   const todayEl = document.getElementById('stat-topics-today');
   if(todayEl) todayEl.textContent = remaining + ' remaining';
@@ -4842,7 +4987,7 @@ function updateRecentActivity(d){
 
   if(!recent.length){
     el.innerHTML = `<div style="color:var(--muted);font-size:.83rem;text-align:center;padding:16px;font-family:var(--font-body)">No activity yet. Start checking off topics in the Syllabus!</div>`;
-    return;
+       return;
   }
 
   // Show last 5 checked topics
