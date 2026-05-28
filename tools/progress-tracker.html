@@ -3200,7 +3200,7 @@ function toggleChapter(id){document.getElementById('chc-'+id)?.classList.toggle(
 function toggleTopic(chId,ti,el){
   const key='t-'+chId+'-'+ti;
   const d=getData();
-  if(el.checked)d[key]= Date.now();;else delete d[key];
+  if(el.checked)d[key]= Date.now(); else delete d[key];
   setData(d);
   const nm=document.getElementById('tn-'+key);
   if(nm)nm.className='topic-name'+(el.checked?' done':'');
@@ -3273,12 +3273,12 @@ function getAllTopicStats(){
     }));
   });
 
-  const pct = (id) => unitTotal[id] ? Math.round(unitDone[id] / unitTotal[id] * 100) : 0;
+  const pct = (id) => (unitTotal[id] || 0) ? Math.round(unitDone[id] / unitTotal[id] * 100) : 0;
 
   return {
     total, done, chTotal, chDone,
     overallPct: total ? Math.round(done / total * 100) : 0,
-    js:   pct('u1'),
+    js:    pct('u1'),
     react: pct('u1'),
     node:  pct('u2'),
     db:    pct('u3'),
@@ -3327,12 +3327,11 @@ function updateStats(){
 
   // Per-subject progress bars
   const barMap = [
-    ['js',   st.js],
-    ['react',st.react],
-    ['node', st.node],
-    ['dsa',  st.dsa],
-    ['sys',  st.sys],
-    ['db',   st.db],
+    ['js',    st.js],
+    ['react', st.react],
+    ['node',  st.node],
+    ['dsa',   st.dsa],
+    ['sys',   st.sys],
   ];
   
   barMap.forEach(([key, val]) => {
@@ -4684,26 +4683,29 @@ function initNav(){
 }
 
 window.addEventListener('DOMContentLoaded', () => {
-  const d = getData();
-  const theme = d['theme'] || 'dark';
-  document.documentElement.setAttribute('data-theme', theme);
+  try {
+    const d = getData();
+    const theme = d['theme'] || 'dark';
+    document.documentElement.setAttribute('data-theme', theme);
+    initNav();
+  } catch(e){ console.error('initNav failed:', e); }
 
-  initNav();
-  buildSyllabus();
-  loadProfile();
-  loadAvatar();
-  initDaily();
-  loadTodos();
-  loadProjects();
-  buildBooks();
-  buildInterviewChecklist();
-  updateStats();
-  updateAnalytics();
-  updateOverview();
-  loadJournal();
-  updateTimerDisplay();
-  updateDashboardExtras();
+  try { buildSyllabus(); } catch(e){ console.error('buildSyllabus failed:', e); }
+  try { loadProfile(); } catch(e){ console.error('loadProfile failed:', e); }
+  try { loadAvatar(); } catch(e){ console.error('loadAvatar failed:', e); }
+  try { initDaily(); } catch(e){ console.error('initDaily failed:', e); }
+  try { loadTodos(); } catch(e){ console.error('loadTodos failed:', e); }
+  try { loadProjects(); } catch(e){ console.error('loadProjects failed:', e); }
+  try { buildBooks(); } catch(e){ console.error('buildBooks failed:', e); }
+  try { buildInterviewChecklist(); } catch(e){ console.error('checklist failed:', e); }
+  try { updateStats(); } catch(e){ console.error('updateStats failed:', e); }
+  try { updateAnalytics(); } catch(e){ console.error('updateAnalytics failed:', e); }
+  try { updateOverview(); } catch(e){ console.error('updateOverview failed:', e); }
+  try { loadJournal(); } catch(e){ console.error('loadJournal failed:', e); }
+  try { updateTimerDisplay(); } catch(e){ console.error('timer failed:', e); }
+  try { updateDashboardExtras(); } catch(e){ console.error('dashboardExtras failed:', e); }
 });
+
 // ANALYTICS CHARTS
 // ===== DASHBOARD UPDATES =====
 
