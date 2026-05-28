@@ -1609,52 +1609,55 @@ footer.coodley-footer{background:var(--bg);border-top:1px solid var(--border);pa
 
 <!-- RESOURCES -->
 <!-- RESOURCES -->
-<!-- Add Resource Form -->
-<div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-xl);padding:24px;margin-bottom:24px">
-  <h3 style="font-family:var(--font-head);font-weight:800;font-size:1rem;margin-bottom:18px;display:flex;align-items:center;gap:8px">
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
-    Add a Resource
-  </h3>
+<section class="section" id="sec-books">
+  <div class="sec-title">
+    <div class="sec-icon si-yellow">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+    </div>
+    Resources & Learning Materials
+  </div>
 
-  <div style="display:grid;grid-template-columns:60px 1fr 1fr;gap:10px;margin-bottom:12px">
-    <div class="form-group" style="margin:0">
-      <label>Emoji</label>
-      <input type="text" id="res-emoji" placeholder="📘" maxlength="2"
-        style="text-align:center;font-size:1.2rem;padding:8px"/>
+  <!-- Add Resource Form -->
+  <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-xl);padding:24px;margin-bottom:24px">
+    <h3 style="font-family:var(--font-head);font-weight:800;font-size:1rem;margin-bottom:18px;display:flex;align-items:center;gap:8px">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+      Add a Resource
+    </h3>
+    <div style="display:grid;grid-template-columns:60px 1fr 1fr;gap:10px;margin-bottom:12px">
+      <div class="form-group" style="margin:0">
+        <label>Emoji</label>
+        <input type="text" id="res-emoji" placeholder="📘" maxlength="2" style="text-align:center;font-size:1.2rem;padding:8px"/>
+      </div>
+      <div class="form-group" style="margin:0">
+        <label>Resource Name *</label>
+        <input type="text" id="res-name" placeholder="e.g. Namaste JavaScript Course" onkeydown="if(event.key==='Enter')addResource()"/>
+      </div>
+      <div class="form-group" style="margin:0">
+        <label>URL (optional)</label>
+        <input type="url" id="res-url" placeholder="https://..." onkeydown="if(event.key==='Enter')addResource()"/>
+      </div>
     </div>
-    <div class="form-group" style="margin:0">
-      <label>Resource Name *</label>
-      <input type="text" id="res-name" placeholder="e.g. Namaste JavaScript Course"
-        onkeydown="if(event.key==='Enter')addResource()"/>
-    </div>
-    <div class="form-group" style="margin:0">
-      <label>URL (optional)</label>
-      <input type="url" id="res-url" placeholder="https://..."
-        onkeydown="if(event.key==='Enter')addResource()"/>
+    <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px">
+      <p style="font-size:.75rem;color:var(--muted);font-family:var(--font-body);margin:0">
+        💡 Add any course, book, YouTube playlist, or documentation you are studying.
+      </p>
+      <button class="btn-save" onclick="addResource()" style="padding:10px 24px">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-right:6px"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        Add Resource
+      </button>
     </div>
   </div>
 
-  <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px">
-    <p style="font-size:.75rem;color:var(--muted);font-family:var(--font-body);margin:0">
-      💡 Add any course, book, YouTube playlist, or documentation you are studying.
+  <!-- How to use -->
+  <div style="background:rgba(61,232,176,.05);border:1px solid rgba(61,232,176,.2);border-radius:var(--radius);padding:12px 18px;margin-bottom:20px;display:flex;align-items:center;gap:12px">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+    <p style="font-size:.78rem;color:var(--muted2);font-family:var(--font-body);margin:0;line-height:1.7">
+      Drag the <strong style="color:var(--fg)">slider</strong> to update completion % · Tick <strong style="color:var(--fg)">Completed</strong> when done · Click <strong style="color:var(--fg)">Open Resource</strong> to visit the link
     </p>
-    <button class="btn-save" onclick="addResource()" style="padding:10px 24px">
-      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-right:6px"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-      Add Resource
-    </button>
   </div>
-</div>
 
-<!-- How to use -->
-<div style="background:rgba(61,232,176,.05);border:1px solid rgba(61,232,176,.2);border-radius:var(--radius);padding:12px 18px;margin-bottom:20px;display:flex;align-items:center;gap:12px">
-  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-  <p style="font-size:.78rem;color:var(--muted2);font-family:var(--font-body);margin:0;line-height:1.7">
-    Drag the <strong style="color:var(--fg)">slider</strong> to update completion % · Tick <strong style="color:var(--fg)">Completed</strong> when done · Click <strong style="color:var(--fg)">Open Resource</strong> to visit the link
-  </p>
-</div>
-
-<!-- Resources Grid -->
-<div class="books-grid" id="books-grid"></div>
+  <!-- Resources Grid -->
+  <div class="books-grid" id="books-grid"></div>
 </section>
 
 <!-- ANALYTICS -->
