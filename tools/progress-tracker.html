@@ -1693,7 +1693,7 @@ footer.coodley-footer{background:var(--bg);border-top:1px solid var(--border);pa
 
 <script>
 'use strict';
-const STORE='devpath-v2';
+const STORE='devpath-v3';
 const getData=()=>{try{return JSON.parse(localStorage.getItem(STORE)||'{}')}catch{return{}}};
 const setData=d=>localStorage.setItem(STORE,JSON.stringify(d));
 const safe=(id,v)=>{const e=document.getElementById(id);if(e)e.textContent=v};
@@ -1703,531 +1703,1085 @@ const showToast=(msg,type='t-green')=>{
   t.className=`toast ${type} show`;
   setTimeout(()=>t.className='toast',2800);
 };
-
-// CURRICULUM DATA
+ 
 const T=(name,sub,cat)=>({name,sub:sub||'',cat:cat||'theory'});
 const P=(name,sub)=>T(name,sub,'practice');
 const PR=(name,sub)=>T(name,sub,'project');
 const IV=(name,sub)=>T(name,sub,'interview');
-
+const CPP=(name,sub)=>T(name,sub,'cpp');
+ 
 const CURRICULUM=[
-  {id:'u1',name:'Unit 1 — Foundation',color:'green',months:'Month 1–3',stages:[
-    {id:'s1-1',name:'Stage 1.1 — Web Fundamentals',color:'green',chapters:[
-      {id:'c1-1-1',name:'HTML5 Essentials',high:false,topics:[
-        T('HTML5 document structure — DOCTYPE, html, head, body','Every HTML file starts here. Understand what each tag does.'),
-        T('Semantic elements — header, nav, main, section, article, footer, aside','These tell browsers AND screen readers what the content IS.'),
-        T('Text elements — h1–h6, p, span, strong, em, blockquote, code, pre','h1 is unique per page. Use headings for document outline, not styling.'),
-        T('Lists — ul, ol, dl — when to use each','Menus, steps, key-value pairs. Don\'t use divs for lists.'),
-        T('Links — anchor tags, href, target="_blank", rel="noopener", download','Always add rel="noopener noreferrer" to external links for security.'),
-        T('Images — alt text, loading="lazy", srcset, figure/figcaption','Alt text is both accessibility AND SEO. Lazy loading improves performance.'),
-        T('Forms — input types (text, email, number, date, checkbox, radio, file, range)','Forms are how users send data. Know every input type.'),
-        T('Form elements — label, fieldset, legend, select, textarea, datalist','Labels must link to inputs via "for" attribute. Never skip labels.'),
-        T('Form attributes — required, placeholder, autocomplete, pattern, min/max','HTML validation catches errors before JS runs.'),
-        T('Tables — thead, tbody, tfoot, th (with scope), tr, td','Tables are for tabular data only. Never for layout.'),
-        T('Media elements — video, audio, source, track (captions), iframe','Use native HTML5 video/audio for better performance.'),
-        T('Meta tags — viewport, charset, description, og:title/image, twitter:card','Open Graph tags control how your links appear on social media.'),
-        T('HTML entities — &amp;, &lt;, &gt;, &nbsp;, &copy;','Essential for displaying reserved characters.'),
-        T('Accessibility basics — ARIA roles, aria-label, aria-hidden, tabindex','Build accessible apps from day 1. Recruiters notice. Users need it.'),
-        T('SEO fundamentals — canonical, robots meta, structured data basics','Basic SEO is expected of every frontend developer.'),
-        P('Build: Semantic HTML resume page — no CSS yet, structure only','Focus purely on meaning and structure.'),
-      ]},
-      {id:'c1-1-2',name:'CSS Core — The Language of Styling',high:false,topics:[
-        T('Box model — content, padding, border, margin; box-sizing: border-box','The single most important CSS concept. border-box is almost always what you want.'),
-        T('Selectors — element, class, ID, attribute, universal selectors','How CSS targets HTML elements.'),
-        T('Pseudo-classes — :hover, :focus, :active, :nth-child, :first-child, :not()','Powerful for styling without extra classes or JS.'),
-        T('Pseudo-elements — ::before, ::after, ::placeholder, ::selection','Create decorative elements and style browser-generated content.'),
-        T('Cascade, specificity, and inheritance','Specificity score: inline > ID > class > element.'),
-        T('Display — block, inline, inline-block, none','Understanding display is the key to controlling element flow.'),
-        T('Positioning — static, relative, absolute, fixed, sticky','Absolute positions relative to the nearest positioned ancestor.'),
-        T('CSS units — px, %, em, rem, vw, vh, vmin, vmax, ch','Use rem for font sizes. Use % and vw/vh for responsive layouts.'),
-        T('Colors — hex, rgb(), rgba(), hsl(), hsla(), CSS variables','CSS vars enable theming. hsl is the most intuitive.'),
-        T('Typography — font-family, font-size, font-weight, line-height, letter-spacing','line-height 1.5–1.7 for body text.'),
-        T('Text properties — overflow, text-overflow: ellipsis, white-space: nowrap','Essential for truncating long text in cards.'),
-        T('Backgrounds — color, image, gradient (linear, radial), background-size','Master gradients — they\'re everywhere in modern UIs.'),
-        T('Borders — border shorthand, border-radius, border-image','border-radius: 50% on a square = circle.'),
-        T('Box-shadow — inset vs outset, multiple shadows','Multi-layer shadows create realistic depth.'),
-        T('CSS custom properties (variables) — declaring, using, updating with JS','--primary-color in :root, then var(--primary-color).'),
-        T('Transitions — property, duration, timing-function, delay','Add to the element, not :hover.'),
-        T('Animations — @keyframes, animation shorthand, will-change','will-change: transform hints browser to use GPU.'),
-        T('Object-fit — cover, contain, fill','object-fit: cover prevents image squashing.'),
-        T('Filter — blur, brightness, contrast, grayscale, drop-shadow','Useful for hover effects on images.'),
-        T('CSS calc() — mixing units like calc(100% - 24px)','Powerful for dynamic sizing without JS.'),
-        P('Build: Style the HTML resume with real CSS'),
-      ]},
-      {id:'c1-1-3',name:'CSS Layouts — Flexbox & Grid',high:true,topics:[
-        T('Flexbox — display: flex, flex-direction, main axis vs cross axis','Everything else in flexbox makes sense once you understand the two axes.'),
-        T('Flexbox — justify-content: flex-start, center, flex-end, space-between, space-around','justify-content aligns on the main axis. Your most-used property.'),
-        T('Flexbox — align-items: flex-start, center, flex-end, stretch, baseline','align-items aligns on the cross axis. center + center = perfectly centered.'),
-        T('Flexbox — flex-wrap, align-content','flex-wrap: wrap lets items move to next line.'),
-        T('Flexbox — flex-grow, flex-shrink, flex-basis (flex: 1)','flex: 1 means "take all available space".'),
-        T('Flexbox — align-self, order, gap','gap: 16px adds space between flex items without outer edge effects.'),
-        T('Common flexbox patterns — navbar, card row, centering, sticky footer','Practice: display:flex; justify-content:center; align-items:center'),
-        T('CSS Grid — display: grid, grid-template-columns, grid-template-rows','grid-template-columns: 1fr 1fr 1fr creates 3 equal columns.'),
-        T('CSS Grid — fr unit, repeat(), minmax(), auto-fill vs auto-fit','repeat(auto-fit, minmax(200px, 1fr)) = responsive grid without media queries.'),
-        T('CSS Grid — gap, grid-column/row span','grid-column: span 2 makes an item span 2 columns.'),
-        T('CSS Grid — grid-template-areas — naming regions','Name areas like "header", "sidebar", "main", "footer".'),
-        T('CSS Grid — align-items, justify-items, place-items','place-items: center centers all grid items in their cells.'),
-        T('CSS Grid — implicit vs explicit grid, grid-auto-flow, grid-auto-rows','Implicit rows are created automatically.'),
-        T('Responsive design — mobile-first approach (min-width media queries)','Always design for mobile first, then add complexity for larger screens.'),
-        T('Media queries — @media (min-width), (max-width), (prefers-color-scheme)','prefers-color-scheme: dark enables system-level dark mode.'),
-        T('Fluid typography — clamp(min, preferred, max)','clamp(1rem, 2.5vw, 2rem) scales smoothly between breakpoints.'),
-        P('Build: Responsive pricing cards — 3 columns to 1 column on mobile'),
-        P('Build: Full page layout — header, sidebar, main, footer with Grid'),
-        PR('Project: Responsive landing page — hero, features, testimonials, CTA, footer'),
-      ]},
-      {id:'c1-1-4',name:'Git & GitHub — Version Control',high:true,topics:[
-        T('What Git is — distributed version control, why every developer uses it','Git tracks every change to your code. Think of it as time travel.'),
-        T('Git concepts — working tree, staging area (index), commit history','Three areas: your files → staged changes → committed history.'),
-        T('git config, git init, git clone','Do git config before your first commit. git clone downloads full history.'),
-        T('git status, git add, git commit -m','Run git status constantly. Use conventional commit messages.'),
-        T('git log, git diff — viewing history and changes','git log --oneline --graph is a beautiful tree view.'),
-        T('Branching — git branch, git checkout -b, git switch, git merge','Create a branch for every feature: git checkout -b feat/user-login'),
-        T('git stash, git remote, git push, git pull, git fetch','git stash / git stash pop — useful when switching branches quickly.'),
-        T('GitHub — creating repos, READMEs, .gitignore, GitHub Pages','A good README: what it does, how to run it, screenshots, tech stack.'),
-        T('GitHub — forking, Pull Requests, code reviews','PR-based workflow is how every company works.'),
-        T('Conventional commits — feat:, fix:, docs:, refactor:, chore:','Teams use this format. Start doing it now.'),
-        P('Practice: Create a repo, make 10+ commits with good messages, push to GitHub'),
-        P('Practice: Simulate a merge conflict and resolve it'),
-      ]},
+// =====================================================================
+// UNIT 1 — FRONTEND
+// =====================================================================
+{id:'u1',name:'Unit 1 — Frontend',color:'green',months:'Month 1–4',stages:[
+  {id:'s1-1',name:'Stage 1.1 — HTML5 & Accessibility',color:'green',chapters:[
+    {id:'c1-1-1',name:'HTML5 Foundations',high:false,topics:[
+      T('HTML5 document structure — DOCTYPE, html, head, body','Every HTML file starts here. Understand what each tag does.'),
+      T('Semantic elements — header, nav, main, section, article, footer, aside','Semantic HTML boosts SEO and screen reader support.'),
+      T('Text hierarchy — h1–h6, p, span, strong, em, blockquote, code, pre','h1 must be unique per page. Use headings as document outline.'),
+      T('Lists — ul, ol, dl — when to use each','Menus=ul, steps=ol, key-value=dl. Never use divs for lists.'),
+      T('Links — href, target="_blank", rel="noopener noreferrer", download','Always add rel="noopener noreferrer" to external links.'),
+      T('Images — alt text, loading="lazy", srcset, sizes, figure/figcaption','srcset lets browser pick best resolution.'),
+      T('Forms — all input types: text, email, number, date, checkbox, radio, file, range, color, search, tel, url','Know every input type for the exam.'),
+      T('Form elements — label, fieldset, legend, select, optgroup, textarea, datalist, output','Labels MUST link to inputs via for attribute.'),
+      T('Form attributes — required, disabled, readonly, placeholder, autocomplete, pattern, min/max/step, novalidate','HTML validation catches errors before JS runs.'),
+      T('Tables — thead, tbody, tfoot, th (scope="col"/"row"), tr, td, colspan, rowspan, caption','Tables are for tabular data only. Never for layout.'),
+      T('Media — video (controls, autoplay, muted, loop, poster), audio, source, track (captions), iframe, embed','Use native HTML5 video for better performance.'),
+      T('Meta tags — viewport, charset, description, og:title, og:image, og:description, twitter:card','Open Graph controls social media previews.'),
+      T('HTML entities — &amp;, &lt;, &gt;, &nbsp;, &copy;, &mdash;','Essential for displaying reserved characters.'),
+      T('Global attributes — id, class, style, data-*, tabindex, hidden, contenteditable, draggable','data-* is the correct way to embed custom data.'),
+      T('HTML5 APIs — Geolocation, Drag and Drop, File API, History API, Canvas API overview','Know these exist even if not all used daily.'),
+      T('Web Components overview — Custom Elements, Shadow DOM, HTML Templates','Foundational for understanding frameworks.'),
+      P('Build: Semantic HTML resume page — no CSS, structure only','Focus purely on meaning.'),
     ]},
-    {id:'s1-2',name:'Stage 1.2 — JavaScript Core',color:'green',chapters:[
-      {id:'c1-2-1',name:'JS Fundamentals — The Non-Negotiables',high:true,topics:[
-        T('How JS runs — single-threaded, synchronous execution model','JS runs line by line. This shapes everything.'),
-        T('Variables — var (avoid), let (reassignable), const (preferred)','Use const by default. Use let when you need to reassign. Never use var.'),
-        T('Primitive types — string, number, boolean, null, undefined, symbol, BigInt','There are exactly 7 primitive types.'),
-        T('typeof operator — typeof null === "object" (the famous bug)','typeof undefined === "undefined". typeof null === "object" is a historic bug.'),
-        T('Type coercion — implicit (1 + "1" = "11") vs explicit (Number("1"))','JavaScript silently converts types. Always be explicit.'),
-        T('== vs === — abstract equality vs strict equality','Always use ===. Only exception some make: == null.'),
-        T('Falsy values — false, 0, -0, "", null, undefined, NaN','if(!value) catches all falsy values.'),
-        T('String methods — .length, .slice(), .indexOf(), .includes(), .replace(), .split(), .trim()','Strings are immutable — methods return new strings.'),
-        T('Template literals — `${expression}` interpolation, multiline strings','Template literals are cleaner than string concatenation.'),
-        T('Number methods — Number(), parseInt(), parseFloat(), .toFixed(), isNaN()','NaN is the only value not equal to itself: NaN !== NaN.'),
-        T('Operators — arithmetic, comparison, logical, ternary, short-circuit','Short-circuit: a && b. If a is falsy, return a. Used everywhere in React JSX.'),
-        T('Nullish coalescing ?? — returns right side only if left is null/undefined','const name = user.name ?? "Guest" — safer than ||'),
-        T('Conditionals — if/else, switch/case, guard clauses pattern','Guard clause: return early if invalid. Avoids deeply nested if/else.'),
-        T('Loops — for, while, do-while, for...of, for...in','Use for...of for arrays. Use for...in for objects (carefully).'),
-        T('Functions — declaration, expression, arrow functions','Arrow functions don\'t have their own "this" — crucial for React.'),
-        T('Arrow functions — syntax variations, implicit return, no "this"','() => value is implicit return.'),
-        T('Default parameters, rest parameters — function sum(...nums)','...nums collects remaining args into an array.'),
-        T('Scope — global, function, block scope','Block scope: let/const inside {} don\'t exist outside.'),
-        T('Hoisting — var declarations hoisted, function declarations fully hoisted','let/const are hoisted but not initialized (temporal dead zone).'),
-        T('Closures — inner function accessing outer scope after outer returns','THE most important JS concept for interviews.'),
-        T('Closure practical uses — data privacy, factory functions, memoization','function counter() { let n=0; return ()=>++n }'),
-        P('Practice: Write 5 functions using closures — counter, memoize, partial application'),
-        IV('Interview: Explain closures. What does "closing over" mean? Write an example.'),
-      ]},
-      {id:'c1-2-2',name:'Arrays & Objects — Data Structures You\'ll Use Daily',high:true,topics:[
-        T('Array creation — literals [], Array.from(), Array.of()','Array.from({length:5}, (_,i)=>i) creates [0,1,2,3,4].'),
-        T('Array mutation — push, pop, shift, unshift, splice','splice(index, deleteCount, ...items) — the Swiss Army knife of array mutation.'),
-        T('Array access — indexing, .length, .at(-1)','arr.at(-1) is the last element. Cleaner than arr[arr.length-1].'),
-        T('Array search — indexOf, includes, find, findIndex, findLast','find returns the element, findIndex returns its position.'),
-        T('.map() — transform every element, returns new array','const doubled = [1,2,3].map(n=>n*2) → [2,4,6].'),
-        T('.filter() — keep elements that pass a test','const evens = [1,2,3,4].filter(n=>n%2===0) → [2,4].'),
-        T('.reduce() — accumulate into a single value','const sum = [1,2,3].reduce((acc,n)=>acc+n, 0) → 6.'),
-        T('.forEach() — iterate with side effects, no return value','Use map/filter/reduce for data transformation. forEach for side effects.'),
-        T('.some() and .every() — return boolean','arr.every(n=>n>0) — are ALL positive?'),
-        T('.flat(), .flatMap() — flatten nested arrays','[1,[2,3]].flat() → [1,2,3].'),
-        T('.slice(), .concat(), spread — non-mutating operations','arr.slice(1, 3) — original unchanged.'),
-        T('.sort() — sorts in place (mutation!), needs comparator for numbers','[3,1,2].sort((a,b)=>a-b) → ascending.'),
-        T('.join() — combine array to string','["a","b","c"].join("-") → "a-b-c".'),
-        T('Objects — literal syntax, dot notation, bracket notation','Use bracket notation for dynamic keys: obj[variableKey].'),
-        T('Computed property names — {[varName]: value}','const key = "name"; const obj = {[key]: "Alice"} → {name: "Alice"}'),
-        T('Shorthand properties and methods','const obj = {name, age} instead of {name:name}.'),
-        T('Object.keys(), Object.values(), Object.entries()','Object.entries(obj).map(([key,val])=>...) — cleanest way to transform objects.'),
-        T('Object.assign(), Object.freeze(), Object.create()','Object.assign({}, defaults, overrides) is a classic merge pattern.'),
-        T('Destructuring — arrays and objects','const {name, age} = user. const [a, b] = arr.'),
-        T('Destructuring — with defaults, renaming','const {name="Guest"}=obj. const {name:n}=obj.'),
-        T('Spread in objects — shallow merge','const merged = {...obj1, ...obj2}.'),
-        T('Optional chaining ?. — user?.address?.city','Avoids "Cannot read property of undefined" errors.'),
-        T('Nullish coalescing ?? with optional chaining','user?.name ?? "Guest" — null-safe data access.'),
-        T('Shallow vs deep copy — structuredClone()','structuredClone() is the modern way to deep copy.'),
-        P('Practice: Implement map, filter, reduce from scratch'),
-        IV('Interview: Difference between .map() and .forEach()? When to use each?'),
-      ]},
-      {id:'c1-2-3',name:'ES6+ Modern JavaScript',high:true,topics:[
-        T('Modules — import/export, named exports, default export','Every React file uses ES modules.'),
-        T('Classes — constructor, methods, extends, super()','Classes are syntactic sugar over prototype chains.'),
-        T('Static methods, getters/setters, private fields (#)','Static: called on the class, not instances.'),
-        T('Symbols, Iterators, Generators (conceptual)','Generators are the foundation of async/await patterns.'),
-        T('Map vs Object — ordered, any key type, size property','Use Map when keys aren\'t strings or need insertion-order iteration.'),
-        T('Set — unique values, O(1) has() check','const unique = [...new Set(arr)] — remove duplicates.'),
-        T('WeakMap and WeakSet — weak references, no memory leaks','Used in library code for caching DOM node metadata.'),
-        T('Proxy and Reflect — intercept object operations','Used by Vue 3\'s reactivity system.'),
-        T('Logical assignment operators — &&=, ||=, ??=','a ??= "default" — assign if null/undefined.'),
-        P('Practice: Rewrite old code using modern syntax — classes, modules, destructuring'),
-      ]},
-      {id:'c1-2-4',name:'Async JavaScript — The Most Critical Concept',high:true,topics:[
-        T('How JS works — event loop, call stack, Web APIs, task queue, microtask queue','The event loop is THE most asked interview topic. Draw the diagram.'),
-        T('Event loop — why setTimeout(fn, 0) doesn\'t mean 0ms','Microtasks (Promises) run before tasks (setTimeout).'),
-        T('Synchronous vs asynchronous — blocking vs non-blocking','Network requests are async because waiting would freeze the UI.'),
-        T('Callbacks — what they are, callback hell (pyramid of doom)','Callbacks are functions passed as arguments.'),
-        T('Promises — 3 states: pending, fulfilled, rejected','A Promise is a container for a future value.'),
-        T('Creating Promises — new Promise((resolve, reject) => {})','resolve(value) fulfills. reject(error) rejects.'),
-        T('.then(), .catch(), .finally() — chaining','Put one .catch() at the end to catch any error in the chain.'),
-        T('Promise.all — all succeed or first fail','const [user, posts] = await Promise.all([getUser(), getPosts()])'),
-        T('Promise.allSettled, Promise.race, Promise.any','allSettled: waits for all, never rejects. race: first settled wins.'),
-        T('async/await — syntactic sugar over Promises','async functions always return a Promise. await pauses until settled.'),
-        T('try/catch with async/await — proper error handling','await without try/catch = unhandled rejection. Always wrap it.'),
-        T('Custom errors — class NetworkError extends Error','class NetworkError extends Error { constructor(msg) { super(msg); } }'),
-        T('Fetch API — fetch(url), response.json(), response.ok','response.ok is true for 2xx status codes. Always check it.'),
-        T('Fetch POST — headers, body: JSON.stringify(data)','Always set Content-Type: application/json when sending JSON.'),
-        T('Fetch error handling — fetch doesn\'t throw on 4xx/5xx','You must check response.ok manually.'),
-        T('JSON — JSON.parse(), JSON.stringify(), formatting','JSON.stringify(obj, null, 2) — pretty-print for debugging.'),
-        T('CORS — what it is, why it happens, how servers fix it','CORS is a browser security feature. Servers must allow cross-origin requests.'),
-        T('AbortController — cancel fetch requests on component unmount','Prevents memory leaks in React useEffect fetch patterns.'),
-        P('Build: Weather app using fetch + async/await + OpenWeather API'),
-        P('Practice: Implement a retry function with exponential backoff'),
-        IV('Interview: What is the event loop? Difference between microtasks and tasks?'),
-      ]},
-      {id:'c1-2-5',name:'Prototypes, this & OOP',high:true,topics:[
-        T('Prototypes — prototype chain, __proto__, Object.getPrototypeOf()','Every object has a prototype. Property lookup walks up the chain.'),
-        T('Function.prototype — .call(), .apply(), .bind()','call(thisArg, arg1), apply(thisArg, [args]), bind returns new function.'),
-        T('"this" keyword — 4 binding rules: default, implicit, explicit, new','In a method: this = the object. Arrow functions: this = enclosing context.'),
-        T('"this" in regular vs arrow functions — the critical difference','Arrow functions inherit "this" from definition context.'),
-        T('"this" in event listeners, setTimeout — common gotchas','setTimeout(this.method, 1000) — "this" is wrong. Use arrow or bind.'),
-        T('new keyword — creates object, sets prototype, returns "this"','new calls constructor, sets obj.__proto__ = Constructor.prototype.'),
-        IV('Interview: Explain prototypal inheritance. How does "this" work?'),
-      ]},
-    ]},
-    {id:'s1-3',name:'Stage 1.3 — DOM, Browser APIs & Projects',color:'green',chapters:[
-      {id:'c1-3-1',name:'DOM Manipulation',high:false,topics:[
-        T('What the DOM is — tree representation of HTML','querySelector returns a static snapshot. querySelectorAll returns live HTMLCollection.'),
-        T('Selecting elements — querySelector, querySelectorAll, getElementById','querySelector is more flexible.'),
-        T('DOM traversal — parentElement, children, nextElementSibling','Navigate the tree without hardcoding selectors.'),
-        T('Closest — el.closest(".container") — traverses up the tree','Essential for event delegation.'),
-        T('Creating and inserting elements — createElement, append, prepend, before, after','Modern: parent.append(child1, child2, "text").'),
-        T('Removing elements — el.remove()','Modern way. No need to reference the parent.'),
-        T('Modifying content — textContent (safe), innerHTML (XSS risk!), innerText','NEVER use innerHTML with user data. Use textContent.'),
-        T('Attributes — getAttribute, setAttribute, classList — .add, .remove, .toggle, .contains','classList.toggle("active") adds if absent, removes if present.'),
-        T('Style manipulation — prefer CSS classes over el.style','Only use el.style for dynamically computed values.'),
-        T('Data attributes — data-id="123", el.dataset.id','dataset converts kebab-case to camelCase.'),
-        T('Events — addEventListener, removeEventListener','Always keep a reference to handlers you need to remove later.'),
-        T('Event object — event.target vs event.currentTarget','target: what was clicked. currentTarget: where listener is attached.'),
-        T('preventDefault(), stopPropagation()','preventDefault stops default browser behavior.'),
-        T('Event bubbling and capturing','Most events bubble. Use this for event delegation.'),
-        T('Event delegation — ONE listener on parent for multiple children','Instead of 100 button listeners, attach one to the container.'),
-        T('Common events — click, mouseover, mouseenter, contextmenu','mouseenter/leave don\'t bubble. mouseover/out do.'),
-        T('Keyboard events — keydown, keyup; event.key','event.key === "Enter", event.key === "Escape".'),
-        T('Form events — submit, change, input, focus, blur','input fires on every keystroke. change fires on value commit.'),
-        T('Custom events — new CustomEvent("myEvent", {detail:{data}})','Powerful for component-to-component communication.'),
-        P('Build: Dynamic to-do list — add, delete, toggle complete, filter — pure DOM'),
-      ]},
-      {id:'c1-3-2',name:'Browser Storage & Modern APIs',high:false,topics:[
-        T('localStorage — setItem, getItem, removeItem — persists after close','Always JSON.stringify/parse objects.'),
-        T('sessionStorage — same API, cleared when tab closes','Use for temporary data like form drafts.'),
-        T('localStorage limits — ~5MB, string-only, synchronous','For large data, use IndexedDB or a server.'),
-        T('Cookies — document.cookie, HttpOnly, Secure, SameSite, expires','HttpOnly cookies can\'t be accessed by JS — used for auth tokens.'),
-        T('History API — pushState, replaceState, popstate','React Router uses this.'),
-        T('URL API — new URL(href), URLSearchParams','URLSearchParams makes query string parsing trivial.'),
-        T('Intersection Observer — observe viewport entry/exit','Use for: lazy loading images, scroll animations, infinite scroll.'),
-        T('ResizeObserver, MutationObserver — observe size/DOM changes','Use instead of window resize events for element-level handling.'),
-        T('Web Workers — run JS in background thread','Offload heavy computation off the main thread.'),
-        T('Service Workers — intercept network requests, offline/PWA','The foundation of PWAs.'),
-      ]},
-      {id:'c1-3-3',name:'Real Projects — Consolidate Your Learning',high:true,topics:[
-        PR('Project 1: JavaScript Calculator — keyboard + click input, history'),
-        PR('Project 2: Weather App — fetch OpenWeather API, search, 5-day forecast, geolocation'),
-        PR('Project 3: Todo App with localStorage persistence, drag-to-reorder, categories'),
-        PR('Project 4: Quiz App — JSON data, timer, score tracking, localStorage high score'),
-        PR('Project 5: GitHub User Search — GitHub REST API, pagination, repos list'),
-        T('Deploy all projects to GitHub Pages or Netlify','Every project needs a live link.'),
-        T('Write proper README.md — what it does, how to run, screenshot, live link, tech stack','A README without a screenshot is half a README.'),
-        IV('Interview: Walk me through how you built one of your projects.'),
-      ]},
+    {id:'c1-1-2',name:'Accessibility (a11y) — Non-Negotiable',high:true,topics:[
+      T('Why accessibility — legal (ADA), ethical, SEO benefits','WCAG 2.1 compliance is a legal requirement in many countries.'),
+      T('ARIA roles — role="button", role="dialog", role="alert", role="navigation"','Only use ARIA when HTML semantics are not enough.'),
+      T('ARIA attributes — aria-label, aria-labelledby, aria-describedby, aria-hidden, aria-live, aria-expanded','aria-hidden="true" hides from screen readers.'),
+      T('Keyboard navigation — tabindex, focus management, focus trap in modals','Every interactive element must be reachable by keyboard.'),
+      T('Focus styles — :focus-visible, never remove outline without replacement','Custom focus ring is better than none.'),
+      T('Color contrast — WCAG AA (4.5:1), AAA (7:1) — tools: WebAIM contrast checker','Low contrast fails accessibility AND usability.'),
+      T('Skip navigation links, landmark regions, heading structure','Screen reader users navigate by headings.'),
+      T('Alt text best practices — decorative images (alt=""), complex images (long description)','Descriptive alt text conveys meaning, not appearance.'),
+      T('Screen reader testing — NVDA, VoiceOver, JAWS — how to use basics','Test with at least VoiceOver (macOS/iOS).'),
+      T('Accessible forms — visible labels, error messages, required indicators','Never rely on placeholder text as the only label.'),
+      T('Motion sensitivity — prefers-reduced-motion media query','Respect user preferences for animations.'),
+      IV('Interview: How would you make a custom dropdown accessible?'),
     ]},
   ]},
-  {id:'u2',name:'Unit 2 — Core Stack',color:'blue',months:'Month 4–6',stages:[
-    {id:'s2-1',name:'Stage 2.1 — React',color:'blue',chapters:[
-      {id:'c2-1-1',name:'React Fundamentals',high:true,topics:[
-        T('Why React — virtual DOM, reconciliation, declarative vs imperative UI','React re-renders the minimum needed.'),
-        T('Setup — Vite (recommended), project structure','npm create vite@latest my-app -- --template react'),
-        T('JSX — rules: one root element, className, camelCase attrs, fragments','JSX compiles to React.createElement().'),
-        T('Functional components — PascalCase naming','function Button({label}) { return <button>{label}</button>; }'),
-        T('Props — passing data, destructuring, children prop, default values','Props flow down (parent → child). They\'re immutable inside the child.'),
-        T('Conditional rendering — ternary, &&, null','{isLoggedIn && <Dashboard/>} — renders only when true.'),
-        T('Rendering lists — .map() with JSX, the key prop','key must be unique and stable. Never use array index as key.'),
-        T('CSS in React — CSS modules, plain CSS, inline styles, Tailwind','CSS modules: import styles from "./Button.module.css"'),
-        T('Handling events — camelCase, pass function reference, not call','<button onClick={handleClick}> NOT onClick={handleClick()}'),
-        T('Controlled vs uncontrolled inputs','Controlled: React controls value. Use controlled.'),
-        T('React DevTools — inspect component tree and props','Essential for debugging.'),
-        P('Build: Contact card, button group, nav bar components'),
-      ]},
-      {id:'c2-1-2',name:'React Hooks — The Core of Modern React',high:true,topics:[
-        T('Rules of Hooks — only at top level, only in components/custom hooks','Breaking rules causes bugs. ESLint enforces this.'),
-        T('useState — const [state, setState] = useState(initial)','setState replaces state (for objects: spread first).'),
-        T('useState — functional updates setState(prev => prev + 1)','Use when new state depends on previous state.'),
-        T('useEffect — side effects after render','Think of it as "after render, do this."'),
-        T('useEffect dependency array — [], [dep], no array','Missing deps = bugs. Extra deps = unnecessary runs.'),
-        T('useEffect cleanup — return a function','return () => clearInterval(timer). Runs before next effect and on unmount.'),
-        T('useEffect for data fetching — async function inside','Don\'t make the callback async. Create async fn inside it.'),
-        T('useRef — access DOM elements, store mutable values without re-render','inputRef.current.focus() after <input ref={inputRef}/>'),
-        T('forwardRef — pass ref through a component to its DOM element','Used when building reusable component libraries.'),
-        T('useMemo — memoize expensive computed values','useMemo(() => filterLargeList(data), [data])'),
-        T('useCallback — memoize function references for stable child props','useCallback(() => handleClick(id), [id])'),
-        T('When NOT to optimize — measure first with React DevTools Profiler','Don\'t add useMemo/useCallback everywhere.'),
-        T('useContext — read from React Context without prop drilling','const user = useContext(UserContext)'),
-        T('useReducer — complex state logic, multiple state values','dispatch({type:"INCREMENT"}) is clearer intent.'),
-        T('Custom Hooks — extract reusable stateful logic into use* functions','function useFetch(url) — returns {data, loading, error}'),
-        P('Build custom hook: useFetch(url) — handles loading, error, data'),
-        P('Build custom hook: useLocalStorage(key, initialValue)'),
-        P('Build custom hook: useDebounce(value, delay)'),
-        P('Build custom hook: useWindowSize()'),
-        IV('Interview: Rules of hooks? Why can\'t you call hooks conditionally?'),
-      ]},
-      {id:'c2-1-3',name:'React Router, State Management & Data Fetching',high:false,topics:[
-        T('React Router v6 — BrowserRouter, Routes, Route, Link, NavLink','NavLink adds "active" class automatically.'),
-        T('Route params — /users/:id — useParams()','const {id} = useParams()'),
-        T('useNavigate, useLocation, useSearchParams','navigate("/dashboard") or navigate(-1) to go back.'),
-        T('Nested routes — layout with <Outlet/>','The Outlet placeholder is where child routes render.'),
-        T('Protected routes — wrap routes with auth check','if (!user) return <Navigate to="/login"/>'),
-        T('Global state — Context + useReducer for medium apps','For apps without complex state, this is enough.'),
-        T('Zustand — minimal API, no boilerplate','const useStore = create(set => ({count: 0, inc: () => set(s => ({count:s.count+1}))}))'),
-        T('Redux Toolkit — createSlice, configureStore, useSelector, useDispatch, RTK Query','RTK is the ONLY way to use Redux in 2024.'),
-        T('TanStack Query (React Query) — useQuery, useMutation, staleTime, invalidation','Handles caching, background refetching, loading/error states.'),
-        P('Build: Multi-page React app with React Router'),
-        P('Build: Shopping cart with Zustand'),
-      ]},
-      {id:'c2-1-4',name:'React Production Patterns',high:true,topics:[
-        T('Project structure — feature-based folder organization','Feature-based: /features/auth, /features/products. More scalable.'),
-        T('Error boundaries — class component to catch rendering errors','Use react-error-boundary library.'),
-        T('Suspense + React.lazy() — code splitting, reduce initial bundle','Lazy load heavy components/pages.'),
-        T('React performance — React.memo, avoiding unnecessary re-renders','React.memo: only re-render if props changed.'),
-        T('react-hook-form + Zod — industry standard form validation','Less re-renders than other form libraries.'),
-        PR('Project: Full CRUD React app — Notes/Blog with auth, search, pagination, dark mode'),
-        T('Deploy React app to Vercel — connect GitHub, auto-deploy on push','Vercel is the fastest way to deploy. Free tier is generous.'),
-      ]},
+  {id:'s1-2',name:'Stage 1.2 — CSS Mastery',color:'green',chapters:[
+    {id:'c1-2-1',name:'CSS Core — Every Selector & Property',high:false,topics:[
+      T('Box model — content, padding, border, margin; box-sizing: border-box','border-box is almost always what you want.'),
+      T('Selectors — element, class, ID, attribute ([attr], [attr=val], [attr^=val], [attr$=val], [attr*=val]), universal','Attribute selectors are powerful for styling without classes.'),
+      T('Combinators — descendant (space), child (>), adjacent sibling (+), general sibling (~)','Child combinator > is safer than descendant space.'),
+      T('Pseudo-classes — :hover, :focus, :active, :visited, :nth-child(n), :nth-of-type, :first-child, :last-child, :not(), :is(), :where(), :has()','CSS :has() is a game changer — parent selector finally exists.'),
+      T('Pseudo-elements — ::before, ::after, ::placeholder, ::selection, ::marker, ::first-line, ::first-letter','::marker lets you style list bullet points.'),
+      T('Cascade — order, specificity, importance — the full algorithm','Specificity: inline(1000) > ID(100) > class(10) > element(1).'),
+      T('Inheritance — inherited vs non-inherited properties, inherit, initial, unset, revert','color/font-family inherit. margin/padding do not.'),
+      T('Display — block, inline, inline-block, none, contents, table, table-cell','display:contents removes the box but keeps children.'),
+      T('Positioning — static, relative, absolute, fixed, sticky','Sticky: position relative until scroll threshold, then fixed.'),
+      T('z-index and stacking contexts — what creates a new stacking context','transform/opacity/will-change create stacking contexts.'),
+      T('CSS units — px, %, em, rem, vw, vh, vmin, vmax, ch, ex, svh, dvh','svh/dvh fix the mobile browser address bar problem.'),
+      T('Colors — hex, rgb(), rgba(), hsl(), hsla(), hwb(), CSS variables, color-mix()','color-mix(in srgb, red 50%, blue) is new and powerful.'),
+      T('Typography — font-family, font-size, font-weight, line-height, letter-spacing, word-spacing, text-transform','line-height 1.5–1.7 for body text.'),
+      T('Text properties — overflow ellipsis, white-space, text-decoration, text-shadow, direction, writing-mode','writing-mode: vertical-rl for vertical text.'),
+      T('Backgrounds — color, image, gradient (linear, radial, conic), background-size, background-position, background-blend-mode','Conic gradients create pie charts with pure CSS.'),
+      T('Borders — shorthand, border-radius, border-image, outline (does not affect layout)','outline does not affect layout, unlike border.'),
+      T('Box-shadow and text-shadow — inset, multiple shadows, colored shadows','Multi-layer shadows create realistic depth effects.'),
+      T('CSS custom properties — declaring, using, updating with JS, fallback values','document.documentElement.style.setProperty("--color", "red")'),
+      T('Transitions — property, duration, timing-function (cubic-bezier), delay','Add transitions to the element state, not the :hover.'),
+      T('Animations — @keyframes, animation shorthand (8 values), will-change, animation-fill-mode','will-change:transform enables GPU compositing.'),
+      T('Transform — translate, scale, rotate, skew, matrix, perspective, rotateX/Y/Z, transform-origin','3D transforms: rotateY(180deg) for card flip.'),
+      T('Object-fit and object-position — cover, contain, fill, scale-down','object-fit:cover prevents image squashing.'),
+      T('Filter and backdrop-filter — blur, brightness, contrast, grayscale, drop-shadow','backdrop-filter enables glass morphism effect.'),
+      T('CSS calc(), min(), max(), clamp() — fluid sizing','clamp(1rem, 2.5vw, 2rem) scales between breakpoints.'),
+      T('Overflow — visible, hidden, scroll, auto, overflow-x/y, text-overflow, clip','overflow:hidden on parent clips absolutely positioned children.'),
+      T('Cursor, pointer-events, user-select — interaction control','pointer-events:none passes clicks through an element.'),
+      P('Build: Style the HTML resume with pure CSS'),
     ]},
-    {id:'s2-2',name:'Stage 2.2 — Node.js & Express',color:'blue',chapters:[
-      {id:'c2-2-1',name:'Node.js Runtime',high:false,topics:[
-        T('What Node.js is — V8 engine + libuv for async I/O','Node\'s event loop has more phases than browser\'s.'),
-        T('Node.js vs browser JS — no window/document, has process, __dirname, require','Node adds: process.env, process.argv, path, fs.'),
-        T('npm — package.json, package-lock.json, semantic versioning, npm scripts','package.json tracks what you NEED. lock file tracks exact versions.'),
-        T('CommonJS vs ES Modules — require() vs import/export','Most new projects use ESM.'),
-        T('Built-in modules — fs, path, os, http, url, events, crypto','fs.promises.readFile — modern async file reading.'),
-        T('process object — process.env, process.argv, process.exit()','process.env.NODE_ENV is "development" or "production".'),
-        T('dotenv — loading .env files, keeping secrets out of git','NEVER commit .env to git (add to .gitignore).'),
-        T('Streams — readable, writable, transform, pipe for efficiency','Streams process data in chunks. Great for large files.'),
-        T('Events — EventEmitter — .on(), .emit(), .once()','Node\'s pub/sub system. Used internally by streams.'),
-      ]},
-      {id:'c2-2-2',name:'Express.js — Building REST APIs',high:true,topics:[
-        T('Express basics — app setup, app.listen(PORT)','const express=require("express"); const app=express(); app.listen(3000)'),
-        T('HTTP methods — GET, POST, PUT, PATCH, DELETE','REST convention: GET /users (list), POST /users (create), etc.'),
-        T('Route definition — app.get(), app.post(), route params, query strings','Handler: (req, res) => {}. Always send a response.'),
-        T('Request body — req.body — requires express.json() middleware','Without middleware, req.body is undefined.'),
-        T('Response methods — res.json(), res.status(404).json(), res.redirect()','Always send exactly ONE response per request.'),
-        T('HTTP status codes — 200, 201, 400, 401, 403, 404, 500','Use correct status codes. 4xx for client errors, 5xx for server.'),
-        T('Middleware — functions(req, res, next) — request pipeline','Middleware executes in order. Each must call next() or send response.'),
-        T('Custom middleware — logging, authentication, timestamps','app.use((req,res,next)=>{ console.log(req.method, req.url); next(); })'),
-        T('Error handling middleware — 4 parameters: (err, req, res, next)','Express detects error middleware by its 4-arg signature.'),
-        T('Express Router — split routes into separate files','const router = express.Router(); app.use("/api/users", router)'),
-        T('CORS — cors npm package, controlling origins','In production: cors({origin:"https://yourapp.com"})'),
-        T('Rate limiting, Helmet.js — security essentials','app.use(helmet()) adds 11 security headers automatically.'),
-        P('Build: REST API for a blog — CRUD for posts and comments'),
-      ]},
-      {id:'c2-2-3',name:'Authentication & Security',high:true,topics:[
-        T('Authentication vs Authorization','Auth: who are you? Authorization: what can you do?'),
-        T('Password hashing — bcrypt — saltRounds, hash(), compare()','Never store plain text passwords. bcrypt is slow BY DESIGN.'),
-        T('JWT structure — header.payload.signature — base64 encoded, NOT encrypted','JWT is encoded, not encrypted. Don\'t put sensitive data in payload.'),
-        T('JWT — jwt.sign(), jwt.verify() — access vs refresh tokens','Access tokens: 15 minutes. Refresh tokens: 7–30 days.'),
-        T('Auth middleware — extracting Bearer token, verifying, attaching user to req','Authorization: Bearer <token>. Extract the token part.'),
-        T('Cookie-based auth — httpOnly, Secure, SameSite cookies vs localStorage JWTs','httpOnly cookies can\'t be read by JS — safer for tokens.'),
-        T('Role-based access control — admin, user, moderator','if(req.user.role!=="admin") return res.status(403)...'),
-        T('Input validation and sanitization — never trust user input','Validation: is data the right type? Sanitization: remove dangerous chars.'),
-        T('SQL injection — parameterized queries prevent it','db.query("SELECT * FROM users WHERE id = $1", [userId]) — safe.'),
-        T('XSS — Cross-Site Scripting — sanitize output, set CSP','Set Content-Security-Policy. Use textContent not innerHTML.'),
-        T('CSRF protection — SameSite cookies, CSRF tokens','SameSite=Strict/Lax prevents CSRF.'),
-        T('OAuth 2.0 — conceptual flow, authorization code, tokens, scopes','Google Sign-in flow: user → your app → Google → tokens.'),
-        IV('Interview: How does JWT auth work? Security tradeoffs vs sessions?'),
-      ]},
+    {id:'c1-2-2',name:'Flexbox — Complete Reference',high:true,topics:[
+      T('Flexbox mental model — flex container vs flex items, main axis vs cross axis','Everything in flexbox depends on the two axes.'),
+      T('flex-direction — row, row-reverse, column, column-reverse','flex-direction changes which axis is "main".'),
+      T('justify-content — flex-start, center, flex-end, space-between, space-around, space-evenly','justify-content is for the main axis.'),
+      T('align-items — flex-start, center, flex-end, stretch, baseline','align-items is for the cross axis, all items.'),
+      T('align-content — when flex-wrap is on, aligns multiple rows','Only matters when there are multiple lines of items.'),
+      T('flex-wrap — nowrap, wrap, wrap-reverse','flex-wrap:wrap lets items go to next line.'),
+      T('gap — row-gap, column-gap, the gap shorthand','gap replaces margin hacks between flex items.'),
+      T('flex — grow, shrink, basis shorthand; flex:1; flex:0 0 auto','flex:1 means grow to fill space. flex:0 0 auto means use natural size.'),
+      T('align-self and order — override per item','order:1 pushes item to end without DOM reorder.'),
+      T('Flexbox patterns — navbar, card row, holy grail layout, centering, equal height cards','Practice: display:flex; justify-content:center; align-items:center'),
+      P('Build: Responsive navbar and card layout with flexbox'),
     ]},
-    {id:'s2-3',name:'Stage 2.3 — Databases',color:'blue',chapters:[
-      {id:'c2-3-1',name:'MongoDB & Mongoose',high:false,topics:[
-        T('NoSQL vs SQL — document vs relational, when to use which','NoSQL: flexible schema, nested data. SQL: relations, transactions.'),
-        T('MongoDB concepts — documents, collections, CRUD operations','A document: {_id, name:"Alice", age:30}.'),
-        T('Query operators — $eq, $gt, $lt, $in, $nin, $set, $push, $pull, $inc','$set: {$set:{name:"Bob"}} — only changes name field.'),
-        T('Aggregation pipeline — $match, $group, $sort, $project, $lookup','Complex queries: count posts per user, join collections.'),
-        T('MongoDB indexes — createIndex, compound indexes, explain()','Without index, MongoDB scans every document.'),
-        T('Mongoose schema, model, CRUD, populate, hooks','userSchema.pre("save", async fn) — hash password before save.'),
-        T('MongoDB Atlas — cloud MongoDB, free tier, connection string','Set Network Access restrictions in production.'),
-      ]},
-      {id:'c2-3-2',name:'SQL & PostgreSQL',high:true,topics:[
-        T('Why SQL — ACID guarantees, complex relations, data integrity','Most companies use PostgreSQL or MySQL for core data.'),
-        T('Relational concepts — tables, rows, primary key, foreign key','Primary key: unique identifier. Foreign key: reference to another table.'),
-        T('SELECT, WHERE, ORDER BY, LIMIT, OFFSET — filtering and pagination','LIMIT + OFFSET = pagination.'),
-        T('INSERT, UPDATE, DELETE — always use parameterized queries and WHERE','Forgetting WHERE on UPDATE/DELETE updates ALL rows.'),
-        T('JOINs — INNER JOIN (both match), LEFT JOIN (all left + matching right)','SELECT p.title, u.name FROM posts p LEFT JOIN users u ON p.user_id = u.id'),
-        T('Aggregation — COUNT, SUM, AVG, MAX, MIN, GROUP BY, HAVING','GROUP BY groups rows. HAVING filters groups.'),
-        T('Subqueries and CTEs — named subqueries for readability','CTEs make complex queries readable.'),
-        T('Schema design — normalization, constraints (NOT NULL, UNIQUE, CHECK, REFERENCES)','Constraints enforce integrity at database level.'),
-        T('Indexes, EXPLAIN ANALYZE, transactions — ACID','EXPLAIN your slow queries to see sequential scans.'),
-        T('Prisma ORM — schema.prisma, migrate, type-safe queries','Prisma generates TypeScript types from your schema.'),
-        IV('Interview: Difference between INNER JOIN and LEFT JOIN with an example.'),
-      ]},
-      {id:'c2-3-3',name:'Full-Stack Integration Project',high:true,topics:[
-        PR('Full-Stack Project: React + Express + MongoDB or PostgreSQL'),
-        T('Feature: User auth — bcrypt passwords, JWT tokens','The most common feature in real apps.'),
-        T('Feature: Protected API routes — auth middleware + frontend route guards','Both frontend and backend should be protected.'),
-        T('Feature: User profile — view, update, upload avatar (Cloudinary)','Cloudinary offers a free tier.'),
-        T('Feature: CRUD for main resource with ownership checks','A user can only delete THEIR posts.'),
-        T('Feature: Pagination, Search with proper database indexes','Cursor-based pagination is better than offset for large datasets.'),
-        T('Deploy backend to Railway or Render — free tiers, env vars','Never commit .env to git.'),
-        T('Deploy frontend to Vercel — set VITE_API_URL env var','VITE_ prefix makes vars available to browser bundle.'),
-        T('CORS for production — only allow your frontend origin','cors({origin: process.env.FRONTEND_URL})'),
-        T('Error handling — global error handler, consistent API error format','Never leak stack traces to clients in production.'),
-      ]},
+    {id:'c1-2-3',name:'CSS Grid — Complete Reference',high:true,topics:[
+      T('Grid concepts — grid container, grid items, tracks, cells, areas, lines','Grid lines are numbered 1 to N+1.'),
+      T('grid-template-columns/rows — fixed, fr, repeat(), auto','repeat(3, 1fr) = 3 equal columns.'),
+      T('fr unit, auto, min-content, max-content, minmax()','minmax(200px, 1fr) = at least 200px, grow to fill.'),
+      T('auto-fill vs auto-fit — responsive grids without media queries','auto-fit collapses empty tracks. auto-fill keeps them.'),
+      T('gap — same as flexbox, row-gap and column-gap','Consistent gap between all cells.'),
+      T('grid-column and grid-row — span, line numbers','grid-column: 1 / -1 stretches across all columns.'),
+      T('grid-template-areas — named zones','Name areas: "header header" / "sidebar main".'),
+      T('align-items, justify-items, place-items — align all cells','place-items:center centers everything in cells.'),
+      T('align-self, justify-self, place-self — align individual items','Override per-cell alignment.'),
+      T('Implicit grid — grid-auto-rows, grid-auto-columns, grid-auto-flow (dense)','dense packing fills holes in the grid.'),
+      T('Subgrid — align children across parent grid tracks','Subgrid aligns nested grids to outer grid lines.'),
+      T('Grid vs Flexbox — when to use which','Grid: 2D layouts. Flexbox: 1D (row or column).'),
+      P('Build: Responsive pricing cards, dashboard layout with grid areas'),
+    ]},
+    {id:'c1-2-4',name:'Responsive Design & Modern CSS',high:true,topics:[
+      T('Mobile-first approach — min-width media queries, why mobile first','Progressive enhancement: base = mobile, enhance for larger.'),
+      T('Media queries — @media (min-width), (max-width), (orientation), (prefers-color-scheme), (prefers-reduced-motion)','prefers-color-scheme:dark for automatic dark mode.'),
+      T('Container queries — @container — size relative to parent, not viewport','Better than media queries for components.'),
+      T('Fluid typography — clamp(min, preferred, max)','clamp(16px, 1rem + 1vw, 22px) scales smoothly.'),
+      T('CSS nesting — native nesting without preprocessors','& .child {} natively in modern browsers.'),
+      T('CSS layers — @layer — control cascade order','@layer base, components, utilities controls specificity order.'),
+      T('CSS Houdini — paint worklets, typed OM (conceptual awareness)','Understanding the cutting edge of CSS.'),
+      T('CSS architecture — BEM, ITCSS, utility-first, scoped (CSS Modules)','BEM: .block__element--modifier. Prevents naming conflicts.'),
+      T('Sass/SCSS — variables, nesting, mixins, extend, functions','Mixins: reusable blocks with parameters.'),
+      T('Tailwind CSS — utility classes, config, responsive/state variants, JIT mode','Tailwind eliminates custom CSS for most components.'),
+      T('Tailwind — @apply, custom classes, plugins, dark mode variants','@apply lets you reuse utility groups.'),
+      T('Print styles — @media print, page-break, visibility','Never forget print styles for document-heavy apps.'),
+      PR('Project: Responsive landing page — hero, features, testimonials, footer with dark mode'),
     ]},
   ]},
-  {id:'u3',name:'Unit 3 — Product-Grade Skills',color:'yellow',months:'Month 7–9',stages:[
-    {id:'s3-1',name:'Stage 3.1 — TypeScript',color:'yellow',chapters:[
-      {id:'c3-1-1',name:'TypeScript Fundamentals',high:true,topics:[
-        T('Why TypeScript — catch bugs at compile time, autocomplete, safe refactoring','If you rename a function, TypeScript tells you everywhere it\'s used.'),
-        T('Setup — tsconfig.json, ts-node, tsc compiler','npx create-next-app with TypeScript is the easiest start.'),
-        T('Basic types — string, number, boolean, null, undefined, any, unknown, never, void','unknown is like any but safe — you must narrow before using.'),
-        T('Type annotations, inference, arrays, tuples','TypeScript can infer most types. Only annotate when needed.'),
-        T('Type aliases and Interfaces — extendable, mergeable','interface vs type: interfaces can be merged.'),
-        T('Optional/readonly properties, union types, intersection types','{name?: string} — name might not exist.'),
-        T('Literal types — "GET" | "POST" | "PUT"','Only these exact values allowed. Catches typos at compile time.'),
-        T('Type narrowing — typeof, instanceof, in operator, discriminated unions','if (typeof val === "string") — TS knows type inside the block.'),
-        T('Type assertions — value as Type','const input = document.getElementById("email") as HTMLInputElement'),
-      ]},
-      {id:'c3-1-2',name:'Advanced TypeScript',high:false,topics:[
-        T('Generics — function identity<T>(val: T): T','function first<T>(arr: T[]): T | undefined'),
-        T('Generic constraints — <T extends object>','<T extends {id: number}> — T must have an id property.'),
-        T('Utility types — Partial, Required, Pick, Omit, Record, Readonly, ReturnType','Partial<User> makes all User fields optional.'),
-        T('Mapped types, conditional types, template literal types','The foundation of how Partial, Readonly, Record work.'),
-        T('TypeScript with React — FC<Props>, ReactNode, event types','type Props = {onClick: (e: React.MouseEvent<HTMLButtonElement>) => void}'),
-        T('TypeScript with Express — typed req.body, custom Request interface','interface AuthRequest extends Request { user?: User }'),
-        T('Declaration files — .d.ts, @types packages','@types/node, @types/express add types to untyped packages.'),
-      ]},
+  {id:'s1-3',name:'Stage 1.3 — JavaScript Mastery',color:'green',chapters:[
+    {id:'c1-3-1',name:'JS Core — The Non-Negotiables',high:true,topics:[
+      T('How JS runs — single-threaded, synchronous execution model, JIT compilation','JS runs line by line. Understanding this prevents 90% of async bugs.'),
+      T('Variables — var (hoisted, function scope), let (block scope), const (block scope, no reassign)','Use const by default. Use let for reassignment. Never var.'),
+      T('Primitive types — string, number, boolean, null, undefined, symbol, BigInt','Exactly 7 primitives. Everything else is object.'),
+      T('typeof — all return values, typeof null === "object" bug','typeof function(){} === "function" — special case.'),
+      T('Type coercion — implicit vs explicit, truthy/falsy rules, Abstract Equality Algorithm','== uses type coercion. Always prefer ===.'),
+      T('Falsy values — false, 0, -0, 0n, "", null, undefined, NaN — all 8','if(!value) catches all falsy. document.getElementById returns null if not found.'),
+      T('Strings — immutability, methods: slice, indexOf, includes, replace, replaceAll, split, trim, padStart, padEnd, repeat, at()','String methods return new strings. The original is unchanged.'),
+      T('Template literals — interpolation, tagged templates, multiline','Tagged templates power styled-components and SQL template libraries.'),
+      T('Numbers — parseInt, parseFloat, Number(), isNaN(), isFinite(), toFixed(), toPrecision(), Number.EPSILON','0.1 + 0.2 !== 0.3 — floating point precision.'),
+      T('Math — Math.floor, ceil, round, abs, max, min, pow, sqrt, random, PI, trunc, sign, log2','Math.random() * (max - min) + min — range formula.'),
+      T('Operators — arithmetic, comparison, logical, ternary, bitwise, spread, nullish coalescing ??','&& and || short-circuit. ?? only checks null/undefined.'),
+      T('Optional chaining ?. — objects, arrays, functions','user?.profile?.avatar ?? "default.png"'),
+      T('Conditionals — if/else, switch/case, guard clauses, switch with no default','Guard clauses: return early to reduce nesting.'),
+      T('Loops — for, while, do-while, for...of, for...in, break, continue, labeled statements','for...of iterates values. for...in iterates keys (use carefully on arrays).'),
+      T('Functions — declaration (hoisted), expression (not hoisted), arrow functions','Arrow functions have no own this, arguments, or prototype.'),
+      T('Arrow functions — syntax variants, implicit return, no this/arguments','const double = n => n * 2 is implicit return.'),
+      T('Default, rest, spread parameters','function sum(...nums) — collects remaining args.'),
+      T('Scope — global, function, block scope, lexical scoping','Block scope: let/const in {} do not exist outside.'),
+      T('Hoisting — var hoisted + undefined, function declarations fully hoisted, let/const TDZ','Temporal Dead Zone: accessing let before declaration throws ReferenceError.'),
+      T('Closures — inner function retains access to outer scope after outer returns','THE most asked JS concept in interviews. Know it deeply.'),
+      T('Closures in practice — counters, memoization, module pattern, partial application','function counter(){let n=0; return ()=>++n}'),
+      T('IIFE — Immediately Invoked Function Expression — encapsulation pattern','(function(){})() — classic way to avoid polluting global scope.'),
+      P('Practice: Write 5 closure examples — counter, memoize, once(), partial, private state'),
+      IV('Interview: What is a closure? How does it work? Write an example.'),
     ]},
-    {id:'s3-2',name:'Stage 3.2 — Next.js',color:'yellow',chapters:[
-      {id:'c3-2-1',name:'Next.js Core',high:true,topics:[
-        T('Why Next.js — SSR, SSG, file routing, API routes, image optimization, SEO','Used by Vercel, Airbnb, Twitch, TikTok.'),
-        T('App Router vs Pages Router — learn App Router (the future)','App Router uses React Server Components.'),
-        T('File-based routing — folders = routes, page.tsx, layout.tsx, loading.tsx, error.tsx','app/about/page.tsx → /about route.'),
-        T('Server Components vs Client Components — the most important Next.js concept','Server: no useState/effects. Client: "use client" directive.'),
-        T('Data fetching in Server Components — async/await directly','async function Page() { const data = await fetch(url); }'),
-        T('Next.js fetch caching — force-cache, no-store, revalidate (ISR)','fetch(url, {next:{revalidate:3600}}) — regenerate every hour.'),
-        T('generateStaticParams — pre-render dynamic routes at build time','Returns array of params to statically generate.'),
-        T('Server Actions — handle forms without API routes','Add "use server" to a function.'),
-        T('API Routes — app/api/route.ts — export GET, POST handlers','export async function GET(request) { return Response.json({data}) }'),
-        T('Next.js Image, Middleware, env variables, Metadata API','NEXT_PUBLIC_ prefix for browser-safe vars.'),
-        PR('Project: SaaS Dashboard — Next.js + Prisma + PostgreSQL + Auth.js + Stripe'),
-      ]},
+    {id:'c1-3-2',name:'Arrays & Objects — Daily Tools',high:true,topics:[
+      T('Array creation — [], Array.from(), Array.of(), Array(n).fill()','Array.from({length:5},(_,i)=>i) = [0,1,2,3,4].'),
+      T('Array mutation — push, pop, shift, unshift, splice, sort (in-place!), reverse, fill, copyWithin','sort() sorts in-place. [3,1,2].sort((a,b)=>a-b) for numbers.'),
+      T('Array access — indexing, .length, .at(-1), .at(-2)','at(-1) is cleaner than arr[arr.length-1].'),
+      T('Array search — indexOf, lastIndexOf, includes, find, findIndex, findLast, findLastIndex','find returns element. findIndex returns position.'),
+      T('.map() — transform every element, returns new array','Never mutates. Returns new array of same length.'),
+      T('.filter() — return elements passing test','Returns new array, possibly shorter. Never mutates.'),
+      T('.reduce() — accumulate to single value','Most powerful array method. Start with sum, graduate to complex.'),
+      T('.reduceRight() — reduce from right to left','Useful for right-to-left operations.'),
+      T('.forEach() — iterate for side effects, returns undefined','Use map/filter/reduce for data. forEach for DOM updates.'),
+      T('.some() and .every() — short-circuit boolean checks','every() stops at first false. some() stops at first true.'),
+      T('.flat(depth) and .flatMap() — flatten nested arrays','flatMap = map then flat(1). Useful for nested results.'),
+      T('.slice() — extract without mutation, spread — copy','const copy = [...arr] shallow copies.'),
+      T('.join(), .concat(), .indexOf() vs includes','join(", ") joins with separator.'),
+      T('Array sorting — comparator function, locale-aware sort','arr.sort((a,b)=>a.name.localeCompare(b.name)) for strings.'),
+      T('Objects — literal syntax, dot vs bracket notation, computed keys','Use brackets for dynamic keys: obj[variableKey].'),
+      T('Shorthand properties and methods — {name, age, greet(){}}','Shorthand makes objects cleaner.'),
+      T('Object.keys(), Object.values(), Object.entries() — iteration','Object.entries(obj).forEach(([k,v])=>...) destructures cleanly.'),
+      T('Object.assign() — shallow merge; Object.freeze() — immutable; Object.create(proto)','freeze() prevents any changes to object.'),
+      T('Object.fromEntries() — convert entries/Map to object','Object.fromEntries(Object.entries(obj).map(([k,v])=>[k,v*2]))'),
+      T('Destructuring — arrays and objects with defaults and renaming','const {name="Guest", age:years}=user.'),
+      T('Nested destructuring and destructuring in function params','function display({user:{name}, score}){}'),
+      T('Spread and rest in objects — merge, clone, omit pattern','const {password,...safeUser}=user — rest omits password.'),
+      T('Optional chaining ?. and nullish coalescing ?? — deep access patterns','user?.address?.city??\"Unknown\"'),
+      T('Shallow vs deep copy — JSON.parse(JSON.stringify()), structuredClone()','structuredClone handles Dates, Maps, Sets. JSON.parse loses them.'),
+      P('Practice: implement map, filter, reduce from scratch'),
+      IV('Interview: Shallow copy vs deep copy. structuredClone vs spread.'),
     ]},
-    {id:'s3-3',name:'Stage 3.3 — System Design Basics',color:'yellow',chapters:[
-      {id:'c3-3-1',name:'System Design for Interviews',high:true,topics:[
-        T('What system design interviews test — architecture thinking, trade-off reasoning','They want to see how you THINK through problems.'),
-        T('Scalability — vertical scaling (bigger server) vs horizontal (more servers)','Horizontal requires stateless servers, load balancers.'),
-        T('Load balancers, caching (CDN, Redis), database scaling','Cache what\'s expensive to compute and frequently accessed.'),
-        T('CAP theorem — Consistency, Availability, Partition tolerance — pick 2','MongoDB: AP. PostgreSQL: CP.'),
-        T('REST API design — naming, versioning, filtering, pagination, rate limiting','GET /v1/posts?status=published&page=2&limit=10'),
-        T('Message queues — BullMQ (Redis-based) — async job processing','Use queues for: email sending, image processing, notifications.'),
-        T('WebSockets — bidirectional — chat, live scores; SSE — one-directional','Socket.io for Node.js. JWT auth in the handshake.'),
-        T('CDN — serve static assets from edge locations','Store images, JS, CSS on CDN.'),
-        T('System design: URL shortener, Social media feed, File upload service','Walk through: API design → storage → algorithm → scalability.'),
-        IV('Interview: Design a URL shortener. What database would you use and why?'),
-      ]},
+    {id:'c1-3-3',name:'ES6+ Modern JavaScript',high:true,topics:[
+      T('ES Modules — import/export, named exports, default export, namespace import, dynamic import()','import("./module.js") returns a Promise — code splitting.'),
+      T('Classes — constructor, instance methods, static methods, inheritance (extends), super()','Classes are syntactic sugar over prototype chains.'),
+      T('Private class fields (#), getters/setters, class fields','#value is truly private — not accessible outside class.'),
+      T('Symbols — unique identifiers, well-known symbols (Symbol.iterator, Symbol.toPrimitive)','Symbols prevent accidental property key collisions.'),
+      T('Iterators and Iterables — [Symbol.iterator], for...of protocol','Any object with [Symbol.iterator] can be iterated.'),
+      T('Generators — function*, yield, next(), yield* delegation','Generators enable lazy evaluation and custom iterables.'),
+      T('Map — ordered, any key type, size, clear, has, get, set, entries/keys/values iteration','Use Map over Object when keys are not strings.'),
+      T('Set — unique values, O(1) has(), set operations pattern','[...new Set(arr)] removes duplicates.'),
+      T('WeakMap, WeakSet — weak references, not enumerable, GC-friendly','Used in library internals for DOM node metadata.'),
+      T('Proxy — intercept get/set/has/deleteProperty; Reflect — mirror Proxy ops','Vue 3 reactivity system uses Proxy.'),
+      T('Logical assignment — &&=, ||=, ??=','a ??= "default" assigns only if null/undefined.'),
+      T('Numeric separators — 1_000_000 for readability','Makes large numbers more readable.'),
+      T('Object.hasOwn() vs hasOwnProperty()','Object.hasOwn(obj,"key") is the modern safe version.'),
+      P('Practice: Rewrite callback code with classes, modules, destructuring'),
     ]},
-    {id:'s3-4',name:'Stage 3.4 — DSA for Interviews',color:'yellow',chapters:[
-      {id:'c3-4-1',name:'DSA — Complexity & Arrays',high:true,topics:[
-        T('Big O notation — time and space complexity','O(1): constant. O(log n): binary search. O(n): one loop. O(n²): nested loops.'),
-        T('Two-pointer technique — one array: left/right pointers','Two Sum (sorted), reverse string, valid palindrome.'),
-        T('Sliding window — subarray problems with O(n) instead of O(n²)','Fixed window: max sum of k elements. Variable: longest substring.'),
-        T('Prefix sum — precompute cumulative sums for O(1) range queries','prefix[i] = arr[0]+...+arr[i]. Range sum = prefix[r] - prefix[l-1].'),
-        P('Practice: Two Sum, Three Sum, Maximum Subarray (Kadane\'s), Container With Most Water'),
-      ]},
-      {id:'c3-4-2',name:'DSA — Hash Maps, Stacks, Queues',high:true,topics:[
-        T('Hash Maps — O(1) average lookup, insert, delete','The most powerful DS. Solve 30% of interview problems with hash maps.'),
-        T('Frequency counting, two-sum with hash map, grouping/bucketing','const freq = {}; for (const c of s) freq[c] = (freq[c] || 0) + 1'),
-        T('Sets — uniqueness, O(1) has() check','const unique = [...new Set(arr)] — remove duplicates.'),
-        T('Stacks — LIFO; Monotonic stack — increasing/decreasing order','Stack: balanced brackets, min stack, daily temperatures.'),
-        T('Queues — FIFO; Deque — push/pop from both ends','BFS always uses a queue.'),
-        P('Practice: Valid Parentheses, Min Stack, Daily Temperatures, Sliding Window Maximum'),
-      ]},
-      {id:'c3-4-3',name:'DSA — Linked Lists',high:true,topics:[
-        T('Linked list structure — node with value and next pointer','class Node { constructor(val) { this.val=val; this.next=null; } }'),
-        T('Traversal, reverse (3 pointers + recursive)','Classic question. Know both approaches.'),
-        T('Detect cycle — Floyd\'s algorithm (slow/fast pointers)','If they meet, there\'s a cycle.'),
-        T('Find middle, merge sorted lists, remove nth from end, intersection','Slow/fast: when fast reaches end, slow is at middle.'),
-      ]},
-      {id:'c3-4-4',name:'DSA — Trees & Recursion',high:true,topics:[
-        T('Binary tree structure — inorder, preorder, postorder, level-order traversal','Inorder of BST = sorted array.'),
-        T('Tree height/depth, path sum, LCA, BST operations','LCA: if both p and q in different subtrees, current is LCA.'),
-        T('BST — search, insert, delete, validate','Balanced BST: h = O(log n).'),
-        T('Recursion pattern — base case + recursive case + trust the recursion','Write base case first. Trust the recursive call works.'),
-        P('Practice: Max Depth, Same Tree, Symmetric Tree, Invert Binary Tree, Path Sum'),
-      ]},
-      {id:'c3-4-5',name:'DSA — Graphs',high:true,topics:[
-        T('Graph representations — adjacency list (preferred)','Adjacency list: {0:[1,2], 1:[0,3]}.'),
-        T('BFS — level-by-level, queue — shortest path in unweighted graph','Use visited set to avoid cycles.'),
-        T('DFS — depth-first, stack/recursion — path finding, connectivity','DFS explores as far as possible before backtracking.'),
-        T('Connected components, cycle detection, topological sort','Course schedule: directed cycle. Valid tree: undirected cycle.'),
-        T('Grid problems — treat grid as graph, 4-directional BFS/DFS','Number of Islands, Max Area of Island.'),
-        P('Practice: Number of Islands, Clone Graph, Course Schedule, Rotting Oranges'),
-      ]},
-      {id:'c3-4-6',name:'DSA — Binary Search & Sorting',high:false,topics:[
-        T('Binary search — O(log n) on sorted array','lo=0, hi=n-1. while(lo<=hi): mid=lo+hi>>1.'),
-        T('Binary search on answer space — min/max value satisfying condition','Koko Eating Bananas, Capacity to Ship.'),
-        T('Merge sort — O(n log n), stable; Quick sort — O(n log n) avg, in-place','Understand the merge step deeply.'),
-        P('Practice: Binary Search, Search in Rotated Array, Koko Eating Bananas'),
-      ]},
-      {id:'c3-4-7',name:'DSA — Dynamic Programming',high:false,topics:[
-        T('What is DP — overlapping subproblems + optimal substructure','DP = "clever recursion with caching."'),
-        T('Memoization (top-down) — recursive + cache results','function fib(n, memo={}) { if (n in memo) return memo[n]; ... }'),
-        T('Tabulation (bottom-up) — iterative, fill dp array','Usually more space-efficient, avoids stack overflow.'),
-        T('1D DP — Climbing Stairs, House Robber, Min Cost Climbing Stairs','dp[i] = min(dp[i-1], dp[i-2]) + cost[i].'),
-        T('2D DP — Unique Paths, Coin Change, LCS, 0/1 Knapsack','dp[i][j] depends on dp[i-1][j] and dp[i][j-1].'),
-        P('NeetCode 150 — complete all Easy and most Medium problems by Month 9'),
-      ]},
-      {id:'c3-4-8',name:'Testing',high:false,topics:[
-        T('Why testing — confidence to refactor, catch regressions, documentation','Tests tell future you what the code is supposed to do.'),
-        T('Types — unit (pure functions), integration (components), e2e (full flow)','Unit: fast, isolated. Integration: realistic. E2E: slow but complete.'),
-        T('Jest — describe(), it(), expect() matchers, jest.fn(), jest.mock()','expect(sum(2,3)).toBe(5). toBe: strict. toEqual: deep equality.'),
-        T('React Testing Library — render, screen, userEvent, findBy/getBy/queryBy','screen.getByRole("button") — test by accessibility, not implementation.'),
-        T('MSW (Mock Service Worker) — intercept real fetch calls in tests','Better than mocking fetch directly.'),
-      ]},
+    {id:'c1-3-4',name:'Async JavaScript — Critical',high:true,topics:[
+      T('Event loop — call stack, Web APIs, macrotask queue, microtask queue, render steps','Draw this diagram from memory for interviews.'),
+      T('Macrotasks vs microtasks — setTimeout vs Promise — execution order','Microtasks (Promises) drain completely before next macrotask.'),
+      T('Callbacks — definition, passing, callback hell (pyramid of doom), error-first convention','error-first: function(err, data) — Node.js convention.'),
+      T('Promises — 3 states, creating with new Promise, resolve/reject, .then()/.catch()/.finally()','Uncaught rejections crash Node.js apps.'),
+      T('Promise chaining — returning values/promises from .then()','Returning a Promise from .then() flattens it.'),
+      T('Promise combinators — all, allSettled, race, any — differences and use cases','all: all succeed. allSettled: never rejects. race: first. any: first fulfilled.'),
+      T('async/await — syntax, how it desugars to Promises, error handling with try/catch','async function always returns a Promise.'),
+      T('Parallel vs sequential async — await in loops gotcha','for...of with await = sequential. Promise.all = parallel.'),
+      T('Custom error classes — class NetworkError extends Error','Name property helps distinguish error types.'),
+      T('Fetch API — fetch(url), response.ok, response.json(), response.text(), response.blob()','fetch never rejects on HTTP errors! Check response.ok.'),
+      T('Fetch POST — method, headers, body: JSON.stringify()','Always Content-Type: application/json when sending JSON.'),
+      T('AbortController — cancel in-flight requests on unmount, race conditions','const ctrl=new AbortController(); fetch(url,{signal:ctrl.signal})'),
+      T('CORS — why it exists, preflight, Access-Control-Allow-Origin, same-origin policy','CORS is a browser security feature. Servers allow cross-origin.'),
+      T('JSON — parse, stringify, replacer, reviver, formatting','JSON.stringify(obj,null,2) for debug pretty-printing.'),
+      T('XMLHttpRequest — legacy, understanding only','fetch is the modern replacement.'),
+      T('Server-Sent Events — one-way server push, EventSource','Lighter than WebSockets for unidirectional data.'),
+      P('Build: Weather app with fetch + async/await + OpenWeather API'),
+      P('Build: Retry function with exponential backoff'),
+      IV('Interview: Event loop — output order of setTimeout/Promise/async code?'),
     ]},
-    {id:'s3-5',name:'Stage 3.5 — Job-Ready Projects & Interview Prep',color:'yellow',chapters:[
-      {id:'c3-5-1',name:'Portfolio Projects',high:true,topics:[
-        PR('Project A: SaaS Dashboard — Next.js 14 + Prisma + PostgreSQL + Auth.js + Stripe'),
-        T('Feature: Stripe payments — checkout, webhooks, subscriptions','Webhooks confirm payments. Handle them or payments won\'t activate.'),
-        T('Feature: Email with Resend — transactional emails (welcome, password reset)','Basic but expected in any SaaS.'),
-        T('Feature: Role-based access, data visualization with Recharts','Charts make dashboards feel real.'),
-        PR('Project B: Real-time Chat App — Socket.io + Node.js + React'),
-        T('Feature: Rooms, online presence, typing indicator, message persistence','Typing indicator: emit event on keydown, clear after 3 seconds.'),
-        PR('Project C: REST API with OpenAPI/Swagger documentation'),
-        T('All projects: comprehensive README with screenshots, tech stack, setup','A README without screenshots gets skipped by recruiters.'),
-        T('All projects: deployed and live','If the link doesn\'t work, it might as well not exist.'),
-        T('GitHub: green commit history, good commit messages, clean code','Recruiters look at your GitHub. Make it look active.'),
-      ]},
-      {id:'c3-5-2',name:'Interview Preparation',high:true,topics:[
-        T('Resume — 1 page, ATS format, 2–3 projects, skills section','Every line should answer: "so what?" — what did this achieve?'),
-        T('LinkedIn — 500+ connections, projects as posts, recommendations','Post about your projects with screenshots.'),
-        T('Portfolio website — clean, fast, 3 projects with live demo + code','Keep it simple. Load time matters.'),
-        T('Mock interviews — Pramp.com (free), interviewing.io, peers','Do at least 5 mock interviews before the real thing.'),
-        T('STAR method — Situation, Task, Action, Result — for behavioral questions','Have 3–4 stories ready.'),
-        T('Common technical questions — closures, event loop, CORS, REST vs GraphQL, JWT','Prepare written explanations, then practice verbally.'),
-        T('React interview questions — virtual DOM, hooks rules, useEffect, reconciliation','Can you explain why keys matter in lists?'),
-        T('Live coding — explain approach before coding, talk while you think','Silence is bad in a live coding interview.'),
-        T('Company research — use their product, know their tech stack, read engineering blog','Instant points: "I read your article on migrating to microservices."'),
-        T('Salary negotiation — always negotiate, use levels.fyi, Glassdoor','The first offer is rarely the final offer. Counter with data.'),
-        T('Apply 5–10 companies per week from Month 7','Don\'t apply to 2 and wait. Cast a wide net.'),
-        IV('Interview: Walk me through your best project from design to deployment.'),
-        IV('Interview: How would you handle a performance issue in a React app?'),
-        IV('Interview: What happens when you type a URL in the browser and press Enter?'),
-      ]},
+    {id:'c1-3-5',name:'Prototypes, this & OOP',high:true,topics:[
+      T('Prototype chain — __proto__, Object.getPrototypeOf(), property lookup','Every object has a prototype chain ending at null.'),
+      T('Function.prototype — .call(thisArg, ...args), .apply(thisArg, [args]), .bind(thisArg)','bind returns new function with fixed this.'),
+      T('"this" — 4 binding rules: default (global/undefined), implicit, explicit (call/apply/bind), new','Arrow functions ignore all 4 rules — they inherit this.'),
+      T('"this" in arrow functions — lexical this from definition scope','Arrow functions in class methods always refer to instance.'),
+      T('"this" in event listeners, setTimeout — gotchas','class method passed to addEventListener loses this. Use arrow or .bind(this).'),
+      T('new keyword — 4 steps: creates object, sets prototype, executes constructor, returns object','Understanding new explains 90% of class behavior.'),
+      T('Prototypal inheritance — Object.create(proto), mixins pattern','const obj = Object.create(protoObj) sets up the chain.'),
+      IV('Interview: What is prototypal inheritance? How does "this" work in 5 scenarios?'),
     ]},
   ]},
+  {id:'s1-4',name:'Stage 1.4 — DOM, Browser APIs & Tooling',color:'green',chapters:[
+    {id:'c1-4-1',name:'DOM Manipulation',high:false,topics:[
+      T('DOM tree — nodes, elements, text nodes, document, window','querySelector traverses the real DOM tree.'),
+      T('Selecting — querySelector, querySelectorAll, getElementById, getElementsByClassName','querySelectorAll returns NodeList (static). getElementsBy returns live HTMLCollection.'),
+      T('Traversal — parentElement, children, firstElementChild, nextElementSibling, closest()','closest() walks UP the tree — great for event delegation.'),
+      T('Creating — createElement, createDocumentFragment, cloneNode(deep)','DocumentFragment batches DOM updates for performance.'),
+      T('Inserting — append, prepend, insertBefore, after, before, insertAdjacentHTML','insertAdjacentHTML("beforeend", html) is faster than innerHTML concatenation.'),
+      T('Removing — el.remove(), replaceWith()','Modern: el.remove(). No need for parentNode.removeChild().'),
+      T('Content — textContent (safe), innerHTML (XSS risk!), innerText (layout-aware)','NEVER use innerHTML with user data without sanitization.'),
+      T('Attributes — getAttribute, setAttribute, removeAttribute, toggleAttribute, hasAttribute, dataset','dataset maps data-user-id to el.dataset.userId.'),
+      T('classList — add, remove, toggle, contains, replace','classList.toggle("active") is the most-used method.'),
+      T('Style — el.style.property, getComputedStyle(), CSS variables via style.setProperty','getComputedStyle returns actual applied styles.'),
+      T('Events — addEventListener(type, handler, options), removeEventListener','options: {once:true, capture:true, passive:true}'),
+      T('Event object — target, currentTarget, type, key, clientX/Y, preventDefault, stopPropagation, stopImmediatePropagation','target: what was clicked. currentTarget: where listener is attached.'),
+      T('Event bubbling, capturing, delegation pattern — 1 listener for many children','Delegation: container.addEventListener("click", e => { if(e.target.matches(".btn")) })'),
+      T('Custom events — CustomEvent, detail property, dispatchEvent','Component communication without frameworks.'),
+      T('Mutation Observer — watch DOM changes without polling','Used to detect when dynamic content is added.'),
+      T('Intersection Observer — viewport visibility, lazy loading, infinite scroll','element.isIntersecting inside callback.'),
+      T('Resize Observer — element size changes without window resize','Better than window.addEventListener("resize") for elements.'),
+      T('requestAnimationFrame — 60fps animations, smooth transitions','Always use rAF for JS-based animations.'),
+      P('Build: Dynamic to-do list — add, delete, toggle, filter — pure DOM'),
+    ]},
+    {id:'c1-4-2',name:'Browser Storage & APIs',high:false,topics:[
+      T('localStorage — setItem, getItem, removeItem, clear — persists','Always JSON.stringify/parse. ~5MB limit. Synchronous.'),
+      T('sessionStorage — same API, cleared on tab close','Use for form drafts, temporary UI state.'),
+      T('IndexedDB — async, large amounts of structured data','Use Dexie.js wrapper for clean API.'),
+      T('Cache API — Service Worker cache for offline','Part of the PWA stack.'),
+      T('Cookies — HttpOnly, Secure, SameSite, expires, domain, path','HttpOnly: cannot be accessed by JS — used for auth tokens.'),
+      T('History API — pushState, replaceState, popstate','React Router uses History API.'),
+      T('URL API — new URL(href), URLSearchParams — parse query strings','new URLSearchParams(location.search).get("q")'),
+      T('Clipboard API — navigator.clipboard.writeText/readText','Requires user gesture and HTTPS.'),
+      T('Notifications API — Notification.requestPermission()','Requires permission. Use sparingly.'),
+      T('Web Workers — offload heavy computation off main thread','No DOM access in workers. Communicate via postMessage.'),
+      T('Service Workers — lifecycle (install, activate, fetch), offline, PWA','The foundation of PWAs and push notifications.'),
+      T('Performance API — performance.now(), performance.mark(), PerformanceObserver','Sub-millisecond timing for profiling.'),
+    ]},
+    {id:'c1-4-3',name:'Build Tools, Bundlers & Dev Tooling',high:false,topics:[
+      T('npm & package.json — dependencies, devDependencies, scripts, engines, exports','Understand every field in package.json.'),
+      T('Semantic versioning — ^1.2.3, ~1.2.3, 1.2.3, exact vs ranges','^ = compatible minor/patch. ~ = compatible patch only.'),
+      T('Vite — config, HMR, build, preview, plugins','Vite uses native ES modules in dev. Rollup for prod build.'),
+      T('Webpack — entry, output, loaders, plugins, code splitting, tree shaking','Most companies still use Webpack. Know the concepts.'),
+      T('Babel — transpiling, presets (@babel/preset-env, @babel/preset-react), polyfills','Converts modern JS to older syntax for compatibility.'),
+      T('ESLint — rules, extends, plugins (react, jsx-a11y), --fix','eslint-plugin-jsx-a11y catches accessibility mistakes.'),
+      T('Prettier — formatting, config, .prettierignore, integration with ESLint','Never fight about code style again.'),
+      T('Git — init, clone, add, commit, push, pull, fetch, merge, rebase','Git is not optional. Learn it deeply.'),
+      T('Git branching — branch, checkout -b, switch, merge, rebase, cherry-pick','Feature branch workflow: create → code → PR → merge → delete.'),
+      T('GitHub — PRs, code reviews, Issues, GitHub Actions basics, GitHub Pages','Every project needs a GitHub repo.'),
+      T('Conventional commits — feat, fix, docs, refactor, chore, test, BREAKING CHANGE','Enables automated changelogs and semantic versioning.'),
+      T('Chrome DevTools — Elements, Console, Network, Performance, Memory, Sources, Lighthouse','Master DevTools. It is your most powerful debugging tool.'),
+      T('Lighthouse — performance, accessibility, SEO, PWA scores, optimization tips','Target 90+ on all categories.'),
+      T('Source maps — debugging minified code in production','Enable in build config. Keep private in production.'),
+    ]},
+  ]},
+  {id:'s1-5',name:'Stage 1.5 — React Complete',color:'green',chapters:[
+    {id:'c1-5-1',name:'React Fundamentals',high:true,topics:[
+      T('Why React — virtual DOM, reconciliation algorithm, declarative vs imperative','React diffs the virtual DOM tree and only updates what changed.'),
+      T('Vite setup — npm create vite@latest, project structure, JSX config','Fastest React setup. No Create React App.'),
+      T('JSX — rules: single root (or Fragment), className, htmlFor, camelCase events, curly braces for JS','JSX compiles to React.createElement(type, props, ...children).'),
+      T('React.Fragment — <> </> shorthand — avoid wrapper divs','Fragments do not create DOM nodes.'),
+      T('Functional components — PascalCase, props destructuring, children prop','function Button({label, onClick, children}){}'),
+      T('Props — immutable, one-way data flow, PropTypes, default values','Props flow DOWN. Events flow UP.'),
+      T('Conditional rendering — ternary, &&, switch, early return, null','null and false render nothing in JSX.'),
+      T('List rendering — .map() with unique stable key, never index as key for dynamic lists','Stable keys help React identify which item changed.'),
+      T('Controlled vs uncontrolled inputs — value+onChange vs ref','Use controlled inputs 95% of the time.'),
+      T('Event handling — camelCase, function reference vs call, synthetic events','onClick={handler} not onClick={handler()}'),
+      T('CSS in React — CSS Modules, plain CSS, Tailwind, styled-components','CSS Modules: zero naming conflicts, local scoping.'),
+      T('React DevTools — component tree, props, state, hooks inspection','Essential for debugging. Install as browser extension.'),
+      P('Build: 5 standalone components — Button, Badge, Card, Avatar, Modal'),
+    ]},
+    {id:'c1-5-2',name:'React Hooks — Core',high:true,topics:[
+      T('Rules of Hooks — only in components/custom hooks, only at top level, not in conditions','eslint-plugin-react-hooks enforces rules.'),
+      T('useState — const [state, setState] = useState(initial); lazy initializer','Lazy init: useState(()=>expensiveCalc()) runs once.'),
+      T('useState with objects — always spread previous state','setState(prev=>({...prev, name:"Alice"}))'),
+      T('useState functional update — setState(prev=>prev+1) for stale closures','Always use functional update when new state depends on previous.'),
+      T('useEffect — runs after render, side effects: fetch, subscriptions, timers','Think: "after render, sync with the outside world."'),
+      T('useEffect dependencies — [] once, [dep] on change, none on every render','Missing deps = stale closure bugs. Extra deps = unnecessary runs.'),
+      T('useEffect cleanup — return function for unsubscribe/clearInterval/abort','Cleanup prevents memory leaks and duplicate subscriptions.'),
+      T('useEffect with async — create async function inside, invoke it','const fn=async()=>{...}; fn(); — never make callback async directly.'),
+      T('useRef — mutable .current, DOM access, persist values without re-render','useRef does NOT cause re-renders when changed.'),
+      T('useRef vs useState — when to use which','Ref: DOM access, timer IDs, prev value. State: UI-triggering values.'),
+      T('forwardRef — pass ref through component to underlying DOM element','Required for building reusable input/button components.'),
+      T('useImperativeHandle — expose specific methods from forwardRef component','focus(), reset(), validate() — controlled API for refs.'),
+      T('useMemo — memoize expensive computed value, recalculate only when deps change','useMemo(()=>heavyCalc(data),[data]) — skips on unrelated renders.'),
+      T('useCallback — memoize function reference, stable for child props','Prevents child re-render when function is passed as prop.'),
+      T('When NOT to memoize — profiler first, premature optimization is real','Most apps are not slow. Measure before optimizing.'),
+      T('useContext — consume context without prop drilling','const theme = useContext(ThemeContext)'),
+      T('useReducer — complex state machine, dispatch+action pattern','dispatch({type:"ADD_ITEM", payload:item})'),
+      T('useReducer vs useState — when to switch','Switch when: multiple related values, complex transitions.'),
+      T('useLayoutEffect — synchronous after DOM mutations, before paint','Use for: measuring DOM, preventing flash.'),
+      T('useId — stable unique IDs for accessibility label pairs','Avoids SSR hydration mismatches.'),
+      T('useDeferredValue, useTransition — concurrent features for UI responsiveness','Mark slow renders as non-urgent.'),
+      P('Build: useFetch, useLocalStorage, useDebounce, useWindowSize, useMediaQuery, useOnClickOutside'),
+      IV('Interview: Rules of hooks. Why can hooks not be called conditionally?'),
+    ]},
+    {id:'c1-5-3',name:'React Patterns & Architecture',high:true,topics:[
+      T('Component composition — children, render props, compound components','Compound: <Select><Option/><Option/></Select>'),
+      T('Higher-Order Components (HOC) — wrapper function pattern','withAuth(Component) wraps with auth logic.'),
+      T('Context API — createContext, Provider, useContext — when to use','Good for: theme, locale, auth user. Not for frequently changing data.'),
+      T('React.memo — shallow prop comparison, custom comparator','memo(Component, (prev,next)=>prev.id===next.id)'),
+      T('Code splitting — React.lazy() + Suspense — reduce initial bundle','const Dashboard = lazy(()=>import("./Dashboard"))'),
+      T('Error boundaries — componentDidCatch, getDerivedStateFromError, react-error-boundary','Use react-error-boundary. Class component under the hood.'),
+      T('Portal — render outside parent DOM, modal/tooltip use case','ReactDOM.createPortal(child, document.body)'),
+      T('Reconciliation — key role, list diffing, fiber architecture overview','Keys tell React "this is the same component, just moved."'),
+      T('React performance — Profiler, flamegraph, wasted renders, virtualization','react-window for lists of 1000+ items.'),
+      T('Feature folder structure — /features/auth, /features/products, shared/','Scale beyond component-based structure.'),
+      T('react-hook-form — register, handleSubmit, errors, watch, setValue, Controller','Less re-renders than other form libraries. Default choice.'),
+      T('Zod — schema validation, z.object, .string().email(), safeParse, infer','Combine with react-hook-form zodResolver.'),
+      PR('Project: Full CRUD React app — Notes app with auth, search, pagination, dark mode'),
+    ]},
+    {id:'c1-5-4',name:'React Router & State Management',high:false,topics:[
+      T('React Router v6 — BrowserRouter, Routes, Route, Link, NavLink, Outlet','NavLink adds "active" class automatically.'),
+      T('Route params — :id — useParams(); query strings — useSearchParams()','const [params, setParams] = useSearchParams()'),
+      T('useNavigate, useLocation — programmatic navigation','navigate(-1) goes back. navigate("/", {replace:true}) replaces history.'),
+      T('Nested routes — layout routes with Outlet — shared header/sidebar','Layout route renders header + <Outlet/> + footer.'),
+      T('Protected routes — Navigate component, auth check pattern','if(!user) return <Navigate to="/login" state={{from:location}}/>'),
+      T('Zustand — create, useStore, slices pattern, persist middleware','Minimal API. Perfect for medium complexity apps.'),
+      T('Redux Toolkit — createSlice, createAsyncThunk, configureStore, useSelector, useDispatch','RTK is the ONLY modern way to use Redux.'),
+      T('RTK Query — createApi, endpoints, useGetQuery, useMutation, cache invalidation','RTK Query replaces most custom data fetching logic.'),
+      T('TanStack Query — useQuery, useMutation, QueryClient, staleTime, gcTime, invalidateQueries','Industry standard for server state. Use it.'),
+      T('Jotai and Recoil — atom-based state for fine-grained updates','Jotai: simpler. Recoil: Facebook-backed.'),
+      T('Server state vs client state — what belongs where','Server state: TanStack Query. Client UI state: useState/Zustand.'),
+      P('Build: Shopping cart with Zustand, product list with TanStack Query'),
+    ]},
+    {id:'c1-5-5',name:'Next.js — Production React',high:true,topics:[
+      T('Why Next.js — SSR, SSG, ISR, file routing, API routes, image opt, SEO','Next.js is the production standard for React apps.'),
+      T('App Router vs Pages Router — App Router is the future','App Router: React Server Components + new conventions.'),
+      T('File routing — page.tsx, layout.tsx, loading.tsx, error.tsx, not-found.tsx, route.ts','app/blog/[slug]/page.tsx → /blog/any-slug.'),
+      T('Server Components vs Client Components — default is server, "use client" opts in','Server: no hooks/events. Client: interactivity.'),
+      T('Data fetching in Server Components — async/await, no useEffect needed','async function Page(){const data=await fetchPosts();return <Posts posts={data}/>}'),
+      T('Next.js fetch caching — force-cache (static), no-store (dynamic), revalidate (ISR)','fetch(url,{next:{revalidate:3600}}) regenerates every hour.'),
+      T('generateStaticParams — pre-render dynamic routes at build time','export async function generateStaticParams(){return posts.map(p=>({slug:p.slug}))}'),
+      T('Server Actions — "use server", form actions, mutations without API routes','Directly call server functions from components.'),
+      T('API Routes — app/api/route.ts — export GET, POST, PUT, DELETE handlers','export async function GET(req:Request){return Response.json(data)}'),
+      T('Next.js Image component — automatic optimization, lazy loading, blur placeholder','Never use raw <img> for user-uploaded images.'),
+      T('Metadata API — generateMetadata, static metadata, Open Graph','export async function generateMetadata({params}){return {title:...}}'),
+      T('Middleware — middleware.ts at root, redirect, auth check, rewrite','Runs before every request. Keep it lightweight.'),
+      T('Environment variables — .env.local, NEXT_PUBLIC_ prefix for client','NEXT_PUBLIC_ makes vars available in browser bundle.'),
+      T('Auth.js (NextAuth) — providers, session, JWT, database adapter','Most popular auth solution for Next.js.'),
+      T('Prisma with Next.js — schema, migrate, type-safe queries, connection pooling','Use PrismaClient singleton to avoid multiple connections.'),
+      PR('Project: SaaS Dashboard — Next.js + Prisma + PostgreSQL + Auth.js + Stripe'),
+    ]},
+    {id:'c1-5-6',name:'TypeScript with React',high:true,topics:[
+      T('Why TypeScript — compile-time errors, autocomplete, safe refactoring','Rename a function: TS shows every usage.'),
+      T('tsconfig.json — strict, target, lib, module, jsx, paths, baseUrl','strict:true enables all strict checks. Always use.'),
+      T('Basic types — string, number, boolean, null, undefined, any, unknown, never, void, object','unknown is any but safe. You must narrow before using.'),
+      T('Type inference — when TS infers, when to annotate','Only annotate when TS cannot infer or for documentation.'),
+      T('Interfaces vs type aliases — extendable, declaration merging','interface extends. type uses &. Interfaces for public APIs.'),
+      T('Union and intersection types — string|number, TypeA & TypeB','Discriminated unions: type Shape = {kind:"circle",r:number} | {kind:"rect",w:number,h:number}'),
+      T('Literal types — "GET"|"POST", 1|2|3 — exact value constraints','Catches typos like "POTS" instead of "POST" at compile time.'),
+      T('Type narrowing — typeof, instanceof, in, discriminated union, type guards','function isString(val: unknown): val is string { return typeof val === "string" }'),
+      T('Generics — <T>, generic functions, generic interfaces, constraints','function first<T>(arr:T[]):T|undefined{return arr[0]}'),
+      T('Utility types — Partial, Required, Pick, Omit, Record, Readonly, ReturnType, Parameters, Awaited','Partial<User> makes all fields optional.'),
+      T('Mapped types, conditional types, template literal types','These power all utility types internally.'),
+      T('React + TypeScript — FC<Props>, ReactNode, ReactElement, event types','type ButtonProps = {onClick:(e:React.MouseEvent<HTMLButtonElement>)=>void}'),
+      T('TypeScript with hooks — useState<User|null>, useRef<HTMLInputElement>','Always type your state generics.'),
+      T('Declaration files — .d.ts, @types packages, ambient declarations','@types/react installs React type definitions.'),
+      IV('Interview: Difference between unknown and any? When to use generics?'),
+    ]},
+  ]},
+]},
+// =====================================================================
+// UNIT 2 — BACKEND
+// =====================================================================
+{id:'u2',name:'Unit 2 — Backend',color:'blue',months:'Month 5–7',stages:[
+  {id:'s2-1',name:'Stage 2.1 — Node.js Runtime',color:'blue',chapters:[
+    {id:'c2-1-1',name:'Node.js Core',high:false,topics:[
+      T('What Node.js is — V8 engine + libuv — non-blocking I/O event loop','Node handles thousands of concurrent connections with one thread.'),
+      T('Node.js event loop phases — timers, I/O callbacks, idle/prepare, poll, check (setImmediate), close callbacks','process.nextTick runs before any other I/O phase.'),
+      T('process.nextTick vs setImmediate vs setTimeout vs Promise.resolve order','nextTick > Promises > setImmediate > setTimeout.'),
+      T('CommonJS — require(), module.exports, exports, __dirname, __filename','require() is synchronous. Use for legacy Node code.'),
+      T('ES Modules in Node — import/export, package.json type:"module", .mjs','Modern Node fully supports ESM.'),
+      T('Built-in modules — fs, path, os, http, url, events, crypto, buffer, child_process, stream, zlib','fs.promises.readFile — always use promises version.'),
+      T('process object — env, argv, exit, cwd, pid, memoryUsage, stdout, stderr','process.env.NODE_ENV determines dev vs prod behavior.'),
+      T('Buffer — binary data, Buffer.from(), .toString("hex"/"base64"/"utf8")','Buffers handle binary: images, files, crypto.'),
+      T('Streams — readable, writable, transform, duplex, pipe, pipeline','Streams process data in chunks — handle files larger than RAM.'),
+      T('EventEmitter — .on(), .emit(), .once(), .removeListener(), .removeAllListeners()','Node HTTP server is itself an EventEmitter.'),
+      T('Crypto module — randomBytes, createHash, createHmac, createCipheriv','Always use crypto.randomBytes for tokens, never Math.random.'),
+      T('child_process — exec, execFile, spawn, fork — run other processes','spawn streams output. exec buffers and returns string.'),
+      T('Worker threads — CPU-intensive work without blocking event loop','For: image processing, crypto mining, compression.'),
+      T('Cluster module — multiple Node processes on multi-core CPU','PM2 handles clustering automatically.'),
+      T('dotenv — loading .env files, never commit .env to git','dotenv.config() at app entry point.'),
+      T('npm — workspaces, publish, audit, outdated, scripts, npx','npm audit fix --force fixes known vulnerabilities.'),
+    ]},
+  ]},
+  {id:'s2-2',name:'Stage 2.2 — Express.js & REST APIs',color:'blue',chapters:[
+    {id:'c2-2-1',name:'Express.js Fundamentals',high:true,topics:[
+      T('Express app setup — express(), app.listen(), environment-based PORT','const PORT = process.env.PORT || 3000'),
+      T('HTTP methods — GET (read), POST (create), PUT (full replace), PATCH (partial update), DELETE','Follow REST conventions religiously.'),
+      T('Route definition — path params (:id), query strings (?page=1), wildcards','req.params.id, req.query.page, req.query.limit.'),
+      T('Request object — req.body, req.params, req.query, req.headers, req.ip, req.method, req.path','Always validate all four input sources.'),
+      T('Response methods — res.json(), res.status(404).json(), res.send(), res.redirect(), res.download(), res.sendFile()','Always send exactly one response per request or you get errors.'),
+      T('HTTP status codes — 200 OK, 201 Created, 204 No Content, 400 Bad Request, 401 Unauthorized, 403 Forbidden, 404 Not Found, 409 Conflict, 422 Unprocessable, 429 Too Many Requests, 500 Internal Error','Using correct status codes is professional API design.'),
+      T('Middleware — (req,res,next) — pipeline, order matters, calling next()','Middleware order: body parser → CORS → auth → routes → error handler.'),
+      T('Built-in middleware — express.json(), express.urlencoded(), express.static()','express.json() must come before routes that read req.body.'),
+      T('Third-party middleware — morgan (logging), cors, helmet, compression, cookie-parser','app.use(morgan("dev")) logs every request with timing.'),
+      T('Custom middleware — logger, auth guard, request timer, request ID','Attach data to req object for downstream use: req.user = decodedToken.'),
+      T('Error handling middleware — 4-parameter (err,req,res,next), centralized error handling','Express detects error middleware by 4-arg signature.'),
+      T('Express Router — router.get/post/put/delete, mounting with app.use("/api/users", router)','Split routes into feature files for maintainability.'),
+      T('Router-level middleware — apply only to specific route groups','router.use(requireAuth) applies auth to all routes in router.'),
+      T('Response format — consistent API response envelope pattern','{success:true, data:{...}, message:"..."} or {success:false, error:{...}}'),
+      P('Build: REST API for a blog — CRUD for posts, comments, users'),
+    ]},
+    {id:'c2-2-2',name:'Authentication & Security',high:true,topics:[
+      T('Authentication vs Authorization — identity vs permission','Auth: who are you? Authorization: what can you do?'),
+      T('Password hashing — bcrypt, bcryptjs — salt rounds (10), hash(), compare()','bcrypt is SLOW by design. Salt rounds 10-12 for production.'),
+      T('JWT structure — header.payload.signature — base64url, NOT encrypted','Never put sensitive data in JWT payload.'),
+      T('JWT — sign(payload, secret, options), verify(token, secret), decode()','Access tokens: 15 min. Refresh tokens: 7–30 days.'),
+      T('Refresh token rotation — store in httpOnly cookie, rotate on use','Old refresh token is invalidated immediately.'),
+      T('Auth middleware — extract Bearer token, verify, attach req.user','const token = req.headers.authorization?.split(" ")[1]'),
+      T('httpOnly cookie vs localStorage JWT — security tradeoffs','httpOnly: XSS-safe. localStorage: CSRF-safe. httpOnly cookies + SameSite = best.'),
+      T('Role-based access control (RBAC) — roles array, permission middleware','const requireRole = (role)=>(req,res,next)=>{if(!req.user.roles.includes(role))return res.sendStatus(403);next()}'),
+      T('Input validation — express-validator, joi, zod — never trust user input','Validate all: body, params, query, headers.'),
+      T('Sanitization — DOMPurify, validator.escape() — strip dangerous chars','Separate concern from validation. Both needed.'),
+      T('SQL injection — parameterized queries (prepared statements) prevent it','Never: "SELECT * FROM users WHERE id = " + userId'),
+      T('XSS — Content-Security-Policy, sanitize output, textContent not innerHTML','Set CSP header. helmet.js does this.'),
+      T('CSRF — SameSite=Strict/Lax cookies, csurf for session-based apps','For JWT in httpOnly cookies: SameSite=Lax is sufficient.'),
+      T('Helmet.js — 11 security headers — X-Frame-Options, HSTS, CSP, noSniff','app.use(helmet()) is a one-liner security upgrade.'),
+      T('Rate limiting — express-rate-limit — per IP, per user, sliding window','Prevent brute force on /api/login.'),
+      T('Security headers — CORS, Referrer-Policy, Permissions-Policy','Restrict what browsers send and what features are allowed.'),
+      T('OAuth 2.0 / OIDC — authorization code flow, tokens, scopes, PKCE','Google/GitHub login uses OAuth 2.0. Passport.js or Auth.js handles it.'),
+      T('Argon2 — modern alternative to bcrypt for password hashing','Argon2id is the current OWASP recommendation.'),
+      IV('Interview: How does JWT authentication work? Access + refresh token flow?'),
+    ]},
+    {id:'c2-2-3',name:'Advanced API Patterns',high:false,topics:[
+      T('RESTful resource naming — plural nouns, nested resources, versioning (/v1/)','GET /v1/users/:id/posts — nested resource.'),
+      T('Pagination — offset/limit (simple), cursor-based (scalable), keyset pagination','Cursor-based: no offset problem, consistent with concurrent inserts.'),
+      T('Filtering, sorting, search — query param conventions','GET /products?category=shoes&sort=-price&q=nike'),
+      T('API versioning strategies — URL path, header, query param','URL path (/v1/, /v2/) is most visible and cacheable.'),
+      T('OpenAPI/Swagger — spec, swagger-ui-express, swagger-jsdoc','Generates interactive API docs automatically.'),
+      T('Webhooks — receive HTTP POST from external services, verify signature','Always verify HMAC signature on incoming webhooks.'),
+      T('File uploads — multer middleware, diskStorage, memoryStorage, fileFilter, limits','Never store uploads locally in production. Use S3/Cloudinary.'),
+      T('File storage — AWS S3, Cloudinary, presigned URLs for direct upload','Presigned URLs let clients upload directly to S3 — bypasses your server.'),
+      T('Email — nodemailer, Resend, SendGrid — transactional emails','Resend is the modern choice for transactional email.'),
+      T('Background jobs — BullMQ (Redis-based) — queues, workers, schedulers','Queue heavy work: email sending, image resizing, report generation.'),
+      T('Caching with Redis — get/set/del/expire, cache-aside pattern, invalidation','Cache: expensive DB queries, API responses, session data.'),
+      T('WebSockets with ws or Socket.io — rooms, namespaces, broadcasting','socket.io handles reconnection automatically.'),
+      T('GraphQL basics — schema, types, queries, mutations, resolvers — Apollo Server','Alternative to REST for flexible data fetching.'),
+      T('gRPC basics — protobuf, service definition, streaming — microservices communication','Faster than REST for internal service communication.'),
+    ]},
+  ]},
+  {id:'s2-3',name:'Stage 2.3 — Testing',color:'blue',chapters:[
+    {id:'c2-3-1',name:'Backend Testing',high:false,topics:[
+      T('Testing pyramid — unit (many), integration (some), e2e (few)','Unit: fast, isolated. Integration: realistic. E2e: slow but complete.'),
+      T('Jest — describe, it, expect, beforeEach/afterEach, beforeAll/afterAll, test.each','jest --coverage shows what is not tested.'),
+      T('Jest matchers — toBe, toEqual, toStrictEqual, toBeNull, toBeTruthy, toContain, toThrow, toHaveBeenCalledWith','toEqual: deep equality. toBe: reference equality.'),
+      T('Mocking — jest.fn(), jest.mock(), jest.spyOn(), mockReturnValue, mockResolvedValue','Mock external dependencies: DB, APIs, file system.'),
+      T('Supertest — HTTP integration tests for Express routes','const res = await request(app).post("/api/login").send({email, password})'),
+      T('React Testing Library — render, screen, userEvent, findBy/getBy/queryBy/waitFor','screen.getByRole("button",{name:/submit/i}) — accessible selector.'),
+      T('MSW (Mock Service Worker) — intercept fetch at network level in tests','Better than mocking fetch. Tests work in browser too.'),
+      T('Test database — in-memory SQLite, test containers, separate test DB','Never run tests against production database.'),
+      T('Code coverage — Istanbul/nyc, coverage thresholds, what to skip','Target 80% coverage. 100% is often not worth it.'),
+      T('TDD — test-first approach, red-green-refactor cycle','Write the failing test first, then make it pass.'),
+      T('Vitest — Jest-compatible, Vite-native, faster for Vite projects','Drop-in Jest replacement for Vite projects.'),
+      T('Playwright/Cypress — e2e browser testing, page object model','Playwright: faster, multi-browser, better DX.'),
+    ]},
+  ]},
+  {id:'s2-4',name:'Stage 2.4 — DevOps & Deployment',color:'blue',chapters:[
+    {id:'c2-4-1',name:'Docker & Containers',high:false,topics:[
+      T('What Docker solves — "works on my machine" — consistent environments','Container: isolated process with its own filesystem.'),
+      T('Dockerfile — FROM, WORKDIR, COPY, RUN, ENV, EXPOSE, CMD, ENTRYPOINT','Multi-stage builds reduce final image size dramatically.'),
+      T('Docker commands — build, run, ps, stop, rm, images, pull, push, exec, logs','docker run -p 3000:3000 -e NODE_ENV=production myapp'),
+      T('Docker Compose — multi-container apps, services, networks, volumes, depends_on','docker-compose up -d runs everything with one command.'),
+      T('.dockerignore — exclude node_modules, .env, .git from build context','Always ignore node_modules in Docker builds.'),
+      T('Docker layers and caching — COPY package*.json first, then npm install','Ordering layers correctly dramatically speeds up builds.'),
+      T('Container registries — Docker Hub, GHCR, AWS ECR','Push image to registry, pull on server.'),
+    ]},
+    {id:'c2-4-2',name:'CI/CD & Cloud Deployment',high:false,topics:[
+      T('GitHub Actions — workflows, jobs, steps, triggers (push, PR, schedule)','Free CI/CD for public repos. .github/workflows/ci.yml.'),
+      T('CI pipeline — lint, test, build, publish image on PR','Tests must pass before merge.'),
+      T('CD pipeline — deploy on merge to main','Auto-deploy to staging on PR merge, prod on tag.'),
+      T('Environment management — dev, staging, production, secrets management','Never put secrets in workflow files.'),
+      T('Railway / Render — deploy Node.js backend with zero config','Railway auto-detects Node.js and configures PORT.'),
+      T('Vercel — frontend deployment, serverless functions, Edge Runtime','Connect GitHub, auto-deploys on every push.'),
+      T('AWS basics — EC2, S3, RDS, Lambda, CloudFront, IAM, VPC (conceptual)','AWS is the most-used cloud. Know the core services.'),
+      T('Nginx — reverse proxy, serving static files, SSL termination, rate limiting','Nginx sits in front of Node.js in production.'),
+      T('SSL/TLS — Let\'s Encrypt, Certbot, HTTPS redirect, HSTS','Always HTTPS in production. Free with Let\'s Encrypt.'),
+      T('Process management — PM2 — cluster mode, auto-restart, log management','pm2 start app.js --instances max -- cluster mode.'),
+      T('Logging — structured logs (JSON), log levels, centralized logging (Datadog, Papertrail)','console.log is not production logging. Use pino or winston.'),
+      T('Environment variables — .env, platform secrets, never hardcode credentials','Use platform-provided secret management in production.'),
+      T('Monitoring — Sentry (errors), Datadog/New Relic (APM), uptime monitoring','Set up error tracking on day 1 of production.'),
+    ]},
+  ]},
+]},
+// =====================================================================
+// UNIT 3 — DATABASES
+// =====================================================================
+{id:'u3',name:'Unit 3 — Databases',color:'yellow',months:'Month 6–8',stages:[
+  {id:'s3-1',name:'Stage 3.1 — SQL & PostgreSQL',color:'yellow',chapters:[
+    {id:'c3-1-1',name:'SQL Foundations',high:true,topics:[
+      T('Relational model — tables, rows, columns, primary keys, foreign keys','Every table needs a primary key. Foreign keys enforce relationships.'),
+      T('Data types — INTEGER, BIGINT, SERIAL, NUMERIC, VARCHAR, TEXT, BOOLEAN, DATE, TIMESTAMP, TIMESTAMPTZ, UUID, JSONB','Always use TIMESTAMPTZ (timezone-aware) not TIMESTAMP.'),
+      T('DDL — CREATE TABLE, ALTER TABLE (add/drop/alter column), DROP TABLE, TRUNCATE','ALTER TABLE is dangerous on large tables. Use migrations.'),
+      T('Constraints — NOT NULL, UNIQUE, CHECK, DEFAULT, PRIMARY KEY, FOREIGN KEY, REFERENCES','Constraints enforce data integrity at the database level.'),
+      T('DML — INSERT (single, multi-row, INSERT...SELECT), UPDATE (always with WHERE!), DELETE (always with WHERE!)','Forgetting WHERE on UPDATE/DELETE modifies ALL rows.'),
+      T('UPSERT — INSERT ... ON CONFLICT DO UPDATE (PostgreSQL), MERGE (SQL standard)','ON CONFLICT(email) DO UPDATE SET name=EXCLUDED.name'),
+      T('SELECT — FROM, WHERE, ORDER BY, LIMIT, OFFSET, DISTINCT, AS','Always ORDER BY with LIMIT for deterministic pagination.'),
+      T('Filtering — AND, OR, NOT, IN, NOT IN, BETWEEN, LIKE, ILIKE (case-insensitive), IS NULL, IS NOT NULL','ILIKE is PostgreSQL-specific for case-insensitive LIKE.'),
+      T('Aggregate functions — COUNT(*), COUNT(col), SUM, AVG, MAX, MIN, STRING_AGG, ARRAY_AGG','COUNT(*) counts rows. COUNT(col) skips NULLs.'),
+      T('GROUP BY — aggregate per group, HAVING filters groups after aggregation','WHERE filters before grouping. HAVING filters after.'),
+      T('Subqueries — correlated vs non-correlated, IN, EXISTS, scalar subquery','EXISTS is usually faster than IN for large datasets.'),
+      T('CTEs — WITH clause, named subqueries, recursive CTEs for hierarchies','Recursive CTEs walk tree structures: comments, org charts.'),
+      T('Window functions — OVER(), PARTITION BY, ORDER BY, ROW_NUMBER(), RANK(), DENSE_RANK(), LAG(), LEAD(), SUM() OVER','Window functions are the most powerful SQL feature. Master them.'),
+      T('Window functions — FIRST_VALUE, LAST_VALUE, NTILE, PERCENT_RANK, CUMULATIVE_DIST','Used for: running totals, moving averages, rankings, percentiles.'),
+      IV('Interview: Difference between INNER JOIN and LEFT JOIN with example.'),
+    ]},
+    {id:'c3-1-2',name:'SQL Joins & Advanced Queries',high:true,topics:[
+      T('INNER JOIN — rows matching in BOTH tables','SELECT * FROM orders o INNER JOIN users u ON o.user_id = u.id'),
+      T('LEFT JOIN — all left rows + matching right, NULLs for no match','Find users WITHOUT orders: LEFT JOIN + WHERE orders.id IS NULL.'),
+      T('RIGHT JOIN — all right rows + matching left (prefer LEFT JOIN for clarity)','Swap table order and use LEFT JOIN instead.'),
+      T('FULL OUTER JOIN — all rows from both tables, NULLs for no match','Useful for data reconciliation.'),
+      T('CROSS JOIN — cartesian product — every combination','Use for: generating test data, all pairs.'),
+      T('SELF JOIN — join table to itself — parent-child relationships','Find employees and their managers in the same table.'),
+      T('Multiple joins — joining 3+ tables','JOIN clarity: alias every table.'),
+      T('UNION, INTERSECT, EXCEPT — combining result sets','UNION removes duplicates. UNION ALL keeps them (faster).'),
+      T('LATERAL join — correlated subquery in FROM clause','SELECT u.*, latest.* FROM users u, LATERAL (SELECT * FROM posts WHERE user_id=u.id ORDER BY created_at DESC LIMIT 3) latest'),
+      P('Practice: write 10 complex queries with CTEs and window functions'),
+    ]},
+    {id:'c3-1-3',name:'PostgreSQL Deep Dive',high:true,topics:[
+      T('PostgreSQL-specific types — UUID, ARRAY, JSONB, ENUM, RANGE, TSVECTOR','JSONB: indexable JSON. Better than TEXT for structured data.'),
+      T('JSONB operations — ->, ->>, @>, #>, jsonb_build_object, jsonb_agg','SELECT data->>"name" FROM users WHERE data @> \'{"role":"admin"}\''),
+      T('Full-text search — TSVECTOR, TSQUERY, to_tsvector, to_tsquery, GIN index','Built-in full-text search without Elasticsearch for simple cases.'),
+      T('Indexes — B-tree (default), GIN (JSONB/arrays), GiST (ranges/geo), Hash, BRIN (time-series)','Wrong index type = no speedup.'),
+      T('Composite indexes, partial indexes, covering indexes (INCLUDE)','Partial: CREATE INDEX ON orders (user_id) WHERE status="pending"'),
+      T('EXPLAIN ANALYZE — read query plans, Seq Scan vs Index Scan vs Bitmap Scan','EXPLAIN ANALYZE is the tool for diagnosing slow queries.'),
+      T('Transactions — BEGIN, COMMIT, ROLLBACK, SAVEPOINT, isolation levels','Isolation levels: READ COMMITTED (default), REPEATABLE READ, SERIALIZABLE.'),
+      T('Locking — row-level, table-level, advisory locks, deadlocks, FOR UPDATE SKIP LOCKED','FOR UPDATE SKIP LOCKED = atomic queue processing.'),
+      T('Constraints and triggers — CHECK, EXCLUDE, trigger functions in PL/pgSQL','Triggers: automatically update updated_at on row change.'),
+      T('Schema design — normalization (1NF, 2NF, 3NF), when to denormalize','Normalize first. Denormalize when profiling shows it helps.'),
+      T('Connection pooling — PgBouncer, pg pool, Prisma connection pool','Never use more connections than PostgreSQL max_connections.'),
+      T('Replication — logical vs physical, read replicas, streaming replication','Read replicas scale read-heavy apps.'),
+      T('Partitioning — range, list, hash — for large tables','Partition by date for time-series data.'),
+      T('pg_stat_statements — identify slow queries in production','Essential for production performance monitoring.'),
+    ]},
+    {id:'c3-1-4',name:'ORMs — Prisma & Drizzle',high:true,topics:[
+      T('Prisma — schema.prisma, data model, relations (1-to-1, 1-to-many, many-to-many)','Prisma generates TypeScript types from schema.'),
+      T('Prisma migrations — migrate dev, migrate deploy, migrate reset','Never manually edit migration files.'),
+      T('Prisma Client CRUD — create, findUnique, findMany, update, delete, upsert','const users = await prisma.user.findMany({where:{active:true},include:{posts:true}})'),
+      T('Prisma queries — where, select, include (eager loading), orderBy, take, skip','select vs include: select picks specific fields. include loads relations.'),
+      T('Prisma transactions — $transaction([...]), interactive transactions','const [user,post] = await prisma.$transaction([createUser, createPost])'),
+      T('Prisma middleware and extensions','prisma.$extends({query:{user:{create:{async query({args,query}){...}}}}})'),
+      T('Drizzle ORM — schema as TypeScript, type-safe SQL builder, migrations','Drizzle gives raw SQL control with type safety.'),
+      T('Raw SQL with Prisma — $queryRaw, $executeRaw, sql template literal','For complex queries that Prisma cannot express.'),
+    ]},
+  ]},
+  {id:'s3-2',name:'Stage 3.2 — NoSQL Databases',color:'yellow',chapters:[
+    {id:'c3-2-1',name:'MongoDB',high:false,topics:[
+      T('Document model — collections, documents (BSON), flexible schema','Documents can have different fields. Good for varied data.'),
+      T('CRUD — insertOne/Many, findOne/find, updateOne/Many ($set,$push,$pull,$inc), deleteOne/Many','$set updates only specified fields. Without $set, replaces entire document.'),
+      T('Query operators — $eq, $ne, $gt, $lt, $gte, $lte, $in, $nin, $exists, $type, $regex','$regex:/pattern/i for case-insensitive search.'),
+      T('Update operators — $set, $unset, $push, $pull, $addToSet, $pop, $inc, $mul, $rename','$addToSet adds only if not already present.'),
+      T('Aggregation pipeline — $match, $project, $group, $sort, $limit, $skip, $lookup, $unwind, $addFields','$lookup = SQL JOIN. $unwind flattens arrays.'),
+      T('Indexes — createIndex, compound, text, geospatial, TTL, sparse, partial, explain()','TTL index auto-deletes documents after N seconds. Perfect for sessions.'),
+      T('Mongoose — Schema, Model, CRUD, populate (virtual join), hooks, virtuals, methods, statics','userSchema.pre("save", async function(){this.password=await bcrypt.hash(this.password,10)})'),
+      T('Transactions in MongoDB — replica set required, sessions, withTransaction()','MongoDB transactions are heavier than SQL. Use sparingly.'),
+      T('Change streams — watch() — real-time notifications on collection changes','Use for: live dashboards, event sourcing, cache invalidation.'),
+      T('Atlas Search — full-text search built on Lucene inside MongoDB','Better than regex for search. No Elasticsearch needed.'),
+      T('When to use MongoDB vs PostgreSQL','MongoDB: flexible schema, nested data. PostgreSQL: strong relations, transactions.'),
+    ]},
+    {id:'c3-2-2',name:'Redis',high:true,topics:[
+      T('Redis data structures — String, List, Set, Sorted Set, Hash, Stream, HyperLogLog, Bitmap','Sorted Set: leaderboards. Stream: event queue. HyperLogLog: cardinality.'),
+      T('String commands — GET, SET, MGET, MSET, INCR, DECR, APPEND, GETSET, SETNX','SETNX (Set if Not eXists) — distributed locking.'),
+      T('Key expiration — EXPIRE, EXPIREAT, TTL, PERSIST, EX option in SET','SET key value EX 3600 NX — cache with TTL and only-if-not-exists.'),
+      T('Hash commands — HGET, HSET, HMGET, HMSET, HDEL, HGETALL, HKEYS, HVALS','Store user sessions: HSET session:123 user_id 42 role admin.'),
+      T('List commands — LPUSH, RPUSH, LPOP, RPOP, LRANGE, BLPOP — queues, stacks','BLPOP blocks until item available — efficient queue consumer.'),
+      T('Set commands — SADD, SREM, SMEMBERS, SISMEMBER, SINTERSTORE, SUNION, SDIFF','Sets: user tags, followers, online users, A/B test groups.'),
+      T('Sorted Set — ZADD, ZRANGE, ZRANGEBYSCORE, ZRANK, ZINCRBY, ZPOPMIN — leaderboards','ZADD leaderboard 100 "alice" — leaderboard with O(log n) ops.'),
+      T('Caching patterns — cache-aside, write-through, write-behind, read-through','Cache-aside: check cache, miss → DB → update cache.'),
+      T('Cache invalidation — TTL, event-based, tag-based, cache busting','Hard problem. TTL is simplest. Event-based is most consistent.'),
+      T('Redis Pub/Sub — PUBLISH, SUBSCRIBE, PSUBSCRIBE — real-time messaging','Lightweight. Not persistent. Use Streams for durable messaging.'),
+      T('Redis Streams — XADD, XREAD, XGROUP, XACK — durable message queue','Consumer groups enable multiple workers to share stream processing.'),
+      T('Redis transactions — MULTI, EXEC, DISCARD, WATCH — optimistic locking','WATCH key → MULTI → commands → EXEC aborts if key changed.'),
+      T('Lua scripting — EVAL — atomic custom operations','Atomic check-and-set without MULTI/EXEC overhead.'),
+      T('Redis Cluster — sharding, hash slots, failover','16384 hash slots distributed across nodes.'),
+      T('Redis use cases — sessions, rate limiting, distributed locks, job queues, real-time analytics','ioredis and node-redis are the Node.js clients.'),
+    ]},
+  ]},
+  {id:'s3-3',name:'Stage 3.3 — Database Design & Optimization',color:'yellow',chapters:[
+    {id:'c3-3-1',name:'Schema Design & Performance',high:true,topics:[
+      T('ER diagrams — entities, attributes, relationships, cardinality (1:1, 1:N, M:N)','Always design on paper/diagram before touching code.'),
+      T('Normalization — 1NF (atomic values), 2NF (no partial dependency), 3NF (no transitive dependency)','Over-normalization is real. Denormalize when profiling demands it.'),
+      T('Denormalization patterns — materialized views, precomputed aggregates, duplicated fields','Trade consistency for read performance.'),
+      T('Indexes deep dive — when indexes help vs hurt (write overhead)','Index every foreign key, every column in WHERE and ORDER BY clauses.'),
+      T('Query optimization — rewrite subqueries as JOINs, avoid SELECT *, avoid functions in WHERE','SELECT * sends unnecessary data over network.'),
+      T('N+1 problem — how to detect and fix with eager loading or batching','ORM queries in loops = N+1. Use include/populate or dataloader.'),
+      T('Database connection pooling — pool size tuning, connection limits','Pool too small = queue. Pool too large = PostgreSQL exhaustion.'),
+      T('Migrations best practices — never destructive, zero-downtime, backward compatible','Add column → deploy code → drop old column. Never the reverse.'),
+      T('Soft delete vs hard delete — deleted_at timestamp pattern','Soft delete preserves audit trail and allows recovery.'),
+      T('Audit tables — track who changed what and when','created_at, updated_at, deleted_at, created_by, updated_by.'),
+      T('Multi-tenancy — shared schema (tenant_id), separate schema, separate database','Shared schema with tenant_id RLS (Row Level Security) is common.'),
+      T('Row Level Security (PostgreSQL) — policy-based multi-tenancy at DB level','Supabase is built on PostgreSQL RLS.'),
+    ]},
+  ]},
+]},
+// =====================================================================
+// UNIT 4 — DSA WITH C++ AND JAVA
+// =====================================================================
+{id:'u4',name:'Unit 4 — DSA (C++ & Java)',color:'purple',months:'Month 3–9 (parallel)',stages:[
+  {id:'s4-1',name:'Stage 4.1 — Language Fundamentals',color:'purple',chapters:[
+    {id:'c4-1-1',name:'C++ for Competitive Programming',high:true,topics:[
+      CPP('C++ basics — data types (int, long long, double, char, bool, string), I/O (cin/cout), endl vs "\\n"','Use "\\n" not endl — endl flushes buffer (slow).'),
+      CPP('Variables, references, pointers — &ref, *ptr, ptr arithmetic, nullptr','int* p = &x; *p is the value. &x is the address.'),
+      CPP('#include <bits/stdc++.h> — competitive programming header','Includes everything. Not for production code.'),
+      CPP('Functions — parameters by value, by reference, by pointer, default args, overloading','Pass large objects by const reference.'),
+      CPP('Arrays — stack vs heap, std::array, raw arrays, 2D arrays','int arr[1000005]; at global scope avoids stack overflow.'),
+      CPP('Strings — std::string, substr, find, replace, to_string, stoi, stol, stoll','s.find("sub") returns string::npos if not found.'),
+      CPP('STL Containers — vector, deque, list, forward_list, set, multiset, map, multimap, unordered_map, unordered_set, stack, queue, priority_queue, pair, tuple','vector<int> is your default container.'),
+      CPP('STL Algorithms — sort, reverse, binary_search, lower_bound, upper_bound, next_permutation, unique, fill, iota, accumulate, max_element, min_element, count, find','lower_bound returns iterator to first element >= val.'),
+      CPP('Iterators — begin, end, rbegin, rend, advance, distance, auto keyword','auto it = v.begin(); *it is the value.'),
+      CPP('Lambda functions — [capture](params)->ret{body}, [&], [=]','sort(v.begin(),v.end(),[](int a,int b){return a>b;}) — descending sort.'),
+      CPP('Struct and classes — struct vs class (default access), constructors, operator overloading','struct Point{int x,y; bool operator<(const Point&o)const{return x<o.x||x==o.x&&y<o.y;}};'),
+      CPP('Memory — new/delete, smart pointers (unique_ptr, shared_ptr, weak_ptr), RAII','In competitive programming: use stack allocation. In production: smart pointers.'),
+      CPP('Templates — function templates, class templates, template specialization','template<typename T> T maxOf(T a,T b){return a>b?a:b;}'),
+      CPP('Time complexity and measuring — clock_t, high_resolution_clock','Time your solutions locally before submitting.'),
+      CPP('Fast I/O — ios_base::sync_with_stdio(false); cin.tie(NULL)','Essential for large input competitive problems.'),
+      P('Practice: Solve 20 easy LeetCode problems in C++'),
+    ]},
+    {id:'c4-1-2',name:'Java for DSA & Interviews',high:true,topics:[
+      T('Java basics — primitive types (int, long, double, char, boolean), wrapper classes (Integer, Long), autoboxing','Java is preferred in big tech (Google, Amazon, Meta) interviews.'),
+      T('Strings — String (immutable), StringBuilder (mutable), String.format, split, trim, charAt, substring','Use StringBuilder for building strings in loops.'),
+      T('Arrays — declaration, initialization, Arrays.sort, Arrays.fill, Arrays.copyOf, System.arraycopy, 2D arrays','int[] arr = new int[n]; Arrays.fill(arr, -1);'),
+      T('Collections Framework — List, ArrayList, LinkedList, Stack, Queue, Deque, ArrayDeque, Set, HashSet, TreeSet, Map, HashMap, TreeMap, LinkedHashMap, PriorityQueue','Know which collection to use for each problem type.'),
+      T('Collections utility — Collections.sort, Collections.reverse, Collections.frequency, Collections.swap, Collections.min/max','Collections.sort(list, Comparator.reverseOrder())'),
+      T('Comparator and Comparable — natural ordering vs custom sort','Arrays.sort(arr,(a,b)->a[1]-b[1]) — sort by second element.'),
+      T('HashMap operations — put, get, getOrDefault, containsKey, remove, entrySet, keySet, computeIfAbsent, merge, putIfAbsent','map.getOrDefault(key,0) — avoid NullPointerException.'),
+      T('PriorityQueue — min-heap by default, custom comparator for max-heap','PriorityQueue<Integer> maxHeap = new PriorityQueue<>(Collections.reverseOrder())'),
+      T('Java generics — List<T>, ? extends T, ? super T, bounded wildcards','<T extends Comparable<T>> for generic sort.'),
+      T('Recursion in Java — base cases, stack frames, stack overflow prevention','Recursive depth can cause StackOverflow. Use iterative for deep recursion.'),
+      T('Java streams (functional) — filter, map, reduce, collect, toList, groupingBy','Stream<String> filtered = list.stream().filter(s->s.startsWith("A"))'),
+      T('Exception handling — try/catch/finally, checked vs unchecked, custom exceptions','RuntimeException is unchecked. Must handle IOException (checked).'),
+      T('OOP in Java — encapsulation, inheritance, polymorphism, abstraction, interface vs abstract class','Interface: contract (all abstract). Abstract class: partial implementation.'),
+      T('Java memory model — heap, stack, garbage collection, reference types','Objects live on heap. Local primitives on stack.'),
+      P('Practice: Solve 20 easy LeetCode problems in Java'),
+    ]},
+  ]},
+  {id:'s4-2',name:'Stage 4.2 — Complexity & Core Patterns',color:'purple',chapters:[
+    {id:'c4-2-1',name:'Time & Space Complexity',high:true,topics:[
+      T('Big O notation — formal definition, O(1), O(log n), O(n), O(n log n), O(n²), O(2ⁿ), O(n!)','Always give both time AND space complexity.'),
+      T('Best, average, worst case — why worst case matters most','QuickSort: O(n log n) average, O(n²) worst.'),
+      T('Amortized analysis — ArrayList resize — O(1) amortized per push','Total work / number of operations.'),
+      T('Space complexity — call stack space for recursion, auxiliary vs total','Recursive DFS: O(h) call stack where h = tree height.'),
+      T('Common complexities — HashMap O(1) avg, TreeMap O(log n), array sort O(n log n)','Know the complexity of every STL/Collection operation.'),
+      T('Analyzing nested loops, recursive relations — Master Theorem overview','T(n)=2T(n/2)+n → O(n log n) by Master Theorem.'),
+      IV('Interview: What is the time and space complexity of this code?'),
+    ]},
+    {id:'c4-2-2',name:'Two Pointers & Sliding Window',high:true,topics:[
+      T('Two pointers — opposite ends: left/right (sorted array)','Valid palindrome, reverse array, container with most water.'),
+      T('Two pointers — same direction: slow/fast (linked list, duplicate removal)','Remove duplicates in-place: slow and fast pointers.'),
+      T('Sliding window — fixed size — max sum of k elements','sum += arr[r]; if r-l+1 > k: sum -= arr[l++]'),
+      T('Sliding window — variable size — longest substring, minimum window','Expand right, shrink left when condition violated.'),
+      T('Two Sum, Three Sum, Four Sum — sorting + two pointers','Sort first. Skip duplicates.'),
+      P('Practice: Container With Most Water, 3Sum, Longest Substring Without Repeating, Min Window Substring'),
+    ]},
+    {id:'c4-2-3',name:'Prefix Sum & Difference Array',high:true,topics:[
+      T('Prefix sum — precompute cumulative sums for O(1) range queries','prefix[i]=prefix[i-1]+arr[i]. Range[l,r]=prefix[r]-prefix[l-1].'),
+      T('2D prefix sum — sum of rectangle in O(1)','Integral image technique.'),
+      T('Difference array — range updates in O(1), reconstruct in O(n)','Add 1 to range: diff[l]++, diff[r+1]--. Prefix sum to reconstruct.'),
+      T('Running sum, product except self, subarray sum equals k','HashMap: count of prefix sums seen so far.'),
+      P('Practice: Range Sum Query, Product of Array Except Self, Subarray Sum Equals K, Continuous Subarray Sum'),
+    ]},
+  ]},
+  {id:'s4-3',name:'Stage 4.3 — Data Structures',color:'purple',chapters:[
+    {id:'c4-3-1',name:'Arrays & Strings',high:true,topics:[
+      T('Array manipulation — rotate, reverse, merge sorted arrays, Dutch National Flag','Dutch flag (3-way partition): sort 0s, 1s, 2s in-place.'),
+      T('Matrix problems — rotate 90°, spiral order, diagonal traversal, set matrix zeroes','Rotate: transpose then reverse rows.'),
+      T('Kadane\'s algorithm — maximum subarray O(n)','dp[i]=max(arr[i], dp[i-1]+arr[i]). Track global max.'),
+      T('Boyer-Moore majority vote — find element appearing >n/2 times O(1) space','Candidate and count. Reset if count=0.'),
+      T('String problems — anagrams, palindromes, string matching (KMP, Rabin-Karp)','KMP avoids re-examining characters with failure function.'),
+      T('Two-pointer on strings — reverse words, valid palindrome II','Remove spaces, lowercase, then two pointers.'),
+      P('Practice: Rotate Image, Spiral Matrix, Word Search, Jump Game, Trapping Rain Water'),
+    ]},
+    {id:'c4-3-2',name:'Hash Maps & Sets',high:true,topics:[
+      T('Hash map internals — hash function, collision resolution (chaining vs open addressing), load factor','Chaining uses linked lists. Open addressing uses probing.'),
+      T('Frequency counting — character frequency, top K frequent elements','unordered_map<char,int> freq; for(char c:s) freq[c]++;'),
+      T('Hash map for O(1) lookup — two sum, group anagrams, isomorphic strings','Sort each string as key → group into anagram buckets.'),
+      T('Sets for uniqueness — longest consecutive sequence, happy number','Sort is O(n log n). HashSet approach is O(n).'),
+      T('Cyclic sort — find missing/duplicate numbers 1..n without extra space','Place each number at index number-1. Missing = index+1 not equal to arr[index].'),
+      P('Practice: Two Sum, Group Anagrams, Top K Frequent, Longest Consecutive Sequence'),
+    ]},
+    {id:'c4-3-3',name:'Stacks & Queues',high:true,topics:[
+      T('Stack — LIFO, push/pop/peek/empty, applications: function calls, undo, expression evaluation','Valid parentheses, min stack, evaluate RPN.'),
+      T('Monotonic stack — increasing/decreasing — next greater element pattern','For each element: pop smaller/larger elements while stack not empty.'),
+      T('Queue — FIFO, enqueue/dequeue, BFS, sliding window maximum','Sliding window max: deque (decreasing) stores indices.'),
+      T('Deque (double-ended queue) — push/pop from both ends','ArrayDeque in Java. deque<int> in C++.'),
+      T('Circular queue / ring buffer — fixed-size queue with head and tail pointers','(tail+1) % capacity to wrap around.'),
+      T('LRU Cache — doubly linked list + HashMap — O(1) get and put','Most asked design question in system design and coding rounds.'),
+      T('Stack-based problems — largest rectangle in histogram, maximal rectangle','Use stack to track left boundary. O(n) solution.'),
+      P('Practice: Valid Parentheses, Min Stack, Daily Temperatures, Sliding Window Maximum, LRU Cache'),
+    ]},
+    {id:'c4-3-4',name:'Linked Lists',high:true,topics:[
+      T('Singly linked list — Node (val, next), head pointer, traversal, length','class ListNode { int val; ListNode next; }'),
+      T('Insertion — at head (O(1)), at tail (O(n) without tail ptr), at position (O(n))','Insert at head: newNode.next=head; head=newNode.'),
+      T('Deletion — by value, by position, remove nth from end (two pass, one pass with gap)','Two-pointer gap: advance fast n steps, then move both.'),
+      T('Reverse linked list — iterative (3 pointers: prev, curr, next), recursive','Iterative: while(curr): next=curr.next; curr.next=prev; prev=curr; curr=next.'),
+      T('Detect cycle — Floyd\'s (slow/fast pointers), find cycle start','When slow=fast: reset slow to head, advance both 1 step — they meet at cycle start.'),
+      T('Find middle — slow/fast pointers (fast moves 2, slow moves 1)','When fast reaches end (or null), slow is at middle.'),
+      T('Merge two sorted linked lists — iterative with dummy head','Dummy node eliminates edge cases for head pointer.'),
+      T('Doubly linked list — prev pointer, easier deletion, used in LRU Cache','LRU Cache needs O(1) removal → doubly linked list.'),
+      T('Intersection of two lists — length difference approach','Advance longer list pointer by the length difference.'),
+      P('Practice: Reverse LL, Merge K Sorted Lists, Reorder List, Add Two Numbers'),
+    ]},
+    {id:'c4-3-5',name:'Trees & Binary Search Trees',high:true,topics:[
+      T('Binary tree — Node (val, left, right), height, depth, levels, leaf nodes','Height of null = -1. Height of leaf = 0.'),
+      T('Tree traversals — inorder (left-root-right), preorder (root-left-right), postorder (left-right-root)','Inorder of BST = sorted array. Preorder = serialize tree.'),
+      T('Level-order traversal — BFS with queue, each level in separate list','Queue size at start of each level = number of nodes at that level.'),
+      T('Recursive tree problems — trust the recursive contract','Max depth: 1+max(depth(left),depth(right)).'),
+      T('Tree height, path sum (root-to-leaf, any path), diameter, LCA','LCA: if both p and q are in different subtrees, current node is LCA.'),
+      T('Balanced tree, complete tree, perfect tree, full tree — definitions','AVL and Red-Black trees maintain balance automatically.'),
+      T('BST — search O(log n), insert O(log n), delete (find inorder successor), in-order gives sorted output','BST delete: 0 children (just remove), 1 child (bypass), 2 children (replace with successor).'),
+      T('Validate BST — pass min/max bounds down recursion','Not just: each node > left and < right. Must satisfy globally.'),
+      T('BST operations — kth smallest/largest, floor/ceiling, rank, range sum','Augment BST nodes with subtree size for O(log n) rank.'),
+      T('Morris traversal — O(1) space inorder traversal','Threads tree links temporarily. No stack needed.'),
+      T('Serialize and deserialize binary tree — preorder or level-order','Preorder: root,left,right — null as "#". Reconstruct with queue.'),
+      P('Practice: Max Depth, Same Tree, Invert Tree, Path Sum, Lowest Common Ancestor, Validate BST'),
+    ]},
+    {id:'c4-3-6',name:'Heaps & Priority Queues',high:true,topics:[
+      T('Min-heap and max-heap — complete binary tree, heap property, array representation','Parent: (i-1)/2. Left child: 2*i+1. Right child: 2*i+2.'),
+      T('Heap operations — insert (sift up), remove min/max (sift down), heapify O(n)','Building a heap from array: O(n) with heapify. Inserting one by one: O(n log n).'),
+      T('priority_queue in C++ and PriorityQueue in Java — usage patterns','priority_queue<int,vector<int>,greater<int>> minHeap;'),
+      T('Top K elements — min-heap of size K — O(n log k)','Maintain heap of size K. If current > heap.top(): pop, push.'),
+      T('K-way merge — merge K sorted arrays/lists — min-heap O(n log k)','Push first element of each list. Pop min, push its next.'),
+      T('Median of data stream — two heaps (max-heap for lower half, min-heap for upper)','Balance heaps: |maxHeap.size()-minHeap.size()| <= 1.'),
+      T('Dijkstra\'s algorithm — priority queue, shortest path in weighted graph','{dist, node} in min-heap. Relax edges when popped.'),
+      P('Practice: Top K Frequent Elements, K Closest Points to Origin, Find Median from Stream, Task Scheduler'),
+    ]},
+    {id:'c4-3-7',name:'Tries & Advanced Structures',high:false,topics:[
+      T('Trie (prefix tree) — insert, search, startsWith — O(L) where L = word length','TrieNode: children[26], isEnd. Each char = one level.'),
+      T('Trie use cases — autocomplete, spell check, IP routing, word search II','Word Search II: build trie of words, then DFS grid.'),
+      T('Compressed trie / Radix tree — merge single-child nodes','More memory efficient.'),
+      T('Segment tree — range query + point update in O(log n)','Build: O(n). Query: O(log n). Update: O(log n).'),
+      T('Segment tree with lazy propagation — range update in O(log n)','Store pending updates to propagate later.'),
+      T('Fenwick tree (Binary Indexed Tree / BIT) — prefix sum with point updates O(log n)','Simpler than segment tree for prefix sums.'),
+      T('Disjoint Set Union (DSU/Union-Find) — find, union with path compression + rank','find with path compression is nearly O(1) amortized.'),
+      T('DSU applications — connected components, Kruskal\'s MST, number of islands O(α(n))','Kruskal: sort edges by weight, union endpoints if different component.'),
+      P('Practice: Implement Trie, Word Search II, Number of Islands with Union-Find'),
+    ]},
+  ]},
+  {id:'s4-4',name:'Stage 4.4 — Algorithms',color:'purple',chapters:[
+    {id:'c4-4-1',name:'Sorting Algorithms',high:true,topics:[
+      T('Comparison sorts — Bubble O(n²), Selection O(n²), Insertion O(n²) — when to use each','Insertion sort is O(n) for nearly sorted arrays.'),
+      T('Merge sort — divide and conquer, O(n log n) stable — count inversions','Merge step is the key. Two sorted halves merge in O(n).'),
+      T('Quick sort — pivot, partition (Lomuto/Hoare), O(n log n) average, O(n²) worst — random pivot','Randomized pivot avoids worst case on sorted input.'),
+      T('Counting sort — O(n+k), k = range — stable — for small integer ranges','k is the max value. Space = O(k).'),
+      T('Radix sort — LSD/MSD — O(d*(n+k)) — for integers or fixed-length strings','Sort by least significant digit first (LSD).'),
+      T('Bucket sort — O(n+k) average — uniform distribution','Distribute to buckets, sort each bucket, concatenate.'),
+      T('Heap sort — in-place O(n log n) — not stable — build max-heap then extract','Heapify then extract max n times.'),
+      T('TimSort — Python/Java default — hybrid merge+insertion — O(n log n) worst stable','Finds natural runs in data.'),
+      T('QuickSelect — find kth smallest in O(n) average — partition-based','Select kth: partial quicksort, only recurse into relevant half.'),
+      IV('Interview: When would you use merge sort over quick sort?'),
+    ]},
+    {id:'c4-4-2',name:'Binary Search — All Patterns',high:true,topics:[
+      T('Classic binary search — lo=0, hi=n-1, mid=lo+(hi-lo)/2, search target','hi-lo/2 prevents integer overflow in Java/C++.'),
+      T('Binary search on answer space — min/max value satisfying a monotonic condition','If F(mid) possible: hi=mid, else lo=mid+1.'),
+      T('Lower bound — first element >= val; upper bound — first element > val','lower_bound(begin,end,val) in C++ STL.'),
+      T('Search in rotated sorted array — find pivot, binary search on correct half','Determine which half is sorted, then check if target is in it.'),
+      T('Binary search in 2D matrix — row search then column, or treat as 1D','Row: matrix[mid/cols][mid%cols] for 1D treatment.'),
+      T('Ternary search — find maximum of unimodal function in O(log n)','Compare f(m1) and f(m2) where m1,m2 divide range into thirds.'),
+      P('Practice: Binary Search, Search in Rotated, Find Min in Rotated, Median of Two Sorted Arrays, Koko Eating Bananas'),
+    ]},
+    {id:'c4-4-3',name:'Recursion & Backtracking',high:true,topics:[
+      T('Recursion anatomy — base case(s), recursive case, trust the recursive definition','Write base case first. Trust the recursive call returns correct.'),
+      T('Recursion tree — visualize calls, identify overlapping subproblems','Drawing the tree reveals DP opportunities.'),
+      T('Tail recursion — last call is the recursive call — can be optimized by compiler','Java/C++ don\'t guarantee tail call optimization.'),
+      T('Backtracking template — choose, explore, unchoose (undo)','void bt(state){if(done)record;for(each choice){choose;bt;unchoose;}}'),
+      T('Subsets — power set — 2ⁿ subsets — include/exclude each element','Iterate through 2^n bitmasks for iterative approach.'),
+      T('Permutations — n! permutations — swap at each position','Generate permutations by swapping current with each subsequent.'),
+      T('Combinations — C(n,k) — choose k from n without repeats','Standard nCk backtracking with start index.'),
+      T('Constraint satisfaction — N-Queens, Sudoku solver, word search — prune invalid branches early','Pruning is what separates backtracking from brute force.'),
+      T('Letter combinations of phone number, Palindrome partitioning, IP addresses','Classic backtracking problems.'),
+      P('Practice: Subsets I&II, Permutations I&II, Combination Sum I&II, N-Queens, Sudoku Solver, Word Search'),
+    ]},
+    {id:'c4-4-4',name:'Graph Algorithms',high:true,topics:[
+      T('Graph representations — adjacency list (preferred), adjacency matrix, edge list','Adjacency list: vector<vector<int>> adj(n). Space: O(V+E).'),
+      T('BFS — queue, visited set, level-by-level, shortest path in unweighted graph','Add to visited WHEN enqueued, not when dequeued.'),
+      T('DFS — stack/recursion, visited set, path tracking, pre/post order','DFS tree edge vs back edge vs cross edge — tree classification.'),
+      T('Bipartite check — 2-coloring with BFS/DFS','Bipartite = no odd cycle. Color alternating, check conflict.'),
+      T('Topological sort — Kahn\'s (BFS in-degree), DFS post-order (reverse)','Kahn\'s: in-degree 0 nodes enqueue first. DFS: push to stack on finish.'),
+      T('Cycle detection — directed (DFS with 3 colors: white/gray/black), undirected (DSU or DFS)','Gray = in current path = back edge = cycle.'),
+      T('Connected components — undirected (DFS/BFS/DSU), strongly connected components (Tarjan/Kosaraju)','Kosaraju: DFS + reverse graph + DFS again.'),
+      T('Dijkstra — single-source shortest path, non-negative weights, priority queue, O((V+E) log V)','Relaxation: if dist[u]+w < dist[v]: dist[v]=dist[u]+w.'),
+      T('Bellman-Ford — handles negative weights, detect negative cycles, O(VE)','Relax all edges V-1 times. If still relaxable: negative cycle.'),
+      T('Floyd-Warshall — all-pairs shortest path, O(V³), dynamic programming','dp[i][j][k]=min(dp[i][j][k-1], dp[i][k][k-1]+dp[k][j][k-1]).'),
+      T('Minimum spanning tree — Prim\'s (greedy, priority queue) vs Kruskal\'s (sort edges + DSU)','Kruskal: sort edges by weight, greedily add if no cycle.'),
+      T('Grid as graph — 4-directional neighbors, obstacles as walls, multi-source BFS','int dirs[4][2]={{0,1},{0,-1},{1,0},{-1,0}};'),
+      T('Number of islands — BFS/DFS/DSU — flood fill','Iterate all cells; if land and unvisited: BFS/DFS to mark entire island.'),
+      T('Word ladder — BFS on word graph — each word = node, edit distance 1 = edge','Generate all 26 possible single-char swaps as neighbors.'),
+      T('A* search — BFS with heuristic — optimal if heuristic admissible','f(n) = g(n) + h(n). Priority queue on f values.'),
+      P('Practice: Number of Islands, Clone Graph, Course Schedule I&II, Pacific Atlantic Water Flow, Word Ladder'),
+    ]},
+    {id:'c4-4-5',name:'Dynamic Programming — Complete',high:true,topics:[
+      T('DP prerequisites — overlapping subproblems + optimal substructure','If a problem has both properties, DP applies.'),
+      T('Top-down (memoization) — recursive + cache, Map or array','Map<String,Integer> memo = new HashMap<>();'),
+      T('Bottom-up (tabulation) — fill dp table iteratively, usually more efficient','Often better: no recursion overhead, explicit space optimization.'),
+      T('State design — what defines a unique subproblem?','State = the parameters that uniquely define the subproblem.'),
+      T('1D DP — Fibonacci, Climbing Stairs, House Robber, Coin Change, Min Cost Climbing','dp[i]=max(dp[i-1],dp[i-2]+nums[i])'),
+      T('2D DP — Unique Paths, Minimum Path Sum, Edit Distance, Longest Common Subsequence','dp[i][j] often depends on dp[i-1][j] and dp[i][j-1].'),
+      T('0/1 Knapsack — include or exclude each item','dp[i][w]=max(dp[i-1][w], dp[i-1][w-wt[i]]+val[i])'),
+      T('Unbounded knapsack — coin change, rod cutting — use item multiple times','dp[w]=min(dp[w], dp[w-coin]+1) — no "i-1" since reusable.'),
+      T('Subsequence problems — LCS, LIS (O(n log n) with binary search), Longest Palindromic Subsequence','LIS O(n log n): maintain tails array, binary search for position.'),
+      T('String DP — Edit Distance, Distinct Subsequences, Wildcard Matching, Regex Matching','Edit distance: min of insert, delete, replace operations.'),
+      T('Interval DP — Matrix Chain Multiplication, Burst Balloons, Palindrome Partitioning II','dp[i][j] = optimal solution for subproblem from i to j.'),
+      T('DP on trees — tree DP, rerooting technique','dp[node] computed from children. Rerooting: compute from parent direction too.'),
+      T('DP with bitmask — traveling salesman, assignment problems','dp[mask][i] = state reached visiting set "mask", currently at i.'),
+      T('Space optimization — rolling array, reduce 2D to 1D when possible','Many 2D DP can be computed with just previous row.'),
+      P('NeetCode 150 — complete all problems categorized by pattern. Track on neetcode.io'),
+      IV('Interview: How do you approach a DP problem? Walk through coin change.'),
+    ]},
+    {id:'c4-4-6',name:'Greedy Algorithms',high:false,topics:[
+      T('Greedy property — locally optimal choice leads to globally optimal solution','Proof: exchange argument or induction.'),
+      T('Activity selection / interval scheduling — sort by end time, greedy pick non-overlapping','Sort by end time. If start >= last end: select.'),
+      T('Interval merge — sort by start, merge overlapping','If curr.start <= prev.end: extend prev.end.'),
+      T('Jump Game I & II — greedy reach forward','Track max reachable index. O(n).'),
+      T('Gas station — total gas >= total cost means solution exists, find start','Sum of (gas-cost) must be >= 0.'),
+      T('Candy distribution — two passes: left-right, right-left','Each child gets more candy than lower-rated neighbor.'),
+      T('Huffman coding — frequency-based optimal prefix codes','Min-heap of frequencies. Merge two smallest repeatedly.'),
+      P('Practice: Jump Game, Gas Station, Candy, Non-overlapping Intervals, Minimum Number of Arrows'),
+    ]},
+  ]},
+  {id:'s4-5',name:'Stage 4.5 — Interview Practice',color:'purple',chapters:[
+    {id:'c4-5-1',name:'Problem-Solving Framework',high:true,topics:[
+      T('UMPIRE framework — Understand, Match, Plan, Implement, Review, Evaluate','Spend 5 minutes on Understand before touching code.'),
+      T('Clarify edge cases — empty input, single element, all same, negative numbers, integer overflow','Ask: What if input is empty? What if n = 1?'),
+      T('Recognize problem patterns — sliding window? DP? BFS? two pointers?','Pattern recognition comes from volume. Solve 300+ problems.'),
+      T('Time/space trade-offs — brute force first, optimize after','State brute force complexity, then improve.'),
+      T('Think aloud — narrate your thought process throughout','Interviewers want to see HOW you think, not just if you get the answer.'),
+      T('Test your code — trace through your example, then edge cases','Walk through [1,2,3], [], [1], [1,1].'),
+      T('Communicate complexity — always state time and space at the end','O(n log n) time, O(n) space.'),
+      IV('Interview: Walk me through your approach to a problem you have not seen before.'),
+    ]},
+    {id:'c4-5-2',name:'LeetCode Study Plan',high:true,topics:[
+      T('Month 3–4 — Easy problems: Arrays, Strings, HashMaps (50 problems)','Focus: Two Sum, Valid Parentheses, Reverse String, FizzBuzz patterns.'),
+      T('Month 5–6 — Medium: Trees, LinkedLists, BFS/DFS, Basic DP (75 problems)','Focus: LCA, Binary Tree paths, Coin Change, House Robber.'),
+      T('Month 7–8 — Medium/Hard: Advanced DP, Graphs, Heaps, Trie (75 problems)','Focus: Word Ladder, Dijkstra, Knapsack variants.'),
+      T('Month 9 — Mock interviews, timed practice, company-specific lists','LeetCode mock interview feature. 45 min per problem.'),
+      T('NeetCode 150 + Blind 75 — cover all essential patterns','NeetCode.io organizes by pattern. Track your progress.'),
+      T('Codeforces for C++ practice — Div 3 and Div 4 contests','Live contests build speed and handle time pressure.'),
+      T('LeetCode Premium — company-specific questions (Google, Amazon, Meta, Microsoft)','Sort by frequency for target company.'),
+      IV('Interview: On-site: 2 coding + 1 system design + behavioral. Prepare all 3.'),
+    ]},
+  ]},
+]},
+// =====================================================================
+// UNIT 5 — SYSTEM DESIGN
+// =====================================================================
+{id:'u5',name:'Unit 5 — System Design',color:'orange',months:'Month 8–10',stages:[
+  {id:'s5-1',name:'Stage 5.1 — Foundations',color:'orange',chapters:[
+    {id:'c5-1-1',name:'Core System Design Concepts',high:true,topics:[
+      T('Scalability — vertical (bigger machine) vs horizontal (more machines)','Horizontal requires stateless servers and load balancers.'),
+      T('Load balancers — L4 (transport) vs L7 (application), algorithms (round-robin, least connections, IP hash, weighted)','L7 LB can route based on URL path, cookies, headers.'),
+      T('Horizontal scaling — stateless servers, sticky sessions problem, how to solve','Store state in Redis, not in-process memory.'),
+      T('CAP theorem — Consistency, Availability, Partition tolerance — pick 2','CP: PostgreSQL. AP: Cassandra, DynamoDB. CA: not possible in distributed systems.'),
+      T('PACELC — extends CAP: even without partition, tradeoff between latency and consistency','Real-world systems must pick latency vs consistency even without partitions.'),
+      T('ACID vs BASE — atomicity/consistency/isolation/durability vs basically available/soft state/eventually consistent','SQL = ACID. NoSQL = BASE typically.'),
+      T('Consistency models — strong, eventual, causal, monotonic read, read-your-writes','Most NoSQL defaults to eventual consistency.'),
+      T('Latency numbers every engineer should know — L1 cache 1ns, RAM 100ns, SSD 100μs, network 1ms, HDD 10ms','These numbers justify caching and architecture decisions.'),
+      T('Back-of-envelope estimation — requests/sec, storage, bandwidth calculations','100M users × 10 requests/day = 1000 req/sec.'),
+      T('SLA/SLO — uptime percentages — 99.9% = 8.7 hours downtime/year, 99.99% = 52 minutes','Four nines: 52 min downtime/year is hard to achieve.'),
+    ]},
+    {id:'c5-1-2',name:'Caching Deep Dive',high:true,topics:[
+      T('Why cache — reduce latency, reduce DB load, increase throughput','Cache hit = microseconds. DB query = milliseconds.'),
+      T('Cache-aside (lazy loading) — app checks cache, miss loads DB, writes to cache','Most common pattern. Simple to implement.'),
+      T('Write-through — write to cache AND DB synchronously — no stale data','Adds write latency. Cache always consistent.'),
+      T('Write-behind (write-back) — write to cache, async write to DB — faster writes','Risk: data loss if cache fails before DB write.'),
+      T('Read-through — cache loads from DB on miss automatically','Cache manages its own population.'),
+      T('Cache eviction — LRU (most common), LFU, FIFO, TTL-based','LRU removes least recently used item on full cache.'),
+      T('Cache invalidation — the hard problem — TTL, event-based, cache tags','After every write: delete cache entry or update it.'),
+      T('CDN — Cloudflare, CloudFront — edge caching for static assets and API responses','CDN reduces latency by serving from geographically close servers.'),
+      T('Redis vs Memcached — persistence, data structures, Lua scripts, clustering','Redis is strictly better for most use cases.'),
+      T('Thundering herd problem — cache stampede — mutex/probabilistic early expiration','Lock one request to rebuild, others wait.'),
+      T('Cache warming — pre-populate cache before traffic — deployment strategy','Warm cache before switching traffic to new deployment.'),
+    ]},
+    {id:'c5-1-3',name:'Databases in System Design',high:true,topics:[
+      T('SQL vs NoSQL in system design — relational integrity vs flexibility/scale','Use SQL for: financial, user accounts, inventory. NoSQL: events, sessions, catalogs.'),
+      T('Database sharding — horizontal partitioning — range, hash, directory-based sharding','Hash sharding: user_id % num_shards. Consistent hashing avoids resharding.'),
+      T('Consistent hashing — virtual nodes, adding/removing nodes minimizes data movement','Used in: DynamoDB, Cassandra, Chord.'),
+      T('Database read replicas — scale reads, async replication, replication lag','All writes go to primary. Reads distributed to replicas.'),
+      T('Database indexes in scale — index bloat, index maintenance overhead','Too many indexes slows writes. Profile and pick carefully.'),
+      T('Time-series databases — InfluxDB, TimescaleDB — optimized for time-ordered data','Append-only writes, time-based partitioning, downsampling.'),
+      T('Column-oriented databases — Cassandra, BigQuery, Redshift — analytics at scale','Row-oriented: OLTP. Column-oriented: OLAP analytics.'),
+      T('Search databases — Elasticsearch, OpenSearch — inverted index, full-text search, faceting','Sync from primary DB using CDC (change data capture).'),
+    ]},
+  ]},
+  {id:'s5-2',name:'Stage 5.2 — Messaging & Real-Time',color:'orange',chapters:[
+    {id:'c5-2-1',name:'Message Queues & Event Systems',high:true,topics:[
+      T('Message queues — why use them — decoupling, async, reliability, retry','Email sending in queue: web server returns 200, queue sends email.'),
+      T('RabbitMQ — exchanges (direct, topic, fanout, headers), queues, bindings, acks, dead letter queues','Fanout: broadcast to all subscribers. Topic: routing keys with wildcards.'),
+      T('Apache Kafka — topics, partitions, consumer groups, offset, retention, log compaction','Kafka is a distributed log, not just a queue. Consumers track their own offset.'),
+      T('Kafka vs RabbitMQ — durability, replay, throughput, ordering guarantees','Kafka: durable replay, high throughput. RabbitMQ: smart routing, low latency.'),
+      T('At-most-once, at-least-once, exactly-once delivery semantics','Exactly-once requires both producer idempotency and consumer dedup.'),
+      T('Event-driven architecture — events, commands, queries — CQRS basics','Command: change state. Event: something happened. Query: read state.'),
+      T('Pub/Sub pattern — publishers, subscribers, topics, fan-out','Redis Pub/Sub, SNS/SQS, Google Pub/Sub.'),
+      T('Outbox pattern — write to DB + outbox table atomically, CDC or poller sends event','Solves dual-write problem: either both DB and queue get message or neither do.'),
+      T('Saga pattern — distributed transaction across microservices — choreography vs orchestration','Choreography: services react to events. Orchestration: central coordinator.'),
+    ]},
+    {id:'c5-2-2',name:'Real-Time Systems',high:false,topics:[
+      T('WebSockets — bidirectional, persistent connection, ws:// protocol, handshake','Socket.io adds rooms, auto-reconnect, fallback to long-polling.'),
+      T('Server-Sent Events (SSE) — server to client only, automatic reconnect, text/event-stream','Simpler than WebSockets for unidirectional push.'),
+      T('Long polling — client holds request open until server has data, then reconnect','Simulates real-time. Higher latency than WebSockets.'),
+      T('WebRTC — peer-to-peer media, ICE, STUN, TURN, signaling server needed','Used for: video calls, screen sharing, P2P file transfer.'),
+      T('Presence system — online/offline/typing indicators, heartbeat, timeout','User sends heartbeat every 30s. Server marks offline if missed.'),
+      T('Chat system design — messages, rooms, fan-out writes, pagination, search','Fan-out: write to inbox of each recipient. Kafka for async fan-out.'),
+      T('Live feed / timeline — push model (write to followers) vs pull model (read from followees)','Twitter: hybrid — small accounts push, celebrities pulled.'),
+    ]},
+  ]},
+  {id:'s5-3',name:'Stage 5.3 — Microservices & Infrastructure',color:'orange',chapters:[
+    {id:'c5-3-1',name:'Microservices Architecture',high:false,topics:[
+      T('Monolith vs microservices — when to use each, strangler fig pattern','Start with monolith. Extract services when pain is felt.'),
+      T('Service discovery — Consul, Kubernetes DNS, service registry, health checks','Services must find each other without hardcoded IPs.'),
+      T('API Gateway — single entry point, routing, auth, rate limiting, SSL termination, request aggregation','Kong, AWS API Gateway, Nginx as gateway.'),
+      T('Circuit breaker — Hystrix/Resilience4j — fail fast, fallback, half-open state','Open circuit when error rate > threshold. Try again after timeout.'),
+      T('Service mesh — Istio, Linkerd — sidecar proxy, mTLS, observability, traffic management','Handles: retries, timeouts, tracing, canary deployments.'),
+      T('Distributed tracing — OpenTelemetry, Jaeger, Zipkin — trace ID propagation, spans','One trace ID follows a request across all services.'),
+      T('Inter-service communication — synchronous (HTTP/gRPC) vs asynchronous (message queue)','Synchronous: simple but tight coupling. Async: loose coupling but complexity.'),
+      T('Data isolation — each service owns its data — no shared database','Services communicate via API or events, not direct DB queries.'),
+    ]},
+    {id:'c5-3-2',name:'Kubernetes & Cloud Basics',high:false,topics:[
+      T('Kubernetes concepts — pods, deployments, services, ingress, namespaces, configmaps, secrets','Pod: smallest deployable unit. One or more containers.'),
+      T('kubectl — get pods/services/deployments, logs, exec, apply, delete, scale','kubectl apply -f deployment.yaml deploys to cluster.'),
+      T('Deployments — replicas, rolling update, rollback, readiness/liveness probes','Liveness probe: restart if unhealthy. Readiness probe: remove from load balancer.'),
+      T('Services — ClusterIP (internal), NodePort, LoadBalancer, ExternalName','LoadBalancer creates a cloud load balancer automatically.'),
+      T('Ingress — HTTP routing, TLS termination, virtual hosting — nginx ingress controller','One LoadBalancer for many services via Ingress routing.'),
+      T('Horizontal Pod Autoscaler — scale pods based on CPU/memory/custom metrics','Scale up when CPU > 70%. Scale down after cooldown period.'),
+      T('AWS core services — EC2, ECS, EKS, Lambda, S3, RDS, ElastiCache, CloudFront, Route53, IAM, VPC, ALB','Know what each service does conceptually.'),
+      T('Infrastructure as Code — Terraform — resources, providers, modules, state, plan, apply','Never manage infrastructure by clicking in AWS console.'),
+    ]},
+  ]},
+  {id:'s5-4',name:'Stage 5.4 — System Design Practice',color:'orange',chapters:[
+    {id:'c5-4-1',name:'Classic System Design Problems',high:true,topics:[
+      PR('Design URL Shortener — hashing, collisions, redirect, analytics, custom aliases'),
+      T('URL Shortener — decisions: base62 encoding vs MD5, storage: KV store, scale: CDN','Redirect: 301 (cacheable) vs 302 (trackable).'),
+      PR('Design Rate Limiter — algorithms: token bucket, leaky bucket, fixed window, sliding window'),
+      T('Rate Limiter — Redis for sliding window counter, header response (X-RateLimit-*)','Distributed rate limiter needs Redis, not in-memory.'),
+      PR('Design Key-Value Store (Mini Redis) — consistent hashing, replication, conflict resolution'),
+      PR('Design Web Crawler — BFS, seed URLs, politeness (robots.txt), dedup, distributed crawl'),
+      PR('Design Notification System — email/push/SMS, templates, fan-out, rate limiting, preferences'),
+      PR('Design News Feed / Social Media Feed — write fanout vs read fanout, ranking, pagination'),
+      PR('Design YouTube / Video Upload — chunked upload, video processing pipeline, CDN, adaptive streaming'),
+      PR('Design Uber / Location-Based Service — geohashing, quad-tree, driver matching, real-time location'),
+      PR('Design Google Drive — chunked upload, dedup (content hash), sharing, version history, sync'),
+      PR('Design Chat System (WhatsApp) — messages, delivery receipts, end-to-end encryption, group chat'),
+      PR('Design Search Autocomplete — trie, top K completions, real-time update, caching'),
+      PR('Design Distributed Job Scheduler — at-least-once execution, partitioning, failure handling'),
+      T('Interview framework — functional requirements → non-functional → high-level → deep dive → bottlenecks','Spend 5 min on requirements. 10 min high-level. 20 min deep dive.'),
+      IV('Interview: Walk me through designing Twitter\'s home timeline.'),
+    ]},
+  ]},
+]},
+// =====================================================================
+// UNIT 6 — JOB PREPARATION
+// =====================================================================
+{id:'u6',name:'Unit 6 — Job Preparation',color:'pink',months:'Month 9–12',stages:[
+  {id:'s6-1',name:'Stage 6.1 — Resume & Portfolio',color:'pink',chapters:[
+    {id:'c6-1-1',name:'Resume Crafting',high:true,topics:[
+      T('1-page resume — ATS format, no tables/columns, standard sections','Recruiters spend 6 seconds on initial scan. Make it count.'),
+      T('Contact — name, phone, email, LinkedIn URL, GitHub URL, portfolio URL','Professional email. No unprofessional usernames.'),
+      T('Skills section — languages, frameworks, tools, databases — only what you can discuss in interview','If it is on your resume, expect to be asked about it.'),
+      T('Projects section — 3 projects max, live link + GitHub, tech stack, impact metrics','Every project bullet: "Built X using Y, resulting in Z."'),
+      T('Experience section — reverse chronological, action verbs, quantified impact','Reduced page load time by 40%, increased test coverage from 30% to 80%.'),
+      T('Education — degree, GPA (if >3.5), relevant courses, certifications','No GPA if below 3.0. Add relevant certifications.'),
+      T('ATS optimization — keywords from job description, standard section names, no images','Applicant Tracking Systems filter before humans see resume.'),
+      T('Tailoring — adjust skills and project descriptions per job description','Copy keywords from JD into your resume (truthfully).'),
+      T('Formatting — consistent font, adequate whitespace, strong action verbs','Built, Designed, Implemented, Optimized, Reduced, Increased.'),
+      T('Common mistakes — spelling errors, personal pronouns, outdated technologies, irrelevant jobs','Proofread 3 times. Ask a friend to review.'),
+    ]},
+    {id:'c6-1-2',name:'Portfolio Website & GitHub',high:true,topics:[
+      T('Portfolio website — clean, fast, mobile-responsive, shows 3 best projects','Keep it simple. Your projects are the portfolio. Website is the frame.'),
+      T('Portfolio projects — each with: live demo, GitHub link, screenshot, tech stack, what you learned','A link that does not work is worse than no link.'),
+      T('GitHub profile — profile README, pinned repos, green commit graph, good commit messages','Green squares show consistency. Recruiters look at this.'),
+      T('GitHub README best practices — header image, badges, demo GIF, installation, usage, tech stack','Use shields.io for badges. Record Loom for demo video.'),
+      T('Open source contributions — fix docs, report bugs, submit small PRs','Any contribution shows initiative and collaboration skills.'),
+      T('LinkedIn — 500+ connections, professional photo, about section, projects as posts','Post your projects with screenshots and key learnings.'),
+      T('Technical writing — blog posts, dev.to, Hashnode — show expertise publicly','1 detailed technical post = 100 applications worth of signal.'),
+    ]},
+  ]},
+  {id:'s6-2',name:'Stage 6.2 — Interview Skills',color:'pink',chapters:[
+    {id:'c6-2-1',name:'Technical Interview Preparation',high:true,topics:[
+      T('Interview types — phone screen, technical screen (coding), system design, behavioral, on-site loop','Each stage has different focus. Prepare specifically.'),
+      T('Common JS/TS questions — closures, event loop, hoisting, this, prototypes, async/await, generators','Write answers, then practice explaining verbally.'),
+      T('Common React questions — virtual DOM, reconciliation, keys, hooks rules, useEffect, memo, context','Can you explain why a component re-renders?'),
+      T('Common Node.js questions — event loop phases, streams, cluster, process.nextTick vs setImmediate','The event loop has 6 phases. Know them.'),
+      T('Common DB questions — ACID, joins, indexing, N+1, when SQL vs NoSQL, normalization','Explain trade-offs, not just definitions.'),
+      T('Common system design concepts — load balancer, CDN, cache, message queue, SQL vs NoSQL at scale','Always answer with trade-offs and justifications.'),
+      T('Take-home projects — clean code, README, tests, deployed demo, error handling','Treat it as production code. Add logging and error handling.'),
+      T('Live coding tips — explain approach first, code cleanly, handle edge cases, test manually','Say: "I am going to solve this with a hash map because..."'),
+      T('Pair programming interviews — write clean code, ask before assuming, communicate tradeoffs','Ask: "Would you prefer I optimize for readability or performance?"'),
+      T('Whiteboard interviews — draw diagrams, write pseudocode, talk through complexity','Clean handwriting. Big letters. Label everything.'),
+    ]},
+    {id:'c6-2-2',name:'Behavioral Interviews',high:true,topics:[
+      T('STAR method — Situation, Task, Action, Result — structure every answer','Result must be quantified or clearly positive.'),
+      T('Tell me about yourself — 60-second pitch: background → skills → what you want','Practiced: background (2 sentences), skills (2 sentences), goal (1 sentence).'),
+      T('Top behavioral questions — conflict, failure, leadership, impact, prioritization, ambiguity','Have 3–4 stories that can flex to different question types.'),
+      T('Failure question — be specific, show accountability, focus on lessons','Never blame others. "I learned X and now I do Y."'),
+      T('Conflict question — show empathy, data-driven resolution, positive outcome','Team conflict: "I set up a meeting to align on requirements with data."'),
+      T('Amazon Leadership Principles — 16 principles, 2 stories per principle for Amazon','If applying to Amazon: required. Others: good practice.'),
+      T('Google Googliness — comfort with ambiguity, intellectual curiosity, collaboration','Google values: "How do you keep up with new technology?"'),
+      T('Questions to ask the interviewer — team structure, tech stack, eng culture, growth','Ask 3 thoughtful questions. Never ask about salary in first round.'),
+    ]},
+    {id:'c6-2-3',name:'Job Search & Negotiation',high:true,topics:[
+      T('Application strategy — target 5–10 companies per week, track in spreadsheet','Column: Company, Role, Applied Date, Status, Contacts.'),
+      T('Job boards — LinkedIn, Indeed, Glassdoor, AngelList (Wellfound), Hacker News Who\'s Hiring, company career pages','Referrals have 10x conversion rate over cold applications.'),
+      T('Cold outreach — LinkedIn message to engineer, 3-sentence rule: compliment + ask + call-to-action','"I admire [specific thing]. I am applying for [role]. Would you have 15 min to chat?"'),
+      T('Referrals — reach out to alumni, meetup contacts, Twitter/X tech community','Referral: ~50% phone screen rate vs ~5% cold apply.'),
+      T('Salary negotiation — always negotiate, counteroffer with data','Never give a number first. "What is the budget for this role?"'),
+      T('Offer evaluation — base, equity (cliff, vesting), bonus, benefits, PTO, remote policy, growth path','Total comp = base + equity/4 + bonus. Evaluate fully.'),
+      T('Levels.fyi, Glassdoor, Blind — market rate data by company and level','Know the market rate before any negotiation.'),
+      T('Multiple offers — use competing offers to negotiate, be transparent but not aggressive','Companies expect negotiation. First offer is rarely best offer.'),
+      T('Technical screening timeline — apply → recruiter screen (1 week) → tech screen (1 week) → onsites (2 weeks) → offer (1 week)','Most loops take 3–6 weeks. Apply to multiple simultaneously.'),
+      T('Mock interviews — Pramp (free), interviewing.io, Exponent, peers — minimum 5 before first real one','Mock interviews are irreplaceable for reducing anxiety.'),
+      IV('Interview: Why do you want to leave your current job?'),
+      IV('Interview: Where do you see yourself in 5 years?'),
+    ]},
+    {id:'c6-2-4',name:'Target Company Preparation',high:true,topics:[
+      T('FAANG/MAANG — Meta, Amazon, Apple, Netflix, Google — each has different focus','Google: system design + coding. Meta: performance. Amazon: LPs.'),
+      T('Tier 2 companies — Stripe, Airbnb, Uber, Lyft, Snap, Twitter/X, Dropbox','Usually: 2 coding + 1 system design + 1 behavioral.'),
+      T('Startups — less structured, emphasize product thinking, full-stack, ownership','Startup interviews: more practical, less algorithmic. Show initiative.'),
+      T('Company research — use their product, read engineering blog, know tech stack','Instant points: "I read your post on migrating to gRPC."'),
+      T('Know the product — what are their main revenue drivers? Who are their users?','Shows genuine interest and helps in system design.'),
+      T('Leetcode company-specific lists — filter by company, sort by frequency and recency','Premium worthwhile for target companies 2 months before interviews.'),
+    ]},
+  ]},
+  {id:'s6-3',name:'Stage 6.3 — Full-Stack Capstone Projects',color:'pink',chapters:[
+    {id:'c6-3-1',name:'Capstone Projects',high:true,topics:[
+      PR('Capstone 1: SaaS Dashboard — Next.js 14 + Prisma + PostgreSQL + Auth.js + Stripe + Resend'),
+      T('Feature: Stripe checkout — products, checkout session, webhook handler, subscription status','stripe.webhooks.constructEvent() verifies Stripe signature.'),
+      T('Feature: Email system — welcome email, password reset, subscription notifications with Resend','Use Resend React Email for beautiful transactional emails.'),
+      T('Feature: Role-based dashboard — admin and user views, data visualization (Recharts/Tremor)','Different nav items, different API access, same codebase.'),
+      T('Feature: Audit log — record who did what and when — append-only log table','created_by, created_at, action, details in audit table.'),
+      PR('Capstone 2: Real-Time Chat App — Socket.io + Node.js + React + MongoDB + JWT'),
+      T('Feature: Message rooms, online presence, typing indicator, message history (MongoDB)','Typing indicator: emit "typing:start", timeout after 3s, emit "typing:stop".'),
+      T('Feature: File sharing, message reactions, read receipts, message search','GridFS for files in MongoDB or S3.'),
+      PR('Capstone 3: Full-Stack E-commerce — Next.js + Stripe + PostgreSQL + Algolia Search'),
+      T('Feature: Product catalog, cart, checkout, order management, inventory','Optimistic updates for cart. Stripe for payment.'),
+      T('Feature: Algolia search — instant search with filters, facets, typo tolerance','algolia.search() from frontend directly with public key.'),
+      PR('Capstone 4: REST + GraphQL API with full test suite and OpenAPI/GraphQL Playground docs'),
+      T('All projects: 90+ Lighthouse score, deployed, live demo link, comprehensive README','Screenshot every feature. Make the README look like a landing page.'),
+      T('GitHub: clean commit history, feature branches, PRs, issue tracking','Shows professional development workflow.'),
+    ]},
+  ]},
+]},
 ];
-
-// Color helpers
-const unitColors={green:'ub-green',blue:'ub-blue',yellow:'ub-yellow',pink:'ub-pink',orange:'ub-orange',accent:'ub-accent'};
-const barColors={green:'var(--accent)',blue:'var(--blue)',yellow:'var(--amber)',pink:'var(--pink)',orange:'var(--orange)',accent:'var(--accent3)'};
-const stageNumStyles={green:'background:rgba(61,232,176,.15);color:var(--accent)',blue:'background:rgba(91,164,245,.15);color:var(--blue)',yellow:'background:rgba(244,169,66,.15);color:var(--amber)',pink:'background:rgba(244,114,182,.15);color:var(--pink)',orange:'background:rgba(251,146,60,.15);color:var(--orange)'};
-const catLabels={theory:'📖 Theory',practice:'💻 Practice',project:'🚀 Build',interview:'🎤 Interview'};
-const catClass={theory:'tc-theory',practice:'tc-practice',project:'tc-project',interview:'tc-interview'};
-
+ 
+// ========= HELPERS ========= //
+const unitColors={green:'ub-green',blue:'ub-blue',yellow:'ub-yellow',purple:'ub-purple',orange:'ub-orange',pink:'ub-pink'};
+const barColors={green:'var(--accent)',blue:'var(--blue)',yellow:'var(--amber)',purple:'var(--purple)',orange:'var(--orange)',pink:'var(--pink)'};
+const stageNumStyles={
+  green:'background:rgba(61,232,176,.15);color:var(--accent)',
+  blue:'background:rgba(91,164,245,.15);color:var(--blue)',
+  yellow:'background:rgba(244,169,66,.15);color:var(--amber)',
+  purple:'background:rgba(167,139,250,.15);color:var(--purple)',
+  orange:'background:rgba(251,146,60,.15);color:var(--orange)',
+  pink:'background:rgba(244,114,182,.15);color:var(--pink)'
+};
+const catLabels={theory:'📖 Theory',practice:'💻 Practice',project:'🚀 Build',interview:'🎤 Interview',cpp:'⚡ C++/Java'};
+const catClass={theory:'tc-theory',practice:'tc-practice',project:'tc-project',interview:'tc-interview',cpp:'tc-cpp'};
+ 
+// ========= BUILD UI ========= //
 function buildSyllabus(){
   const tabsEl=document.getElementById('syllabus-tabs');
   const panelsEl=document.getElementById('syllabus-panels');
@@ -2236,14 +2790,14 @@ function buildSyllabus(){
   const d=getData();
   CURRICULUM.forEach((unit,ui)=>{
     const panelId='sp-'+unit.id;
-    const colClass=unitColors[unit.color]||'ub-accent';
+    const colClass=unitColors[unit.color]||'ub-green';
     const barCol=barColors[unit.color]||'var(--accent)';
     let uTotal=0,uDone=0;
     unit.stages.forEach(st=>st.chapters.forEach(ch=>{ch.topics.forEach((_,ti)=>{uTotal++;if(d['t-'+ch.id+'-'+ti])uDone++;})}));
     const uPct=uTotal?Math.round(uDone/uTotal*100):0;
     const tab=document.createElement('button');
     tab.className='subj-tab st-'+unit.color+(ui===0?' active':'');
-    tab.innerHTML=`${unit.name} <span class="topic-count-chip" style="margin-left:4px">${uDone}/${uTotal}</span>`;
+    tab.innerHTML=`${unit.name} <span class="topic-count-chip">${uDone}/${uTotal}</span>`;
     tab.dataset.panel=panelId;
     tabsEl.appendChild(tab);
     const panel=document.createElement('div');
@@ -2270,9 +2824,7 @@ function buildSyllabus(){
         </div>
         <div class="chapter-list">`;
       st.chapters.forEach(ch=>{
-        let chTotal=ch.topics.length;
-        let chDone=ch.topics.filter((_,ti)=>d['t-'+ch.id+'-'+ti]).length;
-        let chPct=chTotal?Math.round(chDone/chTotal*100):0;
+        let chTotal=ch.topics.length,chDone=ch.topics.filter((_,ti)=>d['t-'+ch.id+'-'+ti]).length,chPct=chTotal?Math.round(chDone/chTotal*100):0;
         const rev=d['rev-'+ch.id];
         const barColCh=barColors[unit.color]||'var(--accent)';
         html+=`<div class="chapter-card" id="chc-${ch.id}">
@@ -2284,15 +2836,15 @@ function buildSyllabus(){
                 <span class="ch-prog-txt" id="chprog-${ch.id}">${chDone}/${chTotal}</span>
                 <div class="mini-bar"><div class="mini-bar-fill" id="chbar-${ch.id}" style="width:${chPct}%;background:${barColCh}"></div></div>
                 <span class="ch-prog-txt">${chPct}%</span>
-                ${rev?'<span style="font-size:.65rem;color:var(--accent);font-weight:700">✓ Revised</span>':''}
+                ${rev?'<span style="font-size:.6rem;color:var(--accent);font-weight:700">✓ Revised</span>':''}
               </div>
             </div>
             <svg class="ch-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
           </div>
           <div class="topics-area">
             ${ch.topics.map((topic,ti)=>buildTopicRow(ch.id,ti,topic,d)).join('')}
-            <div style="margin-top:12px">
-              <label style="display:flex;align-items:center;gap:6px;font-size:.75rem;cursor:pointer;font-family:var(--font-body)">
+            <div style="margin-top:10px">
+              <label style="display:flex;align-items:center;gap:6px;font-size:.7rem;cursor:pointer">
                 <input type="checkbox" id="rev-${ch.id}" ${rev?'checked':''} onchange="toggleChFlag('${ch.id}','rev')" style="accent-color:var(--accent);width:12px;height:12px"/>
                 Revision done
               </label>
@@ -2316,14 +2868,10 @@ function buildSyllabus(){
     });
   });
 }
-
+ 
 function buildTopicRow(chId,ti,topic,d){
   const key='t-'+chId+'-'+ti;
-  const nk='tn-'+chId+'-'+ti;
-  const ck='tc-'+chId+'-'+ti;
-  const rk='tr-'+chId+'-'+ti;
-  const dk='td-'+chId+'-'+ti;
-  const pk='tp-'+chId+'-'+ti;
+  const nk='tn-'+chId+'-'+ti,ck='tc-'+chId+'-'+ti,rk='tr-'+chId+'-'+ti,dk='td-'+chId+'-'+ti,pk='tp-'+chId+'-'+ti;
   const done=d[key];const notes=d[nk]||'';const conf=d[ck]||0;
   const isObj=typeof topic==='object';
   const topicName=isObj?topic.name:topic;
@@ -2335,9 +2883,9 @@ function buildTopicRow(chId,ti,topic,d){
       <div class="topic-cat ${catClass[topicCat]||'tc-theory'}">${catLabels[topicCat]||'📖 Theory'}</div>
       <div class="topic-name${done?' done':''}" id="tn-${key}">${topicName}</div>
       ${topicSub?`<div class="topic-sub">💡 ${topicSub}</div>`:''}
-      <textarea class="topic-notes" rows="1" placeholder="Add your notes here..." onchange="saveTopicData('${nk}',this.value)">${notes}</textarea>
-      <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center">
-        <div class="conf-stars">${[1,2,3,4,5].map(s=>`<span class="cstar${conf>=s?' lit':''}" onclick="setConf('${ck}','${key}',${s})" title="Confidence ${s}/5">★</span>`).join('')}</div>
+      <textarea class="topic-notes" rows="1" placeholder="Notes..." onchange="saveTopicData('${nk}',this.value)">${notes}</textarea>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:4px">
+        <div class="conf-stars">${[1,2,3,4,5].map(s=>`<span class="cstar${conf>=s?' lit':''}" onclick="setConf('${ck}','${key}',${s})">★</span>`).join('')}</div>
         <div class="topic-flags">
           <button class="flag-btn${d[rk]?' f-rev':''}" title="Revised" onclick="toggleFlag('${rk}','${key}','rev',this)">✓</button>
           <button class="flag-btn${d[dk]?' f-doubt':''}" title="Doubt" onclick="toggleFlag('${dk}','${key}','doubt',this)">?</button>
@@ -2347,9 +2895,10 @@ function buildTopicRow(chId,ti,topic,d){
     </div>
   </div>`;
 }
-
+ 
 function toggleStage(id){document.getElementById('sb-'+id)?.classList.toggle('open')}
 function toggleChapter(id){document.getElementById('chc-'+id)?.classList.toggle('open')}
+ 
 function toggleTopic(chId,ti,el){
   const key='t-'+chId+'-'+ti;
   const d=getData();
@@ -2357,19 +2906,21 @@ function toggleTopic(chId,ti,el){
   setData(d);
   const nm=document.getElementById('tn-'+key);
   if(nm)nm.className='topic-name'+(el.checked?' done':'');
-  updateChapterProgress(chId);updateStats();
+  updateChapterProgress(chId);
+  updateStats();
 }
+ 
 function updateChapterProgress(chId){
   let unit=null,ch=null;
   CURRICULUM.forEach(u=>u.stages.forEach(st=>st.chapters.forEach(c=>{if(c.id===chId){unit=u;ch=c;}})));
   if(!ch)return;
   const d=getData();
-  const tot=ch.topics.length,done=ch.topics.filter((_,ti)=>d['t-'+chId+'-'+ti]).length;
-  const pct=tot?Math.round(done/tot*100):0;
+  const tot=ch.topics.length,done=ch.topics.filter((_,ti)=>d['t-'+chId+'-'+ti]).length,pct=tot?Math.round(done/tot*100):0;
   const bar=document.getElementById('chbar-'+chId),prog=document.getElementById('chprog-'+chId),chk=document.getElementById('chk-'+chId);
   if(bar)bar.style.width=pct+'%';if(prog)prog.textContent=done+'/'+tot;if(chk&&tot>0)chk.checked=done===tot;
   if(unit)updateUnitProgress(unit.id,unit);
 }
+ 
 function updateUnitProgress(uid,unit){
   const d=getData();let tot=0,done=0;
   unit.stages.forEach(st=>st.chapters.forEach(ch=>{ch.topics.forEach((_,ti)=>{tot++;if(d['t-'+ch.id+'-'+ti])done++;})}));
@@ -2377,56 +2928,61 @@ function updateUnitProgress(uid,unit){
   const bar=document.getElementById('ubar-'+uid),pctEl=document.getElementById('upct-'+uid);
   if(bar)bar.style.width=pct+'%';if(pctEl)pctEl.textContent=pct+'%';
 }
+ 
 function saveTopicData(key,val){const d=getData();d[key]=val;setData(d)}
+ 
 function setConf(ck,key,stars){
   const d=getData();d[ck]=stars;setData(d);
   const row=document.getElementById('trow-'+key);
   if(row)row.querySelectorAll('.cstar').forEach((s,i)=>s.classList.toggle('lit',i<stars));
 }
+ 
 function toggleFlag(fk,key,type,btn){
   const d=getData();if(d[fk])delete d[fk];else d[fk]=1;setData(d);
   const cm={rev:'f-rev',doubt:'f-doubt',prio:'f-prio'};btn.classList.toggle(cm[type],!!d[fk]);
 }
+ 
 function toggleChFlag(chId,type){
   const key=type+'-'+chId;const d=getData();if(d[key])delete d[key];else d[key]=1;setData(d);
 }
-
-// STATS
-function getAllTopicStats(){
+ 
+function updateStats(){
   const d=getData();
-  const subjTotals={js:{t:0,d:0},react:{t:0,d:0},node:{t:0,d:0},dsa:{t:0,d:0},sys:{t:0,d:0}};
   let total=0,done=0,chTotal=0,chDone=0;
-  CURRICULUM.forEach((unit,ui)=>{
-    unit.stages.forEach((st,si)=>{
-      st.chapters.forEach(ch=>{
-        const chT=ch.topics.length,chD=ch.topics.filter((_,ti)=>d['t-'+ch.id+'-'+ti]).length;
-        total+=chT;done+=chD;chTotal++;if(chD===chT&&chT>0)chDone++;
-        if(ui===0){subjTotals.js.t+=chT;subjTotals.js.d+=chD;}
-        else if(ui===1&&si===0){subjTotals.react.t+=chT;subjTotals.react.d+=chD;}
-        else if(ui===1&&si>0){subjTotals.node.t+=chT;subjTotals.node.d+=chD;}
-        else if(ui===2&&st.id==='s3-4'){subjTotals.dsa.t+=chT;subjTotals.dsa.d+=chD;}
-        else if(ui===2&&st.id==='s3-3'){subjTotals.sys.t+=chT;subjTotals.sys.d+=chD;}
-      });
-    });
+  const unitTotals={};
+  CURRICULUM.forEach((unit)=>{
+    let uT=0,uD=0;
+    unit.stages.forEach(st=>st.chapters.forEach(ch=>{
+      const chT=ch.topics.length,chD=ch.topics.filter((_,ti)=>d['t-'+ch.id+'-'+ti]).length;
+      total+=chT;done+=chD;chTotal++;if(chD===chT&&chT>0)chDone++;
+      uT+=chT;uD+=chD;
+    }));
+    unitTotals[unit.id]={t:uT,d:uD};
   });
   const pct=s=>s.t?Math.round(s.d/s.t*100):0;
-  return{total,done,chTotal,chDone,overallPct:total?Math.round(done/total*100):0,
-    js:pct(subjTotals.js),react:pct(subjTotals.react),node:pct(subjTotals.node),dsa:pct(subjTotals.dsa),sys:pct(subjTotals.sys)};
+  safe('stat-topics',done);safe('stat-chapters',chDone);
+  const projects=JSON.parse(d['projects-list']||'[]');
+  const apps=JSON.parse(d['apps-list']||'[]');
+  safe('stat-projects',projects.length);safe('stat-applied',apps.length);
+  safe('overall-pct',total?Math.round(done/total*100)+'%':'0%');
+  safe('overall-detail',done+' / '+total+' topics');
+  const ob=document.getElementById('overall-bar');if(ob)ob.style.width=(total?Math.round(done/total*100):0)+'%';
+  // Per-unit bars
+  const unitMap={'u1':'fe','u2':'be','u3':'db','u4':'dsa','u5':'sys','u6':'job'};
+  CURRICULUM.forEach(unit=>{
+    const key=unitMap[unit.id];
+    if(!key)return;
+    const v=pct(unitTotals[unit.id]||{t:0,d:0});
+    const b=document.getElementById('pb-'+key),p=document.getElementById('pp-'+key);
+    if(b)b.style.width=v+'%';if(p)p.textContent=v+'%';
+  });
 }
-function updateStats(){
-  const st=getAllTopicStats();const d=getData();
-  const tests=JSON.parse(d['projects-list']||'[]');const apps=JSON.parse(d['apps-list']||'[]');
-  const streak=d['streak']||0;
-  let studyDays=0;for(let i=0;i<30;i++){const dd=new Date();dd.setDate(dd.getDate()-i);if(d['day-'+dd.toISOString().slice(0,10)])studyDays++;}
-  const consistency=Math.round(studyDays/30*100);
-  safe('stat-topics',st.done);safe('stat-chapters',st.chDone);safe('stat-streak',streak+'🔥');
-  safe('stat-projects',tests.length);safe('stat-applied',apps.length);safe('stat-consistency',consistency+'%');
-  safe('overall-pct',st.overallPct+'%');safe('overall-detail',st.done+' / '+st.total+' topics');
-  const ob=document.getElementById('overall-bar');if(ob)ob.style.width=st.overallPct+'%';
-  const setBar=(id,val)=>{const b=document.getElementById('pb-'+id);const p=document.getElementById('pp-'+id);if(b)b.style.width=val+'%';if(p)p.textContent=val+'%';};
-  setBar('js',st.js);setBar('react',st.react);setBar('node',st.node);setBar('dsa',st.dsa);setBar('sys',st.sys);
-}
-
+ 
+document.addEventListener('DOMContentLoaded',()=>{
+  buildSyllabus();
+  updateStats();
+});
+</script>
 
 
 
