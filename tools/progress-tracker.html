@@ -738,18 +738,119 @@ footer.coodley-footer{background:var(--bg);border-top:1px solid var(--border);pa
       </div>
     </div>
   </div>
+
+  <div id="motivational-quote" style="background:linear-gradient(135deg,rgba(61,232,176,.05),rgba(91,164,245,.04));border:1px solid var(--border2);border-radius:var(--radius-lg);padding:16px 22px;margin-bottom:16px;display:flex;align-items:center;gap:14px;">
+  <div style="font-size:1.6rem;flex-shrink:0" id="quote-emoji">💡</div>
+  <div>
+    <div style="font-size:.82rem;color:var(--fg);font-weight:600;font-family:var(--font-body);line-height:1.6" id="quote-text">Loading...</div>
+    <div style="font-size:.68rem;color:var(--muted);margin-top:4px;font-family:var(--font-mono)" id="quote-meta">Daily Motivation</div>
+  </div>
+</div>
+
+
   <div class="companion-banner">
     <div class="companion-avatar">🤖</div>
     <div class="companion-text"><strong>Hey! I'm your Coodley companion.</strong> Every topic you check off brings you closer to that offer letter. Don't rush — depth beats speed. Open the Syllabus, start at Stage 1.1, and check off topics as you genuinely understand them. <strong>Build something every week.</strong> You've got this. 💪</div>
   </div>
-  <div class="stats-grid">
-    <div class="stat-card s-green"><div class="stat-num" id="stat-topics">0</div><div class="stat-label">Topics Done</div><div class="stat-glow"></div></div>
-    <div class="stat-card s-blue"><div class="stat-num" id="stat-chapters">0</div><div class="stat-label">Chapters Done</div><div class="stat-glow"></div></div>
-    <div class="stat-card s-yellow"><div class="stat-num" id="stat-streak">0🔥</div><div class="stat-label">Day Streak</div><div class="stat-glow"></div></div>
-    <div class="stat-card s-pink"><div class="stat-num" id="stat-projects">0</div><div class="stat-label">Projects Built</div><div class="stat-glow"></div></div>
-    <div class="stat-card s-orange"><div class="stat-num" id="stat-applied">0</div><div class="stat-label">Jobs Applied</div><div class="stat-glow"></div></div>
-    <div class="stat-card s-accent"><div class="stat-num" id="stat-consistency">0%</div><div class="stat-label">Consistency</div><div class="stat-glow"></div></div>
+
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-bottom:24px">
+  <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px;display:flex;align-items:center;gap:16px;transition:all .2s" onmouseover="this.style.borderColor='var(--border2)'" onmouseout="this.style.borderColor='var(--border)'">
+    <div style="position:relative;width:64px;height:64px;flex-shrink:0">
+      <svg width="64" height="64" viewBox="0 0 64 64">
+        <circle cx="32" cy="32" r="26" fill="none" stroke="var(--bg4)" stroke-width="6"/>
+        <circle cx="32" cy="32" r="26" fill="none" stroke="var(--accent)" stroke-width="6"
+          stroke-dasharray="163.4" id="goal-ring-fill"
+          stroke-dashoffset="163.4"
+          stroke-linecap="round"
+          transform="rotate(-90 32 32)"
+          style="transition:stroke-dashoffset .6s cubic-bezier(.4,0,.2,1)"/>
+      </svg>
+      <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:.75rem;font-weight:700;color:var(--accent)" id="goal-ring-pct">0%</div>
+    </div>
+    <div>
+      <div style="font-size:.68rem;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.07em;font-family:var(--font-body);margin-bottom:4px">Today's Study Goal</div>
+      <div style="font-family:var(--font-mono);font-size:1.3rem;font-weight:700;color:var(--fg)"><span id="goal-hours-done">0</span><span style="color:var(--muted);font-size:.9rem"> / <span id="goal-hours-target">3</span>h</span></div>
+      <div style="font-size:.72rem;color:var(--muted2);margin-top:3px;font-family:var(--font-body)" id="goal-status-text">Start studying today!</div>
+    </div>
   </div>
+
+  <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px;transition:all .2s" onmouseover="this.style.borderColor='var(--border2)'" onmouseout="this.style.borderColor='var(--border)'">
+    <div style="font-size:.68rem;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.07em;font-family:var(--font-body);margin-bottom:12px">📅 This Week</div>
+    <div style="display:flex;gap:6px;align-items:flex-end;height:48px">
+      <div id="week-bars" style="display:flex;gap:6px;align-items:flex-end;width:100%;height:100%"></div>
+    </div>
+    <div style="display:flex;justify-content:space-between;margin-top:6px">
+      <span style="font-size:.6rem;color:var(--muted);font-family:var(--font-body)">Mon</span>
+      <span style="font-size:.6rem;color:var(--muted);font-family:var(--font-body)">Tue</span>
+      <span style="font-size:.6rem;color:var(--muted);font-family:var(--font-body)">Wed</span>
+      <span style="font-size:.6rem;color:var(--muted);font-family:var(--font-body)">Thu</span>
+      <span style="font-size:.6rem;color:var(--muted);font-family:var(--font-body)">Fri</span>
+      <span style="font-size:.6rem;color:var(--muted);font-family:var(--font-body)">Sat</span>
+      <span style="font-size:.6rem;color:var(--muted);font-family:var(--font-body)">Sun</span>
+    </div>
+  </div>
+
+  <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px;transition:all .2s" onmouseover="this.style.borderColor='var(--border2)'" onmouseout="this.style.borderColor='var(--border)'">
+    <div style="font-size:.68rem;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.07em;font-family:var(--font-body);margin-bottom:10px">🎯 Next Milestone</div>
+    <div style="font-family:var(--font-mono);font-size:1.8rem;font-weight:700;color:var(--blue);line-height:1;margin-bottom:4px" id="milestone-pct">—</div>
+    <div style="font-size:.78rem;color:var(--muted2);font-family:var(--font-body);margin-bottom:10px" id="milestone-label">Loading...</div>
+    <div style="height:5px;background:var(--bg4);border-radius:3px;overflow:hidden">
+      <div id="milestone-bar" style="height:100%;width:0%;background:var(--blue);border-radius:3px;transition:width .6s"></div>
+    </div>
+    <div style="font-size:.68rem;color:var(--muted);margin-top:5px;font-family:var(--font-mono)" id="milestone-sub"></div>
+  </div>
+</div>
+
+
+  <div class="stats-grid">
+  <div class="stat-card s-green">
+    <div class="stat-num" id="stat-topics">0</div>
+    <div class="stat-label">Topics Done</div>
+    <div style="font-size:.65rem;color:var(--accent);margin-top:4px;font-family:var(--font-mono)" id="stat-topics-today">+0 today</div>
+    <div class="stat-glow"></div>
+  </div>
+  <div class="stat-card s-blue">
+    <div class="stat-num" id="stat-chapters">0</div>
+    <div class="stat-label">Chapters Done</div>
+    <div style="font-size:.65rem;color:var(--blue);margin-top:4px;font-family:var(--font-mono)" id="stat-chapters-sub">of <span id="stat-chapters-total">0</span> total</div>
+    <div class="stat-glow"></div>
+  </div>
+  <div class="stat-card s-yellow">
+    <div class="stat-num" id="stat-streak">0🔥</div>
+    <div class="stat-label">Day Streak</div>
+    <div style="font-size:.65rem;color:var(--amber);margin-top:4px;font-family:var(--font-mono)" id="stat-streak-sub">Keep it going!</div>
+    <div class="stat-glow"></div>
+  </div>
+  <div class="stat-card s-pink">
+    <div class="stat-num" id="stat-projects">0</div>
+    <div class="stat-label">Projects Built</div>
+    <div style="font-size:.65rem;color:var(--pink);margin-top:4px;font-family:var(--font-mono)" id="stat-projects-sub">Target: 3+</div>
+    <div class="stat-glow"></div>
+  </div>
+  <div class="stat-card s-orange">
+    <div class="stat-num" id="stat-applied">0</div>
+    <div class="stat-label">Jobs Applied</div>
+    <div style="font-size:.65rem;color:var(--orange);margin-top:4px;font-family:var(--font-mono)" id="stat-applied-sub">Target: 50+</div>
+    <div class="stat-glow"></div>
+  </div>
+  <div class="stat-card s-accent">
+    <div class="stat-num" id="stat-consistency">0%</div>
+    <div class="stat-label">Consistency</div>
+    <div style="font-size:.65rem;color:var(--accent3);margin-top:4px;font-family:var(--font-mono)" id="stat-consistency-sub">Last 30 days</div>
+    <div class="stat-glow"></div>
+  </div>
+</div>
+
+<div class="sec-title">
+  <div class="sec-icon si-blue">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
+  </div>
+  Today's Focus
+</div>
+<div id="todays-focus-card" style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-lg);padding:22px;margin-bottom:24px">
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px" id="focus-items"></div>
+</div>
+
   <div class="sec-title">
     <div class="sec-icon si-green">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
@@ -771,6 +872,19 @@ footer.coodley-footer{background:var(--bg);border-top:1px solid var(--border);pa
       <div style="font-size:.8rem;color:var(--muted2);font-family:var(--font-body)" id="overall-detail">0 / 0 topics</div>
     </div>
   </div>
+
+  <div class="sec-title">
+  <div class="sec-icon si-accent">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+  </div>
+  Recent Activity
+</div>
+<div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px;margin-bottom:16px">
+  <div id="recent-activity-list">
+    <div style="color:var(--muted);font-size:.83rem;text-align:center;padding:16px">No activity yet. Start checking off topics in the Syllabus!</div>
+  </div>
+</div>
+
 </section>
 
 <!-- PROFILE -->
@@ -3040,6 +3154,7 @@ document.addEventListener('DOMContentLoaded',()=>{
   updateStats();
   updateAnalytics();
   updateOverview();
+  updateDashboardExtras();
 });
 
 
@@ -3778,11 +3893,347 @@ function initNav(){
 window.addEventListener('DOMContentLoaded',()=>{
   const d=getData();const theme=d['theme']||'dark';
   document.documentElement.setAttribute('data-theme',theme);
-  const SUN=`<circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>`;
-  const MOON=`<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>`;
-  const icon=document.getElementById('themeIcon');if(icon)icon.innerHTML=theme==='dark'?SUN:MOON;
-  initNav();buildSyllabus();loadProfile();loadAvatar();initDaily();loadTodos();loadProjects();buildBooks();buildInterviewChecklist();updateStats();loadJournal();updateTimerDisplay();
+  // ... existing code ...
+  initNav();buildSyllabus();loadProfile();loadAvatar();
+  initDaily();loadTodos();loadProjects();buildBooks();
+  buildInterviewChecklist();updateStats();loadJournal();
+  updateTimerDisplay();
+  updateDashboardExtras(); // ← ADD THIS LINE
 });
+
+// ANALYTICS CHARTS
+// ===== DASHBOARD UPDATES =====
+
+function updateDashboardExtras(){
+  const d = getData();
+  const st = getAllTopicStats();
+  updateMotivationalQuote(d, st);
+  updateGoalRing(d);
+  updateWeekBars(d);
+  updateMilestone(st);
+  updateStatSubtext(d, st);
+  updateTodaysFocus(st);
+  updateRecentActivity(d);
+}
+
+// ── SVG ICONS ───────────────────────────────────────────
+const SVG_ICONS = {
+  seed:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 20c5 0 10-5 10-10V4s-6 0-10 4-4 10-4 10h4z"></path></svg>`,
+  fire:`<svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 3s2 2 2 5-2 4-2 6a3 3 0 1 0 6 0c0-5-3-8-6-11zm-3 8s-4 3-4 7a6 6 0 0 0 12 0c0-2-1-4-2-5 0 3-2 5-4 5s-4-2-4-5z"/></svg>`,
+  bolt:`<svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/></svg>`,
+  muscle:`<svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 12c1-2 2-3 4-3 1 0 2 1 2 2v1h2a3 3 0 0 1 3 3v2a4 4 0 0 1-4 4H9a5 5 0 0 1-5-5v-1c0-2 1-3 3-3z"/></svg>`,
+  rocket:`<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2c4 2 7 6 8 10l-4 4c-4-1-8-4-10-8l6-6zm-7 15l3-1-2-2-1 3zm9-6l2 2"/></svg>`,
+  chart:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 17l6-6 4 4 7-7"></path><path d="M14 8h7v7"></path></svg>`,
+  target:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"></circle><circle cx="12" cy="12" r="5"></circle><circle cx="12" cy="12" r="2"></circle></svg>`,
+  build:`<svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 19l-7-7a5 5 0 0 1-6-6l3 3 2-2-3-3a5 5 0 0 1 6 6l7 7-2 2z"/></svg>`,
+  star:`<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 7 7 .5-5.5 4.5 2 7L12 17l-6.5 4 2-7L2 9.5 9 9l3-7z"/></svg>`,
+  trophy:`<svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2H6v3H3v3a5 5 0 0 0 5 5h.3A6 6 0 0 0 11 17v2H7v3h10v-3h-4v-2a6 6 0 0 0 2.7-4H16a5 5 0 0 0 5-5V5h-3V2zm-9 8a3 3 0 0 1-3-3V7h3v3zm9-3a3 3 0 0 1-3 3V7h3v0z"/></svg>`,
+  check:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"></path></svg>`,
+  frontend:`<svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 3h18v18H3V3zm4 4v10h2V7H7zm4 0v10h2V7h-2zm4 0v10h2V7h-2z"/></svg>`,
+  dsa:`<svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 4h7v7H4V4zm9 0h7v7h-7V4zM4 13h7v7H4v-7zm12 0h4v7h-7v-4h3v-3z"/></svg>`,
+  backend:`<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l9 4.5v11L12 22 3 17.5v-11L12 2zm0 2.2L5 7v9l7 3.8 7-3.8V7l-7-2.8z"/></svg>`,
+  database:`<svg viewBox="0 0 24 24" fill="currentColor"><ellipse cx="12" cy="5" rx="8" ry="3"></ellipse><path d="M4 5v6c0 1.7 3.6 3 8 3s8-1.3 8-3V5"></path><path d="M4 11v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"></path></svg>`,
+  party:`<svg viewBox="0 0 24 24" fill="currentColor"><path d="M2 22l20-8L10 2 2 22zm9-9l2 2"></path></svg>`
+};
+
+// ── Motivational Quote ──────────────────────────────────
+function updateMotivationalQuote(d, st){
+  const streak = parseInt(d['streak']) || 0;
+  const pct = st.overallPct;
+  const quotes = [
+    // Beginner
+    { min:0, max:10, streak:0, emoji:SVG_ICONS.seed, text:'Every expert was once a beginner. Open the Syllabus and check off your first topic right now.', meta:'Day 1 Energy' },
+    { min:0, max:10, streak:1, emoji:SVG_ICONS.fire, text:'You showed up yesterday. Show up today. That is literally all it takes to be ahead of most people.', meta:'Consistency is everything' },
+    // Building
+    { min:10, max:30, streak:0, emoji:SVG_ICONS.bolt, text:'You have started. Most people never do. Now the only job is to not stop.', meta:'Keep the momentum' },
+    { min:10, max:30, streak:3, emoji:SVG_ICONS.muscle, text:'3-day streak! The habit is forming. Protect it like it is your most valuable asset — because it is.', meta:'Habit forming' },
+    { min:10, max:30, streak:7, emoji:SVG_ICONS.rocket, text:'One week straight. You are not just learning — you are becoming a developer. Keep going.', meta:'One week strong' },
+    // Progress
+    { min:30, max:60, streak:0, emoji:SVG_ICONS.chart, text:'You are 30%+ done with a curriculum most people quit in week 1. That is rare. Keep shipping.', meta:'Real progress' },
+    { min:30, max:60, streak:5, emoji:SVG_ICONS.target, text:'Halfway warriors are rare. You are past the "beginner enthusiasm" phase and still here. That is who gets hired.', meta:'The hard part is now' },
+    { min:60, max:80, streak:0, emoji:SVG_ICONS.build, text:'You are deep in the stack now. The topics feel hard because they ARE hard. This is exactly where growth happens.', meta:'Deep work zone' },
+    { min:60, max:80, streak:10, emoji:SVG_ICONS.star, text:'10-day streak and 60%+ done. You are not a beginner anymore. You are a developer building in public.', meta:'Developer mode: ON' },
+    // Near end
+    { min:80, max:100, streak:0, emoji:SVG_ICONS.target, text:'You are almost there. Start applying NOW. Interviews will teach you more than any tutorial ever will.', meta:'Apply while you learn' },
+    { min:80, max:101, streak:14, emoji:SVG_ICONS.trophy, text:'14+ day streak. 80%+ complete. This is the profile that gets callbacks. Polish your portfolio and apply today.', meta:'Job ready mode' },
+  ];
+
+  let best = quotes[0];
+  for(const q of quotes){
+    if(pct >= q.min && pct < q.max && streak >= q.streak){
+      if(q.streak >= best.streak) best = q;
+    }
+  }
+
+  const qEl = document.getElementById('quote-text');
+  const qEmoji = document.getElementById('quote-emoji');
+  const qMeta = document.getElementById('quote-meta');
+  if(qEl) qEl.textContent = best.text;
+  if(qEmoji){
+    qEmoji.innerHTML = best.emoji;
+    qEmoji.style.width = '24px';
+    qEmoji.style.height = '24px';
+    qEmoji.style.display = 'flex';
+    qEmoji.style.alignItems = 'center';
+    qEmoji.style.justifyContent = 'center';
+  }
+  if(qMeta) qMeta.textContent = best.meta + ' · ' + new Date().toLocaleDateString('en-IN',{weekday:'long', month:'short', day:'numeric'});
+}
+
+// ── Goal Ring ───────────────────────────────────────────
+function updateGoalRing(d){
+  const today = new Date().toISOString().slice(0,10);
+  const dd = d['dd-' + today] || {};
+  const hoursToday = parseFloat(dd.hours) || 0;
+  const goalHours = parseFloat(d['p-daily']) || 3;
+  const pct = Math.min(100, Math.round(hoursToday / goalHours * 100));
+  const circumference = 163.4;
+  const offset = circumference - (pct / 100) * circumference;
+
+  const ring = document.getElementById('goal-ring-fill');
+  const ringPct = document.getElementById('goal-ring-pct');
+  const hoursDone = document.getElementById('goal-hours-done');
+  const hoursTarget = document.getElementById('goal-hours-target');
+  const statusText = document.getElementById('goal-status-text');
+
+  if(ring) ring.style.strokeDashoffset = offset;
+  if(ringPct) ringPct.textContent = pct + '%';
+  if(hoursDone) hoursDone.textContent = hoursToday;
+  if(hoursTarget) hoursTarget.textContent = goalHours;
+
+  if(statusText){
+    if(pct === 0) statusText.textContent = 'Start studying today!';
+    else if(pct < 50) statusText.textContent = 'Good start — keep going!';
+    else if(pct < 100) statusText.textContent = 'Almost at your goal!';
+    else statusText.innerHTML = SVG_ICONS.check + ' Goal crushed today!';
+  }
+}
+
+// ── Week Bars ───────────────────────────────────────────
+function updateWeekBars(d){
+  const container = document.getElementById('week-bars');
+  if(!container) return;
+
+  const today = new Date();
+  const dayOfWeek = today.getDay();
+  const monday = new Date(today);
+  monday.setDate(today.getDate() - (dayOfWeek === 0 ? 6 : dayOfWeek - 1));
+
+  const bars = [];
+  let maxHrs = 0;
+  for(let i = 0; i < 7; i++){
+    const d2 = new Date(monday);
+    d2.setDate(monday.getDate() + i);
+    const key = 'day-' + d2.toISOString().slice(0,10);
+    const hrs = parseFloat(d[key]) || 0;
+    bars.push(hrs);
+    if(hrs > maxHrs) maxHrs = hrs;
+  }
+
+  const todayIdx = dayOfWeek === 0 ? 6 : dayOfWeek - 1;
+  container.innerHTML = bars.map((hrs, i) => {
+    const h = maxHrs > 0 ? Math.max(4, Math.round(hrs / maxHrs * 48)) : 4;
+    const isToday = i === todayIdx;
+    const color = isToday ? 'var(--accent)' : hrs > 0 ? 'var(--blue)' : 'var(--bg4)';
+    return `<div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:3px">
+      <div title="${hrs}h" style="width:100%;height:${h}px;background:${color};border-radius:3px;transition:height .4s;cursor:default"></div>
+    </div>`;
+  }).join('');
+}
+
+// ── Milestone ───────────────────────────────────────────
+function updateMilestone(st){
+  const pct = st.overallPct;
+  const milestones = [
+    { at:10, label:'HTML/CSS Foundation', color:'var(--accent)' },
+    { at:20, label:'JS Core Complete', color:'var(--amber)' },
+    { at:35, label:'React Ready', color:'var(--blue)' },
+    { at:50, label:'Full Stack Basics', color:'var(--accent)' },
+    { at:65, label:'DSA Intermediate', color:'var(--pink)' },
+    { at:75, label:'Project Portfolio Ready', color:'var(--orange)' },
+    { at:85, label:'Job Application Ready', color:'var(--accent)' },
+    { at:95, label:'Interview Ready', color:'var(--blue)' },
+    { at:100, label:'Offer Time! ' + SVG_ICONS.party, color:'var(--accent)' },
+  ];
+
+  const next = milestones.find(m => m.at > pct) || milestones[milestones.length - 1];
+  const prev = [...milestones].reverse().find(m => m.at <= pct);
+  const prevAt = prev ? prev.at : 0;
+  const progress = next.at === prevAt ? 100 : Math.round((pct - prevAt) / (next.at - prevAt) * 100);
+
+  const mPct = document.getElementById('milestone-pct');
+  const mLabel = document.getElementById('milestone-label');
+  const mBar = document.getElementById('milestone-bar');
+  const mSub = document.getElementById('milestone-sub');
+
+  if(mPct) mPct.textContent = next.at + '%';
+  if(mLabel) mLabel.innerHTML = next.label;
+  if(mBar){ mBar.style.width = progress + '%'; mBar.style.background = next.color; }
+  if(mSub) mSub.textContent = (next.at - pct) + '% away · You are at ' + pct + '%';
+}
+
+// ── Stat Subtext ────────────────────────────────────────
+function updateStatSubtext(d, st){
+  const streak = parseInt(d['streak']) || 0;
+  const projects = JSON.parse(d['projects-list'] || '[]');
+  const apps = JSON.parse(d['apps-list'] || '[]');
+
+  // Topics done today
+  const today = new Date().toISOString().slice(0,10);
+  let topicsToday = 0;
+  Object.keys(d).forEach(k => {
+    if(k.startsWith('t-') && d[k] === 1){
+      // count all checked — approximate today count from session
+      topicsToday++;
+    }
+  });
+  // Simpler: show total remaining
+  const remaining = st.total - st.done;
+  const todayEl = document.getElementById('stat-topics-today');
+  if(todayEl) todayEl.textContent = remaining + ' remaining';
+
+  const chapTotalEl = document.getElementById('stat-chapters-total');
+  if(chapTotalEl) chapTotalEl.textContent = st.chTotal;
+
+  const streakSubEl = document.getElementById('stat-streak-sub');
+  if(streakSubEl){
+    if(streak === 0) streakSubEl.textContent = 'Log today to start!';
+    else if(streak < 3) streakSubEl.textContent = 'Build the habit!';
+    else if(streak < 7) streakSubEl.textContent = 'You are on a roll!';
+    else if(streak < 14) streakSubEl.innerHTML = 'Unstoppable! ' + SVG_ICONS.fire;
+    else streakSubEl.innerHTML = 'LEGENDARY streak! ' + SVG_ICONS.trophy;
+  }
+
+  const projSubEl = document.getElementById('stat-projects-sub');
+  if(projSubEl){
+    const needed = Math.max(0, 3 - projects.length);
+    projSubEl.textContent = needed > 0 ? 'Need ' + needed + ' more' : ' Portfolio ready!';
+  }
+
+  const appSubEl = document.getElementById('stat-applied-sub');
+  if(appSubEl){
+    const needed = Math.max(0, 50 - apps.length);
+    appSubEl.textContent = needed > 0 ? needed + ' more to go' : ' Great volume!';
+  }
+}
+
+// ── Today's Focus ────────────────────────────────────────
+function updateTodaysFocus(st){
+  const el = document.getElementById('focus-items');
+  if(!el) return;
+
+  const focusItems = [];
+
+  if(st.js < 100){
+    const stage = st.js < 30 ? 'Stage 1.1–1.3' : st.js < 60 ? 'Stage 1.3–1.4' : 'Stage 1.5–1.6';
+    focusItems.push({
+      icon:SVG_ICONS.frontend, label:'Frontend', sublabel: stage,
+      action:'Open Syllabus → Unit 1',
+      color:'var(--amber)', bg:'rgba(244,169,66,.08)',
+      border:'rgba(244,169,66,.25)', pct: st.js
+    });
+  }
+  if(st.dsa < 100){
+    const stage = st.dsa < 20 ? 'Easy LeetCode' : st.dsa < 50 ? 'Medium Problems' : 'Hard + DP';
+    focusItems.push({
+      icon:SVG_ICONS.dsa, label:'DSA Practice', sublabel: stage,
+      action:'1 problem minimum today',
+      color:'var(--pink)', bg:'rgba(244,114,182,.08)',
+      border:'rgba(244,114,182,.25)', pct: st.dsa
+    });
+  }
+  if(st.node < 100 && st.js > 30){
+    focusItems.push({
+      icon:SVG_ICONS.backend, label:'Backend', sublabel:'Node.js + Express',
+      action:'Open Syllabus → Unit 2',
+      color:'var(--accent)', bg:'rgba(61,232,176,.08)',
+      border:'rgba(61,232,176,.25)', pct: st.node
+    });
+  }
+  if(st.db < 100 && st.node > 20){
+    focusItems.push({
+      icon:SVG_ICONS.database, label:'Databases', sublabel:'SQL + MongoDB',
+      action:'Open Syllabus → Unit 3',
+      color:'var(--blue)', bg:'rgba(91,164,245,.08)',
+      border:'rgba(91,164,245,.25)', pct: st.db
+    });
+  }
+
+  // Always show max 3
+  const shown = focusItems.slice(0, 3);
+
+  if(!shown.length){
+    el.innerHTML = `<div style="color:var(--accent);font-size:.85rem;font-family:var(--font-body);text-align:center;padding:8px">${SVG_ICONS.party} All units complete! Focus on applying and mock interviews today.</div>`;
+    return;
+  }
+
+  el.innerHTML = shown.map(item => `
+    <div style="background:${item.bg};border:1px solid ${item.border};border-radius:var(--radius-lg);padding:16px;cursor:pointer;transition:all .2s"
+      onclick="document.querySelector('[data-sec=syllabus]').click()"
+      onmouseover="this.style.transform='translateY(-2px)'"
+      onmouseout="this.style.transform='translateY(0)'">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
+        <span style="font-size:1.1rem;width:20px;height:20px;display:flex;align-items:center;justify-content:center">${item.icon}</span>
+        <div>
+          <div style="font-size:.82rem;font-weight:700;color:${item.color};font-family:var(--font-body)">${item.label}</div>
+          <div style="font-size:.68rem;color:var(--muted);font-family:var(--font-body)">${item.sublabel}</div>
+        </div>
+        <div style="margin-left:auto;font-family:var(--font-mono);font-size:.75rem;font-weight:700;color:${item.color}">${item.pct}%</div>
+      </div>
+      <div style="height:4px;background:var(--bg4);border-radius:2px;overflow:hidden;margin-bottom:8px">
+        <div style="height:100%;width:${item.pct}%;background:${item.color};border-radius:2px;transition:width .6s"></div>
+      </div>
+      <div style="font-size:.68rem;color:var(--muted2);font-family:var(--font-body)">→ ${item.action}</div>
+    </div>`).join('');
+}
+
+// ── Recent Activity ──────────────────────────────────────
+function updateRecentActivity(d){
+  const el = document.getElementById('recent-activity-list');
+  if(!el) return;
+
+  const recent = [];
+  CURRICULUM.forEach(unit => {
+    unit.stages.forEach(st => {
+      st.chapters.forEach(ch => {
+        ch.topics.forEach((topic, ti) => {
+          if(d['t-' + ch.id + '-' + ti]){
+            const topicName = typeof topic === 'object' ? topic.name : topic;
+            recent.push({
+              unit: unit.name,
+              chapter: ch.name,
+              topic: topicName,
+              color: unit.color,
+            });
+          }
+        });
+      });
+    });
+  });
+
+  const colorMap = {
+    green:'var(--accent)', blue:'var(--blue)',
+    yellow:'var(--amber)', purple:'var(--purple)',
+    orange:'var(--orange)', pink:'var(--pink)'
+  };
+
+  if(!recent.length){
+    el.innerHTML = `<div style="color:var(--muted);font-size:.83rem;text-align:center;padding:16px;font-family:var(--font-body)">No activity yet. Start checking off topics in the Syllabus!</div>`;
+    return;
+  }
+
+  // Show last 5 checked topics
+  const last5 = recent.slice(-5).reverse();
+  el.innerHTML = last5.map(item => `
+    <div style="display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--border)">
+      <div style="width:8px;height:8px;border-radius:50%;background:${colorMap[item.color]||'var(--accent)'};flex-shrink:0;box-shadow:0 0 6px ${colorMap[item.color]||'var(--accent)'}"></div>
+      <div style="flex:1;min-width:0">
+        <div style="font-size:.82rem;font-weight:600;color:var(--fg);font-family:var(--font-body);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${item.topic}</div>
+        <div style="font-size:.68rem;color:var(--muted);font-family:var(--font-body)">${item.unit} · ${item.chapter}</div>
+      </div>
+      <div style="font-size:.65rem;color:var(--accent);font-weight:700;font-family:var(--font-mono);flex-shrink:0;display:flex;align-items:center;gap:4px">${SVG_ICONS.check} Done</div>
+    </div>`).join('').replace(/border-bottom:1px solid var\(--border\)(?=<\/div>\s*$)/,'border-bottom:none');
+}
 </script>
 </body>
 </html>
