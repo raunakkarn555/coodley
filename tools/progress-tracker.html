@@ -731,6 +731,31 @@ footer.coodley-footer{background:var(--bg);border-top:1px solid var(--border);pa
 .dp-empty{text-align:center;padding:24px;color:var(--muted);font-size:.83rem;font-family:var(--font-body)}
 
 
+@media (max-width:480px){
+
+  /* 1 — Filter pills: scroll horizontally instead of overflowing */
+  .syl-filter-row{
+    flex-wrap:nowrap;
+    overflow-x:auto;
+    padding-bottom:6px;
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
+  }
+  .syl-filter-row::-webkit-scrollbar{display:none;}
+  .syl-fpill{flex-shrink:0;}
+
+  /* 2 — Doubts panel header: stack vertically, button full width */
+  .dp-header{flex-direction:column;align-items:flex-start;gap:10px;}
+  .dp-clear-btn{width:100%;text-align:center;padding:8px;}
+
+  /* 3 — Hide confidence stars on narrow screens */
+  .syl-conf{display:none;}
+
+  /* 4 — Hide topic count text when input is active */
+  .s-count{display:none;}
+
+}
+
 </style>
 </head>
 <body>
