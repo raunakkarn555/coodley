@@ -756,6 +756,63 @@ footer.coodley-footer{background:var(--bg);border-top:1px solid var(--border);pa
 
 }
 
+/* ===== WEEKLY HISTORY + REMINDERS ===== */
+.history-bar{display:flex;align-items:center;gap:8px;margin-bottom:16px;flex-wrap:wrap}
+.history-label{font-size:.7rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;font-family:var(--font-body);flex-shrink:0}
+.hist-day-btn{padding:5px 12px;border-radius:20px;border:1px solid var(--border);background:transparent;color:var(--muted);font-size:.72rem;font-weight:700;cursor:pointer;transition:all .18s;font-family:var(--font-mono);flex-shrink:0}
+.hist-day-btn:hover{border-color:var(--border2);color:var(--fg)}
+.hist-day-btn.active{border-color:var(--blue);color:var(--blue);background:rgba(91,164,245,.1)}
+.hist-day-btn.today-btn{border-color:var(--accent);color:var(--accent);background:rgba(61,232,176,.08)}
+.hist-day-btn.today-btn.active{background:rgba(61,232,176,.15)}
+.hist-date-inp{background:var(--bg3);border:1px solid var(--border);border-radius:20px;padding:5px 12px;color:var(--fg);font-family:var(--font-mono);font-size:.72rem;font-weight:700;outline:none;cursor:pointer;transition:border-color .2s}
+.hist-date-inp:focus{border-color:var(--blue)}
+.viewing-banner{background:linear-gradient(135deg,rgba(91,164,245,.08),rgba(91,164,245,.04));border:1px solid rgba(91,164,245,.3);border-radius:var(--radius);padding:10px 16px;margin-bottom:14px;display:none;align-items:center;gap:10px;font-size:.82rem;color:var(--blue);font-family:var(--font-body);font-weight:600}
+.viewing-banner.show{display:flex}
+.vb-close{margin-left:auto;background:none;border:none;color:var(--blue);cursor:pointer;font-size:.9rem;padding:2px 6px;border-radius:6px;transition:background .15s}
+.vb-close:hover{background:rgba(91,164,245,.15)}
+/* Weekly summary card */
+.weekly-summary{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-xl);padding:22px;margin-bottom:16px}
+.ws-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;flex-wrap:wrap;gap:8px}
+.ws-title{font-family:var(--font-head);font-weight:800;font-size:1rem;display:flex;align-items:center;gap:8px}
+.ws-range{font-size:.68rem;color:var(--muted);font-family:var(--font-mono);margin-top:2px}
+.ws-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(90px,1fr));gap:10px;margin-bottom:16px}
+.ws-stat{background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius-lg);padding:14px 12px;text-align:center}
+.ws-stat-num{font-family:var(--font-mono);font-size:1.5rem;font-weight:700;line-height:1;margin-bottom:4px}
+.ws-stat-label{font-size:.6rem;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.07em;font-family:var(--font-body)}
+.ws-days-row{display:flex;gap:6px;flex-wrap:wrap}
+.ws-day-chip{flex:1;min-width:36px;background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:8px 6px;text-align:center;transition:all .2s}
+.ws-day-chip.has-data{border-color:rgba(61,232,176,.35);background:rgba(61,232,176,.07)}
+.ws-day-chip.today-chip{border-color:var(--accent);background:rgba(61,232,176,.12)}
+.ws-day-name{font-size:.6rem;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.04em;font-family:var(--font-body)}
+.ws-day-hrs{font-family:var(--font-mono);font-size:.78rem;font-weight:700;margin-top:3px}
+.ws-day-mood{font-size:.8rem;margin-top:2px}
+.ws-day-dots{display:flex;gap:2px;justify-content:center;margin-top:3px}
+.ws-dot{width:5px;height:5px;border-radius:50%;background:var(--bg5)}
+.ws-dot.lit{background:var(--accent)}
+/* Reminder card */
+.reminder-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px;margin-bottom:16px}
+.reminder-row{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--border)}
+.reminder-row:last-child{border-bottom:none}
+.reminder-icon{width:34px;height:34px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}
+.reminder-info{flex:1}
+.reminder-name{font-size:.85rem;font-weight:700;font-family:var(--font-body);margin-bottom:2px}
+.reminder-sub{font-size:.7rem;color:var(--muted2);font-family:var(--font-body)}
+.reminder-toggle{position:relative;width:38px;height:20px;flex-shrink:0}
+.reminder-toggle input{opacity:0;width:0;height:0;position:absolute}
+.rtoggle-slider{position:absolute;inset:0;background:var(--bg4);border-radius:10px;cursor:pointer;transition:background .2s;border:1px solid var(--border2)}
+.rtoggle-slider::before{content:'';position:absolute;width:14px;height:14px;left:2px;top:2px;background:var(--muted);border-radius:50%;transition:all .2s}
+.reminder-toggle input:checked + .rtoggle-slider{background:var(--accent);border-color:var(--accent)}
+.reminder-toggle input:checked + .rtoggle-slider::before{transform:translateX(18px);background:#07090f}
+.next-reminder-badge{display:inline-flex;align-items:center;gap:5px;font-size:.65rem;font-weight:700;padding:3px 9px;border-radius:8px;background:rgba(61,232,176,.1);border:1px solid rgba(61,232,176,.3);color:var(--accent);font-family:var(--font-mono);margin-top:4px}
+.reminder-fired{background:rgba(244,169,66,.12)!important;border-color:rgba(244,169,66,.4)!important}
+/* Readonly daily fields */
+.daily-readonly{opacity:.6;pointer-events:none}
+@media(max-width:480px){
+  .ws-grid{grid-template-columns:repeat(3,1fr)}
+  .history-bar{gap:6px}
+  .hist-day-btn{padding:4px 9px;font-size:.68rem}
+}
+
 </style>
 </head>
 <body>
@@ -1161,6 +1218,7 @@ footer.coodley-footer{background:var(--bg);border-top:1px solid var(--border);pa
 </section>
 
 <!-- DAILY -->
+<!-- DAILY -->
 <section class="section" id="sec-daily">
   <div class="sec-title">
     <div class="sec-icon si-yellow">
@@ -1168,16 +1226,42 @@ footer.coodley-footer{background:var(--bg);border-top:1px solid var(--border);pa
     </div>
     Daily Tracker
   </div>
-  <p style="color:var(--muted2);font-size:.85rem;margin-bottom:6px">Today: <strong id="today-date">—</strong></p>
-  <div class="daily-grid">
-    <div class="daily-card"><h4>⏱ Study Hours Today</h4><input class="big-inp" type="number" id="d-hours" min="0" max="16" placeholder="0" oninput="saveDailyData()"/><div style="font-size:.72rem;color:var(--muted);margin-top:4px">Goal: <span id="d-goal-show">—</span> hrs</div></div>
-    <div class="daily-card"><h4>🔥 Day Streak</h4><div class="streak-display"><div class="streak-num" id="d-streak">0</div><div><div style="font-size:.72rem;color:var(--muted)">consecutive</div><div style="font-size:.72rem;color:var(--muted)">study days</div></div></div></div>
-    <div class="daily-card"><h4>💧 Water Intake (glasses)</h4><input class="big-inp" type="number" id="d-water" min="0" max="20" placeholder="0" oninput="saveDailyData()"/><div style="font-size:.72rem;color:var(--muted);margin-top:4px">Target: 8 glasses</div></div>
-    <div class="daily-card"><h4>😴 Sleep Last Night (hours)</h4><input class="big-inp" type="number" id="d-sleep" min="0" max="12" placeholder="0" oninput="saveDailyData()"/><div style="font-size:.72rem;color:var(--muted);margin-top:4px">Target: 7–8 hrs</div></div>
+
+  <!-- ── HISTORY BAR ── -->
+  <div class="history-bar">
+    <span class="history-label">📅 View:</span>
+    <button class="hist-day-btn today-btn active" onclick="switchDailyDate('today',this)">Today</button>
+    <button class="hist-day-btn" id="hbtn-1" onclick="switchDailyDate(1,this)">—</button>
+    <button class="hist-day-btn" id="hbtn-2" onclick="switchDailyDate(2,this)">—</button>
+    <button class="hist-day-btn" id="hbtn-3" onclick="switchDailyDate(3,this)">—</button>
+    <button class="hist-day-btn" id="hbtn-4" onclick="switchDailyDate(4,this)">—</button>
+    <button class="hist-day-btn" id="hbtn-5" onclick="switchDailyDate(5,this)">—</button>
+    <input type="date" class="hist-date-inp" id="hist-date-inp" title="Pick any date" onchange="switchDailyDate('pick',this)"/>
   </div>
-  <div class="card"><h4 style="font-family:var(--font-head);font-weight:800;margin-bottom:12px;display:flex;align-items:center;gap:8px">
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
-    Mood Today</h4>
+
+  <!-- ── VIEWING BANNER (shown when not today) ── -->
+  <div class="viewing-banner" id="viewing-banner">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+    <span id="viewing-banner-text">Viewing past data — read only</span>
+    <button class="vb-close" onclick="switchDailyDate('today',document.querySelector('.today-btn'))">✕ Back to Today</button>
+  </div>
+
+  <p style="color:var(--muted2);font-size:.85rem;margin-bottom:14px">
+    <span id="today-date">—</span>
+  </p>
+
+  <!-- ── DAILY INPUT GRID ── -->
+  <div class="daily-grid" id="daily-input-grid">
+    <div class="daily-card"><h4>⏱ Study Hours</h4><input class="big-inp" type="number" id="d-hours" min="0" max="16" placeholder="0" oninput="saveDailyData()"/><div style="font-size:.72rem;color:var(--muted);margin-top:4px">Goal: <span id="d-goal-show">—</span> hrs</div></div>
+    <div class="daily-card"><h4>🔥 Day Streak</h4><div class="streak-display"><div class="streak-num" id="d-streak">0</div><div><div style="font-size:.72rem;color:var(--muted)">consecutive</div><div style="font-size:.72rem;color:var(--muted)">study days</div></div></div></div>
+    <div class="daily-card"><h4>💧 Water (glasses)</h4><input class="big-inp" type="number" id="d-water" min="0" max="20" placeholder="0" oninput="saveDailyData()"/><div style="font-size:.72rem;color:var(--muted);margin-top:4px">Target: 8 glasses</div></div>
+    <div class="daily-card"><h4>😴 Sleep (hours)</h4><input class="big-inp" type="number" id="d-sleep" min="0" max="12" placeholder="0" oninput="saveDailyData()"/><div style="font-size:.72rem;color:var(--muted);margin-top:4px">Target: 7–8 hrs</div></div>
+  </div>
+
+  <div class="card">
+    <h4 style="font-family:var(--font-head);font-weight:800;margin-bottom:12px;display:flex;align-items:center;gap:8px">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+      Mood Today</h4>
     <div class="mood-grid" id="mood-grid">
       <button class="mood-btn" data-mood="🔥 Focused">🔥 Focused</button>
       <button class="mood-btn" data-mood="😊 Good">😊 Good</button>
@@ -1187,10 +1271,89 @@ footer.coodley-footer{background:var(--bg);border-top:1px solid var(--border);pa
       <button class="mood-btn" data-mood="💪 Motivated">💪 Motivated</button>
     </div>
   </div>
+
+  <!-- ── WEEKLY SUMMARY ── -->
+  <div class="weekly-summary" id="weekly-summary">
+    <div class="ws-header">
+      <div>
+        <div class="ws-title">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          Weekly Summary
+        </div>
+        <div class="ws-range" id="ws-range">Mon — Sun</div>
+      </div>
+      <div id="ws-streak-badge" style="font-size:.72rem;font-family:var(--font-mono);color:var(--amber);font-weight:700"></div>
+    </div>
+    <div class="ws-grid" id="ws-stats-grid"></div>
+    <div style="font-size:.72rem;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.07em;margin-bottom:8px;font-family:var(--font-body)">Day-by-day</div>
+    <div class="ws-days-row" id="ws-days-row"></div>
+  </div>
+
+  <!-- ── BREAK REMINDERS ── -->
+  <div class="reminder-card">
+    <h4 style="font-family:var(--font-head);font-weight:800;margin-bottom:4px;display:flex;align-items:center;gap:8px">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      Break & Health Reminders
+    </h4>
+    <p style="font-size:.75rem;color:var(--muted2);margin-bottom:14px;font-family:var(--font-body)">Browser notifications — allow when prompted. Reminders only fire while this tab is open.</p>
+    <div class="reminder-row">
+      <div class="reminder-icon" style="background:rgba(61,232,176,.1)">💻</div>
+      <div class="reminder-info">
+        <div class="reminder-name">Study Break</div>
+        <div class="reminder-sub">Reminder to take a 5-min break</div>
+        <div id="next-study-break" class="next-reminder-badge" style="display:none"></div>
+      </div>
+      <select id="rem-study-interval" style="background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:5px 8px;color:var(--fg);font-family:var(--font-mono);font-size:.72rem;outline:none;margin-right:10px" onchange="saveReminderSettings()">
+        <option value="25">25 min</option>
+        <option value="45">45 min</option>
+        <option value="60">60 min</option>
+        <option value="90">90 min</option>
+      </select>
+      <label class="reminder-toggle"><input type="checkbox" id="rem-study" onchange="toggleReminder('study')"/><span class="rtoggle-slider"></span></label>
+    </div>
+    <div class="reminder-row">
+      <div class="reminder-icon" style="background:rgba(91,164,245,.1)">💧</div>
+      <div class="reminder-info">
+        <div class="reminder-name">Water Reminder</div>
+        <div class="reminder-sub">Drink a glass of water</div>
+        <div id="next-water" class="next-reminder-badge" style="display:none"></div>
+      </div>
+      <select id="rem-water-interval" style="background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:5px 8px;color:var(--fg);font-family:var(--font-mono);font-size:.72rem;outline:none;margin-right:10px" onchange="saveReminderSettings()">
+        <option value="30">30 min</option>
+        <option value="45">45 min</option>
+        <option value="60">60 min</option>
+      </select>
+      <label class="reminder-toggle"><input type="checkbox" id="rem-water" onchange="toggleReminder('water')"/><span class="rtoggle-slider"></span></label>
+    </div>
+    <div class="reminder-row">
+      <div class="reminder-icon" style="background:rgba(244,114,182,.1)">👁</div>
+      <div class="reminder-info">
+        <div class="reminder-name">Eye Rest (20-20-20)</div>
+        <div class="reminder-sub">Every 20 min — look 20ft away for 20s</div>
+        <div id="next-eyes" class="next-reminder-badge" style="display:none"></div>
+      </div>
+      <label class="reminder-toggle" style="margin-left:auto"><input type="checkbox" id="rem-eyes" onchange="toggleReminder('eyes')"/><span class="rtoggle-slider"></span></label>
+    </div>
+    <div class="reminder-row">
+      <div class="reminder-icon" style="background:rgba(251,146,60,.1)">🧘</div>
+      <div class="reminder-info">
+        <div class="reminder-name">Posture & Stretch</div>
+        <div class="reminder-sub">Stand up and stretch</div>
+        <div id="next-posture" class="next-reminder-badge" style="display:none"></div>
+      </div>
+      <select id="rem-posture-interval" style="background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:5px 8px;color:var(--fg);font-family:var(--font-mono);font-size:.72rem;outline:none;margin-right:10px" onchange="saveReminderSettings()">
+        <option value="30">30 min</option>
+        <option value="60">60 min</option>
+        <option value="90">90 min</option>
+      </select>
+      <label class="reminder-toggle"><input type="checkbox" id="rem-posture" onchange="toggleReminder('posture')"/><span class="rtoggle-slider"></span></label>
+    </div>
+  </div>
+
   <div class="card">
     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;flex-wrap:wrap;gap:8px">
       <h4 style="font-family:var(--font-head);font-weight:800;display:flex;align-items:center;gap:8px">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
         Study Heatmap (Last 84 Days)
       </h4>
       <div style="display:flex;gap:5px;align-items:center;font-size:.7rem;color:var(--muted)"><span>Less</span><div style="width:12px;height:12px;border-radius:3px;background:var(--bg4);border:1px solid var(--border)"></div><div style="width:12px;height:12px;border-radius:3px;background:rgba(61,232,176,.3)"></div><div style="width:12px;height:12px;border-radius:3px;background:rgba(61,232,176,.6)"></div><div style="width:12px;height:12px;border-radius:3px;background:var(--accent)"></div><span>More</span></div>
@@ -1198,7 +1361,8 @@ footer.coodley-footer{background:var(--bg);border-top:1px solid var(--border);pa
     <div class="heatmap-row" id="heatmap"></div>
     <p style="font-size:.72rem;color:var(--muted);margin-top:10px">Consistency compounds. Every green square counts.</p>
   </div>
-  <div class="card">
+
+  <div class="card" id="daily-notes-card">
     <h4 style="font-family:var(--font-head);font-weight:800;margin-bottom:12px;display:flex;align-items:center;gap:8px">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
       Daily Notes
@@ -1207,7 +1371,7 @@ footer.coodley-footer{background:var(--bg);border-top:1px solid var(--border);pa
     <div style="display:flex;gap:12px;margin-top:12px;flex-wrap:wrap;align-items:center">
       <label style="display:flex;align-items:center;gap:7px;font-size:.83rem;cursor:pointer;font-family:var(--font-body)"><input type="checkbox" id="d-built" onchange="saveDailyData()" style="width:14px;height:14px;accent-color:var(--accent)"/>Built something today</label>
       <label style="display:flex;align-items:center;gap:7px;font-size:.83rem;cursor:pointer;font-family:var(--font-body)"><input type="checkbox" id="d-leetcode" onchange="saveDailyData()" style="width:14px;height:14px;accent-color:var(--pink)"/>Solved DSA today</label>
-      <button class="btn-save" style="margin-left:auto" onclick="logDay()">
+      <button class="btn-save" style="margin-left:auto" id="log-day-btn" onclick="logDay()">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-right:5px"><polyline points="20 6 9 17 4 12"/></svg>
         Log Today
       </button>
@@ -5437,6 +5601,328 @@ function clearAllDoubts(){
   showToast('All doubts cleared!');
 }
 // ===== END SYLLABUS SEARCH + DOUBTS =====
+
+// ===== DAILY HISTORY + WEEKLY SUMMARY + REMINDERS =====
+
+let currentDailyDate = new Date().toISOString().slice(0,10);
+let isViewingHistory  = false;
+
+// ── Label the last-5 day buttons on page load ──
+function initHistoryButtons(){
+  const days = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
+  for(let i = 1; i <= 5; i++){
+    const d = new Date();
+    d.setDate(d.getDate() - i);
+    const btn = document.getElementById('hbtn-' + i);
+    if(!btn) return;
+    const dayName = days[d.getDay() === 0 ? 6 : d.getDay() - 1];
+    const dd = getData();
+    const hasData = !!dd['dd-' + d.toISOString().slice(0,10)];
+    btn.textContent = dayName;
+    btn.title = d.toLocaleDateString('en-IN',{weekday:'long',month:'short',day:'numeric'});
+    if(hasData) btn.style.borderColor = 'rgba(61,232,176,.4)';
+  }
+  // Set max date on picker to today
+  const picker = document.getElementById('hist-date-inp');
+  if(picker) picker.max = new Date().toISOString().slice(0,10);
+}
+
+// ── Switch to a date ──
+function switchDailyDate(which, btn){
+  // Update active button style
+  document.querySelectorAll('.hist-day-btn').forEach(b => b.classList.remove('active'));
+  if(btn && btn.classList) btn.classList.add('active');
+
+  let targetDate;
+  if(which === 'today'){
+    targetDate = new Date().toISOString().slice(0,10);
+    isViewingHistory = false;
+  } else if(which === 'pick'){
+    const inp = document.getElementById('hist-date-inp');
+    targetDate = inp?.value;
+    if(!targetDate) return;
+    const todayStr = new Date().toISOString().slice(0,10);
+    isViewingHistory = targetDate !== todayStr;
+  } else {
+    // numeric offset (1–5)
+    const d = new Date();
+    d.setDate(d.getDate() - parseInt(which));
+    targetDate = d.toISOString().slice(0,10);
+    isViewingHistory = true;
+  }
+
+  currentDailyDate = targetDate;
+  loadDailyForDate(targetDate);
+}
+
+// ── Load data for a specific date into the form fields ──
+function loadDailyForDate(dateStr){
+  const todayStr = new Date().toISOString().slice(0,10);
+  const isToday  = dateStr === todayStr;
+  const d = getData();
+  const dd = d['dd-' + dateStr] || {};
+
+  // Banner
+  const banner = document.getElementById('viewing-banner');
+  const bannerText = document.getElementById('viewing-banner-text');
+  if(banner){
+    if(!isToday){
+      const label = new Date(dateStr + 'T00:00:00').toLocaleDateString('en-IN',{weekday:'long',month:'long',day:'numeric'});
+      bannerText.textContent = '📅 Viewing: ' + label + ' — read only';
+      banner.classList.add('show');
+    } else {
+      banner.classList.remove('show');
+    }
+  }
+
+  // Update date label
+  const dateLabel = new Date(dateStr + 'T00:00:00');
+  safe('today-date', dateLabel.toLocaleDateString('en-IN',{weekday:'long',year:'numeric',month:'long',day:'numeric'}));
+
+  // Fill fields
+  const setVal = (id, val) => { const e = document.getElementById(id); if(e) e.value = val || ''; };
+  setVal('d-hours', dd.hours);
+  setVal('d-water', dd.water);
+  setVal('d-sleep', dd.sleep);
+  const notesEl = document.getElementById('d-notes');
+  if(notesEl) notesEl.value = dd.notes || '';
+  const builtEl = document.getElementById('d-built');
+  if(builtEl) builtEl.checked = !!dd.built;
+  const leetEl = document.getElementById('d-leetcode');
+  if(leetEl) leetEl.checked = !!dd.leet;
+
+  // Mood
+  document.querySelectorAll('.mood-btn').forEach(b => {
+    b.classList.toggle('selected', dd.mood === b.dataset.mood);
+  });
+
+  // Read-only state for past days
+  const grid = document.getElementById('daily-input-grid');
+  const notesCard = document.getElementById('daily-notes-card');
+  const logBtn = document.getElementById('log-day-btn');
+  if(!isToday){
+    grid?.classList.add('daily-readonly');
+    notesCard?.classList.add('daily-readonly');
+    if(logBtn){ logBtn.style.display = 'none'; }
+  } else {
+    grid?.classList.remove('daily-readonly');
+    notesCard?.classList.remove('daily-readonly');
+    if(logBtn){ logBtn.style.display = ''; }
+  }
+}
+
+// ── Override saveDailyData to use currentDailyDate ──
+const _origSaveDaily = saveDailyData;
+saveDailyData = function(){
+  if(isViewingHistory) return; // never save when viewing past
+  const d = getData();
+  const mood = document.querySelector('.mood-btn.selected');
+  d['dd-' + currentDailyDate] = {
+    hours:   document.getElementById('d-hours')?.value || 0,
+    water:   document.getElementById('d-water')?.value || 0,
+    sleep:   document.getElementById('d-sleep')?.value || 0,
+    notes:   document.getElementById('d-notes')?.value || '',
+    built:   document.getElementById('d-built')?.checked || false,
+    leet:    document.getElementById('d-leetcode')?.checked || false,
+    mood:    mood ? mood.dataset.mood : ''
+  };
+  setData(d);
+};
+
+// ── Weekly Summary ──
+function buildWeeklySummary(){
+  const d = getData();
+  const today = new Date();
+  const dow = today.getDay(); // 0=Sun
+  const monday = new Date(today);
+  monday.setDate(today.getDate() - (dow === 0 ? 6 : dow - 1));
+
+  const weekDays = [];
+  for(let i = 0; i < 7; i++){
+    const dd = new Date(monday);
+    dd.setDate(monday.getDate() + i);
+    const key = dd.toISOString().slice(0,10);
+    const data = d['dd-' + key] || {};
+    const logged = parseFloat(d['day-' + key]) || parseFloat(data.hours) || 0;
+    weekDays.push({ date: dd, key, data, logged });
+  }
+
+  // Range label
+  const rangeEl = document.getElementById('ws-range');
+  if(rangeEl){
+    const opts = {month:'short', day:'numeric'};
+    rangeEl.textContent = monday.toLocaleDateString('en-IN',opts) + ' — ' + weekDays[6].date.toLocaleDateString('en-IN',opts);
+  }
+
+  // Stats
+  const totalHrs  = weekDays.reduce((a,d) => a + d.logged, 0);
+  const activeDays = weekDays.filter(d => d.logged > 0).length;
+  const totalWater = weekDays.reduce((a,d) => a + (parseFloat(d.data.water)||0), 0);
+  const avgSleep   = weekDays.filter(d=>d.data.sleep).length
+    ? (weekDays.reduce((a,d)=>a+(parseFloat(d.data.sleep)||0),0) / weekDays.filter(d=>d.data.sleep).length).toFixed(1)
+    : '—';
+  const builtDays  = weekDays.filter(d => d.data.built).length;
+  const leetDays   = weekDays.filter(d => d.data.leet).length;
+
+  const statsGrid = document.getElementById('ws-stats-grid');
+  if(statsGrid) statsGrid.innerHTML = [
+    {num: totalHrs.toFixed(1)+'h', label:'Study Time',  color:'var(--accent)'},
+    {num: activeDays+'/7',          label:'Active Days', color:'var(--blue)'},
+    {num: avgSleep+'h',             label:'Avg Sleep',   color:'var(--purple)'},
+    {num: totalWater,               label:'Water Total', color:'var(--blue)'},
+    {num: builtDays,                label:'Built Days',  color:'var(--pink)'},
+    {num: leetDays,                 label:'DSA Days',    color:'var(--pink)'},
+  ].map(s => `<div class="ws-stat">
+    <div class="ws-stat-num" style="color:${s.color}">${s.num}</div>
+    <div class="ws-stat-label">${s.label}</div>
+  </div>`).join('');
+
+  // Streak badge
+  const streakBadge = document.getElementById('ws-streak-badge');
+  if(streakBadge) streakBadge.textContent = activeDays >= 5 ? '🔥 Great week!' : activeDays >= 3 ? '💪 Solid week' : activeDays > 0 ? '📈 Keep going' : '';
+
+  // Day chips
+  const dayNames = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
+  const todayStr = today.toISOString().slice(0,10);
+  const daysRow = document.getElementById('ws-days-row');
+  if(daysRow) daysRow.innerHTML = weekDays.map((day, i) => {
+    const isToday = day.key === todayStr;
+    const isFuture = day.date > today;
+    const hrsColor = day.logged >= 5 ? 'var(--accent)' : day.logged >= 3 ? 'var(--blue)' : day.logged > 0 ? 'var(--amber)' : 'var(--muted)';
+    // mini dot indicators
+    const dots = [day.data.built, day.data.leet, (parseFloat(day.data.water)||0)>=6, (parseFloat(day.data.sleep)||0)>=7];
+    return `<div class="ws-day-chip${day.logged>0?' has-data':''}${isToday?' today-chip':''}"
+      onclick="switchDailyDate(${isToday?'"today"':'"pick"'},null);${!isToday?`document.getElementById('hist-date-inp').value='${day.key}';loadDailyForDate('${day.key}');`:''}"
+      style="cursor:pointer;opacity:${isFuture?.4:1}">
+      <div class="ws-day-name">${dayNames[i]}</div>
+      <div class="ws-day-hrs" style="color:${hrsColor}">${isFuture?'—':day.logged>0?day.logged.toFixed(1)+'h':'0h'}</div>
+      <div class="ws-day-mood">${day.data.mood?day.data.mood.split(' ')[0]:isFuture?'':''}</div>
+      <div class="ws-dot-row" style="display:flex;gap:2px;justify-content:center;margin-top:3px">
+        ${dots.map(lit=>`<div style="width:4px;height:4px;border-radius:50%;background:${lit?'var(--accent)':'var(--bg5)'}"></div>`).join('')}
+      </div>
+    </div>`;
+  }).join('');
+}
+
+// ── Reminders ──
+const reminderIntervals = {};
+
+function toggleReminder(type){
+  const checkbox = document.getElementById('rem-' + type);
+  const isOn = checkbox?.checked;
+
+  if(isOn){
+    if(Notification.permission === 'default'){
+      Notification.requestPermission().then(perm => {
+        if(perm === 'granted') startReminder(type);
+        else { checkbox.checked = false; showToast('Allow notifications to use reminders','t-blue'); }
+      });
+    } else if(Notification.permission === 'granted'){
+      startReminder(type);
+    } else {
+      checkbox.checked = false;
+      showToast('Notifications blocked in browser settings','t-blue');
+    }
+  } else {
+    stopReminder(type);
+  }
+  saveReminderSettings();
+}
+
+function startReminder(type){
+  stopReminder(type); // clear any existing
+
+  const intervalMap = {
+    study:   () => parseInt(document.getElementById('rem-study-interval')?.value || 25),
+    water:   () => parseInt(document.getElementById('rem-water-interval')?.value || 30),
+    eyes:    () => 20,
+    posture: () => parseInt(document.getElementById('rem-posture-interval')?.value || 60),
+  };
+  const messages = {
+    study:   { title:'⏸ Study Break!',   body:'You\'ve been studying hard. Take a 5-minute break, walk around.' },
+    water:   { title:'💧 Drink Water!',   body:'Stay hydrated! Have a glass of water right now.' },
+    eyes:    { title:'👁 Eye Rest!',      body:'20-20-20 rule: Look at something 20ft away for 20 seconds.' },
+    posture: { title:'🧘 Stretch Break!', body:'Stand up, stretch your back and neck. Your body will thank you.' },
+  };
+
+  const mins = intervalMap[type]();
+  const ms   = mins * 60 * 1000;
+  const msg  = messages[type];
+  const badgeId = 'next-' + (type === 'study' ? 'study-break' : type === 'posture' ? 'posture' : type);
+
+  // Show next fire time
+  const nextTime = new Date(Date.now() + ms);
+  const badge = document.getElementById(badgeId);
+  if(badge){
+    badge.style.display = 'inline-flex';
+    badge.textContent = '⏰ Next: ' + nextTime.toLocaleTimeString('en-IN',{hour:'2-digit',minute:'2-digit'});
+  }
+
+  reminderIntervals[type] = setInterval(() => {
+    if(Notification.permission === 'granted'){
+      new Notification(msg.title, { body: msg.body, icon: '' });
+    }
+    showToast(msg.title + ' ' + msg.body.slice(0,40) + '...', 't-blue');
+
+    // Update next time
+    const next = new Date(Date.now() + ms);
+    if(badge){
+      badge.textContent = '⏰ Next: ' + next.toLocaleTimeString('en-IN',{hour:'2-digit',minute:'2-digit'});
+    }
+  }, ms);
+
+  showToast('✅ ' + type.charAt(0).toUpperCase()+type.slice(1) + ' reminder set every ' + mins + ' min');
+}
+
+function stopReminder(type){
+  if(reminderIntervals[type]){
+    clearInterval(reminderIntervals[type]);
+    delete reminderIntervals[type];
+  }
+  const badgeId = 'next-' + (type === 'study' ? 'study-break' : type === 'posture' ? 'posture' : type);
+  const badge = document.getElementById(badgeId);
+  if(badge) badge.style.display = 'none';
+}
+
+function saveReminderSettings(){
+  const d = getData();
+  d['reminders'] = {
+    study:   { on: document.getElementById('rem-study')?.checked,   interval: document.getElementById('rem-study-interval')?.value   },
+    water:   { on: document.getElementById('rem-water')?.checked,   interval: document.getElementById('rem-water-interval')?.value   },
+    eyes:    { on: document.getElementById('rem-eyes')?.checked                                                                       },
+    posture: { on: document.getElementById('rem-posture')?.checked, interval: document.getElementById('rem-posture-interval')?.value },
+  };
+  setData(d);
+}
+
+function loadReminderSettings(){
+  const d = getData();
+  const rem = d['reminders'];
+  if(!rem) return;
+  ['study','water','eyes','posture'].forEach(type => {
+    const s = rem[type];
+    if(!s) return;
+    const cb = document.getElementById('rem-' + type);
+    if(cb) cb.checked = !!s.on;
+    const sel = document.getElementById('rem-' + type + '-interval');
+    if(sel && s.interval) sel.value = s.interval;
+    // Don't auto-restart — user must re-enable after page reload
+  });
+}
+
+// ── Hook into initDaily ──
+const _origInitDaily = initDaily;
+initDaily = function(){
+  _origInitDaily();
+  initHistoryButtons();
+  buildWeeklySummary();
+  loadReminderSettings();
+  // Refresh weekly summary every minute
+  setInterval(buildWeeklySummary, 60000);
+};
+
+// ===== END DAILY HISTORY + WEEKLY SUMMARY + REMINDERS =====
+
 </script>
 </body>
 </html>
