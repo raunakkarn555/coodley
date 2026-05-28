@@ -3024,6 +3024,8 @@ function updateStats(){
     ['node', st.node],
     ['dsa',  st.dsa],
     ['sys',  st.sys],
+    ['db',   st.db],
+  ];
   ];
   barMap.forEach(([key, val]) => {
     const b = document.getElementById('pb-' + key);
@@ -3168,51 +3170,316 @@ function updateBook(id,color,val){const d=getData();d['book-'+id]=parseInt(val);
 function saveBookRev(id,checked){const d=getData();d['bookrev-'+id]=checked;setData(d);}
 
 function updateAnalytics(){
-  const st=getAllTopicStats();const pct=st.overallPct;
-  safe('readiness-pct',pct+'%');
-  let lvl='Beginner 🌱',msg='Start completing topics. Begin with HTML/CSS → JS fundamentals.',ringColor='var(--bg4)';
-  if(pct>=80){lvl='Job Ready 🎯';msg='Excellent! Focus on projects, mock interviews, and applying now.';ringColor='var(--accent)';}
-  else if(pct>=55){lvl='Competitive 💪';msg='Great progress! Fix weak areas and start portfolio projects.';ringColor='var(--blue)';}
-  else if(pct>=35){lvl='Improving 📈';msg='Good momentum. Add more hours and start building real projects.';ringColor='var(--amber)';}
-  else if(pct>=15){lvl='Building 🔨';msg='Keep going. Consistency now will compound into results.';ringColor='var(--accent3)';}
-  safe('readiness-label',lvl);safe('readiness-msg',msg);
-  const ring=document.getElementById('readiness-ring');if(ring)ring.style.borderColor=ringColor;
-  const wl=document.getElementById('weak-list');
+  const st = getAllTopicStats();
+  const pct = st.overallPct;
+
+  // ── Readiness Ring ──────────────────────────────────────────
+  safe('readiness-pct', pct + '%');
+  let lvl, msg, ringColor;
+  if(pct >= 85){
+    lvl = 'Job Ready 🎯';
+    msg = 'You are ready. Polish your resume, deploy your projects, and apply to 5–10 companies per week.';
+    ringColor = 'var(--accent)';
+  } else if(pct >= 65){
+    lvl = 'Nearly There 💪';
+    msg = 'Strong progress! Fix your weak areas, complete 2 capstone projects, and start mock interviews.';
+    ringColor = 'var(--blue)';
+  } else if(pct >= 45){
+    lvl = 'Competitive 📈';
+    msg = 'Good foundation. Focus on DSA daily + one full-stack project. System Design next.';
+    ringColor = 'var(--amber)';
+  } else if(pct >= 25){
+    lvl = 'Building 🔨';
+    msg = 'You are making real progress. Keep JS and React as your daily focus. Consistency wins.';
+    ringColor = 'var(--accent3)';
+  } else if(pct >= 10){
+    lvl = 'Early Stage 🌱';
+    msg = 'Just getting started. Complete Unit 1 — Frontend first before anything else.';
+    ringColor = 'var(--orange)';
+  } else {
+    lvl = 'Beginner 🌱';
+    msg = 'Start with HTML/CSS → JavaScript. Open the Syllabus → Unit 1 → Stage 1.1 right now.';
+    ringColor = 'var(--bg4)';
+  }
+  safe('readiness-label', lvl);
+  safe('readiness-msg', msg);
+  const ring = document.getElementById('readiness-ring');
+  if(ring) ring.style.borderColor = ringColor;
+
+  // ── Weak Areas (all 6 units) ─────────────────────────────────
+  const wl = document.getElementById('weak-list');
   if(wl){
-    const areas=[{name:'JavaScript',pct:st.js,color:'var(--amber)'},{name:'React',pct:st.react,color:'var(--blue)'},{name:'Node + DB',pct:st.node,color:'var(--accent)'},{name:'DSA',pct:st.dsa,color:'var(--pink)'},{name:'System Design',pct:st.sys,color:'var(--orange)'}].sort((a,b)=>a.pct-b.pct);
-    wl.innerHTML=areas.map(a=>`<div class="weakness-item"><span style="min-width:90px;font-size:.78rem;font-weight:600">${a.name}</span><div class="w-bar"><div class="w-fill" style="width:${a.pct}%;background:${a.color}"></div></div><span style="font-size:.7rem;font-family:var(--font-mono);min-width:32px;text-align:right">${a.pct}%</span></div>`).join('');
+    const areas = [
+      {name:'Frontend (HTML/CSS/JS/React/Next)', pct: st.js,   color:'var(--accent)'},
+      {name:'Backend (Node/Express/Auth/APIs)',   pct: st.node, color:'var(--blue)'},
+      {name:'Databases (SQL/MongoDB/Redis)',       pct: st.db,   color:'var(--amber)'},
+      {name:'DSA (C++/Java/Algorithms)',           pct: st.dsa,  color:'var(--pink)'},
+      {name:'System Design',                       pct: st.sys,  color:'var(--orange)'},
+      {name:'Job Prep (Resume/Interview/Apply)',   pct: st.job,  color:'var(--teal)'},
+    ].sort((a, b) => a.pct - b.pct);
+
+    wl.innerHTML = areas.map(a => `
+      <div class="weakness-item">
+        <span style="min-width:200px;font-size:.78rem;font-weight:600">${a.name}</span>
+        <div class="w-bar">
+          <div class="w-fill" style="width:${a.pct}%;background:${a.color}"></div>
+        </div>
+        <span style="font-size:.7rem;font-family:var(--font-mono);min-width:36px;text-align:right">${a.pct}%</span>
+      </div>`).join('');
   }
-  const sugg=document.getElementById('suggestions');
+
+  // ── Smart Suggestions ────────────────────────────────────────
+  const sugg = document.getElementById('suggestions');
   if(sugg){
-    const s=[];
-    if(pct<15)s.push('📌 Start with HTML/CSS → complete Stage 1.1 first.');
-    if(st.js<30)s.push('⚡ JavaScript is the most important skill — spend 60% of time here until solid.');
-    if(st.js>50&&st.react<20)s.push('⚛ You\'re ready to start React. Move to Stage 2.1.');
-    if(st.dsa<20)s.push('🧩 Start solving 1 DSA problem daily — 10 mins minimum. Use NeetCode.io.');
-    const d=getData();const projects=JSON.parse(d['projects-list']||'[]');
-    if(projects.length===0&&pct>15)s.push('🚀 Build your first project! Even a simple JS app counts.');
-    if(pct>40&&projects.length<2)s.push('🏗 You need 2+ projects before applying. Start a full-stack project now.');
-    if(pct>70)s.push('📝 Start applying from this week. 5–10 companies per week on Cutshort and AngelList.');
-    if(!s.length)s.push('🌟 Great progress! Keep the consistency going. You\'re on track for 15 LPA.');
-    sugg.innerHTML=s.map(x=>`<div style="background:var(--bg3);padding:10px 14px;border-radius:10px;border-left:3px solid var(--accent)">${x}</div>`).join('');
+    const s = [];
+    const d = getData();
+    const projects = JSON.parse(d['projects-list'] || '[]');
+    const apps     = JSON.parse(d['apps-list']     || '[]');
+    const streak   = parseInt(d['streak']) || 0;
+
+    // Stage-based priority suggestions
+    if(pct === 0)
+      s.push('🚀 Open Syllabus → Unit 1 → Stage 1.1 and check off your first topic right now.');
+
+    if(st.js < 20)
+      s.push('📌 Priority: Complete Unit 1 Stages 1.1–1.3 (HTML, CSS, JS Core) before touching anything else.');
+
+    if(st.js >= 20 && st.js < 50)
+      s.push('⚡ JavaScript is your most important skill right now. Spend at least 60% of daily time here until Stage 1.3 is done.');
+
+    if(st.js >= 40 && st.js < 70)
+      s.push('⚛ You are ready for React. Move to Stage 1.5 — start with React Fundamentals and Hooks.');
+
+    if(st.js >= 50 && st.node < 20)
+      s.push('🟢 Start Unit 2 — Node.js + Express. Build your first REST API while still practising JS.');
+
+    if(st.node >= 20 && st.db < 15)
+      s.push('🗄 Open Unit 3 — Databases. Learn SQL + PostgreSQL basics. Every backend needs a database.');
+
+    if(st.dsa < 15)
+      s.push('🧩 Start 1 DSA problem daily (LeetCode Easy). Open Unit 4 — Stage 4.2. Even 20 minutes counts.');
+
+    if(st.dsa >= 15 && st.dsa < 40)
+      s.push('🧩 DSA: Move to Medium problems. Focus on Two Pointers, Sliding Window, and Binary Search patterns.');
+
+    if(st.dsa >= 40 && st.dsa < 70)
+      s.push('🧩 DSA: You are ready for Graphs, Trees, and DP. Complete Stage 4.4 — these are the interview patterns.');
+
+    if(projects.length === 0 && pct > 10)
+      s.push('🏗 Build something now. Even a simple JS project. Open Unit 6 → Capstone Projects for ideas.');
+
+    if(projects.length === 1 && pct > 35)
+      s.push('🚀 You need 2–3 deployed projects before applying. Start your second full-stack project this week.');
+
+    if(projects.length >= 2 && st.sys < 20)
+      s.push('🏛 Start Unit 5 — System Design. Learn URL Shortener design, caching, load balancers. Interviewers ask this.');
+
+    if(pct > 50 && apps.length === 0)
+      s.push('📝 You are past 50% — start applying! 5 applications per week minimum. Use Cutshort + AngelList.');
+
+    if(pct > 65 && apps.length < 10)
+      s.push('📮 Apply to more companies. Target 8–10 per week. Referrals convert 10x better than cold apply.');
+
+    if(streak < 3 && pct > 5)
+      s.push('🔥 Your streak is low. Even 30 minutes daily beats 6 hours once a week. Open Daily tab and log today.');
+
+    if(streak >= 7)
+      s.push('🔥 ' + streak + '-day streak! Incredible consistency. Keep protecting your streak — it is your biggest asset.');
+
+    if(st.job < 10 && pct > 60)
+      s.push('💼 Open Unit 6 — Job Prep. Build your resume, optimise LinkedIn, and prepare your portfolio now.');
+
+    if(!s.length)
+      s.push('🌟 Outstanding progress! Stay consistent, keep building projects, and apply to 8–10 companies weekly.');
+
+    sugg.innerHTML = s.map(x =>
+      `<div style="background:var(--bg3);padding:10px 14px;border-radius:10px;border-left:3px solid var(--accent);font-size:.82rem;line-height:1.6">${x}</div>`
+    ).join('');
   }
+
+ // ── 9-Month Roadmap Timeline ─────────────────────────────────
   buildMonthTimeline();
 }
+
 function buildMonthTimeline(){
-  const el=document.getElementById('month-timeline');if(!el)return;
-  const months=[
-    {m:'M1',title:'HTML/CSS + Git',color:'ub-green',items:['HTML5 semantic structure','CSS Flexbox & Grid mastery','Responsive design','Git + GitHub basics','Deploy static site']},
-    {m:'M2',title:'JavaScript Core',color:'ub-green',items:['Variables, types, operators','Functions, scope, closures','Arrays, objects, destructuring','ES6+ features','1 DSA problem/day']},
-    {m:'M3',title:'Async JS + Projects',color:'ub-green',items:['Async/await, Promises, Fetch','DOM manipulation','Build: Weather + Todo + Quiz apps','DSA: hashing, two pointers','Deploy all projects']},
-    {m:'M4',title:'React Fundamentals',color:'ub-blue',items:['Components, props, JSX','useState, useEffect, useRef','React Router v6','Build CRUD React app','DSA: stacks, queues']},
-    {m:'M5',title:'Node.js + Express',color:'ub-blue',items:['Node runtime, npm ecosystem','Express routes, middleware','JWT auth + bcrypt','REST API design','DSA: linked lists']},
-    {m:'M6',title:'Databases + Full-Stack',color:'ub-blue',items:['MongoDB + Mongoose','PostgreSQL basics + SQL','Full-stack: React + Node + DB','Deploy: Vercel + Railway','DSA: binary search']},
-    {m:'M7',title:'TypeScript + Next.js',color:'ub-yellow',items:['TypeScript fundamentals','Next.js App Router','Server Components + SSR','Start applying to companies','DSA: trees, graphs']},
-    {m:'M8',title:'System Design + Projects',color:'ub-yellow',items:['System design concepts','SaaS project: Next.js + Prisma','Testing: Jest + RTL','Mock interviews (2/week)','DSA: recursion, backtracking']},
-    {m:'M9',title:'Job Hunt Full Mode',color:'ub-yellow',items:['Portfolio polish + README','Apply 5–10 companies/week','Salary negotiation practice','DSA: DP, advanced patterns','🎯 Target: OFFER']},
+  const el = document.getElementById('month-timeline');
+  if(!el) return;
+
+  const st = getAllTopicStats();
+  const d  = getData();
+  const projects = JSON.parse(d['projects-list'] || '[]');
+
+  // status helper: done / in-progress / upcoming
+  const status = (unitPct, threshold=5) =>
+    unitPct >= 90 ? 'done' : unitPct >= threshold ? 'active' : 'upcoming';
+
+  const s1 = status(st.js);
+  const s2 = status(st.node);
+  const s3 = status(st.db);
+  const s4 = status(st.dsa);
+  const s5 = status(st.sys);
+  const s6 = status(st.job);
+
+  const statusBadge = (s) => {
+    if(s === 'done')     return `<span style="font-size:.6rem;font-weight:800;padding:2px 8px;border-radius:10px;color:var(--accent);border:1px solid rgba(61,232,176,.4);background:rgba(61,232,176,.08)">✓ Done</span>`;
+    if(s === 'active')   return `<span style="font-size:.6rem;font-weight:800;padding:2px 8px;border-radius:10px;color:var(--amber);border:1px solid rgba(244,169,66,.4);background:rgba(244,169,66,.08)">⚡ In Progress</span>`;
+    return `<span style="font-size:.6rem;font-weight:800;padding:2px 8px;border-radius:10px;color:var(--muted);border:1px solid var(--border)">⏳ Upcoming</span>`;
+  };
+
+  const months = [
+    {
+      m:'M1–2', title:'HTML/CSS/Git',
+      unit:'Unit 1 — Stages 1.1–1.2',
+      color:'ub-green', status: s1,
+      pct: st.js,
+      items:[
+        'HTML5 semantic structure + accessibility',
+        'CSS Flexbox, Grid, responsive design',
+        'Git + GitHub — commit every day',
+        'Build: Resume page + Landing page',
+        'Deploy on GitHub Pages / Vercel',
+      ]
+    },
+    {
+      m:'M2–3', title:'JavaScript Core',
+      unit:'Unit 1 — Stage 1.3',
+      color:'ub-green', status: s1,
+      pct: st.js,
+      items:[
+        'Variables, closures, scope, hoisting',
+        'Arrays, objects, destructuring, ES6+',
+        'Async/await, Promises, Fetch API',
+        'DOM manipulation — build ToDo + Weather app',
+        '1 DSA problem/day (Unit 4 — Easy problems)',
+      ]
+    },
+    {
+      m:'M3–4', title:'React + TypeScript',
+      unit:'Unit 1 — Stages 1.4–1.6',
+      color:'ub-green', status: s1,
+      pct: st.js,
+      items:[
+        'React Fundamentals — components, props, JSX',
+        'All core hooks — useState, useEffect, useRef',
+        'React Router v6, TanStack Query, Zustand',
+        'TypeScript basics with React',
+        'Build: Full CRUD React app — deployed',
+      ]
+    },
+    {
+      m:'M4–5', title:'Node.js + Express + Auth',
+      unit:'Unit 2 — Stages 2.1–2.2',
+      color:'ub-blue', status: s2,
+      pct: st.node,
+      items:[
+        'Node.js runtime — event loop, streams, fs',
+        'Express — routes, middleware, error handling',
+        'JWT auth — access + refresh token flow',
+        'Security — bcrypt, helmet, rate limiting, CORS',
+        'Build: REST API for blog — CRUD + auth',
+      ]
+    },
+    {
+      m:'M5–6', title:'Databases + Full-Stack',
+      unit:'Unit 3 — All Stages',
+      color:'ub-yellow', status: s3,
+      pct: st.db,
+      items:[
+        'PostgreSQL — SQL joins, indexes, transactions',
+        'Prisma ORM — schema, migrations, queries',
+        'MongoDB + Mongoose + aggregation pipeline',
+        'Redis — caching, sessions, pub/sub',
+        'Build: Full-stack app — React + Node + DB',
+      ]
+    },
+    {
+      m:'M5–7', title:'DSA — Interview Patterns',
+      unit:'Unit 4 — All Stages',
+      color:'ub-purple', status: s4,
+      pct: st.dsa,
+      items:[
+        'C++ / Java — STL, Collections, complexity',
+        'Arrays, HashMaps, Stacks, Queues, Linked Lists',
+        'Trees, Graphs, BFS/DFS, Dijkstra, Trie',
+        'Dynamic Programming — all patterns',
+        'NeetCode 150 — complete all categories',
+      ]
+    },
+    {
+      m:'M7–8', title:'Next.js + Testing + DevOps',
+      unit:'Unit 2 — Stages 2.3–2.4',
+      color:'ub-blue', status: s2,
+      pct: st.node,
+      items:[
+        'Next.js App Router — SSR, SSG, Server Actions',
+        'Auth.js + Prisma + PostgreSQL SaaS stack',
+        'Jest + React Testing Library + Playwright',
+        'Docker, GitHub Actions CI/CD, Vercel/Railway',
+        'Build: SaaS Dashboard — full production stack',
+      ]
+    },
+    {
+      m:'M8–9', title:'System Design',
+      unit:'Unit 5 — All Stages',
+      color:'ub-orange', status: s5,
+      pct: st.sys,
+      items:[
+        'Scalability, CAP theorem, load balancers, CDN',
+        'Caching deep dive — Redis patterns',
+        'Kafka, message queues, event-driven architecture',
+        'Microservices, Kubernetes, AWS basics',
+        'Design: URL Shortener, Chat, Feed, YouTube',
+      ]
+    },
+    {
+      m:'M9+', title:'Job Hunt Full Mode',
+      unit:'Unit 6 — All Stages',
+      color:'ub-amber', status: s6,
+      pct: st.job,
+      items:[
+        'Resume — 1 page, ATS-friendly, quantified impact',
+        'Portfolio + GitHub — live projects, green graph',
+        'Apply 5–10 companies/week — Cutshort, AngelList',
+        'Mock interviews — 5+ before first real one (Pramp)',
+        '🎯 Target: ₹15 LPA+ offer letter',
+      ]
+    },
   ];
-  el.innerHTML=months.map(m=>`<div class="month-card"><div class="month-num">${m.m}</div><div class="month-tag ${m.color}">${m.color==='ub-green'?'Foundation':m.color==='ub-blue'?'Core Stack':'Advanced'}</div><div class="month-title">${m.title}</div><div class="month-items">${m.items.map(i=>`<span>${i}</span>`).join('')}</div></div>`).join('');
+
+  const colorBorderMap = {
+    'ub-green':'var(--accent)',
+    'ub-blue':'var(--blue)',
+    'ub-yellow':'var(--amber)',
+    'ub-purple':'var(--purple)',
+    'ub-orange':'var(--orange)',
+    'ub-amber':'var(--amber)',
+  };
+
+  el.innerHTML = months.map(mo => {
+    const borderCol = colorBorderMap[mo.color] || 'var(--accent)';
+    const isActive  = mo.status === 'active';
+    const isDone    = mo.status === 'done';
+    return `
+    <div class="month-card" style="border-color:${isActive ? borderCol : isDone ? 'rgba(61,232,176,.3)' : 'var(--border)'}">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">
+        <div class="month-num">${mo.m}</div>
+        ${statusBadge(mo.status)}
+      </div>
+      <div class="month-title">${mo.title}</div>
+      <div style="font-size:.62rem;color:var(--muted2);margin-bottom:6px;font-family:var(--font-mono)">${mo.unit}</div>
+      <div style="height:4px;background:var(--bg4);border-radius:2px;overflow:hidden;margin-bottom:10px">
+        <div style="height:100%;width:${mo.pct}%;background:${borderCol};border-radius:2px;transition:width .6s"></div>
+      </div>
+      <div class="month-items">${mo.items.map(i => `<span>${i}</span>`).join('')}</div>
+    </div>`;
+  }).join('');
 }
+
+
+
+//
+
+
 
 function updateOverview(){
   const d=getData();const st=getAllTopicStats();
