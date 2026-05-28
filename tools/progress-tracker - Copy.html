@@ -2264,6 +2264,52 @@ footer.coodley-footer{background:var(--bg);border-top:1px solid var(--border);pa
     </div>
     <div class="timer-btns"><button class="t-btn t-btn-start" id="timer-start-btn" onclick="toggleTimer()">▶ Start</button><button class="t-btn t-btn-reset" onclick="resetTimer()">↺ Reset</button></div>
     <p style="text-align:center;font-size:.75rem;color:var(--muted);margin-top:16px;font-family:var(--font-body)">💡 Pomodoro: 25 min focus → 5 min break → repeat 4x → long break</p>
+    <!-- Session Log -->
+<div style="margin-top:20px;background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px" id="session-log-card">
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;flex-wrap:wrap;gap:8px">
+    <h4 style="font-family:var(--font-head);font-weight:800;font-size:.95rem;display:flex;align-items:center;gap:8px">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      Today's Sessions
+    </h4>
+    <button onclick="clearSessionLog()" style="background:none;border:1px solid rgba(245,101,101,.3);border-radius:8px;color:var(--red);font-size:.72rem;padding:4px 10px;cursor:pointer;font-family:var(--font-body)">Clear</button>
+  </div>
+
+  <!-- Stats Row -->
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(90px,1fr));gap:10px;margin-bottom:16px" id="session-stats-row">
+    <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-lg);padding:12px;text-align:center">
+      <div style="font-family:var(--font-mono);font-size:1.4rem;font-weight:700;color:var(--accent);line-height:1" id="sess-total-count">0</div>
+      <div style="font-size:.6rem;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-top:4px">Sessions</div>
+    </div>
+    <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-lg);padding:12px;text-align:center">
+      <div style="font-family:var(--font-mono);font-size:1.4rem;font-weight:700;color:var(--blue);line-height:1" id="sess-total-mins">0m</div>
+      <div style="font-size:.6rem;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-top:4px">Total Time</div>
+    </div>
+    <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-lg);padding:12px;text-align:center">
+      <div style="font-family:var(--font-mono);font-size:1.4rem;font-weight:700;color:var(--amber);line-height:1" id="sess-pomodoros">0</div>
+      <div style="font-size:.6rem;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-top:4px">Pomodoros</div>
+    </div>
+    <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-lg);padding:12px;text-align:center">
+      <div style="font-family:var(--font-mono);font-size:1.4rem;font-weight:700;color:var(--pink);line-height:1" id="sess-longest">—</div>
+      <div style="font-size:.6rem;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-top:4px">Longest</div>
+    </div>
+  </div>
+
+  <!-- Sound Toggle -->
+  <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:10px 14px;flex-wrap:wrap">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+    <span style="font-size:.82rem;font-weight:600;font-family:var(--font-body);flex:1">Sound on session complete</span>
+    <label class="reminder-toggle">
+      <input type="checkbox" id="timer-sound-toggle" checked onchange="saveTimerSettings()"/>
+      <span class="rtoggle-slider"></span>
+    </label>
+  </div>
+
+  <!-- Session List -->
+  <div id="session-log-list" style="display:flex;flex-direction:column;gap:8px;max-height:260px;overflow-y:auto">
+    <div style="text-align:center;color:var(--muted);font-size:.82rem;padding:16px;font-family:var(--font-body)">No sessions yet. Start the timer! 🎯</div>
+  </div>
+</div>
+
   </div>
 </section>
 
@@ -4192,6 +4238,8 @@ function updateAnalytics(){
 
  // ── 9-Month Roadmap Timeline ─────────────────────────────────
   buildMonthTimeline();
+  // ── Pace Prediction ──
+updatePacePrediction(st);
 }
 
 function buildMonthTimeline(){
@@ -4855,10 +4903,42 @@ function updateTimerDisplay(){
   const warn=timerRemaining<=60&&timerRunning,danger=timerRemaining===0;
   disp.className='timer-display'+(danger?' td':warn?' tw':'');
 }
+
+
 function toggleTimer(){
-  if(timerRunning){clearInterval(timerInterval);timerRunning=false;const btn=document.getElementById('timer-start-btn');if(btn){btn.textContent='▶ Resume';btn.classList.remove('running');}}
-  else{if(timerRemaining<=0)timerRemaining=timerTotal;timerRunning=true;const btn=document.getElementById('timer-start-btn');if(btn){btn.textContent='⏸ Pause';btn.classList.add('running');}
-  timerInterval=setInterval(()=>{if(timerRemaining>0){timerRemaining--;updateTimerDisplay();}else{clearInterval(timerInterval);timerRunning=false;const btn=document.getElementById('timer-start-btn');if(btn){btn.textContent='▶ Start';btn.classList.remove('running');}showToast('Session complete! Take a break. 🎉');}},1000);}
+  if(timerRunning){
+    clearInterval(timerInterval);
+    timerRunning=false;
+    const btn=document.getElementById('timer-start-btn');
+    if(btn){btn.textContent='▶ Resume';btn.classList.remove('running');}
+  } else {
+    if(timerRemaining<=0) timerRemaining=timerTotal;
+    timerRunning=true;
+    const btn=document.getElementById('timer-start-btn');
+    if(btn){btn.textContent='⏸ Pause';btn.classList.add('running');}
+    timerInterval=setInterval(()=>{
+      if(timerRemaining>0){
+        timerRemaining--;
+        updateTimerDisplay();
+      } else {
+        clearInterval(timerInterval);
+        timerRunning=false;
+        const btn=document.getElementById('timer-start-btn');
+        if(btn){btn.textContent='▶ Start';btn.classList.remove('running');}
+        // Log the session
+        logTimerSession(timerTotal);
+        // Play sound
+        playTimerSound();
+        // Show notification
+        if(Notification.permission==='granted'){
+          new Notification('✅ Session Complete!',{
+            body:'Great work! Take a break. Session: '+formatTimer(timerTotal),
+          });
+        }
+        showToast('Session complete! Well done 🎉');
+      }
+    },1000);
+  }
 }
 function resetTimer(){clearInterval(timerInterval);timerRunning=false;timerRemaining=timerTotal;updateTimerDisplay();const btn=document.getElementById('timer-start-btn');if(btn){btn.textContent='▶ Start';btn.classList.remove('running');}}
 
@@ -5098,6 +5178,7 @@ window.addEventListener('DOMContentLoaded', () => {
   try { updateOverview(); } catch(e){ console.error('updateOverview failed:', e); }
   try { loadJournal(); } catch(e){ console.error('loadJournal failed:', e); }
   try { updateTimerDisplay(); } catch(e){ console.error('timer failed:', e); }
+  try { loadTimerSettings(); } catch(e){ console.error('timerSettings failed:', e); }
   try { updateDashboardExtras(); } catch(e){ console.error('dashboardExtras failed:', e); }
 });
 
@@ -5974,6 +6055,7 @@ function startReminder(type){
       new Notification(msg.title, { body: msg.body, icon: '' });
     }
     showToast(msg.title + ' ' + msg.body.slice(0,40) + '...', 't-blue');
+    playReminderSound();
 
     // Update next time
     const next = new Date(Date.now() + ms);
@@ -6033,6 +6115,259 @@ initDaily = function(){
 };
 
 // ===== END DAILY HISTORY + WEEKLY SUMMARY + REMINDERS =====
+
+
+
+function updatePacePrediction(st){
+  const d = getData();
+  
+  // Count topics done in last 7 days
+  const topicsPerDay = [];
+  for(let i = 6; i >= 0; i--){
+    const dd = new Date();
+    dd.setDate(dd.getDate() - i);
+    const dayKey = dd.toISOString().slice(0,10);
+    // Count topics checked on this day
+    let count = 0;
+    CURRICULUM.forEach(unit => {
+      unit.stages.forEach(st => {
+        st.chapters.forEach(ch => {
+          ch.topics.forEach((_, ti) => {
+            const val = d['t-' + ch.id + '-' + ti];
+            if(val){
+              const date = new Date(val).toISOString().slice(0,10);
+              if(date === dayKey) count++;
+            }
+          });
+        });
+      });
+    });
+    topicsPerDay.push(count);
+  }
+
+  const activeDays = topicsPerDay.filter(x => x > 0).length;
+  const totalDone  = topicsPerDay.reduce((a, b) => a + b, 0);
+  const avgPerDay  = activeDays > 0 ? (totalDone / activeDays).toFixed(1) : 0;
+  const remaining  = st.total - st.done;
+  
+  let weeksLeft = '—';
+  let daysLeft  = '—';
+  if(avgPerDay > 0){
+    const days = Math.ceil(remaining / avgPerDay);
+    daysLeft   = days;
+    weeksLeft  = (days / 7).toFixed(1);
+  }
+
+  const streak   = parseInt(d['streak']) || 0;
+  const hoursAvg = (() => {
+    let total = 0, count = 0;
+    for(let i = 0; i < 7; i++){
+      const dd2 = new Date();
+      dd2.setDate(dd2.getDate() - i);
+      const hrs = parseFloat(d['dd-' + dd2.toISOString().slice(0,10)]?.hours || d['dd-' + dd2.toISOString().slice(0,10)] && JSON.parse(localStorage.getItem('devpath-v3') || '{}')['dd-' + dd2.toISOString().slice(0,10)]?.hours || 0);
+      if(hrs > 0){ total += hrs; count++; }
+    }
+    return count > 0 ? (total / count).toFixed(1) : 0;
+  })();
+
+  // Find or create pace card
+  let paceCard = document.getElementById('pace-prediction-card');
+  if(!paceCard){
+    // Add after analytics grid
+    const analyticsGrid = document.querySelector('#sec-analytics .analytics-grid');
+    if(!analyticsGrid) return;
+    paceCard = document.createElement('div');
+    paceCard.id = 'pace-prediction-card';
+    paceCard.className = 'card';
+    paceCard.style.marginTop = '16px';
+    analyticsGrid.after(paceCard);
+  }
+
+  const finishDate = avgPerDay > 0 ? (() => {
+    const d2 = new Date();
+    d2.setDate(d2.getDate() + parseInt(daysLeft));
+    return d2.toLocaleDateString('en-IN',{day:'numeric',month:'long',year:'numeric'});
+  })() : '—';
+
+  paceCard.innerHTML = `
+    <h3 style="font-family:var(--font-head);font-weight:800;margin-bottom:20px;display:flex;align-items:center;gap:8px">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      Pace Prediction
+    </h3>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px;margin-bottom:20px">
+      ${[
+        {label:'Topics / Active Day', val: avgPerDay, color:'var(--accent)'},
+        {label:'Active Days (7d)',    val: activeDays + '/7', color:'var(--blue)'},
+        {label:'Topics Done (7d)',    val: totalDone, color:'var(--amber)'},
+        {label:'Topics Remaining',   val: remaining, color:'var(--pink)'},
+        {label:'Days to Finish',     val: daysLeft,  color:'var(--orange)'},
+        {label:'Weeks to Finish',    val: weeksLeft + 'w', color:'var(--accent3)'},
+      ].map(s => `
+        <div style="background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius-lg);padding:14px;text-align:center">
+          <div style="font-family:var(--font-mono);font-size:1.4rem;font-weight:700;color:${s.color};line-height:1;margin-bottom:5px">${s.val}</div>
+          <div style="font-size:.62rem;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.06em;font-family:var(--font-body)">${s.label}</div>
+        </div>`).join('')}
+    </div>
+
+    <div style="background:linear-gradient(135deg,rgba(61,232,176,.07),rgba(91,164,245,.04));border:1px solid var(--border2);border-radius:var(--radius-lg);padding:16px 20px;display:flex;align-items:center;gap:14px;flex-wrap:wrap">
+      <div style="font-size:1.8rem">🎯</div>
+      <div>
+        <div style="font-size:.82rem;font-weight:700;color:var(--fg);font-family:var(--font-body);margin-bottom:3px">
+          ${avgPerDay > 0
+            ? `At your current pace of <strong style="color:var(--accent)">${avgPerDay} topics/day</strong>, you will finish on <strong style="color:var(--accent)">${finishDate}</strong>`
+            : 'No activity in last 7 days. Start checking off topics to see your pace prediction!'}
+        </div>
+        <div style="font-size:.72rem;color:var(--muted2);font-family:var(--font-body)">
+          ${avgPerDay > 0
+            ? `That is ${weeksLeft} weeks from today · ${remaining} topics remaining · ${streak} day streak`
+            : 'Pace is calculated from your last 7 active days'}
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:14px;font-size:.72rem;color:var(--muted);font-family:var(--font-body);line-height:1.7">
+      💡 <strong style="color:var(--fg)">To improve your pace:</strong> Check off topics daily even if small. 
+      Aim for <strong style="color:var(--accent)">5+ topics/day</strong> to finish in under 6 months.
+      Currently averaging <strong style="color:var(--amber)">${avgPerDay} topics</strong> on active days.
+    </div>
+  `;
+}
+
+
+// ===== TIMER SESSION LOG + SOUND =====
+
+function playTimerSound(){
+  const soundOn = document.getElementById('timer-sound-toggle')?.checked ?? true;
+  if(!soundOn) return;
+  try {
+    const ctx = new (window.AudioContext || window.webkitAudioContext)();
+    
+    // Play 3 pleasant beeps
+    [0, 0.3, 0.6].forEach((delay, i) => {
+      const osc  = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      
+      osc.frequency.value = i === 2 ? 880 : 660; // higher pitch on last beep
+      osc.type = 'sine';
+      gain.gain.setValueAtTime(0, ctx.currentTime + delay);
+      gain.gain.linearRampToValueAtTime(0.4, ctx.currentTime + delay + 0.05);
+      gain.gain.linearRampToValueAtTime(0, ctx.currentTime + delay + 0.3);
+      
+      osc.start(ctx.currentTime + delay);
+      osc.stop(ctx.currentTime + delay + 0.35);
+    });
+  } catch(e){
+    console.log('Sound not supported:', e);
+  }
+}
+
+function playReminderSound(){
+  // Softer single beep for reminders
+  try {
+    const ctx = new (window.AudioContext || window.webkitAudioContext)();
+    const osc  = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+    osc.frequency.value = 528;
+    osc.type = 'sine';
+    gain.gain.setValueAtTime(0, ctx.currentTime);
+    gain.gain.linearRampToValueAtTime(0.3, ctx.currentTime + 0.05);
+    gain.gain.linearRampToValueAtTime(0, ctx.currentTime + 0.5);
+    osc.start(ctx.currentTime);
+    osc.stop(ctx.currentTime + 0.55);
+  } catch(e){}
+}
+
+function logTimerSession(totalSeconds){
+  const d = getData();
+  const today = new Date().toISOString().slice(0,10);
+  const sessions = JSON.parse(d['timer-sessions-' + today] || '[]');
+  
+  sessions.push({
+    id: Date.now(),
+    duration: totalSeconds,
+    startTime: new Date(Date.now() - totalSeconds * 1000).toLocaleTimeString('en-IN',{hour:'2-digit',minute:'2-digit'}),
+    endTime: new Date().toLocaleTimeString('en-IN',{hour:'2-digit',minute:'2-digit'}),
+    label: totalSeconds === 25*60 ? '🍅 Pomodoro' : totalSeconds <= 45*60 ? '⚡ Focus' : '🔥 Deep Work'
+  });
+  
+  d['timer-sessions-' + today] = JSON.stringify(sessions);
+  setData(d);
+  renderSessionLog();
+}
+
+function renderSessionLog(){
+  const d = getData();
+  const today = new Date().toISOString().slice(0,10);
+  const sessions = JSON.parse(d['timer-sessions-' + today] || '[]');
+  
+  // Update stats
+  const totalMins    = sessions.reduce((a,s) => a + s.duration, 0) / 60;
+  const pomodoros    = sessions.filter(s => s.duration === 25*60).length;
+  const longest      = sessions.length ? Math.max(...sessions.map(s=>s.duration)) : 0;
+  
+  safe('sess-total-count', sessions.length);
+  safe('sess-total-mins', totalMins >= 60
+    ? (totalMins/60).toFixed(1)+'h'
+    : Math.round(totalMins)+'m');
+  safe('sess-pomodoros', pomodoros);
+  safe('sess-longest', longest ? (longest>=3600
+    ? (longest/3600).toFixed(1)+'h'
+    : Math.round(longest/60)+'m') : '—');
+
+  const listEl = document.getElementById('session-log-list');
+  if(!listEl) return;
+  
+  if(!sessions.length){
+    listEl.innerHTML = `<div style="text-align:center;color:var(--muted);font-size:.82rem;padding:16px;font-family:var(--font-body)">No sessions yet. Start the timer! 🎯</div>`;
+    return;
+  }
+
+  // Show newest first
+  listEl.innerHTML = [...sessions].reverse().map((s,i) => {
+    const mins = Math.round(s.duration / 60);
+    const isPomodoro = s.duration === 25*60;
+    return `<div style="display:flex;align-items:center;gap:10px;background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:10px 14px;transition:all .2s"
+      onmouseover="this.style.borderColor='var(--border2)'"
+      onmouseout="this.style.borderColor='var(--border)'">
+      <div style="font-size:1rem;flex-shrink:0">${s.label.split(' ')[0]}</div>
+      <div style="flex:1">
+        <div style="font-size:.82rem;font-weight:700;font-family:var(--font-body);color:var(--fg)">${s.label}</div>
+        <div style="font-size:.68rem;color:var(--muted);font-family:var(--font-mono)">${s.startTime} → ${s.endTime}</div>
+      </div>
+      <div style="font-family:var(--font-mono);font-size:.85rem;font-weight:700;color:${isPomodoro?'var(--amber)':'var(--accent)'}">${mins}m</div>
+    </div>`;
+  }).join('');
+}
+
+function clearSessionLog(){
+  if(!confirm('Clear today\'s session log?')) return;
+  const d = getData();
+  const today = new Date().toISOString().slice(0,10);
+  delete d['timer-sessions-' + today];
+  setData(d);
+  renderSessionLog();
+  showToast('Session log cleared!');
+}
+
+function saveTimerSettings(){
+  const d = getData();
+  d['timer-sound'] = document.getElementById('timer-sound-toggle')?.checked ?? true;
+  setData(d);
+}
+
+function loadTimerSettings(){
+  const d = getData();
+  const soundEl = document.getElementById('timer-sound-toggle');
+  if(soundEl && d['timer-sound'] !== undefined) soundEl.checked = d['timer-sound'];
+  renderSessionLog();
+}
+
+
 
 </script>
 </body>
