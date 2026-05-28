@@ -836,25 +836,41 @@ footer.coodley-footer{background:var(--bg);border-top:1px solid var(--border);pa
   outline:none;
   cursor:pointer;
   transition:border-color .2s;
-  color-scheme: dark; /* ADD THIS */
+  color-scheme:dark;
 }
 
 [data-theme="light"] .hist-date-inp{
-  color-scheme: light; /* ADD THIS */
+  color-scheme:light;
 }
 
 .hist-date-inp::-webkit-calendar-picker-indicator{
-  filter: invert(1); /* makes the calendar icon white on dark bg */
-  opacity: 0.7;
-  cursor: pointer;
+  filter:invert(1);
+  opacity:0.7;
+  cursor:pointer;
 }
 
 [data-theme="light"] .hist-date-inp::-webkit-calendar-picker-indicator{
-  filter: invert(0);
+  filter:invert(0);
+}
+
+@media(max-width:480px){
+  .hist-date-inp{
+    background:var(--bg3);
+    color:var(--fg);
+    color-scheme:dark;
+    border:1px solid var(--accent);
+    padding:6px 14px;
+    font-size:.75rem;
+    width:auto;
+    min-width:130px;
+  }
+  [data-theme="light"] .hist-date-inp{
+    color-scheme:light;
+    border-color:var(--border2);
+  }
 }
 
 
-.hist-date-inp:focus{border-color:var(--blue)}
 .viewing-banner{background:linear-gradient(135deg,rgba(91,164,245,.08),rgba(91,164,245,.04));border:1px solid rgba(91,164,245,.3);border-radius:var(--radius);padding:10px 16px;margin-bottom:14px;display:none;align-items:center;gap:10px;font-size:.82rem;color:var(--blue);font-family:var(--font-body);font-weight:600}
 .viewing-banner.show{display:flex}
 .vb-close{margin-left:auto;background:none;border:none;color:var(--blue);cursor:pointer;font-size:.9rem;padding:2px 6px;border-radius:6px;transition:background .15s}
