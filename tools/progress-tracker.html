@@ -1853,12 +1853,12 @@ footer.coodley-footer{background:var(--bg);border-top:1px solid var(--border);pa
     <div style="text-align:center"><div style="font-size:.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px;font-weight:700;font-family:var(--font-body)">Focus Session Timer</div><div class="timer-display" id="timer-disp">1:30:00</div></div>
     <div class="timer-prog"><div class="timer-prog-fill" id="timer-prog-fill" style="width:100%"></div></div>
     <div class="timer-preset-row">
-      <button class="timer-preset" onclick="setTimerPreset(25,0)">25 min</button>
-      <button class="timer-preset" onclick="setTimerPreset(45,0)">45 min</button>
-      <button class="timer-preset" onclick="setTimerPreset(60,0)">1 hr</button>
-      <button class="timer-preset" onclick="setTimerPreset(90,0)">1.5 hr</button>
-      <button class="timer-preset" onclick="setTimerPreset(120,0)">2 hr</button>
-      <button class="timer-preset" onclick="setTimerPreset(180,0)">3 hr</button>
+      <button class="timer-preset" onclick="setTimerPreset(0,25)">25 min</button>
+      <button class="timer-preset" onclick="setTimerPreset(0,45)">45 min</button>
+      <button class="timer-preset" onclick="setTimerPreset(1,0)">1 hr</button>
+      <button class="timer-preset" onclick="setTimerPreset(1,30)">1.5 hr</button>
+      <button class="timer-preset" onclick="setTimerPreset(2,0)">2 hr</button>
+      <button class="timer-preset" onclick="setTimerPreset(3,0)">3 hr</button>
     </div>
     <div style="display:flex;align-items:center;gap:8px;justify-content:center;margin-bottom:14px;flex-wrap:wrap">
       <div style="font-size:.72rem;color:var(--muted);font-weight:600;font-family:var(--font-body)">Custom:</div>
@@ -3308,6 +3308,8 @@ function updateStats(){
 
   safe('stat-topics', st.done);
   safe('stat-chapters', st.chDone);
+  const chapTotalStatEl = document.getElementById('stat-chapters-total');
+  if(chapTotalStatEl) chapTotalStatEl.textContent = st.chTotal;
 
   const projects = JSON.parse(d['projects-list'] || '[]');
   const apps = JSON.parse(d['apps-list'] || '[]');
@@ -3341,13 +3343,7 @@ function updateStats(){
   });
 }
  
-document.addEventListener('DOMContentLoaded',()=>{
-  buildSyllabus();
-  updateStats();
-  updateAnalytics();
-  updateOverview();
-  updateDashboardExtras();
-});
+
 
 
 
@@ -4209,10 +4205,17 @@ function renderJournal(){
       `<span class="je-custom-tag">#${t}</span>`
     ).join('');
 
-    const preview = e.text.length > 250 ? e.text.slice(0, 250) + '...' : e.text;
+    // Safe preview (fixes XSS too)
+    const rawPreview = e.text.length > 250 ? e.text.slice(0, 250) + '...' : e.text;
+    const preview = rawPreview
+      .replace(/&/g,'&amp;')
+      .replace(/</g,'&lt;')
+      .replace(/>/g,'&gt;')
+      .replace(/\n/g,'<br>');
     const hasMore = e.text.length > 250;
 
     return `<div class="journal-entry-card${e.pinned?' pinned':''}" id="je-${e.id}">
+
       <div class="je-header">
         <div class="je-meta">
           <span class="je-mood-badge">${e.mood||'😐'}</span>
@@ -4238,12 +4241,7 @@ function renderJournal(){
         </div>
       </div>
       ${customTags ? `<div style="display:flex;gap:5px;flex-wrap:wrap;margin-bottom:8px">${customTags}</div>` : ''}
-     const rawPreview = e.text.length > 250 ? e.text.slice(0, 250) + '...' : e.text;
-      const preview = rawPreview
-    .replace(/&/g,'&amp;')
-    .replace(/</g,'&lt;')
-    .replace(/>/g,'&gt;')
-    .replace(/\n/g,'<br>');
+      <div class="je-text" id="jetxt-${e.id}">${preview}</div>
       ${hasMore ? `<button onclick="expandEntry(this,${e.id})" style="background:none;border:none;color:var(--accent);cursor:pointer;font-size:.75rem;margin-top:4px;padding:0;font-family:var(--font-body)">▼ Read more</button>` : ''}
     </div>`;
   }).join('');
@@ -4992,16 +4990,16 @@ function updateRecentActivity(d){
 
   // Show last 5 checked topics
   const last5 = recent.slice(-5).reverse();
-  el.innerHTML = last5.map(item => `
-    <div style="display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--border)">
+  el.innerHTML = last5.map((item, idx) => `
+    <div style="display:flex;align-items:center;gap:12px;padding:10px 0;${idx < last5.length - 1 ? 'border-bottom:1px solid var(--border)' : ''}">
       <div style="width:8px;height:8px;border-radius:50%;background:${colorMap[item.color]||'var(--accent)'};flex-shrink:0;box-shadow:0 0 6px ${colorMap[item.color]||'var(--accent)'}"></div>
       <div style="flex:1;min-width:0">
         <div style="font-size:.82rem;font-weight:600;color:var(--fg);font-family:var(--font-body);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${item.topic}</div>
         <div style="font-size:.68rem;color:var(--muted);font-family:var(--font-body)">${item.unit} · ${item.chapter}</div>
       </div>
       <div style="font-size:.65rem;color:var(--accent);font-weight:700;font-family:var(--font-mono);flex-shrink:0;display:flex;align-items:center;gap:4px">${SVG_ICONS.check} Done</div>
-    </div>`).join('').replace(/border-bottom:1px solid var\(--border\)(?=<\/div>\s*$)/,'border-bottom:none');
-}
+    </div>`).join('');
+  };
 </script>
 </body>
 </html>
