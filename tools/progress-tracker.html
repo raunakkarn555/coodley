@@ -2946,35 +2946,90 @@ function toggleChFlag(chId,type){
   const key=type+'-'+chId;const d=getData();if(d[key])delete d[key];else d[key]=1;setData(d);
 }
  
-function updateStats(){
-  const d=getData();
-  let total=0,done=0,chTotal=0,chDone=0;
-  const unitTotals={};
-  CURRICULUM.forEach((unit)=>{
-    let uT=0,uD=0;
-    unit.stages.forEach(st=>st.chapters.forEach(ch=>{
-      const chT=ch.topics.length,chD=ch.topics.filter((_,ti)=>d['t-'+ch.id+'-'+ti]).length;
-      total+=chT;done+=chD;chTotal++;if(chD===chT&&chT>0)chDone++;
-      uT+=chT;uD+=chD;
+// ========= updated ========= //
+
+function getAllTopicStats(){
+  const d = getData();
+  let total = 0, done = 0, chTotal = 0, chDone = 0;
+  const unitDone = {}, unitTotal = {};
+
+  CURRICULUM.forEach(unit => {
+    unitDone[unit.id] = 0;
+    unitTotal[unit.id] = 0;
+    unit.stages.forEach(st => st.chapters.forEach(ch => {
+      const chT = ch.topics.length;
+      const chD = ch.topics.filter((_, ti) => d['t-' + ch.id + '-' + ti]).length;
+      total += chT; done += chD;
+      chTotal++;
+      if (chD === chT && chT > 0) chDone++;
+      unitDone[unit.id] += chD;
+      unitTotal[unit.id] += chT;
     }));
-    unitTotals[unit.id]={t:uT,d:uD};
   });
-  const pct=s=>s.t?Math.round(s.d/s.t*100):0;
-  safe('stat-topics',done);safe('stat-chapters',chDone);
-  const projects=JSON.parse(d['projects-list']||'[]');
-  const apps=JSON.parse(d['apps-list']||'[]');
-  safe('stat-projects',projects.length);safe('stat-applied',apps.length);
-  safe('overall-pct',total?Math.round(done/total*100)+'%':'0%');
-  safe('overall-detail',done+' / '+total+' topics');
-  const ob=document.getElementById('overall-bar');if(ob)ob.style.width=(total?Math.round(done/total*100):0)+'%';
-  // Per-unit bars
-  const unitMap={'u1':'fe','u2':'be','u3':'db','u4':'dsa','u5':'sys','u6':'job'};
-  CURRICULUM.forEach(unit=>{
-    const key=unitMap[unit.id];
-    if(!key)return;
-    const v=pct(unitTotals[unit.id]||{t:0,d:0});
-    const b=document.getElementById('pb-'+key),p=document.getElementById('pp-'+key);
-    if(b)b.style.width=v+'%';if(p)p.textContent=v+'%';
+
+  const pct = (id) => unitTotal[id] ? Math.round(unitDone[id] / unitTotal[id] * 100) : 0;
+
+  return {
+    total, done, chTotal, chDone,
+    overallPct: total ? Math.round(done / total * 100) : 0,
+    js:   pct('u1'),
+    react: pct('u1'),
+    node:  pct('u2'),
+    db:    pct('u3'),
+    dsa:   pct('u4'),
+    sys:   pct('u5'),
+    job:   pct('u6'),
+  };
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function updateStats(){
+  const d = getData();
+  const st = getAllTopicStats();
+
+  safe('stat-topics', st.done);
+  safe('stat-chapters', st.chDone);
+
+  const projects = JSON.parse(d['projects-list'] || '[]');
+  const apps = JSON.parse(d['apps-list'] || '[]');
+  safe('stat-projects', projects.length);
+  safe('stat-applied', apps.length);
+
+  const streak = d['streak'] || 0;
+  safe('stat-streak', streak + '🔥');
+  safe('stat-consistency', st.overallPct + '%');
+
+  safe('overall-pct', st.overallPct + '%');
+  safe('overall-detail', st.done + ' / ' + st.total + ' topics');
+  const ob = document.getElementById('overall-bar');
+  if (ob) ob.style.width = st.overallPct + '%';
+
+  // Per-subject progress bars
+  const barMap = [
+    ['js',   st.js],
+    ['react',st.react],
+    ['node', st.node],
+    ['dsa',  st.dsa],
+    ['sys',  st.sys],
+  ];
+  barMap.forEach(([key, val]) => {
+    const b = document.getElementById('pb-' + key);
+    const p = document.getElementById('pp-' + key);
+    if (b) b.style.width = val + '%';
+    if (p) p.textContent = val + '%';
   });
 }
  
