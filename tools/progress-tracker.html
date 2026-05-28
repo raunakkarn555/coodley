@@ -322,6 +322,31 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;point
 .pd-low{background:var(--accent);}
 .todo-del{background:none;border:none;color:var(--muted);cursor:pointer;font-size:.75rem;padding:2px;transition:color .2s;}
 .todo-del:hover{color:var(--red);}
+/* Todo filter tabs */
+.todo-ftab{padding:5px 13px;border-radius:20px;border:1px solid var(--border);background:transparent;color:var(--muted);font-size:.75rem;font-weight:600;cursor:pointer;transition:all .2s;font-family:var(--font-body);}
+.todo-ftab:hover{border-color:var(--border2);color:var(--fg);}
+.todo-ftab.active{border-color:var(--accent);color:var(--accent);background:rgba(61,232,176,.08);}
+
+/* Todo note area */
+.todo-note-area{width:100%;background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:8px 12px;color:var(--fg);font-family:var(--font-body);font-size:.78rem;outline:none;resize:none;min-height:60px;margin-top:8px;transition:border-color .2s;line-height:1.6;box-sizing:border-box;}
+.todo-note-area:focus{border-color:var(--border3);box-shadow:0 0 0 3px rgba(61,232,176,.08);}
+.todo-note-area::placeholder{color:var(--muted);}
+
+/* Todo item expanded */
+.todo-item{display:flex;flex-direction:column;background:var(--bg3);border:1px solid var(--border);border-radius:12px;padding:12px 16px;transition:all .2s;}
+.todo-item:hover{border-color:var(--border2);}
+.todo-item.done-item{opacity:.55;}
+.todo-item.done-item .todo-text{text-decoration:line-through;color:var(--muted);}
+.todo-item-top{display:flex;align-items:center;gap:10px;}
+.todo-text{flex:1;font-size:.85rem;font-weight:500;font-family:var(--font-body);}
+.todo-expand-btn{background:none;border:1px solid var(--border);border-radius:6px;color:var(--muted);cursor:pointer;font-size:.68rem;padding:2px 7px;transition:all .15s;white-space:nowrap;}
+.todo-expand-btn:hover{border-color:var(--accent);color:var(--accent);}
+.todo-note-wrap{display:none;margin-top:8px;}
+.todo-note-wrap.open{display:block;}
+.todo-due-badge{font-size:.62rem;font-weight:700;padding:2px 8px;border-radius:8px;border:1px solid rgba(91,164,245,.3);background:rgba(91,164,245,.07);color:var(--blue);font-family:var(--font-mono);white-space:nowrap;}
+.todo-due-badge.overdue{border-color:rgba(245,101,101,.4);background:rgba(245,101,101,.08);color:var(--red);}
+.todo-status-sel{background:var(--bg4);border:1px solid var(--border);border-radius:6px;color:var(--muted2);font-size:.65rem;padding:2px 6px;cursor:pointer;font-family:var(--font-body);outline:none;}
+
 
 /* ===== FORMS ===== */
 .form-group{margin-bottom:14px;}
@@ -1051,6 +1076,7 @@ footer.coodley-footer{background:var(--bg);border-top:1px solid var(--border);pa
   </div>
 </section>
 
+
 <!-- TODO -->
 <section class="section" id="sec-todo">
   <div class="sec-title">
@@ -1060,17 +1086,54 @@ footer.coodley-footer{background:var(--bg);border-top:1px solid var(--border);pa
     Daily To-Do
   </div>
   <div class="card">
+
+    <!-- Add Task Row -->
     <div class="todo-add-row">
       <input type="text" class="todo-inp" id="todo-inp" placeholder="Add a task..." onkeydown="if(event.key==='Enter')addTodo()"/>
-      <select class="todo-sel" id="todo-tag"><option value="general">General</option><option value="js">JavaScript</option><option value="react">React</option><option value="node">Node.js</option><option value="dsa">DSA</option><option value="job">Job Hunt</option></select>
-      <select class="todo-sel" id="todo-prio"><option value="high">🔴 High</option><option value="med">🟡 Medium</option><option value="low">🟢 Low</option></select>
+      <select class="todo-sel" id="todo-tag">
+        <option value="general">General</option>
+        <option value="js">JavaScript</option>
+        <option value="react">React</option>
+        <option value="node">Node.js</option>
+        <option value="dsa">DSA</option>
+        <option value="job">Job Hunt</option>
+      </select>
+      <select class="todo-sel" id="todo-prio">
+        <option value="high">🔴 High</option>
+        <option value="med">🟡 Medium</option>
+        <option value="low">🟢 Low</option>
+      </select>
+      <input type="date" class="todo-sel" id="todo-due" style="font-size:.78rem;color:var(--muted2)"/>
       <button class="btn-add" onclick="addTodo()">+ Add</button>
     </div>
+
+    <!-- Filter Tabs + Stats -->
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;flex-wrap:wrap;gap:8px">
+      <div style="display:flex;gap:6px;flex-wrap:wrap" id="todo-filter-tabs">
+        <button class="todo-ftab active" data-filter="all" onclick="setTodoFilter('all',this)">All</button>
+        <button class="todo-ftab" data-filter="active" onclick="setTodoFilter('active',this)">⏳ Active</button>
+        <button class="todo-ftab" data-filter="done" onclick="setTodoFilter('done',this)">✅ Done</button>
+        <button class="todo-ftab" data-filter="high" onclick="setTodoFilter('high',this)">🔴 High Priority</button>
+      </div>
+      <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
+        <span style="font-size:.75rem;color:var(--muted2);font-family:var(--font-mono)" id="todo-done-count">0/0 done</span>
+        <div style="width:80px;height:5px;background:var(--bg4);border-radius:3px;overflow:hidden">
+          <div id="todo-progress-bar" style="height:100%;width:0%;background:var(--accent);border-radius:3px;transition:width .4s"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Task List -->
     <div class="todo-list" id="todo-list"></div>
-    <div style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap">
+
+    <!-- Bottom Actions -->
+    <div style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap;align-items:center;border-top:1px solid var(--border);padding-top:12px">
       <button class="btn-export" onclick="clearDoneTodos()" style="border-color:rgba(245,101,101,.3);color:var(--red)">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/></svg>
         Clear Done
+      </button>
+      <button class="btn-export" onclick="markAllDone()" style="border-color:rgba(61,232,176,.3);color:var(--accent)">
+        ✓ Mark All Done
       </button>
       <span style="margin-left:auto;font-size:.78rem;color:var(--muted);align-self:center;font-family:var(--font-body)" id="todo-count">0 tasks</span>
     </div>
@@ -3320,19 +3383,187 @@ function buildHeatmap(){
     const cell=document.createElement('div');cell.className='heat-cell';cell.dataset.level=lvl;cell.title=dd.toLocaleDateString('en-IN')+': '+(hrs?hrs+'h':'No data');c.appendChild(cell);}
 }
 
-function loadTodos(){const d=getData();renderTodos(JSON.parse(d['todos']||'[]'));}
+
+let todoFilter = 'all';
+
+function setTodoFilter(filter, btn){
+  todoFilter = filter;
+  document.querySelectorAll('.todo-ftab').forEach(b => b.classList.remove('active'));
+  if(btn) btn.classList.add('active');
+  const d = getData();
+  renderTodos(JSON.parse(d['todos'] || '[]'));
+}
+
+function loadTodos(){
+  const d = getData();
+  renderTodos(JSON.parse(d['todos'] || '[]'));
+}
+
 function addTodo(){
-  const inp=document.getElementById('todo-inp');const tag=document.getElementById('todo-tag')?.value||'general';const prio=document.getElementById('todo-prio')?.value||'med';const text=inp?.value?.trim();if(!text)return;
-  const d=getData();const todos=JSON.parse(d['todos']||'[]');todos.unshift({id:Date.now(),text,tag,prio,done:false});d['todos']=JSON.stringify(todos);setData(d);if(inp)inp.value='';renderTodos(todos);showToast('Task added!');
+  const inp = document.getElementById('todo-inp');
+  const tag = document.getElementById('todo-tag')?.value || 'general';
+  const prio = document.getElementById('todo-prio')?.value || 'med';
+  const due = document.getElementById('todo-due')?.value || '';
+  const text = inp?.value?.trim();
+  if(!text) return;
+  const d = getData();
+  const todos = JSON.parse(d['todos'] || '[]');
+  todos.unshift({
+    id: Date.now(),
+    text,
+    tag,
+    prio,
+    due,
+    done: false,
+    note: '',
+    status: 'notstarted'
+  });
+  d['todos'] = JSON.stringify(todos);
+  setData(d);
+  if(inp) inp.value = '';
+  const dueInp = document.getElementById('todo-due');
+  if(dueInp) dueInp.value = '';
+  renderTodos(todos);
+  showToast('Task added!');
 }
+
 function renderTodos(todos){
-  const list=document.getElementById('todo-list');if(!list)return;
-  safe('todo-count',todos.length+' task'+(todos.length!==1?'s':''));
-  list.innerHTML=todos.map(t=>`<div class="todo-item${t.done?' done-item':''}"><div class="prio-dot pd-${t.prio}"></div><input type="checkbox" ${t.done?'checked':''} style="width:14px;height:14px;accent-color:var(--accent);cursor:pointer" onchange="toggleTodoItem(${t.id})"/><span class="todo-text">${t.text}</span><span class="todo-tag tag-${t.tag}">${t.tag}</span><button class="todo-del" onclick="deleteTodo(${t.id})">✕</button></div>`).join('');
+  const list = document.getElementById('todo-list');
+  if(!list) return;
+
+  // Filter
+  let filtered = [...todos];
+  if(todoFilter === 'active') filtered = todos.filter(t => !t.done);
+  else if(todoFilter === 'done') filtered = todos.filter(t => t.done);
+  else if(todoFilter === 'high') filtered = todos.filter(t => t.prio === 'high');
+
+  // Stats
+  const doneCount = todos.filter(t => t.done).length;
+  const totalCount = todos.length;
+  const pct = totalCount ? Math.round(doneCount / totalCount * 100) : 0;
+  safe('todo-count', totalCount + ' task' + (totalCount !== 1 ? 's' : ''));
+  safe('todo-done-count', doneCount + '/' + totalCount + ' done');
+  const bar = document.getElementById('todo-progress-bar');
+  if(bar) bar.style.width = pct + '%';
+
+  if(!filtered.length){
+    list.innerHTML = `<div style="text-align:center;padding:24px;color:var(--muted);font-size:.83rem;font-family:var(--font-body)">${todoFilter === 'done' ? '✅ No completed tasks yet.' : todoFilter === 'high' ? '🔴 No high priority tasks.' : '✨ No tasks yet. Add one above!'}</div>`;
+    return;
+  }
+
+  const today = new Date().toISOString().slice(0,10);
+
+  const statusLabels = {
+    notstarted: '⬜ Not Started',
+    inprogress: '🔄 In Progress',
+    done: '✅ Done'
+  };
+
+  list.innerHTML = filtered.map(t => {
+    const isOverdue = t.due && t.due < today && !t.done;
+    const dueBadge = t.due
+      ? `<span class="todo-due-badge${isOverdue?' overdue':''}">${isOverdue ? '⚠ ' : '📅 '}${new Date(t.due + 'T00:00:00').toLocaleDateString('en-IN',{month:'short',day:'numeric'})}</span>`
+      : '';
+
+    return `<div class="todo-item${t.done?' done-item':''}" id="tdi-${t.id}">
+      <div class="todo-item-top">
+        <div class="prio-dot pd-${t.prio}"></div>
+        <input type="checkbox" ${t.done?'checked':''} style="width:15px;height:15px;accent-color:var(--accent);cursor:pointer;flex-shrink:0" onchange="toggleTodoItem(${t.id})"/>
+        <span class="todo-text" id="tdt-${t.id}">${t.text}</span>
+        <span class="todo-tag tag-${t.tag}">${t.tag}</span>
+        ${dueBadge}
+        <select class="todo-status-sel" onchange="updateTodoStatus(${t.id},this.value)">
+          <option value="notstarted" ${(t.status||'notstarted')==='notstarted'?'selected':''}>⬜ Not Started</option>
+          <option value="inprogress" ${t.status==='inprogress'?'selected':''}>🔄 In Progress</option>
+          <option value="done" ${t.status==='done'?'selected':''}>✅ Done</option>
+        </select>
+        <button class="todo-expand-btn" onclick="toggleTodoNote(${t.id})" id="tnbtn-${t.id}">${t.note ? '📝 Note' : '+ Note'}</button>
+        <button class="todo-del" onclick="deleteTodo(${t.id})">✕</button>
+      </div>
+      <div class="todo-note-wrap${t.note?' open':''}" id="tnw-${t.id}">
+        <textarea class="todo-note-area" placeholder="Write your notes here — progress, blockers, what you learned, how much completed today..." onchange="saveTodoNote(${t.id},this.value)">${t.note||''}</textarea>
+      </div>
+    </div>`;
+  }).join('');
 }
-function toggleTodoItem(id){const d=getData();const todos=JSON.parse(d['todos']||'[]');const t=todos.find(x=>x.id===id);if(t)t.done=!t.done;d['todos']=JSON.stringify(todos);setData(d);renderTodos(todos);}
-function deleteTodo(id){const d=getData();let todos=JSON.parse(d['todos']||'[]');todos=todos.filter(t=>t.id!==id);d['todos']=JSON.stringify(todos);setData(d);renderTodos(todos);}
-function clearDoneTodos(){const d=getData();let todos=JSON.parse(d['todos']||'[]');todos=todos.filter(t=>!t.done);d['todos']=JSON.stringify(todos);setData(d);renderTodos(todos);showToast('Done tasks cleared!');}
+
+function toggleTodoNote(id){
+  const wrap = document.getElementById('tnw-' + id);
+  const btn = document.getElementById('tnbtn-' + id);
+  if(!wrap) return;
+  const isOpen = wrap.classList.toggle('open');
+  if(btn) btn.textContent = isOpen ? '📝 Hide' : '+ Note';
+  if(isOpen) wrap.querySelector('textarea')?.focus();
+}
+
+function saveTodoNote(id, val){
+  const d = getData();
+  const todos = JSON.parse(d['todos'] || '[]');
+  const t = todos.find(x => x.id === id);
+  if(t){
+    t.note = val;
+    const btn = document.getElementById('tnbtn-' + id);
+    if(btn) btn.textContent = val ? '📝 Note' : '+ Note';
+  }
+  d['todos'] = JSON.stringify(todos);
+  setData(d);
+}
+
+function updateTodoStatus(id, status){
+  const d = getData();
+  const todos = JSON.parse(d['todos'] || '[]');
+  const t = todos.find(x => x.id === id);
+  if(t) t.status = status;
+  d['todos'] = JSON.stringify(todos);
+  setData(d);
+}
+
+function toggleTodoItem(id){
+  const d = getData();
+  const todos = JSON.parse(d['todos'] || '[]');
+  const t = todos.find(x => x.id === id);
+  if(t){
+    t.done = !t.done;
+    if(t.done) t.status = 'done';
+    else if(t.status === 'done') t.status = 'notstarted';
+  }
+  d['todos'] = JSON.stringify(todos);
+  setData(d);
+  renderTodos(todos);
+}
+
+function deleteTodo(id){
+  const d = getData();
+  let todos = JSON.parse(d['todos'] || '[]');
+  todos = todos.filter(t => t.id !== id);
+  d['todos'] = JSON.stringify(todos);
+  setData(d);
+  renderTodos(todos);
+}
+
+function clearDoneTodos(){
+  const d = getData();
+  let todos = JSON.parse(d['todos'] || '[]');
+  todos = todos.filter(t => !t.done);
+  d['todos'] = JSON.stringify(todos);
+  setData(d);
+  renderTodos(todos);
+  showToast('Done tasks cleared!');
+}
+
+function markAllDone(){
+  const d = getData();
+  let todos = JSON.parse(d['todos'] || '[]');
+  todos.forEach(t => { t.done = true; t.status = 'done'; });
+  d['todos'] = JSON.stringify(todos);
+  setData(d);
+  renderTodos(todos);
+  showToast('All tasks marked done! 🎉');
+}
+
+
+// ========= ends new todo functions ========= //
+
 
 function addProject(){
   const name=document.getElementById('proj-name')?.value?.trim();if(!name){showToast('Enter project name','t-blue');return;}
