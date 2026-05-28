@@ -1087,7 +1087,7 @@ footer.coodley-footer{background:var(--bg);border-top:1px solid var(--border);pa
         <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
         <span id="hero-date">—</span>
       </div>
-      <div id="countdown-badge" style="display:none;margin-top:16px;background:linear-gradient(135deg,rgba(245,101,101,.1),rgba(244,169,66,.07));border:1px solid rgba(245,101,101,.3);border-radius:16px;padding:10px 20px;display:inline-flex;align-items:center;gap:10px;flex-wrap:wrap">
+      <div id="countdown-badge" style="margin-top:16px;background:linear-gradient(135deg,rgba(245,101,101,.1),rgba(244,169,66,.07));border:1px solid rgba(245,101,101,.3);border-radius:16px;padding:10px 20px;display:inline-flex;align-items:center;gap:10px;flex-wrap:wrap">
   <div style="display:flex;align-items:center;gap:6px">
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
     <span style="font-size:.72rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;font-family:var(--font-body)">Target Date</span>
@@ -6511,30 +6511,38 @@ function updateCountdown(){
   const badge = document.getElementById('countdown-badge');
   if(!badge) return;
 
-  if(!targetDate){
+  if(!targetDate || targetDate.trim() === ''){
     badge.style.display = 'none';
     return;
   }
 
   const today  = new Date();
   today.setHours(0,0,0,0);
-  const target = new Date(targetDate);
-  target.setHours(0,0,0,0);
-  const diff   = Math.ceil((target - today) / (1000 * 60 * 60 * 24));
 
-  badge.style.display = 'inline-flex';
+  // Fix: parse date correctly to avoid timezone off-by-one
+  const parts  = targetDate.split('-');
+  const target = new Date(parseInt(parts[0]), parseInt(parts[1])-1, parseInt(parts[2]));
+  target.setHours(0,0,0,0);
+
+  const diff = Math.ceil((target - today) / (1000 * 60 * 60 * 24));
+
+  // Force show
+  badge.style.display    = 'inline-flex';
+  badge.style.visibility = 'visible';
+  badge.style.opacity    = '1';
 
   const daysEl  = document.getElementById('countdown-days');
   const labelEl = document.getElementById('countdown-label');
   const dateEl  = document.getElementById('countdown-date-label');
 
   if(diff > 0){
-    if(daysEl) daysEl.textContent = diff;
-    if(daysEl) daysEl.style.color = diff <= 30 ? 'var(--red)' : diff <= 90 ? 'var(--amber)' : 'var(--accent)';
+    if(daysEl){ 
+      daysEl.textContent = diff; 
+      daysEl.style.color = diff <= 30 ? 'var(--red)' : diff <= 90 ? 'var(--amber)' : 'var(--accent)'; 
+    }
     if(labelEl) labelEl.textContent = 'days to target job date';
-    if(dateEl) dateEl.textContent = target.toLocaleDateString('en-IN',{day:'numeric',month:'long',year:'numeric'});
+    if(dateEl)  dateEl.textContent  = target.toLocaleDateString('en-IN',{day:'numeric',month:'long',year:'numeric'});
 
-    // Change border color based on urgency
     if(diff <= 30){
       badge.style.borderColor = 'rgba(245,101,101,.5)';
       badge.style.background  = 'linear-gradient(135deg,rgba(245,101,101,.12),rgba(244,169,66,.07))';
@@ -6545,19 +6553,20 @@ function updateCountdown(){
       badge.style.borderColor = 'rgba(61,232,176,.3)';
       badge.style.background  = 'linear-gradient(135deg,rgba(61,232,176,.08),rgba(61,232,176,.03))';
     }
+
   } else if(diff === 0){
     if(daysEl){ daysEl.textContent = '🎯'; daysEl.style.color = 'var(--accent)'; }
     if(labelEl) labelEl.textContent = 'Today is your target day! Go get that offer!';
-    if(dateEl) dateEl.textContent = '';
+    if(dateEl)  dateEl.textContent  = '';
+
   } else {
     if(daysEl){ daysEl.textContent = Math.abs(diff); daysEl.style.color = 'var(--muted)'; }
     if(labelEl) labelEl.textContent = 'days past target — keep applying!';
-    if(dateEl) dateEl.textContent = target.toLocaleDateString('en-IN',{day:'numeric',month:'long',year:'numeric'});
+    if(dateEl)  dateEl.textContent  = target.toLocaleDateString('en-IN',{day:'numeric',month:'long',year:'numeric'});
     badge.style.borderColor = 'var(--border2)';
     badge.style.background  = 'var(--bg3)';
   }
 }
-
 
 </script>
 </body>
