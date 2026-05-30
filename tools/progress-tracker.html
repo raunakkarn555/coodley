@@ -218,9 +218,6 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;point
 .ub-green{color:var(--green);border-color:rgba(61,232,176,0.35);background:rgba(61,232,176,0.07);}
 .ub-blue{color:var(--blue);border-color:rgba(91,164,245,0.35);background:rgba(91,164,245,0.07);}
 .ub-yellow{color:var(--amber);border-color:rgba(244,169,66,0.35);background:rgba(244,169,66,0.07);}
-.ub-purple{color:var(--purple);border-color:rgba(157,124,245,.35);background:rgba(157,124,245,.07);}
-.ub-orange{color:var(--orange);border-color:rgba(251,146,60,.35);background:rgba(251,146,60,.07);}
-.ub-pink{color:var(--pink);border-color:rgba(244,114,182,.35);background:rgba(244,114,182,.07);}
 .unit-title{font-family:var(--font-head);font-weight:800;font-size:1.05rem;flex:1;letter-spacing:-.01em;}
 .unit-pct{font-family:var(--font-mono);font-size:.9rem;font-weight:700;}
 .unit-bar-wrap{height:3px;background:var(--bg4);margin:0 24px;overflow:hidden;border-radius:2px;}
@@ -1180,7 +1177,6 @@ footer.coodley-footer{background:var(--bg);border-top:1px solid var(--border);pa
       <div class="prog-row"><div class="prog-label" style="color:var(--accent)">🟢 Node.js</div><div class="prog-bar-wrap"><div class="prog-bar-fill" id="pb-node" style="width:0%;background:var(--accent)"></div></div><div class="prog-pct" id="pp-node">0%</div></div>
       <div class="prog-row"><div class="prog-label" style="color:var(--pink)">🧩 DSA</div><div class="prog-bar-wrap"><div class="prog-bar-fill" id="pb-dsa" style="width:0%;background:var(--pink)"></div></div><div class="prog-pct" id="pp-dsa">0%</div></div>
       <div class="prog-row"><div class="prog-label" style="color:var(--orange)">🏗 System</div><div class="prog-bar-wrap"><div class="prog-bar-fill" id="pb-sys" style="width:0%;background:var(--orange)"></div></div><div class="prog-pct" id="pp-sys">0%</div></div>
-    <div class="prog-row"><div class="prog-label" style="color:var(--amber)">🗄 Databases</div><div class="prog-bar-wrap"><div class="prog-bar-fill" id="pb-db" style="width:0%;background:var(--amber)"></div></div><div class="prog-pct" id="pp-db">0%</div></div>
     </div>
     <div class="subj-progress-card" style="display:flex;flex-direction:column;justify-content:center;gap:12px;text-align:center">
       <div style="font-size:3rem;font-family:var(--font-mono);font-weight:700;color:var(--accent3);line-height:1" id="overall-pct">0%</div>
@@ -3181,15 +3177,14 @@ const CURRICULUM=[
     ]},
   ]},
 ]},
-/ =====================================================================
+// =====================================================================
 // UNIT 4 — DSA WITH C++ AND JAVA
 // =====================================================================
-{id:'u4',name:'Unit 4 — DSA (C++ & Java)',color:'purple',months:'Month 3–9',parallel:true,stages:[
-
-   {id:'s4-1',name:'Stage 4.1 — Language Fundamentals',color:'purple',chapters:[
-     {id:'c4-1-1',name:'C++ for Competitive Programming',high:true,topics:[
+{id:'u4',name:'Unit 4 — DSA (C++ & Java)',color:'purple',months:'Month 3–9 (parallel)',stages:[
+  {id:'s4-1',name:'Stage 4.1 — Language Fundamentals',color:'purple',chapters:[
+    {id:'c4-1-1',name:'C++ for Competitive Programming',high:true,topics:[
       CPP('C++ basics — data types (int, long long, double, char, bool, string), I/O (cin/cout), endl vs "\\n"','Use "\\n" not endl — endl flushes buffer (slow).'),
-      CPP('Variables, references, pointers — &ref, ptr, ptr arithmetic, nullptr','int p = &x; *p is the value. &x is the address.'),
+      CPP('Variables, references, pointers — &ref, *ptr, ptr arithmetic, nullptr','int* p = &x; *p is the value. &x is the address.'),
       CPP('#include <bits/stdc++.h> — competitive programming header','Includes everything. Not for production code.'),
       CPP('Functions — parameters by value, by reference, by pointer, default args, overloading','Pass large objects by const reference.'),
       CPP('Arrays — stack vs heap, std::array, raw arrays, 2D arrays','int arr[1000005]; at global scope avoids stack overflow.'),
@@ -3205,7 +3200,6 @@ const CURRICULUM=[
       CPP('Fast I/O — ios_base::sync_with_stdio(false); cin.tie(NULL)','Essential for large input competitive problems.'),
       P('Practice: Solve 20 easy LeetCode problems in C++'),
     ]},
-
     {id:'c4-1-2',name:'Java for DSA & Interviews',high:true,topics:[
       T('Java basics — primitive types (int, long, double, char, boolean), wrapper classes (Integer, Long), autoboxing','Java is preferred in big tech (Google, Amazon, Meta) interviews.'),
       T('Strings — String (immutable), StringBuilder (mutable), String.format, split, trim, charAt, substring','Use StringBuilder for building strings in loops.'),
@@ -3224,9 +3218,8 @@ const CURRICULUM=[
       P('Practice: Solve 20 easy LeetCode problems in Java'),
     ]},
   ]},
-
-   {id:'s4-2',name:'Stage 4.2 — Complexity & Core Patterns',color:'purple',chapters:[
-     {id:'c4-2-1',name:'Time & Space Complexity',high:true,topics:[
+  {id:'s4-2',name:'Stage 4.2 — Complexity & Core Patterns',color:'purple',chapters:[
+    {id:'c4-2-1',name:'Time & Space Complexity',high:true,topics:[
       T('Big O notation — formal definition, O(1), O(log n), O(n), O(n log n), O(n²), O(2ⁿ), O(n!)','Always give both time AND space complexity.'),
       T('Best, average, worst case — why worst case matters most','QuickSort: O(n log n) average, O(n²) worst.'),
       T('Amortized analysis — ArrayList resize — O(1) amortized per push','Total work / number of operations.'),
@@ -3235,7 +3228,6 @@ const CURRICULUM=[
       T('Analyzing nested loops, recursive relations — Master Theorem overview','T(n)=2T(n/2)+n → O(n log n) by Master Theorem.'),
       IV('Interview: What is the time and space complexity of this code?'),
     ]},
-
     {id:'c4-2-2',name:'Two Pointers & Sliding Window',high:true,topics:[
       T('Two pointers — opposite ends: left/right (sorted array)','Valid palindrome, reverse array, container with most water.'),
       T('Two pointers — same direction: slow/fast (linked list, duplicate removal)','Remove duplicates in-place: slow and fast pointers.'),
@@ -3244,7 +3236,6 @@ const CURRICULUM=[
       T('Two Sum, Three Sum, Four Sum — sorting + two pointers','Sort first. Skip duplicates.'),
       P('Practice: Container With Most Water, 3Sum, Longest Substring Without Repeating, Min Window Substring'),
     ]},
-
     {id:'c4-2-3',name:'Prefix Sum & Difference Array',high:true,topics:[
       T('Prefix sum — precompute cumulative sums for O(1) range queries','prefix[i]=prefix[i-1]+arr[i]. Range[l,r]=prefix[r]-prefix[l-1].'),
       T('2D prefix sum — sum of rectangle in O(1)','Integral image technique.'),
@@ -3253,7 +3244,6 @@ const CURRICULUM=[
       P('Practice: Range Sum Query, Product of Array Except Self, Subarray Sum Equals K, Continuous Subarray Sum'),
     ]},
   ]},
-
   {id:'s4-3',name:'Stage 4.3 — Data Structures',color:'purple',chapters:[
     {id:'c4-3-1',name:'Arrays & Strings',high:true,topics:[
       T('Array manipulation — rotate, reverse, merge sorted arrays, Dutch National Flag','Dutch flag (3-way partition): sort 0s, 1s, 2s in-place.'),
@@ -3264,7 +3254,6 @@ const CURRICULUM=[
       T('Two-pointer on strings — reverse words, valid palindrome II','Remove spaces, lowercase, then two pointers.'),
       P('Practice: Rotate Image, Spiral Matrix, Word Search, Jump Game, Trapping Rain Water'),
     ]},
-
     {id:'c4-3-2',name:'Hash Maps & Sets',high:true,topics:[
       T('Hash map internals — hash function, collision resolution (chaining vs open addressing), load factor','Chaining uses linked lists. Open addressing uses probing.'),
       T('Frequency counting — character frequency, top K frequent elements','unordered_map<char,int> freq; for(char c:s) freq[c]++;'),
@@ -3273,7 +3262,6 @@ const CURRICULUM=[
       T('Cyclic sort — find missing/duplicate numbers 1..n without extra space','Place each number at index number-1. Missing = index+1 not equal to arr[index].'),
       P('Practice: Two Sum, Group Anagrams, Top K Frequent, Longest Consecutive Sequence'),
     ]},
-
     {id:'c4-3-3',name:'Stacks & Queues',high:true,topics:[
       T('Stack — LIFO, push/pop/peek/empty, applications: function calls, undo, expression evaluation','Valid parentheses, min stack, evaluate RPN.'),
       T('Monotonic stack — increasing/decreasing — next greater element pattern','For each element: pop smaller/larger elements while stack not empty.'),
@@ -3284,7 +3272,6 @@ const CURRICULUM=[
       T('Stack-based problems — largest rectangle in histogram, maximal rectangle','Use stack to track left boundary. O(n) solution.'),
       P('Practice: Valid Parentheses, Min Stack, Daily Temperatures, Sliding Window Maximum, LRU Cache'),
     ]},
-
     {id:'c4-3-4',name:'Linked Lists',high:true,topics:[
       T('Singly linked list — Node (val, next), head pointer, traversal, length','class ListNode { int val; ListNode next; }'),
       T('Insertion — at head (O(1)), at tail (O(n) without tail ptr), at position (O(n))','Insert at head: newNode.next=head; head=newNode.'),
@@ -3297,8 +3284,7 @@ const CURRICULUM=[
       T('Intersection of two lists — length difference approach','Advance longer list pointer by the length difference.'),
       P('Practice: Reverse LL, Merge K Sorted Lists, Reorder List, Add Two Numbers'),
     ]},
-
-     {id:'c4-3-5',name:'Trees & Binary Search Trees',high:true,topics:[
+    {id:'c4-3-5',name:'Trees & Binary Search Trees',high:true,topics:[
       T('Binary tree — Node (val, left, right), height, depth, levels, leaf nodes','Height of null = -1. Height of leaf = 0.'),
       T('Tree traversals — inorder (left-root-right), preorder (root-left-right), postorder (left-right-root)','Inorder of BST = sorted array. Preorder = serialize tree.'),
       T('Level-order traversal — BFS with queue, each level in separate list','Queue size at start of each level = number of nodes at that level.'),
@@ -3312,8 +3298,7 @@ const CURRICULUM=[
       T('Serialize and deserialize binary tree — preorder or level-order','Preorder: root,left,right — null as "#". Reconstruct with queue.'),
       P('Practice: Max Depth, Same Tree, Invert Tree, Path Sum, Lowest Common Ancestor, Validate BST'),
     ]},
-
-     {id:'c4-3-6',name:'Heaps & Priority Queues',high:true,topics:[
+    {id:'c4-3-6',name:'Heaps & Priority Queues',high:true,topics:[
       T('Min-heap and max-heap — complete binary tree, heap property, array representation','Parent: (i-1)/2. Left child: 2*i+1. Right child: 2*i+2.'),
       T('Heap operations — insert (sift up), remove min/max (sift down), heapify O(n)','Building a heap from array: O(n) with heapify. Inserting one by one: O(n log n).'),
       T('priority_queue in C++ and PriorityQueue in Java — usage patterns','priority_queue<int,vector<int>,greater<int>> minHeap;'),
@@ -3323,8 +3308,7 @@ const CURRICULUM=[
       T('Dijkstra\'s algorithm — priority queue, shortest path in weighted graph','{dist, node} in min-heap. Relax edges when popped.'),
       P('Practice: Top K Frequent Elements, K Closest Points to Origin, Find Median from Stream, Task Scheduler'),
     ]},
-
-     {id:'c4-3-7',name:'Tries & Advanced Structures',high:false,topics:[
+    {id:'c4-3-7',name:'Tries & Advanced Structures',high:false,topics:[
       T('Trie (prefix tree) — insert, search, startsWith — O(L) where L = word length','TrieNode: children[26], isEnd. Each char = one level.'),
       T('Trie use cases — autocomplete, spell check, IP routing, word search II','Word Search II: build trie of words, then DFS grid.'),
       T('Compressed trie / Radix tree — merge single-child nodes','More memory efficient.'),
@@ -3336,7 +3320,6 @@ const CURRICULUM=[
       P('Practice: Implement Trie, Word Search II, Number of Islands with Union-Find'),
     ]},
   ]},
-
   {id:'s4-4',name:'Stage 4.4 — Algorithms',color:'purple',chapters:[
     {id:'c4-4-1',name:'Sorting Algorithms',high:true,topics:[
       T('Comparison sorts — Bubble O(n²), Selection O(n²), Insertion O(n²) — when to use each','Insertion sort is O(n) for nearly sorted arrays.'),
@@ -3350,8 +3333,7 @@ const CURRICULUM=[
       T('QuickSelect — find kth smallest in O(n) average — partition-based','Select kth: partial quicksort, only recurse into relevant half.'),
       IV('Interview: When would you use merge sort over quick sort?'),
     ]},
-
-      {id:'c4-4-2',name:'Binary Search — All Patterns',high:true,topics:[
+    {id:'c4-4-2',name:'Binary Search — All Patterns',high:true,topics:[
       T('Classic binary search — lo=0, hi=n-1, mid=lo+(hi-lo)/2, search target','hi-lo/2 prevents integer overflow in Java/C++.'),
       T('Binary search on answer space — min/max value satisfying a monotonic condition','If F(mid) possible: hi=mid, else lo=mid+1.'),
       T('Lower bound — first element >= val; upper bound — first element > val','lower_bound(begin,end,val) in C++ STL.'),
@@ -3360,7 +3342,6 @@ const CURRICULUM=[
       T('Ternary search — find maximum of unimodal function in O(log n)','Compare f(m1) and f(m2) where m1,m2 divide range into thirds.'),
       P('Practice: Binary Search, Search in Rotated, Find Min in Rotated, Median of Two Sorted Arrays, Koko Eating Bananas'),
     ]},
-
     {id:'c4-4-3',name:'Recursion & Backtracking',high:true,topics:[
       T('Recursion anatomy — base case(s), recursive case, trust the recursive definition','Write base case first. Trust the recursive call returns correct.'),
       T('Recursion tree — visualize calls, identify overlapping subproblems','Drawing the tree reveals DP opportunities.'),
@@ -3373,8 +3354,7 @@ const CURRICULUM=[
       T('Letter combinations of phone number, Palindrome partitioning, IP addresses','Classic backtracking problems.'),
       P('Practice: Subsets I&II, Permutations I&II, Combination Sum I&II, N-Queens, Sudoku Solver, Word Search'),
     ]},
-
-     {id:'c4-4-4',name:'Graph Algorithms',high:true,topics:[
+    {id:'c4-4-4',name:'Graph Algorithms',high:true,topics:[
       T('Graph representations — adjacency list (preferred), adjacency matrix, edge list','Adjacency list: vector<vector<int>> adj(n). Space: O(V+E).'),
       T('BFS — queue, visited set, level-by-level, shortest path in unweighted graph','Add to visited WHEN enqueued, not when dequeued.'),
       T('DFS — stack/recursion, visited set, path tracking, pre/post order','DFS tree edge vs back edge vs cross edge — tree classification.'),
@@ -3392,8 +3372,7 @@ const CURRICULUM=[
       T('A* search — BFS with heuristic — optimal if heuristic admissible','f(n) = g(n) + h(n). Priority queue on f values.'),
       P('Practice: Number of Islands, Clone Graph, Course Schedule I&II, Pacific Atlantic Water Flow, Word Ladder'),
     ]},
-
-     {id:'c4-4-5',name:'Dynamic Programming — Complete',high:true,topics:[
+    {id:'c4-4-5',name:'Dynamic Programming — Complete',high:true,topics:[
       T('DP prerequisites — overlapping subproblems + optimal substructure','If a problem has both properties, DP applies.'),
       T('Top-down (memoization) — recursive + cache, Map or array','Map<String,Integer> memo = new HashMap<>();'),
       T('Bottom-up (tabulation) — fill dp table iteratively, usually more efficient','Often better: no recursion overhead, explicit space optimization.'),
@@ -3411,8 +3390,7 @@ const CURRICULUM=[
       P('NeetCode 150 — complete all problems categorized by pattern. Track on neetcode.io'),
       IV('Interview: How do you approach a DP problem? Walk through coin change.'),
     ]},
-
-      {id:'c4-4-6',name:'Greedy Algorithms',high:false,topics:[
+    {id:'c4-4-6',name:'Greedy Algorithms',high:false,topics:[
       T('Greedy property — locally optimal choice leads to globally optimal solution','Proof: exchange argument or induction.'),
       T('Activity selection / interval scheduling — sort by end time, greedy pick non-overlapping','Sort by end time. If start >= last end: select.'),
       T('Interval merge — sort by start, merge overlapping','If curr.start <= prev.end: extend prev.end.'),
@@ -3423,10 +3401,8 @@ const CURRICULUM=[
       P('Practice: Jump Game, Gas Station, Candy, Non-overlapping Intervals, Minimum Number of Arrows'),
     ]},
   ]},
-
-    {id:'s4-5',name:'Stage 4.5 — Interview Practice',color:'purple',chapters:[
-
-     {id:'c4-5-1',name:'Problem-Solving Framework',high:true,topics:[
+  {id:'s4-5',name:'Stage 4.5 — Interview Practice',color:'purple',chapters:[
+    {id:'c4-5-1',name:'Problem-Solving Framework',high:true,topics:[
       T('UMPIRE framework — Understand, Match, Plan, Implement, Review, Evaluate','Spend 5 minutes on Understand before touching code.'),
       T('Clarify edge cases — empty input, single element, all same, negative numbers, integer overflow','Ask: What if input is empty? What if n = 1?'),
       T('Recognize problem patterns — sliding window? DP? BFS? two pointers?','Pattern recognition comes from volume. Solve 300+ problems.'),
@@ -3436,8 +3412,7 @@ const CURRICULUM=[
       T('Communicate complexity — always state time and space at the end','O(n log n) time, O(n) space.'),
       IV('Interview: Walk me through your approach to a problem you have not seen before.'),
     ]},
-
-     {id:'c4-5-2',name:'LeetCode Study Plan',high:true,topics:[
+    {id:'c4-5-2',name:'LeetCode Study Plan',high:true,topics:[
       T('Month 3–4 — Easy problems: Arrays, Strings, HashMaps (50 problems)','Focus: Two Sum, Valid Parentheses, Reverse String, FizzBuzz patterns.'),
       T('Month 5–6 — Medium: Trees, LinkedLists, BFS/DFS, Basic DP (75 problems)','Focus: LCA, Binary Tree paths, Coin Change, House Robber.'),
       T('Month 7–8 — Medium/Hard: Advanced DP, Graphs, Heaps, Trie (75 problems)','Focus: Word Ladder, Dijkstra, Knapsack variants.'),
@@ -3449,8 +3424,6 @@ const CURRICULUM=[
     ]},
   ]},
 ]},
-
-  
 // =====================================================================
 // UNIT 5 — SYSTEM DESIGN
 // =====================================================================
@@ -3652,22 +3625,15 @@ const CURRICULUM=[
 ];
  
 // ========= HELPERS ========= //
-const unitColors={
-  green:'ub-green', blue:'ub-blue', yellow:'ub-yellow',
-  purple:'ub-purple', orange:'ub-orange', pink:'ub-pink'
-};
-const barColors={
-  green:'var(--accent)', blue:'var(--blue)', yellow:'var(--amber)',
-  purple:'var(--purple)', orange:'var(--orange)', pink:'var(--pink)'
-};
-
+const unitColors={green:'ub-green',blue:'ub-blue',yellow:'ub-yellow',purple:'ub-purple',orange:'ub-orange',pink:'ub-pink'};
+const barColors={green:'var(--accent)',blue:'var(--blue)',yellow:'var(--amber)',purple:'var(--purple)',orange:'var(--orange)',pink:'var(--pink)'};
 const stageNumStyles={
-  green: 'background:rgba(61,232,176,.15);color:var(--accent)',
-  blue:  'background:rgba(91,164,245,.15);color:var(--blue)',
+  green:'background:rgba(61,232,176,.15);color:var(--accent)',
+  blue:'background:rgba(91,164,245,.15);color:var(--blue)',
   yellow:'background:rgba(244,169,66,.15);color:var(--amber)',
-  purple:'background:rgba(157,124,245,.15);color:var(--purple)',
+  purple:'background:rgba(167,139,250,.15);color:var(--purple)',
   orange:'background:rgba(251,146,60,.15);color:var(--orange)',
-  pink:  'background:rgba(244,114,182,.15);color:var(--pink)'
+  pink:'background:rgba(244,114,182,.15);color:var(--pink)'
 };
 const catLabels={theory:'📖 Theory',practice:'💻 Practice',project:'🚀 Build',interview:'🎤 Interview',cpp:'⚡ C++/Java'};
 const catClass={theory:'tc-theory',practice:'tc-practice',project:'tc-project',interview:'tc-interview',cpp:'tc-cpp'};
@@ -3696,7 +3662,7 @@ function buildSyllabus(){
     panel.id=panelId;
     let html=`<div class="unit-block">
       <div class="unit-header">
-        <span class="unit-badge ${colClass}">${unit.months}${unit.parallel?' ⟳ Parallel':''}</span>
+        <span class="unit-badge ${colClass}">${unit.months}</span>
         <div class="unit-title">${unit.name}</div>
         <span class="unit-pct" style="color:${barCol}" id="upct-${unit.id}">${uPct}%</span>
       </div>
@@ -3919,13 +3885,12 @@ function updateStats(){
   if (ob) ob.style.width = st.overallPct + '%';
 
   // Per-subject progress bars
-const barMap = [
+  const barMap = [
     ['js',    st.js],
     ['react', st.react],
     ['node',  st.node],
     ['dsa',   st.dsa],
     ['sys',   st.sys],
-    ['db',    st.db],
   ];
   
   barMap.forEach(([key, val]) => {
