@@ -267,17 +267,7 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;point
   overflow-wrap:break-word; /* ADD THIS */
 }
 .topic-name.done{text-decoration:line-through;color:var(--muted);}
-
-.topic-sub{
-  font-size:.72rem;
-  color:var(--muted2);
-  margin-bottom:4px;
-  line-height:1.5;
-  font-style:italic;
-  padding-left:2px;
-  word-break:break-word;    /* ADD THIS */
-  overflow-wrap:break-word; /* ADD THIS */
-}
+.topic-sub{font-size:.72rem;color:var(--muted2);margin-bottom:4px;line-height:1.5;font-style:italic;padding-left:2px;}
 .topic-cat{display:inline-flex;align-items:center;gap:4px;font-size:.6rem;font-weight:700;padding:1px 6px;border-radius:4px;text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px;font-family:var(--font-mono);}
 .tc-theory{color:var(--blue);background:rgba(91,164,245,.08);border:1px solid rgba(91,164,245,.2);}
 .tc-practice{color:var(--accent);background:rgba(61,232,176,.08);border:1px solid rgba(61,232,176,.2);}
@@ -764,15 +754,6 @@ footer.coodley-footer{background:var(--bg);border-top:1px solid var(--border);pa
 
 
 @media (max-width:480px){
-
-  .topic-row{
-  gap:8px;
-  padding:8px 2px;
-}
-.topic-cat{
-  font-size:.55rem;
-  padding:1px 5px;
-}
 
   /* 1 — Filter pills: scroll horizontally instead of overflowing */
   .syl-filter-row{
