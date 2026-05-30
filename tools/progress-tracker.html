@@ -3181,7 +3181,9 @@ const CURRICULUM=[
 // UNIT 4 — DSA WITH C++ AND JAVA
 // =====================================================================
 {id:'u4',name:'Unit 4 — DSA (C++ & Java)',color:'purple',months:'Month 3–9 (parallel)',stages:[
+
   {id:'s4-1',name:'Stage 4.1 — Language Fundamentals',color:'purple',chapters:[
+
     {id:'c4-1-1',name:'C++ for Competitive Programming',high:true,topics:[
       CPP('C++ basics — data types (int, long long, double, char, bool, string), I/O (cin/cout), endl vs "\\n"','Use "\\n" not endl — endl flushes buffer (slow).'),
       CPP('Variables, references, pointers — &ref, *ptr, ptr arithmetic, nullptr','int* p = &x; *p is the value. &x is the address.'),
@@ -3217,10 +3219,10 @@ const CURRICULUM=[
       T('Java memory model — heap, stack, garbage collection, reference types','Objects live on heap. Local primitives on stack.'),
       P('Practice: Solve 20 easy LeetCode problems in Java'),
     ]},
-  ]},  
-]},
-
-{id:'s4-2',name:'Stage 4.2 — Complexity & Core Patterns',color:'purple',chapters:[
+  
+  ]}, 
+  
+  {id:'s4-2',name:'Stage 4.2 — Complexity & Core Patterns',color:'purple',chapters:[
     {id:'c4-2-1',name:'Time & Space Complexity',high:true,topics:[
       T('Big O notation — formal definition, O(1), O(log n), O(n), O(n log n), O(n²), O(2ⁿ), O(n!)','Always give both time AND space complexity.'),
       T('Best, average, worst case — why worst case matters most','QuickSort: O(n log n) average, O(n²) worst.'),
@@ -3322,6 +3324,7 @@ const CURRICULUM=[
       P('Practice: Implement Trie, Word Search II, Number of Islands with Union-Find'),
     ]},
   ]},
+  
   {id:'s4-4',name:'Stage 4.4 — Algorithms',color:'purple',chapters:[
     {id:'c4-4-1',name:'Sorting Algorithms',high:true,topics:[
       T('Comparison sorts — Bubble O(n²), Selection O(n²), Insertion O(n²) — when to use each','Insertion sort is O(n) for nearly sorted arrays.'),
@@ -3425,6 +3428,10 @@ const CURRICULUM=[
       IV('Interview: On-site: 2 coding + 1 system design + behavioral. Prepare all 3.'),
     ]},
   ]},
+
+]},
+
+
   
 // =====================================================================
 // UNIT 5 — SYSTEM DESIGN
