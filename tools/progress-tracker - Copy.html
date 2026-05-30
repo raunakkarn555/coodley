@@ -307,27 +307,19 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;point
 
 /* ===== TODO ===== */
 .todo-add-row{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap;}
-
-@media(max-width:480px){
-  .todo-add-row{flex-direction:column;}
-  .todo-add-row .todo-sel{width:100%;}
-  .todo-add-row .btn-add{width:100%;justify-content:center;padding:12px;}
-}
-
-
-
-.todo-inp{flex:1;min-width:180px;background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:10px 14px;color:var(--fg);font-family:var(--font-body);font-size:.85rem;outline:none;}
+.todo-inp{flex:1;min-width:0;background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:10px 14px;color:var(--fg);font-family:var(--font-body);font-size:.85rem;outline:none;width:100%;}
 .todo-inp:focus{border-color:var(--border2);}
-.todo-sel{background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:10px;color:var(--fg);font-family:var(--font-body);font-size:.82rem;outline:none;}
-.btn-add{background:var(--accent);color:#07090f;border:none;border-radius:10px;padding:10px 18px;font-weight:700;font-family:var(--font-body);cursor:pointer;font-size:.82rem;box-shadow:0 4px 15px rgba(61,232,176,.25);transition:all .2s;}
+.todo-sel{background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:10px;color:var(--fg);font-family:var(--font-body);font-size:.82rem;outline:none;flex-shrink:0;}
+.btn-add{background:var(--accent);color:#07090f;border:none;border-radius:10px;padding:10px 18px;font-weight:700;font-family:var(--font-body);cursor:pointer;font-size:.82rem;box-shadow:0 4px 15px rgba(61,232,176,.25);transition:all .2s;white-space:nowrap;flex-shrink:0;}
 .btn-add:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(61,232,176,.35);background:var(--accent2);}
 .todo-list{display:flex;flex-direction:column;gap:8px;}
-.todo-item{display:flex;align-items:center;gap:10px;background:var(--bg3);border:1px solid var(--border);border-radius:12px;padding:12px 16px;transition:all .2s;}
+.todo-item{display:flex;flex-direction:column;background:var(--bg3);border:1px solid var(--border);border-radius:12px;padding:12px 16px;transition:all .2s;}
 .todo-item:hover{border-color:var(--border2);}
-.todo-item.done-item{opacity:.5;}
-.todo-item.done-item .todo-text{text-decoration:line-through;}
-.todo-text{flex:1;font-size:.85rem;font-weight:500;font-family:var(--font-body);}
-.todo-tag{font-size:.62rem;padding:2px 8px;border-radius:8px;font-weight:700;border:1px solid;font-family:var(--font-mono);}
+.todo-item.done-item{opacity:.55;}
+.todo-item.done-item .todo-text{text-decoration:line-through;color:var(--muted);}
+.todo-item-top{display:flex;align-items:center;gap:8px;flex-wrap:nowrap;}
+.todo-text{flex:1;font-size:.85rem;font-weight:500;font-family:var(--font-body);min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.todo-tag{font-size:.62rem;padding:2px 8px;border-radius:8px;font-weight:700;border:1px solid;font-family:var(--font-mono);white-space:nowrap;flex-shrink:0;}
 .tag-js{color:var(--amber);border-color:rgba(244,169,66,.3);background:rgba(244,169,66,.06);}
 .tag-react{color:var(--blue);border-color:rgba(91,164,245,.3);background:rgba(91,164,245,.06);}
 .tag-node{color:var(--accent);border-color:rgba(61,232,176,.3);background:rgba(61,232,176,.06);}
@@ -338,82 +330,38 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;point
 .pd-high{background:var(--red);box-shadow:0 0 6px rgba(245,101,101,.5);}
 .pd-med{background:var(--amber);}
 .pd-low{background:var(--accent);}
-.todo-del{background:none;border:none;color:var(--muted);cursor:pointer;font-size:.75rem;padding:2px;transition:color .2s;}
-.todo-del:hover{color:var(--red);}
-/* Todo filter tabs */
-.todo-ftab{padding:5px 13px;border-radius:20px;border:1px solid var(--border);background:transparent;color:var(--muted);font-size:.75rem;font-weight:600;cursor:pointer;transition:all .2s;font-family:var(--font-body);}
-
-@media(max-width:480px){
-  #todo-filter-tabs{
-    flex-wrap:nowrap;
-    overflow-x:auto;
-    padding-bottom:6px;
-    scrollbar-width:none;
-    -webkit-overflow-scrolling:touch;
-  }
-  #todo-filter-tabs::-webkit-scrollbar{
-    display:none;
-  }
-  .todo-ftab{
-    flex-shrink:0;
-  }
-}
+.todo-del{background:none;border:none;color:var(--muted);cursor:pointer;font-size:.75rem;padding:4px 6px;transition:color .2s;border-radius:6px;flex-shrink:0;}
+.todo-del:hover{color:var(--red);background:rgba(245,101,101,.1);}
+.todo-ftab{padding:5px 13px;border-radius:20px;border:1px solid var(--border);background:transparent;color:var(--muted);font-size:.75rem;font-weight:600;cursor:pointer;transition:all .2s;font-family:var(--font-body);white-space:nowrap;}
 .todo-ftab:hover{border-color:var(--border2);color:var(--fg);}
 .todo-ftab.active{border-color:var(--accent);color:var(--accent);background:rgba(61,232,176,.08);}
-
-
-@media(max-width:480px){
-  .todo-item-top{
-    flex-wrap:wrap;
-    gap:6px;
-  }
-  .todo-text{
-    width:100%;
-    order:-1;
-  }
-  .todo-status-sel{
-    font-size:.6rem;
-    padding:2px 4px;
-  }
-  .todo-expand-btn{
-    font-size:.6rem;
-    padding:2px 5px;
-  }
-}
-
-
-
-@media(max-width:480px){
-  #sec-todo .card > div:last-child{
-    flex-direction:column;
-    gap:8px;
-  }
-  #sec-todo .card > div:last-child .btn-export{
-    width:100%;
-    justify-content:center;
-  }
-  #sec-todo #todo-count{margin-left:0;}
-}
-
-
-/* Todo note area */
 .todo-note-area{width:100%;background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:8px 12px;color:var(--fg);font-family:var(--font-body);font-size:.78rem;outline:none;resize:none;min-height:60px;margin-top:8px;transition:border-color .2s;line-height:1.6;box-sizing:border-box;}
 .todo-note-area:focus{border-color:var(--border3);box-shadow:0 0 0 3px rgba(61,232,176,.08);}
 .todo-note-area::placeholder{color:var(--muted);}
-
-/* Todo item expanded */
-.todo-item{display:flex;flex-direction:column;background:var(--bg3);border:1px solid var(--border);border-radius:12px;padding:12px 16px;transition:all .2s;}
-.todo-item:hover{border-color:var(--border2);}
-.todo-item.done-item{opacity:.55;}
-.todo-item.done-item .todo-text{text-decoration:line-through;color:var(--muted);}
-.todo-item-top{display:flex;align-items:center;gap:10px;}
-.todo-text{flex:1;font-size:.85rem;font-weight:500;font-family:var(--font-body);}
-.todo-expand-btn{background:none;border:1px solid var(--border);border-radius:6px;color:var(--muted);cursor:pointer;font-size:.68rem;padding:2px 7px;transition:all .15s;white-space:nowrap;}
-.todo-expand-btn:hover{border-color:var(--accent);color:var(--accent);}
 .todo-note-wrap{display:none;margin-top:8px;}
 .todo-note-wrap.open{display:block;}
+.todo-status-sel{background:var(--bg4);border:1px solid var(--border);border-radius:6px;color:var(--muted2);font-size:.65rem;padding:3px 6px;cursor:pointer;font-family:var(--font-body);outline:none;flex-shrink:0;}
+.todo-expand-btn{background:linear-gradient(135deg,rgba(91,164,245,.15),rgba(91,164,245,.08));border:1px solid rgba(91,164,245,.35);border-radius:8px;color:var(--blue);cursor:pointer;font-size:.68rem;font-weight:700;padding:4px 10px;transition:all .2s;white-space:nowrap;font-family:var(--font-body);flex-shrink:0;}
+.todo-expand-btn:hover{background:rgba(91,164,245,.25);border-color:var(--blue);transform:translateY(-1px);}
+.todo-expand-btn.has-note{background:linear-gradient(135deg,rgba(61,232,176,.15),rgba(61,232,176,.08));border-color:rgba(61,232,176,.4);color:var(--accent);}
 
-.todo-status-sel{background:var(--bg4);border:1px solid var(--border);border-radius:6px;color:var(--muted2);font-size:.65rem;padding:2px 6px;cursor:pointer;font-family:var(--font-body);outline:none;}
+/* Todo responsive */
+@media(max-width:600px){
+  .todo-add-row{flex-direction:column;gap:8px;}
+  .todo-add-row .todo-inp{width:100%;min-width:0;}
+  .todo-add-row .todo-sel{width:100%;}
+  .todo-add-row .btn-add{width:100%;text-align:center;justify-content:center;padding:12px;}
+  .todo-item-top{flex-wrap:wrap;gap:6px;}
+  .todo-text{width:100%;order:-1;white-space:normal;font-size:.88rem;overflow:visible;text-overflow:unset;}
+  .todo-tag{order:1;}
+  .prio-dot{order:1;}
+  .todo-status-sel{font-size:.6rem;order:2;}
+  .todo-expand-btn{font-size:.65rem;padding:3px 8px;order:3;}
+  .todo-del{order:4;margin-left:auto;}
+  #todo-filter-tabs{flex-wrap:nowrap;overflow-x:auto;padding-bottom:4px;scrollbar-width:none;-webkit-overflow-scrolling:touch;gap:5px;}
+  #todo-filter-tabs::-webkit-scrollbar{display:none;}
+  .todo-ftab{flex-shrink:0;font-size:.7rem;padding:4px 10px;}
+}
 
 
 /* ===== FORMS ===== */
@@ -929,6 +877,8 @@ footer.coodley-footer{background:var(--bg);border-top:1px solid var(--border);pa
 }
 
 </style>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 </head>
 <body>
 
@@ -1087,7 +1037,7 @@ footer.coodley-footer{background:var(--bg);border-top:1px solid var(--border);pa
         <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
         <span id="hero-date">—</span>
       </div>
-      <div id="countdown-badge" style="display:none;margin-top:16px;background:linear-gradient(135deg,rgba(245,101,101,.1),rgba(244,169,66,.07));border:1px solid rgba(245,101,101,.3);border-radius:16px;padding:10px 20px;display:inline-flex;align-items:center;gap:10px;flex-wrap:wrap">
+      <div id="countdown-badge" style="margin-top:16px;background:linear-gradient(135deg,rgba(245,101,101,.1),rgba(244,169,66,.07));border:1px solid rgba(245,101,101,.3);border-radius:16px;padding:10px 20px;display:inline-flex;align-items:center;gap:10px;flex-wrap:wrap">
   <div style="display:flex;align-items:center;gap:6px">
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
     <span style="font-size:.72rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;font-family:var(--font-body)">Target Date</span>
@@ -1385,8 +1335,8 @@ footer.coodley-footer{background:var(--bg);border-top:1px solid var(--border);pa
   <div class="daily-grid" id="daily-input-grid">
     <div class="daily-card"><h4>⏱ Study Hours</h4><input class="big-inp" type="number" id="d-hours" min="0" max="16" placeholder="0" oninput="saveDailyData()"/><div style="font-size:.72rem;color:var(--muted);margin-top:4px">Goal: <span id="d-goal-show">—</span> hrs</div></div>
     <div class="daily-card"><h4>🔥 Day Streak</h4><div class="streak-display"><div class="streak-num" id="d-streak">0</div><div><div style="font-size:.72rem;color:var(--muted)">consecutive</div><div style="font-size:.72rem;color:var(--muted)">study days</div></div></div></div>
-    <div class="daily-card"><h4>💧 Water (glasses)</h4><input class="big-inp" type="number" id="d-water" min="0" max="20" placeholder="0" oninput="saveDailyData()"/><div style="font-size:.72rem;color:var(--muted);margin-top:4px">Target: 8 glasses</div></div>
-    <div class="daily-card"><h4>😴 Sleep (hours)</h4><input class="big-inp" type="number" id="d-sleep" min="0" max="12" placeholder="0" oninput="saveDailyData()"/><div style="font-size:.72rem;color:var(--muted);margin-top:4px">Target: 7–8 hrs</div></div>
+    <div class="daily-card"><h4>💧 Water Intake (glasses)</h4><input class="big-inp" type="number" id="d-water" min="0" max="20" placeholder="0" oninput="saveDailyData()"/><div style="font-size:.72rem;color:var(--muted);margin-top:4px">Target: 8 glasses</div></div>
+    <div class="daily-card"><h4>😴 Sleep Last Night (hours)</h4><input class="big-inp" type="number" id="d-sleep" min="0" max="12" placeholder="0" oninput="saveDailyData()"/><div style="font-size:.72rem;color:var(--muted);margin-top:4px">Target: 7–8 hrs</div></div>
   </div>
 
   <div class="card">
@@ -1669,10 +1619,55 @@ footer.coodley-footer{background:var(--bg);border-top:1px solid var(--border);pa
     Performance Analytics
   </div>
   <div class="analytics-grid">
-    <div class="analytics-card"><h3>🎯 Readiness Level</h3><div style="text-align:center;padding:14px 0"><div class="readiness-ring" id="readiness-ring"><div class="readiness-pct" id="readiness-pct">0%</div></div><div class="readiness-label" id="readiness-label">Beginner</div><p style="font-size:.78rem;color:var(--muted2);margin-top:10px;max-width:180px;margin-left:auto;margin-right:auto;font-family:var(--font-body)" id="readiness-msg">Start completing topics to build momentum.</p></div></div>
-    <div class="analytics-card"><h3>⚠️ Weak Areas</h3><div id="weak-list"></div></div>
-    <div class="analytics-card"><h3>💡 Suggestions</h3><div id="suggestions" style="display:flex;flex-direction:column;gap:8px;font-size:.83rem;line-height:1.7;color:var(--muted2);font-family:var(--font-body)"></div></div>
+  <div class="analytics-card"><h3>🎯 Readiness Level</h3><div style="text-align:center;padding:14px 0"><div class="readiness-ring" id="readiness-ring"><div class="readiness-pct" id="readiness-pct">0%</div></div><div class="readiness-label" id="readiness-label">Beginner</div><p style="font-size:.78rem;color:var(--muted2);margin-top:10px;max-width:180px;margin-left:auto;margin-right:auto;font-family:var(--font-body)" id="readiness-msg">Start completing topics to build momentum.</p></div></div>
+  <div class="analytics-card"><h3>⚠️ Weak Areas</h3><div id="weak-list"></div></div>
+  <div class="analytics-card"><h3>💡 Suggestions</h3><div id="suggestions" style="display:flex;flex-direction:column;gap:8px;font-size:.83rem;line-height:1.7;color:var(--muted2);font-family:var(--font-body)"></div></div>
+</div>
+
+<!-- NEW CHARTS ROW -->
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;margin:20px 0">
+
+  <!-- Radar Chart -->
+  <div class="analytics-card" style="position:relative">
+    <h3 style="font-family:var(--font-head);font-weight:800;margin-bottom:16px;font-size:.95rem">
+      🕸 Skills Radar
+    </h3>
+    <div style="position:relative;height:280px;display:flex;align-items:center;justify-content:center">
+      <canvas id="radarChart"></canvas>
+    </div>
   </div>
+
+  <!-- Bar Chart -->
+  <div class="analytics-card" style="position:relative">
+    <h3 style="font-family:var(--font-head);font-weight:800;margin-bottom:16px;font-size:.95rem">
+      📊 Progress by Unit
+    </h3>
+    <div style="position:relative;height:280px">
+      <canvas id="barChart"></canvas>
+    </div>
+  </div>
+
+  <!-- Line Chart -->
+  <div class="analytics-card" style="position:relative">
+    <h3 style="font-family:var(--font-head);font-weight:800;margin-bottom:16px;font-size:.95rem">
+      📈 Study Hours — Last 14 Days
+    </h3>
+    <div style="position:relative;height:280px">
+      <canvas id="lineChart"></canvas>
+    </div>
+  </div>
+
+  <!-- Doughnut Chart -->
+  <div class="analytics-card" style="position:relative">
+    <h3 style="font-family:var(--font-head);font-weight:800;margin-bottom:16px;font-size:.95rem">
+      🍩 Topic Distribution
+    </h3>
+    <div style="position:relative;height:280px;display:flex;align-items:center;justify-content:center">
+      <canvas id="doughnutChart"></canvas>
+    </div>
+  </div>
+
+</div>
   <div class="card" style="margin-top:16px"><h3 style="font-family:var(--font-head);font-weight:800;margin-bottom:16px">📅 9-Month Roadmap Timeline</h3><div class="month-timeline" id="month-timeline"></div></div>
 </section>
 
@@ -1776,6 +1771,7 @@ footer.coodley-footer{background:var(--bg);border-top:1px solid var(--border);pa
   </div>
 
   <!-- Filter Toolbar -->
+ <!-- Filter Toolbar -->
   <div class="journal-toolbar">
     <div class="journal-filter-tabs" id="j-filter-tabs">
       <button class="j-filter-tab active" data-filter="all">All Entries</button>
@@ -1786,8 +1782,15 @@ footer.coodley-footer{background:var(--bg);border-top:1px solid var(--border);pa
       <button class="j-filter-tab" data-filter="goal">🎯 Goals</button>
       <button class="j-filter-tab" data-filter="pinned">📌 Pinned</button>
     </div>
-    <div style="display:flex;align-items:center;gap:8px">
-      <input type="text" id="j-search" placeholder="Search entries..." style="background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:8px 14px;color:var(--fg);font-family:var(--font-body);font-size:.82rem;outline:none;width:180px" oninput="renderJournal()"/>
+    <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+      <input type="text" id="j-search" placeholder="Search entries..." style="background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:8px 14px;color:var(--fg);font-family:var(--font-body);font-size:.82rem;outline:none;width:150px" oninput="renderJournal()"/>
+      <button onclick="downloadJournalPDF()" title="Download as PDF"
+        style="display:flex;align-items:center;gap:6px;background:linear-gradient(135deg,rgba(244,114,182,.12),rgba(244,114,182,.06));border:1px solid rgba(244,114,182,.35);border-radius:10px;padding:8px 14px;color:var(--pink);font-family:var(--font-body);font-size:.78rem;font-weight:700;cursor:pointer;transition:all .2s;white-space:nowrap"
+        onmouseover="this.style.background='rgba(244,114,182,.2)'"
+        onmouseout="this.style.background='linear-gradient(135deg,rgba(244,114,182,.12),rgba(244,114,182,.06))'">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><polyline points="9 15 12 18 15 15"/></svg>
+        Export
+      </button>
     </div>
   </div>
 
@@ -2362,26 +2365,100 @@ footer.coodley-footer{background:var(--bg);border-top:1px solid var(--border);pa
     </div>
     Backup & Restore
   </div>
-  <div class="privacy-notice"><div>⚠️</div><p><strong>Your data is stored only in this browser.</strong> Clearing browser data or switching devices will erase everything. Export a backup weekly and save to Google Drive.</p></div>
-  <div class="backup-row" style="gap:12px">
-   <button class="btn-export" onclick="exportData()" style="background:linear-gradient(135deg,rgba(61,232,176,.12),rgba(61,232,176,.06));border-color:rgba(61,232,176,.4);color:var(--accent);padding:12px 24px;font-size:.88rem;border-radius:12px">
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-    Export All Data (.json)
-  </button>
-  <button class="btn-export" onclick="document.getElementById('import-file').click()" style="background:linear-gradient(135deg,rgba(91,164,245,.12),rgba(91,164,245,.06));border-color:rgba(91,164,245,.4);color:var(--blue);padding:12px 24px;font-size:.88rem;border-radius:12px">
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
-    Import & Restore Data
-  </button>
-  <input type="file" id="import-file" accept=".json" style="display:none" onchange="importData(event)"/>
- </div>
-  <div class="backup-steps">
-    <div class="backup-step"><div class="step-num">1</div><h4>Export Backup</h4><p>Download all your data — topics, notes, projects, journal, applications.</p></div>
-    <div class="backup-step"><div class="step-num">2</div><h4>Save Safely</h4><p>Save the JSON file to Google Drive or email yourself. Do this weekly.</p></div>
-    <div class="backup-step"><div class="step-num">3</div><h4>Restore</h4><p>Click "Import Backup" on any device and select your saved JSON file.</p></div>
-    <div class="backup-step"><div class="step-num">4</div><h4>Stay Safe</h4><p>Don't use incognito mode. Export before clearing browser cache.</p></div>
+
+  <!-- Premium privacy notice -->
+  <div style="background:linear-gradient(135deg,rgba(244,169,66,.08),rgba(245,101,101,.05));border:1px solid rgba(244,169,66,.3);border-radius:var(--radius-lg);padding:18px 22px;margin-bottom:24px;display:flex;align-items:flex-start;gap:14px">
+    <div style="width:38px;height:38px;border-radius:10px;background:rgba(244,169,66,.15);display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;border:1px solid rgba(244,169,66,.3)">⚠️</div>
+    <div>
+      <div style="font-size:.85rem;font-weight:700;color:var(--amber);font-family:var(--font-head);margin-bottom:4px">Your data lives only in this browser</div>
+      <div style="font-size:.78rem;color:var(--muted2);line-height:1.7;font-family:var(--font-body)">Clearing browser data, switching devices, or using incognito mode will <strong style="color:var(--fg)">permanently erase</strong> everything. Export a backup every week and save it to Google Drive or email it to yourself.</div>
+    </div>
   </div>
-  <div class="card" style="margin-top:16px"><h3 style="font-family:var(--font-head);font-weight:800;margin-bottom:10px">Storage Info</h3><div id="storage-info" style="font-size:.83rem;color:var(--muted2);line-height:2;font-family:var(--font-body)"></div><button class="btn-export" onclick="clearAll()" style="margin-top:12px;border-color:rgba(245,101,101,.3);color:var(--red)">🗑 Clear ALL Data</button></div>
+
+  <!-- Main action buttons -->
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-bottom:28px">
+    <button onclick="exportData()" style="background:linear-gradient(135deg,rgba(61,232,176,.15),rgba(61,232,176,.07));border:1px solid rgba(61,232,176,.4);border-radius:var(--radius-lg);padding:20px 24px;cursor:pointer;transition:all .25s;text-align:left;position:relative;overflow:hidden"
+      onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 12px 30px rgba(61,232,176,.2)'"
+      onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none'">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">
+        <div style="width:36px;height:36px;border-radius:10px;background:rgba(61,232,176,.2);display:flex;align-items:center;justify-content:center;border:1px solid rgba(61,232,176,.4)">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        </div>
+        <div style="font-family:var(--font-head);font-weight:800;font-size:.95rem;color:var(--accent)">Export Backup</div>
+      </div>
+      <div style="font-size:.75rem;color:var(--muted2);font-family:var(--font-body);line-height:1.5">Download all your progress, notes, journal entries and projects as a JSON file.</div>
+      <div style="position:absolute;bottom:12px;right:16px;font-size:.65rem;color:var(--accent);font-family:var(--font-mono);opacity:.7">.json file ↓</div>
+    </button>
+
+    <button onclick="document.getElementById('import-file').click()" style="background:linear-gradient(135deg,rgba(91,164,245,.15),rgba(91,164,245,.07));border:1px solid rgba(91,164,245,.4);border-radius:var(--radius-lg);padding:20px 24px;cursor:pointer;transition:all .25s;text-align:left;position:relative;overflow:hidden"
+      onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 12px 30px rgba(91,164,245,.2)'"
+      onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none'">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">
+        <div style="width:36px;height:36px;border-radius:10px;background:rgba(91,164,245,.2);display:flex;align-items:center;justify-content:center;border:1px solid rgba(91,164,245,.4)">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+        </div>
+        <div style="font-family:var(--font-head);font-weight:800;font-size:.95rem;color:var(--blue)">Import Backup</div>
+      </div>
+      <div style="font-size:.75rem;color:var(--muted2);font-family:var(--font-body);line-height:1.5">Import a previously exported JSON file to restore all your data on any device.</div>
+      <div style="position:absolute;bottom:12px;right:16px;font-size:.65rem;color:var(--blue);font-family:var(--font-mono);opacity:.7">select file ↑</div>
+    </button>
+  </div>
+  <input type="file" id="import-file" accept=".json" style="display:none" onchange="importData(event)"/>
+
+  <!-- Steps -->
+  <!-- Steps -->
+  <div style="margin-bottom:28px">
+    <div style="font-size:.72rem;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:14px;font-family:var(--font-body)">How Backup Works</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px">
+      <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px;display:flex;gap:12px;align-items:flex-start">
+        <div style="width:32px;height:32px;border-radius:50%;background:var(--accent);color:#07090f;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.78rem;flex-shrink:0">1</div>
+        <div>
+          <div style="font-size:.85rem;font-weight:700;font-family:var(--font-head);margin-bottom:4px">📤 Export Weekly</div>
+          <div style="font-size:.75rem;color:var(--muted2);line-height:1.6;font-family:var(--font-body)">Click Export to download a .json file with all your data.</div>
+        </div>
+      </div>
+      <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px;display:flex;gap:12px;align-items:flex-start">
+        <div style="width:32px;height:32px;border-radius:50%;background:var(--accent);color:#07090f;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.78rem;flex-shrink:0">2</div>
+        <div>
+          <div style="font-size:.85rem;font-weight:700;font-family:var(--font-head);margin-bottom:4px">☁️ Save Safely</div>
+          <div style="font-size:.75rem;color:var(--muted2);line-height:1.6;font-family:var(--font-body)">Upload to Google Drive or email to yourself for safekeeping.</div>
+        </div>
+      </div>
+      <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px;display:flex;gap:12px;align-items:flex-start">
+        <div style="width:32px;height:32px;border-radius:50%;background:var(--accent);color:#07090f;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.78rem;flex-shrink:0">3</div>
+        <div>
+          <div style="font-size:.85rem;font-weight:700;font-family:var(--font-head);margin-bottom:4px">🔄 Restore Anywhere</div>
+          <div style="font-size:.75rem;color:var(--muted2);line-height:1.6;font-family:var(--font-body)">On any device, click Restore and select your saved file.</div>
+        </div>
+      </div>
+      <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px;display:flex;gap:12px;align-items:flex-start">
+        <div style="width:32px;height:32px;border-radius:50%;background:var(--accent);color:#07090f;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.78rem;flex-shrink:0">4</div>
+        <div>
+          <div style="font-size:.85rem;font-weight:700;font-family:var(--font-head);margin-bottom:4px">🛡 Stay Protected</div>
+          <div style="font-size:.75rem;color:var(--muted2);line-height:1.6;font-family:var(--font-body)">Avoid incognito mode. Export before clearing browser cache.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Storage Info -->
+  <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-xl);padding:24px">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;flex-wrap:wrap;gap:10px">
+      <h3 style="font-family:var(--font-head);font-weight:800;font-size:1rem;display:flex;align-items:center;gap:8px">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
+        Storage Info
+      </h3>
+      <button onclick="clearAll()" style="background:rgba(245,101,101,.08);border:1px solid rgba(245,101,101,.35);border-radius:10px;color:var(--red);font-size:.78rem;font-weight:700;padding:8px 16px;cursor:pointer;font-family:var(--font-body);transition:all .2s;display:flex;align-items:center;gap:6px"
+        onmouseover="this.style.background='rgba(245,101,101,.15)'"
+        onmouseout="this.style.background='rgba(245,101,101,.08)'">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><path d="M10 11v6"/><path d="M14 11v6"/></svg>
+        Clear ALL Data
+      </button>
+    </div>
+    <div id="storage-info"></div>
+  </div>
 </section>
+
 
 <!-- FAQ -->
 <section class="section" id="sec-faq">
@@ -4012,7 +4089,7 @@ function renderTodos(todos){
           <option value="inprogress" ${t.status==='inprogress'?'selected':''}>🔄 In Progress</option>
           <option value="done" ${t.status==='done'?'selected':''}>✅ Done</option>
         </select>
-        <button class="todo-expand-btn" onclick="toggleTodoNote(${t.id})" id="tnbtn-${t.id}">${t.note ? '📝 Note' : '+ Note'}</button>
+        <button class="todo-expand-btn${t.note?' has-note':''}" onclick="toggleTodoNote(${t.id})" id="tnbtn-${t.id}">${t.note ? '📝 Notes' : '+ Add Note'}</button>
         <button class="todo-del" onclick="deleteTodo(${t.id})">✕</button>
       </div>
       <div class="todo-note-wrap${t.note?' open':''}" id="tnw-${t.id}">
@@ -4038,7 +4115,7 @@ function saveTodoNote(id, val){
   if(t){
     t.note = val;
     const btn = document.getElementById('tnbtn-' + id);
-    if(btn) btn.textContent = val ? '📝 Note' : '+ Note';
+    if(btn){ btn.textContent = val ? '📝 Notes' : '+ Add Note'; if(val) btn.classList.add('has-note'); else btn.classList.remove('has-note'); }
   }
   d['todos'] = JSON.stringify(todos);
   setData(d);
@@ -4244,6 +4321,323 @@ function updateBook(id, color, val){
 
 function saveBookRev(id,checked){const d=getData();d['bookrev-'+id]=checked;setData(d);}
 
+
+// ========= ends book resource functions ========= //
+
+// ===== CHART INSTANCES (destroy before re-render) =====
+const _charts = {};
+
+function destroyChart(id){
+  if(_charts[id]){ _charts[id].destroy(); delete _charts[id]; }
+}
+
+function getChartColors(){
+  // Detect dark vs light mode
+  const isDark = document.documentElement.getAttribute('data-theme') !== 'light';
+  return {
+    gridColor:  isDark ? 'rgba(255,255,255,0.07)' : 'rgba(0,0,0,0.07)',
+    tickColor:  isDark ? 'rgba(255,255,255,0.45)' : 'rgba(0,0,0,0.45)',
+    labelColor: isDark ? 'rgba(255,255,255,0.7)'  : 'rgba(0,0,0,0.7)',
+  };
+}
+
+function buildRadarChart(st){
+  destroyChart('radar');
+  const canvas = document.getElementById('radarChart');
+  if(!canvas || typeof Chart === 'undefined') return;
+  const c = getChartColors();
+  _charts['radar'] = new Chart(canvas, {
+    type: 'radar',
+    data: {
+      labels: ['Frontend\n(HTML/CSS/JS)', 'React &\nNext.js', 'Backend\n(Node/Express)', 'Databases\n(SQL/NoSQL)', 'DSA\n(Algorithms)', 'System\nDesign'],
+      datasets:[{
+        label: 'Your Progress %',
+        data: [st.js, st.react, st.node, st.db, st.dsa, st.sys],
+        backgroundColor: 'rgba(61,232,176,0.15)',
+        borderColor:     'rgba(61,232,176,0.9)',
+        borderWidth: 2.5,
+        pointBackgroundColor: [
+          'rgba(244,169,66,1)',
+          'rgba(91,164,245,1)',
+          'rgba(61,232,176,1)',
+          'rgba(244,169,66,1)',
+          'rgba(244,114,182,1)',
+          'rgba(251,146,60,1)',
+        ],
+        pointBorderColor: '#07090f',
+        pointBorderWidth: 2,
+        pointRadius: 5,
+        pointHoverRadius: 7,
+      }]
+    },
+    options:{
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins:{
+        legend:{ display:false },
+        tooltip:{
+          callbacks:{
+            label: ctx => ' ' + ctx.raw + '% complete'
+          },
+          backgroundColor: 'rgba(12,15,26,0.95)',
+          titleColor: '#e8edf5',
+          bodyColor:  '#8899b0',
+          borderColor: 'rgba(61,232,176,0.3)',
+          borderWidth: 1,
+          padding: 10,
+        }
+      },
+      scales:{
+        r:{
+          min: 0,
+          max: 100,
+          ticks:{
+            stepSize: 25,
+            color: c.tickColor,
+            font:{ size:9, family:"'JetBrains Mono', monospace" },
+            backdropColor: 'transparent',
+            callback: v => v + '%'
+          },
+          grid:{ color: c.gridColor },
+          angleLines:{ color: c.gridColor },
+          pointLabels:{
+            color: c.labelColor,
+            font:{ size:10, family:"'DM Sans', sans-serif", weight:'600' },
+          }
+        }
+      }
+    }
+  });
+}
+
+function buildBarChart(st){
+  destroyChart('bar');
+  const canvas = document.getElementById('barChart');
+  if(!canvas || typeof Chart === 'undefined') return;
+  const c = getChartColors();
+  _charts['bar'] = new Chart(canvas, {
+    type: 'bar',
+    data:{
+      labels: ['Frontend', 'React/Next', 'Backend', 'Databases', 'DSA', 'Sys Design', 'Job Prep'],
+      datasets:[{
+        label: 'Progress %',
+        data: [st.js, st.react, st.node, st.db, st.dsa, st.sys, st.job],
+        backgroundColor: [
+          'rgba(244,169,66,0.75)',
+          'rgba(91,164,245,0.75)',
+          'rgba(61,232,176,0.75)',
+          'rgba(244,169,66,0.75)',
+          'rgba(244,114,182,0.75)',
+          'rgba(251,146,60,0.75)',
+          'rgba(45,212,191,0.75)',
+        ],
+        borderColor: [
+          'rgba(244,169,66,1)',
+          'rgba(91,164,245,1)',
+          'rgba(61,232,176,1)',
+          'rgba(244,169,66,1)',
+          'rgba(244,114,182,1)',
+          'rgba(251,146,60,1)',
+          'rgba(45,212,191,1)',
+        ],
+        borderWidth: 1.5,
+        borderRadius: 6,
+        borderSkipped: false,
+      }]
+    },
+    options:{
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins:{
+        legend:{ display:false },
+        tooltip:{
+          callbacks:{
+            label: ctx => ' ' + ctx.raw + '% complete'
+          },
+          backgroundColor: 'rgba(12,15,26,0.95)',
+          titleColor: '#e8edf5',
+          bodyColor:  '#8899b0',
+          borderColor: 'rgba(61,232,176,0.3)',
+          borderWidth: 1,
+          padding: 10,
+        }
+      },
+      scales:{
+        x:{
+          ticks:{ color: c.tickColor, font:{ size:10, family:"'DM Sans', sans-serif" } },
+          grid:{ color: c.gridColor },
+          border:{ color: c.gridColor }
+        },
+        y:{
+          min: 0,
+          max: 100,
+          ticks:{
+            stepSize: 25,
+            color: c.tickColor,
+            font:{ size:10, family:"'JetBrains Mono', monospace" },
+            callback: v => v + '%'
+          },
+          grid:{ color: c.gridColor },
+          border:{ color: c.gridColor }
+        }
+      }
+    }
+  });
+}
+
+function buildLineChart(){
+  destroyChart('line');
+  const canvas = document.getElementById('lineChart');
+  if(!canvas || typeof Chart === 'undefined') return;
+  const d = getData();
+  const c = getChartColors();
+
+  const labels = [], data = [];
+  for(let i = 13; i >= 0; i--){
+    const dd = new Date();
+    dd.setDate(dd.getDate() - i);
+    const key = dd.toISOString().slice(0,10);
+    labels.push(dd.toLocaleDateString('en-IN',{month:'short',day:'numeric'}));
+    data.push(parseFloat(d['day-' + key]) || 0);
+  }
+
+  _charts['line'] = new Chart(canvas, {
+    type: 'line',
+    data:{
+      labels,
+      datasets:[{
+        label: 'Study Hours',
+        data,
+        borderColor:     'rgba(91,164,245,1)',
+        backgroundColor: 'rgba(91,164,245,0.08)',
+        borderWidth: 2.5,
+        fill: true,
+        tension: 0.4,
+        pointBackgroundColor: data.map(v =>
+          v === 0 ? 'rgba(91,164,245,0.2)' : v >= 5 ? 'rgba(61,232,176,1)' : 'rgba(91,164,245,1)'
+        ),
+        pointBorderColor: '#07090f',
+        pointBorderWidth: 1.5,
+        pointRadius: data.map(v => v === 0 ? 3 : 5),
+        pointHoverRadius: 7,
+      }]
+    },
+    options:{
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins:{
+        legend:{ display:false },
+        tooltip:{
+          callbacks:{
+            label: ctx => ' ' + ctx.raw + ' hours studied'
+          },
+          backgroundColor: 'rgba(12,15,26,0.95)',
+          titleColor: '#e8edf5',
+          bodyColor:  '#8899b0',
+          borderColor: 'rgba(91,164,245,0.3)',
+          borderWidth: 1,
+          padding: 10,
+        }
+      },
+      scales:{
+        x:{
+          ticks:{
+            color: c.tickColor,
+            font:{ size:9, family:"'DM Sans', sans-serif" },
+            maxRotation: 45,
+            minRotation: 45,
+          },
+          grid:{ color: c.gridColor },
+          border:{ color: c.gridColor }
+        },
+        y:{
+          min: 0,
+          ticks:{
+            stepSize: 2,
+            color: c.tickColor,
+            font:{ size:10, family:"'JetBrains Mono', monospace" },
+            callback: v => v + 'h'
+          },
+          grid:{ color: c.gridColor },
+          border:{ color: c.gridColor }
+        }
+      }
+    }
+  });
+}
+
+function buildDoughnutChart(st){
+  destroyChart('doughnut');
+  const canvas = document.getElementById('doughnutChart');
+  if(!canvas || typeof Chart === 'undefined') return;
+
+  const total = st.total || 1;
+  const done  = st.done  || 0;
+
+  // Count by unit
+  const d = getData();
+  const unitCounts = CURRICULUM.map(unit => {
+    let uDone = 0;
+    unit.stages.forEach(st => st.chapters.forEach(ch =>
+      ch.topics.forEach((_,ti) => { if(d['t-'+ch.id+'-'+ti]) uDone++; })
+    ));
+    return uDone;
+  });
+
+  _charts['doughnut'] = new Chart(canvas, {
+    type: 'doughnut',
+    data:{
+      labels: CURRICULUM.map(u => u.name.replace('Unit ','').split(' — ')[1] || u.name),
+      datasets:[{
+        data: unitCounts,
+        backgroundColor:[
+          'rgba(61,232,176,0.8)',
+          'rgba(91,164,245,0.8)',
+          'rgba(244,169,66,0.8)',
+          'rgba(167,139,250,0.8)',
+          'rgba(251,146,60,0.8)',
+          'rgba(244,114,182,0.8)',
+        ],
+        borderColor: '#07090f',
+        borderWidth: 3,
+        hoverOffset: 8,
+      }]
+    },
+    options:{
+      responsive: true,
+      maintainAspectRatio: false,
+      cutout: '65%',
+      plugins:{
+        legend:{
+          display: true,
+          position: 'bottom',
+          labels:{
+            color: 'rgba(136,153,176,0.9)',
+            font:{ size:10, family:"'DM Sans', sans-serif" },
+            padding: 12,
+            usePointStyle: true,
+            pointStyleWidth: 8,
+          }
+        },
+        tooltip:{
+          callbacks:{
+            label: ctx => ' ' + ctx.label + ': ' + ctx.raw + ' topics done'
+          },
+          backgroundColor: 'rgba(12,15,26,0.95)',
+          titleColor: '#e8edf5',
+          bodyColor:  '#8899b0',
+          borderColor: 'rgba(61,232,176,0.3)',
+          borderWidth: 1,
+          padding: 10,
+        }
+      }
+    }
+  });
+}
+// ===== END CHARTS =====
+
+
+
 function updateAnalytics(){
   const st = getAllTopicStats();
   const pct = st.overallPct;
@@ -4374,8 +4768,16 @@ function updateAnalytics(){
 
  // ── 9-Month Roadmap Timeline ─────────────────────────────────
   buildMonthTimeline();
-  // ── Pace Prediction ──
-updatePacePrediction(st);
+  updatePacePrediction(st);
+
+  // Build all 4 charts
+  // Small delay lets the canvas render first
+  setTimeout(() => {
+    buildRadarChart(st);
+    buildBarChart(st);
+    buildLineChart();
+    buildDoughnutChart(st);
+  }, 80);
 }
 
 function buildMonthTimeline(){
@@ -4973,6 +5375,85 @@ function exportJournal(){
   showToast('Journal exported! 📄');
 }
 
+function downloadJournalPDF(){
+  const d = getData();
+  const entries = JSON.parse(d['journal'] || '[]');
+  if(!entries.length){ showToast('No journal entries to export!', 't-blue'); return; }
+
+  // Build a clean printable HTML page
+  const isDark = document.documentElement.getAttribute('data-theme') !== 'light';
+  const catLabelsJ = {learn:'📚 Learning', win:'🏆 Win', struggle:'⚡ Struggle', reflect:'🔍 Reflection', goal:'🎯 Goal'};
+
+  const rows = entries.map((e, i) => {
+    const words = e.words || (e.text ? e.text.split(/\s+/).length : 0);
+    const tagStr = (e.tags||[]).map(t => '#'+t).join(' ');
+    const safeText = (e.text||'')
+      .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+      .replace(/\n/g,'<br>');
+    return `
+      <div style="page-break-inside:avoid;margin-bottom:28px;border:1px solid #ddd;border-radius:10px;padding:20px;background:#fff">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;flex-wrap:wrap">
+          <span style="font-size:1.2rem">${e.mood||'😐'}</span>
+          <strong style="font-size:.9rem;color:#111">${e.date}</strong>
+          ${e.cat ? `<span style="font-size:.7rem;padding:2px 9px;border-radius:8px;background:#f0f0f0;color:#555">${catLabelsJ[e.cat]||e.cat}</span>` : ''}
+          <span style="font-size:.72rem;color:#888;margin-left:auto">${words} words</span>
+        </div>
+        ${tagStr ? `<div style="margin-bottom:8px;font-size:.72rem;color:#7c3aed">${tagStr}</div>` : ''}
+        <div style="font-size:.88rem;line-height:1.8;color:#222">${safeText}</div>
+      </div>`;
+  }).join('');
+
+  const html = `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<title>Developer Journal — Coodley Export</title>
+<style>
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { font-family:'Segoe UI',sans-serif; background:#f5f5f5; padding:30px; color:#111; }
+  .cover { text-align:center; padding:40px 20px 30px; margin-bottom:30px; background:#fff; border-radius:12px; }
+  .cover h1 { font-size:2rem; color:#111; margin-bottom:8px; }
+  .cover p { color:#666; font-size:.9rem; }
+  .cover .badge { display:inline-block; background:#3de8b0; color:#07090f; padding:4px 16px; border-radius:20px; font-size:.8rem; font-weight:700; margin-top:10px; }
+  @media print {
+    body { background:white; padding:0; }
+    .cover { border-radius:0; }
+    @page { margin:20mm; }
+  }
+</style>
+</head>
+<body>
+<div class="cover">
+  <div style="font-size:2.5rem;margin-bottom:10px">🗒</div>
+  <h1>Developer Journal</h1>
+  <p>Exported from Coodley · ${new Date().toLocaleDateString('en-IN',{day:'numeric',month:'long',year:'numeric'})}</p>
+  <span class="badge">${entries.length} ${entries.length === 1 ? 'entry' : 'entries'}</span>
+</div>
+${rows}
+<div style="text-align:center;margin-top:30px;padding:20px;color:#aaa;font-size:.78rem">Generated by Coodley — coodley.app</div>
+</body>
+</html>`;
+
+  const blob = new Blob([html], {type: 'text/html'});
+  const url = URL.createObjectURL(blob);
+  const win = window.open(url, '_blank');
+  if(win){
+    win.onload = () => {
+      setTimeout(() => {
+        win.print();
+        URL.revokeObjectURL(url);
+      }, 500);
+    };
+  } else {
+    // Fallback: just download the HTML file
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'journal-' + new Date().toISOString().slice(0,10) + '.html';
+    a.click();
+    showToast('Downloaded as HTML. Open and print as PDF!');
+  }
+}
+
 function loadJournal(){
   renderJournal();
   updateJournalStats();
@@ -5271,7 +5752,16 @@ function initNav(){
   }
   const themeBtn=document.getElementById('themeBtn');
   if(themeBtn)themeBtn.addEventListener('click',()=>{
-    const isDark=document.documentElement.getAttribute('data-theme')==='dark';setTheme(isDark?'light':'dark');
+  const isDark=document.documentElement.getAttribute('data-theme')==='dark';
+  setTheme(isDark?'light':'dark');
+  // Rebuild charts with new theme colors
+  setTimeout(() => {
+    const st = getAllTopicStats();
+    buildRadarChart(st);
+    buildBarChart(st);
+    buildLineChart();
+    buildDoughnutChart(st);
+  }, 100);
   });
 
   // HAMBURGER
@@ -6257,116 +6747,157 @@ initDaily = function(){
 
 function updatePacePrediction(st){
   const d = getData();
-  
-  // Count topics done in last 7 days
-  const topicsPerDay = [];
-  for(let i = 6; i >= 0; i--){
+  const today = new Date().toISOString().slice(0,10);
+
+  // Count study days and topics done in last 60 days
+  let studyDays = 0, topicsInPeriod = 0;
+  const DAYS = 60;
+
+  for(let i = 0; i < DAYS; i++){
     const dd = new Date();
     dd.setDate(dd.getDate() - i);
     const dayKey = dd.toISOString().slice(0,10);
-    // Count topics checked on this day
-    let count = 0;
-    CURRICULUM.forEach(unit => {
-      unit.stages.forEach(st => {
-        st.chapters.forEach(ch => {
-          ch.topics.forEach((_, ti) => {
-            const val = d['t-' + ch.id + '-' + ti];
-            if(val){
-              const date = new Date(val).toISOString().slice(0,10);
-              if(date === dayKey) count++;
-            }
-          });
+    if(d['day-' + dayKey] || parseFloat(d['dd-' + dayKey]?.hours||0) > 0){
+      studyDays++;
+    }
+  }
+
+  // Count topics done in last 60 days by timestamp
+  CURRICULUM.forEach(unit => {
+    unit.stages.forEach(stage => {
+      stage.chapters.forEach(ch => {
+        ch.topics.forEach((_, ti) => {
+          const val = d['t-' + ch.id + '-' + ti];
+          if(val){
+            const doneDate = new Date(val);
+            const cutoff = new Date();
+            cutoff.setDate(cutoff.getDate() - DAYS);
+            if(doneDate >= cutoff) topicsInPeriod++;
+          }
         });
       });
     });
-    topicsPerDay.push(count);
-  }
+  });
 
-  const activeDays = topicsPerDay.filter(x => x > 0).length;
-  const totalDone  = topicsPerDay.reduce((a, b) => a + b, 0);
-  const avgPerDay  = activeDays > 0 ? (totalDone / activeDays).toFixed(1) : 0;
-  const remaining  = st.total - st.done;
+  const avgTopicsPerStudyDay = studyDays > 0 ? (topicsInPeriod / studyDays).toFixed(1) : 0;
+  const remaining = st.total - st.done;
   
-  let weeksLeft = '—';
-  let daysLeft  = '—';
-  if(avgPerDay > 0){
-    const days = Math.ceil(remaining / avgPerDay);
-    daysLeft   = days;
-    weeksLeft  = (days / 7).toFixed(1);
+  // Avg hours per study day
+  let totalHrs = 0, hrsDays = 0;
+  for(let i = 0; i < DAYS; i++){
+    const dd2 = new Date();
+    dd2.setDate(dd2.getDate() - i);
+    const dayKey = dd2.toISOString().slice(0,10);
+    const hrs = parseFloat(d['dd-' + dayKey]?.hours || d['day-' + dayKey] || 0);
+    if(hrs > 0){ totalHrs += hrs; hrsDays++; }
+  }
+  const avgHrs = hrsDays > 0 ? (totalHrs / hrsDays).toFixed(1) : 0;
+
+  // Days to finish
+  let daysToFinish = '∞', estimatedDate = '—';
+  if(parseFloat(avgTopicsPerStudyDay) > 0){
+    const raw = Math.ceil(remaining / parseFloat(avgTopicsPerStudyDay));
+    daysToFinish = raw;
+    const estDate = new Date();
+    estDate.setDate(estDate.getDate() + raw);
+    estimatedDate = estDate.toLocaleDateString('en-IN',{day:'numeric',month:'long',year:'numeric'});
   }
 
-  const streak   = parseInt(d['streak']) || 0;
-  const hoursAvg = (() => {
-    let total = 0, count = 0;
-    for(let i = 0; i < 7; i++){
-      const dd2 = new Date();
-      dd2.setDate(dd2.getDate() - i);
-      const hrs = parseFloat(d['dd-' + dd2.toISOString().slice(0,10)]?.hours || d['dd-' + dd2.toISOString().slice(0,10)] && JSON.parse(localStorage.getItem('devpath-v3') || '{}')['dd-' + dd2.toISOString().slice(0,10)]?.hours || 0);
-      if(hrs > 0){ total += hrs; count++; }
-    }
-    return count > 0 ? (total / count).toFixed(1) : 0;
-  })();
+  // Pace rating
+  let paceColor, paceMsg, paceIcon;
+  const tpd = parseFloat(avgTopicsPerStudyDay);
+  if(tpd === 0){
+    paceColor = 'var(--red)'; paceIcon = '⚪';
+    paceMsg = 'No recent activity detected. Start checking off topics daily to see your pace.';
+  } else if(tpd < 2){
+    paceColor = 'var(--red)'; paceIcon = '🔴';
+    paceMsg = `Need to speed up significantly. At ${tpd} topics/day you\'ll finish very late. Aim for 5+ topics/day.`;
+  } else if(tpd < 4){
+    paceColor = 'var(--amber)'; paceIcon = '🟡';
+    paceMsg = `Decent pace but can improve. Try to reach 5 topics/day for faster progress.`;
+  } else if(tpd < 7){
+    paceColor = 'var(--accent)'; paceIcon = '🟢';
+    paceMsg = `Good pace! Keep this up consistently and you\'ll finish on time.`;
+  } else {
+    paceColor = 'var(--blue)'; paceIcon = '🚀';
+    paceMsg = `Excellent pace! You\'re blazing through the syllabus. Incredible consistency!`;
+  }
 
-  // Find or create pace card
+  // Build or find card
   let paceCard = document.getElementById('pace-prediction-card');
   if(!paceCard){
-    // Add after analytics grid
     const analyticsGrid = document.querySelector('#sec-analytics .analytics-grid');
     if(!analyticsGrid) return;
     paceCard = document.createElement('div');
     paceCard.id = 'pace-prediction-card';
-    paceCard.className = 'card';
-    paceCard.style.marginTop = '16px';
     analyticsGrid.after(paceCard);
   }
 
-  const finishDate = avgPerDay > 0 ? (() => {
-    const d2 = new Date();
-    d2.setDate(d2.getDate() + parseInt(daysLeft));
-    return d2.toLocaleDateString('en-IN',{day:'numeric',month:'long',year:'numeric'});
-  })() : '—';
+  paceCard.style.cssText = 'background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-xl);padding:28px;margin-top:20px;margin-bottom:20px';
 
   paceCard.innerHTML = `
-    <h3 style="font-family:var(--font-head);font-weight:800;margin-bottom:20px;display:flex;align-items:center;gap:8px">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-      Pace Prediction
-    </h3>
-
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px;margin-bottom:20px">
-      ${[
-        {label:'Topics / Active Day', val: avgPerDay, color:'var(--accent)'},
-        {label:'Active Days (7d)',    val: activeDays + '/7', color:'var(--blue)'},
-        {label:'Topics Done (7d)',    val: totalDone, color:'var(--amber)'},
-        {label:'Topics Remaining',   val: remaining, color:'var(--pink)'},
-        {label:'Days to Finish',     val: daysLeft,  color:'var(--orange)'},
-        {label:'Weeks to Finish',    val: weeksLeft + 'w', color:'var(--accent3)'},
-      ].map(s => `
-        <div style="background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius-lg);padding:14px;text-align:center">
-          <div style="font-family:var(--font-mono);font-size:1.4rem;font-weight:700;color:${s.color};line-height:1;margin-bottom:5px">${s.val}</div>
-          <div style="font-size:.62rem;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.06em;font-family:var(--font-body)">${s.label}</div>
-        </div>`).join('')}
-    </div>
-
-    <div style="background:linear-gradient(135deg,rgba(61,232,176,.07),rgba(91,164,245,.04));border:1px solid var(--border2);border-radius:var(--radius-lg);padding:16px 20px;display:flex;align-items:center;gap:14px;flex-wrap:wrap">
-      <div style="font-size:1.8rem">🎯</div>
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:24px;flex-wrap:wrap">
+      <div style="width:40px;height:40px;border-radius:12px;background:linear-gradient(135deg,rgba(61,232,176,.15),rgba(91,164,245,.1));display:flex;align-items:center;justify-content:center;font-size:1.3rem;border:1px solid rgba(61,232,176,.25)">🚀</div>
       <div>
-        <div style="font-size:.82rem;font-weight:700;color:var(--fg);font-family:var(--font-body);margin-bottom:3px">
-          ${avgPerDay > 0
-            ? `At your current pace of <strong style="color:var(--accent)">${avgPerDay} topics/day</strong>, you will finish on <strong style="color:var(--accent)">${finishDate}</strong>`
-            : 'No activity in last 7 days. Start checking off topics to see your pace prediction!'}
-        </div>
-        <div style="font-size:.72rem;color:var(--muted2);font-family:var(--font-body)">
-          ${avgPerDay > 0
-            ? `That is ${weeksLeft} weeks from today · ${remaining} topics remaining · ${streak} day streak`
-            : 'Pace is calculated from your last 7 active days'}
-        </div>
+        <h3 style="font-family:var(--font-head);font-weight:800;font-size:1.1rem;margin:0;letter-spacing:-.02em">Pace Prediction</h3>
+        <div style="font-size:.72rem;color:var(--muted);font-family:var(--font-body);margin-top:2px">Based on last ${DAYS} days of activity · ${studyDays} study day(s) tracked</div>
+      </div>
+      <div style="margin-left:auto;display:flex;align-items:center;gap:6px;background:${tpd>=4?'rgba(61,232,176,.08)':tpd>=2?'rgba(244,169,66,.08)':'rgba(245,101,101,.08)'};border:1px solid ${tpd>=4?'rgba(61,232,176,.3)':tpd>=2?'rgba(244,169,66,.3)':'rgba(245,101,101,.3)'};border-radius:20px;padding:5px 14px">
+        <span style="font-size:.85rem">${paceIcon}</span>
+        <span style="font-size:.72rem;font-weight:700;color:${paceColor};font-family:var(--font-body)">${tpd>=4?'On Track':tpd>=2?'Needs Work':'Too Slow'}</span>
       </div>
     </div>
 
-    <div style="margin-top:14px;font-size:.72rem;color:var(--muted);font-family:var(--font-body);line-height:1.7">
-      💡 <strong style="color:var(--fg)">To improve your pace:</strong> Check off topics daily even if small. 
-      Aim for <strong style="color:var(--accent)">5+ topics/day</strong> to finish in under 6 months.
-      Currently averaging <strong style="color:var(--amber)">${avgPerDay} topics</strong> on active days.
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:12px;margin-bottom:24px">
+      ${[
+        {val: avgTopicsPerStudyDay, label:'topics/study day avg', color:'var(--accent)', icon:'📚'},
+        {val: avgHrs+'h',           label:'avg hours/study day',  color:'var(--blue)',   icon:'⏱'},
+        {val: studyDays,            label:'study days (60d)',     color:'var(--purple)', icon:'📅'},
+        {val: remaining,            label:'topics remaining',     color:'var(--amber)',  icon:'🎯'},
+        {val: st.done,              label:'topics completed',     color:'var(--accent)', icon:'✅'},
+        {val: daysToFinish==='∞'?'∞':daysToFinish+'d', label:'study days to finish', color:'var(--pink)', icon:'⏳'},
+      ].map(s => `
+        <div style="background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius-lg);padding:16px 14px;text-align:center;transition:all .2s;cursor:default"
+          onmouseover="this.style.borderColor='var(--border2)';this.style.transform='translateY(-2px)'"
+          onmouseout="this.style.borderColor='var(--border)';this.style.transform='translateY(0)'">
+          <div style="font-size:1rem;margin-bottom:6px">${s.icon}</div>
+          <div style="font-family:var(--font-mono);font-size:1.5rem;font-weight:800;color:${s.color};line-height:1;margin-bottom:5px">${s.val}</div>
+          <div style="font-size:.6rem;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.06em;font-family:var(--font-body);line-height:1.4">${s.label}</div>
+        </div>`).join('')}
+    </div>
+
+    <div style="background:linear-gradient(135deg,rgba(61,232,176,.07),rgba(91,164,245,.04));border:1px solid var(--border2);border-radius:var(--radius-lg);padding:18px 22px;margin-bottom:16px">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;flex-wrap:wrap">
+        <span style="font-size:1.2rem">📅</span>
+        <div>
+          <div style="font-size:.88rem;font-weight:700;color:var(--fg);font-family:var(--font-body)">Estimated Completion: <span style="color:var(--accent)">${estimatedDate}</span></div>
+          <div style="font-size:.72rem;color:var(--muted2);font-family:var(--font-body);margin-top:2px">At your current pace of <strong style="color:var(--accent)">${avgTopicsPerStudyDay} topics</strong> per study day</div>
+        </div>
+      </div>
+      <div style="background:var(--bg3);border-radius:var(--radius-sm);padding:10px 14px;border-left:3px solid ${paceColor}">
+        <span style="font-size:.8rem;color:var(--muted2);font-family:var(--font-body);line-height:1.6"><strong style="color:${paceColor}">${paceIcon}</strong> ${paceMsg}</span>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+      <div style="background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius-lg);padding:14px 16px">
+        <div style="font-size:.68rem;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px;font-family:var(--font-body)">To finish faster</div>
+        <div style="font-size:.78rem;color:var(--muted2);line-height:1.7;font-family:var(--font-body)">
+          • Aim for <strong style="color:var(--accent)">5–6 topics/day</strong><br>
+          • Study <strong style="color:var(--blue)">4+ hours daily</strong><br>
+          • Maintain a daily streak<br>
+          • Deep focus > scattered learning
+        </div>
+      </div>
+      <div style="background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius-lg);padding:14px 16px">
+        <div style="font-size:.68rem;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px;font-family:var(--font-body)">Your ${DAYS}-day snapshot</div>
+        <div style="font-size:.78rem;color:var(--muted2);line-height:1.7;font-family:var(--font-body)">
+          • <strong style="color:var(--fg)">${studyDays}</strong> days studied<br>
+          • <strong style="color:var(--accent)">${topicsInPeriod}</strong> topics completed<br>
+          • <strong style="color:var(--blue)">${totalHrs.toFixed(1)}h</strong> total study time<br>
+          • <strong style="color:var(--amber)">${st.overallPct}%</strong> overall progress
+        </div>
+      </div>
     </div>
   `;
 }
@@ -6511,30 +7042,38 @@ function updateCountdown(){
   const badge = document.getElementById('countdown-badge');
   if(!badge) return;
 
-  if(!targetDate){
+  if(!targetDate || targetDate.trim() === ''){
     badge.style.display = 'none';
     return;
   }
 
   const today  = new Date();
   today.setHours(0,0,0,0);
-  const target = new Date(targetDate);
-  target.setHours(0,0,0,0);
-  const diff   = Math.ceil((target - today) / (1000 * 60 * 60 * 24));
 
-  badge.style.display = 'inline-flex';
+  // Fix: parse date correctly to avoid timezone off-by-one
+  const parts  = targetDate.split('-');
+  const target = new Date(parseInt(parts[0]), parseInt(parts[1])-1, parseInt(parts[2]));
+  target.setHours(0,0,0,0);
+
+  const diff = Math.ceil((target - today) / (1000 * 60 * 60 * 24));
+
+  // Force show
+  badge.style.display    = 'inline-flex';
+  badge.style.visibility = 'visible';
+  badge.style.opacity    = '1';
 
   const daysEl  = document.getElementById('countdown-days');
   const labelEl = document.getElementById('countdown-label');
   const dateEl  = document.getElementById('countdown-date-label');
 
   if(diff > 0){
-    if(daysEl) daysEl.textContent = diff;
-    if(daysEl) daysEl.style.color = diff <= 30 ? 'var(--red)' : diff <= 90 ? 'var(--amber)' : 'var(--accent)';
+    if(daysEl){ 
+      daysEl.textContent = diff; 
+      daysEl.style.color = diff <= 30 ? 'var(--red)' : diff <= 90 ? 'var(--amber)' : 'var(--accent)'; 
+    }
     if(labelEl) labelEl.textContent = 'days to target job date';
-    if(dateEl) dateEl.textContent = target.toLocaleDateString('en-IN',{day:'numeric',month:'long',year:'numeric'});
+    if(dateEl)  dateEl.textContent  = target.toLocaleDateString('en-IN',{day:'numeric',month:'long',year:'numeric'});
 
-    // Change border color based on urgency
     if(diff <= 30){
       badge.style.borderColor = 'rgba(245,101,101,.5)';
       badge.style.background  = 'linear-gradient(135deg,rgba(245,101,101,.12),rgba(244,169,66,.07))';
@@ -6545,19 +7084,20 @@ function updateCountdown(){
       badge.style.borderColor = 'rgba(61,232,176,.3)';
       badge.style.background  = 'linear-gradient(135deg,rgba(61,232,176,.08),rgba(61,232,176,.03))';
     }
+
   } else if(diff === 0){
     if(daysEl){ daysEl.textContent = '🎯'; daysEl.style.color = 'var(--accent)'; }
     if(labelEl) labelEl.textContent = 'Today is your target day! Go get that offer!';
-    if(dateEl) dateEl.textContent = '';
+    if(dateEl)  dateEl.textContent  = '';
+
   } else {
     if(daysEl){ daysEl.textContent = Math.abs(diff); daysEl.style.color = 'var(--muted)'; }
     if(labelEl) labelEl.textContent = 'days past target — keep applying!';
-    if(dateEl) dateEl.textContent = target.toLocaleDateString('en-IN',{day:'numeric',month:'long',year:'numeric'});
+    if(dateEl)  dateEl.textContent  = target.toLocaleDateString('en-IN',{day:'numeric',month:'long',year:'numeric'});
     badge.style.borderColor = 'var(--border2)';
     badge.style.background  = 'var(--bg3)';
   }
 }
-
 
 </script>
 </body>
