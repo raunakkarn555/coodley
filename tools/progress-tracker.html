@@ -3183,21 +3183,21 @@ const CURRICULUM=[
 {id:'u4',name:'Unit 4 — DSA (C++ & Java)',color:'purple',months:'Month 3–9 (parallel)',stages:[
   {id:'s4-1',name:'Stage 4.1 — Language Fundamentals',color:'purple',chapters:[
     {id:'c4-1-1',name:'C++ for Competitive Programming',high:true,topics:[
-      T('C++ basics — data types (int, long long, double, char, bool, string), I/O (cin/cout), endl vs "\\n"','Use "\\n" not endl — endl flushes buffer (slow).'),
-      T('Variables, references, pointers — &ref, *ptr, ptr arithmetic, nullptr','int* p = &x; *p is the value. &x is the address.'),
-      T('#include <bits/stdc++.h> — competitive programming header','Includes everything. Not for production code.'),
-      T('Functions — parameters by value, by reference, by pointer, default args, overloading','Pass large objects by const reference.'),
-      T('Arrays — stack vs heap, std::array, raw arrays, 2D arrays','int arr[1000005]; at global scope avoids stack overflow.'),
-      T('Strings — std::string, substr, find, replace, to_string, stoi, stol, stoll','s.find("sub") returns string::npos if not found.'),
-      T('STL Containers — vector, deque, list, forward_list, set, multiset, map, multimap, unordered_map, unordered_set, stack, queue, priority_queue, pair, tuple','vector<int> is your default container.'),
-      T('STL Algorithms — sort, reverse, binary_search, lower_bound, upper_bound, next_permutation, unique, fill, iota, accumulate, max_element, min_element, count, find','lower_bound returns iterator to first element >= val.'),
-      T('Iterators — begin, end, rbegin, rend, advance, distance, auto keyword','auto it = v.begin(); *it is the value.'),
-      T('Lambda functions — [capture](params)->ret{body}, [&], [=]','sort(v.begin(),v.end(),[](int a,int b){return a>b;}) — descending sort.'),
-      T('Struct and classes — struct vs class (default access), constructors, operator overloading','struct Point{int x,y; bool operator<(const Point&o)const{return x<o.x||x==o.x&&y<o.y;}};'),
-      T('Memory — new/delete, smart pointers (unique_ptr, shared_ptr, weak_ptr), RAII','In competitive programming: use stack allocation. In production: smart pointers.'),
-      T('Templates — function templates, class templates, template specialization','template<typename T> T maxOf(T a,T b){return a>b?a:b;}'),
-      T('Time complexity and measuring — clock_t, high_resolution_clock','Time your solutions locally before submitting.'),
-      T('Fast I/O — ios_base::sync_with_stdio(false); cin.tie(NULL)','Essential for large input competitive problems.'),
+      CPP('C++ basics — data types (int, long long, double, char, bool, string), I/O (cin/cout), endl vs "\\n"','Use "\\n" not endl — endl flushes buffer (slow).'),
+      CPP('Variables, references, pointers — &ref, *ptr, ptr arithmetic, nullptr','int* p = &x; *p is the value. &x is the address.'),
+      CPP('#include <bits/stdc++.h> — competitive programming header','Includes everything. Not for production code.'),
+      CPP('Functions — parameters by value, by reference, by pointer, default args, overloading','Pass large objects by const reference.'),
+      CPP('Arrays — stack vs heap, std::array, raw arrays, 2D arrays','int arr[1000005]; at global scope avoids stack overflow.'),
+      CPP('Strings — std::string, substr, find, replace, to_string, stoi, stol, stoll','s.find("sub") returns string::npos if not found.'),
+      CPP('STL Containers — vector, deque, list, forward_list, set, multiset, map, multimap, unordered_map, unordered_set, stack, queue, priority_queue, pair, tuple','vector<int> is your default container.'),
+      CPP('STL Algorithms — sort, reverse, binary_search, lower_bound, upper_bound, next_permutation, unique, fill, iota, accumulate, max_element, min_element, count, find','lower_bound returns iterator to first element >= val.'),
+      CPP('Iterators — begin, end, rbegin, rend, advance, distance, auto keyword','auto it = v.begin(); *it is the value.'),
+      CPP('Lambda functions — [capture](params)->ret{body}, [&], [=]','sort(v.begin(),v.end(),[](int a,int b){return a>b;}) — descending sort.'),
+      CPP('Struct and classes — struct vs class (default access), constructors, operator overloading','struct Point{int x,y; bool operator<(const Point&o)const{return x<o.x||x==o.x&&y<o.y;}};'),
+      CPP('Memory — new/delete, smart pointers (unique_ptr, shared_ptr, weak_ptr), RAII','In competitive programming: use stack allocation. In production: smart pointers.'),
+      CPP('Templates — function templates, class templates, template specialization','template<typename T> T maxOf(T a,T b){return a>b?a:b;}'),
+      CPP('Time complexity and measuring — clock_t, high_resolution_clock','Time your solutions locally before submitting.'),
+      CPP('Fast I/O — ios_base::sync_with_stdio(false); cin.tie(NULL)','Essential for large input competitive problems.'),
       P('Practice: Solve 20 easy LeetCode problems in C++'),
     ]},
     {id:'c4-1-2',name:'Java for DSA & Interviews',high:true,topics:[
@@ -3660,14 +3660,18 @@ function buildSyllabus(){
     const panel=document.createElement('div');
     panel.className='subj-panel'+(ui===0?' active':'');
     panel.id=panelId;
-    let html=`<div class="unit-block">
+    let html+=`<div class="unit-block">
       <div class="unit-header">
         <span class="unit-badge ${colClass}">${unit.months}</span>
         <div class="unit-title">${unit.name}</div>
         <span class="unit-pct" style="color:${barCol}" id="upct-${unit.id}">${uPct}%</span>
       </div>
-      <div class="unit-bar-wrap"><div style="height:3px;width:${uPct}%;background:${barCol};border-radius:2px;transition:width .6s" id="ubar-${unit.id}"></div></div>`;
-    unit.stages.forEach((st,si)=>{
+      <div class="unit-bar-wrap">
+        <div style="height:3px;width:${uPct}%;background:${barCol};border-radius:2px;transition:width .6s" id="ubar-${unit.id}">
+        </div>
+      </div>`;
+      
+      unit.stages.forEach((st,si)=>{
       let stTotal=0,stDone=0;
       st.chapters.forEach(ch=>{ch.topics.forEach((_,ti)=>{stTotal++;if(d['t-'+ch.id+'-'+ti])stDone++;})});
       const stPct=stTotal?Math.round(stDone/stTotal*100):0;
