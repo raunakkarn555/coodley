@@ -3185,6 +3185,44 @@ const CURRICULUM=[
 // UNIT 4 — DSA WITH C++ AND JAVA
 // =====================================================================
 {id:'u4',name:'Unit 4 — DSA (C++ & Java)',color:'purple',months:'Month 3–9',parallel:true,stages:[
+   {id:'s4-1',name:'Stage 4.1 — Language Fundamentals',color:'purple',chapters:[
+     {id:'c4-1-1',name:'C++ for Competitive Programming',high:true,topics:[
+      CPP('C++ basics — data types (int, long long, double, char, bool, string), I/O (cin/cout), endl vs "\\n"','Use "\\n" not endl — endl flushes buffer (slow).'),
+      CPP('Variables, references, pointers — &ref, ptr, ptr arithmetic, nullptr','int p = &x; *p is the value. &x is the address.'),
+      CPP('#include <bits/stdc++.h> — competitive programming header','Includes everything. Not for production code.'),
+      CPP('Functions — parameters by value, by reference, by pointer, default args, overloading','Pass large objects by const reference.'),
+      CPP('Arrays — stack vs heap, std::array, raw arrays, 2D arrays','int arr[1000005]; at global scope avoids stack overflow.'),
+      CPP('Strings — std::string, substr, find, replace, to_string, stoi, stol, stoll','s.find("sub") returns string::npos if not found.'),
+      CPP('STL Containers — vector, deque, list, forward_list, set, multiset, map, multimap, unordered_map, unordered_set, stack, queue, priority_queue, pair, tuple','vector<int> is your default container.'),
+      CPP('STL Algorithms — sort, reverse, binary_search, lower_bound, upper_bound, next_permutation, unique, fill, iota, accumulate, max_element, min_element, count, find','lower_bound returns iterator to first element >= val.'),
+      CPP('Iterators — begin, end, rbegin, rend, advance, distance, auto keyword','auto it = v.begin(); *it is the value.'),
+      CPP('Lambda functions — [capture](params)->ret{body}, [&], [=]','sort(v.begin(),v.end(),[](int a,int b){return a>b;}) — descending sort.'),
+      CPP('Struct and classes — struct vs class (default access), constructors, operator overloading','struct Point{int x,y; bool operator<(const Point&o)const{return x<o.x||x==o.x&&y<o.y;}};'),
+      CPP('Memory — new/delete, smart pointers (unique_ptr, shared_ptr, weak_ptr), RAII','In competitive programming: use stack allocation. In production: smart pointers.'),
+      CPP('Templates — function templates, class templates, template specialization','template<typename T> T maxOf(T a,T b){return a>b?a:b;}'),
+      CPP('Time complexity and measuring — clock_t, high_resolution_clock','Time your solutions locally before submitting.'),
+      CPP('Fast I/O — ios_base::sync_with_stdio(false); cin.tie(NULL)','Essential for large input competitive problems.'),
+      P('Practice: Solve 20 easy LeetCode problems in C++'),
+    ]},
+
+    {id:'c4-1-2',name:'Java for DSA & Interviews',high:true,topics:[
+      T('Java basics — primitive types (int, long, double, char, boolean), wrapper classes (Integer, Long), autoboxing','Java is preferred in big tech (Google, Amazon, Meta) interviews.'),
+      T('Strings — String (immutable), StringBuilder (mutable), String.format, split, trim, charAt, substring','Use StringBuilder for building strings in loops.'),
+      T('Arrays — declaration, initialization, Arrays.sort, Arrays.fill, Arrays.copyOf, System.arraycopy, 2D arrays','int[] arr = new int[n]; Arrays.fill(arr, -1);'),
+      T('Collections Framework — List, ArrayList, LinkedList, Stack, Queue, Deque, ArrayDeque, Set, HashSet, TreeSet, Map, HashMap, TreeMap, LinkedHashMap, PriorityQueue','Know which collection to use for each problem type.'),
+      T('Collections utility — Collections.sort, Collections.reverse, Collections.frequency, Collections.swap, Collections.min/max','Collections.sort(list, Comparator.reverseOrder())'),
+      T('Comparator and Comparable — natural ordering vs custom sort','Arrays.sort(arr,(a,b)->a[1]-b[1]) — sort by second element.'),
+      T('HashMap operations — put, get, getOrDefault, containsKey, remove, entrySet, keySet, computeIfAbsent, merge, putIfAbsent','map.getOrDefault(key,0) — avoid NullPointerException.'),
+      T('PriorityQueue — min-heap by default, custom comparator for max-heap','PriorityQueue<Integer> maxHeap = new PriorityQueue<>(Collections.reverseOrder())'),
+      T('Java generics — List<T>, ? extends T, ? super T, bounded wildcards','<T extends Comparable<T>> for generic sort.'),
+      T('Recursion in Java — base cases, stack frames, stack overflow prevention','Recursive depth can cause StackOverflow. Use iterative for deep recursion.'),
+      T('Java streams (functional) — filter, map, reduce, collect, toList, groupingBy','Stream<String> filtered = list.stream().filter(s->s.startsWith("A"))'),
+      T('Exception handling — try/catch/finally, checked vs unchecked, custom exceptions','RuntimeException is unchecked. Must handle IOException (checked).'),
+      T('OOP in Java — encapsulation, inheritance, polymorphism, abstraction, interface vs abstract class','Interface: contract (all abstract). Abstract class: partial implementation.'),
+      T('Java memory model — heap, stack, garbage collection, reference types','Objects live on heap. Local primitives on stack.'),
+      P('Practice: Solve 20 easy LeetCode problems in Java'),
+    ]},
+  ]},
 
 ]},
 
