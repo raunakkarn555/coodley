@@ -231,8 +231,8 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;point
 .stage-prog{font-size:.72rem;color:var(--muted);font-family:var(--font-mono);font-weight:600;}
 .stage-arrow{color:var(--muted);transition:transform .25s;flex-shrink:0;}
 .stage-block.open .stage-arrow{transform:rotate(180deg);}
-.chapter-list{padding:0 16px 16px;display:none; !important;}
-.stage-block.open .chapter-list{display:block; !important;}
+.chapter-list{padding:0 16px 16px;display:none !important;}
+.stage-block.open .chapter-list{display:block !important;}
 .chapter-card{background:var(--bg);border:1px solid var(--border);border-radius:var(--radius);margin-top:10px;overflow:hidden;transition:all .2s;}
 .chapter-card:hover{border-color:var(--border2);box-shadow:0 4px 16px rgba(0,0,0,.2);}
 .chapter-header{display:flex;align-items:center;gap:12px;padding:14px 18px;cursor:pointer;user-select:none;}
@@ -3660,7 +3660,7 @@ function buildSyllabus(){
     const panel=document.createElement('div');
     panel.className='subj-panel'+(ui===0?' active':'');
     panel.id=panelId;
-    let html+=`<div class="unit-block">
+    let html=`<div class="unit-block">
       <div class="unit-header">
         <span class="unit-badge ${colClass}">${unit.months}</span>
         <div class="unit-title">${unit.name}</div>
