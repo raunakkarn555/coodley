@@ -218,6 +218,9 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;point
 .ub-green{color:var(--green);border-color:rgba(61,232,176,0.35);background:rgba(61,232,176,0.07);}
 .ub-blue{color:var(--blue);border-color:rgba(91,164,245,0.35);background:rgba(91,164,245,0.07);}
 .ub-yellow{color:var(--amber);border-color:rgba(244,169,66,0.35);background:rgba(244,169,66,0.07);}
+.ub-purple{color:var(--purple);border-color:rgba(157,124,245,.35);background:rgba(157,124,245,.07);}
+.ub-orange{color:var(--orange);border-color:rgba(251,146,60,.35);background:rgba(251,146,60,.07);}
+.ub-pink{color:var(--pink);border-color:rgba(244,114,182,.35);background:rgba(244,114,182,.07);}
 .unit-title{font-family:var(--font-head);font-weight:800;font-size:1.05rem;flex:1;letter-spacing:-.01em;}
 .unit-pct{font-family:var(--font-mono);font-size:.9rem;font-weight:700;}
 .unit-bar-wrap{height:3px;background:var(--bg4);margin:0 24px;overflow:hidden;border-radius:2px;}
@@ -1177,6 +1180,7 @@ footer.coodley-footer{background:var(--bg);border-top:1px solid var(--border);pa
       <div class="prog-row"><div class="prog-label" style="color:var(--accent)">🟢 Node.js</div><div class="prog-bar-wrap"><div class="prog-bar-fill" id="pb-node" style="width:0%;background:var(--accent)"></div></div><div class="prog-pct" id="pp-node">0%</div></div>
       <div class="prog-row"><div class="prog-label" style="color:var(--pink)">🧩 DSA</div><div class="prog-bar-wrap"><div class="prog-bar-fill" id="pb-dsa" style="width:0%;background:var(--pink)"></div></div><div class="prog-pct" id="pp-dsa">0%</div></div>
       <div class="prog-row"><div class="prog-label" style="color:var(--orange)">🏗 System</div><div class="prog-bar-wrap"><div class="prog-bar-fill" id="pb-sys" style="width:0%;background:var(--orange)"></div></div><div class="prog-pct" id="pp-sys">0%</div></div>
+    <div class="prog-row"><div class="prog-label" style="color:var(--amber)">🗄 Databases</div><div class="prog-bar-wrap"><div class="prog-bar-fill" id="pb-db" style="width:0%;background:var(--amber)"></div></div><div class="prog-pct" id="pp-db">0%</div></div>
     </div>
     <div class="subj-progress-card" style="display:flex;flex-direction:column;justify-content:center;gap:12px;text-align:center">
       <div style="font-size:3rem;font-family:var(--font-mono);font-weight:700;color:var(--accent3);line-height:1" id="overall-pct">0%</div>
@@ -3180,7 +3184,7 @@ const CURRICULUM=[
 // =====================================================================
 // UNIT 4 — DSA WITH C++ AND JAVA
 // =====================================================================
-{id:'u4',name:'Unit 4 — DSA (C++ & Java)',color:'purple',months:'Month 3–9 (parallel)',stages:[
+{id:'u4',name:'Unit 4 — DSA (C++ & Java)',color:'purple',months:'Month 3–9',parallel:true,stages:[
 
   {id:'s4-1',name:'Stage 4.1 — Language Fundamentals',color:'purple',chapters:[
 
@@ -3221,6 +3225,7 @@ const CURRICULUM=[
     ]},
   
   ]}, 
+      }
   
   {id:'s4-2',name:'Stage 4.2 — Complexity & Core Patterns',color:'purple',chapters:[
     {id:'c4-2-1',name:'Time & Space Complexity',high:true,topics:[
@@ -3324,7 +3329,7 @@ const CURRICULUM=[
       P('Practice: Implement Trie, Word Search II, Number of Islands with Union-Find'),
     ]},
   ]},
-  
+
   {id:'s4-4',name:'Stage 4.4 — Algorithms',color:'purple',chapters:[
     {id:'c4-4-1',name:'Sorting Algorithms',high:true,topics:[
       T('Comparison sorts — Bubble O(n²), Selection O(n²), Insertion O(n²) — when to use each','Insertion sort is O(n) for nearly sorted arrays.'),
@@ -3634,15 +3639,22 @@ const CURRICULUM=[
 ];
  
 // ========= HELPERS ========= //
-const unitColors={green:'ub-green',blue:'ub-blue',yellow:'ub-yellow',purple:'ub-purple',orange:'ub-orange',pink:'ub-pink'};
-const barColors={green:'var(--accent)',blue:'var(--blue)',yellow:'var(--amber)',purple:'var(--purple)',orange:'var(--orange)',pink:'var(--pink)'};
+const unitColors={
+  green:'ub-green', blue:'ub-blue', yellow:'ub-yellow',
+  purple:'ub-purple', orange:'ub-orange', pink:'ub-pink'
+};
+const barColors={
+  green:'var(--accent)', blue:'var(--blue)', yellow:'var(--amber)',
+  purple:'var(--purple)', orange:'var(--orange)', pink:'var(--pink)'
+};
+
 const stageNumStyles={
-  green:'background:rgba(61,232,176,.15);color:var(--accent)',
-  blue:'background:rgba(91,164,245,.15);color:var(--blue)',
+  green: 'background:rgba(61,232,176,.15);color:var(--accent)',
+  blue:  'background:rgba(91,164,245,.15);color:var(--blue)',
   yellow:'background:rgba(244,169,66,.15);color:var(--amber)',
-  purple:'background:rgba(167,139,250,.15);color:var(--purple)',
+  purple:'background:rgba(157,124,245,.15);color:var(--purple)',
   orange:'background:rgba(251,146,60,.15);color:var(--orange)',
-  pink:'background:rgba(244,114,182,.15);color:var(--pink)'
+  pink:  'background:rgba(244,114,182,.15);color:var(--pink)'
 };
 const catLabels={theory:'📖 Theory',practice:'💻 Practice',project:'🚀 Build',interview:'🎤 Interview',cpp:'⚡ C++/Java'};
 const catClass={theory:'tc-theory',practice:'tc-practice',project:'tc-project',interview:'tc-interview',cpp:'tc-cpp'};
@@ -3671,7 +3683,7 @@ function buildSyllabus(){
     panel.id=panelId;
     let html=`<div class="unit-block">
       <div class="unit-header">
-        <span class="unit-badge ${colClass}">${unit.months}</span>
+        <span class="unit-badge ${colClass}">${unit.months}${unit.parallel?' ⟳ Parallel':''}</span>
         <div class="unit-title">${unit.name}</div>
         <span class="unit-pct" style="color:${barCol}" id="upct-${unit.id}">${uPct}%</span>
       </div>
@@ -3894,12 +3906,13 @@ function updateStats(){
   if (ob) ob.style.width = st.overallPct + '%';
 
   // Per-subject progress bars
-  const barMap = [
+const barMap = [
     ['js',    st.js],
     ['react', st.react],
     ['node',  st.node],
     ['dsa',   st.dsa],
     ['sys',   st.sys],
+    ['db',    st.db],
   ];
   
   barMap.forEach(([key, val]) => {
