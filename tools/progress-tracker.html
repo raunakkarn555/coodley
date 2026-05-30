@@ -3767,8 +3767,8 @@ function buildTopicRow(chId,ti,topic,d){
     <input type="checkbox" class="topic-chk" id="${key}" ${done?'checked':''} onchange="toggleTopic('${chId}','${ti}',this)"/>
     <div class="topic-info">
       <div class="topic-cat ${catClass[topicCat]||'tc-theory'}">${catLabels[topicCat]||'📖 Theory'}</div>
-      <div class="topic-name${done?' done':''}" id="tn-${key}">${topicName}</div>
-      ${topicSub?`<div class="topic-sub">💡 ${topicSub}</div>`:''}
+      <div class="topic-name${done?' done':''}" id="tn-${key}">${topicName.replace(/</g,'&lt;').replace(/>/g,'&gt;')}</div>
+      ${topicSub?`<div class="topic-sub">💡 ${topicSub.replace(/</g,'&lt;').replace(/>/g,'&gt;')}</div>`:''}
       <textarea class="topic-notes" rows="1" placeholder="Notes..." onchange="saveTopicData('${nk}',this.value)">${notes}</textarea>
       <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:4px">
         <div class="conf-stars">${[1,2,3,4,5].map(s=>`<span class="cstar${conf>=s?' lit':''}" onclick="setConf('${ck}','${key}',${s})">★</span>`).join('')}</div>
