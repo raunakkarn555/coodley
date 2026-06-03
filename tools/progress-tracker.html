@@ -2383,6 +2383,54 @@ footer.coodley-footer{background:var(--bg);border-top:1px solid var(--border);pa
   </div>
 </div>
 
+<!-- DATE PICKER + WEEKLY TRACKER -->
+<div id="timer-date-picker-card" style="margin-top:16px;background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-xl);padding:22px">
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;flex-wrap:wrap;gap:10px">
+    <h4 style="font-family:var(--font-head);font-weight:800;font-size:.95rem;display:flex;align-items:center;gap:8px">
+      📅 View Sessions by Date
+    </h4>
+    <input type="date" id="timer-date-inp"
+      style="background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:7px 12px;color:var(--fg);font-family:var(--font-mono);font-size:.82rem;outline:none;cursor:pointer;color-scheme:dark"
+      onchange="loadSessionsForDate(this.value)"/>
+  </div>
+  <div id="timer-date-sessions">
+    <div style="color:var(--muted);font-size:.82rem;text-align:center;padding:12px">Pick a date above to see sessions</div>
+  </div>
+</div>
+
+<!-- WEEKLY TIMER TRACKER -->
+<div id="timer-weekly-card" style="margin-top:16px;background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-xl);padding:22px">
+  <h4 style="font-family:var(--font-head);font-weight:800;font-size:.95rem;margin-bottom:14px;display:flex;align-items:center;gap:8px">
+    📊 This Week's Focus Time
+  </h4>
+  <div id="weekly-timer-bars" style="display:flex;gap:8px;align-items:flex-end;height:80px;margin-bottom:8px"></div>
+  <div id="weekly-timer-labels" style="display:flex;gap:8px"></div>
+  <div id="weekly-timer-total" style="margin-top:10px;font-size:.78rem;color:var(--muted2);font-family:var(--font-body)"></div>
+</div>
+
+<!-- POMODORO MODE CARD -->
+<div id="pomodoro-card" style="margin-top:16px;background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-xl);padding:22px">
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;flex-wrap:wrap;gap:10px">
+    <h4 style="font-family:var(--font-head);font-weight:800;font-size:.95rem;display:flex;align-items:center;gap:8px">
+      🍅 Pomodoro Mode
+    </h4>
+    <label style="display:flex;align-items:center;gap:8px;cursor:pointer;font-size:.82rem;font-family:var(--font-body)">
+      <input type="checkbox" id="pomodoro-toggle" onchange="togglePomodoroMode(this.checked)"
+        style="width:15px;height:15px;accent-color:var(--red);cursor:pointer"/>
+      Enable Pomodoro auto-cycle
+    </label>
+  </div>
+  <div id="pomodoro-display" style="display:none">
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:12px" id="pomodoro-dots"></div>
+    <div style="font-size:.82rem;color:var(--muted2);font-family:var(--font-body);line-height:1.7">
+      🍅 Work 25m → ☕ Break 5m → repeat 4x → 🎉 Long break 15m
+    </div>
+    <div style="margin-top:10px;font-size:.78rem;color:var(--muted);font-family:var(--font-mono)" id="pomodoro-phase-label">Phase: Work</div>
+  </div>
+  <div id="pomodoro-off-msg" style="font-size:.82rem;color:var(--muted2);font-family:var(--font-body)">
+    Turn on to auto-cycle: 25 min work → 5 min break → repeat. Timer sets itself automatically.
+  </div>
+</div>
   </div>
 </section>
 
@@ -5537,6 +5585,8 @@ function toggleChecklist(key,el,i){
 }
 
 let timerInterval=null,timerTotal=90*60,timerRemaining=90*60,timerRunning=false;
+let pomodoroMode=false, pomodoroCount=0, pomodoroPhase='work';
+// phase: 'work' | 'short-break' | 'long-break'
 function setTimerPreset(h,m){timerTotal=timerRemaining=h*60*60+m*60;resetTimer();}
 function setCustomTimer(){const h=parseInt(document.getElementById('t-h')?.value)||0;const m=parseInt(document.getElementById('t-m')?.value)||0;setTimerPreset(h,m);}
 function formatTimer(s){const h=Math.floor(s/3600),m=Math.floor(s%3600/60),sec=s%60;return h>0?`${h}:${m.toString().padStart(2,'0')}:${sec.toString().padStart(2,'0')}`:`${m}:${sec.toString().padStart(2,'0')}`}
@@ -5560,11 +5610,14 @@ function toggleTimer(){
   } else {
     if(timerRemaining<=0) timerRemaining=timerTotal;
     timerRunning=true;
+    playTimerSound('start');
     const btn=document.getElementById('timer-start-btn');
     if(btn){btn.textContent='⏸ Pause';btn.classList.add('running');}
     timerInterval=setInterval(()=>{
       if(timerRemaining>0){
         timerRemaining--;
+        if(timerRemaining === 30) playTimerSound('warning');
+if(timerRemaining === 10) playTimerSound('warning');
         updateTimerDisplay();
       } else {
         clearInterval(timerInterval);
@@ -5582,6 +5635,26 @@ function toggleTimer(){
           });
         }
         showToast('Session complete! Well done 🎉');
+        if(pomodoroMode){
+  if(pomodoroPhase === 'work'){
+    pomodoroCount++;
+    updatePomodoroDisplay();
+    if(pomodoroCount % 4 === 0){
+      pomodoroPhase = 'long-break';
+      setTimerPreset(0,15);
+      showToast('🎉 4 Pomodoros done! Long break: 15 min');
+    } else {
+      pomodoroPhase = 'short-break';
+      setTimerPreset(0,5);
+      showToast('✅ Pomodoro ' + pomodoroCount + ' done! Short break: 5 min');
+    }
+  } else {
+    pomodoroPhase = 'work';
+    setTimerPreset(0,25);
+    showToast('💪 Break over! Starting next Pomodoro');
+  }
+  setTimeout(()=>toggleTimer(), 1500); // auto-start next phase
+}
       }
     },1000);
   }
@@ -5747,6 +5820,7 @@ function initNav(){
       if(sec==='analytics')updateAnalytics();
       if(sec==='overview')updateOverview();
       if(sec==='backup')updateStorageInfo();
+      if(sec==='timer'){renderWeeklyTimerTracker();renderSessionLog();}
       if(sec==='jobhunt'){loadApplications();buildInterviewChecklist();}
     });
   });
@@ -6934,32 +7008,48 @@ function updatePacePrediction(st){
 
 // ===== TIMER SESSION LOG + SOUND =====
 
-function playTimerSound(){
+function playTimerSound(type='finish'){
   const soundOn = document.getElementById('timer-sound-toggle')?.checked ?? true;
   if(!soundOn) return;
   try {
     const ctx = new (window.AudioContext || window.webkitAudioContext)();
-    
-    // Play 3 pleasant beeps
-    [0, 0.3, 0.6].forEach((delay, i) => {
-      const osc  = ctx.createOscillator();
-      const gain = ctx.createGain();
-      osc.connect(gain);
-      gain.connect(ctx.destination);
-      
-      osc.frequency.value = i === 2 ? 880 : 660; // higher pitch on last beep
-      osc.type = 'sine';
-      gain.gain.setValueAtTime(0, ctx.currentTime + delay);
-      gain.gain.linearRampToValueAtTime(0.4, ctx.currentTime + delay + 0.05);
-      gain.gain.linearRampToValueAtTime(0, ctx.currentTime + delay + 0.3);
-      
-      osc.start(ctx.currentTime + delay);
-      osc.stop(ctx.currentTime + delay + 0.35);
-    });
-  } catch(e){
-    console.log('Sound not supported:', e);
-  }
+    if(type === 'start'){
+      // Single soft rising beep on start
+      const o = ctx.createOscillator(), g = ctx.createGain();
+      o.connect(g); g.connect(ctx.destination);
+      o.frequency.setValueAtTime(440, ctx.currentTime);
+      o.frequency.linearRampToValueAtTime(660, ctx.currentTime + 0.15);
+      g.gain.setValueAtTime(0.3, ctx.currentTime);
+      g.gain.linearRampToValueAtTime(0, ctx.currentTime + 0.35);
+      o.start(); o.stop(ctx.currentTime + 0.4);
+    } else if(type === 'warning'){
+      // Two quick warning beeps at 30s left
+      [0, 0.25].forEach(delay => {
+        const o = ctx.createOscillator(), g = ctx.createGain();
+        o.connect(g); g.connect(ctx.destination);
+        o.frequency.value = 880; o.type = 'sine';
+        g.gain.setValueAtTime(0.4, ctx.currentTime + delay);
+        g.gain.linearRampToValueAtTime(0, ctx.currentTime + delay + 0.18);
+        o.start(ctx.currentTime + delay);
+        o.stop(ctx.currentTime + delay + 0.22);
+      });
+    } else {
+      // Three pleasant finish beeps
+      [0, 0.3, 0.6].forEach((delay, i) => {
+        const o = ctx.createOscillator(), g = ctx.createGain();
+        o.connect(g); g.connect(ctx.destination);
+        o.frequency.value = i === 2 ? 880 : 660; o.type = 'sine';
+        g.gain.setValueAtTime(0, ctx.currentTime + delay);
+        g.gain.linearRampToValueAtTime(0.4, ctx.currentTime + delay + 0.05);
+        g.gain.linearRampToValueAtTime(0, ctx.currentTime + delay + 0.3);
+        o.start(ctx.currentTime + delay);
+        o.stop(ctx.currentTime + delay + 0.35);
+      });
+    }
+  } catch(e){ console.log('Sound not supported'); }
 }
+
+
 
 function playReminderSound(){
   // Softer single beep for reminders
@@ -6979,22 +7069,41 @@ function playReminderSound(){
   } catch(e){}
 }
 
-function logTimerSession(totalSeconds){
+function logTimerSession(totalSeconds, dateStr){
   const d = getData();
-  const today = new Date().toISOString().slice(0,10);
-  const sessions = JSON.parse(d['timer-sessions-' + today] || '[]');
-  
+  const key = dateStr || new Date().toISOString().slice(0,10);
+  const sessions = JSON.parse(d['timer-sessions-' + key] || '[]');
+  const mins = Math.round(totalSeconds / 60);
   sessions.push({
     id: Date.now(),
     duration: totalSeconds,
-    startTime: new Date(Date.now() - totalSeconds * 1000).toLocaleTimeString('en-IN',{hour:'2-digit',minute:'2-digit'}),
-    endTime: new Date().toLocaleTimeString('en-IN',{hour:'2-digit',minute:'2-digit'}),
-    label: totalSeconds === 25*60 ? '🍅 Pomodoro' : totalSeconds <= 45*60 ? '⚡ Focus' : '🔥 Deep Work'
+    mins: mins,
+    startTime: new Date(Date.now() - totalSeconds*1000)
+      .toLocaleTimeString('en-IN',{hour:'2-digit',minute:'2-digit'}),
+    endTime: new Date()
+      .toLocaleTimeString('en-IN',{hour:'2-digit',minute:'2-digit'}),
+    label: totalSeconds === 25*60 ? '🍅 Pomodoro'
+         : totalSeconds <= 45*60 ? '⚡ Focus Block'
+         : totalSeconds <= 90*60 ? '🔥 Deep Work'
+         : '🚀 Long Session'
   });
-  
-  d['timer-sessions-' + today] = JSON.stringify(sessions);
+  d['timer-sessions-' + key] = JSON.stringify(sessions);
+  // Also update the weekly tracker total
+  const weekKey = 'timer-week-' + getMondayKey();
+  const week = JSON.parse(d[weekKey] || '{}');
+  week[key] = (week[key] || 0) + mins;
+  d[weekKey] = JSON.stringify(week);
   setData(d);
   renderSessionLog();
+  renderWeeklyTimerTracker();
+}
+
+function getMondayKey(){
+  const d = new Date();
+  const day = d.getDay();
+  const diff = d.getDate() - (day === 0 ? 6 : day - 1);
+  d.setDate(diff);
+  return d.toISOString().slice(0,10);
 }
 
 function renderSessionLog(){
@@ -7062,6 +7171,102 @@ function loadTimerSettings(){
   const soundEl = document.getElementById('timer-sound-toggle');
   if(soundEl && d['timer-sound'] !== undefined) soundEl.checked = d['timer-sound'];
   renderSessionLog();
+  renderWeeklyTimerTracker();
+// Set today's date as default in the date picker
+const tp = document.getElementById('timer-date-inp');
+if(tp) tp.value = new Date().toISOString().slice(0,10);
+}
+
+function loadSessionsForDate(dateStr){
+  if(!dateStr) return;
+  const d = getData();
+  const sessions = JSON.parse(d['timer-sessions-' + dateStr] || '[]');
+  const el = document.getElementById('timer-date-sessions');
+  if(!el) return;
+  const label = new Date(dateStr + 'T00:00:00')
+    .toLocaleDateString('en-IN',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
+  if(!sessions.length){
+    el.innerHTML = `<div style="text-align:center;color:var(--muted);font-size:.82rem;padding:14px">No sessions on ${label}</div>`;
+    return;
+  }
+  const totalMins = sessions.reduce((a,s) => a + s.mins, 0);
+  el.innerHTML = `
+    <div style="font-size:.72rem;color:var(--muted2);margin-bottom:10px;font-family:var(--font-body)">
+      <strong style="color:var(--fg)">${label}</strong> · ${sessions.length} session${sessions.length>1?'s':''} · ${totalMins}m total
+    </div>
+    ${sessions.map(s => `
+      <div style="display:flex;align-items:center;gap:10px;background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:10px 14px;margin-bottom:6px">
+        <div style="font-size:1rem">${s.label.split(' ')[0]}</div>
+        <div style="flex:1">
+          <div style="font-size:.82rem;font-weight:700;font-family:var(--font-body)">${s.label}</div>
+          <div style="font-size:.68rem;color:var(--muted);font-family:var(--font-mono)">${s.startTime} → ${s.endTime}</div>
+        </div>
+        <div style="font-family:var(--font-mono);font-size:.85rem;font-weight:700;color:var(--accent)">${s.mins}m</div>
+      </div>`).join('')}`;
+}
+
+function renderWeeklyTimerTracker(){
+  const barsEl = document.getElementById('weekly-timer-bars');
+  const labelsEl = document.getElementById('weekly-timer-labels');
+  const totalEl = document.getElementById('weekly-timer-total');
+  if(!barsEl) return;
+  const d = getData();
+  const today = new Date();
+  const dow = today.getDay();
+  const monday = new Date(today);
+  monday.setDate(today.getDate() - (dow===0?6:dow-1));
+  const dayNames = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
+  const days = [], totals = [];
+  for(let i=0;i<7;i++){
+    const dd = new Date(monday); dd.setDate(monday.getDate()+i);
+    const key = dd.toISOString().slice(0,10);
+    const sessions = JSON.parse(d['timer-sessions-'+key]||'[]');
+    const mins = sessions.reduce((a,s)=>a+s.mins,0);
+    days.push({name:dayNames[i], key, mins, isToday: key===today.toISOString().slice(0,10)});
+    totals.push(mins);
+  }
+  const maxMins = Math.max(...totals, 1);
+  const weekTotal = totals.reduce((a,b)=>a+b,0);
+  barsEl.innerHTML = days.map(day => {
+    const h = Math.max(4, Math.round(day.mins/maxMins*72));
+    const col = day.isToday ? 'var(--accent)' : day.mins>0 ? 'var(--blue)' : 'var(--bg4)';
+    return `<div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;cursor:pointer"
+      onclick="document.getElementById('timer-date-inp').value='${day.key}';loadSessionsForDate('${day.key}')"
+      title="${day.mins}m on ${day.key}">
+      <div style="font-size:.62rem;color:var(--muted);font-family:var(--font-mono)">${day.mins>0?day.mins+'m':''}</div>
+      <div style="width:100%;height:${h}px;background:${col};border-radius:3px;transition:height .4s"></div>
+    </div>`;
+  }).join('');
+  labelsEl.innerHTML = days.map(d=>`<div style="flex:1;text-align:center;font-size:.6rem;color:${d.isToday?'var(--accent)':'var(--muted)'};font-family:var(--font-body);font-weight:${d.isToday?'700':'400'}">${d.name}</div>`).join('');
+  if(totalEl) totalEl.textContent = `Week total: ${weekTotal}m${weekTotal>=60?' ('+Math.floor(weekTotal/60)+'h '+weekTotal%60+'m)':''} · Click any bar to see that day\'s sessions`;
+}
+
+function togglePomodoroMode(on){
+  pomodoroMode = on;
+  pomodoroCount = 0;
+  pomodoroPhase = 'work';
+  const disp = document.getElementById('pomodoro-display');
+  const offMsg = document.getElementById('pomodoro-off-msg');
+  if(disp) disp.style.display = on ? 'block' : 'none';
+  if(offMsg) offMsg.style.display = on ? 'none' : 'block';
+  if(on){
+    setTimerPreset(0,25);
+    showToast('🍅 Pomodoro mode on! Timer set to 25 min. Hit Start!');
+  }
+  updatePomodoroDisplay();
+}
+
+function updatePomodoroDisplay(){
+  const dots = document.getElementById('pomodoro-dots');
+  const phaseLabel = document.getElementById('pomodoro-phase-label');
+  if(!dots) return;
+  const cyclePos = pomodoroCount % 4;
+  dots.innerHTML = [0,1,2,3].map(i => `
+    <div style="background:${i<cyclePos?'var(--red)':'var(--bg4)'};border:1px solid ${i<cyclePos?'rgba(245,101,101,.5)':'var(--border)'};border-radius:8px;padding:10px;text-align:center;font-size:.75rem;font-family:var(--font-mono);color:${i<cyclePos?'var(--red)':'var(--muted)'}">
+      ${i<cyclePos?'🍅':'○'} P${i+1}
+    </div>`).join('');
+  const phases = {work:'🍅 Work phase (25 min)','short-break':'☕ Short break (5 min)','long-break':'🎉 Long break (15 min)'};
+  if(phaseLabel) phaseLabel.textContent = 'Phase: ' + (phases[pomodoroPhase]||'Work');
 }
 
 
