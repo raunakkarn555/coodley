@@ -910,28 +910,6 @@ footer.coodley-footer{background:var(--bg);border-top:1px solid var(--border);pa
   .hist-day-btn{padding:4px 9px;font-size:.68rem}
 }
 
-
-
-.manual-subj-pill {
-  padding:5px 12px;
-  border-radius:20px;
-  border:1px solid var(--border);
-  background:transparent;
-  color:var(--muted);
-  font-size:.72rem;
-  font-weight:600;
-  cursor:pointer;
-  transition:all .18s;
-  font-family:var(--font-body);
-  white-space:nowrap;
-}
-.manual-subj-pill:hover { border-color:var(--border2); color:var(--fg); }
-.manual-subj-pill.active { border-color:var(--amber); color:var(--amber); background:rgba(244,169,66,.1); }
-@media(max-width:640px){
-  #sec-timer > div[style*="grid-template-columns:1fr 1fr"] { grid-template-columns:1fr !important; }
-}
-
-
 </style>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
@@ -2338,69 +2316,57 @@ footer.coodley-footer{background:var(--bg);border-top:1px solid var(--border);pa
 
 <!-- TIMER -->
 <!-- TIMER -->
-<!-- REPLACE EVERYTHING FROM <section class="section" id="sec-timer"> TO ITS CLOSING </section> WITH THIS -->
-
 <section class="section" id="sec-timer">
-
-<!-- ── LIVE CLOCK HEADER ── -->
-<div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-xl);padding:22px 28px;margin-bottom:20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px">
-  <div>
-    <div style="font-family:var(--font-mono);font-size:2.6rem;font-weight:700;color:var(--fg);line-height:1;letter-spacing:.04em" id="live-clock-time">--:-- --</div>
-    <div style="font-size:.78rem;color:var(--muted2);font-family:var(--font-body);margin-top:5px" id="live-clock-date">Loading...</div>
+  <div class="sec-title">
+    <div class="sec-icon si-blue">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+    </div>
+    Focus Timer
   </div>
-  <div style="display:flex;gap:10px;flex-wrap:wrap">
-    <div style="background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius-lg);padding:14px 18px;text-align:center;min-width:90px">
-      <div style="font-size:.58rem;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.07em;font-family:var(--font-body);margin-bottom:4px">Today</div>
-      <div style="font-family:var(--font-mono);font-size:1.3rem;font-weight:700;color:var(--accent)" id="timer-stat-today">0m</div>
+
+  <!-- STAT CARDS ROW -->
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:12px;margin-bottom:20px">
+    <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-lg);padding:16px;text-align:center">
+      <div style="font-size:.6rem;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;font-weight:700;margin-bottom:6px;font-family:var(--font-body)">Today</div>
+      <div style="font-family:var(--font-mono);font-size:1.4rem;font-weight:700;color:var(--accent)" id="timer-stat-today">0m</div>
     </div>
-    <div style="background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius-lg);padding:14px 18px;text-align:center;min-width:90px">
-      <div style="font-size:.58rem;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.07em;font-family:var(--font-body);margin-bottom:4px">Best</div>
-      <div style="font-family:var(--font-mono);font-size:1.3rem;font-weight:700;color:var(--amber)" id="timer-stat-best">—</div>
+    <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-lg);padding:16px;text-align:center">
+      <div style="font-size:.6rem;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;font-weight:700;margin-bottom:6px;font-family:var(--font-body)">Best Session</div>
+      <div style="font-family:var(--font-mono);font-size:1.4rem;font-weight:700;color:var(--amber)" id="timer-stat-best">—</div>
     </div>
-    <div style="background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius-lg);padding:14px 18px;text-align:center;min-width:90px">
-      <div style="font-size:.58rem;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.07em;font-family:var(--font-body);margin-bottom:4px">All Time</div>
-      <div style="font-family:var(--font-mono);font-size:1.3rem;font-weight:700;color:var(--blue)" id="timer-stat-total">0m</div>
+    <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-lg);padding:16px;text-align:center">
+      <div style="font-size:.6rem;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;font-weight:700;margin-bottom:6px;font-family:var(--font-body)">Total Focus</div>
+      <div style="font-family:var(--font-mono);font-size:1.4rem;font-weight:700;color:var(--blue)" id="timer-stat-total">0m</div>
     </div>
-    <div style="background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius-lg);padding:14px 18px;text-align:center;min-width:90px">
-      <div style="font-size:.58rem;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.07em;font-family:var(--font-body);margin-bottom:4px">Sessions</div>
-      <div style="font-family:var(--font-mono);font-size:1.3rem;font-weight:700;color:var(--pink)" id="timer-stat-sessions-all">0</div>
+    <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-lg);padding:16px;text-align:center">
+      <div style="font-size:.6rem;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;font-weight:700;margin-bottom:6px;font-family:var(--font-body)">All Sessions</div>
+      <div style="font-family:var(--font-mono);font-size:1.4rem;font-weight:700;color:var(--pink)" id="timer-stat-sessions-all">0</div>
     </div>
   </div>
-</div>
 
-<!-- ── TWO-COLUMN MAIN LAYOUT ── -->
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:20px">
+  <!-- MAIN TIMER CARD -->
+  <div class="timer-card">
 
-  <!-- LEFT: FOCUS TIMER -->
-  <div class="timer-card" style="margin-bottom:0">
-    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;flex-wrap:wrap;gap:8px">
-      <div>
-        <div style="font-family:var(--font-head);font-weight:800;font-size:1rem">Focus Timer</div>
-        <div style="font-size:.68rem;color:var(--muted);font-family:var(--font-body)">Custom countdown · Pomodoro · Lap splits · Auto session log</div>
+    <!-- Day goal progress bar -->
+    <div style="margin-bottom:16px">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+        <span style="font-size:.68rem;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.07em;font-family:var(--font-body)">Daily Focus Goal</span>
+        <span style="font-size:.7rem;font-family:var(--font-mono);color:var(--muted2)" id="session-day-goal">0m / 180m goal</span>
       </div>
-      <span style="font-size:.65rem;font-weight:700;padding:3px 10px;border-radius:20px;border:1px solid rgba(91,164,245,.3);background:rgba(91,164,245,.07);color:var(--blue);font-family:var(--font-mono)" id="timer-phase-label">Focus Session</span>
-    </div>
-
-    <!-- Daily goal bar -->
-    <div style="margin-bottom:14px">
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:5px">
-        <span style="font-size:.65rem;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.06em;font-family:var(--font-body)">Daily Goal</span>
-        <span style="font-size:.68rem;font-family:var(--font-mono);color:var(--muted2)" id="session-day-goal">0m / 180m</span>
-      </div>
-      <div style="height:4px;background:var(--bg4);border-radius:2px;overflow:hidden">
-        <div id="session-day-bar" style="height:100%;width:0%;background:linear-gradient(90deg,var(--accent),var(--blue));border-radius:2px;transition:width .5s"></div>
+      <div style="height:5px;background:var(--bg4);border-radius:3px;overflow:hidden">
+        <div id="session-day-bar" style="height:100%;width:0%;background:linear-gradient(90deg,var(--accent),var(--blue));border-radius:3px;transition:width .5s"></div>
       </div>
     </div>
 
-    <!-- Timer display -->
-    <div style="text-align:center;padding:8px 0">
+    <div style="text-align:center">
+      <div style="font-size:.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px;font-weight:700;font-family:var(--font-body)" id="timer-phase-label">Focus Session</div>
       <div class="timer-display" id="timer-disp">1:30:00</div>
     </div>
 
-    <div class="timer-prog" style="margin-bottom:14px"><div class="timer-prog-fill" id="timer-prog-fill" style="width:100%"></div></div>
+    <div class="timer-prog"><div class="timer-prog-fill" id="timer-prog-fill" style="width:100%"></div></div>
 
-    <!-- Preset buttons -->
-    <div class="timer-preset-row" style="margin-bottom:12px">
+    <!-- Presets -->
+    <div class="timer-preset-row">
       <button class="timer-preset" onclick="setTimerPreset(0,25)">25m</button>
       <button class="timer-preset" onclick="setTimerPreset(0,45)">45m</button>
       <button class="timer-preset" onclick="setTimerPreset(1,0)">1h</button>
@@ -2409,219 +2375,130 @@ footer.coodley-footer{background:var(--bg);border-top:1px solid var(--border);pa
       <button class="timer-preset" onclick="setTimerPreset(3,0)">3h</button>
     </div>
 
-    <!-- Custom time -->
-    <div style="display:flex;align-items:center;gap:8px;justify-content:center;margin-bottom:14px;flex-wrap:wrap">
-      <span style="font-size:.7rem;color:var(--muted);font-weight:600;font-family:var(--font-body)">Custom:</span>
-      <input type="number" id="t-h" min="0" max="12" value="1" style="width:52px;background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:6px 8px;color:var(--fg);font-family:var(--font-mono);font-size:.9rem;font-weight:700;text-align:center;outline:none"/>
-      <span style="color:var(--muted);font-weight:700">h</span>
-      <input type="number" id="t-m" min="0" max="59" value="30" style="width:52px;background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:6px 8px;color:var(--fg);font-family:var(--font-mono);font-size:.9rem;font-weight:700;text-align:center;outline:none"/>
-      <span style="color:var(--muted);font-weight:700">m</span>
+    <!-- Custom time input -->
+    <div style="display:flex;align-items:center;gap:8px;justify-content:center;margin-bottom:16px;flex-wrap:wrap">
+      <div style="font-size:.72rem;color:var(--muted);font-weight:600;font-family:var(--font-body)">Custom:</div>
+      <input type="number" id="t-h" min="0" max="12" value="1" style="width:55px;background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:7px 8px;color:var(--fg);font-family:var(--font-mono);font-size:.9rem;font-weight:700;text-align:center;outline:none"/>
+      <span style="color:var(--muted);font-weight:700">:</span>
+      <input type="number" id="t-m" min="0" max="59" value="30" style="width:55px;background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:7px 8px;color:var(--fg);font-family:var(--font-mono);font-size:.9rem;font-weight:700;text-align:center;outline:none"/>
       <button class="timer-preset" onclick="setCustomTimer()">Set</button>
     </div>
 
-    <!-- Main controls -->
-    <div class="timer-btns" style="gap:8px;margin-bottom:12px">
+    <!-- Main buttons -->
+    <div class="timer-btns" style="flex-wrap:wrap;gap:10px">
       <button class="t-btn t-btn-start" id="timer-start-btn" onclick="toggleTimer()">▶ Start</button>
       <button class="t-btn t-btn-reset" onclick="resetTimer()">↺ Reset</button>
       <button class="t-btn" style="border-color:rgba(61,232,176,.4);color:var(--accent)" onclick="startLap()">+ Lap</button>
     </div>
 
-    <!-- Sound + Pomodoro row -->
-    <div style="display:flex;align-items:center;gap:10px;background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:10px 14px;margin-bottom:12px;flex-wrap:wrap">
-      <span style="font-size:.78rem;font-weight:600;font-family:var(--font-body);flex:1">🔔 Sound on complete</span>
-      <label class="reminder-toggle"><input type="checkbox" id="timer-sound-toggle" checked onchange="saveTimerSettings()"/><span class="rtoggle-slider"></span></label>
-      <div style="width:1px;height:18px;background:var(--border)"></div>
-      <label style="display:flex;align-items:center;gap:7px;cursor:pointer;font-size:.78rem;font-family:var(--font-body)">
-        <input type="checkbox" id="pomodoro-toggle" onchange="togglePomodoroMode(this.checked)" style="width:13px;height:13px;accent-color:var(--red)"/>
-        🍅 Pomodoro
-      </label>
-    </div>
-
-    <!-- Pomodoro display -->
-    <div id="pomodoro-display" style="display:none;background:rgba(245,101,101,.05);border:1px solid rgba(245,101,101,.2);border-radius:10px;padding:12px 14px">
-      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:8px" id="pomodoro-dots"></div>
-      <div style="font-size:.7rem;color:var(--muted2);font-family:var(--font-body);line-height:1.6">🍅 25m work → ☕ 5m break → repeat 4x → 🎉 15m long break</div>
-      <div style="margin-top:6px;font-size:.72rem;color:var(--muted);font-family:var(--font-mono)" id="pomodoro-phase-label">Phase: Work</div>
-    </div>
-
-    <!-- Lap list -->
-    <div style="margin-top:12px">
-      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
-        <span style="font-size:.7rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;font-family:var(--font-body)">⏱ Lap Splits</span>
-        <button onclick="clearLaps()" style="background:none;border:1px solid var(--border);border-radius:6px;color:var(--muted);font-size:.65rem;padding:3px 8px;cursor:pointer;font-family:var(--font-body)">Clear</button>
-      </div>
-      <div id="lap-list" style="max-height:120px;overflow-y:auto">
-        <div style="color:var(--muted);font-size:.72rem;text-align:center;padding:6px;font-family:var(--font-body)">Hit "+ Lap" while running to record splits</div>
-      </div>
-    </div>
-
-    <p style="text-align:center;font-size:.68rem;color:var(--muted);margin-top:12px;font-family:var(--font-body)">💡 Pomodoro: 25m focus → 5m break → repeat 4x → long break</p>
+    <p style="text-align:center;font-size:.75rem;color:var(--muted);margin-top:16px;font-family:var(--font-body)">💡 Pomodoro: 25 min focus → 5 min break → repeat 4x → long break</p>
   </div>
 
-  <!-- RIGHT: SESSION LOG + MANUAL LOG stacked -->
-  <div style="display:flex;flex-direction:column;gap:16px">
+  <!-- 2-COLUMN GRID FOR SECONDARY CARDS -->
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-top:16px">
 
-    <!-- TODAY'S SESSION LOG -->
-    <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-xl);padding:22px">
+    <!-- SESSION LOG -->
+    <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-xl);padding:22px" id="session-log-card">
       <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;flex-wrap:wrap;gap:8px">
-        <h4 style="font-family:var(--font-head);font-weight:800;font-size:.95rem">📋 Today's Sessions</h4>
-        <button onclick="clearSessionLog()" style="background:none;border:1px solid rgba(245,101,101,.3);border-radius:8px;color:var(--red);font-size:.7rem;padding:4px 10px;cursor:pointer;font-family:var(--font-body)">Clear</button>
+        <h4 style="font-family:var(--font-head);font-weight:800;font-size:.95rem;display:flex;align-items:center;gap:8px">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          Today's Sessions
+        </h4>
+        <button onclick="clearSessionLog()" style="background:none;border:1px solid rgba(245,101,101,.3);border-radius:8px;color:var(--red);font-size:.72rem;padding:4px 10px;cursor:pointer;font-family:var(--font-body)">Clear</button>
       </div>
 
-      <!-- Mini stats -->
-      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:12px">
-        <div style="background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius);padding:8px;text-align:center">
-          <div style="font-family:var(--font-mono);font-size:1.1rem;font-weight:700;color:var(--accent);line-height:1" id="sess-total-count">0</div>
-          <div style="font-size:.52rem;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-top:2px">Sessions</div>
+      <!-- Session Stats Row -->
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:14px" id="session-stats-row">
+        <div style="background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius-lg);padding:10px;text-align:center">
+          <div style="font-family:var(--font-mono);font-size:1.2rem;font-weight:700;color:var(--accent);line-height:1" id="sess-total-count">0</div>
+          <div style="font-size:.55rem;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-top:3px">Sessions</div>
         </div>
-        <div style="background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius);padding:8px;text-align:center">
-          <div style="font-family:var(--font-mono);font-size:1.1rem;font-weight:700;color:var(--blue);line-height:1" id="sess-total-mins">0m</div>
-          <div style="font-size:.52rem;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-top:2px">Total</div>
+        <div style="background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius-lg);padding:10px;text-align:center">
+          <div style="font-family:var(--font-mono);font-size:1.2rem;font-weight:700;color:var(--blue);line-height:1" id="sess-total-mins">0m</div>
+          <div style="font-size:.55rem;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-top:3px">Total</div>
         </div>
-        <div style="background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius);padding:8px;text-align:center">
-          <div style="font-family:var(--font-mono);font-size:1.1rem;font-weight:700;color:var(--amber);line-height:1" id="sess-pomodoros">0</div>
-          <div style="font-size:.52rem;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-top:2px">🍅</div>
+        <div style="background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius-lg);padding:10px;text-align:center">
+          <div style="font-family:var(--font-mono);font-size:1.2rem;font-weight:700;color:var(--amber);line-height:1" id="sess-pomodoros">0</div>
+          <div style="font-size:.55rem;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-top:3px">🍅</div>
         </div>
-        <div style="background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius);padding:8px;text-align:center">
-          <div style="font-family:var(--font-mono);font-size:1.1rem;font-weight:700;color:var(--pink);line-height:1" id="sess-longest">—</div>
-          <div style="font-size:.52rem;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-top:2px">Longest</div>
+        <div style="background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius-lg);padding:10px;text-align:center">
+          <div style="font-family:var(--font-mono);font-size:1.2rem;font-weight:700;color:var(--pink);line-height:1" id="sess-longest">—</div>
+          <div style="font-size:.55rem;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-top:3px">Longest</div>
         </div>
       </div>
 
-      <div id="session-log-list" style="display:flex;flex-direction:column;gap:5px;max-height:200px;overflow-y:auto">
-        <div style="text-align:center;color:var(--muted);font-size:.78rem;padding:14px;font-family:var(--font-body)">No sessions yet. Start the timer! 🎯</div>
+      <!-- Sound toggle -->
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius);padding:10px 14px">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+        <span style="font-size:.82rem;font-weight:600;font-family:var(--font-body);flex:1">Sound on complete</span>
+        <label class="reminder-toggle"><input type="checkbox" id="timer-sound-toggle" checked onchange="saveTimerSettings()"/><span class="rtoggle-slider"></span></label>
+      </div>
+
+      <!-- Session list -->
+      <div id="session-log-list" style="display:flex;flex-direction:column;gap:6px;max-height:240px;overflow-y:auto">
+        <div style="text-align:center;color:var(--muted);font-size:.82rem;padding:16px;font-family:var(--font-body)">No sessions yet. Start the timer! 🎯</div>
       </div>
     </div>
 
-    <!-- MANUAL LOG CARD -->
-    <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-xl);padding:22px">
-      <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px">
-        <div style="width:36px;height:36px;border-radius:10px;background:rgba(244,169,66,.12);border:1px solid rgba(244,169,66,.3);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0">📝</div>
-        <div>
-          <div style="font-family:var(--font-head);font-weight:800;font-size:.95rem">Manual Log</div>
-          <div style="font-size:.68rem;color:var(--muted);font-family:var(--font-body)">Log a past or offline study session</div>
+    <!-- LAP TRACKER + POMODORO -->
+    <div style="display:flex;flex-direction:column;gap:16px">
+
+      <!-- Lap Tracker -->
+      <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-xl);padding:22px">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
+          <h4 style="font-family:var(--font-head);font-weight:800;font-size:.95rem">⏱ Lap Tracker</h4>
+          <button onclick="clearLaps()" style="background:none;border:1px solid var(--border);border-radius:8px;color:var(--muted);font-size:.72rem;padding:4px 10px;cursor:pointer;font-family:var(--font-body)">Clear</button>
+        </div>
+        <div id="lap-list" style="max-height:160px;overflow-y:auto">
+          <div style="color:var(--muted);font-size:.78rem;text-align:center;padding:8px">Hit "+ Lap" while timer runs to record split times</div>
         </div>
       </div>
 
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px">
-        <div>
-          <label style="font-size:.65rem;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.05em;font-family:var(--font-body);display:block;margin-bottom:5px">Date</label>
-          <input type="date" id="manual-date" style="width:100%;background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:9px 12px;color:var(--fg);font-family:var(--font-mono);font-size:.82rem;outline:none;color-scheme:dark;box-sizing:border-box"/>
+      <!-- Pomodoro Mode -->
+      <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-xl);padding:22px" id="pomodoro-card">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;flex-wrap:wrap;gap:10px">
+          <h4 style="font-family:var(--font-head);font-weight:800;font-size:.95rem">🍅 Pomodoro Mode</h4>
+          <label style="display:flex;align-items:center;gap:8px;cursor:pointer;font-size:.82rem;font-family:var(--font-body)">
+            <input type="checkbox" id="pomodoro-toggle" onchange="togglePomodoroMode(this.checked)" style="width:15px;height:15px;accent-color:var(--red);cursor:pointer"/>
+            Enable auto-cycle
+          </label>
         </div>
-        <div>
-          <label style="font-size:.65rem;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.05em;font-family:var(--font-body);display:block;margin-bottom:5px">Duration (mins)</label>
-          <input type="number" id="manual-mins" min="1" max="720" placeholder="e.g. 90" style="width:100%;background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:9px 12px;color:var(--fg);font-family:var(--font-mono);font-size:.9rem;font-weight:700;outline:none;box-sizing:border-box"/>
+        <div id="pomodoro-display" style="display:none">
+          <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:12px" id="pomodoro-dots"></div>
+          <div style="font-size:.78rem;color:var(--muted2);font-family:var(--font-body);line-height:1.7">🍅 Work 25m → ☕ Break 5m → repeat 4x → 🎉 Long break 15m</div>
+          <div style="margin-top:10px;font-size:.78rem;color:var(--muted);font-family:var(--font-mono)" id="pomodoro-phase-label">Phase: Work</div>
         </div>
+        <div id="pomodoro-off-msg" style="font-size:.82rem;color:var(--muted2);font-family:var(--font-body)">Turn on to auto-cycle: 25m work → 5m break → repeat</div>
       </div>
 
-      <div style="margin-bottom:10px">
-        <label style="font-size:.65rem;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.05em;font-family:var(--font-body);display:block;margin-bottom:5px">Subject</label>
-        <div style="display:flex;gap:6px;flex-wrap:wrap" id="manual-subject-pills">
-          <button class="manual-subj-pill active" data-subj="📌 General" onclick="selectManualSubject(this)">📌 General</button>
-          <button class="manual-subj-pill" data-subj="⚡ JavaScript" onclick="selectManualSubject(this)">⚡ JavaScript</button>
-          <button class="manual-subj-pill" data-subj="⚛ React" onclick="selectManualSubject(this)">⚛ React</button>
-          <button class="manual-subj-pill" data-subj="🟢 Node.js" onclick="selectManualSubject(this)">🟢 Node.js</button>
-          <button class="manual-subj-pill" data-subj="🗄 Database" onclick="selectManualSubject(this)">🗄 Database</button>
-          <button class="manual-subj-pill" data-subj="🧩 DSA" onclick="selectManualSubject(this)">🧩 DSA</button>
-          <button class="manual-subj-pill" data-subj="🏛 System Design" onclick="selectManualSubject(this)">🏛 System Design</button>
-          <button class="manual-subj-pill" data-subj="💼 Job Hunt" onclick="selectManualSubject(this)">💼 Job Hunt</button>
-        </div>
-      </div>
-
-      <div style="margin-bottom:14px">
-        <label style="font-size:.65rem;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.05em;font-family:var(--font-body);display:block;margin-bottom:5px">Focus / Note</label>
-        <input type="text" id="manual-note" placeholder="What did you study? Any key takeaways?" style="width:100%;background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:9px 12px;color:var(--fg);font-family:var(--font-body);font-size:.82rem;outline:none;box-sizing:border-box"/>
-      </div>
-
-      <button onclick="addManualSession()" style="width:100%;background:var(--amber);color:#07090f;border:none;border-radius:10px;padding:11px;font-family:var(--font-body);font-size:.88rem;font-weight:700;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center;gap:8px"
-        onmouseover="this.style.opacity='.85';this.style.transform='translateY(-1px)'"
-        onmouseout="this.style.opacity='1';this.style.transform='translateY(0)'">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-        Log Session
-      </button>
-    </div>
-
-  </div>
-</div>
-
-<!-- ── BOTTOM ROW: Weekly + Date Picker ── -->
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:20px">
-
-  <!-- Weekly bars -->
-  <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-xl);padding:22px">
-    <h4 style="font-family:var(--font-head);font-weight:800;font-size:.95rem;margin-bottom:14px">📊 This Week's Focus</h4>
-    <div id="weekly-timer-bars" style="display:flex;gap:8px;align-items:flex-end;height:80px;margin-bottom:8px"></div>
-    <div id="weekly-timer-labels" style="display:flex;gap:8px"></div>
-    <div id="weekly-timer-total" style="margin-top:10px;font-size:.72rem;color:var(--muted2);font-family:var(--font-body)"></div>
-  </div>
-
-  <!-- Date session picker -->
-  <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-xl);padding:22px">
-    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;flex-wrap:wrap;gap:8px">
-      <h4 style="font-family:var(--font-head);font-weight:800;font-size:.95rem">📅 View by Date</h4>
-      <input type="date" id="timer-date-inp" style="background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:7px 12px;color:var(--fg);font-family:var(--font-mono);font-size:.78rem;outline:none;cursor:pointer;color-scheme:dark" onchange="loadSessionsForDate(this.value)"/>
-    </div>
-    <div id="timer-date-sessions">
-      <div style="color:var(--muted);font-size:.78rem;text-align:center;padding:14px;font-family:var(--font-body)">Pick a date to see sessions</div>
     </div>
   </div>
 
-</div>
+  <!-- WEEKLY TRACKER + DATE PICKER -->
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-top:16px">
 
-<!-- ── MANUAL LOG HISTORY ── -->
-<div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-xl);padding:22px">
-  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;flex-wrap:wrap;gap:8px">
-    <h4 style="font-family:var(--font-head);font-weight:800;font-size:.95rem;display:flex;align-items:center;gap:8px">
-      📝 Manual Log History
-      <span id="manual-log-count" style="font-size:.65rem;font-weight:700;padding:2px 9px;border-radius:20px;border:1px solid rgba(244,169,66,.3);background:rgba(244,169,66,.08);color:var(--amber);font-family:var(--font-mono)">0 entries</span>
-    </h4>
-    <button onclick="clearAllManualLogs()" style="background:none;border:1px solid rgba(245,101,101,.3);border-radius:8px;color:var(--red);font-size:.72rem;padding:5px 12px;cursor:pointer;font-family:var(--font-body)">Clear All</button>
+    <!-- Weekly bars -->
+    <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-xl);padding:22px" id="timer-weekly-card">
+      <h4 style="font-family:var(--font-head);font-weight:800;font-size:.95rem;margin-bottom:14px">📊 This Week's Focus</h4>
+      <div id="weekly-timer-bars" style="display:flex;gap:8px;align-items:flex-end;height:80px;margin-bottom:8px"></div>
+      <div id="weekly-timer-labels" style="display:flex;gap:8px"></div>
+      <div id="weekly-timer-total" style="margin-top:10px;font-size:.75rem;color:var(--muted2);font-family:var(--font-body)"></div>
+    </div>
+
+    <!-- Date session picker -->
+    <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-xl);padding:22px" id="timer-date-picker-card">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;flex-wrap:wrap;gap:10px">
+        <h4 style="font-family:var(--font-head);font-weight:800;font-size:.95rem">📅 View by Date</h4>
+        <input type="date" id="timer-date-inp" style="background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:7px 12px;color:var(--fg);font-family:var(--font-mono);font-size:.82rem;outline:none;cursor:pointer;color-scheme:dark" onchange="loadSessionsForDate(this.value)"/>
+      </div>
+      <div id="timer-date-sessions">
+        <div style="color:var(--muted);font-size:.82rem;text-align:center;padding:12px">Pick a date to see sessions</div>
+      </div>
+    </div>
+
   </div>
-  <div id="manual-log-list">
-    <div style="color:var(--muted);font-size:.82rem;text-align:center;padding:24px;font-family:var(--font-body)">No manual sessions logged yet. Use the form above to add past sessions.</div>
-  </div>
-</div>
 
 </section>
-
-<!-- ══ CSS TO ADD inside your existing <style> block (before the closing </style>) ══ -->
-<!--
-PASTE THIS INTO YOUR <style> BLOCK:
-
-.manual-subj-pill {
-  padding:5px 12px;
-  border-radius:20px;
-  border:1px solid var(--border);
-  background:transparent;
-  color:var(--muted);
-  font-size:.72rem;
-  font-weight:600;
-  cursor:pointer;
-  transition:all .18s;
-  font-family:var(--font-body);
-  white-space:nowrap;
-}
-.manual-subj-pill:hover {
-  border-color:var(--border2);
-  color:var(--fg);
-}
-.manual-subj-pill.active {
-  border-color:var(--amber);
-  color:var(--amber);
-  background:rgba(244,169,66,.1);
-}
-
-@media(max-width:640px){
-  #sec-timer > div[style*="grid-template-columns:1fr 1fr"] {
-    grid-template-columns:1fr !important;
-  }
-}
--->
-
-<!-- ══ JAVASCRIPT FUNCTIONS TO ADD (before the closing </script> tag) ══ -->
-<!--
-PASTE THESE FUNCTIONS into your <script> block, right before the closing </script>:
--->
 
 <!-- BACKUP -->
 <section class="section" id="sec-backup">
@@ -6097,9 +5974,6 @@ window.addEventListener('DOMContentLoaded', () => {
   try { loadJournal(); } catch(e){ console.error('loadJournal failed:', e); }
   try { updateTimerDisplay(); } catch(e){ console.error('timer failed:', e); }
   try { loadTimerSettings(); } catch(e){ console.error('timerSettings failed:', e); }
-  try { startLiveClock(); } catch(e){ console.error('liveClock failed:', e); }
-try { renderManualLogHistory(); } catch(e){ console.error('manualLog failed:', e); }
-try { const md=document.getElementById('manual-date'); if(md) md.value=new Date().toISOString().slice(0,10); } catch(e){}
   try { updateDashboardExtras(); } catch(e){ console.error('dashboardExtras failed:', e); }
 });
 
@@ -7616,220 +7490,6 @@ function updateCountdown(){
     badge.style.background  = 'var(--bg3)';
   }
 }
-
-
-
-
-
-// ══════════════════════════════════════════════════════════
-// PASTE ALL OF THIS into your <script> block,
-// right before the closing script tag
-// ══════════════════════════════════════════════════════════
-
-// ── LIVE CLOCK ──────────────────────────────────────────
-function startLiveClock(){
-  function tick(){
-    const now = new Date();
-    const timeEl = document.getElementById('live-clock-time');
-    const dateEl = document.getElementById('live-clock-date');
-    if(timeEl){
-      let h = now.getHours();
-      const ampm = h >= 12 ? 'pm' : 'am';
-      h = h % 12 || 12;
-      const m = now.getMinutes().toString().padStart(2,'0');
-      timeEl.textContent = h + ':' + m + ' ' + ampm;
-    }
-    if(dateEl){
-      dateEl.textContent = now.toLocaleDateString('en-IN',{
-        weekday:'long', day:'numeric', month:'long', year:'numeric'
-      });
-    }
-  }
-  tick();
-  setInterval(tick, 1000);
-}
-
-// ── MANUAL LOG SUBJECT SELECTION ────────────────────────
-function selectManualSubject(btn){
-  document.querySelectorAll('.manual-subj-pill').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-}
-
-function getSelectedManualSubject(){
-  const active = document.querySelector('.manual-subj-pill.active');
-  return active ? active.dataset.subj : '📌 General';
-}
-
-// ── ADD MANUAL SESSION ──────────────────────────────────
-function addManualSession(){
-  const dateEl = document.getElementById('manual-date');
-  const minsEl = document.getElementById('manual-mins');
-  const noteEl = document.getElementById('manual-note');
-
-  const dateStr = dateEl?.value;
-  const mins    = parseInt(minsEl?.value);
-  const note    = noteEl?.value?.trim() || '';
-  const subject = getSelectedManualSubject();
-
-  if(!dateStr){ showToast('Pick a date first!', 't-blue'); return; }
-  if(!mins || mins < 1){ showToast('Enter duration in minutes!', 't-blue'); return; }
-  if(mins > 720){ showToast('Max 720 minutes (12 hours)!', 't-blue'); return; }
-
-  const d = getData();
-
-  // 1 — Save to manual-logs list (for the history panel)
-  const manualLogs = JSON.parse(d['manual-logs'] || '[]');
-  const entry = {
-    id:      Date.now(),
-    date:    dateStr,
-    mins:    mins,
-    subject: subject,
-    note:    note,
-    loggedAt: new Date().toISOString()
-  };
-  manualLogs.unshift(entry);
-  d['manual-logs'] = JSON.stringify(manualLogs);
-
-  // 2 — Also push into timer-sessions for that date (so it appears in View by Date + weekly bars)
-  const sessions = JSON.parse(d['timer-sessions-' + dateStr] || '[]');
-  sessions.push({
-    id:        entry.id,
-    duration:  mins * 60,
-    mins:      mins,
-    startTime: '—',
-    endTime:   '—',
-    label:     subject + (note ? ' · ' + note.slice(0,40) : ''),
-    manual:    true
-  });
-  d['timer-sessions-' + dateStr] = JSON.stringify(sessions);
-
-  // 3 — Update weekly tracker total
-  const weekKey = 'timer-week-' + getMondayKey();
-  const week = JSON.parse(d[weekKey] || '{}');
-  week[dateStr] = (week[dateStr] || 0) + mins;
-  d[weekKey] = JSON.stringify(week);
-
-  setData(d);
-
-  // 4 — Clear form
-  if(minsEl) minsEl.value = '';
-  if(noteEl) noteEl.value = '';
-  document.querySelectorAll('.manual-subj-pill').forEach(b => b.classList.remove('active'));
-  document.querySelector('[data-subj="📌 General"]')?.classList.add('active');
-
-  // 5 — Refresh UI
-  renderManualLogHistory();
-  renderWeeklyTimerTracker();
-  renderSessionLog();
-  updateTimerHeaderStats();
-
-  showToast('Session logged! 📝 ' + mins + 'm of ' + subject);
-}
-
-// ── RENDER MANUAL LOG HISTORY ───────────────────────────
-function renderManualLogHistory(){
-  const d = getData();
-  const logs = JSON.parse(d['manual-logs'] || '[]');
-  const listEl = document.getElementById('manual-log-list');
-  const countEl = document.getElementById('manual-log-count');
-  if(countEl) countEl.textContent = logs.length + ' entr' + (logs.length === 1 ? 'y' : 'ies');
-  if(!listEl) return;
-
-  if(!logs.length){
-    listEl.innerHTML = '<div style="color:var(--muted);font-size:.82rem;text-align:center;padding:24px;font-family:var(--font-body)">No manual sessions logged yet.</div>';
-    return;
-  }
-
-  // Group by date
-  const grouped = {};
-  logs.forEach(log => {
-    if(!grouped[log.date]) grouped[log.date] = [];
-    grouped[log.date].push(log);
-  });
-
-  const sortedDates = Object.keys(grouped).sort((a,b) => b.localeCompare(a));
-
-  listEl.innerHTML = sortedDates.map(dateStr => {
-    const dayLogs = grouped[dateStr];
-    const dayTotal = dayLogs.reduce((a,l) => a + l.mins, 0);
-    const label = new Date(dateStr + 'T00:00:00')
-      .toLocaleDateString('en-IN',{weekday:'short',day:'numeric',month:'short',year:'numeric'});
-
-    return `
-    <div style="margin-bottom:14px">
-      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;flex-wrap:wrap;gap:4px">
-        <span style="font-size:.72rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;font-family:var(--font-mono)">${label}</span>
-        <span style="font-size:.68rem;color:var(--accent);font-family:var(--font-mono);font-weight:700">${dayTotal}m total</span>
-      </div>
-      ${dayLogs.map(log => `
-      <div style="display:flex;align-items:center;gap:12px;background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:10px 14px;margin-bottom:5px;transition:all .18s"
-        onmouseover="this.style.borderColor='var(--border2)'"
-        onmouseout="this.style.borderColor='var(--border)'">
-        <div style="font-size:.9rem;flex-shrink:0">${log.subject.split(' ')[0]}</div>
-        <div style="flex:1;min-width:0">
-          <div style="font-size:.82rem;font-weight:700;font-family:var(--font-body);color:var(--fg)">${log.subject}</div>
-          ${log.note ? `<div style="font-size:.7rem;color:var(--muted2);font-family:var(--font-body);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${log.note}</div>` : ''}
-        </div>
-        <div style="font-family:var(--font-mono);font-size:.88rem;font-weight:700;color:var(--amber);flex-shrink:0">${log.mins}m</div>
-        <button onclick="deleteManualLog(${log.id},'${dateStr}')"
-          style="background:none;border:none;color:var(--muted);cursor:pointer;font-size:.7rem;padding:3px 6px;border-radius:5px;transition:color .15s;flex-shrink:0"
-          onmouseover="this.style.color='var(--red)'"
-          onmouseout="this.style.color='var(--muted)'"
-          title="Delete this entry">✕</button>
-      </div>`).join('')}
-    </div>`;
-  }).join('');
-}
-
-// ── DELETE A MANUAL LOG ENTRY ───────────────────────────
-function deleteManualLog(id, dateStr){
-  const d = getData();
-  let logs = JSON.parse(d['manual-logs'] || '[]');
-  const entry = logs.find(l => l.id === id);
-  if(!entry) return;
-
-  // Remove from manual-logs
-  logs = logs.filter(l => l.id !== id);
-  d['manual-logs'] = JSON.stringify(logs);
-
-  // Also remove from timer-sessions for that date
-  let sessions = JSON.parse(d['timer-sessions-' + dateStr] || '[]');
-  sessions = sessions.filter(s => s.id !== id);
-  d['timer-sessions-' + dateStr] = JSON.stringify(sessions);
-
-  // Update weekly tracker
-  const weekKey = 'timer-week-' + getMondayKey();
-  const week = JSON.parse(d[weekKey] || '{}');
-  if(week[dateStr]) week[dateStr] = Math.max(0, (week[dateStr] || 0) - entry.mins);
-  d[weekKey] = JSON.stringify(week);
-
-  setData(d);
-  renderManualLogHistory();
-  renderWeeklyTimerTracker();
-  renderSessionLog();
-  updateTimerHeaderStats();
-  showToast('Entry deleted!');
-}
-
-// ── CLEAR ALL MANUAL LOGS ───────────────────────────────
-function clearAllManualLogs(){
-  if(!confirm('Clear all manual log entries? This cannot be undone.')) return;
-  const d = getData();
-  delete d['manual-logs'];
-  setData(d);
-  renderManualLogHistory();
-  showToast('All manual logs cleared!');
-}
-
-// ── INIT TIMER (add to DOMContentLoaded) ────────────────
-// NOTE: Add these two lines inside your DOMContentLoaded block:
-//   startLiveClock();
-//   renderManualLogHistory();
-//   document.getElementById('manual-date').value = new Date().toISOString().slice(0,10);
-//   document.getElementById('timer-date-inp').value = new Date().toISOString().slice(0,10);
-
-
-
 
 </script>
 </body>
