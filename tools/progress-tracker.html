@@ -927,9 +927,7 @@ footer.coodley-footer{background:var(--bg);border-top:1px solid var(--border);pa
 }
 .manual-subj-pill:hover { border-color:var(--border2); color:var(--fg); }
 .manual-subj-pill.active { border-color:var(--amber); color:var(--amber); background:rgba(244,169,66,.1); }
-@media(max-width:640px){
-  #sec-timer > div[style*="grid-template-columns:1fr 1fr"] { grid-template-columns:1fr !important; }
-}
+
 
 /* ══════════════════════════════════════════════════════════
    PASTE THIS into your <style> block, before closing </style>
@@ -947,16 +945,29 @@ footer.coodley-footer{background:var(--bg);border-top:1px solid var(--border);pa
   transition: all .18s;
   font-family: var(--font-body);
   white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
 }
 .pdf-quick-btn:hover {
   border-color: var(--pink);
   color: var(--pink);
   background: rgba(244,114,182,.08);
+  transform: translateY(-1px);
 }
 .pdf-quick-btn.active {
   border-color: var(--pink);
   color: var(--pink);
-  background: rgba(244,114,182,.12);
+  background: rgba(244,114,182,.15);
+  box-shadow: 0 0 12px rgba(244,114,182,.2);
+}
+
+/* PDF quick buttons responsive row */
+@media(max-width:600px){
+  .pdf-quick-btn{
+    font-size:.68rem;
+    padding:5px 10px;
+  }
 }
 
 .pdf-include-label {
