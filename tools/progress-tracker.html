@@ -986,6 +986,17 @@ footer.coodley-footer{background:var(--bg);border-top:1px solid var(--border);pa
   flex-shrink: 0;
 }
 
+
+@media(max-width:768px){
+  #sec-timer > div[style*="grid-template-columns:1fr 1fr"]{
+    grid-template-columns:1fr !important;
+  }
+  .timer-display{font-size:2.2rem;}
+  .timer-btns{gap:6px;}
+  .t-btn{padding:9px 14px;font-size:.8rem;}
+}
+
+
 </style>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
@@ -2703,44 +2714,7 @@ footer.coodley-footer{background:var(--bg);border-top:1px solid var(--border);pa
 
 </section>
 
-<!-- ══ CSS TO ADD inside your existing <style> block (before the closing </style>) ══ -->
-<!--
-PASTE THIS INTO YOUR <style> BLOCK:
 
-.manual-subj-pill {
-  padding:5px 12px;
-  border-radius:20px;
-  border:1px solid var(--border);
-  background:transparent;
-  color:var(--muted);
-  font-size:.72rem;
-  font-weight:600;
-  cursor:pointer;
-  transition:all .18s;
-  font-family:var(--font-body);
-  white-space:nowrap;
-}
-.manual-subj-pill:hover {
-  border-color:var(--border2);
-  color:var(--fg);
-}
-.manual-subj-pill.active {
-  border-color:var(--amber);
-  color:var(--amber);
-  background:rgba(244,169,66,.1);
-}
-
-@media(max-width:640px){
-  #sec-timer > div[style*="grid-template-columns:1fr 1fr"] {
-    grid-template-columns:1fr !important;
-  }
-}
--->
-
-<!-- ══ JAVASCRIPT FUNCTIONS TO ADD (before the closing </script> tag) ══ -->
-<!--
-PASTE THESE FUNCTIONS into your <script> block, right before the closing </script>:
--->
 
 <!-- BACKUP -->
 <section class="section" id="sec-backup">
@@ -4353,31 +4327,67 @@ function initDaily(){
     btn.addEventListener('click',()=>{document.querySelectorAll('.mood-btn').forEach(b=>b.classList.remove('selected'));btn.classList.add('selected');saveDailyData();});
   });
   buildHeatmap();
+  initHistoryButtons();
+  buildWeeklySummary();
+  loadReminderSettings();
+  setInterval(buildWeeklySummary, 60000);
+
+
 }
 function saveDailyData(){
-  const today=new Date().toISOString().slice(0,10);const d=getData();
-  const mood=document.querySelector('.mood-btn.selected');
-  d['dd-'+today]={hours:document.getElementById('d-hours')?.value||0,water:document.getElementById('d-water')?.value||0,sleep:document.getElementById('d-sleep')?.value||0,notes:document.getElementById('d-notes')?.value||'',built:document.getElementById('d-built')?.checked||false,leet:document.getElementById('d-leetcode')?.checked||false,mood:mood?mood.dataset.mood:''};
+  if(typeof isViewingHistory !== 'undefined' && isViewingHistory) return;
+  const today = currentDailyDate || new Date().toISOString().slice(0,10);
+  const d = getData();
+  const mood = document.querySelector('.mood-btn.selected');
+  d['dd-'+today] = {
+    hours: document.getElementById('d-hours')?.value || 0,
+    water: document.getElementById('d-water')?.value || 0,
+    sleep: document.getElementById('d-sleep')?.value || 0,
+    notes: document.getElementById('d-notes')?.value || '',
+    built: document.getElementById('d-built')?.checked || false,
+    leet:  document.getElementById('d-leetcode')?.checked || false,
+    mood:  mood ? mood.dataset.mood : ''
+  };
   setData(d);
 }
+
 function logDay(){
-  saveDailyData();const today=new Date().toISOString().slice(0,10);const d=getData();
-  const hrs=parseFloat(document.getElementById('d-hours')?.value)||1;d['day-'+today]=hrs;
-  // Count today first, then go backwards
-let streak = 0;
-const todayKey = 'day-' + new Date().toISOString().slice(0, 10);
-if(d[todayKey]) {
-  streak = 1;
-  for(let i = 1; i < 365; i++){
-    const dd = new Date();
-    dd.setDate(dd.getDate() - i);
-    if(d['day-' + dd.toISOString().slice(0, 10)]) streak++;
-    else break;
+  const todayStr = new Date().toISOString().slice(0,10);
+  const d = getData();
+  const hrs = parseFloat(document.getElementById('d-hours')?.value) || 1;
+  d['day-' + todayStr] = hrs;
+
+  const mood = document.querySelector('.mood-btn.selected');
+  const existing = d['dd-' + todayStr] || {};
+  d['dd-' + todayStr] = {
+    hours: document.getElementById('d-hours')?.value || hrs,
+    water: document.getElementById('d-water')?.value || existing.water || 0,
+    sleep: document.getElementById('d-sleep')?.value || existing.sleep || 0,
+    notes: document.getElementById('d-notes')?.value || existing.notes || '',
+    built: document.getElementById('d-built')?.checked || existing.built || false,
+    leet:  document.getElementById('d-leetcode')?.checked || existing.leet || false,
+    mood:  mood ? mood.dataset.mood : (existing.mood || '')
+  };
+
+  let streak = 0;
+  if(d['day-' + todayStr]) {
+    streak = 1;
+    for(let i = 1; i < 365; i++){
+      const dd = new Date();
+      dd.setDate(dd.getDate() - i);
+      if(d['day-' + dd.toISOString().slice(0,10)]) streak++;
+      else break;
+    }
   }
+
+  d['streak'] = streak;
+  setData(d);
+  safe('d-streak', streak);
+  showToast('Day logged! Streak: ' + streak + '🔥');
+  buildHeatmap();
+  updateStats();
 }
 
-  d['streak']=streak;setData(d);safe('d-streak',streak);showToast('Day logged! Streak: '+streak+'🔥');buildHeatmap();updateStats();
-}
 function buildHeatmap(){
   const c=document.getElementById('heatmap');if(!c)return;c.innerHTML='';const d=getData();
   for(let i=83;i>=0;i--){const dd=new Date();dd.setDate(dd.getDate()-i);const hrs=parseFloat(d['day-'+dd.toISOString().slice(0,10)])||0;let lvl=0;if(hrs>0)lvl=1;if(hrs>=3)lvl=2;if(hrs>=5)lvl=3;if(hrs>=7)lvl=4;
@@ -5158,11 +5168,11 @@ function updateAnalytics(){
   // Build all 4 charts
   // Small delay lets the canvas render first
   setTimeout(() => {
-    buildRadarChart(st);
-    buildBarChart(st);
-    buildLineChart();
-    buildDoughnutChart(st);
-  }, 80);
+    try { buildRadarChart(st); } catch(e){}
+    try { buildBarChart(st); }  catch(e){}
+    try { buildLineChart(); }   catch(e){}
+    try { buildDoughnutChart(st); } catch(e){}
+  }, 120);
 }
 
 function buildMonthTimeline(){
@@ -5973,7 +5983,7 @@ function resetTimer(){clearInterval(timerInterval);timerRunning=false;timerRemai
 function exportData(){
   const d = getData();
 
-  const exportObj = {
+ const exportObj = {
     _meta: {
       version: 'coodley-v3',
       exportedAt: new Date().toISOString(),
@@ -5983,6 +5993,9 @@ function exportData(){
       journalEntries: JSON.parse(d['journal'] || '[]').length,
       projects: JSON.parse(d['projects-list'] || '[]').length,
       applications: JSON.parse(d['apps-list'] || '[]').length,
+      todos: JSON.parse(d['todos'] || '[]').length,
+      manualLogs: JSON.parse(d['manual-logs'] || '[]').length,
+      resources: JSON.parse(d['custom-resources'] || '[]').length,
     },
     data: d
   };
@@ -6028,7 +6041,10 @@ function importData(event){
           `Topics done: ${meta.topicsDone}\n` +
           `Journal entries: ${meta.journalEntries}\n` +
           `Projects: ${meta.projects}\n` +
-          `Applications: ${meta.applications}\n\n` +
+          `Applications: ${meta.applications}\n` +
+          `Todos: ${meta.todos || '?'}\n` +
+          `Resources: ${meta.resources || '?'}\n` +
+          `Manual logs: ${meta.manualLogs || '?'}\n\n` +
           `This will REPLACE all current data on this device.`
         );
         if(!confirmed) return;
@@ -6220,6 +6236,17 @@ window.addEventListener('DOMContentLoaded', () => {
 try { renderManualLogHistory(); } catch(e){ console.error('manualLog failed:', e); }
 try { const md=document.getElementById('manual-date'); if(md) md.value=new Date().toISOString().slice(0,10); } catch(e){}
   try { updateDashboardExtras(); } catch(e){ console.error('dashboardExtras failed:', e); }
+  try {
+  const today = new Date().toISOString().slice(0,10);
+  const mon = new Date();
+  mon.setDate(mon.getDate() - (mon.getDay() === 0 ? 6 : mon.getDay() - 1));
+  const fromEl = document.getElementById('pdf-from-date');
+  const toEl   = document.getElementById('pdf-to-date');
+  if(fromEl) fromEl.value = mon.toISOString().slice(0,10);
+  if(toEl)   toEl.value   = today;
+  if(fromEl && toEl) updatePDFPreview();
+} catch(e){ console.error('PDF date init failed:', e); }
+
 });
 
 // ANALYTICS CHARTS
@@ -6944,23 +6971,7 @@ function loadDailyForDate(dateStr){
   }
 }
 
-// ── Override saveDailyData to use currentDailyDate ──
-const _origSaveDaily = saveDailyData;
-saveDailyData = function(){
-  if(isViewingHistory) return; // never save when viewing past
-  const d = getData();
-  const mood = document.querySelector('.mood-btn.selected');
-  d['dd-' + currentDailyDate] = {
-    hours:   document.getElementById('d-hours')?.value || 0,
-    water:   document.getElementById('d-water')?.value || 0,
-    sleep:   document.getElementById('d-sleep')?.value || 0,
-    notes:   document.getElementById('d-notes')?.value || '',
-    built:   document.getElementById('d-built')?.checked || false,
-    leet:    document.getElementById('d-leetcode')?.checked || false,
-    mood:    mood ? mood.dataset.mood : ''
-  };
-  setData(d);
-};
+
 
 // ── Weekly Summary ──
 function buildWeeklySummary(){
@@ -7144,18 +7155,6 @@ function loadReminderSettings(){
   });
 }
 
-// ── Hook into initDaily ──
-const _origInitDaily = initDaily;
-initDaily = function(){
-  _origInitDaily();
-  initHistoryButtons();
-  buildWeeklySummary();
-  loadReminderSettings();
-  // Refresh weekly summary every minute
-  setInterval(buildWeeklySummary, 60000);
-};
-
-// ===== END DAILY HISTORY + WEEKLY SUMMARY + REMINDERS =====
 
 
 
