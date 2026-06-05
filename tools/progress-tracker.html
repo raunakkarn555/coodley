@@ -699,6 +699,11 @@ footer.coodley-footer{background:var(--bg);border-top:1px solid var(--border);pa
   .hero{padding:24px;}
   .hero h1{font-size:1.8rem;}
   .job-checklist-grid{grid-template-columns:1fr;}
+
+  .timer-display{font-size:2.5rem;}
+.timer-btns{justify-content:center;}
+.t-btn{padding:10px 18px;font-size:.82rem;}
+#session-stats-row{grid-template-columns:repeat(2,1fr);}
 }
 @media(max-width:380px){
   .stats-grid{grid-template-columns:1fr 1fr;}
@@ -2310,6 +2315,7 @@ footer.coodley-footer{background:var(--bg);border-top:1px solid var(--border);pa
 </section>
 
 <!-- TIMER -->
+<!-- TIMER -->
 <section class="section" id="sec-timer">
   <div class="sec-title">
     <div class="sec-icon si-blue">
@@ -2317,121 +2323,181 @@ footer.coodley-footer{background:var(--bg);border-top:1px solid var(--border);pa
     </div>
     Focus Timer
   </div>
-  <div class="timer-card">
-    <div style="text-align:center"><div style="font-size:.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px;font-weight:700;font-family:var(--font-body)">Focus Session Timer</div><div class="timer-display" id="timer-disp">1:30:00</div></div>
-    <div class="timer-prog"><div class="timer-prog-fill" id="timer-prog-fill" style="width:100%"></div></div>
-    <div class="timer-preset-row">
-      <button class="timer-preset" onclick="setTimerPreset(0,25)">25 min</button>
-      <button class="timer-preset" onclick="setTimerPreset(0,45)">45 min</button>
-      <button class="timer-preset" onclick="setTimerPreset(1,0)">1 hr</button>
-      <button class="timer-preset" onclick="setTimerPreset(1,30)">1.5 hr</button>
-      <button class="timer-preset" onclick="setTimerPreset(2,0)">2 hr</button>
-      <button class="timer-preset" onclick="setTimerPreset(3,0)">3 hr</button>
+
+  <!-- STAT CARDS ROW -->
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:12px;margin-bottom:20px">
+    <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-lg);padding:16px;text-align:center">
+      <div style="font-size:.6rem;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;font-weight:700;margin-bottom:6px;font-family:var(--font-body)">Today</div>
+      <div style="font-family:var(--font-mono);font-size:1.4rem;font-weight:700;color:var(--accent)" id="timer-stat-today">0m</div>
     </div>
-    <div style="display:flex;align-items:center;gap:8px;justify-content:center;margin-bottom:14px;flex-wrap:wrap">
+    <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-lg);padding:16px;text-align:center">
+      <div style="font-size:.6rem;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;font-weight:700;margin-bottom:6px;font-family:var(--font-body)">Best Session</div>
+      <div style="font-family:var(--font-mono);font-size:1.4rem;font-weight:700;color:var(--amber)" id="timer-stat-best">—</div>
+    </div>
+    <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-lg);padding:16px;text-align:center">
+      <div style="font-size:.6rem;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;font-weight:700;margin-bottom:6px;font-family:var(--font-body)">Total Focus</div>
+      <div style="font-family:var(--font-mono);font-size:1.4rem;font-weight:700;color:var(--blue)" id="timer-stat-total">0m</div>
+    </div>
+    <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-lg);padding:16px;text-align:center">
+      <div style="font-size:.6rem;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;font-weight:700;margin-bottom:6px;font-family:var(--font-body)">All Sessions</div>
+      <div style="font-family:var(--font-mono);font-size:1.4rem;font-weight:700;color:var(--pink)" id="timer-stat-sessions-all">0</div>
+    </div>
+  </div>
+
+  <!-- MAIN TIMER CARD -->
+  <div class="timer-card">
+
+    <!-- Day goal progress bar -->
+    <div style="margin-bottom:16px">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+        <span style="font-size:.68rem;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.07em;font-family:var(--font-body)">Daily Focus Goal</span>
+        <span style="font-size:.7rem;font-family:var(--font-mono);color:var(--muted2)" id="session-day-goal">0m / 180m goal</span>
+      </div>
+      <div style="height:5px;background:var(--bg4);border-radius:3px;overflow:hidden">
+        <div id="session-day-bar" style="height:100%;width:0%;background:linear-gradient(90deg,var(--accent),var(--blue));border-radius:3px;transition:width .5s"></div>
+      </div>
+    </div>
+
+    <div style="text-align:center">
+      <div style="font-size:.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px;font-weight:700;font-family:var(--font-body)" id="timer-phase-label">Focus Session</div>
+      <div class="timer-display" id="timer-disp">1:30:00</div>
+    </div>
+
+    <div class="timer-prog"><div class="timer-prog-fill" id="timer-prog-fill" style="width:100%"></div></div>
+
+    <!-- Presets -->
+    <div class="timer-preset-row">
+      <button class="timer-preset" onclick="setTimerPreset(0,25)">25m</button>
+      <button class="timer-preset" onclick="setTimerPreset(0,45)">45m</button>
+      <button class="timer-preset" onclick="setTimerPreset(1,0)">1h</button>
+      <button class="timer-preset" onclick="setTimerPreset(1,30)">1.5h</button>
+      <button class="timer-preset" onclick="setTimerPreset(2,0)">2h</button>
+      <button class="timer-preset" onclick="setTimerPreset(3,0)">3h</button>
+    </div>
+
+    <!-- Custom time input -->
+    <div style="display:flex;align-items:center;gap:8px;justify-content:center;margin-bottom:16px;flex-wrap:wrap">
       <div style="font-size:.72rem;color:var(--muted);font-weight:600;font-family:var(--font-body)">Custom:</div>
       <input type="number" id="t-h" min="0" max="12" value="1" style="width:55px;background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:7px 8px;color:var(--fg);font-family:var(--font-mono);font-size:.9rem;font-weight:700;text-align:center;outline:none"/>
       <span style="color:var(--muted);font-weight:700">:</span>
       <input type="number" id="t-m" min="0" max="59" value="30" style="width:55px;background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:7px 8px;color:var(--fg);font-family:var(--font-mono);font-size:.9rem;font-weight:700;text-align:center;outline:none"/>
       <button class="timer-preset" onclick="setCustomTimer()">Set</button>
     </div>
-    <div class="timer-btns"><button class="t-btn t-btn-start" id="timer-start-btn" onclick="toggleTimer()">▶ Start</button><button class="t-btn t-btn-reset" onclick="resetTimer()">↺ Reset</button></div>
+
+    <!-- Main buttons -->
+    <div class="timer-btns" style="flex-wrap:wrap;gap:10px">
+      <button class="t-btn t-btn-start" id="timer-start-btn" onclick="toggleTimer()">▶ Start</button>
+      <button class="t-btn t-btn-reset" onclick="resetTimer()">↺ Reset</button>
+      <button class="t-btn" style="border-color:rgba(61,232,176,.4);color:var(--accent)" onclick="startLap()">+ Lap</button>
+    </div>
+
     <p style="text-align:center;font-size:.75rem;color:var(--muted);margin-top:16px;font-family:var(--font-body)">💡 Pomodoro: 25 min focus → 5 min break → repeat 4x → long break</p>
-    <!-- Session Log -->
-<div style="margin-top:20px;background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px" id="session-log-card">
-  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;flex-wrap:wrap;gap:8px">
-    <h4 style="font-family:var(--font-head);font-weight:800;font-size:.95rem;display:flex;align-items:center;gap:8px">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-      Today's Sessions
-    </h4>
-    <button onclick="clearSessionLog()" style="background:none;border:1px solid rgba(245,101,101,.3);border-radius:8px;color:var(--red);font-size:.72rem;padding:4px 10px;cursor:pointer;font-family:var(--font-body)">Clear</button>
   </div>
 
-  <!-- Stats Row -->
-  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(90px,1fr));gap:10px;margin-bottom:16px" id="session-stats-row">
-    <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-lg);padding:12px;text-align:center">
-      <div style="font-family:var(--font-mono);font-size:1.4rem;font-weight:700;color:var(--accent);line-height:1" id="sess-total-count">0</div>
-      <div style="font-size:.6rem;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-top:4px">Sessions</div>
+  <!-- 2-COLUMN GRID FOR SECONDARY CARDS -->
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-top:16px">
+
+    <!-- SESSION LOG -->
+    <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-xl);padding:22px" id="session-log-card">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;flex-wrap:wrap;gap:8px">
+        <h4 style="font-family:var(--font-head);font-weight:800;font-size:.95rem;display:flex;align-items:center;gap:8px">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          Today's Sessions
+        </h4>
+        <button onclick="clearSessionLog()" style="background:none;border:1px solid rgba(245,101,101,.3);border-radius:8px;color:var(--red);font-size:.72rem;padding:4px 10px;cursor:pointer;font-family:var(--font-body)">Clear</button>
+      </div>
+
+      <!-- Session Stats Row -->
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:14px" id="session-stats-row">
+        <div style="background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius-lg);padding:10px;text-align:center">
+          <div style="font-family:var(--font-mono);font-size:1.2rem;font-weight:700;color:var(--accent);line-height:1" id="sess-total-count">0</div>
+          <div style="font-size:.55rem;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-top:3px">Sessions</div>
+        </div>
+        <div style="background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius-lg);padding:10px;text-align:center">
+          <div style="font-family:var(--font-mono);font-size:1.2rem;font-weight:700;color:var(--blue);line-height:1" id="sess-total-mins">0m</div>
+          <div style="font-size:.55rem;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-top:3px">Total</div>
+        </div>
+        <div style="background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius-lg);padding:10px;text-align:center">
+          <div style="font-family:var(--font-mono);font-size:1.2rem;font-weight:700;color:var(--amber);line-height:1" id="sess-pomodoros">0</div>
+          <div style="font-size:.55rem;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-top:3px">🍅</div>
+        </div>
+        <div style="background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius-lg);padding:10px;text-align:center">
+          <div style="font-family:var(--font-mono);font-size:1.2rem;font-weight:700;color:var(--pink);line-height:1" id="sess-longest">—</div>
+          <div style="font-size:.55rem;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-top:3px">Longest</div>
+        </div>
+      </div>
+
+      <!-- Sound toggle -->
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius);padding:10px 14px">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+        <span style="font-size:.82rem;font-weight:600;font-family:var(--font-body);flex:1">Sound on complete</span>
+        <label class="reminder-toggle"><input type="checkbox" id="timer-sound-toggle" checked onchange="saveTimerSettings()"/><span class="rtoggle-slider"></span></label>
+      </div>
+
+      <!-- Session list -->
+      <div id="session-log-list" style="display:flex;flex-direction:column;gap:6px;max-height:240px;overflow-y:auto">
+        <div style="text-align:center;color:var(--muted);font-size:.82rem;padding:16px;font-family:var(--font-body)">No sessions yet. Start the timer! 🎯</div>
+      </div>
     </div>
-    <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-lg);padding:12px;text-align:center">
-      <div style="font-family:var(--font-mono);font-size:1.4rem;font-weight:700;color:var(--blue);line-height:1" id="sess-total-mins">0m</div>
-      <div style="font-size:.6rem;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-top:4px">Total Time</div>
+
+    <!-- LAP TRACKER + POMODORO -->
+    <div style="display:flex;flex-direction:column;gap:16px">
+
+      <!-- Lap Tracker -->
+      <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-xl);padding:22px">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
+          <h4 style="font-family:var(--font-head);font-weight:800;font-size:.95rem">⏱ Lap Tracker</h4>
+          <button onclick="clearLaps()" style="background:none;border:1px solid var(--border);border-radius:8px;color:var(--muted);font-size:.72rem;padding:4px 10px;cursor:pointer;font-family:var(--font-body)">Clear</button>
+        </div>
+        <div id="lap-list" style="max-height:160px;overflow-y:auto">
+          <div style="color:var(--muted);font-size:.78rem;text-align:center;padding:8px">Hit "+ Lap" while timer runs to record split times</div>
+        </div>
+      </div>
+
+      <!-- Pomodoro Mode -->
+      <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-xl);padding:22px" id="pomodoro-card">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;flex-wrap:wrap;gap:10px">
+          <h4 style="font-family:var(--font-head);font-weight:800;font-size:.95rem">🍅 Pomodoro Mode</h4>
+          <label style="display:flex;align-items:center;gap:8px;cursor:pointer;font-size:.82rem;font-family:var(--font-body)">
+            <input type="checkbox" id="pomodoro-toggle" onchange="togglePomodoroMode(this.checked)" style="width:15px;height:15px;accent-color:var(--red);cursor:pointer"/>
+            Enable auto-cycle
+          </label>
+        </div>
+        <div id="pomodoro-display" style="display:none">
+          <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:12px" id="pomodoro-dots"></div>
+          <div style="font-size:.78rem;color:var(--muted2);font-family:var(--font-body);line-height:1.7">🍅 Work 25m → ☕ Break 5m → repeat 4x → 🎉 Long break 15m</div>
+          <div style="margin-top:10px;font-size:.78rem;color:var(--muted);font-family:var(--font-mono)" id="pomodoro-phase-label">Phase: Work</div>
+        </div>
+        <div id="pomodoro-off-msg" style="font-size:.82rem;color:var(--muted2);font-family:var(--font-body)">Turn on to auto-cycle: 25m work → 5m break → repeat</div>
+      </div>
+
     </div>
-    <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-lg);padding:12px;text-align:center">
-      <div style="font-family:var(--font-mono);font-size:1.4rem;font-weight:700;color:var(--amber);line-height:1" id="sess-pomodoros">0</div>
-      <div style="font-size:.6rem;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-top:4px">Pomodoros</div>
+  </div>
+
+  <!-- WEEKLY TRACKER + DATE PICKER -->
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-top:16px">
+
+    <!-- Weekly bars -->
+    <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-xl);padding:22px" id="timer-weekly-card">
+      <h4 style="font-family:var(--font-head);font-weight:800;font-size:.95rem;margin-bottom:14px">📊 This Week's Focus</h4>
+      <div id="weekly-timer-bars" style="display:flex;gap:8px;align-items:flex-end;height:80px;margin-bottom:8px"></div>
+      <div id="weekly-timer-labels" style="display:flex;gap:8px"></div>
+      <div id="weekly-timer-total" style="margin-top:10px;font-size:.75rem;color:var(--muted2);font-family:var(--font-body)"></div>
     </div>
-    <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-lg);padding:12px;text-align:center">
-      <div style="font-family:var(--font-mono);font-size:1.4rem;font-weight:700;color:var(--pink);line-height:1" id="sess-longest">—</div>
-      <div style="font-size:.6rem;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-top:4px">Longest</div>
+
+    <!-- Date session picker -->
+    <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-xl);padding:22px" id="timer-date-picker-card">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;flex-wrap:wrap;gap:10px">
+        <h4 style="font-family:var(--font-head);font-weight:800;font-size:.95rem">📅 View by Date</h4>
+        <input type="date" id="timer-date-inp" style="background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:7px 12px;color:var(--fg);font-family:var(--font-mono);font-size:.82rem;outline:none;cursor:pointer;color-scheme:dark" onchange="loadSessionsForDate(this.value)"/>
+      </div>
+      <div id="timer-date-sessions">
+        <div style="color:var(--muted);font-size:.82rem;text-align:center;padding:12px">Pick a date to see sessions</div>
+      </div>
     </div>
+
   </div>
 
-  <!-- Sound Toggle -->
-  <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:10px 14px;flex-wrap:wrap">
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
-    <span style="font-size:.82rem;font-weight:600;font-family:var(--font-body);flex:1">Sound on session complete</span>
-    <label class="reminder-toggle">
-      <input type="checkbox" id="timer-sound-toggle" checked onchange="saveTimerSettings()"/>
-      <span class="rtoggle-slider"></span>
-    </label>
-  </div>
-
-  <!-- Session List -->
-  <div id="session-log-list" style="display:flex;flex-direction:column;gap:8px;max-height:260px;overflow-y:auto">
-    <div style="text-align:center;color:var(--muted);font-size:.82rem;padding:16px;font-family:var(--font-body)">No sessions yet. Start the timer! 🎯</div>
-  </div>
-</div>
-
-<!-- DATE PICKER + WEEKLY TRACKER -->
-<div id="timer-date-picker-card" style="margin-top:16px;background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-xl);padding:22px">
-  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;flex-wrap:wrap;gap:10px">
-    <h4 style="font-family:var(--font-head);font-weight:800;font-size:.95rem;display:flex;align-items:center;gap:8px">
-      📅 View Sessions by Date
-    </h4>
-    <input type="date" id="timer-date-inp"
-      style="background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:7px 12px;color:var(--fg);font-family:var(--font-mono);font-size:.82rem;outline:none;cursor:pointer;color-scheme:dark"
-      onchange="loadSessionsForDate(this.value)"/>
-  </div>
-  <div id="timer-date-sessions">
-    <div style="color:var(--muted);font-size:.82rem;text-align:center;padding:12px">Pick a date above to see sessions</div>
-  </div>
-</div>
-
-<!-- WEEKLY TIMER TRACKER -->
-<div id="timer-weekly-card" style="margin-top:16px;background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-xl);padding:22px">
-  <h4 style="font-family:var(--font-head);font-weight:800;font-size:.95rem;margin-bottom:14px;display:flex;align-items:center;gap:8px">
-    📊 This Week's Focus Time
-  </h4>
-  <div id="weekly-timer-bars" style="display:flex;gap:8px;align-items:flex-end;height:80px;margin-bottom:8px"></div>
-  <div id="weekly-timer-labels" style="display:flex;gap:8px"></div>
-  <div id="weekly-timer-total" style="margin-top:10px;font-size:.78rem;color:var(--muted2);font-family:var(--font-body)"></div>
-</div>
-
-<!-- POMODORO MODE CARD -->
-<div id="pomodoro-card" style="margin-top:16px;background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-xl);padding:22px">
-  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;flex-wrap:wrap;gap:10px">
-    <h4 style="font-family:var(--font-head);font-weight:800;font-size:.95rem;display:flex;align-items:center;gap:8px">
-      🍅 Pomodoro Mode
-    </h4>
-    <label style="display:flex;align-items:center;gap:8px;cursor:pointer;font-size:.82rem;font-family:var(--font-body)">
-      <input type="checkbox" id="pomodoro-toggle" onchange="togglePomodoroMode(this.checked)"
-        style="width:15px;height:15px;accent-color:var(--red);cursor:pointer"/>
-      Enable Pomodoro auto-cycle
-    </label>
-  </div>
-  <div id="pomodoro-display" style="display:none">
-    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:12px" id="pomodoro-dots"></div>
-    <div style="font-size:.82rem;color:var(--muted2);font-family:var(--font-body);line-height:1.7">
-      🍅 Work 25m → ☕ Break 5m → repeat 4x → 🎉 Long break 15m
-    </div>
-    <div style="margin-top:10px;font-size:.78rem;color:var(--muted);font-family:var(--font-mono)" id="pomodoro-phase-label">Phase: Work</div>
-  </div>
-  <div id="pomodoro-off-msg" style="font-size:.82rem;color:var(--muted2);font-family:var(--font-body)">
-    Turn on to auto-cycle: 25 min work → 5 min break → repeat. Timer sets itself automatically.
-  </div>
-</div>
-  </div>
 </section>
 
 <!-- BACKUP -->
@@ -5820,7 +5886,7 @@ function initNav(){
       if(sec==='analytics')updateAnalytics();
       if(sec==='overview')updateOverview();
       if(sec==='backup')updateStorageInfo();
-      if(sec==='timer'){renderWeeklyTimerTracker();renderSessionLog();}
+      if(sec==='timer'){renderWeeklyTimerTracker();renderSessionLog();updateTimerHeaderStats();}
       if(sec==='jobhunt'){loadApplications();buildInterviewChecklist();}
     });
   });
@@ -7096,6 +7162,7 @@ function logTimerSession(totalSeconds, dateStr){
   setData(d);
   renderSessionLog();
   renderWeeklyTimerTracker();
+  updateTimerHeaderStats();
 }
 
 function getMondayKey(){
@@ -7240,6 +7307,97 @@ function renderWeeklyTimerTracker(){
   labelsEl.innerHTML = days.map(d=>`<div style="flex:1;text-align:center;font-size:.6rem;color:${d.isToday?'var(--accent)':'var(--muted)'};font-family:var(--font-body);font-weight:${d.isToday?'700':'400'}">${d.name}</div>`).join('');
   if(totalEl) totalEl.textContent = `Week total: ${weekTotal}m${weekTotal>=60?' ('+Math.floor(weekTotal/60)+'h '+weekTotal%60+'m)':''} · Click any bar to see that day\'s sessions`;
 }
+
+
+// ===== NEW TIMER FUNCTIONS =====
+
+// 1. Lap/split tracking
+let lapStartTime = null;
+const laps = [];
+
+function startLap(){
+  if(!timerRunning){ showToast('Start the timer first!','t-blue'); return; }
+  const now = new Date();
+  if(lapStartTime){
+    const diff = Math.round((now - lapStartTime)/1000);
+    laps.push({ time: formatTimer(diff), label: 'Lap ' + laps.length, at: now.toLocaleTimeString('en-IN',{hour:'2-digit',minute:'2-digit'}) });
+    renderLaps();
+  }
+  lapStartTime = now;
+}
+
+function renderLaps(){
+  const el = document.getElementById('lap-list');
+  if(!el) return;
+  if(!laps.length){ el.innerHTML = '<div style="color:var(--muted);font-size:.78rem;text-align:center;padding:8px">No laps yet</div>'; return; }
+  el.innerHTML = [...laps].reverse().map((l,i) =>
+    `<div style="display:flex;justify-content:space-between;align-items:center;padding:6px 10px;background:var(--bg3);border-radius:8px;margin-bottom:4px;font-size:.78rem">
+      <span style="color:var(--muted2);font-family:var(--font-body)">${l.label}</span>
+      <span style="color:var(--muted);font-size:.65rem">${l.at}</span>
+      <span style="font-family:var(--font-mono);font-weight:700;color:var(--accent)">${l.time}</span>
+    </div>`
+  ).join('');
+}
+
+function clearLaps(){ laps.length=0; lapStartTime=null; renderLaps(); }
+
+// 2. Session goal for the day
+function updateSessionGoalProgress(){
+  const d = getData();
+  const today = new Date().toISOString().slice(0,10);
+  const sessions = JSON.parse(d['timer-sessions-'+today]||'[]');
+  const totalMins = Math.round(sessions.reduce((a,s)=>a+s.mins,0));
+  const goal = parseInt(d['p-daily']||3)*60;
+  const pct = Math.min(100, Math.round(totalMins/goal*100));
+  const el = document.getElementById('session-day-goal');
+  const bar = document.getElementById('session-day-bar');
+  if(el) el.textContent = totalMins + 'm / ' + goal + 'm goal';
+  if(bar) bar.style.width = pct + '%';
+}
+
+// 3. Best session badge
+function getBestSession(){
+  const d = getData();
+  let best = 0;
+  Object.keys(d).forEach(k => {
+    if(k.startsWith('timer-sessions-')){
+      const sessions = JSON.parse(d[k]||'[]');
+      sessions.forEach(s => { if(s.mins > best) best = s.mins; });
+    }
+  });
+  return best;
+}
+
+// 4. Total lifetime focus time
+function getTotalFocusTime(){
+  const d = getData();
+  let total = 0;
+  Object.keys(d).forEach(k => {
+    if(k.startsWith('timer-sessions-')){
+      const sessions = JSON.parse(d[k]||'[]');
+      sessions.forEach(s => { total += s.mins; });
+    }
+  });
+  return total;
+}
+
+// 5. Update the stats header cards in timer section
+function updateTimerHeaderStats(){
+  const best = getBestSession();
+  const total = getTotalFocusTime();
+  const d = getData();
+  const today = new Date().toISOString().slice(0,10);
+  const todaySessions = JSON.parse(d['timer-sessions-'+today]||'[]');
+  const todayMins = Math.round(todaySessions.reduce((a,s)=>a+s.mins,0));
+  
+  safe('timer-stat-today', todayMins >= 60 ? (todayMins/60).toFixed(1)+'h' : todayMins+'m');
+  safe('timer-stat-best', best >= 60 ? (best/60).toFixed(1)+'h' : best+'m');
+  safe('timer-stat-total', total >= 60 ? Math.floor(total/60)+'h' : total+'m');
+  safe('timer-stat-sessions-all', Object.keys(d).filter(k=>k.startsWith('timer-sessions-')).reduce((a,k)=>a+JSON.parse(d[k]||'[]').length,0));
+  updateSessionGoalProgress();
+}
+
+// ===== END NEW TIMER FUNCTIONS =====
 
 function togglePomodoroMode(on){
   pomodoroMode = on;
