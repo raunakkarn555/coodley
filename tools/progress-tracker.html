@@ -931,6 +931,60 @@ footer.coodley-footer{background:var(--bg);border-top:1px solid var(--border);pa
   #sec-timer > div[style*="grid-template-columns:1fr 1fr"] { grid-template-columns:1fr !important; }
 }
 
+/* ══════════════════════════════════════════════════════════
+   PASTE THIS into your <style> block, before closing </style>
+   ══════════════════════════════════════════════════════════ */
+
+.pdf-quick-btn {
+  padding: 6px 14px;
+  border-radius: 20px;
+  border: 1px solid var(--border2);
+  background: var(--bg3);
+  color: var(--muted2);
+  font-size: .72rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all .18s;
+  font-family: var(--font-body);
+  white-space: nowrap;
+}
+.pdf-quick-btn:hover {
+  border-color: var(--pink);
+  color: var(--pink);
+  background: rgba(244,114,182,.08);
+}
+.pdf-quick-btn.active {
+  border-color: var(--pink);
+  color: var(--pink);
+  background: rgba(244,114,182,.12);
+}
+
+.pdf-include-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: .78rem;
+  font-family: var(--font-body);
+  color: var(--muted2);
+  cursor: pointer;
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 5px 12px;
+  transition: all .18s;
+  user-select: none;
+}
+.pdf-include-label:hover {
+  border-color: var(--border2);
+  color: var(--fg);
+}
+.pdf-include-label input {
+  accent-color: var(--pink);
+  width: 12px;
+  height: 12px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
 
 </style>
 
@@ -2580,6 +2634,71 @@ footer.coodley-footer{background:var(--bg);border-top:1px solid var(--border);pa
   <div id="manual-log-list">
     <div style="color:var(--muted);font-size:.82rem;text-align:center;padding:24px;font-family:var(--font-body)">No manual sessions logged yet. Use the form above to add past sessions.</div>
   </div>
+</div>
+
+<!-- ── PDF EXPORT REPORT ── -->
+<div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-xl);padding:24px;margin-top:20px">
+
+  <!-- Header row -->
+  <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:20px;flex-wrap:wrap;gap:14px">
+    <div style="display:flex;align-items:center;gap:12px">
+      <div style="width:42px;height:42px;border-radius:12px;background:linear-gradient(135deg,rgba(244,114,182,.15),rgba(157,124,245,.12));border:1px solid rgba(244,114,182,.3);display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0">📄</div>
+      <div>
+        <div style="font-family:var(--font-head);font-weight:800;font-size:1rem">Export Study Report</div>
+        <div style="font-size:.72rem;color:var(--muted);font-family:var(--font-body);margin-top:2px">Generate a detailed PDF of your focus sessions, manual logs, stats & heatmap for any date range</div>
+      </div>
+    </div>
+    <!-- Quick range buttons -->
+    <div style="display:flex;gap:6px;flex-wrap:wrap">
+      <button class="pdf-quick-btn" onclick="setPDFRange('today')">Today</button>
+      <button class="pdf-quick-btn" onclick="setPDFRange('week')">This Week</button>
+      <button class="pdf-quick-btn" onclick="setPDFRange('month')">This Month</button>
+      <button class="pdf-quick-btn" onclick="setPDFRange('all')">All Time</button>
+    </div>
+  </div>
+
+  <!-- Date range picker row -->
+  <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:18px;background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius-lg);padding:14px 18px">
+    <span style="font-size:.72rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;font-family:var(--font-body);flex-shrink:0">📅 From</span>
+    <input type="date" id="pdf-from-date"
+      style="background:var(--bg2);border:1px solid var(--border2);border-radius:8px;padding:7px 12px;color:var(--fg);font-family:var(--font-mono);font-size:.82rem;font-weight:700;outline:none;cursor:pointer;color-scheme:dark;transition:border-color .2s"
+      onfocus="this.style.borderColor='var(--pink)'" onblur="this.style.borderColor='var(--border2)'"
+      onchange="updatePDFPreview()"/>
+    <span style="font-size:.72rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;font-family:var(--font-body);flex-shrink:0">To</span>
+    <input type="date" id="pdf-to-date"
+      style="background:var(--bg2);border:1px solid var(--border2);border-radius:8px;padding:7px 12px;color:var(--fg);font-family:var(--font-mono);font-size:.82rem;font-weight:700;outline:none;cursor:pointer;color-scheme:dark;transition:border-color .2s"
+      onfocus="this.style.borderColor='var(--pink)'" onblur="this.style.borderColor='var(--border2)'"
+      onchange="updatePDFPreview()"/>
+    <!-- Live preview stats -->
+    <div style="display:flex;gap:14px;margin-left:auto;flex-wrap:wrap" id="pdf-preview-stats">
+      <span style="font-size:.72rem;color:var(--muted2);font-family:var(--font-body)">Select a range to preview</span>
+    </div>
+  </div>
+
+  <!-- Sections to include -->
+  <div style="margin-bottom:18px">
+    <div style="font-size:.65rem;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.07em;font-family:var(--font-body);margin-bottom:10px">Include in report</div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap" id="pdf-include-options">
+      <label class="pdf-include-label"><input type="checkbox" id="pdf-inc-summary" checked onchange="updatePDFPreview()"/> Summary Stats</label>
+      <label class="pdf-include-label"><input type="checkbox" id="pdf-inc-heatmap" checked onchange="updatePDFPreview()"/> Daily Heatmap</label>
+      <label class="pdf-include-label"><input type="checkbox" id="pdf-inc-sessions" checked onchange="updatePDFPreview()"/> Timer Sessions</label>
+      <label class="pdf-include-label"><input type="checkbox" id="pdf-inc-manual" checked onchange="updatePDFPreview()"/> Manual Logs</label>
+      <label class="pdf-include-label"><input type="checkbox" id="pdf-inc-daily" checked onchange="updatePDFPreview()"/> Daily Notes</label>
+      <label class="pdf-include-label"><input type="checkbox" id="pdf-inc-journal" onchange="updatePDFPreview()"/> Journal Entries</label>
+      <label class="pdf-include-label"><input type="checkbox" id="pdf-inc-todos" onchange="updatePDFPreview()"/> To-Do Tasks</label>
+    </div>
+  </div>
+
+  <!-- Generate button -->
+  <button onclick="generateTimerPDF()"
+    style="width:100%;background:linear-gradient(135deg,rgba(244,114,182,.2),rgba(157,124,245,.15));border:1px solid rgba(244,114,182,.45);border-radius:var(--radius-lg);padding:14px;font-family:var(--font-head);font-size:.95rem;font-weight:800;color:var(--pink);cursor:pointer;transition:all .25s;display:flex;align-items:center;justify-content:center;gap:10px;letter-spacing:-.01em"
+    onmouseover="this.style.background='linear-gradient(135deg,rgba(244,114,182,.3),rgba(157,124,245,.22))';this.style.transform='translateY(-2px)'"
+    onmouseout="this.style.background='linear-gradient(135deg,rgba(244,114,182,.2),rgba(157,124,245,.15))';this.style.transform='translateY(0)'">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><polyline points="9 15 12 18 15 15"/></svg>
+    Generate & Download PDF Report
+  </button>
+
+  <p style="font-size:.68rem;color:var(--muted);text-align:center;margin-top:10px;font-family:var(--font-body)">Opens a print-ready page — use browser's Print → Save as PDF. Works in Chrome, Edge, Firefox.</p>
 </div>
 
 </section>
@@ -7829,7 +7948,525 @@ function clearAllManualLogs(){
 //   document.getElementById('timer-date-inp').value = new Date().toISOString().slice(0,10);
 
 
+// ══════════════════════════════════════════════════════════
+// PASTE ALL THIS into your <script> block, before script end tag
+// ══════════════════════════════════════════════════════════
 
+// ── PDF QUICK RANGE SETTER ──────────────────────────────
+function setPDFRange(preset){
+  const today = new Date();
+  const fromEl = document.getElementById('pdf-from-date');
+  const toEl   = document.getElementById('pdf-to-date');
+  if(!fromEl || !toEl) return;
+
+  document.querySelectorAll('.pdf-quick-btn').forEach(b => b.classList.remove('active'));
+  event?.target?.classList.add('active');
+
+  const fmt = d => d.toISOString().slice(0,10);
+
+  if(preset === 'today'){
+    fromEl.value = fmt(today);
+    toEl.value   = fmt(today);
+  } else if(preset === 'week'){
+    const mon = new Date(today);
+    mon.setDate(today.getDate() - (today.getDay() === 0 ? 6 : today.getDay() - 1));
+    fromEl.value = fmt(mon);
+    toEl.value   = fmt(today);
+  } else if(preset === 'month'){
+    fromEl.value = fmt(new Date(today.getFullYear(), today.getMonth(), 1));
+    toEl.value   = fmt(today);
+  } else if(preset === 'all'){
+    // go back 1 year as default "all"
+    const yearAgo = new Date(today);
+    yearAgo.setFullYear(today.getFullYear() - 1);
+    fromEl.value = fmt(yearAgo);
+    toEl.value   = fmt(today);
+  }
+  updatePDFPreview();
+}
+
+// ── UPDATE PREVIEW STATS ────────────────────────────────
+function updatePDFPreview(){
+  const fromVal = document.getElementById('pdf-from-date')?.value;
+  const toVal   = document.getElementById('pdf-to-date')?.value;
+  const previewEl = document.getElementById('pdf-preview-stats');
+  if(!previewEl) return;
+
+  if(!fromVal || !toVal){
+    previewEl.innerHTML = '<span style="font-size:.72rem;color:var(--muted2);font-family:var(--font-body)">Select a range to preview</span>';
+    return;
+  }
+
+  const d = getData();
+  const stats = collectPDFData(fromVal, toVal, d);
+
+  previewEl.innerHTML = [
+    { val: stats.totalDays, label: 'days', color: 'var(--blue)' },
+    { val: stats.activeDays, label: 'active', color: 'var(--accent)' },
+    { val: stats.totalMins + 'm', label: 'focus', color: 'var(--amber)' },
+    { val: stats.sessionCount, label: 'sessions', color: 'var(--pink)' },
+    { val: stats.manualCount, label: 'manual', color: 'var(--purple)' },
+  ].map(s => `
+    <div style="text-align:center">
+      <div style="font-family:var(--font-mono);font-size:1rem;font-weight:700;color:${s.color};line-height:1">${s.val}</div>
+      <div style="font-size:.58rem;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.05em;font-family:var(--font-body)">${s.label}</div>
+    </div>`
+  ).join('<div style="width:1px;height:28px;background:var(--border)"></div>');
+}
+
+// ── DATA COLLECTOR ──────────────────────────────────────
+function collectPDFData(fromStr, toStr, d){
+  const from = new Date(fromStr + 'T00:00:00');
+  const to   = new Date(toStr   + 'T23:59:59');
+
+  // enumerate all dates in range
+  const dates = [];
+  const cursor = new Date(from);
+  while(cursor <= to){ dates.push(cursor.toISOString().slice(0,10)); cursor.setDate(cursor.getDate()+1); }
+
+  let totalMins = 0, activeDays = 0, sessionCount = 0, manualCount = 0;
+  const dailyData = [];
+
+  dates.forEach(dateStr => {
+    const sessions  = JSON.parse(d['timer-sessions-' + dateStr] || '[]');
+    const dayMins   = sessions.reduce((a,s)=>a+s.mins,0);
+    const dailyLog  = d['dd-' + dateStr] || {};
+    const dayHours  = parseFloat(dailyLog.hours || d['day-' + dateStr] || 0);
+
+    totalMins   += dayMins;
+    sessionCount += sessions.filter(s => !s.manual).length;
+    manualCount  += sessions.filter(s =>  s.manual).length;
+    if(dayMins > 0 || dayHours > 0) activeDays++;
+
+    dailyData.push({ dateStr, sessions, dayMins, dailyLog, dayHours });
+  });
+
+  // Manual logs in range
+  const allManual = JSON.parse(d['manual-logs'] || '[]')
+    .filter(l => l.date >= fromStr && l.date <= toStr);
+
+  // Journal in range
+  const allJournal = JSON.parse(d['journal'] || '[]')
+    .filter(e => {
+      const iso = e.dateISO || (e.date ? new Date(e.date).toISOString().slice(0,10) : '');
+      return iso >= fromStr && iso <= toStr;
+    });
+
+  // Todos (all, filtered by createdAt if available — otherwise show all)
+  const allTodos = JSON.parse(d['todos'] || '[]');
+
+  // Best single day
+  let bestDay = { dateStr:'—', mins:0 };
+  dailyData.forEach(day => { if(day.dayMins > bestDay.mins) bestDay = day; });
+
+  // Streak in range
+  let streak = 0, maxStreak = 0, curStreak = 0;
+  dailyData.forEach(day => {
+    if(day.dayMins > 0 || day.dayHours > 0){ curStreak++; maxStreak = Math.max(maxStreak, curStreak); }
+    else curStreak = 0;
+  });
+
+  // Subject breakdown from timer sessions
+  const subjectMap = {};
+  dailyData.forEach(day => {
+    day.sessions.forEach(s => {
+      const subj = s.label?.split(' · ')[0] || '📌 General';
+      subjectMap[subj] = (subjectMap[subj] || 0) + s.mins;
+    });
+  });
+
+  return {
+    fromStr, toStr, dates, totalDays: dates.length, activeDays,
+    totalMins, sessionCount, manualCount,
+    dailyData, allManual, allJournal, allTodos,
+    bestDay, maxStreak, subjectMap
+  };
+}
+
+// ── MAIN PDF GENERATOR ──────────────────────────────────
+function generateTimerPDF(){
+  const fromEl = document.getElementById('pdf-from-date');
+  const toEl   = document.getElementById('pdf-to-date');
+  if(!fromEl?.value || !toEl?.value){ showToast('Pick a date range first!', 't-blue'); return; }
+  if(fromEl.value > toEl.value){ showToast('From date must be before To date!', 't-blue'); return; }
+
+  const d = getData();
+  const profileName = d['p-name'] || 'Developer';
+  const stats = collectPDFData(fromEl.value, toEl.value, d);
+
+  const incSummary  = document.getElementById('pdf-inc-summary')?.checked ?? true;
+  const incHeatmap  = document.getElementById('pdf-inc-heatmap')?.checked ?? true;
+  const incSessions = document.getElementById('pdf-inc-sessions')?.checked ?? true;
+  const incManual   = document.getElementById('pdf-inc-manual')?.checked ?? true;
+  const incDaily    = document.getElementById('pdf-inc-daily')?.checked ?? true;
+  const incJournal  = document.getElementById('pdf-inc-journal')?.checked ?? false;
+  const incTodos    = document.getElementById('pdf-inc-todos')?.checked ?? false;
+
+  const fromLabel = new Date(fromEl.value+'T00:00:00').toLocaleDateString('en-IN',{day:'numeric',month:'long',year:'numeric'});
+  const toLabel   = new Date(toEl.value+'T00:00:00').toLocaleDateString('en-IN',{day:'numeric',month:'long',year:'numeric'});
+  const generatedAt = new Date().toLocaleString('en-IN',{day:'numeric',month:'long',year:'numeric',hour:'2-digit',minute:'2-digit'});
+
+  const totalHrs  = (stats.totalMins / 60).toFixed(1);
+  const avgMins   = stats.activeDays > 0 ? Math.round(stats.totalMins / stats.activeDays) : 0;
+  const consistency = stats.totalDays > 0 ? Math.round(stats.activeDays / stats.totalDays * 100) : 0;
+
+  // Subject bars
+  const subjectEntries = Object.entries(stats.subjectMap).sort((a,b)=>b[1]-a[1]);
+  const maxSubjMins = subjectEntries.length ? subjectEntries[0][1] : 1;
+  const subjColors = ['#3de8b0','#5ba4f5','#f4a942','#f472b6','#9d7cf5','#fb923c','#2dd4bf','#f56565'];
+
+  function fmtMins(m){ return m >= 60 ? (m/60).toFixed(1)+'h' : m+'m'; }
+  function fmtDate(iso){ return new Date(iso+'T00:00:00').toLocaleDateString('en-IN',{weekday:'short',day:'numeric',month:'short'}); }
+
+  // ── HEATMAP HTML ──
+  let heatmapHTML = '';
+  if(incHeatmap){
+    const cells = stats.dates.map(dateStr => {
+      const day = stats.dailyData.find(d=>d.dateStr===dateStr);
+      const mins = day?.dayMins || 0;
+      let bg = '#1a2235', border = '#2a3554';
+      if(mins >= 180){ bg='#3de8b0'; border='#3de8b0'; }
+      else if(mins >= 90){ bg='rgba(61,232,176,.65)'; border='rgba(61,232,176,.7)'; }
+      else if(mins >= 30){ bg='rgba(61,232,176,.35)'; border='rgba(61,232,176,.4)'; }
+      else if(mins > 0){ bg='rgba(61,232,176,.15)'; border='rgba(61,232,176,.2)'; }
+      const title = fmtDate(dateStr) + ': ' + (mins > 0 ? fmtMins(mins) : 'No data');
+      return `<div title="${title}" style="width:16px;height:16px;border-radius:3px;background:${bg};border:1px solid ${border};display:inline-block;margin:2px;flex-shrink:0"></div>`;
+    }).join('');
+    heatmapHTML = `
+    <div class="section-block">
+      <div class="section-title">📅 Daily Activity Heatmap</div>
+      <div style="display:flex;flex-wrap:wrap;gap:0;margin-top:8px;align-items:center">
+        ${cells}
+      </div>
+      <div style="display:flex;align-items:center;gap:8px;margin-top:10px;font-size:11px;color:#8899b0">
+        <span>Less</span>
+        <div style="width:12px;height:12px;border-radius:2px;background:#1a2235;border:1px solid #2a3554;display:inline-block"></div>
+        <div style="width:12px;height:12px;border-radius:2px;background:rgba(61,232,176,.2);border:1px solid rgba(61,232,176,.3);display:inline-block"></div>
+        <div style="width:12px;height:12px;border-radius:2px;background:rgba(61,232,176,.55);border:1px solid rgba(61,232,176,.6);display:inline-block"></div>
+        <div style="width:12px;height:12px;border-radius:2px;background:#3de8b0;border:1px solid #3de8b0;display:inline-block"></div>
+        <span>More</span>
+        <span style="margin-left:12px;color:#4d5e72">Each square = 1 day</span>
+      </div>
+    </div>`;
+  }
+
+  // ── SUBJECT BREAKDOWN HTML ──
+  let subjectHTML = '';
+  if(subjectEntries.length){
+    subjectHTML = `
+    <div class="section-block">
+      <div class="section-title">🎯 Subject Breakdown</div>
+      <div style="display:flex;flex-direction:column;gap:8px;margin-top:10px">
+        ${subjectEntries.slice(0,10).map(([subj,mins],i) => `
+        <div style="display:flex;align-items:center;gap:10px">
+          <span style="font-size:11px;min-width:140px;color:#e8edf5;font-weight:600">${subj}</span>
+          <div style="flex:1;height:8px;background:#1a2235;border-radius:4px;overflow:hidden">
+            <div style="height:100%;width:${Math.round(mins/maxSubjMins*100)}%;background:${subjColors[i%subjColors.length]};border-radius:4px"></div>
+          </div>
+          <span style="font-size:11px;font-family:monospace;color:${subjColors[i%subjColors.length]};min-width:40px;text-align:right;font-weight:700">${fmtMins(mins)}</span>
+        </div>`).join('')}
+      </div>
+    </div>`;
+  }
+
+  // ── SESSIONS HTML ──
+  let sessionsHTML = '';
+  if(incSessions){
+    const allSessionDays = stats.dailyData.filter(day => day.sessions.filter(s=>!s.manual).length > 0);
+    if(allSessionDays.length){
+      sessionsHTML = `
+      <div class="section-block">
+        <div class="section-title">⏱ Timer Sessions</div>
+        <table class="data-table" style="margin-top:10px">
+          <thead><tr><th>Date</th><th>Session</th><th>Start</th><th>End</th><th>Duration</th></tr></thead>
+          <tbody>
+            ${allSessionDays.flatMap(day =>
+              day.sessions.filter(s=>!s.manual).map(s => `
+              <tr>
+                <td>${fmtDate(day.dateStr)}</td>
+                <td>${s.label || '—'}</td>
+                <td>${s.startTime || '—'}</td>
+                <td>${s.endTime || '—'}</td>
+                <td><strong style="color:#3de8b0">${fmtMins(s.mins)}</strong></td>
+              </tr>`)
+            ).join('')}
+          </tbody>
+        </table>
+      </div>`;
+    }
+  }
+
+  // ── MANUAL LOG HTML ──
+  let manualHTML = '';
+  if(incManual && stats.allManual.length){
+    manualHTML = `
+    <div class="section-block">
+      <div class="section-title">📝 Manual Sessions</div>
+      <table class="data-table" style="margin-top:10px">
+        <thead><tr><th>Date</th><th>Subject</th><th>Focus / Note</th><th>Duration</th></tr></thead>
+        <tbody>
+          ${stats.allManual.map(log => `
+          <tr>
+            <td>${fmtDate(log.date)}</td>
+            <td>${log.subject}</td>
+            <td>${log.note || '—'}</td>
+            <td><strong style="color:#f4a942">${fmtMins(log.mins)}</strong></td>
+          </tr>`).join('')}
+        </tbody>
+      </table>
+    </div>`;
+  }
+
+  // ── DAILY NOTES HTML ──
+  let dailyHTML = '';
+  if(incDaily){
+    const daysWithNotes = stats.dailyData.filter(day => day.dailyLog?.notes || day.dailyLog?.mood || day.dayHours > 0);
+    if(daysWithNotes.length){
+      dailyHTML = `
+      <div class="section-block">
+        <div class="section-title">📓 Daily Log</div>
+        <div style="display:flex;flex-direction:column;gap:10px;margin-top:10px">
+          ${daysWithNotes.map(day => `
+          <div style="background:#0c0f1a;border:1px solid #1a2235;border-radius:10px;padding:14px 16px;border-left:3px solid #3de8b0">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;flex-wrap:wrap;gap:6px">
+              <span style="font-size:12px;font-weight:700;color:#e8edf5;font-family:monospace">${fmtDate(day.dateStr)}</span>
+              <div style="display:flex;gap:10px;align-items:center">
+                ${day.dailyLog?.mood ? `<span style="font-size:12px">${day.dailyLog.mood}</span>` : ''}
+                ${day.dayHours > 0 ? `<span style="font-size:11px;background:rgba(61,232,176,.12);border:1px solid rgba(61,232,176,.3);border-radius:12px;padding:2px 9px;color:#3de8b0;font-family:monospace;font-weight:700">⏱ ${day.dayHours}h</span>` : ''}
+                ${day.dailyLog?.water ? `<span style="font-size:11px;background:rgba(91,164,245,.1);border:1px solid rgba(91,164,245,.3);border-radius:12px;padding:2px 9px;color:#5ba4f5;font-family:monospace">💧 ${day.dailyLog.water}gl</span>` : ''}
+                ${day.dailyLog?.sleep ? `<span style="font-size:11px;background:rgba(157,124,245,.1);border:1px solid rgba(157,124,245,.3);border-radius:12px;padding:2px 9px;color:#9d7cf5;font-family:monospace">😴 ${day.dailyLog.sleep}h</span>` : ''}
+              </div>
+            </div>
+            ${day.dailyLog?.notes ? `<div style="font-size:12px;color:#8899b0;line-height:1.7;white-space:pre-wrap">${day.dailyLog.notes.replace(/</g,'&lt;').replace(/>/g,'&gt;')}</div>` : ''}
+            ${day.dailyLog?.built || day.dailyLog?.leet ? `
+            <div style="display:flex;gap:8px;margin-top:8px;flex-wrap:wrap">
+              ${day.dailyLog?.built ? '<span style="font-size:10px;background:rgba(61,232,176,.1);border:1px solid rgba(61,232,176,.3);border-radius:8px;padding:2px 8px;color:#3de8b0">🏗 Built something</span>' : ''}
+              ${day.dailyLog?.leet  ? '<span style="font-size:10px;background:rgba(244,114,182,.1);border:1px solid rgba(244,114,182,.3);border-radius:8px;padding:2px 8px;color:#f472b6">🧩 Solved DSA</span>' : ''}
+            </div>` : ''}
+          </div>`).join('')}
+        </div>
+      </div>`;
+    }
+  }
+
+  // ── JOURNAL HTML ──
+  let journalHTML = '';
+  if(incJournal && stats.allJournal.length){
+    const catColors = {learn:'#5ba4f5',win:'#3de8b0',struggle:'#f56565',reflect:'#9d7cf5',goal:'#f4a942'};
+    journalHTML = `
+    <div class="section-block">
+      <div class="section-title">🗒 Journal Entries</div>
+      <div style="display:flex;flex-direction:column;gap:12px;margin-top:10px">
+        ${stats.allJournal.slice(0,30).map(e => `
+        <div style="background:#0c0f1a;border:1px solid #1a2235;border-radius:10px;padding:14px 16px;border-left:3px solid ${catColors[e.cat]||'#5ba4f5'}">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;flex-wrap:wrap">
+            <span style="font-size:14px">${e.mood||'😐'}</span>
+            <span style="font-size:11px;font-family:monospace;color:#8899b0;font-weight:600">${e.date}</span>
+            <span style="font-size:10px;padding:2px 8px;border-radius:8px;background:rgba(91,164,245,.1);border:1px solid rgba(91,164,245,.25);color:${catColors[e.cat]||'#5ba4f5'};font-family:monospace;text-transform:uppercase;letter-spacing:.05em">${e.cat||'learn'}</span>
+            <span style="font-size:10px;color:#4d5e72;margin-left:auto;font-family:monospace">${e.words||0}w</span>
+          </div>
+          <div style="font-size:12px;color:#8899b0;line-height:1.8;white-space:pre-wrap">${(e.text||'').slice(0,600).replace(/</g,'&lt;').replace(/>/g,'&gt;')}${(e.text||'').length>600?'…':''}</div>
+        </div>`).join('')}
+        ${stats.allJournal.length > 30 ? `<div style="text-align:center;font-size:11px;color:#4d5e72;padding:10px">… and ${stats.allJournal.length - 30} more entries</div>` : ''}
+      </div>
+    </div>`;
+  }
+
+  // ── TODOS HTML ──
+  let todosHTML = '';
+  if(incTodos && stats.allTodos.length){
+    const done = stats.allTodos.filter(t=>t.done);
+    const active = stats.allTodos.filter(t=>!t.done);
+    todosHTML = `
+    <div class="section-block">
+      <div class="section-title">✅ To-Do Tasks (${stats.allTodos.length} total · ${done.length} done)</div>
+      ${active.length ? `
+      <div style="margin-top:10px;margin-bottom:6px;font-size:11px;font-weight:700;color:#5ba4f5;text-transform:uppercase;letter-spacing:.06em">Pending (${active.length})</div>
+      ${active.map(t=>`
+      <div style="display:flex;align-items:center;gap:8px;padding:7px 10px;background:#0c0f1a;border:1px solid #1a2235;border-radius:8px;margin-bottom:4px">
+        <span style="width:6px;height:6px;border-radius:50%;background:${t.prio==='high'?'#f56565':t.prio==='med'?'#f4a942':'#3de8b0'};flex-shrink:0"></span>
+        <span style="font-size:12px;flex:1;color:#e8edf5">${t.text.replace(/</g,'&lt;')}</span>
+        <span style="font-size:10px;padding:1px 7px;border-radius:6px;background:rgba(91,164,245,.1);color:#5ba4f5;font-family:monospace">${t.tag}</span>
+      </div>`).join('')}` : ''}
+      ${done.length ? `
+      <div style="margin-top:12px;margin-bottom:6px;font-size:11px;font-weight:700;color:#3de8b0;text-transform:uppercase;letter-spacing:.06em">Completed (${done.length})</div>
+      ${done.map(t=>`
+      <div style="display:flex;align-items:center;gap:8px;padding:7px 10px;background:#0c0f1a;border:1px solid #1a2235;border-radius:8px;margin-bottom:4px;opacity:.65">
+        <span style="color:#3de8b0;font-size:.85rem">✓</span>
+        <span style="font-size:12px;flex:1;color:#8899b0;text-decoration:line-through">${t.text.replace(/</g,'&lt;')}</span>
+        <span style="font-size:10px;padding:1px 7px;border-radius:6px;background:rgba(61,232,176,.08);color:#3de8b0;font-family:monospace">${t.tag}</span>
+      </div>`).join('')}` : ''}
+    </div>`;
+  }
+
+  // ══ BUILD THE FULL HTML DOCUMENT ══
+  const html = `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<title>Coodley Study Report · ${fromLabel} — ${toLabel}</title>
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{background:#07090f}
+  body{
+    font-family:'Segoe UI',system-ui,sans-serif;
+    background:#07090f;
+    color:#e8edf5;
+    font-size:13px;
+    line-height:1.6;
+    max-width:900px;
+    margin:0 auto;
+    padding:40px 32px 80px;
+  }
+  /* ── COVER ── */
+  .cover{
+    background:linear-gradient(135deg,rgba(61,232,176,.08),rgba(91,164,245,.05));
+    border:1px solid rgba(61,232,176,.2);
+    border-radius:20px;
+    padding:40px;
+    margin-bottom:32px;
+    position:relative;
+    overflow:hidden;
+  }
+  .cover::before{
+    content:'';position:absolute;top:-80px;right:-80px;width:280px;height:280px;
+    background:radial-gradient(circle,rgba(61,232,176,.1),transparent 70%);pointer-events:none;
+  }
+  .cover-logo{
+    display:inline-flex;align-items:center;gap:8px;
+    background:rgba(61,232,176,.1);border:1px solid rgba(61,232,176,.25);
+    border-radius:10px;padding:6px 14px;margin-bottom:20px;
+    font-size:12px;font-weight:700;color:#3de8b0;letter-spacing:.05em;text-transform:uppercase;
+  }
+  .cover-name{font-size:34px;font-weight:800;line-height:1.1;margin-bottom:6px;letter-spacing:-.02em}
+  .cover-range{font-size:14px;color:#8899b0;margin-bottom:20px}
+  .cover-range strong{color:#e8edf5}
+  .cover-meta{font-size:11px;color:#4d5e72}
+  /* ── STATS ROW ── */
+  .stat-row{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
+    gap:12px;margin-bottom:28px;
+  }
+  .stat-box{
+    background:#0c0f1a;border:1px solid #1a2235;border-radius:14px;
+    padding:16px 14px;text-align:center;
+  }
+  .stat-val{font-size:26px;font-weight:800;line-height:1;margin-bottom:5px;font-family:monospace}
+  .stat-lbl{font-size:10px;color:#4d5e72;font-weight:700;text-transform:uppercase;letter-spacing:.07em}
+  /* ── SECTIONS ── */
+  .section-block{
+    background:#0c0f1a;border:1px solid #1a2235;border-radius:16px;
+    padding:22px;margin-bottom:20px;
+  }
+  .section-title{
+    font-size:15px;font-weight:800;color:#e8edf5;
+    margin-bottom:2px;display:flex;align-items:center;gap:8px;
+    border-bottom:1px solid #1a2235;padding-bottom:12px;margin-bottom:14px;
+    letter-spacing:-.01em;
+  }
+  /* ── TABLE ── */
+  .data-table{width:100%;border-collapse:collapse;font-size:12px}
+  .data-table th{
+    background:#111827;color:#4d5e72;font-weight:700;font-size:10px;
+    text-transform:uppercase;letter-spacing:.07em;padding:9px 12px;text-align:left;
+  }
+  .data-table td{padding:9px 12px;border-bottom:1px solid #1a2235;color:#8899b0}
+  .data-table tr:last-child td{border-bottom:none}
+  .data-table tr:hover td{background:rgba(255,255,255,.015)}
+  /* ── FOOTER ── */
+  .report-footer{
+    text-align:center;margin-top:40px;padding-top:20px;
+    border-top:1px solid #1a2235;color:#4d5e72;font-size:11px;line-height:1.8;
+  }
+  /* ── PRINT OVERRIDES ── */
+  @media print{
+    body{background:white;color:#111;padding:20px;max-width:100%}
+    .cover{background:#f0fdf8;border-color:#6ee7b7}
+    .cover-name,.section-title{color:#111}
+    .cover-range,p,.stat-lbl,.cover-meta,.report-footer{color:#666}
+    .stat-box,.section-block{background:#f9fafb;border-color:#e5e7eb}
+    .data-table th{background:#f3f4f6;color:#6b7280}
+    .data-table td{color:#374151;border-color:#e5e7eb}
+    @page{margin:15mm}
+  }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-logo">⌛ Coodley · Study Report</div>
+  <div class="cover-name">${profileName.replace(/</g,'&lt;')}'s Focus Report</div>
+  <div class="cover-range"><strong>${fromLabel}</strong> &nbsp;→&nbsp; <strong>${toLabel}</strong></div>
+  <div class="cover-meta">Generated on ${generatedAt} · ${stats.totalDays} days in range</div>
+</div>
+
+<!-- SUMMARY STATS -->
+${incSummary ? `
+<div class="stat-row">
+  <div class="stat-box"><div class="stat-val" style="color:#3de8b0">${totalHrs}h</div><div class="stat-lbl">Total Focus</div></div>
+  <div class="stat-box"><div class="stat-val" style="color:#5ba4f5">${stats.activeDays}</div><div class="stat-lbl">Active Days</div></div>
+  <div class="stat-box"><div class="stat-val" style="color:#f4a942">${avgMins}m</div><div class="stat-lbl">Avg / Active Day</div></div>
+  <div class="stat-box"><div class="stat-val" style="color:#f472b6">${consistency}%</div><div class="stat-lbl">Consistency</div></div>
+  <div class="stat-box"><div class="stat-val" style="color:#9d7cf5">${stats.maxStreak}</div><div class="stat-lbl">Max Streak</div></div>
+  <div class="stat-box"><div class="stat-val" style="color:#3de8b0">${fmtMins(stats.bestDay.mins)}</div><div class="stat-lbl">Best Day</div></div>
+  <div class="stat-box"><div class="stat-val" style="color:#f4a942">${stats.sessionCount}</div><div class="stat-lbl">Timer Sessions</div></div>
+  <div class="stat-box"><div class="stat-val" style="color:#fb923c">${stats.manualCount}</div><div class="stat-lbl">Manual Logs</div></div>
+</div>
+${subjectHTML}
+` : ''}
+
+${heatmapHTML}
+${sessionsHTML}
+${manualHTML}
+${dailyHTML}
+${journalHTML}
+${todosHTML}
+
+<!-- FOOTER -->
+<div class="report-footer">
+  <div style="font-size:14px;margin-bottom:6px">🎯 Keep going, ${profileName.replace(/</g,'&lt;')}. Every session compounds.</div>
+  Generated by <strong>Coodley</strong> — Your 9-Month Web Dev Journey Tracker<br>
+  Report period: ${fromLabel} → ${toLabel} · ${stats.activeDays} of ${stats.totalDays} days active · ${totalHrs}h total focus
+</div>
+
+</body>
+</html>`;
+
+  // Open in new tab and trigger print
+  const blob = new Blob([html], { type:'text/html' });
+  const url  = URL.createObjectURL(blob);
+  const win  = window.open(url, '_blank');
+  if(win){
+    win.onload = () => {
+      setTimeout(() => {
+        win.print();
+        URL.revokeObjectURL(url);
+      }, 600);
+    };
+  } else {
+    // Fallback — download as HTML
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'coodley-report-' + fromEl.value + '-to-' + toEl.value + '.html';
+    a.click();
+    showToast('Downloaded as HTML. Open it and Print → Save as PDF!');
+  }
+
+  showToast('PDF report ready! Use Print → Save as PDF 📄');
+}
+
+// ── INIT PDF DATES on page load ─────────────────────────
+// Add this inside your DOMContentLoaded try-catch blocks:
+// try {
+//   const today = new Date().toISOString().slice(0,10);
+//   const mon = new Date(); mon.setDate(mon.getDate()-(mon.getDay()===0?6:mon.getDay()-1));
+//   const fromEl = document.getElementById('pdf-from-date');
+//   const toEl   = document.getElementById('pdf-to-date');
+//   if(fromEl) fromEl.value = mon.toISOString().slice(0,10);
+//   if(toEl)   toEl.value   = today;
+//   updatePDFPreview();
+// } catch(e){}
 
 </script>
 </body>
