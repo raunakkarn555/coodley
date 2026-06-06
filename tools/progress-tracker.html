@@ -2437,6 +2437,78 @@ footer.coodley-footer{background:var(--bg);border-top:1px solid var(--border);pa
   </div>
 </div>
 
+<!-- ── STOPWATCH (COUNT-UP) ── -->
+<div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-xl);padding:26px;margin-bottom:20px">
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;flex-wrap:wrap;gap:8px">
+    <div>
+      <div style="font-family:var(--font-head);font-weight:800;font-size:1rem">⏫ Stopwatch</div>
+      <div style="font-size:.68rem;color:var(--muted);font-family:var(--font-body)">Count-up timer · Lap splits · Auto-save on reset or close</div>
+    </div>
+    <span style="font-size:.62rem;font-weight:700;padding:3px 10px;border-radius:20px;border:1px solid rgba(91,164,245,.3);background:rgba(91,164,245,.07);color:var(--blue);font-family:var(--font-mono)" id="sw-live-badge"></span>
+  </div>
+
+  <div style="display:grid;grid-template-columns:auto 1fr;gap:24px;align-items:center;flex-wrap:wrap">
+
+    <!-- SVG Ring -->
+    <div style="position:relative;width:140px;height:140px;flex-shrink:0;margin:0 auto">
+      <svg width="140" height="140" viewBox="0 0 140 140">
+        <circle cx="70" cy="70" r="54" fill="none" stroke="var(--bg4)" stroke-width="8"/>
+        <circle cx="70" cy="70" r="54" fill="none" stroke="var(--blue)" stroke-width="8"
+          stroke-dasharray="339.29" id="sw-ring-fill"
+          stroke-dashoffset="339.29"
+          stroke-linecap="round"
+          transform="rotate(-90 70 70)"
+          style="transition:stroke-dashoffset .5s linear,stroke .4s"/>
+      </svg>
+      <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center">
+        <div id="sw-disp" style="font-family:var(--font-mono);font-size:1.5rem;font-weight:700;color:var(--blue);letter-spacing:.04em;line-height:1;transition:color .4s">00:00</div>
+        <div style="font-size:.58rem;color:var(--muted);margin-top:3px;text-transform:uppercase;letter-spacing:.07em;font-family:var(--font-body)">elapsed</div>
+      </div>
+    </div>
+
+    <!-- Controls -->
+    <div style="flex:1">
+      <!-- Main buttons -->
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px">
+        <button id="sw-start-btn" onclick="toggleStopwatch()"
+          style="padding:10px 24px;border-radius:10px;border:1px solid var(--blue);color:var(--blue);background:transparent;font-family:var(--font-body);font-size:.9rem;font-weight:700;cursor:pointer;transition:all .2s;flex:1;min-width:100px"
+          onmouseover="this.style.background='rgba(91,164,245,.1)'"
+          onmouseout="this.style.background='transparent'">▶ Start</button>
+        <button onclick="resetStopwatch()"
+          style="padding:10px 20px;border-radius:10px;border:1px solid var(--border2);color:var(--muted);background:transparent;font-family:var(--font-body);font-size:.9rem;font-weight:700;cursor:pointer;transition:all .2s"
+          onmouseover="this.style.borderColor='var(--red)';this.style.color='var(--red)'"
+          onmouseout="this.style.borderColor='var(--border2)';this.style.color='var(--muted)'">↺ Reset & Save</button>
+        <button onclick="addSwLap()"
+          style="padding:10px 18px;border-radius:10px;border:1px solid rgba(61,232,176,.4);color:var(--accent);background:transparent;font-family:var(--font-body);font-size:.9rem;font-weight:700;cursor:pointer;transition:all .2s"
+          onmouseover="this.style.background='rgba(61,232,176,.1)'"
+          onmouseout="this.style.background='transparent'">+ Lap</button>
+        <button onclick="saveStopwatchSession()"
+          style="padding:10px 18px;border-radius:10px;border:1px solid rgba(244,169,66,.4);color:var(--amber);background:transparent;font-family:var(--font-body);font-size:.9rem;font-weight:700;cursor:pointer;transition:all .2s"
+          onmouseover="this.style.background='rgba(244,169,66,.1)'"
+          onmouseout="this.style.background='transparent'">💾 Save</button>
+      </div>
+
+      <!-- Note input -->
+      <div style="margin-bottom:12px">
+        <input type="text" id="sw-note" placeholder="📝 What are you studying? (saved with session)"
+          style="width:100%;background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:9px 13px;color:var(--fg);font-family:var(--font-body);font-size:.82rem;outline:none;transition:border-color .2s;box-sizing:border-box"
+          onfocus="this.style.borderColor='var(--border3)'"
+          onblur="this.style.borderColor='var(--border)'"/>
+      </div>
+
+      <!-- Lap list -->
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">
+        <span style="font-size:.65rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;font-family:var(--font-body)">⏱ Splits</span>
+        <button onclick="clearSwLaps()" style="background:none;border:1px solid var(--border);border-radius:6px;color:var(--muted);font-size:.62rem;padding:2px 7px;cursor:pointer;font-family:var(--font-body)">Clear</button>
+      </div>
+      <div id="sw-laps" style="max-height:100px;overflow-y:auto">
+        <div style="text-align:center;color:var(--muted);font-size:.75rem;padding:8px;font-family:var(--font-body)">Hit "+ Lap" to record splits</div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ── END STOPWATCH ── -->
+
 <!-- ── TWO-COLUMN MAIN LAYOUT ── -->
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:20px">
 
@@ -2523,6 +2595,14 @@ footer.coodley-footer{background:var(--bg);border-top:1px solid var(--border);pa
         <div style="color:var(--muted);font-size:.72rem;text-align:center;padding:6px;font-family:var(--font-body)">Hit "+ Lap" while running to record splits</div>
       </div>
     </div>
+
+    <!-- Note for countdown session -->
+      <div style="margin-top:12px">
+        <input type="text" id="timer-session-note" placeholder="📝 What are you studying? (saved with session)"
+          style="width:100%;background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:9px 13px;color:var(--fg);font-family:var(--font-body);font-size:.82rem;outline:none;transition:border-color .2s;box-sizing:border-box"
+          onfocus="this.style.borderColor='var(--border3)'"
+          onblur="this.style.borderColor='var(--border)'"/>
+      </div>
 
     <p style="text-align:center;font-size:.68rem;color:var(--muted);margin-top:12px;font-family:var(--font-body)">💡 Pomodoro: 25m focus → 5m break → repeat 4x → long break</p>
   </div>
@@ -5907,6 +5987,10 @@ function toggleChecklist(key,el,i){
 }
 
 let timerInterval=null,timerTotal=90*60,timerRemaining=90*60,timerRunning=false;
+// Stopwatch variables
+let swInterval=null, swElapsed=0, swRunning=false;
+let swStartTimestamp=null;
+let swLaps=[];
 let pomodoroMode=false, pomodoroCount=0, pomodoroPhase='work';
 // phase: 'work' | 'short-break' | 'long-break'
 function setTimerPreset(h,m){timerTotal=timerRemaining=h*60*60+m*60;resetTimer();}
@@ -5923,64 +6007,78 @@ function updateTimerDisplay(){
 }
 
 
+let timerStartTimestamp = null; // when timer was last started
+let timerRemainingAtStart = 0;  // how much was left when started
+
 function toggleTimer(){
   if(timerRunning){
     clearInterval(timerInterval);
     timerRunning=false;
+    // Save how much is remaining right now
+    if(timerStartTimestamp){
+      const elapsed = Math.floor((Date.now() - timerStartTimestamp) / 1000);
+      timerRemaining = Math.max(0, timerRemainingAtStart - elapsed);
+      timerStartTimestamp = null;
+    }
+    updateTimerDisplay();
     const btn=document.getElementById('timer-start-btn');
     if(btn){btn.textContent='▶ Resume';btn.classList.remove('running');}
   } else {
     if(timerRemaining<=0) timerRemaining=timerTotal;
     timerRunning=true;
+    timerStartTimestamp = Date.now();
+    timerRemainingAtStart = timerRemaining;
     playTimerSound('start');
     const btn=document.getElementById('timer-start-btn');
     if(btn){btn.textContent='⏸ Pause';btn.classList.add('running');}
     timerInterval=setInterval(()=>{
-      if(timerRemaining>0){
-        timerRemaining--;
-        if(timerRemaining === 30) playTimerSound('warning');
-if(timerRemaining === 10) playTimerSound('warning');
-        updateTimerDisplay();
-      } else {
+      const elapsed = Math.floor((Date.now() - timerStartTimestamp) / 1000);
+      timerRemaining = Math.max(0, timerRemainingAtStart - elapsed);
+      if(timerRemaining === 30 && !window._warned30){ window._warned30=true; playTimerSound('warning'); }
+      if(timerRemaining === 10 && !window._warned10){ window._warned10=true; playTimerSound('warning'); }
+      if(timerRemaining <= 0){
         clearInterval(timerInterval);
         timerRunning=false;
+        timerStartTimestamp=null;
+        window._warned30=false; window._warned10=false;
         const btn=document.getElementById('timer-start-btn');
         if(btn){btn.textContent='▶ Start';btn.classList.remove('running');}
-        // Log the session
         logTimerSession(timerTotal);
-        // Play sound
         playTimerSound();
-        // Show notification
         if(Notification.permission==='granted'){
           new Notification('✅ Session Complete!',{
-            body:'Great work! Take a break. Session: '+formatTimer(timerTotal),
+            body:'Great work! Session: '+formatTimer(timerTotal),
           });
         }
         showToast('Session complete! Well done 🎉');
         if(pomodoroMode){
-  if(pomodoroPhase === 'work'){
-    pomodoroCount++;
-    updatePomodoroDisplay();
-    if(pomodoroCount % 4 === 0){
-      pomodoroPhase = 'long-break';
-      setTimerPreset(0,15);
-      showToast('🎉 4 Pomodoros done! Long break: 15 min');
-    } else {
-      pomodoroPhase = 'short-break';
-      setTimerPreset(0,5);
-      showToast('✅ Pomodoro ' + pomodoroCount + ' done! Short break: 5 min');
-    }
-  } else {
-    pomodoroPhase = 'work';
-    setTimerPreset(0,25);
-    showToast('💪 Break over! Starting next Pomodoro');
-  }
-  setTimeout(()=>toggleTimer(), 1500); // auto-start next phase
-}
+          if(pomodoroPhase === 'work'){
+            pomodoroCount++;
+            updatePomodoroDisplay();
+            if(pomodoroCount % 4 === 0){
+              pomodoroPhase = 'long-break';
+              setTimerPreset(0,15);
+              showToast('🎉 4 Pomodoros done! Long break: 15 min');
+            } else {
+              pomodoroPhase = 'short-break';
+              setTimerPreset(0,5);
+              showToast('✅ Pomodoro ' + pomodoroCount + ' done! Short break: 5 min');
+            }
+          } else {
+            pomodoroPhase = 'work';
+            setTimerPreset(0,25);
+            showToast('💪 Break over! Starting next Pomodoro');
+          }
+          setTimeout(()=>toggleTimer(), 1500);
+        }
+        return;
       }
-    },1000);
+      updateTimerDisplay();
+    },500); // 500ms for smoother display, timestamp-based so still accurate
   }
 }
+
+
 function resetTimer(){clearInterval(timerInterval);timerRunning=false;timerRemaining=timerTotal;updateTimerDisplay();const btn=document.getElementById('timer-start-btn');if(btn){btn.textContent='▶ Start';btn.classList.remove('running');}}
 
 
@@ -6214,6 +6312,41 @@ function initNav(){
   }
 }
 
+
+// ── AUTO-SAVE SESSION ON TAB CLOSE ──────────────────────
+window.addEventListener('beforeunload', () => {
+  // Save countdown timer session if running
+  if(timerRunning && timerStartTimestamp){
+    const elapsed = Math.floor((Date.now() - timerStartTimestamp) / 1000);
+    const actuallyRan = timerTotal - Math.max(0, timerRemainingAtStart - elapsed);
+    const minsRan = Math.floor(actuallyRan / 60);
+    if(minsRan >= 1){
+      logTimerSession(actuallyRan); // save partial session
+    }
+  }
+  // Save stopwatch session if running
+  if(swRunning && swStartTimestamp){
+    const elapsed = Math.floor((Date.now() - swStartTimestamp) / 1000) + swElapsed;
+    const minsRan = Math.floor(elapsed / 60);
+    if(minsRan >= 1){
+      logTimerSession(elapsed);
+      // Also save stopwatch note if any
+      const note = document.getElementById('sw-note')?.value?.trim();
+      if(note){
+        const d = getData();
+        const today = new Date().toISOString().slice(0,10);
+        const sessions = JSON.parse(d['timer-sessions-'+today]||'[]');
+        if(sessions.length > 0){
+          sessions[sessions.length-1].note = note;
+          d['timer-sessions-'+today] = JSON.stringify(sessions);
+          setData(d);
+        }
+      }
+    }
+  }
+});
+
+
 window.addEventListener('DOMContentLoaded', () => {
   try {
     const d = getData();
@@ -6237,6 +6370,20 @@ window.addEventListener('DOMContentLoaded', () => {
   try { updateTimerDisplay(); } catch(e){ console.error('timer failed:', e); }
   try { loadTimerSettings(); } catch(e){ console.error('timerSettings failed:', e); }
   try { startLiveClock(); } catch(e){ console.error('liveClock failed:', e); }
+  // Resume stopwatch display if page was hidden and came back
+  document.addEventListener('visibilitychange', () => {
+    if(!document.hidden){
+      if(swRunning && swStartTimestamp){
+        const current = swElapsed + Math.floor((Date.now() - swStartTimestamp)/1000);
+        updateStopwatchDisplay(current);
+      }
+      if(timerRunning && timerStartTimestamp){
+        const elapsed = Math.floor((Date.now() - timerStartTimestamp)/1000);
+        timerRemaining = Math.max(0, timerRemainingAtStart - elapsed);
+        updateTimerDisplay();
+      }
+    }
+  });
 try { renderManualLogHistory(); } catch(e){ console.error('manualLog failed:', e); }
 try { const md=document.getElementById('manual-date'); if(md) md.value=new Date().toISOString().slice(0,10); } catch(e){}
   try { updateDashboardExtras(); } catch(e){ console.error('dashboardExtras failed:', e); }
@@ -7388,6 +7535,7 @@ function logTimerSession(totalSeconds, dateStr){
   const key = dateStr || new Date().toISOString().slice(0,10);
   const sessions = JSON.parse(d['timer-sessions-' + key] || '[]');
   const mins = Math.round(totalSeconds / 60);
+  const timerNote = document.getElementById('timer-session-note')?.value?.trim() || '';
   sessions.push({
     id: Date.now(),
     duration: totalSeconds,
@@ -7399,7 +7547,9 @@ function logTimerSession(totalSeconds, dateStr){
     label: totalSeconds === 25*60 ? '🍅 Pomodoro'
          : totalSeconds <= 45*60 ? '⚡ Focus Block'
          : totalSeconds <= 90*60 ? '🔥 Deep Work'
-         : '🚀 Long Session'
+         : '🚀 Long Session',
+    note: timerNote,
+    type: 'countdown'
   });
   d['timer-sessions-' + key] = JSON.stringify(sessions);
   // Also update the weekly tracker total
@@ -7458,7 +7608,8 @@ function renderSessionLog(){
       <div style="font-size:1rem;flex-shrink:0">${s.label.split(' ')[0]}</div>
       <div style="flex:1">
         <div style="font-size:.82rem;font-weight:700;font-family:var(--font-body);color:var(--fg)">${s.label}</div>
-        <div style="font-size:.68rem;color:var(--muted);font-family:var(--font-mono)">${s.startTime} → ${s.endTime}</div>
+        <div style="font-size:.68rem;color:var(--muted);font-family:var(--font-mono)">${s.startTime} → ${s.endTime}${s.type==='stopwatch'?' · ⏫ Stopwatch':''}</div>
+        ${s.note ? `<div style="font-size:.68rem;color:var(--muted2);font-family:var(--font-body);margin-top:2px;font-style:italic">"${s.note}"</div>` : ''}
       </div>
       <div style="font-family:var(--font-mono);font-size:.85rem;font-weight:700;color:${isPomodoro?'var(--amber)':'var(--accent)'}">${mins}m</div>
     </div>`;
@@ -7646,6 +7797,165 @@ function updateTimerHeaderStats(){
 }
 
 // ===== END NEW TIMER FUNCTIONS =====
+// ══════════════════════════════════════════════════════════
+// STOPWATCH FUNCTIONS
+// ══════════════════════════════════════════════════════════
+
+function formatStopwatch(s){
+  const h=Math.floor(s/3600),m=Math.floor(s%3600/60),sec=s%60;
+  return h>0
+    ? `${h}:${m.toString().padStart(2,'0')}:${sec.toString().padStart(2,'0')}`
+    : `${m.toString().padStart(2,'0')}:${sec.toString().padStart(2,'0')}`;
+}
+
+function toggleStopwatch(){
+  const btn = document.getElementById('sw-start-btn');
+  if(swRunning){
+    // Pause
+    clearInterval(swInterval);
+    swRunning = false;
+    // Freeze elapsed
+    if(swStartTimestamp){
+      swElapsed += Math.floor((Date.now() - swStartTimestamp) / 1000);
+      swStartTimestamp = null;
+    }
+    if(btn){ btn.textContent='▶ Resume'; btn.style.borderColor='var(--blue)'; btn.style.color='var(--blue)'; }
+  } else {
+    // Start / Resume
+    swStartTimestamp = Date.now();
+    swRunning = true;
+    if(btn){ btn.textContent='⏸ Pause'; btn.style.borderColor='var(--amber)'; btn.style.color='var(--amber)'; }
+    swInterval = setInterval(()=>{
+      const current = swElapsed + Math.floor((Date.now() - swStartTimestamp) / 1000);
+      updateStopwatchDisplay(current);
+    }, 500);
+  }
+}
+
+function updateStopwatchDisplay(secs){
+  const disp = document.getElementById('sw-disp');
+  const ring = document.getElementById('sw-ring-fill');
+  if(disp) disp.textContent = formatStopwatch(secs);
+  // Ring: fill one full rotation per 60 minutes
+  if(ring){
+    const circumference = 339.29; // 2 * PI * 54
+    const progress = (secs % 3600) / 3600; // 0 to 1 per hour
+    ring.style.strokeDashoffset = circumference - (progress * circumference);
+    // Color based on duration
+    const color = secs < 25*60 ? 'var(--blue)' :
+                  secs < 60*60 ? 'var(--accent)' :
+                  secs < 90*60 ? 'var(--amber)' : 'var(--pink)';
+    ring.style.stroke = color;
+    const dispEl = document.getElementById('sw-disp');
+    if(dispEl) dispEl.style.color = color;
+  }
+  // Update live duration badge
+  const liveBadge = document.getElementById('sw-live-badge');
+  if(liveBadge && secs > 0){
+    liveBadge.textContent = secs >= 3600
+      ? Math.floor(secs/3600)+'h '+(Math.floor((secs%3600)/60))+'m'
+      : Math.floor(secs/60)+'m '+( secs%60)+'s';
+  }
+}
+
+function resetStopwatch(){
+  clearInterval(swInterval);
+  swRunning = false;
+  swStartTimestamp = null;
+  // Auto-save if ran for at least 1 min
+  if(swElapsed >= 60){
+    const note = document.getElementById('sw-note')?.value?.trim() || '';
+    logStopwatchSession(swElapsed, note);
+    showToast('Session saved: ' + Math.floor(swElapsed/60) + 'm 📝');
+  }
+  swElapsed = 0;
+  swLaps = [];
+  updateStopwatchDisplay(0);
+  const btn = document.getElementById('sw-start-btn');
+  if(btn){ btn.textContent='▶ Start'; btn.style.borderColor='var(--blue)'; btn.style.color='var(--blue)'; }
+  renderSwLaps();
+  const noteEl = document.getElementById('sw-note');
+  if(noteEl) noteEl.value = '';
+  const liveBadge = document.getElementById('sw-live-badge');
+  if(liveBadge) liveBadge.textContent = '';
+}
+
+function saveStopwatchSession(){
+  const current = swRunning
+    ? swElapsed + Math.floor((Date.now() - swStartTimestamp) / 1000)
+    : swElapsed;
+  if(current < 60){ showToast('Run for at least 1 minute first!','t-blue'); return; }
+  const note = document.getElementById('sw-note')?.value?.trim() || '';
+  logStopwatchSession(current, note);
+  showToast('Session saved: ' + formatStopwatch(current) + ' ✅');
+}
+
+function logStopwatchSession(totalSecs, note){
+  const d = getData();
+  const today = new Date().toISOString().slice(0,10);
+  const sessions = JSON.parse(d['timer-sessions-'+today]||'[]');
+  const mins = Math.round(totalSecs / 60);
+  sessions.push({
+    id: Date.now(),
+    duration: totalSecs,
+    mins: mins,
+    startTime: new Date(Date.now() - totalSecs*1000)
+      .toLocaleTimeString('en-IN',{hour:'2-digit',minute:'2-digit'}),
+    endTime: new Date().toLocaleTimeString('en-IN',{hour:'2-digit',minute:'2-digit'}),
+    label: (totalSecs >= 90*60 ? '🚀 Long Session' :
+            totalSecs >= 60*60 ? '🔥 Deep Work' :
+            totalSecs >= 25*60 ? '⚡ Focus Block' : '⏱ Quick Study'),
+    note: note,
+    type: 'stopwatch'
+  });
+  d['timer-sessions-'+today] = JSON.stringify(sessions);
+  // Update weekly tracker
+  const weekKey = 'timer-week-' + getMondayKey();
+  const week = JSON.parse(d[weekKey]||'{}');
+  week[today] = (week[today]||0) + mins;
+  d[weekKey] = JSON.stringify(week);
+  setData(d);
+  renderSessionLog();
+  renderWeeklyTimerTracker();
+  updateTimerHeaderStats();
+}
+
+function addSwLap(){
+  if(!swRunning && swElapsed === 0){ showToast('Start stopwatch first!','t-blue'); return; }
+  const current = swRunning
+    ? swElapsed + Math.floor((Date.now() - swStartTimestamp) / 1000)
+    : swElapsed;
+  const prevTotal = swLaps.reduce((a,l)=>a+l.split_secs,0);
+  const split = current - prevTotal;
+  swLaps.push({
+    num: swLaps.length + 1,
+    total: formatStopwatch(current),
+    split: formatStopwatch(split),
+    split_secs: split
+  });
+  renderSwLaps();
+}
+
+function renderSwLaps(){
+  const el = document.getElementById('sw-laps');
+  if(!el) return;
+  if(!swLaps.length){
+    el.innerHTML = '<div style="text-align:center;color:var(--muted);font-size:.75rem;padding:10px;font-family:var(--font-body)">Hit "+ Lap" to record splits</div>';
+    return;
+  }
+  el.innerHTML = [...swLaps].reverse().map(l => `
+    <div style="display:flex;justify-content:space-between;align-items:center;padding:7px 10px;background:var(--bg3);border-radius:8px;margin-bottom:4px;font-size:.78rem">
+      <span style="color:var(--muted);font-family:var(--font-body)">Lap ${l.num}</span>
+      <span style="color:var(--muted2);font-family:var(--font-mono)">${l.split}</span>
+      <span style="font-family:var(--font-mono);font-weight:700;color:var(--blue)">${l.total}</span>
+    </div>`).join('');
+}
+
+function clearSwLaps(){
+  swLaps = [];
+  renderSwLaps();
+}
+
 
 function togglePomodoroMode(on){
   pomodoroMode = on;
