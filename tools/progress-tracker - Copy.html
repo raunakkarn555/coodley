@@ -2437,6 +2437,78 @@ footer.coodley-footer{background:var(--bg);border-top:1px solid var(--border);pa
   </div>
 </div>
 
+<!-- ── STOPWATCH (COUNT-UP) ── -->
+<div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-xl);padding:26px;margin-bottom:20px">
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;flex-wrap:wrap;gap:8px">
+    <div>
+      <div style="font-family:var(--font-head);font-weight:800;font-size:1rem">⏫ Stopwatch</div>
+      <div style="font-size:.68rem;color:var(--muted);font-family:var(--font-body)">Count-up timer · Lap splits · Auto-save on reset or close</div>
+    </div>
+    <span style="font-size:.62rem;font-weight:700;padding:3px 10px;border-radius:20px;border:1px solid rgba(91,164,245,.3);background:rgba(91,164,245,.07);color:var(--blue);font-family:var(--font-mono)" id="sw-live-badge"></span>
+  </div>
+
+  <div style="display:grid;grid-template-columns:auto 1fr;gap:24px;align-items:center;flex-wrap:wrap">
+
+    <!-- SVG Ring -->
+    <div style="position:relative;width:140px;height:140px;flex-shrink:0;margin:0 auto">
+      <svg width="140" height="140" viewBox="0 0 140 140">
+        <circle cx="70" cy="70" r="54" fill="none" stroke="var(--bg4)" stroke-width="8"/>
+        <circle cx="70" cy="70" r="54" fill="none" stroke="var(--blue)" stroke-width="8"
+          stroke-dasharray="339.29" id="sw-ring-fill"
+          stroke-dashoffset="339.29"
+          stroke-linecap="round"
+          transform="rotate(-90 70 70)"
+          style="transition:stroke-dashoffset .5s linear,stroke .4s"/>
+      </svg>
+      <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center">
+        <div id="sw-disp" style="font-family:var(--font-mono);font-size:1.5rem;font-weight:700;color:var(--blue);letter-spacing:.04em;line-height:1;transition:color .4s">00:00</div>
+        <div style="font-size:.58rem;color:var(--muted);margin-top:3px;text-transform:uppercase;letter-spacing:.07em;font-family:var(--font-body)">elapsed</div>
+      </div>
+    </div>
+
+    <!-- Controls -->
+    <div style="flex:1">
+      <!-- Main buttons -->
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px">
+        <button id="sw-start-btn" onclick="toggleStopwatch()"
+          style="padding:10px 24px;border-radius:10px;border:1px solid var(--blue);color:var(--blue);background:transparent;font-family:var(--font-body);font-size:.9rem;font-weight:700;cursor:pointer;transition:all .2s;flex:1;min-width:100px"
+          onmouseover="this.style.background='rgba(91,164,245,.1)'"
+          onmouseout="this.style.background='transparent'">▶ Start</button>
+        <button onclick="resetStopwatch()"
+          style="padding:10px 20px;border-radius:10px;border:1px solid var(--border2);color:var(--muted);background:transparent;font-family:var(--font-body);font-size:.9rem;font-weight:700;cursor:pointer;transition:all .2s"
+          onmouseover="this.style.borderColor='var(--red)';this.style.color='var(--red)'"
+          onmouseout="this.style.borderColor='var(--border2)';this.style.color='var(--muted)'">↺ Reset & Save</button>
+        <button onclick="addSwLap()"
+          style="padding:10px 18px;border-radius:10px;border:1px solid rgba(61,232,176,.4);color:var(--accent);background:transparent;font-family:var(--font-body);font-size:.9rem;font-weight:700;cursor:pointer;transition:all .2s"
+          onmouseover="this.style.background='rgba(61,232,176,.1)'"
+          onmouseout="this.style.background='transparent'">+ Lap</button>
+        <button onclick="saveStopwatchSession()"
+          style="padding:10px 18px;border-radius:10px;border:1px solid rgba(244,169,66,.4);color:var(--amber);background:transparent;font-family:var(--font-body);font-size:.9rem;font-weight:700;cursor:pointer;transition:all .2s"
+          onmouseover="this.style.background='rgba(244,169,66,.1)'"
+          onmouseout="this.style.background='transparent'">💾 Save</button>
+      </div>
+
+      <!-- Note input -->
+      <div style="margin-bottom:12px">
+        <input type="text" id="sw-note" placeholder="📝 What are you studying? (saved with session)"
+          style="width:100%;background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:9px 13px;color:var(--fg);font-family:var(--font-body);font-size:.82rem;outline:none;transition:border-color .2s;box-sizing:border-box"
+          onfocus="this.style.borderColor='var(--border3)'"
+          onblur="this.style.borderColor='var(--border)'"/>
+      </div>
+
+      <!-- Lap list -->
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">
+        <span style="font-size:.65rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;font-family:var(--font-body)">⏱ Splits</span>
+        <button onclick="clearSwLaps()" style="background:none;border:1px solid var(--border);border-radius:6px;color:var(--muted);font-size:.62rem;padding:2px 7px;cursor:pointer;font-family:var(--font-body)">Clear</button>
+      </div>
+      <div id="sw-laps" style="max-height:100px;overflow-y:auto">
+        <div style="text-align:center;color:var(--muted);font-size:.75rem;padding:8px;font-family:var(--font-body)">Hit "+ Lap" to record splits</div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ── END STOPWATCH ── -->
+
 <!-- ── TWO-COLUMN MAIN LAYOUT ── -->
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:20px">
 
@@ -2523,6 +2595,14 @@ footer.coodley-footer{background:var(--bg);border-top:1px solid var(--border);pa
         <div style="color:var(--muted);font-size:.72rem;text-align:center;padding:6px;font-family:var(--font-body)">Hit "+ Lap" while running to record splits</div>
       </div>
     </div>
+
+    <!-- Note for countdown session -->
+      <div style="margin-top:12px">
+        <input type="text" id="timer-session-note" placeholder="📝 What are you studying? (saved with session)"
+          style="width:100%;background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:9px 13px;color:var(--fg);font-family:var(--font-body);font-size:.82rem;outline:none;transition:border-color .2s;box-sizing:border-box"
+          onfocus="this.style.borderColor='var(--border3)'"
+          onblur="this.style.borderColor='var(--border)'"/>
+      </div>
 
     <p style="text-align:center;font-size:.68rem;color:var(--muted);margin-top:12px;font-family:var(--font-body)">💡 Pomodoro: 25m focus → 5m break → repeat 4x → long break</p>
   </div>
@@ -2831,6 +2911,681 @@ footer.coodley-footer{background:var(--bg);border-top:1px solid var(--border);pa
     </div>
     FAQ
   </div>
+  <!-- ══ HOW TO USE THIS TRACKER — COMPLETE GUIDE ══ -->
+  <div style="background:linear-gradient(135deg,rgba(61,232,176,.07),rgba(91,164,245,.04));border:1px solid rgba(61,232,176,.25);border-radius:var(--radius-xl);padding:24px;margin-bottom:28px">
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:6px;flex-wrap:wrap">
+      <div style="width:40px;height:40px;border-radius:12px;background:rgba(61,232,176,.15);border:1px solid rgba(61,232,176,.3);display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0">📖</div>
+      <div>
+        <div style="font-family:var(--font-head);font-weight:800;font-size:1.15rem;letter-spacing:-.02em">How to Use This Tracker — Complete Guide</div>
+        <div style="font-size:.75rem;color:var(--muted2);font-family:var(--font-body);margin-top:2px">Every tab, every button, every feature explained. Click any section to expand.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- GUIDE ITEMS -->
+  <div class="faq-list" id="guide-section">
+
+    <!-- DASHBOARD -->
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        📊 Dashboard — Your Home Screen
+        <span>+</span>
+      </button>
+      <div class="faq-a">
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <div>
+            <div style="font-weight:700;color:var(--fg);margin-bottom:5px">What is the Dashboard?</div>
+            <div>The Dashboard is the first thing you see. It shows your overall progress at a glance — how many topics you have completed, your study streak, projects built, and jobs applied. Think of it as your mission control.</div>
+          </div>
+          <div>
+            <div style="font-weight:700;color:var(--fg);margin-bottom:5px">Daily Motivation Quote</div>
+            <div>The coloured card at the top shows a motivational message that changes based on your current progress percentage and streak. The more you complete, the more advanced the message becomes.</div>
+          </div>
+          <div>
+            <div style="font-weight:700;color:var(--fg);margin-bottom:5px">Today's Study Goal Ring</div>
+            <div>The circular ring shows how many hours you have studied today versus your daily goal (set in Profile). Log your hours in the Daily tab and the ring fills up automatically.</div>
+          </div>
+          <div>
+            <div style="font-weight:700;color:var(--fg);margin-bottom:5px">This Week Bar Chart</div>
+            <div>Shows your study hours for each day of the current week (Mon–Sun). Taller bars mean more hours. Today's bar is highlighted in green. Log hours daily using the Daily tab → Log Today button.</div>
+          </div>
+          <div>
+            <div style="font-weight:700;color:var(--fg);margin-bottom:5px">Next Milestone</div>
+            <div>Shows what percentage target you are heading toward next — for example, 35% means React Ready. The progress bar fills as you check off more topics in the Syllabus.</div>
+          </div>
+          <div>
+            <div style="font-weight:700;color:var(--fg);margin-bottom:5px">Stats Cards (6 boxes)</div>
+            <div>Topics Done = total checkboxes ticked in Syllabus. Chapters Done = full chapters completed. Day Streak = consecutive days you logged study time. Projects Built = entries in Projects tab. Jobs Applied = entries in Job Hunt tracker. Consistency = your overall progress percentage.</div>
+          </div>
+          <div>
+            <div style="font-weight:700;color:var(--fg);margin-bottom:5px">Today's Focus</div>
+            <div>Shows 2–3 recommended study areas based on which units have the lowest completion. Click any card to jump directly to the Syllabus. These suggestions update automatically as you progress.</div>
+          </div>
+          <div>
+            <div style="font-weight:700;color:var(--fg);margin-bottom:5px">Subject Progress Bars</div>
+            <div>Five horizontal bars showing your completion percentage for Frontend, React, Node.js, DSA, and System Design. These are calculated directly from the checkboxes you tick in the Syllabus.</div>
+          </div>
+          <div>
+            <div style="font-weight:700;color:var(--fg);margin-bottom:5px">Recent Activity</div>
+            <div>Shows the 5 most recently completed topics from the Syllabus. Each entry shows the topic name, which unit and chapter it belongs to, and a green Done badge.</div>
+          </div>
+          <div>
+            <div style="font-weight:700;color:var(--fg);margin-bottom:5px">Target Date Countdown</div>
+            <div>If you set a target job date in Profile, a red countdown badge appears below the hero section showing exactly how many days are left. Red means under 30 days, amber means under 90, green means you have plenty of time.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROFILE -->
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        👤 Profile — Set Your Goals
+        <span>+</span>
+      </button>
+      <div class="faq-a">
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <div>
+            <div style="font-weight:700;color:var(--fg);margin-bottom:5px">How to set up your profile</div>
+            <div>Go to Profile tab. Fill in your Full Name, select your background (complete beginner, CS student etc.), set your Start Month, target salary in LPA, daily study goal in hours, target job date, and your weakest area. Click Save Profile when done.</div>
+          </div>
+          <div>
+            <div style="font-weight:700;color:var(--fg);margin-bottom:5px">Profile Avatar</div>
+            <div>Click the circular avatar icon to upload a photo from your device. It gets compressed and stored locally — no upload to any server. Your photo only lives in your browser.</div>
+          </div>
+          <div>
+            <div style="font-weight:700;color:var(--fg);margin-bottom:5px">Daily Study Goal (hours)</div>
+            <div>This number feeds into the Dashboard goal ring and the Daily tab goal display. Set it realistically — 3 hours minimum, 5–6 hours for faster completion. You can change it any time.</div>
+          </div>
+          <div>
+            <div style="font-weight:700;color:var(--fg);margin-bottom:5px">Target Job Date</div>
+            <div>Set the date by which you want to land your first job. The Dashboard will show a live countdown. Seeing the number shrink daily is a powerful motivator.</div>
+          </div>
+          <div>
+            <div style="font-weight:700;color:var(--fg);margin-bottom:5px">Your Why</div>
+            <div>Write your personal reason for wanting this job in the big text box. Read this whenever you feel like giving up. This is private — stored only on your device.</div>
+          </div>
+          <div>
+            <div style="font-weight:700;color:var(--fg);margin-bottom:5px">Save Profile button</div>
+            <div>Always click Save Profile after making any changes. Your data is saved to browser localStorage immediately. No internet needed.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SYLLABUS -->
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        📚 Syllabus — The Complete Learning Roadmap
+        <span>+</span>
+      </button>
+      <div class="faq-a">
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <div>
+            <div style="font-weight:700;color:var(--fg);margin-bottom:5px">Structure — Units, Stages, Chapters, Topics</div>
+            <div>The syllabus is organized as Unit → Stage → Chapter → Topics. Unit 1 is Frontend, Unit 2 is Backend, Unit 3 is Databases, Unit 4 is DSA, Unit 5 is System Design, Unit 6 is Job Prep. Click the colored tab buttons at the top to switch units.</div>
+          </div>
+          <div>
+            <div style="font-weight:700;color:var(--fg);margin-bottom:5px">Opening a Stage and Chapter</div>
+            <div>Click on any Stage row to expand it and reveal the chapters inside. Then click any Chapter card to expand it and see the individual topics. Both stages and chapters are collapsible — click again to close.</div>
+          </div>
+          <div>
+            <div style="font-weight:700;color:var(--fg);margin-bottom:5px">Checking off a Topic</div>
+            <div>Click the small square checkbox on the left of each topic row to mark it done. The topic name gets a strikethrough, the chapter progress bar fills, and the Dashboard stats update immediately. Uncheck to undo.</div>
+          </div>
+          <div>
+            <div style="font-weight:700;color:var(--fg);margin-bottom:5px">Topic Category Tags</div>
+            <div>Each topic has a coloured tag — Theory (blue), Practice (green), Build (orange), Interview (pink), C++/Java (amber). These show you what kind of activity the topic involves.</div>
+          </div>
+          <div>
+            <div style="font-weight:700;color:var(--fg);margin-bottom:5px">Notes box under each topic</div>
+            <div>Every topic has a small text area below it. Write your own notes, key insights, code snippets, or anything you want to remember. Notes are saved automatically as you type.</div>
+          </div>
+          <div>
+            <div style="font-weight:700;color:var(--fg);margin-bottom:5px">Confidence Stars ★</div>
+            <div>Rate your confidence on each topic from 1 to 5 stars by clicking the stars. 1 star means barely understood, 5 stars means you can explain it to someone else. Stars are saved and used in the Syllabus search filters.</div>
+          </div>
+          <div>
+            <div style="font-weight:700;color:var(--fg);margin-bottom:5px">Flag Buttons — ✓ ? ★</div>
+            <div>Three small flag buttons appear below each topic. ✓ (green) marks the topic as revised — good for second-pass review. ? (red) flags it as a doubt — something you did not understand. ★ (amber) marks it as high priority for revision. Use these during review sessions.</div>
+          </div>
+          <div>
+            <div style="font-weight:700;color:var(--fg);margin-bottom:5px">Revision Done checkbox (chapter level)</div>
+            <div>At the bottom of each expanded chapter there is a Revision done checkbox. Tick this when you have gone through the entire chapter a second time. A green Revised badge appears on the chapter header.</div>
+          </div>
+          <div>
+            <div style="font-weight:700;color:var(--fg);margin-bottom:5px">Search Bar</div>
+            <div>Type any keyword in the search bar to instantly find topics across all 500+ entries. Try searching closures, useEffect, JWT, Dijkstra, or any topic name. Results appear below the search bar with the chapter path shown.</div>
+          </div>
+          <div>
+            <div style="font-weight:700;color:var(--fg);margin-bottom:5px">Filter Pills — Theory, Practice, Doubts, Priority, Revised</div>
+            <div>Click any filter pill to show only matching topics. All shows everything. Theory, Practice, Project, Interview filter by topic category. Doubts shows all topics you flagged with ?, Priority shows all ★ flagged topics, Revised shows all ✓ flagged topics.</div>
+          </div>
+          <div>
+            <div style="font-weight:700;color:var(--fg);margin-bottom:5px">Doubts Panel</div>
+            <div>Click the Doubts filter pill to open a full panel listing every topic you marked with the ? flag, grouped by unit. Click any item to jump directly to it in the syllabus. Use the Resolved button to clear a doubt once you understand it. Use Clear All Doubts to reset all at once.</div>
+          </div>
+          <div>
+            <div style="font-weight:700;color:var(--fg);margin-bottom:5px">Clicking a search result</div>
+            <div>When you click any result in the search list, the page automatically switches to the correct unit tab, opens the right stage and chapter, scrolls to it, and highlights it with a green outline for 2 seconds.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- OVERVIEW -->
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        📈 Overview — Progress Summary
+        <span>+</span>
+      </button>
+      <div class="faq-a">
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <div>
+            <div style="font-weight:700;color:var(--fg);margin-bottom:5px">What Overview shows</div>
+            <div>Overview gives you a full breakdown of your progress across every unit and chapter in one place. You can see exactly which chapters are complete, partially done, or untouched — without opening the Syllabus.</div>
+          </div>
+          <div>
+            <div style="font-weight:700;color:var(--fg);margin-bottom:5px">Top Summary Cards</div>
+            <div>Four metric cards at the top show your overall percentage, chapters done out of total, topics remaining, and your JavaScript/Frontend progress. These update live as you check off items in the Syllabus.</div>
+          </div>
+          <div>
+            <div style="font-weight:700;color:var(--fg);margin-bottom:5px">Chapter Progress Rows</div>
+            <div>Each chapter is shown as a row with a mini coloured progress bar and a fraction like 8/20. The bar fills as you complete more topics inside that chapter.</div>
+          </div>
+          <div>
+            <div style="font-weight:700;color:var(--fg);margin-bottom:5px">When to use Overview</div>
+            <div>Use Overview at the start of each week to identify which chapters you should focus on. Any chapter below 50% that is important for your current stage is a good target for the week ahead.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DAILY -->
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        📅 Daily — Log Your Study Day
+        <span>+</span>
+      </button>
+      <div class="faq-a">
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <div>
+            <div style="font-weight:700;color:var(--fg);margin-bottom:5px">Daily input fields</div>
+            <div>Four input boxes let you log Study Hours, Water intake in glasses, Sleep from last night in hours, and your current Day Streak (auto-calculated). Fill these in at the end of every study session.</div>
+          </div>
+          <div>
+            <div style="font-weight:700;color:var(--fg);margin-bottom:5px">Log Today button</div>
+            <div>Click Log Today after filling the fields. This saves the day's data, updates your streak counter, fills the heatmap square for today, and updates the Dashboard goal ring. This is the most important button — click it every single day.</div>
+          </div>
+          <div>
+            <div style="font-weight:700;color:var(--fg);margin-bottom:5px">Mood selector</div>
+            <div>Click one of the six mood buttons — Focused, Good, Okay, Tired, Stuck, or Motivated. Your mood is saved with the day's data and shown in the Weekly Summary day chips as an emoji.</div>
+          </div>
+          <div>
+            <div style="font-weight:700;color:var(--fg);margin-bottom:5px">Built something today + Solved DSA today</div>
+            <div>Two checkboxes at the bottom of the notes card. Tick Built something if you wrote and shipped any code project. Tick Solved DSA if you practised even one algorithm problem. These show up as coloured dots in the weekly summary.</div>
+          </div>
+          <div>
+            <div style="font-weight:700;color:var(--fg);margin-bottom:5px">Daily Notes box</div>
+            <div>Write anything here — what you coded, what you learned, any blockers, your plan for tomorrow. These notes are saved per day and are included in the PDF export from the Timer section.</div>
+          </div>
+          <div>
+            <div style="font-weight:700;color:var(--fg);margin-bottom:5px">History bar — viewing past days</div>
+            <div>The row of day buttons at the top (Mon, Tue, etc.) lets you view any past day's data. Click Yesterday or any day button to see that day's logged hours, mood, and notes in read-only mode. Use the date picker on the right to jump to any specific date.</div>
+          </div>
+          <div>
+            <div style="font-weight:700;color:var(--fg);margin-bottom:5px">Back to Today button</div>
+            <div>When viewing a past day, a blue banner appears at the top with a Back to Today button. Click it to return to today's editable view.</div>
+          </div>
+          <div>
+            <div style="font-weight:700;color:var(--fg);margin-bottom:5px">Weekly Summary card</div>
+            <div>Shows this week's total study hours, active days, average sleep, water total, how many days you built something, and how many days you did DSA. Seven day chips at the bottom show each day's hours and mood. Click any chip to view that day.</div>
+          </div>
+          <div>
+            <div style="font-weight:700;color:var(--fg);margin-bottom:5px">Study Heatmap</div>
+            <div>A 84-day grid where each square represents one day. Darker green means more hours studied. Hovering shows the exact date and hours. Your goal is to keep the grid as green as possible.</div>
+          </div>
+          <div>
+            <div style="font-weight:700;color:var(--fg);margin-bottom:5px">Break and Health Reminders</div>
+            <div>Four toggles let you enable browser notifications for Study Break, Water Reminder, Eye Rest (20-20-20 rule), and Posture and Stretch. Select the interval from the dropdown and flip the toggle on. Allow notifications when the browser asks. Reminders only fire while this tab is open.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TO-DO -->
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        ✅ To-Do — Task Manager
+        <span>+</span>
+      </button>
+      <div class="faq-a">
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <div>
+            <div style="font-weight:700;color:var(--fg);margin-bottom:5px">Adding a task</div>
+            <div>Type your task in the input box, select a tag (JavaScript, React, Node.js, DSA, Job Hunt, or General), choose a priority (High, Medium, Low), then click Add or press Enter. Tasks appear in the list below immediately.</div>
+          </div>
+          <div>
+            <div style="font-weight:700;color:var(--fg);margin-bottom:5px">Priority dots</div>
+            <div>A small coloured dot appears on each task — red for High, amber for Medium, green for Low. High priority tasks appear with a red dot so you can spot urgent items quickly.</div>
+          </div>
+          <div>
+            <div style="font-weight:700;color:var(--fg);margin-bottom:5px">Completing a task</div>
+            <div>Click the checkbox on the left of any task to mark it done. The text gets a strikethrough and the task fades. The progress bar at the top updates. Click the checkbox again to unmark it.</div>
+          </div>
+          <div>
+            <div style="font-weight:700;color:var(--fg);margin-bottom:5px">Status selector</div>
+            <div>Each task has a small status dropdown showing Not Started, In Progress, or Done. Update this as you work through the task. It helps you track partially-done work without fully completing it.</div>
+          </div>
+          <div>
+            <div style="font-weight:700;color:var(--fg);margin-bottom:5px">Add Note button per task</div>
+            <div>Click the + Add Note button on any task to expand a text area below it. Write detailed notes — progress made, blockers encountered, how much is done, next steps. The button turns green with a pencil icon once a note exists. Notes are saved automatically.</div>
+          </div>
+          <div>
+            <div style="font-weight:700;color:var(--fg);margin-bottom:5px">Filter tabs</div>
+            <div>Four filter tabs at the top of the list — All, Active (not done), Done, High Priority. Click any to filter the visible tasks. The done count and progress bar always show the real total regardless of filter.</div>
+          </div>
+          <div>
+            <div style="font-weight:700;color:var(--fg);margin-bottom:5px">Clear Done button</div>
+            <div>Removes all completed tasks from the list permanently. Use this at the end of each day or week to keep the list clean. This action cannot be undone.</div>
+          </div>
+          <div>
+            <div style="font-weight:700;color:var(--fg);margin-bottom:5px">Mark All Done button</div>
+            <div>Marks every visible task as completed at once. Useful for end-of-day cleanup or when reviewing a batch of quick tasks.</div>
+          </div>
+          <div>
+            <div style="font-weight:700;color:var(--fg);margin-bottom:5px">Delete button ✕</div>
+            <div>The small ✕ button on the right of each task permanently deletes it. There is no undo, so be sure before deleting.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROJECTS -->
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        🚀 Projects — Track What You Build
+        <span>+</span>
+      </button>
+      <div class="faq-a">
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <div>
+            <div style="font-weight:700;color:var(--fg);margin-bottom:5px">Logging a project</div>
+            <div>Fill in the project name, date completed, tech stack used (e.g. React, Node, MongoDB), GitHub URL, live URL, and difficulty from 1 to 5. Add notes about what you learned and the key features. Click Save Project.</div>
+          </div>
+          <div>
+            <div style="font-weight:700;color:var(--fg);margin-bottom:5px">Why log projects</div>
+            <div>Each logged project increments the Projects Built counter on the Dashboard. Recruiters ask about projects in interviews. Keeping this log helps you remember details, talk about decisions, and link to live demos confidently.</div>
+          </div>
+          <div>
+            <div style="font-weight:700;color:var(--fg);margin-bottom:5px">GitHub and Live URL links</div>
+            <div>If you add GitHub and Live URLs, clickable links appear on the project card. These open in a new tab directly. Always deploy your projects so you have a live demo link.</div>
+          </div>
+          <div>
+            <div style="font-weight:700;color:var(--fg);margin-bottom:5px">Difficulty stars</div>
+            <div>Rate each project 1 to 5 for difficulty. This is personal — it helps you track your growth over time. A project that felt 5 out of 5 in month 2 might feel 2 out of 5 in month 6.</div>
+          </div>
+          <div>
+            <div style="font-weight:700;color:var(--fg);margin-bottom:5px">Delete button</div>
+            <div>Each project card has a small Delete link. Clicking it removes the project permanently from the list and decrements the Dashboard counter.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RESOURCES -->
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        📚 Resources — Track Learning Materials
+        <span>+</span>
+      </button>
+      <div class="faq-a">
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <div>
+            <div style="font-weight:700;color:var(--fg);margin-bottom:5px">Adding a resource</div>
+            <div>Type an emoji (optional), the resource name (required), and a URL (optional). Click Add Resource. Examples: a YouTube playlist, a Udemy course, a book, an official documentation site. Anything you are studying belongs here.</div>
+          </div>
+          <div>
+            <div style="font-weight:700;color:var(--fg);margin-bottom:5px">Completion slider</div>
+            <div>Each resource card has a horizontal slider from 0 to 100 percent. Drag it to show how much you have completed. The percentage number and progress bar update live as you drag. This is just for your own tracking — it does not affect other stats.</div>
+          </div>
+          <div>
+            <div style="font-weight:700;color:var(--fg);margin-bottom:5px">Completed or Revised checkbox</div>
+            <div>Tick this when you have fully finished and revised the resource. A status tag changes from In progress to Done automatically based on the slider position.</div>
+          </div>
+          <div>
+            <div style="font-weight:700;color:var(--fg);margin-bottom:5px">Open Resource link</div>
+            <div>If you added a URL, a clickable Open Resource arrow link appears. Click it to open the course or documentation in a new tab without leaving the tracker.</div>
+          </div>
+          <div>
+            <div style="font-weight:700;color:var(--fg);margin-bottom:5px">Delete button ✕</div>
+            <div>The small ✕ in the top-right corner of each card removes the resource permanently after a confirmation prompt.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ANALYTICS -->
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        📊 Analytics — Performance Insights
+        <span>+</span>
+      </button>
+      <div class="faq-a">
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <div>
+            <div style="font-weight:700;color:var(--fg);margin-bottom:5px">Readiness Level ring</div>
+            <div>A circular ring shows your job readiness percentage and a label — Beginner, Building, Competitive, Nearly There, or Job Ready. Below the ring is a personalised message telling you exactly what to focus on next.</div>
+          </div>
+          <div>
+            <div style="font-weight:700;color:var(--fg);margin-bottom:5px">Weak Areas chart</div>
+            <div>Six horizontal bars show your completion percentage for each major subject area sorted from weakest to strongest. The shortest bar is your biggest gap. Focus there first.</div>
+          </div>
+          <div>
+            <div style="font-weight:700;color:var(--fg);margin-bottom:5px">Smart Suggestions</div>
+            <div>A list of personalised action items generated from your current data. These change as your progress, streak, project count, and application count change. Read these every week — they are calculated from your real numbers.</div>
+          </div>
+          <div>
+            <div style="font-weight:700;color:var(--fg);margin-bottom:5px">Skills Radar chart</div>
+            <div>A six-axis spider chart showing your skill profile across Frontend, React, Backend, Databases, DSA, and System Design. A balanced hexagon shape means you are well-rounded. A lopsided shape shows where to focus.</div>
+          </div>
+          <div>
+            <div style="font-weight:700;color:var(--fg);margin-bottom:5px">Progress by Unit bar chart</div>
+            <div>Seven coloured bars showing completion percentage for each unit including Job Prep. Hover over any bar to see the exact percentage.</div>
+          </div>
+          <div>
+            <div style="font-weight:700;color:var(--fg);margin-bottom:5px">Study Hours line chart</div>
+            <div>A line graph of your study hours for the last 14 days. Green dots mean you hit 5 or more hours that day. The trend line shows whether your consistency is improving or declining.</div>
+          </div>
+          <div>
+            <div style="font-weight:700;color:var(--fg);margin-bottom:5px">Topic Distribution doughnut chart</div>
+            <div>Shows how your completed topics are distributed across the six units. If one slice dominates, you may be spending too much time on one area and neglecting others.</div>
+          </div>
+          <div>
+            <div style="font-weight:700;color:var(--fg);margin-bottom:5px">Pace Prediction card</div>
+            <div>Calculates your average topics per study day and average hours per study day over the last 60 days. Shows an estimated completion date at your current pace, a pace rating (Too Slow, Decent, Good, Excellent), and a personalised tip to speed up or maintain pace.</div>
+          </div>
+          <div>
+            <div style="font-weight:700;color:var(--fg);margin-bottom:5px">9-Month Roadmap Timeline</div>
+            <div>Nine milestone cards showing what to focus on each month from M1 to M9+. Each card has a coloured status badge — Done (green), In Progress (amber), or Upcoming (grey) based on your actual completion data. A mini progress bar shows that unit's completion.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- JOURNAL -->
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        🗒 Journal — Developer Diary
+        <span>+</span>
+      </button>
+      <div class="faq-a">
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <div>
+            <div style="font-weight:700;color:var(--fg);margin-bottom:5px">Why keep a developer journal</div>
+            <div>Writing about what you learn forces you to articulate it, which deepens understanding. It also creates a personal record of your growth — something powerful to look back on and reference in interviews when asked about your journey.</div>
+          </div>
+          <div>
+            <div style="font-weight:700;color:var(--fg);margin-bottom:5px">Writing Prompt chips</div>
+            <div>Eight prompt buttons above the text area suggest starting points — What I learned, Struggling with, Today's win, Tomorrow's focus, Aha moment, Energy check, Proud moment, Distraction. Click any prompt and it inserts the starter text into the box. You continue writing from there.</div>
+          </div>
+          <div>
+            <div style="font-weight:700;color:var(--fg);margin-bottom:5px">Mood, Category, Energy, Tags dropdowns</div>
+            <div>Before saving, set your mood (Fired up, Happy, Neutral, Tired, etc.), category (Learning, Win, Struggle, Reflection, Goal), energy level (High, Medium, Low), and any custom tags separated by commas. These help you filter and search entries later.</div>
+          </div>
+          <div>
+            <div style="font-weight:700;color:var(--fg);margin-bottom:5px">Word count and length badge</div>
+            <div>As you type, a live word count appears. The length badge changes from Short to Medium to Detailed based on how much you write. Aim for Detailed entries — they are the most useful to revisit.</div>
+          </div>
+          <div>
+            <div style="font-weight:700;color:var(--fg);margin-bottom:5px">Save Entry button</div>
+            <div>Click Save Entry to store your journal entry. It immediately appears in the entries list below and updates your journal stats and heatmap. You can write multiple entries per day.</div>
+          </div>
+          <div>
+            <div style="font-weight:700;color:var(--fg);margin-bottom:5px">Journal Activity Heatmap</div>
+            <div>A 30-day grid showing days you wrote journal entries. Darker green means more entries that day. Helps you build the journaling habit visually.</div>
+          </div>
+          <div>
+            <div style="font-weight:700;color:var(--fg);margin-bottom:5px">Filter tabs — All, Wins, Struggles, Learnings, Reflections, Goals, Pinned</div>
+            <div>Click any filter tab to show only entries of that category. Pinned shows entries you have pinned. The search box on the right lets you search entry text, mood, and tags simultaneously.</div>
+          </div>
+          <div>
+            <div style="font-weight:700;color:var(--fg);margin-bottom:5px">Pin button on entries</div>
+            <div>Click the 📌 Pin button on any entry to pin it. Pinned entries always appear at the top of the list regardless of filter. Use this for entries that contain important realisations or motivational moments you want easy access to.</div>
+          </div>
+          <div>
+            <div style="font-weight:700;color:var(--fg);margin-bottom:5px">Edit button on entries</div>
+            <div>Click Edit on any entry to load it back into the write box with all its settings. Make your changes and click Update Entry. An edited badge appears on the entry to show it was modified.</div>
+          </div>
+          <div>
+            <div style="font-weight:700;color:var(--fg);margin-bottom:5px">Read more button</div>
+            <div>Long entries are truncated at 250 characters. Click Read more to expand the full text inline without leaving the page.</div>
+          </div>
+          <div>
+            <div style="font-weight:700;color:var(--fg);margin-bottom:5px">Export button</div>
+            <div>Click Export (top right of the filter bar) to generate a print-ready HTML file of all your journal entries. A new tab opens — use Print → Save as PDF to save it. Useful for keeping a permanent offline copy.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- JOB HUNT -->
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        💼 Job Hunt — Get Hired Guide
+        <span>+</span>
+      </button>
+      <div class="faq-a">
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <div>
+            <div style="font-weight:700;color:var(--fg);margin-bottom:5px">Five sub-tabs inside Job Hunt</div>
+            <div>The Job Hunt section has five tabs at the top — The Roadmap, Pre-Apply Checklist, Resume Guide, Interview Prep, Salary Negotiation, and Application Tracker. Click each tab to switch between them.</div>
+          </div>
+          <div>
+            <div style="font-weight:700;color:var(--fg);margin-bottom:5px">The Roadmap tab</div>
+            <div>Five numbered phases walk you through the complete job hunt process — Foundation Building (Month 1–3), Portfolio Building (Month 4–6), Active Applying (Month 7–8), Interview Phase (Month 7–9), and Offer and Negotiation (Month 8–9). Each phase has step-by-step action items with links to tools.</div>
+          </div>
+          <div>
+            <div style="font-weight:700;color:var(--fg);margin-bottom:5px">Pre-Apply Checklist tab</div>
+            <div>A grid of 12 checkboxes covering everything you need before applying — JavaScript knowledge, React concepts, projects built, resume format, GitHub activity, and mock interviews done. Check off each item as you genuinely complete it. Honest self-assessment here is crucial.</div>
+          </div>
+          <div>
+            <div style="font-weight:700;color:var(--fg);margin-bottom:5px">Resume Guide tab</div>
+            <div>Non-negotiable resume rules, a project bullet formula (bad vs good example), links to free resume builders, and a cold outreach LinkedIn DM template. Read this before writing your resume.</div>
+          </div>
+          <div>
+            <div style="font-weight:700;color:var(--fg);margin-bottom:5px">Interview Prep tab</div>
+            <div>Three topic cards listing must-know questions for JavaScript, React, and System Design. A STAR method guide for behavioural questions. Links to NeetCode, LeetCode, and the Frontend Interview Handbook.</div>
+          </div>
+          <div>
+            <div style="font-weight:700;color:var(--fg);margin-bottom:5px">Salary Negotiation tab</div>
+            <div>A salary table showing expected ranges for freshers to mid-level developers at startups, mid-stage companies, and MNCs. A word-for-word negotiation script to use on the phone. Tips on negotiating beyond base salary — equity, joining bonus, learning budget, remote days.</div>
+          </div>
+          <div>
+            <div style="font-weight:700;color:var(--fg);margin-bottom:5px">Application Tracker tab — Log New Application</div>
+            <div>Fill in the company name, role, date applied, current status, salary offered, source (LinkedIn, Cutshort, referral etc.), and any notes. Click Log Application to save it. A card appears in the list below showing all your tracked applications.</div>
+          </div>
+          <div>
+            <div style="font-weight:700;color:var(--fg);margin-bottom:5px">Application status badges</div>
+            <div>Each application card shows a coloured status badge — blue for Applied, amber for OA (online assessment), orange for Interview, green for Offer, red for Rejected, grey for Ghosted. Update the status by deleting and re-logging, or by modifying through the tracker.</div>
+          </div>
+          <div>
+            <div style="font-weight:700;color:var(--fg);margin-bottom:5px">Jobs Applied counter</div>
+            <div>Every application you log increments the Jobs Applied counter on the Dashboard stats. Target is 50+ applications. The sub-text shows how many more you need.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TIMER -->
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        ⏱ Timer — Focus and Study Tracker
+        <span>+</span>
+      </button>
+      <div class="faq-a">
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <div>
+            <div style="font-weight:700;color:var(--fg);margin-bottom:5px">Live Clock header</div>
+            <div>The top bar shows the current time and date live. Four stat boxes show today's total focus time, your best single session ever, all-time total focus minutes, and total session count across all days.</div>
+          </div>
+          <div>
+            <div style="font-weight:700;color:var(--fg);margin-bottom:5px">Stopwatch (count-up timer)</div>
+            <div>The count-up stopwatch starts from zero and counts upward. Click Start to begin, Pause to freeze, Start again to resume. The circular ring fills up once per hour and changes colour — blue for under 25 minutes, green for under 60 minutes, amber for under 90 minutes, pink beyond that. Hit Reset and Save to stop and automatically save the session. Hit the Save button mid-session to save without resetting.</div>
+          </div>
+          <div>
+            <div style="font-weight:700;color:var(--fg);margin-bottom:5px">Stopwatch note</div>
+            <div>Type what you are studying in the note box before or during the session. This note is saved alongside the session record so you can see later what each session was for.</div>
+          </div>
+          <div>
+            <div style="font-weight:700;color:var(--fg);margin-bottom:5px">Stopwatch lap splits</div>
+            <div>Click + Lap at any point while the stopwatch is running to record a split. The lap list shows each lap number, the split time (time since last lap), and the total elapsed time. Click Clear to remove all laps.</div>
+          </div>
+          <div>
+            <div style="font-weight:700;color:var(--fg);margin-bottom:5px">Focus Timer (countdown)</div>
+            <div>The countdown timer counts down from a preset duration to zero. Use the preset buttons — 25m, 45m, 1h, 1.5h, 2h, 3h — or enter custom hours and minutes and click Set. Click Start to begin the countdown.</div>
+          </div>
+          <div>
+            <div style="font-weight:700;color:var(--fg);margin-bottom:5px">Countdown timer note</div>
+            <div>A note input under the countdown controls lets you write what you are studying. This note is saved with the auto-logged session when the timer reaches zero.</div>
+          </div>
+          <div>
+            <div style="font-weight:700;color:var(--fg);margin-bottom:5px">Sound on complete toggle</div>
+            <div>When enabled, three pleasant beeps play when the countdown reaches zero. Warning beeps play at 30 seconds and 10 seconds remaining. Flip the toggle off to silence all sounds.</div>
+          </div>
+          <div>
+            <div style="font-weight:700;color:var(--fg);margin-bottom:5px">Pomodoro mode</div>
+            <div>Tick the Pomodoro checkbox to enable auto-cycling. The timer runs 25 minutes of work, then automatically switches to a 5 minute short break, then back to 25 minutes work, repeating four times before giving you a 15 minute long break. Four dot indicators track which Pomodoro you are on in the current cycle.</div>
+          </div>
+          <div>
+            <div style="font-weight:700;color:var(--fg);margin-bottom:5px">Countdown lap splits</div>
+            <div>Click + Lap while the countdown is running to record how much time was on the clock at that moment. Useful for tracking sub-tasks within a session.</div>
+          </div>
+          <div>
+            <div style="font-weight:700;color:var(--fg);margin-bottom:5px">Daily goal progress bar</div>
+            <div>A thin bar below the daily goal text fills as your total session minutes approach your daily study goal set in Profile. It updates after each completed session.</div>
+          </div>
+          <div>
+            <div style="font-weight:700;color:var(--fg);margin-bottom:5px">Auto-save when app closes</div>
+            <div>If either timer is running and you close the browser tab or window, the session is automatically saved at that moment. If you set a 1.5 hour countdown and close after 1 hour, a 1 hour session is saved. No data is lost from an accidental close.</div>
+          </div>
+          <div>
+            <div style="font-weight:700;color:var(--fg);margin-bottom:5px">Background tab support</div>
+            <div>Both timers continue working accurately even if you switch to another browser tab or minimise the window. The timestamp-based system means the timer catches up correctly when you return to the tab.</div>
+          </div>
+          <div>
+            <div style="font-weight:700;color:var(--fg);margin-bottom:5px">Today's Sessions panel</div>
+            <div>All sessions logged today appear as cards showing the session type label, start and end time, duration, and your note. Four mini stats at the top show total sessions, total minutes, Pomodoros completed, and the longest single session. Click Clear to remove today's log.</div>
+          </div>
+          <div>
+            <div style="font-weight:700;color:var(--fg);margin-bottom:5px">Manual Log</div>
+            <div>Log a past or offline study session manually. Pick the date, enter duration in minutes, select the subject from the pill buttons, add a note, and click Log Session. This saves to the same session log and shows in the weekly bars. Use this for sessions you did on paper, in a library, or before you started using the tracker.</div>
+          </div>
+          <div>
+            <div style="font-weight:700;color:var(--fg);margin-bottom:5px">This Week's Focus bar chart</div>
+            <div>Seven bars showing your total focus minutes per day for the current week. Click any bar to load that day's sessions in the View by Date panel on the right.</div>
+          </div>
+          <div>
+            <div style="font-weight:700;color:var(--fg);margin-bottom:5px">View by Date picker</div>
+            <div>Pick any past date from the calendar input to see all sessions logged on that day — both auto-logged timer sessions and manual entries.</div>
+          </div>
+          <div>
+            <div style="font-weight:700;color:var(--fg);margin-bottom:5px">Manual Log History</div>
+            <div>All manually added sessions are grouped by date with a daily total. Each entry shows the subject, note, and duration. Click ✕ to delete individual entries. Use Clear All to remove all manual entries.</div>
+          </div>
+          <div>
+            <div style="font-weight:700;color:var(--fg);margin-bottom:5px">Export Study Report PDF</div>
+            <div>Select a date range using the From and To date pickers or use the quick buttons — Today, This Week, This Month, All Time. Preview stats update live showing how many days, active days, total focus, sessions, and manual logs are in range. Tick the checkboxes to choose what to include — Summary Stats, Heatmap, Timer Sessions, Manual Logs, Daily Notes, Journal Entries, To-Do Tasks. Click Generate and Download PDF Report to open a print-ready page in a new tab. Use Print → Save as PDF.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BACKUP -->
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        💾 Backup — Protect Your Progress
+        <span>+</span>
+      </button>
+      <div class="faq-a">
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <div>
+            <div style="font-weight:700;color:var(--fg);margin-bottom:5px">Where is all data stored</div>
+            <div>Everything is stored in your browser's localStorage — your device, your browser, your data. No account, no server, no cloud sync. This means if you clear browser data, switch devices, or use incognito mode, your data disappears. Backup is not optional.</div>
+          </div>
+          <div>
+            <div style="font-weight:700;color:var(--fg);margin-bottom:5px">Export Backup button</div>
+            <div>Click Export Backup to download a .json file to your computer. This file contains every single piece of data — all syllabus progress, journal entries, daily logs, timer sessions, projects, applications, to-do items, profile, settings, and resources. The filename includes today's date so you can keep versioned backups.</div>
+          </div>
+          <div>
+            <div style="font-weight:700;color:var(--fg);margin-bottom:5px">Import Backup button</div>
+            <div>Click Import Backup to open a file picker. Select your previously exported .json file. A confirmation dialog shows the backup details — date exported, topics done, entries, projects, and todos. Confirm to restore. The page reloads and all data is exactly as it was when you exported.</div>
+          </div>
+          <div>
+            <div style="font-weight:700;color:var(--fg);margin-bottom:5px">How often to backup</div>
+            <div>Export once per week minimum. Save the file to Google Drive, Dropbox, or email it to yourself. If you study daily, consider exporting every 2–3 days. Losing months of progress to a browser clear is devastating and completely avoidable.</div>
+          </div>
+          <div>
+            <div style="font-weight:700;color:var(--fg);margin-bottom:5px">Storage Info panel</div>
+            <div>Shows how many kilobytes of localStorage your data is using out of the 5MB browser limit, your current overall progress percentage, count of every data type, and a colour-coded summary. Also has the Clear ALL Data button for a complete reset.</div>
+          </div>
+          <div>
+            <div style="font-weight:700;color:var(--fg);margin-bottom:5px">Clear ALL Data button</div>
+            <div>This permanently deletes everything and reloads the page with a blank tracker. Only use this if you want to completely start over. There is a confirmation prompt — read it carefully. Export a backup before using this.</div>
+          </div>
+          <div>
+            <div style="font-weight:700;color:var(--fg);margin-bottom:5px">Moving to another device</div>
+            <div>Export on your old device. Open the tracker on the new device. Click Import Backup and select the exported file. All your data transfers instantly with no internet connection needed.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- GENERAL TIPS -->
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        💡 General Tips — Getting the Most from This Tracker
+        <span>+</span>
+      </button>
+      <div class="faq-a">
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <div>
+            <div style="font-weight:700;color:var(--fg);margin-bottom:5px">Daily routine to follow</div>
+            <div>Morning — open the tracker, check Today's Focus on Dashboard, start the Timer with a note. During study — tick topics in Syllabus as you complete them, flag doubts with ?. Evening — log hours and mood in Daily tab, write a journal entry, hit Log Today, export backup weekly.</div>
+          </div>
+          <div>
+            <div style="font-weight:700;color:var(--fg);margin-bottom:5px">Theme toggle</div>
+            <div>The sun or moon icon in the top navigation bar switches between dark and light mode. Your preference is saved and remembered on every visit.</div>
+          </div>
+          <div>
+            <div style="font-weight:700;color:var(--fg);margin-bottom:5px">Navigation between tabs</div>
+            <div>Use the sub-navigation bar just below the main header to switch between all sections. On mobile, the bar scrolls horizontally — swipe left to see more tabs like Timer, Backup, and FAQ.</div>
+          </div>
+          <div>
+            <div style="font-weight:700;color:var(--fg);margin-bottom:5px">Mobile usage</div>
+            <div>The tracker is fully responsive. All sections work on mobile browsers. Add it to your home screen using your browser's Add to Home Screen option for app-like access without opening a browser tab each time.</div>
+          </div>
+          <div>
+            <div style="font-weight:700;color:var(--fg);margin-bottom:5px">The most important habit</div>
+            <div>Log Today every single evening. This single action builds your streak, fills your heatmap, updates all stats, and keeps the Analytics accurate. Everything else is secondary to this one daily action.</div>
+          </div>
+          <div>
+            <div style="font-weight:700;color:var(--fg);margin-bottom:5px">When analytics feel discouraging</div>
+            <div>Low numbers are information, not judgement. If pace is slow, adjust the plan — reduce daily goal hours to something sustainable, focus on fewer topics per day but do them well, remove distractions during study time. The tracker shows the truth. Use it to course-correct.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- end guide-section -->
+
+  <!-- Original FAQ section divider -->
+  <div style="margin:32px 0 20px;display:flex;align-items:center;gap:12px">
+    <div style="flex:1;height:1px;background:var(--border)"></div>
+    <div style="font-size:.72rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;font-family:var(--font-body);white-space:nowrap">Common Questions</div>
+    <div style="flex:1;height:1px;background:var(--border)"></div>
+  </div>
+
   <div class="faq-list">
     <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Is my data stored online? <span>+</span></button><div class="faq-a">No. Everything is stored only in your browser's localStorage. No server, no account, no tracking. Your notes, progress, journal — all 100% private on your device.</div></div>
     <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">How is the syllabus structured? <span>+</span></button><div class="faq-a">Unit (e.g. Unit 1 — Foundation) → Stage → Chapter → Topics. This mirrors how you should actually learn — foundation first, then complexity.</div></div>
@@ -5907,6 +6662,10 @@ function toggleChecklist(key,el,i){
 }
 
 let timerInterval=null,timerTotal=90*60,timerRemaining=90*60,timerRunning=false;
+// Stopwatch variables
+let swInterval=null, swElapsed=0, swRunning=false;
+let swStartTimestamp=null;
+let swLaps=[];
 let pomodoroMode=false, pomodoroCount=0, pomodoroPhase='work';
 // phase: 'work' | 'short-break' | 'long-break'
 function setTimerPreset(h,m){timerTotal=timerRemaining=h*60*60+m*60;resetTimer();}
@@ -5923,64 +6682,78 @@ function updateTimerDisplay(){
 }
 
 
+let timerStartTimestamp = null; // when timer was last started
+let timerRemainingAtStart = 0;  // how much was left when started
+
 function toggleTimer(){
   if(timerRunning){
     clearInterval(timerInterval);
     timerRunning=false;
+    // Save how much is remaining right now
+    if(timerStartTimestamp){
+      const elapsed = Math.floor((Date.now() - timerStartTimestamp) / 1000);
+      timerRemaining = Math.max(0, timerRemainingAtStart - elapsed);
+      timerStartTimestamp = null;
+    }
+    updateTimerDisplay();
     const btn=document.getElementById('timer-start-btn');
     if(btn){btn.textContent='▶ Resume';btn.classList.remove('running');}
   } else {
     if(timerRemaining<=0) timerRemaining=timerTotal;
     timerRunning=true;
+    timerStartTimestamp = Date.now();
+    timerRemainingAtStart = timerRemaining;
     playTimerSound('start');
     const btn=document.getElementById('timer-start-btn');
     if(btn){btn.textContent='⏸ Pause';btn.classList.add('running');}
     timerInterval=setInterval(()=>{
-      if(timerRemaining>0){
-        timerRemaining--;
-        if(timerRemaining === 30) playTimerSound('warning');
-if(timerRemaining === 10) playTimerSound('warning');
-        updateTimerDisplay();
-      } else {
+      const elapsed = Math.floor((Date.now() - timerStartTimestamp) / 1000);
+      timerRemaining = Math.max(0, timerRemainingAtStart - elapsed);
+      if(timerRemaining === 30 && !window._warned30){ window._warned30=true; playTimerSound('warning'); }
+      if(timerRemaining === 10 && !window._warned10){ window._warned10=true; playTimerSound('warning'); }
+      if(timerRemaining <= 0){
         clearInterval(timerInterval);
         timerRunning=false;
+        timerStartTimestamp=null;
+        window._warned30=false; window._warned10=false;
         const btn=document.getElementById('timer-start-btn');
         if(btn){btn.textContent='▶ Start';btn.classList.remove('running');}
-        // Log the session
         logTimerSession(timerTotal);
-        // Play sound
         playTimerSound();
-        // Show notification
         if(Notification.permission==='granted'){
           new Notification('✅ Session Complete!',{
-            body:'Great work! Take a break. Session: '+formatTimer(timerTotal),
+            body:'Great work! Session: '+formatTimer(timerTotal),
           });
         }
         showToast('Session complete! Well done 🎉');
         if(pomodoroMode){
-  if(pomodoroPhase === 'work'){
-    pomodoroCount++;
-    updatePomodoroDisplay();
-    if(pomodoroCount % 4 === 0){
-      pomodoroPhase = 'long-break';
-      setTimerPreset(0,15);
-      showToast('🎉 4 Pomodoros done! Long break: 15 min');
-    } else {
-      pomodoroPhase = 'short-break';
-      setTimerPreset(0,5);
-      showToast('✅ Pomodoro ' + pomodoroCount + ' done! Short break: 5 min');
-    }
-  } else {
-    pomodoroPhase = 'work';
-    setTimerPreset(0,25);
-    showToast('💪 Break over! Starting next Pomodoro');
-  }
-  setTimeout(()=>toggleTimer(), 1500); // auto-start next phase
-}
+          if(pomodoroPhase === 'work'){
+            pomodoroCount++;
+            updatePomodoroDisplay();
+            if(pomodoroCount % 4 === 0){
+              pomodoroPhase = 'long-break';
+              setTimerPreset(0,15);
+              showToast('🎉 4 Pomodoros done! Long break: 15 min');
+            } else {
+              pomodoroPhase = 'short-break';
+              setTimerPreset(0,5);
+              showToast('✅ Pomodoro ' + pomodoroCount + ' done! Short break: 5 min');
+            }
+          } else {
+            pomodoroPhase = 'work';
+            setTimerPreset(0,25);
+            showToast('💪 Break over! Starting next Pomodoro');
+          }
+          setTimeout(()=>toggleTimer(), 1500);
+        }
+        return;
       }
-    },1000);
+      updateTimerDisplay();
+    },500); // 500ms for smoother display, timestamp-based so still accurate
   }
 }
+
+
 function resetTimer(){clearInterval(timerInterval);timerRunning=false;timerRemaining=timerTotal;updateTimerDisplay();const btn=document.getElementById('timer-start-btn');if(btn){btn.textContent='▶ Start';btn.classList.remove('running');}}
 
 
@@ -6214,6 +6987,41 @@ function initNav(){
   }
 }
 
+
+// ── AUTO-SAVE SESSION ON TAB CLOSE ──────────────────────
+window.addEventListener('beforeunload', () => {
+  // Save countdown timer session if running
+  if(timerRunning && timerStartTimestamp){
+    const elapsed = Math.floor((Date.now() - timerStartTimestamp) / 1000);
+    const actuallyRan = timerTotal - Math.max(0, timerRemainingAtStart - elapsed);
+    const minsRan = Math.floor(actuallyRan / 60);
+    if(minsRan >= 1){
+      logTimerSession(actuallyRan); // save partial session
+    }
+  }
+  // Save stopwatch session if running
+  if(swRunning && swStartTimestamp){
+    const elapsed = Math.floor((Date.now() - swStartTimestamp) / 1000) + swElapsed;
+    const minsRan = Math.floor(elapsed / 60);
+    if(minsRan >= 1){
+      logTimerSession(elapsed);
+      // Also save stopwatch note if any
+      const note = document.getElementById('sw-note')?.value?.trim();
+      if(note){
+        const d = getData();
+        const today = new Date().toISOString().slice(0,10);
+        const sessions = JSON.parse(d['timer-sessions-'+today]||'[]');
+        if(sessions.length > 0){
+          sessions[sessions.length-1].note = note;
+          d['timer-sessions-'+today] = JSON.stringify(sessions);
+          setData(d);
+        }
+      }
+    }
+  }
+});
+
+
 window.addEventListener('DOMContentLoaded', () => {
   try {
     const d = getData();
@@ -6237,6 +7045,20 @@ window.addEventListener('DOMContentLoaded', () => {
   try { updateTimerDisplay(); } catch(e){ console.error('timer failed:', e); }
   try { loadTimerSettings(); } catch(e){ console.error('timerSettings failed:', e); }
   try { startLiveClock(); } catch(e){ console.error('liveClock failed:', e); }
+  // Resume stopwatch display if page was hidden and came back
+  document.addEventListener('visibilitychange', () => {
+    if(!document.hidden){
+      if(swRunning && swStartTimestamp){
+        const current = swElapsed + Math.floor((Date.now() - swStartTimestamp)/1000);
+        updateStopwatchDisplay(current);
+      }
+      if(timerRunning && timerStartTimestamp){
+        const elapsed = Math.floor((Date.now() - timerStartTimestamp)/1000);
+        timerRemaining = Math.max(0, timerRemainingAtStart - elapsed);
+        updateTimerDisplay();
+      }
+    }
+  });
 try { renderManualLogHistory(); } catch(e){ console.error('manualLog failed:', e); }
 try { const md=document.getElementById('manual-date'); if(md) md.value=new Date().toISOString().slice(0,10); } catch(e){}
   try { updateDashboardExtras(); } catch(e){ console.error('dashboardExtras failed:', e); }
@@ -7388,6 +8210,7 @@ function logTimerSession(totalSeconds, dateStr){
   const key = dateStr || new Date().toISOString().slice(0,10);
   const sessions = JSON.parse(d['timer-sessions-' + key] || '[]');
   const mins = Math.round(totalSeconds / 60);
+  const timerNote = document.getElementById('timer-session-note')?.value?.trim() || '';
   sessions.push({
     id: Date.now(),
     duration: totalSeconds,
@@ -7399,7 +8222,9 @@ function logTimerSession(totalSeconds, dateStr){
     label: totalSeconds === 25*60 ? '🍅 Pomodoro'
          : totalSeconds <= 45*60 ? '⚡ Focus Block'
          : totalSeconds <= 90*60 ? '🔥 Deep Work'
-         : '🚀 Long Session'
+         : '🚀 Long Session',
+    note: timerNote,
+    type: 'countdown'
   });
   d['timer-sessions-' + key] = JSON.stringify(sessions);
   // Also update the weekly tracker total
@@ -7458,7 +8283,8 @@ function renderSessionLog(){
       <div style="font-size:1rem;flex-shrink:0">${s.label.split(' ')[0]}</div>
       <div style="flex:1">
         <div style="font-size:.82rem;font-weight:700;font-family:var(--font-body);color:var(--fg)">${s.label}</div>
-        <div style="font-size:.68rem;color:var(--muted);font-family:var(--font-mono)">${s.startTime} → ${s.endTime}</div>
+        <div style="font-size:.68rem;color:var(--muted);font-family:var(--font-mono)">${s.startTime} → ${s.endTime}${s.type==='stopwatch'?' · ⏫ Stopwatch':''}</div>
+        ${s.note ? `<div style="font-size:.68rem;color:var(--muted2);font-family:var(--font-body);margin-top:2px;font-style:italic">"${s.note}"</div>` : ''}
       </div>
       <div style="font-family:var(--font-mono);font-size:.85rem;font-weight:700;color:${isPomodoro?'var(--amber)':'var(--accent)'}">${mins}m</div>
     </div>`;
@@ -7646,6 +8472,165 @@ function updateTimerHeaderStats(){
 }
 
 // ===== END NEW TIMER FUNCTIONS =====
+// ══════════════════════════════════════════════════════════
+// STOPWATCH FUNCTIONS
+// ══════════════════════════════════════════════════════════
+
+function formatStopwatch(s){
+  const h=Math.floor(s/3600),m=Math.floor(s%3600/60),sec=s%60;
+  return h>0
+    ? `${h}:${m.toString().padStart(2,'0')}:${sec.toString().padStart(2,'0')}`
+    : `${m.toString().padStart(2,'0')}:${sec.toString().padStart(2,'0')}`;
+}
+
+function toggleStopwatch(){
+  const btn = document.getElementById('sw-start-btn');
+  if(swRunning){
+    // Pause
+    clearInterval(swInterval);
+    swRunning = false;
+    // Freeze elapsed
+    if(swStartTimestamp){
+      swElapsed += Math.floor((Date.now() - swStartTimestamp) / 1000);
+      swStartTimestamp = null;
+    }
+    if(btn){ btn.textContent='▶ Resume'; btn.style.borderColor='var(--blue)'; btn.style.color='var(--blue)'; }
+  } else {
+    // Start / Resume
+    swStartTimestamp = Date.now();
+    swRunning = true;
+    if(btn){ btn.textContent='⏸ Pause'; btn.style.borderColor='var(--amber)'; btn.style.color='var(--amber)'; }
+    swInterval = setInterval(()=>{
+      const current = swElapsed + Math.floor((Date.now() - swStartTimestamp) / 1000);
+      updateStopwatchDisplay(current);
+    }, 500);
+  }
+}
+
+function updateStopwatchDisplay(secs){
+  const disp = document.getElementById('sw-disp');
+  const ring = document.getElementById('sw-ring-fill');
+  if(disp) disp.textContent = formatStopwatch(secs);
+  // Ring: fill one full rotation per 60 minutes
+  if(ring){
+    const circumference = 339.29; // 2 * PI * 54
+    const progress = (secs % 3600) / 3600; // 0 to 1 per hour
+    ring.style.strokeDashoffset = circumference - (progress * circumference);
+    // Color based on duration
+    const color = secs < 25*60 ? 'var(--blue)' :
+                  secs < 60*60 ? 'var(--accent)' :
+                  secs < 90*60 ? 'var(--amber)' : 'var(--pink)';
+    ring.style.stroke = color;
+    const dispEl = document.getElementById('sw-disp');
+    if(dispEl) dispEl.style.color = color;
+  }
+  // Update live duration badge
+  const liveBadge = document.getElementById('sw-live-badge');
+  if(liveBadge && secs > 0){
+    liveBadge.textContent = secs >= 3600
+      ? Math.floor(secs/3600)+'h '+(Math.floor((secs%3600)/60))+'m'
+      : Math.floor(secs/60)+'m '+( secs%60)+'s';
+  }
+}
+
+function resetStopwatch(){
+  clearInterval(swInterval);
+  swRunning = false;
+  swStartTimestamp = null;
+  // Auto-save if ran for at least 1 min
+  if(swElapsed >= 60){
+    const note = document.getElementById('sw-note')?.value?.trim() || '';
+    logStopwatchSession(swElapsed, note);
+    showToast('Session saved: ' + Math.floor(swElapsed/60) + 'm 📝');
+  }
+  swElapsed = 0;
+  swLaps = [];
+  updateStopwatchDisplay(0);
+  const btn = document.getElementById('sw-start-btn');
+  if(btn){ btn.textContent='▶ Start'; btn.style.borderColor='var(--blue)'; btn.style.color='var(--blue)'; }
+  renderSwLaps();
+  const noteEl = document.getElementById('sw-note');
+  if(noteEl) noteEl.value = '';
+  const liveBadge = document.getElementById('sw-live-badge');
+  if(liveBadge) liveBadge.textContent = '';
+}
+
+function saveStopwatchSession(){
+  const current = swRunning
+    ? swElapsed + Math.floor((Date.now() - swStartTimestamp) / 1000)
+    : swElapsed;
+  if(current < 60){ showToast('Run for at least 1 minute first!','t-blue'); return; }
+  const note = document.getElementById('sw-note')?.value?.trim() || '';
+  logStopwatchSession(current, note);
+  showToast('Session saved: ' + formatStopwatch(current) + ' ✅');
+}
+
+function logStopwatchSession(totalSecs, note){
+  const d = getData();
+  const today = new Date().toISOString().slice(0,10);
+  const sessions = JSON.parse(d['timer-sessions-'+today]||'[]');
+  const mins = Math.round(totalSecs / 60);
+  sessions.push({
+    id: Date.now(),
+    duration: totalSecs,
+    mins: mins,
+    startTime: new Date(Date.now() - totalSecs*1000)
+      .toLocaleTimeString('en-IN',{hour:'2-digit',minute:'2-digit'}),
+    endTime: new Date().toLocaleTimeString('en-IN',{hour:'2-digit',minute:'2-digit'}),
+    label: (totalSecs >= 90*60 ? '🚀 Long Session' :
+            totalSecs >= 60*60 ? '🔥 Deep Work' :
+            totalSecs >= 25*60 ? '⚡ Focus Block' : '⏱ Quick Study'),
+    note: note,
+    type: 'stopwatch'
+  });
+  d['timer-sessions-'+today] = JSON.stringify(sessions);
+  // Update weekly tracker
+  const weekKey = 'timer-week-' + getMondayKey();
+  const week = JSON.parse(d[weekKey]||'{}');
+  week[today] = (week[today]||0) + mins;
+  d[weekKey] = JSON.stringify(week);
+  setData(d);
+  renderSessionLog();
+  renderWeeklyTimerTracker();
+  updateTimerHeaderStats();
+}
+
+function addSwLap(){
+  if(!swRunning && swElapsed === 0){ showToast('Start stopwatch first!','t-blue'); return; }
+  const current = swRunning
+    ? swElapsed + Math.floor((Date.now() - swStartTimestamp) / 1000)
+    : swElapsed;
+  const prevTotal = swLaps.reduce((a,l)=>a+l.split_secs,0);
+  const split = current - prevTotal;
+  swLaps.push({
+    num: swLaps.length + 1,
+    total: formatStopwatch(current),
+    split: formatStopwatch(split),
+    split_secs: split
+  });
+  renderSwLaps();
+}
+
+function renderSwLaps(){
+  const el = document.getElementById('sw-laps');
+  if(!el) return;
+  if(!swLaps.length){
+    el.innerHTML = '<div style="text-align:center;color:var(--muted);font-size:.75rem;padding:10px;font-family:var(--font-body)">Hit "+ Lap" to record splits</div>';
+    return;
+  }
+  el.innerHTML = [...swLaps].reverse().map(l => `
+    <div style="display:flex;justify-content:space-between;align-items:center;padding:7px 10px;background:var(--bg3);border-radius:8px;margin-bottom:4px;font-size:.78rem">
+      <span style="color:var(--muted);font-family:var(--font-body)">Lap ${l.num}</span>
+      <span style="color:var(--muted2);font-family:var(--font-mono)">${l.split}</span>
+      <span style="font-family:var(--font-mono);font-weight:700;color:var(--blue)">${l.total}</span>
+    </div>`).join('');
+}
+
+function clearSwLaps(){
+  swLaps = [];
+  renderSwLaps();
+}
+
 
 function togglePomodoroMode(on){
   pomodoroMode = on;
