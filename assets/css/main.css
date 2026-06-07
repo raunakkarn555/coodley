@@ -555,7 +555,7 @@ mark { background: rgba(61,232,176,.13); color: var(--accent); padding: 1px 5px;
 /* ══════════════════════════════
    ROADMAP / PHASES
 ══════════════════════════════ */
-.roadmap-section { background:var(--bg2); border-top:1px solid var(--border); border-bottom:1px solid var(--border); }
+.roadmap-section { background:var(--bg2); border-top:1px solid var(--border); border-bottom:1px solid var(--border); padding-top:15px;padding-bottom:15px; }
 .roadmap-intro { margin-bottom:52px; }
 .phase-list { display:flex;flex-direction:column; }
 .phase-item { display:grid;grid-template-columns:48px 1fr;gap:0 24px; }
@@ -593,7 +593,7 @@ mark { background: rgba(61,232,176,.13); color: var(--accent); padding: 1px 5px;
 /* ══════════════════════════════
    WHY SECTION
 ══════════════════════════════ */
-.why-grid { display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px;margin-top:48px; }
+.why-grid { display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px;margin-top:48px; padding-top:15px;padding-bottom:15px;}
 .why-card { background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:28px 24px;transition:border-color .2s,transform .2s; }
 .why-card:hover { border-color:var(--border-glow);transform:translateY(-2px); }
 .why-icon { width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:18px; }
@@ -610,7 +610,7 @@ mark { background: rgba(61,232,176,.13); color: var(--accent); padding: 1px 5px;
 ══════════════════════════════ */
 .tracker-promo-card {
   background:var(--bg2);border:1px solid rgba(61,232,176,.35);border-radius:16px;overflow:hidden;
-  transition:border-color .2s,transform .2s,box-shadow .2s;position:relative;
+  transition:border-color .2s,transform .2s,box-shadow .2s;position:relative; padding-top:15px;
 }
 .tracker-promo-card::before {
   content:'';position:absolute;inset:0;
@@ -658,7 +658,7 @@ mark { background: rgba(61,232,176,.13); color: var(--accent); padding: 1px 5px;
 /* ══════════════════════════════
    CTA SECTION
 ══════════════════════════════ */
-.cta-section { text-align:center;background:var(--bg2);border-top:1px solid var(--border); }
+.cta-section { text-align:center;background:var(--bg2);border-top:1px solid var(--border);padding-top:15px;padding-bottom:15px; }
 .cta-inner { max-width:640px;margin:0 auto; }
 .cta-section p { color:var(--text2);font-size:.95rem;margin-bottom:32px;font-weight:300;line-height:1.75; }
 
