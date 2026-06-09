@@ -77,8 +77,8 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;point
 .nbtn.job.active{background:rgba(244,169,66,0.15);color:var(--amber);border-color:rgba(244,169,66,0.4);}
 
 /* ===== MAIN CONTENT ===== */
-.main{max-width:1400px;margin:0 auto;padding-top:calc(var(--nav-h) + var(--subnav-h) + 8px);
-  padding-left:20px;padding-right:20px;padding-bottom:100px;position:relative;z-index:1;}
+.main{max-width:1400px;margin:0 auto;padding-top:calc(var(--nav-h) + var(--subnav-h) + 4px);
+  padding-left:20px;padding-right:20px;padding-bottom:80px;position:relative;z-index:1;}
 .section{display:none;animation:fadeIn .35s ease;}
 .section.active{display:block;}
 @keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
@@ -1765,7 +1765,7 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;point
   </div>
 
 </div>
-  <div class="card" style="margin-top:16px"><h3 style="font-family:var(--font-head);font-weight:800;margin-bottom:16px">📅 9-Month Roadmap Timeline</h3><div class="month-timeline" id="month-timeline"></div></div>
+  <div class="card" style="margin-top:16px"><h3 style="font-family:var(--font-head);font-weight:800;margin-bottom:16px">📅 12-Month Roadmap Timeline</h3><div class="month-timeline" id="month-timeline"></div></div>
 </section>
 
 <!-- JOURNAL ENHANCED -->
@@ -5109,14 +5109,6 @@ function updateStats(){
   });
   try { updateDashboardExtras(); } catch(e){} 
 }
- 
-
-
-
-
-
-
-
 
 function saveProfile(){
   const d=getData();
