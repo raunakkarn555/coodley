@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<title>Coodley — 12-Month Web Dev Tracker | 15 LPA Goal</title>
+<title>Coodley — 9-Month Web Dev Tracker | 15 LPA Goal</title>
 <meta name="description" content="India's most honest full-stack web development learning platform. Free step-by-step roadmap from CS basics to React, Node.js, DSA, System Design. No paywall. No fake promises. Built for Indian students." />
 <meta name="keywords" content="free coding course India, full stack developer India, learn web development free, JavaScript tutorial Hindi, DSA for beginners India, free programming course, Coodley" />
 <meta name="author" content="Coodley" />
@@ -77,7 +77,7 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;point
 .nbtn.job.active{background:rgba(244,169,66,0.15);color:var(--amber);border-color:rgba(244,169,66,0.4);}
 
 /* ===== MAIN CONTENT ===== */
-.main{max-width:1400px;margin:0 auto;padding-top:calc(var(--nav-h) + var(--subnav-h) + 8px);
+.main{max-width:1400px;margin:0 auto;padding-top:calc(var(--nav-h) + var(--subnav-h) + 24px);
   padding-left:20px;padding-right:20px;padding-bottom:100px;position:relative;z-index:1;}
 .section{display:none;animation:fadeIn .35s ease;}
 .section.active{display:block;}
@@ -1113,7 +1113,7 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;point
 <!-- DASHBOARD -->
 <section class="section active" id="sec-dashboard">
   <div class="hero1">
-    <div class="hero-tag1">✦ Your 12-Month Roadmap to 15 LPA</div>
+    <div class="hero-tag1">✦ Your 9-Month Roadmap to 15 LPA</div>
     <h1>Land Your Dream<br/><span class="hl1">Web Dev Job</span></h1>
     <p>A structured, friend-level guide through every topic, project, and skill you need. Follow the path — one checkbox at a time.</p>
     <div class="hero-meta1">
@@ -1268,13 +1268,12 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;point
   </div>
   <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px;margin-bottom:24px">
     <div class="subj-progress-card">
-      <div class="prog-row"><div class="prog-label" style="color:var(--amber)">Unit 1 — Frontend</div><div class="prog-bar-wrap"><div class="prog-bar-fill" id="pb-js" style="width:0%;background:var(--amber)"></div></div><div class="prog-pct" id="pp-js">0%</div></div>
-<div class="prog-row"><div class="prog-label" style="color:var(--blue)">Unit 2 — Backend</div><div class="prog-bar-wrap"><div class="prog-bar-fill" id="pb-node" style="width:0%;background:var(--blue)"></div></div><div class="prog-pct" id="pp-node">0%</div></div>
-<div class="prog-row"><div class="prog-label" style="color:var(--accent)">Unit 3 — Databases</div><div class="prog-bar-wrap"><div class="prog-bar-fill" id="pb-db" style="width:0%;background:var(--accent)"></div></div><div class="prog-pct" id="pp-db">0%</div></div>
-<div class="prog-row"><div class="prog-label" style="color:var(--pink)">Unit 4 — DSA</div><div class="prog-bar-wrap"><div class="prog-bar-fill" id="pb-dsa" style="width:0%;background:var(--pink)"></div></div><div class="prog-pct" id="pp-dsa">0%</div></div>
-<div class="prog-row"><div class="prog-label" style="color:var(--orange)">Unit 5 — System Design</div><div class="prog-bar-wrap"><div class="prog-bar-fill" id="pb-sys" style="width:0%;background:var(--orange)"></div></div><div class="prog-pct" id="pp-sys">0%</div></div>
-<div class="prog-row"><div class="prog-label" style="color:var(--teal)">Unit 6 — Job Prep</div><div class="prog-bar-wrap"><div class="prog-bar-fill" id="pb-job" style="width:0%;background:var(--teal)"></div></div><div class="prog-pct" id="pp-job">0%</div></div>
- </div>
+      <div class="prog-row"><div class="prog-label" style="color:var(--amber)">⚡ JavaScript</div><div class="prog-bar-wrap"><div class="prog-bar-fill" id="pb-js" style="width:0%;background:var(--amber)"></div></div><div class="prog-pct" id="pp-js">0%</div></div>
+      <div class="prog-row"><div class="prog-label" style="color:var(--blue)">⚛ React</div><div class="prog-bar-wrap"><div class="prog-bar-fill" id="pb-react" style="width:0%;background:var(--blue)"></div></div><div class="prog-pct" id="pp-react">0%</div></div>
+      <div class="prog-row"><div class="prog-label" style="color:var(--accent)">🟢 Node.js</div><div class="prog-bar-wrap"><div class="prog-bar-fill" id="pb-node" style="width:0%;background:var(--accent)"></div></div><div class="prog-pct" id="pp-node">0%</div></div>
+      <div class="prog-row"><div class="prog-label" style="color:var(--pink)">🧩 DSA</div><div class="prog-bar-wrap"><div class="prog-bar-fill" id="pb-dsa" style="width:0%;background:var(--pink)"></div></div><div class="prog-pct" id="pp-dsa">0%</div></div>
+      <div class="prog-row"><div class="prog-label" style="color:var(--orange)">🏗 System</div><div class="prog-bar-wrap"><div class="prog-bar-fill" id="pb-sys" style="width:0%;background:var(--orange)"></div></div><div class="prog-pct" id="pp-sys">0%</div></div>
+    </div>
     <div class="subj-progress-card" style="display:flex;flex-direction:column;justify-content:center;gap:12px;text-align:center">
       <div style="font-size:3rem;font-family:var(--font-mono);font-weight:700;color:var(--accent3);line-height:1" id="overall-pct">0%</div>
       <div style="font-size:.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;font-weight:700;font-family:var(--font-body)">Overall Progress</div>
@@ -2680,7 +2679,7 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;point
   <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-xl);padding:22px">
     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;flex-wrap:wrap;gap:8px">
       <h4 style="font-family:var(--font-head);font-weight:800;font-size:.95rem">📅 View by Date</h4>
-      <input type="date" id="timer-date-inp" style="background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:7px 12px;color:var(--fg);font-family:var(--font-mono);font-size:.78rem;outline:none;cursor:pointer;color-scheme:dark" onchange="loadSessionsForDate(this.value);renderManualLogHistory()"/>
+      <input type="date" id="timer-date-inp" style="background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:7px 12px;color:var(--fg);font-family:var(--font-mono);font-size:.78rem;outline:none;cursor:pointer;color-scheme:dark" onchange="loadSessionsForDate(this.value)"/>
     </div>
     <div id="timer-date-sessions">
       <div style="color:var(--muted);font-size:.78rem;text-align:center;padding:14px;font-family:var(--font-body)">Pick a date to see sessions</div>
@@ -3750,16 +3749,7 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;point
 'use strict';
 const STORE='devpath-v3';
 const getData=()=>{try{return JSON.parse(localStorage.getItem(STORE)||'{}')}catch{return{}}};
-const setData=d=>{
-  try{
-    localStorage.setItem(STORE,JSON.stringify(d));
-  } catch(e){
-    // If storage quota exceeded, warn user
-    showToast('⚠️ Storage full! Export a backup now to free space.','t-blue');
-    console.warn('localStorage quota exceeded',e);
-  }
-};
-
+const setData=d=>localStorage.setItem(STORE,JSON.stringify(d));
 const safe=(id,v)=>{const e=document.getElementById(id);if(e)e.textContent=v};
 const showToast=(msg,type='t-green')=>{
   const t=document.getElementById('toast');
@@ -5093,12 +5083,11 @@ function updateStats(){
 
   // Per-subject progress bars
   const barMap = [
-    ['js',   st.js],
-    ['node', st.node],
-    ['db',   st.db],
-    ['dsa',  st.dsa],
-    ['sys',  st.sys],
-    ['job',  st.job],
+    ['js',    st.js],
+    ['react', st.react],
+    ['node',  st.node],
+    ['dsa',   st.dsa],
+    ['sys',   st.sys],
   ];
   
   barMap.forEach(([key, val]) => {
@@ -5107,7 +5096,6 @@ function updateStats(){
     if (b) b.style.width = val + '%';
     if (p) p.textContent = val + '%';
   });
-  try { updateDashboardExtras(); } catch(e){} 
 }
  
 
@@ -5494,7 +5482,7 @@ function buildBooks(){
       <input type="range" id="brange-${r.id}" class="book-range"
         min="0" max="100" value="${pct}"
         style="width:100%;cursor:pointer;margin-bottom:10px;background:linear-gradient(to right,var(--accent) ${pct}%,var(--bg4) ${pct}%)"
-       oninput="updateBook('${r.id}',this.value)"/>
+        oninput="updateBook('${r.id}','var(--accent)',this.value)"/>
 
       <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px">
         <label style="display:flex;align-items:center;gap:6px;font-size:.75rem;cursor:pointer;font-family:var(--font-body)">
@@ -5549,7 +5537,7 @@ function addResource(){
   showToast('Resource added! 📚');
 }
 
-function updateBook(id, val){
+function updateBook(id, color, val){
   const d = getData();
   d['book-' + id] = parseInt(val);
   setData(d);
@@ -5560,7 +5548,7 @@ function updateBook(id, val){
   const range = document.getElementById('brange-' + id);
   if(range){
     const pct = parseInt(val);
-    range.style.background = `linear-gradient(to right, var(--accent) ${pct}%, var(--bg4) ${pct}%)`;
+    range.style.background = `linear-gradient(to right, ${color} ${pct}%, var(--bg4) ${pct}%)`;
   }
 }
 
@@ -5594,10 +5582,10 @@ function buildRadarChart(st){
   _charts['radar'] = new Chart(canvas, {
     type: 'radar',
     data: {
-      labels: ['Unit 1\nFrontend', 'Unit 2\nBackend', 'Unit 3\nDatabases', 'Unit 4\nDSA', 'Unit 5\nSystem Design', 'Unit 6\nJob Prep'],
+      labels: ['Frontend\n(HTML/CSS/JS)', 'React &\nNext.js', 'Backend\n(Node/Express)', 'Databases\n(SQL/NoSQL)', 'DSA\n(Algorithms)', 'System\nDesign'],
       datasets:[{
         label: 'Your Progress %',
-        data: [st.js, st.node, st.db, st.dsa, st.sys, st.job],
+        data: [st.js, st.react, st.node, st.db, st.dsa, st.sys],
         backgroundColor: 'rgba(61,232,176,0.15)',
         borderColor:     'rgba(61,232,176,0.9)',
         borderWidth: 2.5,
@@ -5663,14 +5651,15 @@ function buildBarChart(st){
   _charts['bar'] = new Chart(canvas, {
     type: 'bar',
     data:{
-      labels: ['Unit 1\nFrontend', 'Unit 2\nBackend', 'Unit 3\nDatabases', 'Unit 4\nDSA', 'Unit 5\nSystem Design', 'Unit 6\nJob Prep'],
+      labels: ['Frontend', 'React/Next', 'Backend', 'Databases', 'DSA', 'Sys Design', 'Job Prep'],
       datasets:[{
         label: 'Progress %',
-        data: [st.js, st.node, st.db, st.dsa, st.sys, st.job],
+        data: [st.js, st.react, st.node, st.db, st.dsa, st.sys, st.job],
         backgroundColor: [
           'rgba(244,169,66,0.75)',
           'rgba(91,164,245,0.75)',
           'rgba(61,232,176,0.75)',
+          'rgba(244,169,66,0.75)',
           'rgba(244,114,182,0.75)',
           'rgba(251,146,60,0.75)',
           'rgba(45,212,191,0.75)',
@@ -5679,6 +5668,7 @@ function buildBarChart(st){
           'rgba(244,169,66,1)',
           'rgba(91,164,245,1)',
           'rgba(61,232,176,1)',
+          'rgba(244,169,66,1)',
           'rgba(244,114,182,1)',
           'rgba(251,146,60,1)',
           'rgba(45,212,191,1)',
@@ -6050,76 +6040,121 @@ function buildMonthTimeline(){
 
   const months = [
     {
-      m:'M1', title:'HTML & CSS Foundations',
-      unit:'Unit 1 — Stage 1.1–1.2',
-      color:'ub-green', status: s1, pct: st.js,
-      items:['HTML5 semantic structure + accessibility','CSS Flexbox and Grid mastery','Responsive design with media queries','Git + GitHub — commit every day','Build: Resume page + Landing page']
+      m:'M1–2', title:'HTML/CSS/Git',
+      unit:'Unit 1 — Stages 1.1–1.2',
+      color:'ub-green', status: s1,
+      pct: st.js,
+      items:[
+        'HTML5 semantic structure + accessibility',
+        'CSS Flexbox, Grid, responsive design',
+        'Git + GitHub — commit every day',
+        'Build: Resume page + Landing page',
+        'Deploy on GitHub Pages / Vercel',
+      ]
     },
     {
-      m:'M2', title:'JavaScript Core',
+      m:'M2–3', title:'JavaScript Core',
       unit:'Unit 1 — Stage 1.3',
-      color:'ub-green', status: s1, pct: st.js,
-      items:['Variables, closures, scope, hoisting','Arrays, objects, destructuring, ES6+','DOM manipulation and browser APIs','Async/await, Promises, Fetch API','Build: ToDo app + Weather API app']
+      color:'ub-green', status: s1,
+      pct: st.js,
+      items:[
+        'Variables, closures, scope, hoisting',
+        'Arrays, objects, destructuring, ES6+',
+        'Async/await, Promises, Fetch API',
+        'DOM manipulation — build ToDo + Weather app',
+        '1 DSA problem/day (Unit 4 — Easy problems)',
+      ]
     },
     {
-      m:'M3', title:'React Fundamentals',
-      unit:'Unit 1 — Stage 1.4–1.5',
-      color:'ub-green', status: s1, pct: st.js,
-      items:['React components, props, JSX, state','Core hooks: useState, useEffect, useRef','React Router v6, controlled forms','CSS Modules and Tailwind with React','Build: Full CRUD React app deployed']
+      m:'M3–4', title:'React + TypeScript',
+      unit:'Unit 1 — Stages 1.4–1.6',
+      color:'ub-green', status: s1,
+      pct: st.js,
+      items:[
+        'React Fundamentals — components, props, JSX',
+        'All core hooks — useState, useEffect, useRef',
+        'React Router v6, TanStack Query, Zustand',
+        'TypeScript basics with React',
+        'Build: Full CRUD React app — deployed',
+      ]
     },
     {
-      m:'M4', title:'Advanced React + TypeScript',
-      unit:'Unit 1 — Stage 1.5–1.6',
-      color:'ub-green', status: s1, pct: st.js,
-      items:['useMemo, useCallback, useContext','TanStack Query, Zustand state management','TypeScript with React — types and generics','Next.js App Router basics','Build: Dashboard app with TS + Next.js']
+      m:'M4–5', title:'Node.js + Express + Auth',
+      unit:'Unit 2 — Stages 2.1–2.2',
+      color:'ub-blue', status: s2,
+      pct: st.node,
+      items:[
+        'Node.js runtime — event loop, streams, fs',
+        'Express — routes, middleware, error handling',
+        'JWT auth — access + refresh token flow',
+        'Security — bcrypt, helmet, rate limiting, CORS',
+        'Build: REST API for blog — CRUD + auth',
+      ]
     },
     {
-      m:'M5', title:'Node.js + Express + Auth',
-      unit:'Unit 2 — Stage 2.1–2.2',
-      color:'ub-blue', status: s2, pct: st.node,
-      items:['Node.js runtime and event loop','Express — routes, middleware, error handling','JWT auth — access + refresh token flow','Security — bcrypt, helmet, rate limiting','Build: REST API for blog with full auth']
-    },
-    {
-      m:'M6', title:'Databases — SQL + NoSQL',
+      m:'M5–6', title:'Databases + Full-Stack',
       unit:'Unit 3 — All Stages',
-      color:'ub-yellow', status: s3, pct: st.db,
-      items:['PostgreSQL — SQL joins, indexes, transactions','Prisma ORM — schema, migrations, queries','MongoDB + Mongoose + aggregation pipeline','Redis — caching, sessions, pub/sub','Build: Full-stack app with React + Node + DB']
+      color:'ub-yellow', status: s3,
+      pct: st.db,
+      items:[
+        'PostgreSQL — SQL joins, indexes, transactions',
+        'Prisma ORM — schema, migrations, queries',
+        'MongoDB + Mongoose + aggregation pipeline',
+        'Redis — caching, sessions, pub/sub',
+        'Build: Full-stack app — React + Node + DB',
+      ]
     },
     {
-      m:'M7', title:'DSA — Data Structures',
-      unit:'Unit 4 — Stages 4.1–4.3',
-      color:'ub-purple', status: s4, pct: st.dsa,
-      items:['C++ / Java — STL, Collections, complexity','Arrays, HashMaps, Stacks, Queues','Linked Lists, Trees, BST operations','Two Pointers, Sliding Window, Prefix Sum','Solve 50+ Easy LeetCode problems']
+      m:'M5–7', title:'DSA — Interview Patterns',
+      unit:'Unit 4 — All Stages',
+      color:'ub-purple', status: s4,
+      pct: st.dsa,
+      items:[
+        'C++ / Java — STL, Collections, complexity',
+        'Arrays, HashMaps, Stacks, Queues, Linked Lists',
+        'Trees, Graphs, BFS/DFS, Dijkstra, Trie',
+        'Dynamic Programming — all patterns',
+        'NeetCode 150 — complete all categories',
+      ]
     },
     {
-      m:'M8', title:'DSA — Algorithms',
-      unit:'Unit 4 — Stages 4.4–4.5',
-      color:'ub-purple', status: s4, pct: st.dsa,
-      items:['Graphs — BFS, DFS, Dijkstra, Topological sort','Dynamic Programming — all major patterns','Binary Search, Backtracking, Greedy','Heaps, Tries, Union-Find','NeetCode 150 — complete all categories']
+      m:'M7–8', title:'Next.js + Testing + DevOps',
+      unit:'Unit 2 — Stages 2.3–2.4',
+      color:'ub-blue', status: s2,
+      pct: st.node,
+      items:[
+        'Next.js App Router — SSR, SSG, Server Actions',
+        'Auth.js + Prisma + PostgreSQL SaaS stack',
+        'Jest + React Testing Library + Playwright',
+        'Docker, GitHub Actions CI/CD, Vercel/Railway',
+        'Build: SaaS Dashboard — full production stack',
+      ]
     },
     {
-      m:'M9', title:'System Design Foundations',
-      unit:'Unit 5 — Stages 5.1–5.2',
-      color:'ub-orange', status: s5, pct: st.sys,
-      items:['Scalability, CAP theorem, load balancers, CDN','Caching deep dive — Redis patterns','Kafka, message queues, event-driven arch','Design: URL Shortener, Rate Limiter','Back-of-envelope estimation practice']
+      m:'M8–9', title:'System Design',
+      unit:'Unit 5 — All Stages',
+      color:'ub-orange', status: s5,
+      pct: st.sys,
+      items:[
+        'Scalability, CAP theorem, load balancers, CDN',
+        'Caching deep dive — Redis patterns',
+        'Kafka, message queues, event-driven architecture',
+        'Microservices, Kubernetes, AWS basics',
+        'Design: URL Shortener, Chat, Feed, YouTube',
+      ]
     },
     {
-      m:'M10', title:'System Design Advanced',
-      unit:'Unit 5 — Stages 5.3–5.4',
-      color:'ub-orange', status: s5, pct: st.sys,
-      items:['Microservices, Kubernetes, AWS basics','Design: Chat System, News Feed, YouTube','Design: Google Drive, Uber, Search Autocomplete','Sharding, consistent hashing, replication','Mock system design interviews — 5+ rounds']
-    },
-    {
-      m:'M11', title:'Job Hunt Active Mode',
-      unit:'Unit 6 — Stages 6.1–6.2',
-      color:'ub-amber', status: s6, pct: st.job,
-      items:['Resume — 1 page, ATS-friendly, live links','Portfolio + GitHub — green graph, good READMEs','Apply 5–10 companies/week — Cutshort, AngelList','Mock interviews — 5+ on Pramp before first real one','LinkedIn outreach to engineers and CTOs']
-    },
-    {
-      m:'M12', title:'Offer & Negotiation',
-      unit:'Unit 6 — Stage 6.3',
-      color:'ub-amber', status: s6, pct: st.job,
-      items:['Research salary ranges — Glassdoor, AmbitionBox','Negotiate every offer — first offer is not final','Compare equity, bonus, WFH, learning budget','Continue capstone projects while interviewing','🎯 Target: ₹15 LPA+ offer letter!']
+      m:'M9+', title:'Job Hunt Full Mode',
+      unit:'Unit 6 — All Stages',
+      color:'ub-amber', status: s6,
+      pct: st.job,
+      items:[
+        'Resume — 1 page, ATS-friendly, quantified impact',
+        'Portfolio + GitHub — live projects, green graph',
+        'Apply 5–10 companies/week — Cutshort, AngelList',
+        'Mock interviews — 5+ before first real one (Pramp)',
+        '🎯 Target: ₹15 LPA+ offer letter',
+      ]
     },
   ];
 
@@ -6157,161 +6192,34 @@ function buildMonthTimeline(){
 //
 
 
+
 function updateOverview(){
-  const d    = getData();
-  const st   = getAllTopicStats();
-
-  /* ── Top summary cards ─────────────────────────────── */
-  const sumEl = document.getElementById('overview-summary');
-  if(sumEl) sumEl.innerHTML = [
-    { label:'Overall Progress', val: st.overallPct+'%', sub: st.done+'/'+st.total+' topics', color:'var(--accent3)' },
-    { label:'Chapters Done',    val: st.chDone+'/'+st.chTotal, sub: Math.round(st.chDone/Math.max(1,st.chTotal)*100)+'% complete', color:'var(--accent)' },
-    { label:'Topics Remaining', val: st.total - st.done, sub: 'left to complete', color:'var(--amber)' },
-    { label:'Frontend',         val: st.js+'%', sub: 'Unit 1 progress', color:'var(--amber)' },
-  ].map(c => `
-    <div style="background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:20px;text-align:center;
-         transition:all .2s" onmouseover="this.style.borderColor='var(--border2)'" onmouseout="this.style.borderColor='var(--border)'">
-      <div style="font-family:var(--font-mono);font-size:2rem;font-weight:700;color:${c.color};line-height:1;margin-bottom:6px">${c.val}</div>
-      <div style="font-size:.65rem;font-weight:800;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin-bottom:4px">${c.label}</div>
-      <div style="font-size:.72rem;color:var(--muted2)">${c.sub}</div>
-    </div>`).join('');
-
-  /* ── Build unit tabs + panels ───────────────────────── */
-  const contentEl = document.getElementById('overview-content');
-  if(!contentEl) return;
-
-  const unitColors = {
-    green:  { bar:'var(--accent)',  tab:'rgba(61,232,176,.15)',  border:'rgba(61,232,176,.4)',  text:'var(--accent)'  },
-    blue:   { bar:'var(--blue)',    tab:'rgba(91,164,245,.15)',  border:'rgba(91,164,245,.4)',  text:'var(--blue)'    },
-    yellow: { bar:'var(--amber)',   tab:'rgba(244,169,66,.15)',  border:'rgba(244,169,66,.4)',  text:'var(--amber)'   },
-    purple: { bar:'var(--purple)',  tab:'rgba(157,124,245,.15)', border:'rgba(157,124,245,.4)', text:'var(--purple)'  },
-    orange: { bar:'var(--orange)',  tab:'rgba(251,146,60,.15)',  border:'rgba(251,146,60,.4)',  text:'var(--orange)'  },
-    pink:   { bar:'var(--pink)',    tab:'rgba(244,114,182,.15)', border:'rgba(244,114,182,.4)', text:'var(--pink)'    },
-  };
-
-  /* Compute per-unit totals */
-  const unitStats = CURRICULUM.map(unit => {
-    let uTotal = 0, uDone = 0, chDone = 0, chTotal = 0;
-    unit.stages.forEach(st => st.chapters.forEach(ch => {
-      const tot  = ch.topics.length;
-      const done = ch.topics.filter((_, ti) => d['t-'+ch.id+'-'+ti]).length;
-      uTotal += tot; uDone += done; chTotal++;
-      if(done === tot && tot > 0) chDone++;
-    }));
-    return { unit, uTotal, uDone, chDone, chTotal, pct: uTotal ? Math.round(uDone/uTotal*100) : 0 };
+  const d=getData();const st=getAllTopicStats();
+  const sumEl=document.getElementById('overview-summary');
+  if(sumEl)sumEl.innerHTML=[
+    {label:'Overall Progress',val:st.overallPct+'%',sub:st.done+'/'+st.total+' topics',color:'var(--accent3)'},
+    {label:'Chapters Done',val:st.chDone+'/'+st.chTotal,sub:Math.round(st.chDone/Math.max(1,st.chTotal)*100)+'% complete',color:'var(--accent)'},
+    {label:'Remaining',val:st.total-st.done,sub:'topics left',color:'var(--amber)'},
+    {label:'JS Progress',val:st.js+'%',sub:'foundation',color:'var(--amber)'},
+  ].map(c=>`<div style="background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:20px;text-align:center;transition:all .2s" onmouseover="this.style.borderColor='var(--border2)'" onmouseout="this.style.borderColor='var(--border)'"><div style="font-family:var(--font-mono);font-size:2rem;font-weight:700;color:${c.color};line-height:1;margin-bottom:6px">${c.val}</div><div style="font-size:.65rem;font-weight:800;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin-bottom:4px;font-family:var(--font-body)">${c.label}</div><div style="font-size:.72rem;color:var(--muted2);font-family:var(--font-body)">${c.sub}</div></div>`).join('');
+  const contentEl=document.getElementById('overview-content');if(!contentEl)return;
+  let html='';const colors={green:'var(--accent)',blue:'var(--blue)',yellow:'var(--amber)'};
+  CURRICULUM.forEach(unit=>{
+    const col=colors[unit.color]||'var(--accent3)';
+    let uTotal=0,uDone=0;
+    unit.stages.forEach(st=>st.chapters.forEach(ch=>{ch.topics.forEach((_,ti)=>{uTotal++;if(d['t-'+ch.id+'-'+ti])uDone++;})}));
+    const uPct=uTotal?Math.round(uDone/uTotal*100):0;
+    html+=`<div style="margin-bottom:32px"><div style="display:flex;align-items:center;gap:14px;margin-bottom:14px"><div style="font-family:var(--font-head);font-weight:800;font-size:1.1rem">${unit.name}</div><span style="color:${col};font-family:var(--font-mono);font-weight:700">${uPct}%</span><span style="font-size:.72rem;color:var(--muted)">${uDone}/${uTotal}</span></div>`;
+    unit.stages.forEach(st=>{
+      st.chapters.forEach(ch=>{
+        const chT=ch.topics.length,chD=ch.topics.filter((_,ti)=>d['t-'+ch.id+'-'+ti]).length;
+        const pct=chT?Math.round(chD/chT*100):0;
+        html+=`<div class="ov-ch-row"><div><div style="font-size:.85rem;font-weight:700;margin-bottom:4px;font-family:var(--font-body)">${ch.name}</div><div style="height:4px;background:var(--bg4);border-radius:2px;overflow:hidden;max-width:200px"><div style="height:100%;width:${pct}%;background:${col};border-radius:2px;transition:width .4s"></div></div></div><div style="font-family:var(--font-mono);font-size:.78rem;font-weight:700;color:${col}">${chD}/${chT}</div></div>`;
+      });
+    });
+    html+=`</div>`;
   });
-
-  /* Tab bar */
-  const tabsHtml = unitStats.map((us, i) => {
-    const c = unitColors[us.unit.color] || unitColors.green;
-    return `<button
-      id="ov-tab-${i}"
-      onclick="switchOverviewTab(${i})"
-      style="padding:8px 16px;border-radius:10px;border:1px solid ${i===0 ? c.border : 'var(--border)'};
-             background:${i===0 ? c.tab : 'transparent'};color:${i===0 ? c.text : 'var(--muted)'};
-             font-size:.78rem;font-weight:700;cursor:pointer;transition:all .2s;
-             font-family:var(--font-body);white-space:nowrap;flex-shrink:0;
-             display:flex;align-items:center;gap:6px">
-        <span style="font-family:var(--font-mono);font-size:.68rem;font-weight:700;
-               padding:2px 7px;border-radius:6px;background:${i===0 ? 'rgba(0,0,0,.15)' : 'var(--bg4)'};
-               color:${i===0 ? c.text : 'var(--muted)'}">${us.pct}%</span>
-        ${us.unit.name.split(' — ')[1] || us.unit.name}
-      </button>`;
-  }).join('');
-
-  /* Panel for each unit */
-  const panelsHtml = unitStats.map((us, i) => {
-    const c = unitColors[us.unit.color] || unitColors.green;
-
-    const chapRows = us.unit.stages.flatMap(st => st.chapters.map(ch => {
-      const chT  = ch.topics.length;
-      const chD  = ch.topics.filter((_, ti) => d['t-'+ch.id+'-'+ti]).length;
-      const chPct = chT ? Math.round(chD/chT*100) : 0;
-      return `
-        <div style="display:grid;grid-template-columns:1fr 120px auto;gap:12px;align-items:center;
-             background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:12px 16px;
-             transition:all .2s;cursor:pointer"
-             onclick="document.querySelector('[data-sec=syllabus]').click()"
-             onmouseover="this.style.borderColor='var(--border2)'"
-             onmouseout="this.style.borderColor='var(--border)'">
-          <div>
-            <div style="font-size:.85rem;font-weight:700;font-family:var(--font-body);margin-bottom:4px;
-                 display:flex;align-items:center;gap:6px">
-              ${ch.high ? '<span style="font-size:.58rem;font-weight:800;text-transform:uppercase;padding:2px 6px;border-radius:4px;color:var(--red);border:1px solid rgba(245,101,101,.3);background:rgba(245,101,101,.08)">CORE</span>' : ''}
-              ${ch.name}
-            </div>
-            <div style="height:4px;background:var(--bg4);border-radius:2px;overflow:hidden">
-              <div style="height:100%;width:${chPct}%;background:${c.bar};border-radius:2px;transition:width .5s"></div>
-            </div>
-          </div>
-          <div style="font-size:.7rem;color:var(--muted2);text-align:right;font-family:var(--font-mono)">${chD}/${chT} topics</div>
-          <div style="font-family:var(--font-mono);font-size:.82rem;font-weight:700;color:${c.text};
-               min-width:40px;text-align:right">${chPct}%</div>
-        </div>`;
-    })).join('');
-
-    return `
-      <div id="ov-panel-${i}" style="display:${i===0?'block':'none'};animation:fadeIn .3s ease">
-        <!-- Unit header -->
-        <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-xl);
-             padding:22px;margin-bottom:16px">
-          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;flex-wrap:wrap;gap:10px">
-            <div>
-              <div style="font-family:var(--font-head);font-weight:800;font-size:1.05rem;margin-bottom:4px">${us.unit.name}</div>
-              <div style="font-size:.72rem;color:var(--muted);font-family:var(--font-body)">${us.unit.months}</div>
-            </div>
-            <div style="text-align:right">
-              <div style="font-family:var(--font-mono);font-size:1.8rem;font-weight:700;color:${c.text};line-height:1">${us.pct}%</div>
-              <div style="font-size:.65rem;color:var(--muted);font-family:var(--font-body);margin-top:2px">${us.uDone}/${us.uTotal} topics · ${us.chDone}/${us.chTotal} chapters</div>
-            </div>
-          </div>
-          <div style="height:8px;background:var(--bg4);border-radius:4px;overflow:hidden">
-            <div style="height:100%;width:${us.pct}%;background:${c.bar};border-radius:4px;transition:width .6s"></div>
-          </div>
-        </div>
-        <!-- Chapter rows -->
-        <div style="display:flex;flex-direction:column;gap:8px">${chapRows}</div>
-      </div>`;
-  }).join('');
-
-  contentEl.innerHTML = `
-    <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:20px;padding-bottom:16px;
-         border-bottom:1px solid var(--border);overflow-x:auto;scrollbar-width:none" id="ov-tabs">
-      ${tabsHtml}
-    </div>
-    <div id="ov-panels">${panelsHtml}</div>`;
-}
-
-/* Called by each tab button */
-function switchOverviewTab(idx){
-  const unitColors = {
-    0: { tab:'rgba(61,232,176,.15)',  border:'rgba(61,232,176,.4)',  text:'var(--accent)'  },
-    1: { tab:'rgba(91,164,245,.15)',  border:'rgba(91,164,245,.4)',  text:'var(--blue)'    },
-    2: { tab:'rgba(244,169,66,.15)',  border:'rgba(244,169,66,.4)',  text:'var(--amber)'   },
-    3: { tab:'rgba(157,124,245,.15)', border:'rgba(157,124,245,.4)', text:'var(--purple)'  },
-    4: { tab:'rgba(251,146,60,.15)',  border:'rgba(251,146,60,.4)',  text:'var(--orange)'  },
-    5: { tab:'rgba(244,114,182,.15)', border:'rgba(244,114,182,.4)', text:'var(--pink)'    },
-  };
-
-  CURRICULUM.forEach((_, i) => {
-    const tab   = document.getElementById('ov-tab-'+i);
-    const panel = document.getElementById('ov-panel-'+i);
-    const c     = unitColors[i];
-    if(!tab || !panel || !c) return;
-
-    if(i === idx){
-      tab.style.background    = c.tab;
-      tab.style.borderColor   = c.border;
-      tab.style.color         = c.text;
-      panel.style.display     = 'block';
-      panel.style.animation   = 'fadeIn .3s ease';
-    } else {
-      tab.style.background    = 'transparent';
-      tab.style.borderColor   = 'var(--border)';
-      tab.style.color         = 'var(--muted)';
-      panel.style.display     = 'none';
-    }
-  });
+  contentEl.innerHTML=html;
 }
 
 // ===== JOURNAL ENHANCED =====
@@ -6924,17 +6832,8 @@ function toggleTimer(){
   }
 }
 
-function resetTimer(){
-  clearInterval(timerInterval);
-  timerRunning=false;
-  timerRemaining=timerTotal;
-  timerStartTimestamp=null;
-  window._warned30=false;
-  window._warned10=false;
-  updateTimerDisplay();
-  const btn=document.getElementById('timer-start-btn');
-  if(btn){btn.textContent='▶ Start';btn.classList.remove('running');}
-}
+
+function resetTimer(){clearInterval(timerInterval);timerRunning=false;timerRemaining=timerTotal;updateTimerDisplay();const btn=document.getElementById('timer-start-btn');if(btn){btn.textContent='▶ Start';btn.classList.remove('running');}}
 
 
 function exportData(){
@@ -7068,7 +6967,7 @@ function updateStorageInfo(){
   el.innerHTML = `
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin-bottom:16px">
       ${[
-        {label:'Storage Used', val: kb + ' KB / ~10 MB', color:'var(--accent)'},
+        {label:'Storage Used', val: kb + ' KB / 5 MB', color:'var(--accent)'},
         {label:'Overall Progress', val: st.overallPct + '%', color:'var(--blue)'},
         {label:'Topics Checked', val: topicsDone, color:'var(--accent3)'},
         {label:'Journal Entries', val: journal, color:'var(--purple)'},
@@ -7134,8 +7033,8 @@ function initNav(){
     const icon=document.getElementById('themeIcon');if(icon)icon.innerHTML=theme==='dark'?SUN:MOON;
     const d=getData();d['theme']=theme;setData(d);
   }
-  const themeBtn=document.getElementById('themeToggle');
-if(themeBtn)themeBtn.addEventListener('click',()=>{
+  const themeBtn=document.getElementById('themeBtn');
+  if(themeBtn)themeBtn.addEventListener('click',()=>{
   const isDark=document.documentElement.getAttribute('data-theme')==='dark';
   setTheme(isDark?'light':'dark');
   // Rebuild charts with new theme colors
@@ -7150,19 +7049,19 @@ if(themeBtn)themeBtn.addEventListener('click',()=>{
 
   // HAMBURGER
   const hamburger=document.getElementById('hamburger');
-  const mobileMenu=document.getElementById('mobileMenu');
+  const mobileMenu=document.getElementById('mobile-menu');
   let menuOpen=false;
   if(hamburger&&mobileMenu){
     hamburger.addEventListener('click',()=>{
       menuOpen=!menuOpen;
       mobileMenu.classList.toggle('open',menuOpen);
-      const icon=document.getElementById('hamburgerIcon');
+      const icon=document.getElementById('hamburger-icon');
       if(icon)icon.innerHTML=menuOpen?
         `<line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>`:
         `<line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/>`;
     });
     mobileMenu.querySelectorAll('a').forEach(a=>{
-      a.addEventListener('click',()=>{menuOpen=false;mobileMenu.classList.remove('open');const icon=document.getElementById('hamburgerIcon');if(icon)icon.innerHTML=`<line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/>`;});
+      a.addEventListener('click',()=>{menuOpen=false;mobileMenu.classList.remove('open');const icon=document.getElementById('hamburger-icon');if(icon)icon.innerHTML=`<line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/>`;});
     });
   }
 }
@@ -7239,11 +7138,7 @@ window.addEventListener('DOMContentLoaded', () => {
       }
     }
   });
-try { 
-  const tdi = document.getElementById('timer-date-inp');
-  if(tdi) tdi.value = new Date().toISOString().slice(0,10);
-  renderManualLogHistory(); 
-} catch(e){ console.error('manualLog failed:', e); }
+try { renderManualLogHistory(); } catch(e){ console.error('manualLog failed:', e); }
 try { const md=document.getElementById('manual-date'); if(md) md.value=new Date().toISOString().slice(0,10); } catch(e){}
   try { updateDashboardExtras(); } catch(e){ console.error('dashboardExtras failed:', e); }
   try {
@@ -7327,17 +7222,16 @@ function updateMotivationalQuote(d, st){
   const qEl = document.getElementById('quote-text');
   const qEmoji = document.getElementById('quote-emoji');
   const qMeta = document.getElementById('quote-meta');
-}
   if(qEl) qEl.textContent = best.text;
   if(qEmoji){
-  qEmoji.innerHTML = '';
-  const wrapper = document.createElement('div');
-  wrapper.style.cssText = 'width:28px;height:28px;flex-shrink:0;display:flex;align-items:center;justify-content:center;color:var(--accent)';
-  wrapper.innerHTML = best.emoji;
-  const svg = wrapper.querySelector('svg');
-  if(svg){ svg.style.width='100%'; svg.style.height='100%'; }
-  qEmoji.parentNode.replaceChild(wrapper, qEmoji);
-  wrapper.id = 'quote-emoji';
+    qEmoji.innerHTML = best.emoji;
+    qEmoji.style.width = '24px';
+    qEmoji.style.height = '24px';
+    qEmoji.style.display = 'flex';
+    qEmoji.style.alignItems = 'center';
+    qEmoji.style.justifyContent = 'center';
+  }
+  if(qMeta) qMeta.textContent = best.meta + ' · ' + new Date().toLocaleDateString('en-IN',{weekday:'long', month:'short', day:'numeric'});
 }
 
 // ── Goal Ring ───────────────────────────────────────────
@@ -7405,53 +7299,31 @@ function updateWeekBars(d){
 function updateMilestone(st){
   const pct = st.overallPct;
   const milestones = [
-    { at:10,  label:'HTML/CSS Foundation',    color:'var(--accent)' },
-    { at:20,  label:'JS Core Complete',        color:'var(--amber)'  },
-    { at:35,  label:'React Ready',             color:'var(--blue)'   },
-    { at:50,  label:'Full Stack Basics',       color:'var(--accent)' },
-    { at:65,  label:'DSA Intermediate',        color:'var(--pink)'   },
-    { at:75,  label:'Portfolio Ready',         color:'var(--orange)' },
-    { at:85,  label:'Job Application Ready',   color:'var(--accent)' },
-    { at:95,  label:'Interview Ready',         color:'var(--blue)'   },
-    { at:100, label:'Offer Time! 🎉',          color:'var(--accent)' },
+    { at:10, label:'HTML/CSS Foundation', color:'var(--accent)' },
+    { at:20, label:'JS Core Complete', color:'var(--amber)' },
+    { at:35, label:'React Ready', color:'var(--blue)' },
+    { at:50, label:'Full Stack Basics', color:'var(--accent)' },
+    { at:65, label:'DSA Intermediate', color:'var(--pink)' },
+    { at:75, label:'Project Portfolio Ready', color:'var(--orange)' },
+    { at:85, label:'Job Application Ready', color:'var(--accent)' },
+    { at:95, label:'Interview Ready', color:'var(--blue)' },
+    { at:100, label:'Offer Time! ' + SVG_ICONS.party, color:'var(--accent)' },
   ];
 
-  // The NEXT milestone is the first one we haven't reached yet
-  const next = milestones.find(m => pct < m.at);
+  const next = milestones.find(m => m.at > pct) || milestones[milestones.length - 1];
+  const prev = [...milestones].reverse().find(m => m.at <= pct);
+  const prevAt = prev ? prev.at : 0;
+  const progress = next.at === prevAt ? 100 : Math.round((pct - prevAt) / (next.at - prevAt) * 100);
 
-  if(!next){
-    // All milestones complete
-    const mPct   = document.getElementById('milestone-pct');
-    const mLabel = document.getElementById('milestone-label');
-    const mBar   = document.getElementById('milestone-bar');
-    const mSub   = document.getElementById('milestone-sub');
-    if(mPct)   mPct.textContent   = '100%';
-    if(mLabel) mLabel.textContent = 'All milestones complete! 🎉';
-    if(mBar){  mBar.style.width   = '100%'; mBar.style.background = 'var(--accent)'; }
-    if(mSub)   mSub.textContent   = 'Apply to companies and land that offer!';
-    return;
-  }
-
-  // The PREVIOUS milestone is the last one we already passed
-  const prevIdx = milestones.indexOf(next) - 1;
-  const prevAt  = prevIdx >= 0 ? milestones[prevIdx].at : 0;
-
-  // Progress between prevAt and next.at
-  const range    = next.at - prevAt;                         // e.g. 20-10 = 10
-  const progress = pct - prevAt;                             // e.g. 15-10 = 5
-  const barPct   = range > 0 ? Math.round(progress / range * 100) : 0;
-
-  const remaining = next.at - pct;
-
-  const mPct   = document.getElementById('milestone-pct');
+  const mPct = document.getElementById('milestone-pct');
   const mLabel = document.getElementById('milestone-label');
-  const mBar   = document.getElementById('milestone-bar');
-  const mSub   = document.getElementById('milestone-sub');
+  const mBar = document.getElementById('milestone-bar');
+  const mSub = document.getElementById('milestone-sub');
 
-  if(mPct){   mPct.textContent   = next.at + '%'; mPct.style.color = next.color; }
-  if(mLabel)  mLabel.textContent = next.label;
-  if(mBar){   mBar.style.width   = barPct + '%'; mBar.style.background = next.color; }
-  if(mSub)    mSub.textContent   = remaining + '% away · You are at ' + pct + '%';
+  if(mPct) mPct.textContent = next.at + '%';
+  if(mLabel) mLabel.innerHTML = next.label;
+  if(mBar){ mBar.style.width = progress + '%'; mBar.style.background = next.color; }
+  if(mSub) mSub.textContent = (next.at - pct) + '% away · You are at ' + pct + '%';
 }
 
 // ── Stat Subtext ────────────────────────────────────────
@@ -7463,13 +7335,8 @@ function updateStatSubtext(d, st){
   // Topics done today
   const today = new Date().toISOString().slice(0,10);
   const remaining = st.total - st.done;
-  const todayStart = new Date(); 
-todayStart.setHours(0,0,0,0);
-const doneToday = Object.entries(d).filter(([k,v]) => 
-  k.startsWith('t-') && typeof v === 'number' && v >= todayStart.getTime()
-).length;
-const todayEl = document.getElementById('stat-topics-today');
-if(todayEl) todayEl.textContent = '+' + doneToday + ' today';
+  const todayEl = document.getElementById('stat-topics-today');
+  if(todayEl) todayEl.textContent = remaining + ' remaining';
 
   const chapTotalEl = document.getElementById('stat-chapters-total');
   if(chapTotalEl) chapTotalEl.textContent = st.chTotal;
@@ -8647,13 +8514,8 @@ function getBestSession(){
   let best = 0;
   Object.keys(d).forEach(k => {
     if(k.startsWith('timer-sessions-')){
-      try {
-        const sessions = JSON.parse(d[k]||'[]');
-        sessions.forEach(s => { 
-          const m = parseInt(s.mins) || Math.round((parseInt(s.duration)||0)/60);
-          if(m > best) best = m; 
-        });
-      } catch(e){}
+      const sessions = JSON.parse(d[k]||'[]');
+      sessions.forEach(s => { if(s.mins > best) best = s.mins; });
     }
   });
   return best;
@@ -8665,13 +8527,8 @@ function getTotalFocusTime(){
   let total = 0;
   Object.keys(d).forEach(k => {
     if(k.startsWith('timer-sessions-')){
-      try {
-        const sessions = JSON.parse(d[k]||'[]');
-        sessions.forEach(s => { 
-          const m = parseInt(s.mins) || Math.round((parseInt(s.duration)||0)/60);
-          total += m; 
-        });
-      } catch(e){}
+      const sessions = JSON.parse(d[k]||'[]');
+      sessions.forEach(s => { total += s.mins; });
     }
   });
   return total;
@@ -9064,40 +8921,50 @@ function renderManualLogHistory(){
   if(countEl) countEl.textContent = logs.length + ' entr' + (logs.length === 1 ? 'y' : 'ies');
   if(!listEl) return;
 
-  // Get selected date from the View by Date picker
-  const selectedDate = document.getElementById('timer-date-inp')?.value || new Date().toISOString().slice(0,10);
-  const filtered = logs.filter(l => l.date === selectedDate);
-
-  const dateLabel = new Date(selectedDate + 'T00:00:00')
-    .toLocaleDateString('en-IN',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
-
-  if(!filtered.length){
-    listEl.innerHTML = `<div style="color:var(--muted);font-size:.82rem;text-align:center;padding:24px;font-family:var(--font-body)">No manual sessions on <strong style="color:var(--fg)">${dateLabel}</strong>. Pick a date or add a session above.</div>`;
+  if(!logs.length){
+    listEl.innerHTML = '<div style="color:var(--muted);font-size:.82rem;text-align:center;padding:24px;font-family:var(--font-body)">No manual sessions logged yet.</div>';
     return;
   }
 
-  const dayTotal = filtered.reduce((a,l) => a + l.mins, 0);
+  // Group by date
+  const grouped = {};
+  logs.forEach(log => {
+    if(!grouped[log.date]) grouped[log.date] = [];
+    grouped[log.date].push(log);
+  });
 
-  listEl.innerHTML = `
-    <div style="font-size:.72rem;font-weight:700;color:var(--muted);margin-bottom:10px;font-family:var(--font-mono)">
-      ${dateLabel} · ${filtered.length} entr${filtered.length===1?'y':'ies'} · <span style="color:var(--accent)">${dayTotal}m total</span>
-    </div>
-    ${filtered.map(log => `
-    <div style="display:flex;align-items:center;gap:12px;background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:10px 14px;margin-bottom:5px;transition:all .18s"
-      onmouseover="this.style.borderColor='var(--border2)'"
-      onmouseout="this.style.borderColor='var(--border)'">
-      <div style="font-size:.9rem;flex-shrink:0">${log.subject.split(' ')[0]}</div>
-      <div style="flex:1;min-width:0">
-        <div style="font-size:.82rem;font-weight:700;font-family:var(--font-body);color:var(--fg)">${log.subject}</div>
-        ${log.note ? `<div style="font-size:.7rem;color:var(--muted2);font-family:var(--font-body);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${log.note}</div>` : ''}
+  const sortedDates = Object.keys(grouped).sort((a,b) => b.localeCompare(a));
+
+  listEl.innerHTML = sortedDates.map(dateStr => {
+    const dayLogs = grouped[dateStr];
+    const dayTotal = dayLogs.reduce((a,l) => a + l.mins, 0);
+    const label = new Date(dateStr + 'T00:00:00')
+      .toLocaleDateString('en-IN',{weekday:'short',day:'numeric',month:'short',year:'numeric'});
+
+    return `
+    <div style="margin-bottom:14px">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;flex-wrap:wrap;gap:4px">
+        <span style="font-size:.72rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;font-family:var(--font-mono)">${label}</span>
+        <span style="font-size:.68rem;color:var(--accent);font-family:var(--font-mono);font-weight:700">${dayTotal}m total</span>
       </div>
-      <div style="font-family:var(--font-mono);font-size:.88rem;font-weight:700;color:var(--amber);flex-shrink:0">${log.mins}m</div>
-      <button onclick="deleteManualLog(${log.id},'${log.date}')"
-        style="background:none;border:none;color:var(--muted);cursor:pointer;font-size:.7rem;padding:3px 6px;border-radius:5px;transition:color .15s;flex-shrink:0"
-        onmouseover="this.style.color='var(--red)'"
-        onmouseout="this.style.color='var(--muted)'"
-        title="Delete">✕</button>
-    </div>`).join('')}`;
+      ${dayLogs.map(log => `
+      <div style="display:flex;align-items:center;gap:12px;background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:10px 14px;margin-bottom:5px;transition:all .18s"
+        onmouseover="this.style.borderColor='var(--border2)'"
+        onmouseout="this.style.borderColor='var(--border)'">
+        <div style="font-size:.9rem;flex-shrink:0">${log.subject.split(' ')[0]}</div>
+        <div style="flex:1;min-width:0">
+          <div style="font-size:.82rem;font-weight:700;font-family:var(--font-body);color:var(--fg)">${log.subject}</div>
+          ${log.note ? `<div style="font-size:.7rem;color:var(--muted2);font-family:var(--font-body);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${log.note}</div>` : ''}
+        </div>
+        <div style="font-family:var(--font-mono);font-size:.88rem;font-weight:700;color:var(--amber);flex-shrink:0">${log.mins}m</div>
+        <button onclick="deleteManualLog(${log.id},'${dateStr}')"
+          style="background:none;border:none;color:var(--muted);cursor:pointer;font-size:.7rem;padding:3px 6px;border-radius:5px;transition:color .15s;flex-shrink:0"
+          onmouseover="this.style.color='var(--red)'"
+          onmouseout="this.style.color='var(--muted)'"
+          title="Delete this entry">✕</button>
+      </div>`).join('')}
+    </div>`;
+  }).join('');
 }
 
 // ── DELETE A MANUAL LOG ENTRY ───────────────────────────
@@ -9667,16 +9534,6 @@ ${todosHTML}
 //   if(toEl)   toEl.value   = today;
 //   updatePDFPreview();
 // } catch(e){}
-
-function toggleMobileMenu(){
-  const menu = document.getElementById('mobileMenu');
-  const overlay = document.getElementById('mobileOverlay');
-  const hamburger = document.getElementById('hamburger');
-  if(!menu) return;
-  const isOpen = menu.classList.toggle('open');
-  if(overlay) overlay.classList.toggle('open', isOpen);
-  hamburger?.setAttribute('aria-expanded', isOpen);
-}
 
 </script>
 </body>

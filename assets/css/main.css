@@ -211,7 +211,7 @@ section { padding: 88px clamp(20px,5%,80px); }
   font-family: var(--font-mono); font-size: .7rem; color: var(--accent);
   text-transform: uppercase; letter-spacing: 2.5px; margin-bottom: 12px;
   display: flex; align-items: center; gap: 8px;
-  padding-top: 25px; padding-bottom: 25px;
+  padding-top: 18px; padding-bottom: 18px;
 }
 .section-eyebrow::before { content:''; display:inline-block; width:20px; height:1px; background:currentColor; }
 .section-eyebrow.amber { color: var(--amber); }
